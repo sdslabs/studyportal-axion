@@ -1,2 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Sansational');
-@import url('https://fonts.googleapis.com/css?family=Droid+Sans');
+@font-face {
+    font-family: Sansation;
+    src: url(sansation.regular-webfont.woff);
+}
+
+@font-face {
+    font-family: Droid Sans;
+    src: url(droidsans-webfont.woff);
+}

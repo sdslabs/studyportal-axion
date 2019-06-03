@@ -27,12 +27,12 @@ img {
 
 .studyportal {
     position: absolute;
-    width: 177px;
+    width: 200px;
     height: 36px;
     left: 47%;
     top: 160px;
 
-    font-family: Sansational;
+    font-family: Sansation;
     font-style: normal;
     font-weight: bold;
     font-size: 32px;
@@ -47,6 +47,12 @@ img {
     height: 32px;
     left: 36%;
     top: 231px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
 
     background: #FFFFFF;
     border-radius: 4px;
@@ -86,7 +92,11 @@ img {
     border: #24698b;
     color: #FFFFFF;
 
-    line-height: 25px;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 10px;
 }
 
 .request:hover {
@@ -105,7 +115,10 @@ img {
     border: #24698b;
     color: #FFFFFF;
 
-    line-height: 30px;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
 }
 
 .upload:hover {
@@ -144,6 +157,12 @@ img {
     height: 41px;
     left: 84.37%;
     top: 36px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
 
     background: #0d2938;
     border-radius: 4px;
