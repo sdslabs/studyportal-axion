@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-import logo from '../assets/studyportal_logo.png'
-import sds_logo from '../assets/sds_logo.png'
-import upload from '../assets/upload.png'
-import request from '../assets/request.png'
-import search from '../assets/search.png'
-import '../styles/header_landing.scss'
+import logo from '../../assets/studyportal_logo.png'
+import sds_logo from '../../assets/sds_logo.png'
+import upload from '../../assets/upload.png'
+import request from '../../assets/request.png'
+import search from '../../assets/search.png'
+import '../../styles/header_landing.scss'
 
 class Header extends Component {
     render() {
