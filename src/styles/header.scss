@@ -1,0 +1,176 @@
+@import './reset.scss';
+@import './fonts.scss';
+
+.header {
+    position: absolute;
+    width: 100%;
+    height: 73px;
+    left: 0px;
+    top: 0px;
+
+    background: #38A7DE;
+    border: 1px solid #38A7DE;
+    box-sizing: border-box;
+}
+
+.head_logo {
+    position: absolute;
+    left: 52.032px;
+    right: 93.77%;
+    top: 15%;
+    bottom: 92.52%;
+}
+
+.head_name {
+    position: absolute;
+    width: 111.92px;
+    height: 21px;
+    left: 6%;
+    top: 24.21px;
+
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 22px;
+
+    color: #0D2938;
+}
+
+.search_head {
+    position: absolute;
+    width: 469.66px;
+    height: 32px;
+    left: 16.5%;
+    top: 15px;
+
+    padding: 4px;
+    padding-left: 7px;
+    background: #FFFFFF;
+    border-radius: 2px;
+    border: #FFFFFF;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #9DB5B2;
+
+}
+
+.search_icon {
+    position: absolute;
+    width: 40.97px;
+    height: 41px;
+    left: 800.27px;
+    top: 15px;
+
+    background: #0D2938;
+    border: #0D2938;
+    border-radius: 2px;
+}
+
+.request_head {
+    position: absolute;
+    width: 57.96px;
+    height: 38px;
+    left: 1036.50px;
+    top: 25px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0D2938;
+}
+
+.upload_head {
+    position: absolute;
+    width: 51.96px;
+    height: 19px;
+    left: 1126.50px;
+    top: 25px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #0D2938;
+}
+
+.mentors {
+    position: absolute;
+    width: 88.93px;
+    height: 38px;
+    left: 1210.46px;
+    top: 20px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0D2938;
+
+}
+
+.login_head {
+    position: absolute;
+    width: 38.97px;
+    height: 38px;
+    left: 1650.14px;
+    top: 17px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0D2938;
+    background: transparent;
+    border: none;
+}
+
+.signup_head {
+    position: absolute;
+    width: 79.94px;
+    height: 41px;
+    left: 1730.1px;
+    top: 15px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #0D2938;
+
+
+    border: 1px solid #0D2938;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: transparent;
+}
+
+.search_icon:hover, .request_head:hover, .upload_head:hover, .mentors:hover, .login_head:hover, .signup_head:hover {
+    cursor: pointer;
+}
+
+.login_head:focus, .signup_head:focus {
+    outline: none;
+}

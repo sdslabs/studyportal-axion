@@ -72,14 +72,6 @@ img {
     border: white;
 }
 
-.search:hover {
-    cursor: pointer;
-}
-
-.search:focus {
-    outline: none;
-}
-
 .request {
     position: absolute;
     width: 111px;
@@ -97,10 +89,6 @@ img {
     font-weight: normal;
     font-size: 15px;
     line-height: 10px;
-}
-
-.request:hover {
-    cursor: pointer;
 }
 
 .upload {
@@ -121,10 +109,6 @@ img {
     font-size: 15px;
 }
 
-.upload:hover {
-    cursor: pointer;
-}
-
 .login {
     position: absolute;
     width: 106px;
@@ -141,14 +125,6 @@ img {
     color: #0d2938;
     background: transparent;
     border: none;
-}
-
-.login:hover {
-    cursor: pointer;
-}
-
-.login:focus {
-    outline: none;
 }
 
 .signup {
@@ -171,13 +147,11 @@ img {
     color: #FFFFFF;
 }
 
-.signup:hover {
+.search:hover, .request:hover, .upload:hover, .login:hover, .signup:hover {
     cursor: pointer;
 }
 
-.signup:focus {
+.search:focus, .login:focus, .signup:focus {
     outline: none;
 }
-
-
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './App.css'
 import Home from './pages/home'
+import Header from './components/header/header'
 import {Switch, Route} from 'react-router-dom'
 
 class App extends Component {
