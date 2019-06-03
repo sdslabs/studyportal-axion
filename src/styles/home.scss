@@ -1,0 +1,365 @@
+.sub_list {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 25% 25% 25% 25%;
+    margin-top: 64px;
+    margin-right: 220px;
+    margin-left: 350px;
+    margin-bottom: 55px;
+}
+
+.archi {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 1;
+    margin-bottom: 12px;
+}
+
+.appli_sci {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 12px;
+}
+
+.bio {
+    grid-row: 1 / span 1;
+    grid-column: 3 / span 1;
+    margin-bottom: 12px;
+}
+
+.chem {
+    grid-row: 1 / span 1;
+    grid-column: 4 / span 1;
+    margin-bottom: 12px;
+}
+
+.chem_engg {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.civil {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.cse {
+    grid-row: 2 / span 1;
+    grid-column: 3 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.earthquake {
+    grid-row: 2 / span 1;
+    grid-column: 4 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.earth_sci {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.ece {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.elec {
+    grid-row: 3 / span 1;
+    grid-column: 3 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.hss {
+    grid-row: 3 / span 1;
+    grid-column: 4 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.a {
+    grid-row: 4 / span 1;
+    grid-column: 1 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.b {
+    grid-row: 4 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.c {
+    grid-row: 4 / span 1;
+    grid-column: 3 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.d {
+    grid-row: 4 / span 1;
+    grid-column: 4 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.e {
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.f {
+    grid-row: 5 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.g {
+    grid-row: 5 / span 1;
+    grid-column: 3 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.h {
+    grid-row: 5 / span 1;
+    grid-column: 4 / span 1;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.archiimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.appli_sciimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.biotechimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.chemimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.chem_enggimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.civilimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.cseimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.earthquakeimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.earth_sciimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.eceimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.elecimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.hssimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.aimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.bimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.cimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.dimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.eimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.fimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.gimg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}
+
+.himg:hover {
+    cursor: pointer;
+    width: 237px;
+    height: 154px;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
+    border-radius: 2px;
+}

@@ -1,0 +1,164 @@
+@import './reset.scss';
+@import './fonts.scss';
+
+img {
+    vertical-align: middle;
+}
+
+.header_home {
+    background: url(../assets/landing_header.jpeg);
+    background-size: contain;
+    height: 391px;
+    width: 100%;
+    text-align: center;
+}
+
+.sds_logo {
+    position: absolute;
+    left: 9.22%;
+    bottom: 90.49%;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    bottom: 83.62%;
+}
+
+.studyportal {
+    position: absolute;
+    width: 177px;
+    height: 36px;
+    left: 47%;
+    top: 160px;
+
+    font-family: Sansational;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 36px;
+
+    color: #2B2A28;
+}
+
+.search_bar {
+    position: absolute;
+    width: 550px;
+    height: 32px;
+    left: 36%;
+    top: 231px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    padding: 0.5%;
+    border: white;
+}
+
+.search {
+    position: absolute;
+    width: 54px;
+    height: 52px;
+    left: 64.85%;
+    top: 231px;
+
+    border-radius: 4px;
+    background: #FFFFFF;
+    border: white;
+}
+
+.search:hover {
+    cursor: pointer;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.request {
+    position: absolute;
+    width: 111px;
+    height: 41px;
+    left: 46%;
+    top: 314px;
+
+    background: #24698b;
+    border-radius: 2px;
+    border: #24698b;
+    color: #FFFFFF;
+
+    line-height: 25px;
+}
+
+.request:hover {
+    cursor: pointer;
+}
+
+.upload {
+    position: absolute;
+    width: 111px;
+    height: 41px;
+    left: 52.5%;
+    top: 314px;
+
+    background: #24698b;
+    border-radius: 2px;
+    border: #24698b;
+    color: #FFFFFF;
+
+    line-height: 30px;
+}
+
+.upload:hover {
+    cursor: pointer;
+}
+
+.login {
+    position: absolute;
+    width: 106px;
+    height: 41px;
+    left: 79.17%;
+    top: 36px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #0d2938;
+    background: transparent;
+    border: none;
+}
+
+.login:hover {
+    cursor: pointer;
+}
+
+.login:focus {
+    outline: none;
+}
+
+.signup {
+    position: absolute;
+    width: 106px;
+    height: 41px;
+    left: 84.37%;
+    top: 36px;
+
+    background: #0d2938;
+    border-radius: 4px;
+    border: #0d2938;
+
+    color: #FFFFFF;
+}
+
+.signup:hover {
+    cursor: pointer;
+}
+
+.signup:focus {
+    outline: none;
+}
+
+
+
