@@ -1,10 +1,6 @@
 @import './reset.scss';
 @import './fonts.scss';
 
-img {
-    vertical-align: middle;
-}
-
 .header_home {
     background: url(../assets/landing_header.jpeg);
     background-size: contain;
@@ -91,6 +87,10 @@ img {
     line-height: 10px;
 }
 
+.req_img {
+    vertical-align: middle;
+}
+
 .upload {
     position: absolute;
     width: 111px;
@@ -107,6 +107,10 @@ img {
     font-style: normal;
     font-weight: normal;
     font-size: 15px;
+}
+
+.uplo_img {
+    vertical-align: middle;
 }
 
 .login {

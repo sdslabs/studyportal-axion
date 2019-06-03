@@ -15,8 +15,8 @@ class Header extends Component {
                     <div className="studyportal">Study Portal</div>
                     <input className="search_bar" type="text" placeholder="Search tutorials, books, notes, courses..." />
                     <button className="search"><img src={search} /></button>
-                    <button className="request"><img src={request} /> Request</button>
-                    <button className="upload"><img src={upload} /> Upload</button>
+                    <button className="request"><img className="req_img" src={request} /> Request</button>
+                    <button className="upload"><img className="uplo_img" src={upload} /> Upload</button>
                     <button className="login">Login</button>
                     <button className="signup">Sign Up</button>
             </div>
