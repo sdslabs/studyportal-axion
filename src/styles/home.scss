@@ -144,215 +144,25 @@
     margin-top: 12px;
 }
 
-.archiimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.appli_sciimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.biotechimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.chemimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.chem_enggimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.civilimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.cseimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.earthquakeimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.earth_sciimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.eceimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.elecimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.hssimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.aimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.bimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.cimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.dimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.eimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.fimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
-.gimg:hover {
-    cursor: pointer;
-    width: 237px;
-    height: 154px;
-
-    background: #1E85B8;
-    mix-blend-mode: multiply;
-    box-shadow: 0px 4px 4px rgba(13, 41, 56, 0.15);
-    border-radius: 2px;
-}
-
+.archiimg:hover, 
+.appli_sciimg:hover, 
+.biotechimg:hover, 
+.chemimg:hover, 
+.chem_enggimg:hover, 
+.civilimg:hover, 
+.cseimg:hover, 
+.earthquakeimg:hover, 
+.earth_sciimg:hover, 
+.eceimg:hover, 
+.elecimg:hover, 
+.hssimg:hover, 
+.aimg:hover, 
+.bimg:hover, 
+.cimg:hover, 
+.dimg:hover, 
+.eimg:hover, 
+.fimg:hover, 
+.gimg:hover, 
 .himg:hover {
     cursor: pointer;
     width: 237px;
