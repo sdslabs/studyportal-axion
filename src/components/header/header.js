@@ -4,6 +4,12 @@ import search from '../../assets/head_search.png'
 import '../../styles/header.scss'
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        state = {
+        }
+    }
+
     render() {
         return(
             <div className="header">
