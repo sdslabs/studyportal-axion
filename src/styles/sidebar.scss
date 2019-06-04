@@ -18,7 +18,7 @@
     position: absolute;
     width: 1.5px;
     height: 15px;
-    left: 395.84px;
+    left: 395.8px;
     top: 25.55px;
 
     border-radius: 100px;
@@ -82,13 +82,17 @@
 
 .course_table {
     width: 424px;
-
     border-top: 2px solid #1A4D68;
-    // overflow: scroll;
 }
 
+/*
+tbody {
+    height: 323px;
+    overflow-y: auto;
+} */
+
 tr {
-    width: 474px;
+    width: 424px;
     height: 42px;
 
     border: 1px solid rgba(56, 167, 222, 0.15);
@@ -96,7 +100,7 @@ tr {
 
 .tr {
     padding-left: 36px;
-    width: 275px;
+    width: 424px;
     
     font-family: Droid Sans;
     font-style: normal;
@@ -131,7 +135,7 @@ tr {
 
 .course_formdiv {
     position: absolute;
-    width: 474px;
+    width: 100%;
 }
 
 .add_course {

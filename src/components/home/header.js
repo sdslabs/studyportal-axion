@@ -10,13 +10,13 @@ class Header extends Component {
     render() {
         return (
             <div className="header_home">
-                    <img className="sds_logo" src={sds_logo} />
-                    <img className="logo" src={logo} />
+                    <img className="sds_logo" src={sds_logo} alt='sdslogo' />
+                    <img className="logo" src={logo} alt='studyportal_logo' />
                     <div className="studyportal">Study Portal</div>
                     <input className="search_bar" type="text" placeholder="Search tutorials, books, notes, courses..." />
-                    <button className="search"><img src={search} /></button>
-                    <button className="request"><img className="req_img" src={request} /> Request</button>
-                    <button className="upload"><img className="uplo_img" src={upload} /> Upload</button>
+                    <button className="search"><img src={search} alt='search' /></button>
+                    <button className="request"><img className="req_img" src={request} alt='request' /> Request</button>
+                    <button className="upload"><img className="uplo_img" src={upload} alt='upload' /> Upload</button>
                     <button className="login">Login</button>
                     <button className="signup">Sign Up</button>
             </div>

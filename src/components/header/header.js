@@ -11,10 +11,10 @@ class Header extends Component {
     render() {
         return(
             <div className="header">
-                <img className="head_logo" src={logo} />
+                <img className="head_logo" src={logo} alt="studyportal_logo" />
                 <div className="head_name">Study Portal</div>
                 <input className="search_head" type="text" placeholder="Search file, courses, departments" />
-                <button className="search_icon"><img src={search}/></button>
+                <button className="search_icon"><img src={search} alt='search' /></button>
                 <div className="request_head">Request</div>
                 <div className="upload_head">Upload</div>
                 <div className="mentors">Mentors List</div>

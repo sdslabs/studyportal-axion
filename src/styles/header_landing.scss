@@ -17,16 +17,16 @@
 
 .logo {
     position: absolute;
-    left: 50%;
+    left: 50.2%;
     bottom: 83.62%;
 }
 
 .studyportal {
     position: absolute;
-    width: 200px;
+    width: 17.5%;
     height: 36px;
-    left: 47%;
-    top: 160px;
+    left: 44%;
+    top: 16.3%;
 
     font-family: Sansation;
     font-style: normal;
@@ -39,8 +39,8 @@
 
 .search_bar {
     position: absolute;
-    width: 550px;
-    height: 32px;
+    width: 27.9%;
+    height: 3.26%;
     left: 36%;
     top: 231px;
 
@@ -58,20 +58,23 @@
 
 .search {
     position: absolute;
-    width: 54px;
-    height: 52px;
-    left: 64.85%;
+    width: 2.9%;
+    height: 4.66%;
+    left: 64.8%;
     top: 231px;
 
     border-radius: 4px;
     background: #FFFFFF;
     border: white;
+
+    padding-top: 0.75%;
+    padding-bottom: 1.95%;
 }
 
 .request {
     position: absolute;
-    width: 111px;
-    height: 41px;
+    width: 6%;
+    height: 4.17%;
     left: 46%;
     top: 314px;
 
@@ -87,14 +90,10 @@
     line-height: 10px;
 }
 
-.req_img {
-    vertical-align: middle;
-}
-
 .upload {
     position: absolute;
-    width: 111px;
-    height: 41px;
+    width: 6%;
+    height: 4.17%;
     left: 52.5%;
     top: 314px;
 
@@ -109,14 +108,14 @@
     font-size: 15px;
 }
 
-.uplo_img {
+.req_img, .uplo_img {
     vertical-align: middle;
 }
 
 .login {
     position: absolute;
-    width: 106px;
-    height: 41px;
+    width: 6.3%;
+    height: 4.17%;
     left: 79.17%;
     top: 36px;
 
@@ -133,8 +132,8 @@
 
 .signup {
     position: absolute;
-    width: 106px;
-    height: 41px;
+    width: 6.3%;
+    height: 4.17%;
     left: 84.37%;
     top: 36px;
 

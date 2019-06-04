@@ -11,12 +11,18 @@ class Sidebar extends Component {
     render() {
         return(
             <div className="sidebar">
-                <div className="close"><img src={close} /></div>
+                <div className="close"><img src={close} alt='close' /></div>
                 <div className="course">{this.props.course}Electrical Engineering</div>
-                <div className="back_departments"><img src={arrow} /> Departments</div>
+                <div className="back_departments"><img src={arrow} alt='arrow' /> Departments</div>
                 <div className="course_name">
                     <table className="course_table">
                         <tr><span className="tr">Structural Analysis</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
+                        <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
                         <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
                         <tr><span className="tr">Open Channel Hydralyics CEN-207</span><span className='mycourse'>My Course</span></tr>
                     </table>
