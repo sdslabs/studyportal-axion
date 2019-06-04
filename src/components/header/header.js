@@ -6,8 +6,6 @@ import '../../styles/header.scss'
 class Header extends Component {
     constructor(props) {
         super(props);
-        state = {
-        }
     }
 
     render() {

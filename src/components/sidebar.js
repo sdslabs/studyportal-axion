@@ -6,8 +6,6 @@ import '../styles/sidebar.scss'
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        state = {
-        }
     }
 
     render() {
