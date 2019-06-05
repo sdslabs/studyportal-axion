@@ -26,7 +26,7 @@ class Header extends Component {
                     <div className="head_name">Study Portal</div>
                     <input className="search_head" type="text" placeholder="Search file, courses, departments" />
                     <button className="search_icon"><img src={search} alt='search' /></button>
-                    <div className="request_head">Request</div>
+                    <div className="request_head" onClick={this.props.handleReqClick}>Request</div>
                     <div className="upload_head">Upload</div>
                     <div className="mentors">Mentors List</div>
                     <div className='notif'><img className='notif_img' src={notif} alt="notif" /><span className='notif_no'>1</span></div>
@@ -42,7 +42,7 @@ class Header extends Component {
                     <div className="head_name">Study Portal</div>
                     <input className="search_head" type="text" placeholder="Search file, courses, departments" />
                     <button className="search_icon"><img src={search} alt='search' /></button>
-                    <div className="request_head">Request</div>
+                    <div className="request_head" onClick={this.props.handleReqClick}>Request</div>
                     <div className="upload_head">Upload</div>
                     <div className="mentors">Mentors List</div>
                     <button className="login_head">Login</button>

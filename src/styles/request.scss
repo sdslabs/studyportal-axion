@@ -1,28 +1,6 @@
 @import './reset.scss';
 @import './fonts.scss';
 
-
-// input[type="checkbox"] + label:before {
-//     border: 1px solid #333;
-//     content: "\00a0";
-//     display: inline-block;
-//     font: 16px/1em sans-serif;
-//     height: 16px;
-//     margin: 0 .25em 0 0;
-//     padding: 0;
-//     vertical-align: top;
-//     width: 16px;
-//   }
-//   input[type="checkbox"]:checked + label:before {
-//     background: #fff;
-//     color: #333;
-//     content: "\2713";
-//     text-align: center;
-//   }
-//   input[type="checkbox"]:checked + label:after {
-//     font-weight: bold;
-//   }
-
 .req_cover {
     position: absolute;
     width: 100%;
@@ -236,6 +214,15 @@
     box-sizing: border-box;
     border-radius: 2px;
 
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    text-align: justify;
+    padding-left: 8px;
+
     background: #FFFFFF;
 }
 
@@ -269,6 +256,16 @@
     box-sizing: border-box;
     border-radius: 2px;
 
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    text-align: justify;
+    padding-left: 8px;
+    color: rgba(43, 42, 40, 0.2);
+
     background: #FFFFFF;
 }
 
@@ -288,18 +285,6 @@
     color: rgba(43, 42, 40, 0.2);
 }
 
-.mat_tut {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: 0%;
-    top: 196px;
-
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-}
-
 .tut {
     position: absolute;
     width: 63px;
@@ -314,18 +299,6 @@
     line-height: 22px;
 
     color: rgba(43, 42, 40, 0.2);
-}
-
-.mat_books {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: 250%;
-    top: 196px;
-
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
 }
 
 .books {
@@ -344,18 +317,6 @@
     color: rgba(43, 42, 40, 0.2);
 }
 
-.mat_notes {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: 500%;
-    top: 196px;
-
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-}
-
 .notes {
     position: absolute;
     width: 63px;
@@ -370,18 +331,6 @@
     line-height: 22px;
 
     color: rgba(43, 42, 40, 0.2);
-}
-
-.mat_exam {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    left: 750%;
-    top: 196px;
-
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
 }
 
 .exam {
