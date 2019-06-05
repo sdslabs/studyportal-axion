@@ -15,6 +15,7 @@ class Test extends Component {
             <div>
                 <Header login={this.state.login} />
                 <Sidebar login={this.state.login} />
+                <Request />
             </div>
         )
     }
