@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "StudyPortal",
+  "name": "StudyPortal Front-end",
   "icons": [
     {
       "src": "favicon.ico",

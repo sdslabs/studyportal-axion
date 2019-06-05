@@ -61,7 +61,6 @@
 
 
     color: #9DB5B2;
-
 }
 
 .search_icon {
@@ -169,7 +168,52 @@
     background: transparent;
 }
 
-.search_icon:hover, .request_head:hover, .upload_head:hover, .mentors:hover, .login_head:hover, .signup_head:hover {
+.notif {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 89.71%;
+    top: 23px;
+
+    background: #0D2938;
+    border-radius: 2px;
+}
+
+.notif_img {
+    position: absolute;
+    left:29%;
+    right: 9.96%;
+    top: 31%;
+    bottom: 30%;
+}
+
+.notif_no {
+    position: absolute;
+    width: 7px;
+    height: 13px;
+    left: 58%;
+    top: 8.5%;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #FFFFFF;
+}
+
+.img_user {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 93.4%;
+    top: 16px;
+
+    border-radius: 2px;
+}
+
+.search_icon:hover, .request_head:hover, .upload_head:hover, .mentors:hover, .login_head:hover, .signup_head:hover, .notif:hover, .img_user:hover {
     cursor: pointer;
 }
 
