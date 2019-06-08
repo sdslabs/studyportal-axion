@@ -9,6 +9,7 @@
     top: 73px;
 
     background: #0D2938;
+    overflow-x: hidden;
     // overflow: scroll;
 
     cursor: default;
@@ -80,21 +81,28 @@
 
 }
 
-.course_table {
+.course_table_logout {
     width: 424px;
+    height: 740px;
     border-top: 2px solid #1A4D68;
+
+    overflow-y: scroll;
 }
 
-/*
-tbody {
-    height: 323px;
-    overflow-y: auto;
-} */
+.course_table {
+    width: 424px;
+    height: 415px;
+    border-top: 2px solid #1A4D68;
 
-tr {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+._tr {
     width: 424px;
     height: 42px;
-
+    padding-top: 4px;
+    padding-bottom: 8px; 
     border: 1px solid rgba(56, 167, 222, 0.15);
 }
 

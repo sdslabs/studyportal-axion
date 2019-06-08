@@ -25,13 +25,20 @@ class Sidebar extends Component {
                     <div className="course">My Courses ({this.props.login})</div>
                     <div className="back_departments"><img src={arrow} alt='arrow' /> Departments</div>
                     <div className="course_name">
-                        <table className="course_table">
-                            <tr><span className="tr">Structural Analysis</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span><span className='coursedot'><img src={coursedot} alt='coursedot'/></span></tr>
-                        </table>
+                        <div className="course_table">
+                            <div className='_tr'><span className="tr">Structural Analysis</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span><span className='coursedot'><img src={coursedot} alt='coursedot'/></span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                        </div>
                     </div>
                     <div className="course_formdiv">
                         <form className="course_addform">
@@ -54,21 +61,21 @@ class Sidebar extends Component {
         else {
             return(
                 <div className="sidebar">
-                    <div className="close"><img src={close} alt='close' /></div>
                     <div className="course">{this.props.course}Electrical Engineering</div>
                     <div className="back_departments"><img src={arrow} alt='arrow' /> Departments</div>
                     <div className="course_name">
-                        <table className="course_table">
-                            <tr><span className="tr">Structural Analysis</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span></tr>
-                            <tr><span className="tr">Open Channel Hydralyics CEN-207</span><span className='mycourse'>My Course</span></tr>
-                        </table>
+                        <div className="course_table_logout">
+                            <div className='_tr'><span className="tr">Structural Analysis</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span><span className='mycourse'>My Course</span></div>
+                            <div className='_tr'><span className="tr">Open Channel Hydralyics CEN-207</span></div>
+                        </div>
                     </div>
                 </div>
             )
