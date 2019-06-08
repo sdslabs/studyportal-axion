@@ -88,9 +88,9 @@ class Request extends Component {
 
     render() {
 
-        if (this.props.request == 'true') {
+        if (this.props.request === 'true') {
 
-            if(this.state.type == 'file') {
+            if(this.state.type === 'file') {
             return(
                 <div className='req_cover'>
                         <div className='req_div'>

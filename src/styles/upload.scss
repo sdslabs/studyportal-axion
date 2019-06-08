@@ -1,0 +1,342 @@
+@import './reset.scss';
+@import './fonts.scss';
+
+.upload_cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+
+    background: rgba(13, 41, 56, 0.8);
+    z-index: 1;
+
+    cursor: default;
+}
+
+.upload_div {
+    position: absolute;
+    width: 86.88%;
+    height: 95.12%;
+    left: 6.56%;
+    top: 2.44%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+}
+
+.close_uplo {
+    position: absolute;
+    width: 20.23px;
+    height: 20.23px;
+    left: 97%;
+    top: 21.61px;
+}
+
+.uplo_head {
+    position: absolute;
+    width: 116px;
+    height: 38px;
+    left: 48%;
+    top: 50px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 37px;
+
+    color: #2B2A28;
+}
+
+.uplo_und {
+    position: absolute;
+    width: 80px;
+    height: 0.5px;
+    left: 48.65%;
+    top: 100px;
+
+    border: 2px solid #38A7DE;
+}
+
+.uplo_instruc {
+    position: absolute;
+    width: 65.34%;
+    height: 165px;
+    left: 17.32%;
+    top: 138px;
+
+    background: rgba(56, 167, 222, 0.275);
+    border-radius: 2px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: justify;
+
+    color: #2B2A28;
+
+    padding: 16px 24px 16px 16px;
+}
+
+.ins_uplo_head {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #2B2A28;
+}
+
+.ins_uplo {
+    margin-top: 12px;
+}
+
+.uploform {
+    position: absolute;
+    width: 87px;
+    height: 21px;
+    left: 19.5%;
+    top: 371px;
+}
+
+.uplo_depa {
+    position: absolute;
+    width: 87px;
+    height: 21px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: justify;
+
+    color: #2B2A28;
+}
+
+.uplo_sel_dep {
+    position: absolute;
+    width: 252px;
+    height: 36px;
+    left: 0%;
+    top: 29px;
+    
+    border: 1px solid #2B2A28;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    text-align: justify;
+    padding-left: 8px;
+
+    background: #FFFFFF;
+}
+
+.uplo_cour {
+    position: absolute;
+    width: 200px;
+    height: 21px;
+    left: 0%;
+    top: 79px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    text-align: justify;
+
+    color: rgba(43, 42, 40, 0.2);
+
+}
+
+.uplo_sel_cour {
+    position: absolute;
+    width: 252px;
+    height: 36px;
+    left: 0%;
+    top: 108px;
+
+    border: 1px solid #2B2A28;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+
+    text-align: justify;
+    padding-left: 8px;
+
+    background: #FFFFFF;
+}
+
+.uplo_sel_cour:disabled {
+  border: 1px solid rgba(43, 42, 40, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  font-family: Droid Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  text-align: justify;
+  padding-left: 8px;
+  color: rgba(43, 42, 40, 0.2);
+
+  background: #FFFFFF;
+}
+
+.uplo_mat_type {
+    position: absolute;
+    width: 98px;
+    height: 19px;
+    left: 0%;
+    top: 168px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: rgba(43, 42, 40, 0.2);
+}
+
+.tut {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 29%;
+    top: 196px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: rgba(43, 42, 40, 0.2);
+}
+
+.books {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 279%;
+    top: 196px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: rgba(43, 42, 40, 0.2);
+}
+
+.notes {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 529%;
+    top: 196px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: rgba(43, 42, 40, 0.2);
+}
+
+.exam {
+    position: absolute;
+    width: 250px;
+    height: 19px;
+    left: 779%;
+    top: 196px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: rgba(43, 42, 40, 0.2);
+}
+
+.uplo_file {
+    position: absolute;
+    width: 1000px;
+    height: 36px;
+    left: 0%;
+    top: 240px;
+}
+
+.choosefile {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #38A7DE;
+}
+
+.choosefile_ins {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: rgba(43, 42, 40, 0.6);
+}
+
+.uploformbtn {
+    position: absolute;
+    width: 94px;
+    height: 41px;
+    left: 0%;
+    top: 280px;
+
+    background: #38A7DE;
+    border-radius: 2px;
+    border: #38A7DE;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+}
+
+.close_uplo:hover {
+    cursor: pointer;
+}
+
+.choosefile:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
