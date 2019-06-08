@@ -252,7 +252,7 @@
     left: 0%;
     top: 108px;
 
-    border: 1px solid rgba(43, 42, 40, 0.2);
+    border: 1px solid #2B2A28;
     box-sizing: border-box;
     border-radius: 2px;
 
@@ -264,9 +264,26 @@
 
     text-align: justify;
     padding-left: 8px;
-    color: rgba(43, 42, 40, 0.2);
 
     background: #FFFFFF;
+}
+
+.file_sel_cour:disabled {
+  border: 1px solid rgba(43, 42, 40, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  font-family: Droid Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  text-align: justify;
+  padding-left: 8px;
+  color: rgba(43, 42, 40, 0.2);
+
+  background: #FFFFFF;
 }
 
 .file_mat_type {
@@ -368,16 +385,33 @@
 }
 
 .req_file_in {
-    position: absolute;
-    width: 479px;
-    height: 36px;
-    left: 0%;
-    top: 269px;
+  position: absolute;
+  width: 479px;
+  height: 36px;
+  left: 0%;
+  top: 269px;
 
-    border: 1px solid rgba(43, 42, 40, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-    padding: 9px 12px 8px;
+  border: 1px solid #2B2A28;
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 9px 12px 8px;
+
+  font-family: Droid Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 21px;
+
+  text-align: justify;
+}
+
+
+.req_file_in:disabled {
+  border: 1px solid rgba(43, 42, 40, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
+  padding: 9px 12px 8px;
+  background: #FFFFFF;
 }
 
 .file_reqformbtn {
@@ -466,12 +500,21 @@
     left: 0%;
     top: 108px;
 
-    border: 1px solid rgba(43, 42, 40, 0.2);
+    border: 1px solid #2B2A28;
     box-sizing: border-box;
     border-radius: 2px;
 
     padding: 9px 12px 8px;
     background: #FFFFFF;
+}
+
+.cour_in_cour:disabled {
+  border: 1px solid rgba(43, 42, 40, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  padding: 9px 12px 8px;
+  background: #FFFFFF;
 }
 
 .cour_id_cour {
@@ -498,7 +541,7 @@
     top: 182px;
 
     background: #FFFFFF;
-    border: 1px solid rgba(43, 42, 40, 0.2);
+    border: 1px solid #2B2A28;
     box-sizing: border-box;
     border-radius: 2px;
 
@@ -509,7 +552,21 @@
     line-height: 19px;
 
     padding: 9px 12px 8px;
-    color: rgba(43, 42, 40, 0.2);
+    color: #2B2A28;
+}
+
+.cour_in_id:disabled {
+  background: #FFFFFF;
+  border: 1px solid rgba(43, 42, 40, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
+
+  padding: 9px 12px 8px;
+  color: rgba(43, 42, 40, 0.2);
+}
+
+::placeholder {
+  color: rgba(43, 42, 40, 0.2);
 }
 
 .cour_reqformbtn {
@@ -573,9 +630,9 @@ button:hover, .close_req:hover {
     box-sizing: border-box;
     border-radius: 2px;
   }
-  
+
   .cont_mat_tut:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: #FFFFFF;
   }
   
   .cont_mat_tut input:checked ~ .checkmark {
@@ -639,7 +696,7 @@ button:hover, .close_req:hover {
   }
   
   .cont_mat_books:hover input ~ .checkmark_books {
-    background-color: #ccc;
+    background-color: #FFFFFF;
   }
   
   .cont_mat_notes input:checked ~ .checkmark_notes {
@@ -704,7 +761,7 @@ button:hover, .close_req:hover {
   }
   
   .cont_mat_notes:hover input ~ .checkmark_notes {
-    background-color: #ccc;
+    background-color: #FFFFFF;
   }
   
   .cont_mat_notes input:checked ~ .checkmark_notes {
@@ -768,7 +825,7 @@ button:hover, .close_req:hover {
   }
   
   .cont_mat_exam:hover input ~ .checkmark_exam {
-    background-color: #ccc;
+    background-color: #FFFFFF;
   }
   
   .cont_mat_exam input:checked ~ .checkmark_exam {
