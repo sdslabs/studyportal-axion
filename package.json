@@ -29,5 +29,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "react frontend for studyportal website",
+  "main": "index.js",
+  "repository": "git@github.com:sdslabs/studyportal-axion.git",
+  "author": "AyanChoudhary <darkrider251099@gmail.com>",
+  "license": "MIT"
 }
