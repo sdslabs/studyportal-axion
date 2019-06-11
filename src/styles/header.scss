@@ -426,3 +426,16 @@
 .seeall:hover {
     text-decoration: underline;
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #88CAEB;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #629EBD;
+    border-radius: 47px;
+}

@@ -83,10 +83,11 @@
 
 .course_table_logout {
     width: 424px;
-    height: 740px;
+    height: 754px;
     border-top: 2px solid #1A4D68;
 
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .course_table {
@@ -99,7 +100,7 @@
 }
 
 ._tr {
-    width: 424px;
+    width: 414px;
     height: 42px;
     padding-top: 4px;
     padding-bottom: 8px; 
@@ -108,7 +109,7 @@
 
 .tr {
     padding-left: 36px;
-    width: 424px;
+    width: 414px;
     
     font-family: Droid Sans;
     font-style: normal;
@@ -246,4 +247,17 @@
 
 
     color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1A4D68;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #236385;
+    border-radius: 18px;
 }
