@@ -19,13 +19,15 @@ class Header extends Component {
     }
 
     render() {
-        if (this.state.login == 'true') {
+        if (this.state.login === 'true') {
             return(
                 <div className="header">
                     <img className="head_logo" src={logo} alt="studyportal_logo" />
                     <div className="head_name">Study Portal</div>
-                    <input className="search_head" type="text" placeholder="Search file, courses, departments" />
-                    <button className="search_icon"><img src={search} alt='search' /></button>
+                    <div className='_search_head'>
+                        <input className="search_head" type="text" placeholder="Search file, courses, departments" />
+                        <button className="search_icon"><img src={search} alt='search' /></button>
+                    </div>
                     <div className="request_head" onClick={this.props.handleReqClick}>Request</div>
                     <div className="upload_head" onClick={this.props.handleUploClick}>Upload</div>
                     <div className="mentors">Mentors List</div>
@@ -40,8 +42,10 @@ class Header extends Component {
                 <div className="header">
                     <img className="head_logo" src={logo} alt="studyportal_logo" />
                     <div className="head_name">Study Portal</div>
-                    <input className="search_head" type="text" placeholder="Search file, courses, departments" />
-                    <button className="search_icon"><img src={search} alt='search' /></button>
+                    <div className='_search_head'>
+                        <input className="search_head" type="text" placeholder="Search file, courses, departments" />
+                        <button className="search_icon"><img src={search} alt='search' /></button>
+                    </div>
                     <div className="request_head" onClick={this.props.handleReqClick}>Request</div>
                     <div className="upload_head" onClick={this.props.handleUploClick}>Upload</div>
                     <div className="mentors">Mentors List</div>

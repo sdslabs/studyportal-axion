@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import arrow from '../assets/left-arrow.png'
-import close from '../assets/close.png'
 import coursedot from '../assets/coursedot.png'
 import '../styles/sidebar.scss'
 
@@ -19,7 +18,7 @@ class Sidebar extends Component {
 
     render() {
 
-        if (this.state.login == 'true') {
+        if (this.state.login === 'true') {
             return(
                 <div className="sidebar">
                     <div className="course">My Courses ({this.props.login})</div>

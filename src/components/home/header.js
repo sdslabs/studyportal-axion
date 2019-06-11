@@ -13,8 +13,10 @@ class Header extends Component {
                     <img className="sds_logo" src={sds_logo} alt='sdslogo' />
                     <img className="logo" src={logo} alt='studyportal_logo' />
                     <div className="studyportal">Study Portal</div>
-                    <input className="search_bar" type="text" placeholder="Search tutorials, books, notes, courses..." />
-                    <button className="search"><img src={search} alt='search' /></button>
+                    <div className="_search">
+                        <input className="search_bar" type="text" placeholder="Search tutorials, books, notes, courses..." />
+                        <button className="search"><img src={search} alt='search' /></button>
+                    </div>
                     <button className="request"><img className="req_img" src={request} alt='request' /> Request</button>
                     <button className="upload"><img className="uplo_img" src={upload} alt='upload' /> Upload</button>
                     <button className="login">Login</button>

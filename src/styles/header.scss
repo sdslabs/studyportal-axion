@@ -39,12 +39,20 @@
     color: #0D2938;
 }
 
-.search_head {
+._search_head {
     position: absolute;
     width: 24.46%;
     height: 32px;
     left: 16.5%;
     top: 15px;
+}
+
+.search_head {
+    position: absolute;
+    width: 98%;
+    height: 32px;
+    left: 0%;
+    top: 0px;
 
     padding: 4px;
     padding-left: 7px;
@@ -66,9 +74,9 @@
 .search_icon {
     position: absolute;
     width: 40.97px;
-    height: 41px;
-    left: 41.51%;
-    top: 15px;
+    height: 40.5px;
+    left: 98%;
+    top: 0px;
 
     background: #0D2938;
     border: #0D2938;

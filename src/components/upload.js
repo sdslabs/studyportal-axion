@@ -53,7 +53,7 @@ class Upload extends Component {
             return(
                 <div className='upload_cover'>
                     <div className='upload_div'>
-                        <div className='close_uplo' onClick={this.props.handleUplo}><img src={close} /></div>
+                        <div className='close_uplo' onClick={this.props.handleUplo}><img src={close} alt='close'/></div>
                         <div className='uplo_head'>Upload</div>
                         <div className='uplo_und'></div>
                         <div className='uplo_instruc'>

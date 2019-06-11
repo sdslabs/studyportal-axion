@@ -94,7 +94,7 @@ class Request extends Component {
             return(
                 <div className='req_cover'>
                         <div className='req_div'>
-                        <div className='close_req' onClick={this.props.handleReq}><img src={close} /></div>
+                        <div className='close_req' onClick={this.props.handleReq}><img src={close} alt='close'/></div>
                         <div className='req_head'>Request</div>
                         <div className='req_und'></div>
                         <div className='req_instruc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat quam ipsum, sit amet luctus turpis efficitur eget. Quisque lacinia, libero vel venenatis dictum, dolor nulla finibus sem, nec vestibulum nunc felis non diam. Phasellus congue nisl odio, non semper nunc ultricies quis. Etiam aliquet convallis nulla, ac viverra leo placerat vel. Fusce dictum metus ac ex convallis, eget sollicitudin metus luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed turpis risus, pretium aliquet pellentesque at, fringilla at erat. Morbi feugiat metus eget leo dictum maximus. Nam sed dolor ut enim sodales facilisis non nec dui. In nec diam aliquam, consequat diam in, posuere leo. Nullam gravida aliquet ex, sed cursus leo gravida eu.</div>
@@ -131,7 +131,7 @@ class Request extends Component {
                 return(
                     <div className='req_cover'>
                     <div className='req_div'>
-                    <div className='close_req' onClick={this.props.handleReq}><img src={close} /></div>
+                    <div className='close_req' onClick={this.props.handleReq}><img src={close} alt='close'/></div>
                     <div className='req_head'>Request</div>
                     <div className='req_und'></div>
                     <div className='req_instruc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat quam ipsum, sit amet luctus turpis efficitur eget. Quisque lacinia, libero vel venenatis dictum, dolor nulla finibus sem, nec vestibulum nunc felis non diam. Phasellus congue nisl odio, non semper nunc ultricies quis. Etiam aliquet convallis nulla, ac viverra leo placerat vel. Fusce dictum metus ac ex convallis, eget sollicitudin metus luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed turpis risus, pretium aliquet pellentesque at, fringilla at erat. Morbi feugiat metus eget leo dictum maximus. Nam sed dolor ut enim sodales facilisis non nec dui. In nec diam aliquam, consequat diam in, posuere leo. Nullam gravida aliquet ex, sed cursus leo gravida eu.</div>

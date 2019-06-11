@@ -37,12 +37,22 @@
     color: #2B2A28;
 }
 
-.search_bar {
+._search {
     position: absolute;
-    width: 27.9%;
-    height: 3.26%;
+    width: 30.41%;
+    height: 48px;
     left: 36%;
     top: 231px;
+
+    background: #FFFFFF;
+}
+
+.search_bar {
+    position: absolute;
+    width: 97.6%;
+    height: 48px;
+    left: 0%;
+    top: 0px;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -52,29 +62,26 @@
 
     background: #FFFFFF;
     border-radius: 4px;
-    padding: 0.5%;
+    padding-left: 16px;
     border: white;
 }
 
 .search {
     position: absolute;
-    width: 2.9%;
-    height: 4.66%;
-    left: 64.8%;
-    top: 231px;
+    width: 9.6%;
+    height: 49.5px;
+    left: 97.7%;
+    top: 0px;
 
     border-radius: 4px;
     background: #FFFFFF;
     border: white;
-
-    padding-top: 0.75%;
-    padding-bottom: 1.95%;
 }
 
 .request {
     position: absolute;
     width: 6.5%;
-    height: 4.17%;
+    height: 41px;
     left: 46%;
     top: 314px;
 
@@ -93,7 +100,7 @@
 .upload {
     position: absolute;
     width: 6.5%;
-    height: 4.17%;
+    height: 41px;
     left: 53%;
     top: 314px;
 
@@ -117,7 +124,7 @@
 .login {
     position: absolute;
     width: 6.3%;
-    height: 4.17%;
+    height: 41px;
     left: 79.17%;
     top: 36px;
 
@@ -135,7 +142,7 @@
 .signup {
     position: absolute;
     width: 121px;
-    height: 4.17%;
+    height: 41px;
     left: 84.37%;
     top: 36px;
 
