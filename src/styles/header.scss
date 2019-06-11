@@ -65,10 +65,8 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    /* identical to box height */
 
-
-    color: #9DB5B2;
+    color: #2B2A28;
 }
 
 .search_icon {
@@ -81,6 +79,202 @@
     background: #0D2938;
     border: #0D2938;
     border-radius: 2px;
+}
+
+.searchhead_res {
+    visibility: hidden;
+
+    position: absolute;
+    width: 634px;
+    height: 366px;
+    left: 16.5%;
+    top: 57px;
+    
+    background: #FFFFFF;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    z-index: 1;
+
+    overflow-y: scroll;
+}
+
+.search_file {
+    width: 100%;
+    height: 26px;
+    left: 0%;
+    top: 0px;
+
+    background: rgba(56, 167, 222, 0.275);
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+
+    color: #0D2938;
+    text-align: center;
+}
+
+.contres_file {
+    width: 100%;
+}
+
+.res_file {
+    grid-row: auto;
+    grid-column: auto;
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 75%;
+    grid-template-rows: 25% 25% 25% 25%;
+
+    color: #2B2A28;
+}
+
+.icon {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 4;
+
+    justify-self: center;
+    align-self: center;
+}
+
+.resfile_head {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    align-self: center;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.resfile_cat {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+    align-self: center;
+}
+
+.resfile_sub {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.resfile_cour {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+
+    margin-left: 4px;
+}
+
+.resfile_detail {
+    grid-column: 2 / span 1;
+    grid-row: 4 / span 1;
+    align-self: center;
+}
+
+.resfile_date {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: rgba(43, 42, 40, 0.4);
+}
+
+.resfile_type {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: rgba(43, 42, 40, 0.4);
+    margin-left: 4px;
+}
+
+.seeall {
+    width: 42px;
+    height: 17px;
+
+    margin-left: 87.69%;
+    margin-bottom: 16px;
+    margin-top: 16px; 
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #38A7DE;
+}
+
+.search_courses {
+    width: 100%;
+    height: 26px;
+
+    background: rgba(56, 167, 222, 0.275);
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+
+    color: #0D2938;
+    text-align: center;
+}
+
+.head_searchcour {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #2B2A28;
+    padding: 12px 24px 12px;
+
+    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+}
+
+.search_dep {
+    width: 100%;
+    height: 26px;
+
+    background: rgba(56, 167, 222, 0.275);
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 25px;
+
+    color: #0D2938;
+    text-align: center;
+}
+
+.head_searchdep {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: #2B2A28;
+    padding: 12px 24px 12px;
+
+    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
 }
 
 .request_head {
@@ -111,8 +305,6 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    /* identical to box height */
-
 
     color: #0D2938;
 }
@@ -164,8 +356,6 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-    /* identical to box height */
-
 
     color: #0D2938;
 
@@ -221,10 +411,18 @@
     border-radius: 2px;
 }
 
-.search_icon:hover, .request_head:hover, .upload_head:hover, .mentors:hover, .login_head:hover, .signup_head:hover, .notif:hover, .img_user:hover {
+.search_icon:hover, .request_head:hover, .upload_head:hover, .mentors:hover, .login_head:hover, .signup_head:hover, .notif:hover, .img_user:hover, .seeall:hover, .head_searchcour, .head_searchdep, .res_file:hover {
     cursor: pointer;
 }
 
 .login_head:focus, .signup_head:focus {
     outline: none;
+}
+
+.res_file:hover {
+    color: #38A7DE;
+}
+
+.seeall:hover {
+    text-decoration: underline;
 }
