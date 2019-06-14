@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import Header from '../components/header/header'
 import Sidebar from '../components/sidebar'
 import Request from '../components/request'
@@ -43,7 +43,7 @@ class Test extends Component {
                 <Sidebar login={this.state.login} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                <ActivityLog />
+                { this.state.login === 'true' ? <ActivityLog /> : <Fragment /> }
             </div>
         )
     }
