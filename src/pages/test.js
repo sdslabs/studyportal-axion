@@ -3,6 +3,7 @@ import Header from '../components/header/header'
 import Sidebar from '../components/sidebar'
 import Request from '../components/request'
 import Upload from '../components/upload'
+import ActivityLog from '../components/activityLog'
 
 class Test extends Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class Test extends Component {
                 <Sidebar login={this.state.login} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+                <ActivityLog />
             </div>
         )
     }

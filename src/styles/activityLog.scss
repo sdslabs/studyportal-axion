@@ -1,0 +1,229 @@
+@import '../styles/reset.scss';
+@import '../styles/fonts.scss';
+
+.activitylog {
+    position: absolute;
+    left: 0px;
+    top: 73px;
+    width: 100%;
+
+    cursor: default;
+}
+
+.activity_head {
+    position: absolute;
+    width: 163px;
+    height: 38px;
+    left: 59%;
+    top: 69px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 37px;
+
+    color: #2B2A28;
+}
+
+.activity_und {
+    position: absolute;
+    width: 80px;
+    height: 0px;
+    left: 61%;
+    top: 117px;
+
+    border: 2px solid #38A7DE;
+}
+
+.activity_cat {
+    position: absolute;
+    width: 332px;
+    height: 41px;
+    left: 54%;
+    top: 169px;    
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #2B2A28;
+
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 18.67% 48.80% 32.53%;
+
+    &_all {
+        width: 21px;
+        height: 22px;
+
+        padding:8px 41px 11px 0px;
+    }
+
+    &_req {
+        width: 80px;
+        height: 22px;
+        border-right: 1px solid rgba(43, 42, 40, 0.4);
+        border-left: 1px solid rgba(43, 42, 40, 0.4);
+
+        padding: 8px 41px 11px 41px;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 21px;
+
+        color: #38A7DE;
+    }
+
+    &_uplo {
+        width: 67px;
+        height: 22px;
+
+        padding:8px 0px 11px 41px;
+    }
+
+    &_all:hover, &_req:hover, &_uplo:hover {
+        cursor: pointer;
+    }
+}
+
+.und_ {
+    &all {
+        width: 17px;
+        border: 1px solid #FFFFFF;
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+
+    &request {
+        width: 70px;
+        border: 1px solid #38A7DE;
+        margin-top: 10px;
+        margin-left: 2px;
+    }
+
+    &uplo {
+        width: 62px;
+        border: 1px solid #FFFFFF;
+        margin-top: 10px;
+        margin-left: 1px;
+    }
+}
+
+.activityreq {
+    position: absolute;
+    width: 69.75%;
+    left: 450px;
+    top: 260px;
+}
+
+.activity_cont_req {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-row: auto;
+
+    border-top: 1px solid rgba(65, 64, 66, 0.2);
+    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+
+    padding: 17px 0px 18px 0px;
+}
+
+.activity_req {
+    &_info {
+        grid-column: 1 / span 1;
+        justify-self: center;
+        align-self: center;
+    }
+
+    &_status {
+        grid-column: 2 / span 1;
+        justify-self: center;
+        align-self: center;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 25px;
+
+        color: #2F7F2E;
+    }
+
+    &_file {
+        grid-column: 3 / span 1;
+        justify-self: center;
+        align-self: center;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 35px;
+
+        color: #38A7DE;
+    }
+
+    &_name {
+        margin-bottom: 4px;
+    }
+
+    &_cour {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+
+        color: rgba(43, 42, 40, 0.8);
+    }
+}
+
+.req{
+    &_date {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #000000;
+        margin-bottom: 8px;
+    }
+
+    &_headname {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: rgba(43, 42, 40, 0.6);
+    }
+
+    &_name {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        
+        color: rgba(43, 42, 40, 0.8);    
+    }
+
+    &_download {
+        vertical-align: middle;
+        margin-right: 6px;
+    }
+
+    &_color {
+        margin-bottom: 2px;
+    }
+}
+
+.activity_req_file:hover {
+    cursor: pointer;
+}
