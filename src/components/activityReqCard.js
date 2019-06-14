@@ -39,7 +39,7 @@ class ActivityReqCard extends Component {
                         <div className='activity_req_name'><span className='req_headname'>Name:</span><span className='req_name'> tutorial 1 structural analysis</span></div>
                         <div className='activity_req_cour'><span>CEN-207</span><span> . </span><span>Structural Analysis</span></div>
                     </div>
-                    <div className='activity_req_status' ref={this.reqStatus}><img className='req_color' src={yellow} /> Request Approved ({this.state.status}/3)</div>
+                    <div className='activity_req_status' ref={this.reqStatus}><img className='req_color' src={yellow} alt='yellow'/> Request Approved ({this.state.status}/3)</div>
                     <div className='activity_req_file'></div>
                 </div>
             )
@@ -54,8 +54,8 @@ class ActivityReqCard extends Component {
                         <div className='activity_req_name'><span className='req_headname'>Name:</span><span className='req_name'> tutorial 1 structural analysis</span></div>
                         <div className='activity_req_cour'><span>CEN-207</span><span> . </span><span>Structural Analysis</span></div>
                     </div>
-                    <div className='activity_req_status' ref={this.reqStatus}><img className='req_color' src={green} /> Files Uploaded ({this.state.status}/3)</div>
-                    <div className='activity_req_file'><img className='req_download' src={download}/>  Tutorial 1 Structural Analysis CEN-207</div>
+                    <div className='activity_req_status' ref={this.reqStatus}><img className='req_color' src={green} alt='green'/> Files Uploaded ({this.state.status}/3)</div>
+                    <div className='activity_req_file'><img className='req_download' src={download} alt='download'/>  Tutorial 1 Structural Analysis CEN-207</div>
                 </div>
             )
         }
