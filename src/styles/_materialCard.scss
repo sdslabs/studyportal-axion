@@ -1,0 +1,110 @@
+.material {
+    width: 98%;
+    height: 66px;
+
+    border-top: 1px solid rgba(65, 64, 66, 0.2);
+    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+}
+
+.material--checkbox {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: 1.7%;
+    top: 25px;
+}
+
+.material--info {
+    position: absolute;
+    width: 141px;
+    height: 53px;
+    left: 3.135%;
+    top: 13px;
+    
+    display: grid;
+    grid-template-columns: 40px 101px;
+    grid-template-rows: 10% 40% 40% 10%;
+}
+
+.material--icon {
+    width: 28px;
+
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 4;
+
+    align-self: baseline;
+}
+
+.material--name {
+    width: 68px;
+    height: 19px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #38A7DE;
+
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+
+    align-self: center;
+}
+
+.material--download {
+    width: 101px;
+    height: 16px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 15px;
+
+    color: rgba(43, 42, 40, 0.4);
+
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+}
+
+.material--downloadicon {
+    position: absolute;
+    width: 31px;
+    height: 32px;
+    left: 65%;
+    top: 16px;
+}
+
+.material--size {
+    position: absolute;
+    width: 59px;
+    height: 19px;
+    left: 70%;
+    top: 26px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #38A7DE;
+}
+
+.material--datemodified {
+    position: absolute;
+    width: 93px;
+    height: 19px;
+    left: 90%;
+    top: 26px;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #38A7DE;
+}
