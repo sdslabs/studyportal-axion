@@ -1,384 +1,62 @@
-.tut {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 25px;
-    top: 51.86%;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.books {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 235px;
-    top: 51.86%;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.notes {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 455px;
-    top: 51.86%;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.exam {
-    position: absolute;
-    width: 250px;
-    height: 19px;
-    left: 672px;
-    top: 51.86%;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-._tut {
+.customcheckbox input {
   position: absolute;
-  width: 63px;
-  height: 19px;
-  left: 25px;
-  top: 196px;
-
-  font-family: Droid Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-
-  color: rgba(43, 42, 40, 0.2);
+  opacity: 0;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  left: 0%;
+  top: 0%;
+  z-index: 1;
 }
 
-._books {
+.customcheckbox--checkmark {
   position: absolute;
-  width: 63px;
-  height: 19px;
-  left: 235px;
-  top: 196px;
-
-  font-family: Droid Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-
-  color: rgba(43, 42, 40, 0.2);
+  top: 2px;
+  left: 2px;
+  height: 15px;
+  width: 15px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(65, 64, 66, 0.2);
+  box-sizing: border-box;
+  border-radius: 2px;
 }
 
-._notes {
+.customcheckbox:hover input ~ .customcheckbox--checkmark {
+  background-color: #FFFFFF;
+}
+
+.customcheckbox input:checked ~ .customcheckbox--checkmark {
+  background-color: #FFFFFF;
+}
+
+.customcheckbox--checkmark:after {
+  content: "";
   position: absolute;
-  width: 63px;
-  height: 19px;
-  left: 455px;
-  top: 196px;
-
-  font-family: Droid Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-
-  color: rgba(43, 42, 40, 0.2);
+  display: none;
 }
 
-._exam {
+.customcheckbox input:checked ~ .customcheckbox--checkmark:after {
+  display: block;
+}
+
+.customcheckbox .customcheckbox--checkmark:after {
+  left: 4px;
+  top: 1.05px;
+  width: 3px;
+  height: 7px;
+  border: solid #000000;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.customcheckbox {
   position: absolute;
-  width: 250px;
-  height: 19px;
-  left: 671px;
-  top: 196px;
-
-  font-family: Droid Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 22px;
-
-  color: rgba(43, 42, 40, 0.2);
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
-/* Custom Checkboxes */
-.cont_mat_tut {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .cont_mat_tut input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 0%;
-    top: 199.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_tut {
-    position: absolute;
-    top: 199.5px;
-    left: 0%;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-
-  .cont_mat_tut:hover input ~ .checkmark {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_tut input:checked ~ .checkmark {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_tut:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_tut input:checked ~ .checkmark_tut:after {
-    display: block;
-  }
-  
-  .cont_mat_tut .checkmark_tut:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_tut {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_books input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 210px;
-    top: 199.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_books {
-    position: absolute;
-    top: 199.5px;
-    left: 212px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_books:hover input ~ .checkmark_books {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
- 
-  .checkmark_books:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_books input:checked ~ .checkmark_books:after {
-    display: block;
-  }
-  
-  .cont_mat_books .checkmark_books:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_books {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_notes input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 430px;
-    top: 197.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_notes {
-    position: absolute;
-    top: 199.5px;
-    left: 432px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_notes:hover input ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_notes:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes:after {
-    display: block;
-  }
-  
-  .cont_mat_notes .checkmark_notes:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_notes {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_exam input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 645px;
-    top: 197.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_exam {
-    position: absolute;
-    top: 199.5px;
-    left: 647px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_exam:hover input ~ .checkmark_exam {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_exam input:checked ~ .checkmark_exam {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_exam:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_exam input:checked ~ .checkmark_exam:after {
-    display: block;
-  }
-  
-  .cont_mat_exam .checkmark_exam:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
