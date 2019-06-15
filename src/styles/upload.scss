@@ -228,7 +228,7 @@
     width: 1000px;
     height: 36px;
     left: 0%;
-    top: 240px;
+    top: 74.766%;
 }
 
 .choosefile {
@@ -280,7 +280,7 @@
     width: 94px;
     height: 41px;
     left: 0%;
-    top: 280px;
+    top: 87.227%;
 
     background: #38A7DE;
     border-radius: 2px;
@@ -302,4 +302,100 @@
 .choosefile:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+._tut {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 3%;
+    top: 196px;
+  
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: rgba(43, 42, 40, 0.2);
+  }
+  
+  ._books {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 21.96%;
+    top: 196px;
+  
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: rgba(43, 42, 40, 0.2);
+  }
+  
+  ._notes {
+    position: absolute;
+    width: 63px;
+    height: 19px;
+    left: 41.65%;
+    top: 196px;
+  
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: rgba(43, 42, 40, 0.2);
+  }
+  
+  ._exam {
+    position: absolute;
+    width: 250px;
+    height: 19px;
+    left: 60.89%;
+    top: 196px;
+  
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: rgba(43, 42, 40, 0.2);
+  }
+
+._check_tut {
+    position: absolute;
+    top: 61.65%;
+    left: 0%;
+    height: 15px;
+    width: 15px;
+}
+
+._check_books {
+    position: absolute;
+    top: 61.65%;
+    left: 18.96%;
+    height: 15px;
+    width: 15px;
+}
+
+._check_notes {
+    position: absolute;
+    top: 61.65%;
+    left: 38.65%;
+    height: 15px;
+    width: 15px;
+}
+
+._check_exam {
+    position: absolute;
+    top: 61.65%;
+    left: 57.89%;
+    height: 15px;
+    width: 15px;
 }
