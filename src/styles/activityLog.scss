@@ -3,9 +3,9 @@
 
 .activitylog {
     position: absolute;
-    left: 0px;
+    left: 424px;
     top: 73px;
-    width: 100%;
+    width: calc(100% - 424px);
 
     cursor: default;
 }
@@ -14,7 +14,7 @@
     position: absolute;
     width: 163px;
     height: 38px;
-    left: 59%;
+    left: 45%;
     top: 69px;
 
     font-family: Droid Sans;
@@ -30,17 +30,17 @@
     position: absolute;
     width: 80px;
     height: 0px;
-    left: 61%;
+    left: 47.25%;
     top: 117px;
 
-    border: 2px solid #38A7DE;
+    border:1px solid #38A7DE;
 }
 
 .activity_cat {
     position: absolute;
     width: 332px;
     height: 41px;
-    left: 54%;
+    left: 40.55%;
     top: 169px;    
 
     font-family: Droid Sans;
@@ -116,8 +116,8 @@
 
 .activityreq {
     position: absolute;
-    width: 69.75%;
-    left: 450px;
+    width: 98%;
+    left: 1%;
     top: 260px;
 }
 
@@ -135,8 +135,9 @@
 .activity_req {
     &_info {
         grid-column: 1 / span 1;
-        justify-self: center;
+        justify-self: left;
         align-self: center;
+        margin-left: 64px;
     }
 
     &_status {

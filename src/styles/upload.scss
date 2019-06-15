@@ -4,7 +4,7 @@
 .upload_cover {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 981px;
     left: 0px;
     top: 0px;
 
@@ -30,8 +30,11 @@
     position: absolute;
     width: 20.23px;
     height: 20.23px;
-    left: 97%;
-    top: 21.61px;
+    right: 0%;
+    top: 0%;
+
+    margin-right: 26px;
+    margin-top: 22px;
 }
 
 .uplo_head {
@@ -39,7 +42,7 @@
     width: 116px;
     height: 38px;
     left: 48%;
-    top: 50px;
+    top: 5.35%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -55,9 +58,9 @@
     width: 80px;
     height: 0.5px;
     left: 48.65%;
-    top: 100px;
+    top: 10.716%;
 
-    border: 2px solid #38A7DE;
+    border: 1px solid #38A7DE;
 }
 
 .uplo_instruc {
@@ -65,7 +68,7 @@
     width: 65.34%;
     height: 165px;
     left: 17.32%;
-    top: 138px;
+    top: 14.788%;
 
     background: rgba(56, 167, 222, 0.275);
     border-radius: 2px;
@@ -98,18 +101,18 @@
 
 .uploform {
     position: absolute;
-    width: 87px;
-    height: 21px;
+    width: 66.25%;
+    height: 321px;
     left: 19.5%;
-    top: 371px;
+    top: 39.758%;
 }
 
 .uplo_depa {
     position: absolute;
     width: 87px;
     height: 21px;
-    left: 0px;
-    top: 0px;
+    left: 0%;
+    top: 0%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -126,7 +129,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 29px;
+    top: 9.03%;
     
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -149,7 +152,7 @@
     width: 200px;
     height: 21px;
     left: 0%;
-    top: 79px;
+    top: 24.615%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -168,7 +171,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 108px;
+    top: 33.644%;
 
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -209,77 +212,13 @@
     width: 98px;
     height: 19px;
     left: 0%;
-    top: 168px;
+    top: 52.33%;
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 19px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.tut {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 29%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.books {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 279%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.notes {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 529%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.exam {
-    position: absolute;
-    width: 250px;
-    height: 19px;
-    left: 779%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
 
     color: rgba(43, 42, 40, 0.2);
 }

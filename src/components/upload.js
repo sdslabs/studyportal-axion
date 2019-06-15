@@ -78,11 +78,11 @@ class Upload extends Component {
                                     <option>Structural Analysis</option>
                                 </select>
                                 <div className='mat_sel'>
-                                <div className='file_mat_type' ref={this.uplo_mat}>Material Type</div>
-                                    <div className='cont_mat_tut'><input className='mat_tut' type='checkbox' ref={this.mat_tut} disabled/><span className='checkmark_tut' ref={this.check_tut}></span></div> <span className="tut" ref={this.tut}>Tutorial</span> 
-                                    <div className='cont_mat_books'><input className='mat_books' type='checkbox' ref={this.mat_books} disabled/><span className='checkmark_books' ref={this.check_books}></span></div> <span className="books" ref={this.books}>Books</span> 
-                                    <div className='cont_mat_notes'><input className='mat_notes' type='checkbox' ref={this.mat_notes} disabled/><span className='checkmark_notes' ref={this.check_notes}></span></div> <span className="notes" ref={this.notes}>Notes</span> 
-                                    <div className='cont_mat_exam'><input className='mat_exam' type='checkbox' ref={this.mat_exam} disabled/><span className='checkmark_exam' ref={this.check_exam}></span></div> <span className="exam" ref={this.exam}>Examination Papers</span>
+                                <div className='uplo_mat_type' ref={this.uplo_mat}>Material Type</div>
+                                    <div className='cont_mat_tut'><input className='mat_tut' type='checkbox' ref={this.mat_tut} disabled/><span className='checkmark_tut' ref={this.check_tut}></span></div> <span className="_tut" ref={this.tut}>Tutorial</span> 
+                                    <div className='cont_mat_books'><input className='mat_books' type='checkbox' ref={this.mat_books} disabled/><span className='checkmark_books' ref={this.check_books}></span></div> <span className="_books" ref={this.books}>Books</span> 
+                                    <div className='cont_mat_notes'><input className='mat_notes' type='checkbox' ref={this.mat_notes} disabled/><span className='checkmark_notes' ref={this.check_notes}></span></div> <span className="_notes" ref={this.notes}>Notes</span> 
+                                    <div className='cont_mat_exam'><input className='mat_exam' type='checkbox' ref={this.mat_exam} disabled/><span className='checkmark_exam' ref={this.check_exam}></span></div> <span className="_exam" ref={this.exam}>Examination Papers</span>
                                 </div>
                                 <div className='uplo_file' ref={this.file_name}><input className='choosefile' type='file' multiple/><label className='choose_label'>Choose File</label> <span className='file_choose'>No File Chosen</span> <span className='choosefile_ins'>(Max total File Size allowed is 100MB) </span></div>
                                 <button type='submit' className='uploformbtn'>Upload</button>

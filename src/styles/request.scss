@@ -1,10 +1,11 @@
 @import './reset.scss';
 @import './fonts.scss';
+@import './customCheckbox';
 
 .req_cover {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 981px;
     left: 0px;
     top: 0px;
 
@@ -30,8 +31,11 @@
     position: absolute;
     width: 20.23px;
     height: 20.23px;
-    left: 97%;
-    top: 21.61px;
+    right: 0%;
+    top: 0%;
+
+    margin-right: 26px;
+    margin-top: 22px;
 }
 
 .req_head {
@@ -39,7 +43,7 @@
     width: 116px;
     height: 38px;
     left: 48%;
-    top: 35px;
+    top: 3.75%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -53,11 +57,11 @@
 .req_und {
     position: absolute;
     width: 80px;
-    height: 0.5px;
+    height: 0.05%;
     left: 48.90%;
-    top: 87px;
+    top: 9.32%;
 
-    border: 2px solid #38A7DE;
+    border: 1px solid #38A7DE;
 }
 
 .req_instruc {
@@ -65,7 +69,7 @@
     width: 65.34%;
     height: 150px;
     left: 17.32%;
-    top: 138px;
+    top: 14.78%;
 
     background: rgba(56, 167, 222, 0.275);
     border-radius: 2px;
@@ -87,7 +91,7 @@
     width: 96px;
     height: 19px;
     left: 18.75%;
-    top: 344px;
+    top: 36.86%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -100,10 +104,10 @@
 
 .file {
     position: absolute;
-    width: 121px;
+    width: 7.25%;
     height: 36px;
     left: 18.75%;
-    top: 379px;
+    top: 40.61%;
 
     background: #FFFFFF;
     border: none;
@@ -120,10 +124,10 @@
 
 .file_req {
     position: absolute;
-    width: 121px;
+    width: 7.25%;
     height: 36px;
     left: 18.75%;
-    top: 379px;
+    top: 40.61%;
 
     background: rgba(56, 167, 222, 0.25);
     border: none;
@@ -140,10 +144,10 @@
 
 .cour {
     position: absolute;
-    width: 121px;
+    width: 7.25%;
     height: 36px;
     left: 26%;
-    top: 379px;
+    top: 40.61%;
 
     background: #FFFFFF;
     border: none;
@@ -160,10 +164,10 @@
 
 .cour_req {
     position: absolute;
-    width: 121px;
+    width: 7.25%;
     height: 36px;
     left: 26%;
-    top: 379px;
+    top: 40.61%;
 
     background: rgba(56, 167, 222, 0.25);
     border: none;
@@ -180,18 +184,18 @@
 
 .file_reqform {
     position: absolute;
-    width: 87px;
-    height: 21px;
+    width: 67%;
+    height: 40.5%;
     left: 19.5%;
-    top: 431px;
+    top: 46.18%;
 }
 
 .file_req_depa {
     position: absolute;
     width: 87px;
     height: 21px;
-    left: 0px;
-    top: 0px;
+    left: 0%;
+    top: 0%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -208,7 +212,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 29px;
+    top: 7.673%;
     
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -231,7 +235,7 @@
     width: 200px;
     height: 21px;
     left: 0%;
-    top: 79px;
+    top: 20.90%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -250,7 +254,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 108px;
+    top: 28.57%;
 
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -291,7 +295,7 @@
     width: 98px;
     height: 19px;
     left: 0%;
-    top: 168px;
+    top: 44.45%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -302,76 +306,12 @@
     color: rgba(43, 42, 40, 0.2);
 }
 
-.tut {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 29%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.books {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 279%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.notes {
-    position: absolute;
-    width: 63px;
-    height: 19px;
-    left: 529%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
-.exam {
-    position: absolute;
-    width: 250px;
-    height: 19px;
-    left: 779%;
-    top: 196px;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
-
-    color: rgba(43, 42, 40, 0.2);
-}
-
 .req_file_name {
     position: absolute;
     width: 44px;
     height: 21px;
     left: 0%;
-    top: 240px;
+    top: 63.50%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -389,7 +329,7 @@
   width: 479px;
   height: 36px;
   left: 0%;
-  top: 269px;
+  top: 71.179%;
 
   border: 1px solid #2B2A28;
   box-sizing: border-box;
@@ -419,7 +359,7 @@
     width: 94px;
     height: 41px;
     left: 0%;
-    top: 329px;
+    top: 87.056%;
 
     background: #38A7DE;
     border-radius: 2px;
@@ -436,18 +376,18 @@
 
 .cour_reqform {
     position: absolute;
-    width: 87px;
-    height: 21px;
+    width: 66.5%;
+    height: 30.328%;
     left: 19.5%;
-    top: 431px;
+    top: 46.18%;
 }
 
 .cour_req_depa {
     position: absolute;
     width: 87px;
     height: 21px;
-    left: 0px;
-    top: 0px;
+    left: 0%;
+    top: 0%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -464,7 +404,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 29px;
+    top: 10.248%;
     
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -479,7 +419,7 @@
     width: 200px;
     height: 21px;
     left: 0%;
-    top: 79px;
+    top: 27.91%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -498,7 +438,7 @@
     width: 252px;
     height: 36px;
     left: 0%;
-    top: 108px;
+    top: 38.165%;
 
     border: 1px solid #2B2A28;
     box-sizing: border-box;
@@ -522,7 +462,7 @@
     width: 72px;
     height: 19px;
     left: 0%;
-    top: 156px;
+    top: 55.1275%;
 
     font-family: Droid Sans;
     font-style: normal;
@@ -538,7 +478,7 @@
     width: 86px;
     height: 36px;
     left: 0%;
-    top: 182px;
+    top: 64.315%;
 
     background: #FFFFFF;
     border: 1px solid #2B2A28;
@@ -574,7 +514,7 @@
     width: 94px;
     height: 41px;
     left: 0%;
-    top: 242px;
+    top: 85.518%;
 
     background: #38A7DE;
     border-radius: 2px;
@@ -596,260 +536,3 @@ button:focus {
 button:hover, .close_req:hover {
     cursor: pointer;
 }
-
-/* Custom Checkboxes */
-.cont_mat_tut {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .cont_mat_tut input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 0%;
-    top: 199.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_tut {
-    position: absolute;
-    top: 199.5px;
-    left: 0%;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-
-  .cont_mat_tut:hover input ~ .checkmark {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_tut input:checked ~ .checkmark {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_tut:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_tut input:checked ~ .checkmark_tut:after {
-    display: block;
-  }
-  
-  .cont_mat_tut .checkmark_tut:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_tut {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_books input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 210px;
-    top: 199.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_books {
-    position: absolute;
-    top: 199.5px;
-    left: 212px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_books:hover input ~ .checkmark_books {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
- 
-  .checkmark_books:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_books input:checked ~ .checkmark_books:after {
-    display: block;
-  }
-  
-  .cont_mat_books .checkmark_books:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_books {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_notes input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 430px;
-    top: 197.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_notes {
-    position: absolute;
-    top: 199.5px;
-    left: 432px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_notes:hover input ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_notes:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_notes input:checked ~ .checkmark_notes:after {
-    display: block;
-  }
-  
-  .cont_mat_notes .checkmark_notes:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  .cont_mat_notes {
-    position: absolute;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Custom checkbox */
-  .cont_mat_exam input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    left: 645px;
-    top: 197.25px;
-    z-index: 1;
-  }
-  
-  .checkmark_exam {
-    position: absolute;
-    top: 199.5px;
-    left: 647px;
-    height: 15px;
-    width: 15px;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(65, 64, 66, 0.2);
-    box-sizing: border-box;
-    border-radius: 2px;
-  }
-  
-  .cont_mat_exam:hover input ~ .checkmark_exam {
-    background-color: #FFFFFF;
-  }
-  
-  .cont_mat_exam input:checked ~ .checkmark_exam {
-    background-color: #FFFFFF;
-  }
-  
-  .checkmark_exam:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  .cont_mat_exam input:checked ~ .checkmark_exam:after {
-    display: block;
-  }
-  
-  .cont_mat_exam .checkmark_exam:after {
-    left: 4px;
-    top: 1.05px;
-    width: 3px;
-    height: 7px;
-    border: solid #000000;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
