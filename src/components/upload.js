@@ -42,14 +42,6 @@ class Upload extends Component {
         this.books.current.style.color = '#2B2A28'
         this.notes.current.style.color = '#2B2A28'
         this.exam.current.style.color = '#2B2A28'
-        this.mat_tut.current.disabled = false;
-        this.mat_books.current.disabled = false;
-        this.mat_notes.current.disabled = false;
-        this.mat_exam.current.disabled = false;
-        this.check_tut.current.style.border = "1px solid #2B2A28";
-        this.check_books.current.style.border = "1px solid #2B2A28";
-        this.check_notes.current.style.border = "1px solid #2B2A28";
-        this.check_exam.current.style.border = "1px solid #2B2A28";
     }
 
     render() {

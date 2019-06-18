@@ -1,0 +1,261 @@
+@import './reset.scss';
+@import './fonts.scss';
+
+.coursepage {
+    position: absolute;
+    left: 424px;
+    top: 73px;
+    width: calc(100% - 424px);
+
+    cursor: default;
+}
+
+.coursepage-- {
+    &head {
+        position: absolute;
+        width: 500px;
+        height: 38px;
+        left: calc(50% - 250px);
+        top: 47px;
+
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 38px;
+
+        color: rgba(43, 42, 40, 0.9);
+        text-align: center;
+    }
+
+    &underline {
+        position: absolute;
+        width: 80px;
+        height: 1px;
+        left: calc(50% - 40px);
+        top: 93px;
+
+        border: 0.5px solid #38A7DE;
+    }
+
+    &addcourse {
+        position: absolute;
+        width: 100px;
+        height: 19px;
+        right: 5.28%;
+        top: 60.5px;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #38A7DE;
+    }
+
+    &removecourse {
+        position: absolute;
+        width: 160px;
+        height: 19px;
+        right: 5.28%;
+        top: 60.5px;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #38A7DE;
+    }
+
+    &category {
+        position: absolute;
+        width: 720px;
+        height: 22px;
+        left: calc(50% - 360px);
+        top: 145px;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+
+        color: #2B2A28;
+
+        display: grid;
+        grid-template-rows: 41px;
+        grid-template-columns: 62px 158px 146px 144px 209px;
+
+        &_all {
+            width: 21px;
+            height: 22px;
+
+            padding:8px 41px 11px 0px;  
+        }
+
+        &_tut {
+            width: 77px;
+            height: 22px;
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+
+            color: #38A7DE;
+
+            padding: 8px 41px 11px 41px;
+            border-left: 1px solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_books {
+            width: 50px;
+            height: 22px;
+
+            padding: 8px 47px 11px 49px;
+            border-left: 1px solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_notes {
+            width: 48px;
+            height: 22px;
+
+            padding: 8px 47px 11px 49px;
+            border-left: 1px solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_exam {
+            width: 161px;
+            height: 22px;
+
+            padding: 8px 0px 11px 48px;
+            border-left: 1px solid rgba(43, 42, 40, 0.4);
+        }
+    }
+
+    &material-sort {
+        position: absolute;
+        width: 96.5%;
+        height: 68px;
+        left: 1%;
+        top: 260px;
+
+        font-family: Sansation;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 18px;
+
+        color: #000000;
+        border-top: 1px solid rgba(65, 64, 66, 0.2);
+
+        &_checkbox {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            left: 1.7%;
+            top: 26px;
+
+            margin-right: 12px;
+        }
+
+        &_name {
+            position: absolute;
+            width: 45px;
+            height: 18px;
+            left: 3.135%;
+            top: 25px;
+
+            margin-left: 12px;
+        }
+
+        &_size {
+            position: absolute;
+            width: 29px;
+            height: 19px;
+            left: 70%;
+            top: 24px;
+        }
+
+        &_lastmod {
+            position: absolute;
+            width: 108px;
+            height: 19px;
+            left: 90%;
+            top: 24px;
+        }
+    }
+
+    &material {
+        position: absolute;
+        width: 98%;
+        left: 1%;
+        top: 329px;
+
+        &_year {
+            width: 99%;
+            height: 51px;
+
+            margin-left: 0.5%;
+            background: rgba(56, 167, 222, 0.275);
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 51px;
+            text-align: center;
+
+            color: #2B2A28;
+        }
+    }
+
+    &und_ {
+        &all {
+            width: 17px;
+            border: 1px solid #FFFFFF;
+            margin-top: 10px;
+            margin-left: 0px;
+        }
+    
+        &tut {
+            width: 65px;
+            border: 1px solid #38A7DE;
+            margin-top: 10px;
+            margin-left: 2px;
+        }
+    
+        &books {
+            width: 45px;
+            border: 1px solid #FFFFFF;
+            margin-top: 10px;
+            margin-left: 1px;
+        }
+    
+        &notes {
+            width: 45px;
+            border: 1px solid #FFFFFF;
+            margin-top: 10px;
+            margin-left: 1px;
+        }
+    
+        &exam {
+            width: 160px;
+            border: 1px solid #FFFFFF;
+            margin-top: 10px;
+            margin-left: 1px;
+        }
+    }
+
+}
+
+.coursepage-- {
+    &category:hover, &addcourse, &removecourse {
+        cursor: pointer;
+    }
+}
+

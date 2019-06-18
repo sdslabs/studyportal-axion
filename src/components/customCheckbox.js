@@ -11,6 +11,9 @@ class CustomCheckbox extends Component {
 
         this.check = React.createRef();
         this.checkmark = React.createRef();
+
+        this.hover = this.hover.bind(this);
+        this.leave = this.leave.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -29,11 +32,21 @@ class CustomCheckbox extends Component {
         this.checkmark.current.style.border = this.props.border;
     }
 
+    hover() {
+        this.checkmark.current.style.background = this.props.hover;
+        this.checkmark.current.style.border = this.props.borderhover;
+    }
+
+    leave() {
+        this.checkmark.current.style.background = '#FFFFFF';
+        this.checkmark.current.style.border = this.props.border;
+    }
+
     render() {
         return(
-            <div className='customcheckbox'>
+            <div className='customcheckbox' onMouseOver={this.hover} onMouseLeave={this.leave}>
                 <input className='customcheckbox--checkbox' type='checkbox' value={this.props.value} ref={this.check} onChange={this.props.handleChange} />
-                <span className='customcheckbox--checkmark' ref={this.checkmark} ></span>
+                <span className='customcheckbox--checkmark' ref={this.checkmark}></span>
             </div> 
         )
     }

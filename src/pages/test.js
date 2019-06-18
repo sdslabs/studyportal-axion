@@ -1,9 +1,10 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import Header from '../components/header/header'
 import Sidebar from '../components/sidebar'
 import Request from '../components/request'
 import Upload from '../components/upload'
 import ActivityLog from '../components/activityLog'
+import CoursePage from '../components/coursePage'
 
 class Test extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ class Test extends Component {
                 <Sidebar login={this.state.login} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.login === 'true' ? <ActivityLog /> : <Fragment /> }
+                { this.state.login === 'true' ? <ActivityLog /> : <CoursePage /> }
             </div>
         )
     }

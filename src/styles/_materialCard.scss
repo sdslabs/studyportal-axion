@@ -1,9 +1,9 @@
 .material {
-    width: 98%;
-    height: 66px;
+    position: relative;
+    width: 98.5%;
+    height: 68px;
 
     border-top: 1px solid rgba(65, 64, 66, 0.2);
-    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
 }
 
 .material--checkbox {
@@ -12,6 +12,8 @@
     height: 15px;
     left: 1.7%;
     top: 25px;
+
+    margin-right: 12px;
 }
 
 .material--info {
@@ -20,6 +22,8 @@
     height: 53px;
     left: 3.135%;
     top: 13px;
+
+    margin-left: 12px;
     
     display: grid;
     grid-template-columns: 40px 101px;
@@ -45,7 +49,7 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #38A7DE;
+    color: #2B2A28;
 
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
@@ -69,12 +73,20 @@
     grid-row: 3 / span 1;
 }
 
-.material--downloadicon {
+.material--downloadicon-initial {
     position: absolute;
     width: 31px;
     height: 32px;
     left: 65%;
     top: 16px;
+}
+
+.material--downloadicon-other {
+    position: absolute;
+    width: 31px;
+    height: 32px;
+    left: 65.65%;
+    top: 26px;
 }
 
 .material--size {
@@ -90,7 +102,7 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #38A7DE;
+    color: #2B2A28;
 }
 
 .material--datemodified {
@@ -106,5 +118,12 @@
     font-size: 16px;
     line-height: 19px;
 
-    color: #38A7DE;
+    color: #2B2A28;
+}
+
+.material-- {
+    &info:hover, &name:hover, &size:hover, &downloadicon-initial:hover, &downloadicon-other:hover, &datemodified:hover {
+        cursor: pointer;
+        color: #38A7DE;
+    }
 }

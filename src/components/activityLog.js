@@ -16,6 +16,7 @@ class ActivityLog extends Component {
                 <div className='activityreq'>
                     <ActivityReqCard status='2' />
                     <ActivityReqCard status='3' />
+                    <ActivityReqCard status='2' />
                 </div>
             </div>
         )
