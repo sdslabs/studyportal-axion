@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './App.css'
 import Home from './pages/home'
 import Test from './pages/test'
+import CustomFileUploader from './components/customFileUploader'
 import {Switch, Route} from 'react-router-dom'
 
 class App extends Component {
