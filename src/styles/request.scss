@@ -1,6 +1,7 @@
 @import './reset.scss';
 @import './fonts.scss';
 @import './customCheckbox';
+@import './customRadioButton';
 
 .req_cover {
     position: absolute;
@@ -104,7 +105,7 @@
 
 .file {
     position: absolute;
-    width: 7.25%;
+    width: 121px;
     height: 36px;
     left: 18.75%;
     top: 40.61%;
@@ -124,7 +125,7 @@
 
 .file_req {
     position: absolute;
-    width: 7.25%;
+    width: 121px;
     height: 36px;
     left: 18.75%;
     top: 40.61%;
@@ -144,9 +145,9 @@
 
 .cour {
     position: absolute;
-    width: 7.25%;
+    width: 121px;
     height: 36px;
-    left: 26%;
+    left: calc(18.75% + 121px);
     top: 40.61%;
 
     background: #FFFFFF;
@@ -164,9 +165,9 @@
 
 .cour_req {
     position: absolute;
-    width: 7.25%;
+    width: 121px;
     height: 36px;
-    left: 26%;
+    left: calc(18.75% + 121px);
     top: 40.61%;
 
     background: rgba(56, 167, 222, 0.25);
@@ -308,7 +309,7 @@
 
 .check_tut {
     position: absolute;
-    top: 52.5%;
+    top: 52%;
     left: 0%;
     height: 15px;
     width: 15px;
@@ -316,7 +317,7 @@
 
 .check_books {
     position: absolute;
-    top: 52.5%;
+    top: 52%;
     left: 18.96%;
     height: 15px;
     width: 15px;
@@ -324,7 +325,7 @@
 
 .check_notes {
     position: absolute;
-    top: 52.5%;
+    top: 52%;
     left: 38.65%;
     height: 15px;
     width: 15px;
@@ -332,7 +333,7 @@
 
 .check_exam {
     position: absolute;
-    top: 52.5%;
+    top: 52%;
     left: 57.89%;
     height: 15px;
     width: 15px;

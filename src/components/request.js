@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react'
-import CustomCheckbox from '../components/customCheckbox'
 import close from '../assets/closereq.png'
 import '../styles/request.scss'
 
@@ -25,10 +24,10 @@ class Request extends Component {
         this.books = React.createRef();
         this.notes = React.createRef();
         this.exam = React.createRef();
-        this.check_tut = React.createRef();
-        this.check_books = React.createRef();
-        this.check_notes = React.createRef();
-        this.check_exam = React.createRef();
+        this.radiotut = React.createRef();
+        this.radiobooks = React.createRef();
+        this.radionotes = React.createRef();
+        this.radioexam = React.createRef();
 
         this.cour_cour = React.createRef();
         this.cour_cour_in = React.createRef();
@@ -58,12 +57,15 @@ class Request extends Component {
     }
 
     activ_file_mat() {
-        this.setState({disable: 'false'});
         this.file_mat.current.style.color = '#2B2A28'
         this.tut.current.style.color = '#2B2A28'
         this.books.current.style.color = '#2B2A28'
         this.notes.current.style.color = '#2B2A28'
         this.exam.current.style.color = '#2B2A28'
+        this.radiotut.current.disabled = false
+        this.radiobooks.current.disabled = false
+        this.radionotes.current.disabled = false
+        this.radioexam.current.disabled = false
     }
 
     activ_name() {
@@ -110,11 +112,11 @@ class Request extends Component {
                                     <option>Structural Analysis</option>
                                 </select>
                                 <div className='file_mat_type' ref={this.file_mat}>Material Type</div>
-                                    <div className='check_tut'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="tut" ref={this.tut}>Tutorial</span> 
-                                    <div className='check_books'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="books" ref={this.books}>Books</span> 
-                                    <div className='check_notes'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="notes" ref={this.notes}>Notes</span> 
-                                    <div className='check_exam'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="exam" ref={this.exam}>Examination Papers</span>
-                                    <div className='req_file_name' ref={this.file_name}>Name</div>
+                                    <div className='check_tut'><input type='radio' name='material' value='tutorial' ref={this.radiotut} onChange={this.activ_name} className='radio' disabled/></div><span className="tut" ref={this.tut}>Tutorial</span> 
+                                    <div className='check_books'><input type='radio' name='material' value='books' ref={this.radiobooks} onChange={this.activ_name} className='radio' disabled/></div><span className="books" ref={this.books}>Books</span> 
+                                    <div className='check_notes'><input type='radio' name='material' value='notes' ref={this.radionotes} onChange={this.activ_name} className='radio' disabled/></div><span className="notes" ref={this.notes}>Notes</span> 
+                                    <div className='check_exam'><input type='radio' name='material' value='exam' ref={this.radioexam} onChange={this.activ_name} className='radio' disabled/></div><span className="exam" ref={this.exam}>Examination Papers</span>
+                                <div className='req_file_name' ref={this.file_name}>Name</div>
                                 <input className="req_file_in" type='text' ref={this.file_name_in} disabled />
                                 <button type='submit' className='file_reqformbtn'>Request</button>
                             </form>
