@@ -79,15 +79,15 @@ class Upload extends Component {
                                 </div>
                             </div>
                             
-                            <div className='uploform'>
+                            <div className='uploform' id='uploadform'>
                                 <form>
                                     <div className='uplo_depa'>Department</div>
-                                    <select className='uplo_sel_dep' onChange={this.activ_uplo_sel_cour}>
+                                    <select className='uplo_sel_dep' onChange={this.activ_uplo_sel_cour} form='uploadform'>
                                         <option>--Select Department--</option>
                                         <option>Civil Engineering</option>
                                     </select>
                                     <div className='uplo_cour' ref={this.uplo_cour}>Course Name</div>
-                                    <select className='uplo_sel_cour' ref={this.uplo_cour_sel} onChange={this.activ_uplo_mat} disabled>
+                                    <select className='uplo_sel_cour' ref={this.uplo_cour_sel} onChange={this.activ_uplo_mat} form='uploadform' disabled>
                                         <option>--Select Course--</option>
                                         <option>Structural Analysis</option>
                                     </select>
