@@ -41,7 +41,7 @@
     position: absolute;
     width: 116px;
     height: 38px;
-    left: 48%;
+    left: calc(50% - 58px);
     top: 5.35%;
 
     font-family: Droid Sans;
@@ -57,18 +57,18 @@
     position: absolute;
     width: 80px;
     height: 0.5px;
-    left: 48.65%;
-    top: 10.716%;
+    left: calc(45% - 40px);
+    top: 100%;
 
     border: 1px solid #38A7DE;
 }
 
 .uplo_instruc {
     position: absolute;
-    width: 65.34%;
-    height: 165px;
-    left: 17.32%;
-    top: 14.788%;
+    width: 100%;
+    height: 150px;
+    left: 0%;
+    top: 0%;
 
     background: rgba(56, 167, 222, 0.275);
     border-radius: 2px;
@@ -97,14 +97,15 @@
 
 .ins_uplo {
     margin-top: 12px;
+    margin-bottom: 20px;
 }
 
 .uploform {
     position: absolute;
-    width: 66.25%;
+    width: 100%;
     height: 321px;
-    left: 19.5%;
-    top: 39.758%;
+    left: 1.5%;
+    top: 42.654%;
 }
 
 .uplo_depa {
@@ -275,26 +276,6 @@
     margin-left: 6px;
 }
 
-.uploformbtn {
-    position: absolute;
-    width: 94px;
-    height: 41px;
-    left: 0%;
-    top: 87.227%;
-
-    background: #38A7DE;
-    border-radius: 2px;
-    border: #38A7DE;
-
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
-
-    color: #FFFFFF;
-}
-
 .close_uplo:hover {
     cursor: pointer;
 }
@@ -398,4 +379,26 @@
     left: 57.89%;
     height: 15px;
     width: 15px;
+}
+
+br {
+    line-height: 225%;
+}
+
+.upload-- {
+    &header {
+        position: absolute;
+        width: 116px;
+        height: 48px;
+        left: 48%;
+        top: 5.35%;
+    }
+
+    &main {
+        position: absolute;
+        width: 65.34%;
+        height: 522px;
+        left: 17.32%;
+        top: 14.788%;
+    }
 }

@@ -1,0 +1,57 @@
+.customfileuploader-- {
+    &fileholder {
+        position: relative;
+        width: 534px;
+        height: 49px;
+
+        background: rgba(56, 167, 222, 0.155);
+        border-top: 1px solid rgba(65, 64, 66, 0.2);
+
+        &_name {
+            position: absolute;
+            width: 300px;
+            height: 17px;
+            left: 16px;
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 49px;
+
+            color: #000000;
+        }
+
+        &_category {
+            position: absolute;
+            width: 105px;
+            height: 26px;
+            left: 338px;
+            top: 12px;
+
+            background: #FFFFFF;
+            border: 1px solid rgba(43, 42, 40, 0.99);
+            box-sizing: border-box;
+            border-radius: 2px;
+        }
+
+        &_remove {
+            position: absolute;
+            width: 51px;
+            height: 17px;
+            left: 467px;
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 49px;
+
+            color: #38A7DE;
+        }
+
+        &_remove:hover {
+            cursor: pointer;
+        }
+    }
+}

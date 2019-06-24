@@ -1,0 +1,78 @@
+.customfileuploader {
+    width: 100%;
+}
+
+.customfileuploader-- {
+    &choosefile {
+        z-index: 1;
+        opacity: 0;
+     
+        position: absolute;
+        left: -10%;
+    }
+
+    &input {
+        position: relative;
+        margin-top: 8px;
+    }
+
+    &label {
+        position: absolute;
+        left:0%;
+        top: 0%;
+        
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+
+        color: #38A7DE;
+    }
+
+    &filechoose {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+    
+        color: rgba(43, 42, 40, 0.6);
+        margin-left: 90px;
+        margin-top: 12px;
+    }
+
+    &instruc {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 18px;
+
+        color: rgba(43, 42, 40, 0.6);
+        margin-left: 6px;
+        margin-top: 8px;
+    }
+
+    &button {
+            width: 94px;
+            height: 41px;
+            margin-top: 24px;
+        
+            background: #38A7DE;
+            border-radius: 2px;
+            border: #38A7DE;
+        
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+        
+            color: #FFFFFF;
+    }
+
+    &choosefile:hover {
+        cursor: pointer;
+    }
+}
