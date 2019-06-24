@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import FileUploadContainer from './fileUploadContainer'
-import '../styles/_customfileuploader.scss'
+import '../../styles/main.scss'
 
 class CustomFileUploader extends Component {
     constructor(props) {

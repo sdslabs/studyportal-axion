@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import icon from '../assets/material_icon.svg'
-import '../styles/_materialCard.scss'
-import download1 from '../assets/download.svg'
-import download2 from '../assets/download1.svg'
-import CustomCheckbox from '../components/customCheckbox'
+import icon from '../../assets/material_icon.svg'
+import '../../styles/main.scss'
+import download1 from '../../assets/download.svg'
+import download2 from '../../assets/download1.svg'
+import CustomCheckbox from '../customcheckbox/customCheckbox'
 
 class MaterialCard extends Component {
     constructor(props) {
@@ -39,7 +39,7 @@ class MaterialCard extends Component {
                     <div className='material--name'>Tutorial 1</div>
                     <div className='material--download'>Downloads: 2048</div>
                 </div>
-                { this.state.queue === '1' ? <div className='material--downloadicon-initial' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> : <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
+                { this.state.queue === '1' ? <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> : <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
                 <div className='material--size'>10.5 MB</div>
                 <div className='material--datemodified'>Dec 14, 2018</div>
             </div>

@@ -1,0 +1,106 @@
+.activityreqcard {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-row: auto;
+
+    border-top: 1px solid rgba(65, 64, 66, 0.2);
+    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+
+    padding: 17px 0px 18px 0px;
+}
+
+.activityreqcard-- {
+
+    &info {
+        grid-column: 1 / span 1;
+        justify-self: left;
+        align-self: center;
+        margin-left: 64px;
+
+        &_date {
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+    
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        &_name {
+            margin-bottom: 4px;
+        }
+
+        &_head {
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+    
+            color: rgba(43, 42, 40, 0.6);
+        }
+
+        &_heading {
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            
+            color: rgba(43, 42, 40, 0.8);    
+        }
+    }
+
+    &course {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+
+        color: rgba(43, 42, 40, 0.8);
+    }
+
+    &status {
+        grid-column: 2 / span 1;
+        justify-self: center;
+        align-self: center;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 25px;
+
+        color: #2F7F2E;
+
+        &_color {
+            margin-bottom: 2px;
+        }
+    }
+
+    &file {
+        grid-column: 3 / span 1;
+        justify-self: center;
+        align-self: center;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 35px;
+
+        color: #38A7DE;
+
+        &_download {
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+    }
+    
+    &file:hover {
+        cursor: pointer;
+    }
+}

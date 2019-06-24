@@ -13,7 +13,7 @@ import earth_sci from '../assets/earth_sci.png'
 import ece from '../assets/ece.png'
 import elec from '../assets/elec.png'
 import hss from '../assets/hss.png'
-import '../styles/home.scss'
+import '../styles/main.scss'
 
 class Home extends Component {
     render() {

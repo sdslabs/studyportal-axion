@@ -1,11 +1,15 @@
 .sub_list {
+    position: absolute;
+    top: 454px;
+    left: calc(52% - 500px);
+    width: 1000px;
+
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 25% 25% 25% 25%;
-    margin-top: 64px;
-    margin-right: 14.59%;
-    margin-left: 22.64%;
-    margin-bottom: 55px;
+
+    justify-items: center;
+    align-items: center;
 }
 
 .archi {
@@ -20,7 +24,7 @@
     margin-bottom: 12px;
 }
 
-.bio {
+.biotech {
     grid-row: 1 / span 1;
     grid-column: 3 / span 1;
     margin-bottom: 12px;
