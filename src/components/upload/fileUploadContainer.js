@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import '../styles/_fileuploadcontainer.scss'
+import '../../styles/main.scss'
 
 class FileUploadContainer extends Component {
     constructor(props) {

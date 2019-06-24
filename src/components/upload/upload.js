@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react'
-import CustomCheckbox from './customCheckbox'
+import CustomCheckbox from '../customcheckbox/customCheckbox'
 import CustomFileUploader from './customFileUploader'
-import close from '../assets/closereq.png'
-import '../styles/upload.scss'
+import close from '../../assets/closereq.png'
+import '../../styles/main.scss'
 
 class Upload extends Component {
     constructor(props) {
@@ -62,43 +62,50 @@ class Upload extends Component {
 
         if (this.props.upload === 'true') {
             return(
-                <div className='upload_cover'>
-                    <div className='upload_div'>
-                        <div className='close_uplo' onClick={this.props.handleUplo}><img src={close} alt='close'/></div>
+                <div className='uploadcover'>
+                    <div className='upload'>
+                        <div className='upload--close' onClick={this.props.handleUplo}><img src={close} alt='close'/></div>
                         <div className='upload--header' ref={this.header}>
-                            <div className='uplo_head'>Upload</div>
-                            <div className='uplo_und'></div>
+                            <div className='upload--heading'>Upload</div>
+                            <div className='upload--underline'></div>
                         </div>
                         <div className='upload--main' ref={this.main}>
-                            <div className='uplo_instruc'>
-                                <div className="ins_uplo_head">Instructions</div>
-                                <div className="ins_uplo">
+                            <div className='upload--instruction'>
+                                <div className='upload--instruction-head'>Instructions</div>
+                                <div className='upload--instruction-body'>
                                     Total upload size allowed is 100MB at a time. For eg: If you are uploading 4 files then their combined size should never be over 100MB.<br/>
                                     Please upload zipped folders in case you want to share file like photographs of notes.<br/>
                                     Please try to tag all files appropriately to ensure that others can find them easily.
                                 </div>
                             </div>
-                            
-                            <div className='uploform' id='uploadform'>
+                            <div className='upload--form' id='uploadform'>
                                 <form>
-                                    <div className='uplo_depa'>Department</div>
-                                    <select className='uplo_sel_dep' onChange={this.activ_uplo_sel_cour} form='uploadform'>
+                                    <div className='form--department'>Department</div>
+                                    <select className='form--department-select' onChange={this.activ_uplo_sel_cour} form='uploadform'>
                                         <option>--Select Department--</option>
                                         <option>Civil Engineering</option>
                                     </select>
-                                    <div className='uplo_cour' ref={this.uplo_cour}>Course Name</div>
-                                    <select className='uplo_sel_cour' ref={this.uplo_cour_sel} onChange={this.activ_uplo_mat} form='uploadform' disabled>
+                                    <div className='form--course' ref={this.uplo_cour}>Course Name</div>
+                                    <select className='form--course-select' ref={this.uplo_cour_sel} onChange={this.activ_uplo_mat} form='uploadform' disabled>
                                         <option>--Select Course--</option>
                                         <option>Structural Analysis</option>
                                     </select>
-                                    <div className='mat_sel' ref={this.material}>
-                                    <div className='uplo_mat_type' ref={this.uplo_mat}>Material Type</div>
-                                        <div className='_check_tut'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_tut" ref={this.tut}>Tutorial</span> 
-                                        <div className='_check_books'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_books" ref={this.books}>Books</span> 
-                                        <div className='_check_notes'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_notes" ref={this.notes}>Notes</span> 
-                                        <div className='_check_exam'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_exam" ref={this.exam}>Examination Papers</span>
+                                    <div className='upload--form-material' ref={this.material}>
+                                    <div className='form--material-type' ref={this.uplo_mat}>Material Type</div>
+                                        <div className='_check_tut'>
+                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
+                                        </div><span className="_tut" ref={this.tut}>Tutorial</span> 
+                                        <div className='_check_books'>
+                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
+                                        </div><span className="_books" ref={this.books}>Books</span> 
+                                        <div className='_check_notes'>
+                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
+                                        </div><span className="_notes" ref={this.notes}>Notes</span> 
+                                        <div className='_check_exam'>
+                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
+                                        </div><span className="_exam" ref={this.exam}>Examination Papers</span>
                                     </div>
-                                    <div className='uplo_file' ref={this.fileuploader}><CustomFileUploader handleUpload={this.handleUpload}/></div>
+                                    <div className='upload--file' ref={this.fileuploader}><CustomFileUploader handleUpload={this.handleUpload}/></div>
                                 </form>
                             </div>   
                         </div> 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import MaterialCard from './materialCard'
-import CustomCheckbox from './customCheckbox'
-import '../styles/coursePage.scss'
+import CustomCheckbox from '../customcheckbox/customCheckbox'
+import '../../styles/main.scss'
 
 class CoursePage extends Component {
     constructor(props) {
@@ -18,11 +18,11 @@ class CoursePage extends Component {
                 <div className='coursepage--underline'></div>
                 { this.state.mycourse === 'false' ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
-                    <div className='coursepage--category_all'><div>All<div className='coursepage--und_all'></div></div></div>
-                    <div className='coursepage--category_tut'><div>Tutorials<div className='coursepage--und_tut'></div></div></div>
-                    <div className='coursepage--category_books'><div>Books<div className='coursepage--und_books'></div></div></div>
-                    <div className='coursepage--category_notes'><div>Notes<div className='coursepage--und_notes'></div></div></div>
-                    <div className='coursepage--category_exam'><div>Examination Papers<div className='und_exam'></div></div></div>
+                    <div className='coursepage--category_all'><div>All<div className='coursepage--underline_all'></div></div></div>
+                    <div className='coursepage--category_tut'><div>Tutorials<div className='coursepage--underline_tut'></div></div></div>
+                    <div className='coursepage--category_books'><div>Books<div className='coursepage--underline_books'></div></div></div>
+                    <div className='coursepage--category_notes'><div>Notes<div className='coursepage--underline_notes'></div></div></div>
+                    <div className='coursepage--category_exam'><div>Examination Papers<div className='underline_exam'></div></div></div>
                 </div>
                 <div className='coursepage--material-sort'>
                     <div className='coursepage--material-sort_checkbox'><CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' /></div>

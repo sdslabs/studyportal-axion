@@ -4,23 +4,23 @@ import sds_logo from '../../assets/sds_logo.png'
 import upload from '../../assets/upload.png'
 import request from '../../assets/request.png'
 import search from '../../assets/search.png'
-import '../../styles/header_landing.scss'
+import '../../styles/main.scss'
 
 class Header extends Component {
     render() {
         return (
-            <div className="header_home">
-                    <img className="sds_logo" src={sds_logo} alt='sdslogo' />
-                    <img className="logo" src={logo} alt='studyportal_logo' />
-                    <div className="studyportal">Study Portal</div>
-                    <div className="_search">
-                        <input className="search_bar" type="text" placeholder="Search tutorials, books, notes, courses..." />
-                        <button className="search"><img src={search} alt='search' /></button>
+            <div className='landingheader'>
+                    <img className='landingheader--logo_sds' src={sds_logo} alt='sdslogo' />
+                    <img className='landingheader--logo' src={logo} alt='studyportal_logo' />
+                    <div className='landingheader--heading'>Study Portal</div>
+                    <div className='landingheader--search'>
+                        <input className='landingheader--search_bar' type="text" placeholder="Search tutorials, books, notes, courses..." />
+                        <button className='landingheader--search_icon'><img src={search} alt='search' /></button>
                     </div>
-                    <button className="request"><img className="req_img" src={request} alt='request' /> Request</button>
-                    <button className="upload"><img className="uplo_img" src={upload} alt='upload' /> Upload</button>
-                    <button className="login">Login</button>
-                    <button className="signup">Sign Up</button>
+                    <button className='landingheader--request'><img className='landingheader--request_image' src={request} alt='request' /> Request</button>
+                    <button className='landingheader--upload'><img className='landingheader--upload_image' src={upload} alt='upload' /> Upload</button>
+                    <button className='landingheader--login'>Login</button>
+                    <button className='landingheader--signup'>Sign Up</button>
             </div>
         )
     }
