@@ -1,9 +1,9 @@
 .requestcover {
     position: absolute;
     width: 100%;
-    height: 981px;
-    left: 0px;
-    top: 0px;
+    height: 61.3125rem;
+    left: 0rem;
+    top: 0rem;
 
     background: rgba(13, 41, 56, 0.8);
     z-index: 1;
@@ -19,8 +19,8 @@
     top: 2.44%;
 
     background: #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 2px;
+    box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    border-radius: 0.125rem;
 
     ::placeholder {
         color: rgba(43, 42, 40, 0.2);
@@ -31,75 +31,75 @@
     
     &close {
         position: absolute;
-        width: 20.23px;
-        height: 20.23px;
+        width: 1.264375rem;
+        height: 1.264375rem;
         right: 0%;
         top: 0%;
     
-        margin-right: 26px;
-        margin-top: 22px;
+        margin-right: 1.625rem;
+        margin-top: 1.375rem;
     }
     
     &heading {
         position: absolute;
-        width: 116px;
-        height: 38px;
+        width: 7.25rem;
+        height: 2.375rem;
         left: 48%;
         top: 3.75%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 32px;
-        line-height: 37px;
+        font-size: 2rem;
+        line-height: 2.3125rem;
     
         color: #2B2A28;
     }
     
     &underline {
         position: absolute;
-        width: 80px;
+        width: 5rem;
         height: 0.05%;
         left: 48.90%;
         top: 9.32%;
     
-        border: 1px solid #38A7DE;
+        border: 0.0625rem solid #38A7DE;
     }
     
     &instructions {
         position: absolute;
         width: 65.34%;
-        height: 150px;
+        height: 9.375rem;
         left: 17.32%;
         top: 14.78%;
     
         background: rgba(56, 167, 222, 0.275);
-        border-radius: 2px;
+        border-radius: 0.125rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 24px;
+        font-size: 1rem;
+        line-height: 1.5rem;
         text-align: justify;
     
         color: #2B2A28;
     
-        padding: 16px 24px 16px 16px;
+        padding: 1rem 1.5rem 1rem 1.5rem;
     }
     
     &type {
         position: absolute;
-        width: 96px;
-        height: 19px;
+        width: 6rem;
+        height: 1.1875rem;
         left: 18.75%;
         top: 36.86%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #2B2A28;
     }
@@ -108,40 +108,40 @@
 
         &inactive {
             position: absolute;
-            width: 121px;
-            height: 36px;
+            width: 7.5625rem;
+            height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
         
             background: #FFFFFF;
             border: none;
-            border-bottom: 4px solid rgba(56, 167, 222, 0.2);
+            border-bottom: 0.25rem solid rgba(56, 167, 222, 0.2);
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 10px;
+            font-size: 1rem;
+            line-height: 0.625rem;
         
             color: #2B2A28;
         }
 
         &active {
             position: absolute;
-            width: 121px;
-            height: 36px;
+            width: 7.5625rem;
+            height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
         
             background: rgba(56, 167, 222, 0.25);
             border: none;
-            border-bottom: 4px solid #38A7DE;
+            border-bottom: 0.25rem solid #38A7DE;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 10px;
+            font-size: 1rem;
+            line-height: 0.625rem;
         
             color: #2B2A28;    
         }
@@ -152,40 +152,40 @@
 
         &inactive {
             position: absolute;
-            width: 121px;
-            height: 36px;
-            left: calc(18.75% + 121px);
+            width: 7.5625rem;
+            height: 2.25rem;
+            left: calc(18.75% + 7.5625rem);
             top: 40.61%;
         
             background: #FFFFFF;
             border: none;
-            border-bottom: 4px solid rgba(56, 167, 222, 0.2);
+            border-bottom: 0.2rem solid rgba(56, 167, 222, 0.2);
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 10px;
+            font-size: 1rem;
+            line-height: 0.625rem;
             
             color: #2B2A28;
         }
 
         &active {
             position: absolute;
-            width: 121px;
-            height: 36px;
-            left: calc(18.75% + 121px);
+            width: 7.5625rem;
+            height: 2.25rem;
+            left: calc(18.75% + 7.5625rem);
             top: 40.61%;
         
             background: rgba(56, 167, 222, 0.25);
             border: none;
-            border-bottom: 4px solid #38A7DE;
+            border-bottom: 0.25rem solid #38A7DE;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 10px;
+            font-size: 1rem;
+            line-height: 0.625rem;
             
             color: #2B2A28;
         } 
@@ -209,40 +209,40 @@
 
     &button-file {
         position: absolute;
-        width: 94px;
-        height: 41px;
+        width: 5.875rem;
+        height: 2.5625rem;
         left: 0%;
         top: 87.056%;
     
         background: #38A7DE;
-        border-radius: 2px;
+        border-radius: 0.125rem;
         border: #38A7DE;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #FFFFFF;
     }
 
     &button-course {
         position: absolute;
-        width: 94px;
-        height: 41px;
+        width: 5.875rem;
+        height: 2.5625rem;
         left: 0%;
         top: 85.518%;
     
         background: #38A7DE;
-        border-radius: 2px;
+        border-radius: 0.125rem;
         border: #38A7DE;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #FFFFFF;
     }
@@ -252,39 +252,39 @@
 
     &department {
         position: absolute;
-        width: 87px;
-        height: 21px;
+        width: 5.4375rem;
+        height: 1.3125rem;
         left: 0%;
         top: 0%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 1rem;
+        line-height: 1.3125rem;
         text-align: justify;
     
         color: #2B2A28;
 
         &-select {
             position: absolute;
-            width: 252px;
-            height: 36px;
+            width: 15.75rem;
+            height: 2.25rem;
             left: 0%;
             top: 7.673%;
 
             border: 1px solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
+            font-size: 1rem;
+            line-height: 1.3125rem;
         
             text-align: justify;
-            padding-left: 8px;
+            padding-left: 0.5rem;
         
             background: #FFFFFF;
         }
@@ -292,16 +292,16 @@
 
     &course {
         position: absolute;
-        width: 200px;
-        height: 21px;
+        width: 12.5rem;
+        height: 1.3125rem;
         left: 0%;
         top: 20.90%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 1rem;
+        line-height: 1.3125rem;
     
         text-align: justify;
     
@@ -309,40 +309,40 @@
     
         &-select {
             position: absolute;
-            width: 252px;
-            height: 36px;
+            width: 15.75rem;
+            height: 2.25rem;
             left: 0%;
             top: 28.57%;
         
-            border: 1px solid #2B2A28;
+            border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
+            font-size: 1rem;
+            line-height: 1.3125rem;
         
             text-align: justify;
-            padding-left: 8px;
+            padding-left: 0.5rem;
         
             background: #FFFFFF;
         }
 
         &-select:disabled {
-            border: 1px solid rgba(43, 42, 40, 0.2);
+            border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
           
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
+            font-size: 1rem;
+            line-height: 1.3125rem;
           
             text-align: justify;
-            padding-left: 8px;
+            padding-left: 0.5rem;
             color: rgba(43, 42, 40, 0.2);
           
             background: #FFFFFF;
@@ -351,16 +351,16 @@
     
     &material {
         position: absolute;
-        width: 98px;
-        height: 19px;
+        width: 6.125rem;
+        height: 1.1875rem;
         left: 0%;
         top: 44.45%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: rgba(43, 42, 40, 0.2);
 
@@ -368,47 +368,47 @@
             position: absolute;
             top: 52%;
             left: 0%;
-            height: 15px;
-            width: 15px;
+            height: 0.9375rem;
+            width: 0.9375rem;
         }
         
         &_books {
             position: absolute;
             top: 52%;
             left: 18.96%;
-            height: 15px;
-            width: 15px;
+            height: 0.9375rem;
+            width: 0.9375rem;
         }
         
         &_notes {
             position: absolute;
             top: 52%;
             left: 38.65%;
-            height: 15px;
-            width: 15px;
+            height: 0.9375rem;
+            width: 0.9375rem;
         }
         
         &_exam {
             position: absolute;
             top: 52%;
             left: 57.89%;
-            height: 15px;
-            width: 15px;
+            height: 0.9375rem;
+            width: 0.9375rem;
         }
     }
 
     &name {
         position: absolute;
-        width: 44px;
-        height: 21px;
+        width: 2.75rem;
+        height: 1.3125rem;
         left: 0%;
         top: 63.50%;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 1rem;
+        line-height: 1.3125rem;
     
         text-align: justify;
     
@@ -416,30 +416,30 @@
 
         &-input {
             position: absolute;
-            width: 479px;
-            height: 36px;
+            width: 29.9375rem;
+            height: 2.25rem;
             left: 0%;
             top: 71.179%;
           
-            border: 1px solid #2B2A28;
+            border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
-            padding: 9px 12px 8px;
+            border-radius: 0.125rem;
+            padding: 0.5625rem 0.75rem 0.5rem;
           
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 21px;
+            font-size: 1rem;
+            line-height: 1.3125rem;
           
             text-align: justify;
           }
 
           &-input:disabled {
-            border: 1px solid rgba(43, 42, 40, 0.2);
+            border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
-            border-radius: 2px;
-            padding: 9px 12px 8px;
+            border-radius: 0.125rem;
+            padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
           }
     } 
@@ -449,48 +449,48 @@
 
     &department {
         position: absolute;
-        width: 87px;
-        height: 21px;
+        width: 5.4375rem;
+        height: 1.3125rem;
         left: 0%;
         top: 0%;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 1rem;
+        line-height: 1.3125rem;
         text-align: justify;
 
         color: #2B2A28;
 
         &-input {
             position: absolute;
-            width: 252px;
-            height: 36px;
+            width: 15.75rem;
+            height: 2.25rem;
             left: 0%;
             top: 10.248%;
             
-            border: 1px solid #2B2A28;
+            border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
     
-            padding: 9px 12px 8px;
+            padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
     }
 
     &course {
         position: absolute;
-        width: 200px;
-        height: 21px;
+        width: 12.5rem;
+        height: 1.3125rem;
         left: 0%;
         top: 27.91%;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 21px;
+        font-size: 1rem;
+        line-height: 1.3125rem;
 
         text-align: justify;
 
@@ -498,73 +498,73 @@
 
         &-input {
             position: absolute;
-            width: 252px;
-            height: 36px;
+            width: 15.75rem;
+            height: 2.25rem;
             left: 0%;
             top: 38.165%;
     
-            border: 1px solid #2B2A28;
+            border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
     
-            padding: 9px 12px 8px;
+            padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
 
         &-input:disabled {
-            border: 1px solid rgba(43, 42, 40, 0.2);
+            border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
         
-            padding: 9px 12px 8px;
+            padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
     }
 
     &id {
         position: absolute;
-        width: 72px;
-        height: 19px;
+        width: 4.5rem;
+        height: 1.1875rem;
         left: 0%;
         top: 55.1275%;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
             position: absolute;
-            width: 86px;
-            height: 36px;
+            width: 5.375rem;
+            height: 2.25rem;
             left: 0%;
             top: 64.315%;
     
             background: #FFFFFF;
-            border: 1px solid #2B2A28;
+            border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
     
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 19px;
+            font-size: 1rem;
+            line-height: 1.1875rem;
     
-            padding: 9px 12px 8px;
+            padding: 0.5625rem 0.75rem 0.5rem;
             color: #2B2A28;
         }
     
         &-input:disabled {
             background: #FFFFFF;
-            border: 1px solid rgba(43, 42, 40, 0.2);
+            border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
-            border-radius: 2px;
+            border-radius: 0.125rem;
     
-            padding: 9px 12px 8px;
+            padding: 0.5625rem 0.75rem 0.5rem;
             color: rgba(43, 42, 40, 0.2);
         }
     }   
@@ -572,64 +572,64 @@
 
 .tut {
     position: absolute;
-    width: 63px;
-    height: 19px;
+    width: 3.9375rem;
+    height: 1.1875rem;
     left: 3%;
     top: 51.86%;
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
 
     color: rgba(43, 42, 40, 0.2);
 }
 
 .books {
     position: absolute;
-    width: 63px;
-    height: 19px;
+    width: 3.9375rem;
+    height: 1.1875rem;
     left: 21.96%;
     top: 51.86%;
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
 
     color: rgba(43, 42, 40, 0.2);
 }
 
 .notes {
     position: absolute;
-    width: 63px;
-    height: 19px;
+    width: 3.9375rem;
+    height: 1.1875rem;
     left: 41.65%;
     top: 51.86%;
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
 
     color: rgba(43, 42, 40, 0.2);
 }
 
 .exam {
     position: absolute;
-    width: 250px;
-    height: 19px;
+    width: 15.625rem;
+    height: 1.1875rem;
     left: 60.89%;
     top: 51.86%;
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
 
     color: rgba(43, 42, 40, 0.2);
 }

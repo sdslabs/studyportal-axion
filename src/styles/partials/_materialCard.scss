@@ -1,39 +1,39 @@
 .material {
     position: relative;
     width: 98.5%;
-    height: 68px;
+    height: 4.25rem;
 
-    border-top: 1px solid rgba(65, 64, 66, 0.2);
+    border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .material-- {
 
     &checkbox {
         position: absolute;
-        width: 15px;
-        height: 15px;
+        width: 0.9375rem;
+        height: 0.9375rem;
         left: 1.7%;
-        top: 25px;
+        top: 1.5625rem;
     
-        margin-right: 12px;
+        margin-right: 0.75rem;
     }
 
     &info {
         position: absolute;
-        width: 141px;
-        height: 53px;
+        width: 8.8125rem;
+        height: 3.3125rem;
         left: 3.135%;
-        top: 13px;
+        top: 0.8125rem;
     
-        margin-left: 12px;
+        margin-left: 0.75rem;
         
         display: grid;
-        grid-template-columns: 40px 101px;
+        grid-template-columns: 2.5rem 6.3125rem;
         grid-template-rows: 10% 40% 40% 10%;
     }
     
     &icon {
-        width: 28px;
+        width: 1.75rem;
     
         grid-column: 1 / span 1;
         grid-row: 1 / span 4;
@@ -42,14 +42,14 @@
     }
     
     &name {
-        width: 68px;
-        height: 19px;
+        width: 4.25rem;
+        height: 1.1875rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #2B2A28;
     
@@ -60,14 +60,14 @@
     }
     
     &download {
-        width: 101px;
-        height: 16px;
+        width: 6.3125rem;
+        height: 1rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 13px;
-        line-height: 15px;
+        font-size: 0.8125rem;
+        line-height: 0.9375rem;
     
         color: rgba(43, 42, 40, 0.4);
     
@@ -78,49 +78,49 @@
     &downloadicon- {
         &active {
             position: absolute;
-            width: 31px;
-            height: 32px;
+            width: 1.9375rem;
+            height: 2rem;
             left: 65%;
-            top: 16px;
+            top: 1rem;
         }
 
         &other {
             position: absolute;
-            width: 31px;
-            height: 32px;
+            width: 1.9375rem;
+            height: 2rem;
             left: 65.65%;
-            top: 26px;
+            top: 1.625rem;
         }
     }
     
     &size {
         position: absolute;
-        width: 59px;
-        height: 19px;
+        width: 3.6875rem;
+        height: 1.1875rem;
         left: 70%;
-        top: 26px;
+        top: 1.625rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #2B2A28;
     }
     
     &datemodified {
         position: absolute;
-        width: 93px;
-        height: 19px;
+        width: 5.8125rem;
+        height: 1.1875rem;
         left: 90%;
-        top: 26px;
+        top: 1.625rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
         color: #2B2A28;
     }

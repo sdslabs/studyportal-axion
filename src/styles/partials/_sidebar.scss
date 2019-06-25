@@ -195,47 +195,6 @@
     }
 }
 
-._tr {
-    width: 420px;
-    height: 42px;
-    padding-top: 4px;
-    padding-bottom: 8px; 
-    border: 1px solid rgba(56, 167, 222, 0.15);
-}
-
-.tr {
-    padding-left: 36px;
-    width: 420px;
-    
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 50px;
-
-    color: #FFFFFF;
-}
-
-.mycourse {
-    width: 50px;
-
-    margin-left: 8px;
-    font-family: PT Sans;
-    font-style: italic;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 18px;
-
-    color: rgba(56, 167, 222, 0.6);
-
-}
-
-.coursedot {
-    margin-left: 8px;
-    width: 10px;
-    height: 10px;
-}
-
 .close, .tr, .sidebar--back, .sidebar--button {
     cursor: pointer;
 }
