@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import arrow from '../../assets/left-arrow.png'
-import coursedot from '../../assets/coursedot.png'
+import CourseHandle from './courseHandle'
 import '../../styles/main.scss'
 
 class Sidebar extends Component {
@@ -25,12 +25,12 @@ class Sidebar extends Component {
                     <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
-                            <div className='_tr'><span className='tr'>Structural Analysis</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span><span className='coursedot'><img src={coursedot} alt='coursedot'/></span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
+                            <CourseHandle login='true' />
+                            <CourseHandle login='true' />
+                            <CourseHandle login='true' />
+                            <CourseHandle login='true' />
+                            <CourseHandle login='true' />
+                            <CourseHandle login='true' />
                         </div>
                     </div>
                     <div className='sidebar--form-cover'>
@@ -58,10 +58,10 @@ class Sidebar extends Component {
                     <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span><span className='mycourse'>My Course</span></div>
-                            <div className='_tr'><span className='tr'>Open Channel Hydralyics CEN-207</span></div>
+                            <CourseHandle login='false' />
+                            <CourseHandle login='false' />
+                            <CourseHandle login='false' mycourse='true'/>
+                            <CourseHandle login='false' />
                         </div>
                     </div>
                 </div>

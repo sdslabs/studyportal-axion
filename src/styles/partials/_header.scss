@@ -1,18 +1,18 @@
 .header {
     position: absolute;
     width: 100%;
-    height: 73px;
+    height: 4.5625rem;
     left: 0%;
     top: 0%;
 
     background: #38A7DE;
-    border: 1px solid #38A7DE;
+    border: 0.0625rem solid #38A7DE;
     box-sizing: border-box;
 
     cursor: default;
 
     ::-webkit-scrollbar {
-        width: 6px;
+        width: 0.375rem;
     }
     
     ::-webkit-scrollbar-track {
@@ -21,7 +21,7 @@
     
     ::-webkit-scrollbar-thumb {
         background: #629EBD;
-        border-radius: 47px;
+        border-radius: 2.9375rem;
     }
 }
 
@@ -38,15 +38,15 @@
     &heading {
         position: absolute;
         width: 7.82%;
-        height: 21px;
+        height: 1.3125rem;
         left: 6.2%;
         top: 33.16%;
 
         font-family: Sansation;
         font-style: normal;
         font-weight: bold;
-        font-size: 20px;
-        line-height: 22px;
+        font-size: 1.25rem;
+        line-height: 1.375rem;
 
         color: #0D2938;
     }
@@ -54,89 +54,89 @@
     &search {
         position: absolute;
         width: 24.46%;
-        height: 32px;
+        height: 2rem;
         left: 16.5%;
-        top: 15px;
+        top: 0.9375rem;
 
         &_bar {
             position: absolute;
             width: 98%;
-            height: 32px;
+            height: 2rem;
             left: 0%;
-            top: 0px;
+            top: 0rem;
     
-            padding: 4px;
-            padding-left: 7px;
+            padding: 0.25rem;
+            padding-left: 0.4375rem;
             background: #FFFFFF;
-            border-radius: 2px;
+            border-radius: 0.125rem;
             border: #FFFFFF;
     
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 19px;
+            font-size: 1rem;
+            line-height: 1.1875rem;
     
             color: #2B2A28;
         }
     
         &_icon {
             position: absolute;
-            width: 40.97px;
-            height: 40px;
+            width: 2.560625rem;
+            height: 2.5rem;
             left: 98%;
-            top: 0px;
+            top: 0rem;
     
             background: #0D2938;
             border: #0D2938;
-            border-radius: 2px;
+            border-radius: 0.125rem;
         }
     }
 
     &request {
         position: absolute;
-        width: 57.96px;
-        height: 38px;
+        width: 3.6225rem;
+        height: 2.375rem;
         left: 53.98%;
-        top: 25px;
+        top: 1.5625rem;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: #0D2938;
     }
 
     &upload {
         position: absolute;
-        width: 51.96px;
-        height: 19px;
+        width: 3.2475rem;
+        height: 1.1875rem;
         left: 58.67%;
-        top: 25px;
+        top: 1.5625rem;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: #0D2938;
     }
 
     &mentors {
         position: absolute;
-        width: 120px;
-        height: 38px;
+        width: 7.5rem;
+        height: 2.375rem;
         left: 63.04%;
-        top: 25px;
+        top: 1.5625rem;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: #0D2938;
 
@@ -144,16 +144,16 @@
 
     &login {
         position: absolute;
-        width: 38.97px;
-        height: 38px;
+        width: 2.435625rem;
+        height: 2.375rem;
         left: 85.94%;
-        top: 17px;
+        top: 1.0625rem;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: #0D2938;
         background: transparent;
@@ -162,35 +162,35 @@
 
     &signup {
         position: absolute;
-        width: 79.94px;
-        height: 41px;
+        width: 4.99625rem;
+        height: 2.5625rem;
         left: 90.10%;
-        top: 15px;
+        top: 0.9375rem;
 
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
 
         color: #0D2938;
 
 
-        border: 1px solid #0D2938;
+        border: 0.0625rem solid #0D2938;
         box-sizing: border-box;
-        border-radius: 2px;
+        border-radius: 0.125rem;
         background: transparent;
     }
 
     &notification {
         position: absolute;
-        width: 30px;
-        height: 30px;
+        width: 1.875rem;
+        height: 1.875rem;
         left: 89.71%;
-        top: 23px;
+        top: 1.4375rem;
 
         background: #0D2938;
-        border-radius: 2px;
+        border-radius: 0.125rem;
 
         &_image {
             position: absolute;
@@ -202,7 +202,7 @@
     
         &_number {
             position: absolute;
-            width: 7px;
+            width: 0.4375rem;
             height: 13px;
             left: 58.75%;
             top: 8.5%;
@@ -210,8 +210,8 @@
             font-family: Droid Sans;
             font-style: normal;
             font-weight: bold;
-            font-size: 11px;
-            line-height: 13px;
+            font-size: 0.6875rem;
+            line-height: 0.8125rem;
     
             color: #FFFFFF;
         }
@@ -219,12 +219,12 @@
 
     &user {
         position: absolute;
-        width: 41px;
-        height: 41px;
+        width: 2.5625rem;
+        height: 2.5625rem;
         left: 93.4%;
-        top: 16px;
+        top: 1rem;
 
-        border-radius: 2px;
+        border-radius: 0.125rem;
     }
 
     &search_icon:hover, &request:hover, &upload:hover, &mentors:hover, &login:hover, &signup:hover, &notification:hover, &user:hover, .seeall:hover, .head_searchcour, .head_searchdep, .res_file:hover {
@@ -240,13 +240,13 @@
     visibility: hidden;
 
     position: absolute;
-    width: 634px;
-    height: 350px;
+    width: 39.625rem;
+    height: 21.875rem;
     left: 16.5%;
-    top: 54px;
+    top: 3.375rem;
     
     background: #FFFFFF;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
     z-index: 2;
 
     overflow-y: scroll;
@@ -254,17 +254,17 @@
 
 .search_file {
     width: 100%;
-    height: 26px;
+    height: 1.625rem;
     left: 0%;
-    top: 0px;
+    top: 0rem;
 
     background: rgba(56, 167, 222, 0.275);
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
 
     color: #0D2938;
     text-align: center;
@@ -302,8 +302,8 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
 }
 
 .resfile_cat {
@@ -316,18 +316,18 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
 }
 
 .resfile_cour {
     font-family: Droid Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
 
-    margin-left: 4px;
+    margin-left: 0.25rem;
 }
 
 .resfile_detail {
@@ -340,8 +340,8 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 0.6875rem;
+    line-height: 0.8125rem;
 
     color: rgba(43, 42, 40, 0.4);
 }
@@ -350,41 +350,41 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 11px;
-    line-height: 13px;
+    font-size: 0.6875rem;
+    line-height: 0.8125rem;
 
     color: rgba(43, 42, 40, 0.4);
-    margin-left: 4px;
+    margin-left: 0.25rem;
 }
 
 .seeall {
-    width: 42px;
-    height: 17px;
+    width: 2.625rem;
+    height: 1.0625rem;
 
     margin-left: 87.69%;
-    margin-bottom: 16px;
-    margin-top: 16px; 
+    margin-bottom: 1rem;
+    margin-top: 1rem; 
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
 
     color: #38A7DE;
 }
 
 .search_courses {
     width: 100%;
-    height: 26px;
+    height: 1.625rem;
 
     background: rgba(56, 167, 222, 0.275);
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
 
     color: #0D2938;
     text-align: center;
@@ -394,26 +394,26 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
 
     color: #2B2A28;
-    padding: 12px 24px 12px;
+    padding: 0.75rem 1.5rem 0.75rem;
 
-    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+    border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .search_dep {
     width: 100%;
-    height: 26px;
+    height: 1.625rem;
 
     background: rgba(56, 167, 222, 0.275);
 
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 25px;
+    font-size: 0.875rem;
+    line-height: 1.5625rem;
 
     color: #0D2938;
     text-align: center;
@@ -423,13 +423,13 @@
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1rem;
 
     color: #2B2A28;
-    padding: 12px 24px 12px;
+    padding: 0.75rem 1.5rem 0.75rem;
 
-    border-bottom: 1px solid rgba(65, 64, 66, 0.2);
+    border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .res_file:hover {
