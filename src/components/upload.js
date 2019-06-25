@@ -8,9 +8,7 @@ class Upload extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            disable: ''
-        };
+        this.disable = 'true'
 
         this.uplo_cour = React.createRef();
         this.uplo_cour_sel = React.createRef();
@@ -49,6 +47,8 @@ class Upload extends Component {
         this.books.current.style.color = '#2B2A28'
         this.notes.current.style.color = '#2B2A28'
         this.exam.current.style.color = '#2B2A28'
+        this.disable = 'false';
+        this.forceUpdate()
     }
 
     handleUpload() {
@@ -93,10 +93,10 @@ class Upload extends Component {
                                     </select>
                                     <div className='mat_sel' ref={this.material}>
                                     <div className='uplo_mat_type' ref={this.uplo_mat}>Material Type</div>
-                                        <div className='_check_tut'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_tut" ref={this.tut}>Tutorial</span> 
-                                        <div className='_check_books'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_books" ref={this.books}>Books</span> 
-                                        <div className='_check_notes'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_notes" ref={this.notes}>Notes</span> 
-                                        <div className='_check_exam'><CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} /></div><span className="_exam" ref={this.exam}>Examination Papers</span>
+                                        <div className='_check_tut'><CustomCheckbox disable={this.disable} handleChange={this.activ_name} activeborder='1px solid #2B2A28'/></div><span className="_tut" ref={this.tut}>Tutorial</span> 
+                                        <div className='_check_books'><CustomCheckbox disable={this.disable} handleChange={this.activ_name} activeborder='1px solid #2B2A28'/></div><span className="_books" ref={this.books}>Books</span> 
+                                        <div className='_check_notes'><CustomCheckbox disable={this.disable} handleChange={this.activ_name} activeborder='1px solid #2B2A28'/></div><span className="_notes" ref={this.notes}>Notes</span> 
+                                        <div className='_check_exam'><CustomCheckbox disable={this.disable} handleChange={this.activ_name} activeborder='1px solid #2B2A28'/></div><span className="_exam" ref={this.exam}>Examination Papers</span>
                                     </div>
                                     <div className='uplo_file' ref={this.fileuploader}><CustomFileUploader handleUpload={this.handleUpload}/></div>
                                 </form>
