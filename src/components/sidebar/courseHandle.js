@@ -16,51 +16,76 @@ class CourseHandle extends Component {
 
         this.loginradio = React.createRef();
 
-        this.active_course = this.active_course.bind(this);
-        this.choose_course = this.choose_course.bind(this);
-        this.select_course = this.select_course.bind(this);
+        this.activatecourse = this.activatecourse.bind(this);
     }
 
-    active_course() {
-        if (this.radio.current.checked) {
-            this.course.current.style.borderLeft = '6px solid #38A7DE';
-            this.header.current.style.color = '#38A7DE';
+    activatecourse() {
+        this.props.handleClick(this.props.name);
+    }
+
+    componentWillReceiveProps(props) {
+        if (props.login === 'true') {
+            if (props.name === props.active) {
+                this.setState({active: true})
+            }
+
+            else {
+                this.setState({active: false})
+            }
         }
 
         else {
-            this.course.current.style.borderLeft = '0px';
-            this.header.current.style.color = '#FFFFFF';
+            if (props.name === props.active) {
+                this.course.current.style.borderLeft = '6px solid #38A7DE';
+                this.header.current.style.color = '#38A7DE';
+            }
+
+            else {
+                this.course.current.style.borderLeft = '1px solid rgba(56, 167, 222, 0.15)';
+                this.header.current.style.color = '#FFFFFF';
+            }
         }
     }
 
-    choose_course() {
-        this.radio.current.checked = true;
-        this.active_course();
-    }
+    componentDidMount() {
+        if (this.props.login === 'true') {
+            if (this.props.name === this.props.active) {
+                this.setState({active: true})
+            }
 
-    select_course() {
-        this.loginradio.current.checked = true;
-        this.setState({active: true})
-        this.forceUpdate();
+            else {
+                this.setState({active: false})
+            }
+        }
+
+        else {
+            if (this.props.name === this.props.active) {
+                this.course.current.style.borderLeft = '6px solid #38A7DE';
+                this.header.current.style.color = '#38A7DE';
+            }
+
+            else {
+                this.course.current.style.borderLeft = '1px solid rgba(56, 167, 222, 0.15)';
+                this.header.current.style.color = '#FFFFFF';
+            }
+        }
     }
 
     render() {
         if (this.props.login === 'true') {
             return(
-                <div className='_tr'>
-                    <span className='tr' onClick={this.select_course}>Open Channel Hydralyics CEN-207</span>
-                    { this.state.active ? <span className='coursedot'><img src={coursedot} alt='coursedot'/></span> : <span></span> }
-                    <input type='radio' name='coursehandle' ref={this.loginradio}/>
+                <div className='coursehandle'>
+                    <span className='coursehandle--heading' onClick={this.activatecourse}>{this.props.name}</span>
+                    { this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span></span> }
                 </div>
             )
         }
 
         else {
             return(
-                <div className='_tr' ref={this.course}>
-                    <span className='tr' onClick={this.choose_course} ref={this.header}>Open Channel Hydralyics CEN-207</span>
-                    { this.props.mycourse === 'true' ? <span className='mycourse'>My Course</span> : <span></span>}
-                    <input type='radio' name='coursehandle' ref={this.radio} />
+                <div className='coursehandle' ref={this.course}>
+                    <span className='coursehandle--heading' onClick={this.activatecourse} ref={this.header}>{this.props.name}</span>
+                    { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span></span>}
                 </div>
             )
         }

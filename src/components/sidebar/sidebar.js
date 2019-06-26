@@ -9,11 +9,20 @@ class Sidebar extends Component {
         this.state = {
             login: ''
         }
+
+        this.active = 'Open Channel Hydralyics CEN-207'
+
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentWillMount() {
         const login = this.props.login
         this.setState({login: login});
+    }
+
+    handleClick(active) {
+        this.active = active;
+        this.forceUpdate();
     }
 
     render() {
@@ -25,12 +34,12 @@ class Sidebar extends Component {
                     <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
-                            <CourseHandle login='true' />
-                            <CourseHandle login='true' />
-                            <CourseHandle login='true' />
-                            <CourseHandle login='true' />
-                            <CourseHandle login='true' />
-                            <CourseHandle login='true' />
+                            <CourseHandle login='true' name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='true' name='Open Channel Hydralyics CEN-205' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='true' name='Open Channel Hydralyics CEN-203' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='true' name='Open Channel Hydralyics CEN-202' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='true' name='Open Channel Hydralyics CEN-208' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='true' name='Open Channel Hydralyics CEN-209' active={this.active} handleClick={this.handleClick}/>
                         </div>
                     </div>
                     <div className='sidebar--form-cover'>
@@ -58,10 +67,10 @@ class Sidebar extends Component {
                     <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
-                            <CourseHandle login='false' />
-                            <CourseHandle login='false' />
-                            <CourseHandle login='false' mycourse='true'/>
-                            <CourseHandle login='false' />
+                            <CourseHandle login='false' name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='false' name='Open Channel Hydralyics CEN-207' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='false' mycourse='true' name='Open Channel Hydralyics CEN-205' active={this.active} handleClick={this.handleClick}/>
+                            <CourseHandle login='false' name='Open Channel Hydralyics CEN-203' active={this.active} handleClick={this.handleClick}/>
                         </div>
                     </div>
                 </div>
