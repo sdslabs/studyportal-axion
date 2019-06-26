@@ -1,9 +1,9 @@
 .sidebar {
     position: absolute;
-    width: 424px;
-    height: 908px;
-    left: 0px;
-    top: 73px;
+    width: 26.5rem;
+    height: 56.75rem;
+    left: 0rem;
+    top: 4.5625rem;
 
     background: #0D2938;
     overflow-x: none;
@@ -12,7 +12,7 @@
     z-index: 1;
 
     ::-webkit-scrollbar {
-        width: 9px;
+        width: 0.5625rem;
     }
     
     ::-webkit-scrollbar-track {
@@ -21,7 +21,7 @@
     
     ::-webkit-scrollbar-thumb {
         background: #236385;
-        border-radius: 18px;
+        border-radius: 1.125rem;
     }
 }
 
@@ -29,66 +29,66 @@
 
     &course {
         position: absolute;
-        width: 200px;
-        height: 22px;
-        left: 36px;
-        top: 58px;
+        width: 12.5rem;
+        height: 1.375rem;
+        left: 2.25rem;
+        top: 3.625rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: bold;
-        font-size: 18px;
-        line-height: 21px;
+        font-size: 1.125rem;
+        line-height: 1.3125rem;
     
         color: #FFFFFF;
     }
 
     &back {
         position: absolute;
-        width: 100px;
-        height: 17px;
-        left: 36px;
-        top: 88px;
+        width: 6.25rem;
+        height: 1.0625rem;
+        left: 2.25rem;
+        top: 5.5rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 0.875rem;
+        line-height: 1rem;
     
         color: #38A7DE;
     }
 
     &course-name {
         position: absolute;
-        width: 424px;
-        height: 19px;
-        left: 0px;
-        top: 152px;
+        width: 100%;
+        height: 1.1875rem;
+        left: 0rem;
+        top: 9.5rem;
     
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
+        font-size: 1rem;
+        line-height: 1.1875rem;
     
     
         color: #FFFFFF;
     }
 
     &course-table {
-        width: 424px;
-        height: 415px;
-        border-top: 2px solid #1A4D68;
+        width: 100%;
+        height: 26.9375rem;
+        border-top: 0.125rem solid #1A4D68;
     
         overflow-y: auto;
         overflow-x: hidden;
     }
 
     &course-table_logout {
-        width: 424px;
-        height: 754px;
-        border-top: 2px solid #1A4D68;
+        width: 100%;
+        height: 47.125rem;
+        border-top: 0.125rem solid #1A4D68;
     
         overflow-y: auto;
         overflow-x: hidden;
@@ -103,47 +103,47 @@
 
         &header {
             position: absolute;
-            width: 94px;
-            height: 22px;
-            left: 36px;
-            top: 629.96px;
+            width: 5.875rem;
+            height: 1.375rem;
+            left: 2.25rem;
+            top: 39.3725rem;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 18px;
-            line-height: 21px;
+            font-size: 1.125rem;
+            line-height: 1.3125rem;
         
             color: #38A7DE;
 
             &_department {
                 position: absolute;
-                width: 87px;
-                height: 19px;
-                left: 38px;
-                top: 667.96px;
+                width: 5.4375rem;
+                height: 1.1875rem;
+                left: 2.375rem;
+                top: 41.7475rem;
             
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 16px;
-                line-height: 19px;
+                font-size: 1rem;
+                line-height: 1.1875rem;
             
                 color: #FFFFFF;
             }
 
             &_course {
                 position: absolute;
-                width: 98px;
-                height: 19px;
-                left: 36px;
-                top: 746.96px;
+                width: 6.125rem;
+                height: 1.1875rem;
+                left: 2.25rem;
+                top: 46.685rem;
             
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 16px;
-                line-height: 19px;
+                font-size: 1rem;
+                line-height: 1.1875rem;
             
                 color: #FFFFFF;
             }
@@ -152,43 +152,43 @@
         &select {
             &_department {
                 position: absolute;
-                width: 266px;
-                height: 36px;
-                left: 38px;
-                top: 694.96px;
+                width: 16.625rem;
+                height: 2.25rem;
+                left: 2.375rem;
+                top: 43.435rem;
             
                 background: #FFFFFF;
-                border-radius: 2px;
+                border-radius: 0.125rem;
             }
 
             &_course {
                 position: absolute;
-                width: 266px;
-                height: 36px;
-                left: 38px;
-                top: 773.96px;
+                width: 16.625rem;
+                height: 2.25rem;
+                left: 2.375rem;
+                top: 48.3725rem;
             
                 background: #FFFFFF;
-                border-radius: 2px;
+                border-radius: 0.125rem;
             }
         }
          
         &button {
             position: absolute;
-            width: 123px;
-            height: 36px;
-            left: 36px;
-            top: 833.96px;
+            width: 7.6875rem;
+            height: 2.25rem;
+            left: 2.25rem;
+            top: 52.1225rem;
         
             background: #38A7DE;
-            border-radius: 2px;
+            border-radius: 0.125rem;
             border: #38A7DE;
         
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
-            font-size: 16px;
-            line-height: 19px;
+            font-size: 1rem;
+            line-height: 1.1875rem;
         
             color: #FFFFFF;
         }
@@ -198,7 +198,3 @@
         cursor: pointer;
     }
 }
-
-
-
-

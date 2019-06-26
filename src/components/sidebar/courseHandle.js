@@ -36,12 +36,14 @@ class CourseHandle extends Component {
 
         else {
             if (props.name === props.active) {
-                this.course.current.style.borderLeft = '6px solid #38A7DE';
+                this.course.current.style.borderLeft = '0.375rem solid #38A7DE';
+                this.course.current.style.width = '98%';
                 this.header.current.style.color = '#38A7DE';
             }
 
             else {
-                this.course.current.style.borderLeft = '1px solid rgba(56, 167, 222, 0.15)';
+                this.course.current.style.borderLeft = '0.0625rem solid rgba(56, 167, 222, 0.15)';
+                this.course.current.style.width = '99.5%'
                 this.header.current.style.color = '#FFFFFF';
             }
         }
@@ -60,12 +62,14 @@ class CourseHandle extends Component {
 
         else {
             if (this.props.name === this.props.active) {
-                this.course.current.style.borderLeft = '6px solid #38A7DE';
+                this.course.current.style.borderLeft = '0.375rem solid #38A7DE';
+                this.course.current.style.width = '98%';
                 this.header.current.style.color = '#38A7DE';
             }
 
             else {
-                this.course.current.style.borderLeft = '1px solid rgba(56, 167, 222, 0.15)';
+                this.course.current.style.borderLeft = '0.0625rem solid rgba(56, 167, 222, 0.15)';
+                this.course.current.style.width = '99.5%'
                 this.header.current.style.color = '#FFFFFF';
             }
         }
