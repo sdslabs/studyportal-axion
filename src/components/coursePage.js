@@ -7,7 +7,7 @@ class CoursePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mycourse: 'true'
+            mycourse: true
         }
     }
 
@@ -16,7 +16,7 @@ class CoursePage extends Component {
             <div className='coursepage'>
                 <div className="coursepage--head">Structural Analysis CEN-207</div>
                 <div className='coursepage--underline'></div>
-                { this.state.mycourse === 'false' ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
+                { !this.state.mycourse ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
                     <div className='coursepage--category_all'><div>All<div className='coursepage--und_all'></div></div></div>
                     <div className='coursepage--category_tut'><div>Tutorials<div className='coursepage--und_tut'></div></div></div>

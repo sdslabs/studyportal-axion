@@ -8,7 +8,7 @@ class Upload extends Component {
     constructor(props) {
         super(props);
 
-        this.disable = 'true'
+        this.disable = true
 
         this.uplo_cour = React.createRef();
         this.uplo_cour_sel = React.createRef();
@@ -47,7 +47,7 @@ class Upload extends Component {
         this.books.current.style.color = '#2B2A28'
         this.notes.current.style.color = '#2B2A28'
         this.exam.current.style.color = '#2B2A28'
-        this.disable = 'false';
+        this.disable = false;
         this.forceUpdate()
     }
 
@@ -60,7 +60,7 @@ class Upload extends Component {
 
     render() {
 
-        if (this.props.upload === 'true') {
+        if (this.props.upload) {
             return(
                 <div className='upload_cover'>
                     <div className='upload_div'>

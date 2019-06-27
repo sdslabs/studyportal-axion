@@ -11,7 +11,7 @@ class Header extends Component {
         super(props);
         this.state = {
             login: '',
-            search: 'false'
+            search: false
         }
 
         this.search = React.createRef();
@@ -21,9 +21,9 @@ class Header extends Component {
     }
 
     activ_search() {
-        this.setState({search: 'true'});
+        this.setState({search: true});
 
-        if (this.state.search === 'true') {
+        if (this.state.search) {
             if (this.search.current.value !== '') {
                 this.result.current.style.visibility = 'visible';
             }
@@ -43,7 +43,7 @@ class Header extends Component {
     }
 
     render() {
-        if (this.state.login === 'true') {
+        if (this.state.login) {
             return(
                 <div className="header">
                     <img className="head_logo" src={logo} alt="studyportal_logo" />
