@@ -6,7 +6,7 @@ class CustomCheckbox extends Component {
         super(props);
         this.state = {
             value: '',
-            disable: 'true'
+            disable: true
         };
 
         this.check = React.createRef();
@@ -24,7 +24,7 @@ class CustomCheckbox extends Component {
 
     componentDidMount() {
         this.checkmark.current.style.border = this.props.border;
-        if (this.state.disable === 'true') {
+        if (this.state.disable) {
             this.check.current.disabled = true;
         }
     }
