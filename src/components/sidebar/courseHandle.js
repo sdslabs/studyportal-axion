@@ -80,7 +80,7 @@ class CourseHandle extends Component {
             return(
                 <div className='coursehandle'>
                     <span className='coursehandle--heading' onClick={this.activatecourse}>{this.props.name}</span>
-                    { this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span></span> }
+                    <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span></span> }</span>
                 </div>
             )
         }
