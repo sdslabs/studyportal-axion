@@ -28,10 +28,6 @@ class CustomFileUploader extends Component {
         this.forceUpdate();
     }
 
-    componentDidMount() {
-        console.log(this.files)
-    }
-
     render() {
         if (this.files.length === 0) {
             return(
