@@ -1,0 +1,132 @@
+.search {
+    position: absolute;
+    width: 39.625rem;
+    height: 21.875rem;
+    left: 16.5%;
+    top: 3.375rem;
+    
+    background: #FFFFFF;
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+    z-index: 2;
+
+    overflow-y: scroll;
+    display: none;
+}
+
+.search-- {
+
+    &file {
+        width: 100%;
+        height: 1.625rem;
+        left: 0%;
+        top: 0rem;
+    
+        background: rgba(56, 167, 222, 0.275);
+    
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.5625rem;
+    
+        color: #0D2938;
+        text-align: center;
+
+        &-holder {
+            width: 100%;
+
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: 33% 33% 33%;
+        }
+
+        &-seeall {
+            width: 2.625rem;
+            height: 1.0625rem;
+        
+            margin-left: 87.69%;
+            margin-bottom: 1rem;
+            margin-top: 1rem; 
+        
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 0.875rem;
+            line-height: 1rem;
+        
+            color: #38A7DE;
+        }
+
+        &-seeall:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+
+    &courses {
+        width: 100%;
+        height: 1.625rem;
+    
+        background: rgba(56, 167, 222, 0.275);
+    
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.5625rem;
+    
+        color: #0D2938;
+        text-align: center;
+
+        &-name {
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 0.875rem;
+            line-height: 1rem;
+        
+            color: #2B2A28;
+            padding: 0.75rem 1.5rem 0.75rem;
+        
+            border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
+        }
+
+        &-name:hover {
+            cursor: pointer;
+        }
+    }
+
+    &department {
+        width: 100%;
+        height: 1.625rem;
+    
+        background: rgba(56, 167, 222, 0.275);
+    
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.5625rem;
+    
+        color: #0D2938;
+        text-align: center;
+
+        &-name {
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 0.875rem;
+            line-height: 1rem;
+        
+            color: #2B2A28;
+            padding: 0.75rem 1.5rem 0.75rem;
+        
+            border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
+        }
+
+        &-name:hover {
+            cursor: pointer;
+        }
+    }
+}
+
