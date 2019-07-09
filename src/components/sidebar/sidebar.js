@@ -27,7 +27,7 @@ class Sidebar extends Component {
 
     render() {
 
-        if (this.state.login === 'true') {
+        if (this.state.login) {
             return(
                 <div className='sidebar'>
                     <div className='sidebar--course'>My Courses ({this.props.login})</div>
