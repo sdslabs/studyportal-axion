@@ -7,7 +7,7 @@ class Request extends Component {
         super(props);
         this.state = {
             type: 'file',
-            disable: 'true'
+            disable: true
         }
 
         this.file_cour = React.createRef();
@@ -85,7 +85,7 @@ class Request extends Component {
 
     render() {
 
-        if (this.props.request === 'true') {
+        if (this.props.request) {
             return(
                 <div className='requestcover'>
                         <div className='request'>

@@ -60,7 +60,7 @@ class Upload extends Component {
 
     render() {
 
-        if (this.props.upload === 'true') {
+        if (this.props.upload) {
             return(
                 <div className='uploadcover'>
                     <div className='upload'>
