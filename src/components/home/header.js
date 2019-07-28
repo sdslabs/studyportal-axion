@@ -5,6 +5,7 @@ import upload from 'assets/upload.png'
 import request from 'assets/request.png'
 import search from 'assets/search.png'
 import 'styles/main.scss'
+import departmentApi from 'api/departmentsApi'
 
 class Header extends Component {
     constructor(props) {
@@ -12,6 +13,10 @@ class Header extends Component {
         this.state = {
 
         }
+    }
+
+    componentDidMount() {
+        departmentApi()
     }
 
     render() {
