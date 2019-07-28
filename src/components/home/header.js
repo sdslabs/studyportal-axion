@@ -5,8 +5,13 @@ import upload from '../../assets/upload.png'
 import request from '../../assets/request.png'
 import search from '../../assets/search.png'
 import '../../styles/header_landing.scss'
+import departmentApi from '../../api/departmentsApi'
 
 class Header extends Component {
+    componentDidMount() {
+        departmentApi()
+    }
+
     render() {
         return (
             <div className="header_home">
