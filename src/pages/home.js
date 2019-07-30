@@ -13,8 +13,23 @@ import ece from 'assets/ece.png'
 import elec from 'assets/elec.png'
 import hss from 'assets/hss.png'
 import 'styles/main.scss'
+import departmentApi from 'api/departmentsApi'
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            departments: []
+        }
+    }
+
+    componentWillMount() {
+        departmentApi().then(res => {
+            this.setState({departments: res});
+            console.log(res)
+        })
+    }
+
     render() {
         return(
             <div>
