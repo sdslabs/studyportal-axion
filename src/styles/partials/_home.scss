@@ -1,11 +1,11 @@
 .sub_list {
     position: absolute;
     top: 28.375rem;
-    left: calc(52% - 31.25rem);
-    width: 62.5rem;
+    left: calc(52% - 31.75rem);
+    width: 63.5rem;
 
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 10rem 10rem 10rem 10rem 10rem;
     grid-template-columns: 25% 25% 25% 25%;
 
     justify-items: center;
@@ -15,7 +15,8 @@
 .archi {
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
-    margin-bottom: 0.75rem;
+    justify-self: center;
+    align-self: center;
 }
 
 .appli_sci {
