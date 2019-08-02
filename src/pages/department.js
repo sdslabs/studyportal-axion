@@ -5,7 +5,6 @@ import Request from '../components/request'
 import Upload from '../components/upload'
 import ActivityLog from '../components/activityLog'
 import CoursePage from '../components/coursePage'
-import { runInThisContext } from 'vm';
 
 class Department extends Component {
     constructor(props) {
