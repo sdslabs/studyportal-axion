@@ -4,7 +4,7 @@ const axiosInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: 'http://nexus.sdslabs.local',
   });
   
 
