@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
-import CustomCheckbox from '../customcheckbox/customCheckbox'
 import CustomFileUploader from './customFileUploader'
 import close from '../../assets/closereq.png'
 import '../../styles/main.scss'
