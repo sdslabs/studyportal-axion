@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Header from '../components/home/header'
 import SubjectCard from '../components/home/subjectCard'
-import archi from '../assets/archi.png'
 import appli_sci from '../assets/appli_science.png'
 import bio from '../assets/biotech.png'
 import chem from '../assets/chem.png'

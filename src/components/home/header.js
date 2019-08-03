@@ -7,6 +7,13 @@ import search from '../../assets/search.png'
 import '../../styles/main.scss'
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+    
     render() {
         return (
             <div className='landingheader'>

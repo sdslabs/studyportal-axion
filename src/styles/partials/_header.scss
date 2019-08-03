@@ -23,6 +23,10 @@
         background: #629EBD;
         border-radius: 2.9375rem;
     }
+
+    ::placeholder {
+        color:#9DB5B2;
+    }
 }
 
 .header-- {
@@ -66,7 +70,7 @@
             top: 0rem;
     
             padding: 0.25rem;
-            padding-left: 0.4375rem;
+            padding-left: 1rem;
             background: #FFFFFF;
             border-radius: 0.125rem;
             border: #FFFFFF;
@@ -97,7 +101,7 @@
         position: absolute;
         width: 3.6225rem;
         height: 2.375rem;
-        left: 53.98%;
+        left: calc(40.96% + 4.75rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;
@@ -113,7 +117,7 @@
         position: absolute;
         width: 3.2475rem;
         height: 1.1875rem;
-        left: calc(53.98% + 4.6225rem);
+        left: calc(40.96% + 9.3725rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;
@@ -129,7 +133,7 @@
         position: absolute;
         width: 7.5rem;
         height: 2.375rem;
-        left: calc(53.98% + 9.05rem);
+        left: calc(40.96% + 13.62rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;
