@@ -1,4 +1,7 @@
-import React, {Component} from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/no-deprecated */
+import React, { Component } from 'react'
 import '../../styles/main.scss'
 
 class CustomCheckbox extends Component {
@@ -6,19 +9,19 @@ class CustomCheckbox extends Component {
         super(props);
         this.state = {
             value: '',
-            disabled: ''
+            disabled: '',
+            hover: false
         };
 
         this.check = React.createRef();
-        this.checkmark = React.createRef();
 
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({disable: nextProps});
-    }
+        this.setState({ disable: nextProps });
+     }
 
     componentDidMount() {
         if (this.props.disable === 'true') {
@@ -28,25 +31,22 @@ class CustomCheckbox extends Component {
         else {
             this.check.current.disabled = false;
         }
-
-        this.checkmark.current.style.border = this.props.border;
     }
 
     hover() {
-        this.checkmark.current.style.background = this.props.hover;
-        this.checkmark.current.style.border = this.props.borderhover;
+        this.setState({ hover: true })
     }
 
     leave() {
-        this.checkmark.current.style.background = '#FFFFFF';
-        this.checkmark.current.style.border = this.props.border;
+        this.setState({ hover: false })
     }
 
     render() {
         return(
             <div className='customcheckbox' onMouseOver={this.hover} onMouseLeave={this.leave}>
                 <input className='customcheckbox--checkbox' type='checkbox' value={this.props.value} ref={this.check} onChange={this.props.handleChange} />
-                <span className='customcheckbox--checkmark' ref={this.checkmark}></span>
+                <span className='customcheckbox--checkmark' 
+                style={{ border: this.state.hover ? this.props.borderhover : this.props.border , backgroundColor: this.state.hover ? this.props.hover : "#FFFFFF" }}/>
             </div> 
         )
     }

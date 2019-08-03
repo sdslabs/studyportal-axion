@@ -1,4 +1,6 @@
-import React, {Component,Fragment} from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+import React, { Component,Fragment } from 'react'
 import Search from './search'
 import logo from '../../assets/head_logo.png'
 import search from '../../assets/head_search.png'
@@ -21,17 +23,17 @@ class Header extends Component {
 
     componentWillMount() {
         const login = this.props.login
-        this.setState({login: login});
+        this.setState({ login });
     }
 
     componentWillReceiveProps(props) {
-        this.setState({search: props.search})
+        this.setState({ search: props.search })
     }
 
     result() {
-        this.setState({value: this.search.current.value})
+        this.setState({ value: this.search.current.value })
         if (this.search.current.value !== '') {
-            this.setState({search: true})
+            this.setState({ search: true })
         }
     }
 

@@ -1,4 +1,5 @@
-import React, {Component, Fragment} from 'react'
+/* eslint-disable react/prop-types */
+import React, { Component, Fragment } from 'react'
 import CustomCheckbox from '../customcheckbox/customCheckbox'
 import CustomFileUploader from './customFileUploader'
 import close from '../../assets/closereq.png'
@@ -9,29 +10,9 @@ class Upload extends Component {
         super(props);
 
         this.state = {
-            disable: ''
+            disable: 0,
+            active: false
         };
-
-        this.uplo_cour = React.createRef();
-        this.uplo_cour_sel = React.createRef();
-        this.uplo_mat = React.createRef();
-        this.mat_tut = React.createRef();
-        this.mat_books = React.createRef();
-        this.mat_notes = React.createRef();
-        this.mat_exam = React.createRef();
-        this.check_tut = React.createRef();
-        this.check_books = React.createRef();
-        this.check_notes = React.createRef();
-        this.check_exam = React.createRef();
-        this.tut = React.createRef();
-        this.books = React.createRef();
-        this.notes = React.createRef();
-        this.exam = React.createRef();
-
-        this.header = React.createRef();
-        this.main = React.createRef();
-        this.material = React.createRef();
-        this.fileuploader = React.createRef();
 
         this.activ_uplo_sel_cour = this.activ_uplo_sel_cour.bind(this);
         this.activ_uplo_mat = this.activ_uplo_mat.bind(this);
@@ -39,23 +20,15 @@ class Upload extends Component {
     }
 
     activ_uplo_sel_cour() {
-        this.uplo_cour.current.style.color='#2B2A28';
-        this.uplo_cour_sel.current.disabled=false;
+        this.setState({ disable: 1 })
     }
 
     activ_uplo_mat() {
-        this.uplo_mat.current.style.color = '#2B2A28'
-        this.tut.current.style.color = '#2B2A28'
-        this.books.current.style.color = '#2B2A28'
-        this.notes.current.style.color = '#2B2A28'
-        this.exam.current.style.color = '#2B2A28'
+        this.setState({ disable: 2 })
     }
 
     handleUpload() {
-        this.header.current.style.display ='none'
-        this.main.current.style.top = '10%'
-        this.material.current.style.display = 'none'
-        this.fileuploader.current.style.top = '52.33%'
+        this.setState({ active: true })
     }
 
     render() {
@@ -65,11 +38,11 @@ class Upload extends Component {
                 <div className='uploadcover'>
                     <div className='upload'>
                         <div className='upload--close' onClick={this.props.handleUplo}><img src={close} alt='close'/></div>
-                        <div className='upload--header' ref={this.header}>
+                        <div className='upload--header' style={{ display: this.state.active ? 'none' : 'block' }}>
                             <div className='upload--heading'>Upload</div>
-                            <div className='upload--underline'></div>
+                            <div className='upload--underline' />
                         </div>
-                        <div className='upload--main' ref={this.main}>
+                        <div className='upload--main' style={{ top: this.state.active ? '10%' : '14.788%' }}>
                             <div className='upload--instruction'>
                                 <div className='upload--instruction-head'>Instructions</div>
                                 <div className='upload--instruction-body'>
@@ -85,27 +58,14 @@ class Upload extends Component {
                                         <option>--Select Department--</option>
                                         <option>Civil Engineering</option>
                                     </select>
-                                    <div className='form--course' ref={this.uplo_cour}>Course Name</div>
-                                    <select className='form--course-select' ref={this.uplo_cour_sel} onChange={this.activ_uplo_mat} form='uploadform' disabled>
+                                    <div className='form--course' style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Course Name</div>
+                                    <select className='form--course-select' onChange={this.activ_uplo_mat} form='uploadform' disabled={ !(this.state.disable >= 1) }>
                                         <option>--Select Course--</option>
                                         <option>Structural Analysis</option>
                                     </select>
-                                    <div className='upload--form-material' ref={this.material}>
-                                    <div className='form--material-type' ref={this.uplo_mat}>Material Type</div>
-                                        <div className='_check_tut'>
-                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
-                                        </div><span className="_tut" ref={this.tut}>Tutorial</span> 
-                                        <div className='_check_books'>
-                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
-                                        </div><span className="_books" ref={this.books}>Books</span> 
-                                        <div className='_check_notes'>
-                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
-                                        </div><span className="_notes" ref={this.notes}>Notes</span> 
-                                        <div className='_check_exam'>
-                                            <CustomCheckbox disable = {this.state.disable} handleChange={this.activ_name} />
-                                        </div><span className="_exam" ref={this.exam}>Examination Papers</span>
+                                    <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
+                                        <CustomFileUploader handleUpload={this.handleUpload} disabled={ !(this.state.disable >= 2) }/>
                                     </div>
-                                    <div className='upload--file' ref={this.fileuploader}><CustomFileUploader handleUpload={this.handleUpload}/></div>
                                 </form>
                             </div>   
                         </div> 
@@ -116,7 +76,7 @@ class Upload extends Component {
 
         else {
             return(
-                <Fragment></Fragment>
+                <Fragment />
             )
         }
     }

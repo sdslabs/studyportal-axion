@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+import React, { Component } from 'react'
 import arrow from '../../assets/left-arrow.png'
 import CourseHandle from './courseHandle'
 import '../../styles/main.scss'
@@ -17,7 +19,7 @@ class Sidebar extends Component {
 
     componentWillMount() {
         const login = this.props.login
-        this.setState({login: login});
+        this.setState({ login });
     }
 
     handleClick(active) {
@@ -47,7 +49,7 @@ class Sidebar extends Component {
                             <div className='sidebar--form-header'>Add Course</div>
                             <div className='sidebar--form-header_department'>Department</div>
                             <select className='sidebar--form-select_department'>
-                                <option value={this.props.key}></option>
+                                <option value={this.props.key} />
                             </select>
                             <div className='sidebar--form-header_course'>Course Name</div>
                             <select className='sidebar--form-select_course'>

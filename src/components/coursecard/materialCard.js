@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
 import React, {Component} from 'react'
 import icon from '../../assets/material_icon.svg'
 import '../../styles/main.scss'
@@ -12,22 +14,20 @@ class MaterialCard extends Component {
             queue:'2'
         }
 
-        this.check = React.createRef();
-
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
     }
 
     componentWillMount() {
-        this.setState({queue: this.props.queue});
+        this.setState({ queue: this.props.queue });
     }
 
     hover() {
-        this.setState({queue: '1'});
+        this.setState({ queue: '1' });
     }
 
     leave() {
-        this.setState({queue: '2'});
+        this.setState({ queue: '2' });
     }
 
     render() {

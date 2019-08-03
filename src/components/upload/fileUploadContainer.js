@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react'
 import '../../styles/main.scss'
 
 class FileUploadContainer extends Component {
     constructor(props) {
         super(props);
-
-        this.container = React.createRef();
 
         this.handleRemove = this.handleRemove.bind(this);
     }
@@ -16,7 +15,7 @@ class FileUploadContainer extends Component {
 
     render() {
         return(
-            <div className='customfileuploader--fileholder' ref={this.container}>
+            <div className='customfileuploader--fileholder'>
                     <div className='customfileuploader--fileholder_name'>{this.props.name}</div>
                     <select className='customfileuploader--fileholder_category'>
                         <option value='default'>Select</option>

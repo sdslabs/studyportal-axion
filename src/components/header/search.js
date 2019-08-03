@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+import React, { Component } from 'react'
 import SearchResult from './searchResult'
 import '../../styles/main.scss'
 
