@@ -9,28 +9,11 @@ class CustomCheckbox extends Component {
         super(props);
         this.state = {
             value: '',
-            disabled: '',
             hover: false
         };
 
-        this.check = React.createRef();
-
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({ disable: nextProps });
-     }
-
-    componentDidMount() {
-        if (this.props.disable === 'true') {
-            this.check.current.disabled = true;
-        }
-
-        else {
-            this.check.current.disabled = false;
-        }
     }
 
     hover() {
@@ -44,7 +27,7 @@ class CustomCheckbox extends Component {
     render() {
         return(
             <div className='customcheckbox' onMouseOver={this.hover} onMouseLeave={this.leave}>
-                <input className='customcheckbox--checkbox' type='checkbox' value={this.props.value} ref={this.check} onChange={this.props.handleChange} />
+                <input className='customcheckbox--checkbox' type='checkbox' value={this.props.value} onChange={this.props.handleChange} />
                 <span className='customcheckbox--checkmark'
                 style={{ border: this.state.hover ? this.props.borderhover : this.props.border , backgroundColor: this.state.hover ? this.props.hover : "#FFFFFF" }}/>
             </div>
