@@ -1,3 +1,5 @@
+/* eslint-disable react/no-deprecated */
+/* eslint-disable react/prop-types */
 import React, {Component,Fragment} from 'react'
 import download from '../../assets/download.svg'
 import green from '../../assets/green_status.svg'
@@ -16,7 +18,7 @@ class ActivityReqCard extends Component {
 
     componentWillMount() {
         let status = this.props.status;
-        this.setState({status: status});
+        this.setState({ status });
     }
 
     componentDidMount() {
@@ -43,7 +45,7 @@ class ActivityReqCard extends Component {
                 {this.state.status === '2' ?
                 (<Fragment>
                     <div className='activityreqcard--status' ref={this.reqStatus}><img className='activityreqcard--status_color' src={yellow} alt='yellow'/> Request Approved ({this.state.status}/3)</div>
-                    <div className='activityreqcard--file'></div>
+                    <div className='activityreqcard--file'/>
                 </Fragment>) :
                 (<Fragment>
                     <div className='activityreqcard--status' ref={this.reqStatus}><img className='req_color' src={green} alt='green'/> Files Uploaded ({this.state.status}/3)</div>

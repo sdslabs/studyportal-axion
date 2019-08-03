@@ -1,4 +1,6 @@
-import React, {Component} from 'react'
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react'
 import FileUploadContainer from './fileUploadContainer'
 import '../../styles/main.scss'
 
@@ -10,6 +12,10 @@ class CustomFileUploader extends Component {
 
         this.addFiles = this.addFiles.bind(this);
         this.handleRemove = this.handleRemove.bind(this); 
+    }
+
+    componentDidMount() {
+        console.log(this.files)
     }
 
     addFiles(e) {

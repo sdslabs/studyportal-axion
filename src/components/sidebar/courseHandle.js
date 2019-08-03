@@ -1,4 +1,8 @@
-import React, {Component} from 'react'
+/* eslint-disable react/no-did-mount-set-state */
+/* eslint-disable react/sort-comp */
+/* eslint-disable react/no-deprecated */
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react'
 import coursedot from '../../assets/coursedot.png'
 import '../../styles/main.scss'
 
@@ -26,11 +30,11 @@ class CourseHandle extends Component {
     componentWillReceiveProps(props) {
         if (props.login === 'true') {
             if (props.name === props.active) {
-                this.setState({active: true})
+                this.setState({ active: true })
             }
 
             else {
-                this.setState({active: false})
+                this.setState({ active: false })
             }
         }
 
@@ -52,11 +56,11 @@ class CourseHandle extends Component {
     componentDidMount() {
         if (this.props.login === 'true') {
             if (this.props.name === this.props.active) {
-                this.setState({active: true})
+                this.setState({ active: true })
             }
 
             else {
-                this.setState({active: false})
+                this.setState({ active: false })
             }
         }
 
@@ -80,7 +84,7 @@ class CourseHandle extends Component {
             return(
                 <div className='coursehandle'>
                     <span className='coursehandle--heading' onClick={this.activatecourse}>{this.props.name}</span>
-                    <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span></span> }</span>
+                    <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span /> }</span>
                 </div>
             )
         }
@@ -89,7 +93,7 @@ class CourseHandle extends Component {
             return(
                 <div className='coursehandle' ref={this.course}>
                     <span className='coursehandle--heading' onClick={this.activatecourse} ref={this.header}>{this.props.name}</span>
-                    { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span></span>}
+                    { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
                 </div>
             )
         }

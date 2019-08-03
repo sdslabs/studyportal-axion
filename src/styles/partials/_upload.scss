@@ -235,7 +235,7 @@
         width: 62.5rem;
         height: 2.25rem;
         left: 0%;
-        top: 74.766%;
+        top: 52.766%;
     }
 
     &header {
@@ -258,100 +258,3 @@
         cursor: pointer;
     }
 }
-
-._tut {
-    position: absolute;
-    width: 3.9375rem;
-    height: 1.1875rem;
-    left: 3%;
-    top: 12.25rem;
-  
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.375rem;
-  
-    color: rgba(43, 42, 40, 0.2);
-  }
-  
-  ._books {
-    position: absolute;
-    width: 3.9375rem;
-    height: 1.1875rem;
-    left: 21.96%;
-    top: 12.25rem;
-  
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.375rem;
-  
-    color: rgba(43, 42, 40, 0.2);
-  }
-  
-  ._notes {
-    position: absolute;
-    width: 3.9375rem;
-    height: 1.1875rem;
-    left: 41.65%;
-    top: 12.25rem;
-  
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.375rem;
-  
-    color: rgba(43, 42, 40, 0.2);
-  }
-  
-  ._exam {
-    position: absolute;
-    width: 15.625rem;
-    height: 1.1875rem;
-    left: 60.89%;
-    top: 12.25rem;
-  
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.375rem;
-  
-    color: rgba(43, 42, 40, 0.2);
-  }
-
-._check_tut {
-    position: absolute;
-    top: 61.65%;
-    left: 0%;
-    height: 0.9375rem;
-    width: 0.9375rem;
-}
-
-._check_books {
-    position: absolute;
-    top: 61.65%;
-    left: 18.96%;
-    height: 0.9375rem;
-    width: 0.9375rem;
-}
-
-._check_notes {
-    position: absolute;
-    top: 61.65%;
-    left: 38.65%;
-    height: 0.9375rem;
-    width: 0.9375rem;
-}
-
-._check_exam {
-    position: absolute;
-    top: 61.65%;
-    left: 57.89%;
-    height: 0.9375rem;
-    width: 0.9375rem;
-}
-

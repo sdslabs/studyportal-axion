@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+/* eslint-disable react/prop-types */
+import React, { Component } from 'react'
 import '../../styles/main.scss'
 
 class SubjectCard extends Component {

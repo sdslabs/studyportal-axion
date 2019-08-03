@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import icon from '../../assets/icon.png'
 import '../../styles/main.scss'
 
