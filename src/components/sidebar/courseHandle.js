@@ -14,11 +14,8 @@ class CourseHandle extends Component {
             active: ''
         }
 
-        this.radio = React.createRef();
         this.course = React.createRef();
         this.header = React.createRef();
-
-        this.loginradio = React.createRef();
 
         this.activatecourse = this.activatecourse.bind(this);
     }
@@ -28,7 +25,7 @@ class CourseHandle extends Component {
     }
 
     componentWillReceiveProps(props) {
-        if (props.login === 'true') {
+        if (props.login) {
             if (props.name === props.active) {
                 this.setState({ active: true })
             }
@@ -54,7 +51,7 @@ class CourseHandle extends Component {
     }
 
     componentDidMount() {
-        if (this.props.login === 'true') {
+        if (this.props.login) {
             if (this.props.name === this.props.active) {
                 this.setState({ active: true })
             }
@@ -80,7 +77,7 @@ class CourseHandle extends Component {
     }
 
     render() {
-        if (this.props.login === 'true') {
+        if (this.props.login) {
             return(
                 <div className='coursehandle'>
                     <span className='coursehandle--heading' onClick={this.activatecourse}>{this.props.name}</span>
