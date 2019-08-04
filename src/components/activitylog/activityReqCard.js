@@ -1,6 +1,6 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
-import React, {Component,Fragment} from 'react'
+import React, { Component,Fragment } from 'react'
 import download from '../../assets/download.svg'
 import green from '../../assets/green_status.svg'
 import yellow from '../../assets/yellow_status.svg'

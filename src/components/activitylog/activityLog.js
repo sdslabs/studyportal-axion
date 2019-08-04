@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import ActivityReqCard from './activityReqCard'
 import '../../styles/main.scss'
 
