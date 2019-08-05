@@ -1,3 +1,9 @@
+.subjectcard--image {
+  width: 13.3125rem;
+  height: 8.125rem;
+  transition: width 0.4s, height 0.4s;
+}
+
 .subjectcard--image:hover {
     cursor: pointer;
     width: 14.8125rem;

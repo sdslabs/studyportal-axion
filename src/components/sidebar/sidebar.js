@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
-import arrow from '../../assets/left-arrow.png'
+import arrow from 'assets/left-arrow.png'
 import CourseHandle from './courseHandle'
-import '../../styles/main.scss'
+import 'styles/main.scss'
 
 class Sidebar extends Component {
     constructor(props) {

@@ -2,11 +2,11 @@
 /* eslint-disable react/no-deprecated */
 import React, { Component,Fragment } from 'react'
 import Search from './search'
-import logo from '../../assets/head_logo.png'
-import search from '../../assets/head_search.png'
-import notif from '../../assets/notif.png'
-import userimg from '../../assets/img_user.png'
-import '../../styles/main.scss'
+import logo from 'assets/head_logo.png'
+import search from 'assets/head_search.png'
+import notif from 'assets/notif.png'
+import userimg from 'assets/img_user.png'
+import 'styles/main.scss'
 
 class Header extends Component {
     constructor(props) {

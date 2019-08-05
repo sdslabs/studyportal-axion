@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
-import '../../styles/main.scss'
+import 'styles/main.scss'
 
 class FileUploadContainer extends Component {
     constructor(props) {

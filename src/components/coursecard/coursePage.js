@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MaterialCard from './materialCard'
-import CustomCheckbox from '../customcheckbox/customCheckbox'
-import '../../styles/main.scss'
+import CustomCheckbox from 'components/customcheckbox/customCheckbox'
+import 'styles/main.scss'
 
 class CoursePage extends Component {
     constructor(props) {
