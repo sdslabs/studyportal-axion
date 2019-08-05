@@ -14,10 +14,6 @@ class CustomFileUploader extends Component {
         this.handleRemove = this.handleRemove.bind(this);
     }
 
-    componentDidMount() {
-        console.log(this.files)
-    }
-
     addFiles(e) {
         const file = e.target.files;
 
