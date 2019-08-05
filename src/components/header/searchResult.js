@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import icon from '../../assets/icon.png'
-import '../../styles/main.scss'
+import icon from 'assets/icon.png'
+import 'styles/main.scss'
 
 class SearchResult extends Component {
     render() {

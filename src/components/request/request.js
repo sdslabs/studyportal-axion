@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
-import close from '../../assets/closereq.png'
-import '../../styles/main.scss'
+import close from 'assets/closereq.png'
+import 'styles/main.scss'
 
 class Request extends Component {
     constructor(props) {

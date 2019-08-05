@@ -2,7 +2,7 @@
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
 import SearchResult from './searchResult'
-import '../../styles/main.scss'
+import 'styles/main.scss'
 
 class Search extends Component {
     constructor(props) {

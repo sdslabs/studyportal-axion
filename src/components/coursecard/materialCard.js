@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
-import icon from '../../assets/material_icon.svg'
-import '../../styles/main.scss'
-import download1 from '../../assets/download.svg'
-import download2 from '../../assets/download1.svg'
-import CustomCheckbox from '../customcheckbox/customCheckbox'
+import icon from 'assets/material_icon.svg'
+import 'styles/main.scss'
+import download1 from 'assets/download.svg'
+import download2 from 'assets/download1.svg'
+import CustomCheckbox from 'components/customcheckbox/customCheckbox'
 
 class MaterialCard extends Component {
     constructor(props) {

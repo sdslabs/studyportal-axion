@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import logo from '../../assets/studyportal_logo.png'
-import sds_logo from '../../assets/sds_logo.png'
-import upload from '../../assets/upload.png'
-import request from '../../assets/request.png'
-import search from '../../assets/search.png'
-import '../../styles/main.scss'
+import logo from 'assets/studyportal_logo.png'
+import sds_logo from 'assets/sds_logo.png'
+import upload from 'assets/upload.png'
+import request from 'assets/request.png'
+import search from 'assets/search.png'
+import 'styles/main.scss'
 
 class Header extends Component {
     constructor(props) {

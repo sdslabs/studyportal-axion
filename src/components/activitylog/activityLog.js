@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityReqCard from './activityReqCard'
-import '../../styles/main.scss'
+import 'styles/main.scss'
 
 class ActivityLog extends Component {
     render() {

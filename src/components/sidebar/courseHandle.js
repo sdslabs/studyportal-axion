@@ -3,8 +3,8 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
-import coursedot from '../../assets/coursedot.png'
-import '../../styles/main.scss'
+import coursedot from 'assets/coursedot.png'
+import 'styles/main.scss'
 
 class CourseHandle extends Component {
     constructor(props) {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Header from '../components/header/header'
-import Sidebar from '../components/sidebar/sidebar'
-import Request from '../components/request/request'
-import Upload from '../components/upload/upload'
-import ActivityLog from '../components/activitylog/activityLog'
-import CoursePage from '../components/coursecard/coursePage'
+import Header from 'components/header/header'
+import Sidebar from 'components/sidebar/sidebar'
+import Request from 'components/request/request'
+import Upload from 'components/upload/upload'
+import ActivityLog from 'components/activitylog/activityLog'
+import CoursePage from 'components/coursecard/coursePage'
 
 class Test extends Component {
     constructor(props) {
