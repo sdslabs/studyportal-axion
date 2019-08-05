@@ -7,9 +7,9 @@ class Request extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            type: 'file',
-            disable: 0,
-            disableCourse: 0
+            type: 'file', //Represents whether course or file tab is active
+            disable: 0, //Enabling elements in file form
+            disableCourse: 0 //Enabling elements in course form
         }
 
         this.switchToCourse = this.switchToCourse.bind(this);
