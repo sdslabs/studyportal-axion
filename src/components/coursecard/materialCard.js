@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import icon from '../../assets/material_icon.svg'
 import '../../styles/main.scss'
 import download1 from '../../assets/download.svg'
@@ -41,8 +41,8 @@ class MaterialCard extends Component {
                     <div className='material--name'>Tutorial 1</div>
                     <div className='material--download'>Downloads: 2048</div>
                 </div>
-                { this.state.queue === '1' ? 
-                    <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> : 
+                { this.state.queue === '1' ?
+                    <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
                     <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
                 <div className='material--size'>10.5 MB</div>
                 <div className='material--datemodified'>Dec 14, 2018</div>

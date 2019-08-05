@@ -14,11 +14,11 @@
     ::-webkit-scrollbar {
         width: 0.375rem;
     }
-    
+
     ::-webkit-scrollbar-track {
         background: #88CAEB;
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background: #629EBD;
         border-radius: 2.9375rem;
@@ -68,29 +68,29 @@
             height: 2rem;
             left: 0%;
             top: 0rem;
-    
+
             padding: 0.25rem;
             padding-left: 1rem;
             background: #FFFFFF;
             border-radius: 0.125rem;
             border: #FFFFFF;
-    
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-    
+
             color: #2B2A28;
         }
-    
+
         &_icon {
             position: absolute;
             width: 2.560625rem;
             height: 2.5rem;
             left: 98%;
             top: 0rem;
-    
+
             background: #0D2938;
             border: #0D2938;
             border-radius: 0.125rem;
@@ -203,20 +203,20 @@
             top: 31%;
             bottom: 30%;
         }
-    
+
         &_number {
             position: absolute;
             width: 0.4375rem;
             height: 13px;
             left: 58.75%;
             top: 8.5%;
-    
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: bold;
             font-size: 0.6875rem;
             line-height: 0.8125rem;
-    
+
             color: #FFFFFF;
         }
     }

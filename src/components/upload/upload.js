@@ -66,8 +66,8 @@ class Upload extends Component {
                                         <CustomFileUploader handleUpload={this.handleUpload} disabled={ !(this.state.disable >= 2) }/>
                                     </div>
                                 </form>
-                            </div>   
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                 </div>
             )

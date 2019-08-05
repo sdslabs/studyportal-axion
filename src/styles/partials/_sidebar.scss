@@ -14,11 +14,11 @@
     ::-webkit-scrollbar {
         width: 0.5625rem;
     }
-    
+
     ::-webkit-scrollbar-track {
         background: #1A4D68;
     }
-    
+
     ::-webkit-scrollbar-thumb {
         background: #236385;
         border-radius: 1.125rem;
@@ -33,13 +33,13 @@
         height: 1.375rem;
         left: 2.25rem;
         top: 3.625rem;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: bold;
         font-size: 1.125rem;
         line-height: 1.3125rem;
-    
+
         color: #FFFFFF;
     }
 
@@ -49,13 +49,13 @@
         height: 1.0625rem;
         left: 2.25rem;
         top: 5.5rem;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 0.875rem;
         line-height: 1rem;
-    
+
         color: #38A7DE;
     }
 
@@ -65,14 +65,14 @@
         height: 1.1875rem;
         left: 0rem;
         top: 9.5rem;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-    
-    
+
+
         color: #FFFFFF;
     }
 
@@ -80,7 +80,7 @@
         width: 100%;
         height: 26.9375rem;
         border-top: 0.125rem solid #1A4D68;
-    
+
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -89,7 +89,7 @@
         width: 100%;
         height: 47.125rem;
         border-top: 0.125rem solid #1A4D68;
-    
+
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -107,13 +107,13 @@
             height: 1.375rem;
             left: 2.25rem;
             top: 39.3725rem;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1.125rem;
             line-height: 1.3125rem;
-        
+
             color: #38A7DE;
 
             &_department {
@@ -122,13 +122,13 @@
                 height: 1.1875rem;
                 left: 2.375rem;
                 top: 41.7475rem;
-            
+
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-            
+
                 color: #FFFFFF;
             }
 
@@ -138,17 +138,17 @@
                 height: 1.1875rem;
                 left: 2.25rem;
                 top: 46.685rem;
-            
+
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-            
+
                 color: #FFFFFF;
             }
         }
-        
+
         &select {
             &_department {
                 position: absolute;
@@ -156,7 +156,7 @@
                 height: 2.25rem;
                 left: 2.375rem;
                 top: 43.435rem;
-            
+
                 background: #FFFFFF;
                 border-radius: 0.125rem;
             }
@@ -167,29 +167,29 @@
                 height: 2.25rem;
                 left: 2.375rem;
                 top: 48.3725rem;
-            
+
                 background: #FFFFFF;
                 border-radius: 0.125rem;
             }
         }
-         
+
         &button {
             position: absolute;
             width: 7.6875rem;
             height: 2.25rem;
             left: 2.25rem;
             top: 52.1225rem;
-        
+
             background: #38A7DE;
             border-radius: 0.125rem;
             border: #38A7DE;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-        
+
             color: #FFFFFF;
         }
     }

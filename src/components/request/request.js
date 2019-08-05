@@ -82,15 +82,15 @@ class Request extends Component {
                                             <div className='file--material_tut'>
                                                 <input type='radio' name='material' value='tutorial' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
-                                                <span className="tut" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Tutorial</span> 
+                                                <span className="tut" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Tutorial</span>
                                             <div className='file--material_books'>
                                                 <input type='radio' name='material' value='books' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
-                                            <span className="books" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Books</span> 
+                                            <span className="books" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Books</span>
                                             <div className='file--material_notes'>
                                                 <input type='radio' name='material' value='notes' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
-                                            <span className="notes" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Notes</span> 
+                                            <span className="notes" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Notes</span>
                                             <div className='file--material_exam'>
                                                 <input type='radio' name='material' value='exam' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
