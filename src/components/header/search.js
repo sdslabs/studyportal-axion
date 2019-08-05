@@ -16,7 +16,7 @@ class Search extends Component {
             if (props.value !== '') {
                 this.search.current.style.display = 'block';
             }
-    
+
             else {
                 this.search.current.style.display = 'none';
             }

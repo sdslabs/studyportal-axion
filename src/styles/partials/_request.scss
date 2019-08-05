@@ -28,79 +28,79 @@
 }
 
 .request-- {
-    
+
     &close {
         position: absolute;
         width: 1.264375rem;
         height: 1.264375rem;
         right: 0%;
         top: 0%;
-    
+
         margin-right: 1.625rem;
         margin-top: 1.375rem;
     }
-    
+
     &heading {
         position: absolute;
         width: 7.25rem;
         height: 2.375rem;
         left: 48%;
         top: 3.75%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 2rem;
         line-height: 2.3125rem;
-    
+
         color: #2B2A28;
     }
-    
+
     &underline {
         position: absolute;
         width: 5rem;
         height: 0.05%;
         left: 48.90%;
         top: 9.32%;
-    
+
         border: 0.0625rem solid #38A7DE;
     }
-    
+
     &instructions {
         position: absolute;
         width: 65.34%;
         height: 9.375rem;
         left: 17.32%;
         top: 14.78%;
-    
+
         background: rgba(56, 167, 222, 0.275);
         border-radius: 0.125rem;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.5rem;
         text-align: justify;
-    
+
         color: #2B2A28;
-    
+
         padding: 1rem 1.5rem 1rem 1.5rem;
     }
-    
+
     &type {
         position: absolute;
         width: 6rem;
         height: 1.1875rem;
         left: 18.75%;
         top: 36.86%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-    
+
         color: #2B2A28;
     }
 
@@ -112,17 +112,17 @@
             height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
-        
+
             background: #FFFFFF;
             border: none;
             border-bottom: 0.25rem solid rgba(56, 167, 222, 0.2);
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-        
+
             color: #2B2A28;
         }
 
@@ -132,22 +132,22 @@
             height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
-        
+
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-        
-            color: #2B2A28;    
+
+            color: #2B2A28;
         }
-    
+
    }
-    
+
     &coursebutton- {
 
         &inactive {
@@ -156,17 +156,17 @@
             height: 2.25rem;
             left: calc(18.75% + 7.5625rem);
             top: 40.61%;
-        
+
             background: #FFFFFF;
             border: none;
             border-bottom: 0.2rem solid rgba(56, 167, 222, 0.2);
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-            
+
             color: #2B2A28;
         }
 
@@ -176,19 +176,19 @@
             height: 2.25rem;
             left: calc(18.75% + 7.5625rem);
             top: 40.61%;
-        
+
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-            
+
             color: #2B2A28;
-        } 
+        }
     }
 
     &form-file {
@@ -213,17 +213,17 @@
         height: 2.5625rem;
         left: 0%;
         top: 87.056%;
-    
+
         background: #38A7DE;
         border-radius: 0.125rem;
         border: #38A7DE;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-    
+
         color: #FFFFFF;
     }
 
@@ -233,17 +233,17 @@
         height: 2.5625rem;
         left: 0%;
         top: 85.518%;
-    
+
         background: #38A7DE;
         border-radius: 0.125rem;
         border: #38A7DE;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-    
+
         color: #FFFFFF;
     }
 }
@@ -256,14 +256,14 @@
         height: 1.3125rem;
         left: 0%;
         top: 0%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
         text-align: justify;
-    
+
         color: #2B2A28;
 
         &-select {
@@ -276,16 +276,16 @@
             border: 1px solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-        
+
             text-align: justify;
             padding-left: 0.5rem;
-        
+
             background: #FFFFFF;
         }
     }
@@ -296,37 +296,37 @@
         height: 1.3125rem;
         left: 0%;
         top: 20.90%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
-    
+
         text-align: justify;
-    
+
         color: rgba(43, 42, 40, 0.2);
-    
+
         &-select {
             position: absolute;
             width: 15.75rem;
             height: 2.25rem;
             left: 0%;
             top: 28.57%;
-        
+
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-        
+
             text-align: justify;
             padding-left: 0.5rem;
-        
+
             background: #FFFFFF;
         }
 
@@ -334,34 +334,34 @@
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-          
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-          
+
             text-align: justify;
             padding-left: 0.5rem;
             color: rgba(43, 42, 40, 0.2);
-          
+
             background: #FFFFFF;
           }
     }
-    
+
     &material {
         position: absolute;
         width: 6.125rem;
         height: 1.1875rem;
         left: 0%;
         top: 44.45%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-    
+
         color: rgba(43, 42, 40, 0.2);
 
         &_tut {
@@ -371,7 +371,7 @@
             height: 0.9375rem;
             width: 0.9375rem;
         }
-        
+
         &_books {
             position: absolute;
             top: 52%;
@@ -379,7 +379,7 @@
             height: 0.9375rem;
             width: 0.9375rem;
         }
-        
+
         &_notes {
             position: absolute;
             top: 52%;
@@ -387,7 +387,7 @@
             height: 0.9375rem;
             width: 0.9375rem;
         }
-        
+
         &_exam {
             position: absolute;
             top: 52%;
@@ -403,15 +403,15 @@
         height: 1.3125rem;
         left: 0%;
         top: 63.50%;
-    
+
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
-    
+
         text-align: justify;
-    
+
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
@@ -420,18 +420,18 @@
             height: 2.25rem;
             left: 0%;
             top: 71.179%;
-          
+
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
             padding: 0.5625rem 0.75rem 0.5rem;
-          
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-          
+
             text-align: justify;
           }
 
@@ -442,7 +442,7 @@
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
           }
-    } 
+    }
 }
 
 .course-- {
@@ -469,11 +469,11 @@
             height: 2.25rem;
             left: 0%;
             top: 10.248%;
-            
+
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-    
+
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -502,11 +502,11 @@
             height: 2.25rem;
             left: 0%;
             top: 38.165%;
-    
+
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-    
+
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -515,7 +515,7 @@
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-        
+
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -542,32 +542,32 @@
             height: 2.25rem;
             left: 0%;
             top: 64.315%;
-    
+
             background: #FFFFFF;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-    
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-    
+
             padding: 0.5625rem 0.75rem 0.5rem;
             color: #2B2A28;
         }
-    
+
         &-input:disabled {
             background: #FFFFFF;
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-    
+
             padding: 0.5625rem 0.75rem 0.5rem;
             color: rgba(43, 42, 40, 0.2);
         }
-    }   
+    }
 }
 
 .tut {

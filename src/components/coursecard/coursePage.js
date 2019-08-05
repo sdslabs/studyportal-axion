@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import MaterialCard from './materialCard'
 import CustomCheckbox from '../customcheckbox/customCheckbox'
 import '../../styles/main.scss'

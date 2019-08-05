@@ -5,7 +5,7 @@
         display: grid;
         grid-template-columns: 20% 75%;
         grid-template-rows: 25% 25% 25% 25%;
-    
+
         color: #2B2A28;
     }
 
@@ -19,23 +19,23 @@
         &icon {
             grid-column: 1 / span 1;
             grid-row: 1 / span 4;
-        
+
             justify-self: center;
             align-self: center;
         }
-        
+
         &heading {
             grid-column: 2 / span 1;
             grid-row: 2 / span 1;
             align-self: center;
-        
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 0.875rem;
             line-height: 1rem;
         }
-        
+
         &info {
             grid-row: 3 / span 1;
             grid-column: 2 / span 1;
@@ -48,18 +48,18 @@
                 font-size: 0.75rem;
                 line-height: 0.875rem;
             }
-            
+
             &_course {
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: bold;
                 font-size: 0.75rem;
                 line-height: 0.875rem;
-            
+
                 margin-left: 0.25rem;
             }
         }
-        
+
         &detail {
             grid-column: 2 / span 1;
             grid-row: 4 / span 1;
@@ -71,17 +71,17 @@
                 font-weight: normal;
                 font-size: 0.6875rem;
                 line-height: 0.8125rem;
-            
+
                 color: rgba(43, 42, 40, 0.4);
             }
-            
+
             &_type {
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 0.6875rem;
                 line-height: 0.8125rem;
-            
+
                 color: rgba(43, 42, 40, 0.4);
                 margin-left: 0.25rem;
             }

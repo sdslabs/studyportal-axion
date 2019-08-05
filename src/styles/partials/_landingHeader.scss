@@ -45,33 +45,33 @@
         top: 14.4375rem;
 
         background: #FFFFFF;
-    
+
         &_bar {
             position: absolute;
             width: 97.6%;
             height: 3rem;
             left: 0%;
             top: 0rem;
-    
+
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-    
+
             background: #FFFFFF;
             border-radius: 0.25rem;
             padding-left: 1rem;
             border: white;
         }
-    
+
         &_icon {
             position: absolute;
             width: 3.09375rem;
             height: 3.09375rem;
             left: 97.7%;
             top: 0rem;
-    
+
             border-radius: 0.25rem;
             background: #FFFFFF;
             border: white;
@@ -167,4 +167,3 @@
         outline: none;
     }
 }
-

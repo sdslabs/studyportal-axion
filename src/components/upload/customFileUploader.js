@@ -11,7 +11,7 @@ class CustomFileUploader extends Component {
         this.files = [];
 
         this.addFiles = this.addFiles.bind(this);
-        this.handleRemove = this.handleRemove.bind(this); 
+        this.handleRemove = this.handleRemove.bind(this);
     }
 
     componentDidMount() {
@@ -37,7 +37,7 @@ class CustomFileUploader extends Component {
     render() {
         if (this.files.length === 0) {
             return(
-                <div className='customfileuploader'> 
+                <div className='customfileuploader'>
                     <div className='customfileuploader--input'>
                         <input className='customfileuploader--choosefile' type='file' multiple onChange={this.addFiles}/><label className='customfileuploader--label'>Choose File</label>
                         <span className='customfileuploader--filechoose'>No Files Added</span>
@@ -50,7 +50,7 @@ class CustomFileUploader extends Component {
 
         else {
             return(
-                <div className='customfileuploader'> 
+                <div className='customfileuploader'>
                 <div>
                     {this.files.map((name, index) => (<FileUploadContainer name={name} index={index} handleRemove={this.handleRemove}/>))}
                 </div>
