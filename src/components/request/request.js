@@ -10,7 +10,7 @@ class Request extends Component {
             type: 'file', //Represents whether course or file tab is active
             disable: 0, //Enabling elements in file form
             disableCourse: 0 //Enabling elements in course form
-        }
+        };
 
         this.switchToCourse = this.switchToCourse.bind(this);
         this.switchToFile = this.switchToFile.bind(this);

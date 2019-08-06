@@ -8,17 +8,17 @@ import 'styles/main.scss'
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            login: ''
-        }
+      this.state = {
+        login: ''
+      };
 
-        this.active = 'Open Channel Hydralyics CEN-207'
+        this.active = 'Open Channel Hydralyics CEN-207';
 
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentWillMount() {
-        const login = this.props.login
+        const login = this.props.login;
         this.setState({ login });
     }
 

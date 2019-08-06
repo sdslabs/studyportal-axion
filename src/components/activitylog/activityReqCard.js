@@ -11,7 +11,7 @@ class ActivityReqCard extends Component {
         super(props);
         this.state = {
             status: '3'
-        }
+        };
 
         this.reqStatus = React.createRef();
     }
