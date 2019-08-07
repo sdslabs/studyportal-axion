@@ -1,0 +1,255 @@
+.coursepage {
+    position: absolute;
+    left: 26.5rem;
+    top: 4.5625rem;
+    width: calc(100% - 26.5rem);
+    height: 56.75rem;
+
+    cursor: default;
+}
+
+.coursepage-- {
+    &head {
+        position: absolute;
+        width: 31.25rem;
+        height: 2.375rem;
+        left: calc(50% - 15.625rem);
+        top: 2.9375rem;
+
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 2rem;
+        line-height: 2.375rem;
+
+        color: rgba(43, 42, 40, 0.9);
+        text-align: center;
+    }
+
+    &underline {
+        position: absolute;
+        width: 5rem;
+        height: 0.0625rem;
+        left: calc(50% - 2.5rem);
+        top: 5.8125rem;
+
+        border: 0.03125rem solid #38A7DE;
+    }
+
+    &addcourse {
+        position: absolute;
+        width: 6.25rem;
+        height: 1.1875rem;
+        right: 5.28%;
+        top: 3.78125rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+
+        color: #38A7DE;
+    }
+
+    &removecourse {
+        position: absolute;
+        width: 10rem;
+        height: 1.1875rem;
+        right: 5.28%;
+        top: 3.78125rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+
+        color: #38A7DE;
+    }
+
+    &category {
+        position: absolute;
+        width: 45rem;
+        height: 1.375rem;
+        left: calc(50% - 22.5rem);
+        top: 9.0625rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.125rem;
+        line-height: 1.3125rem;
+
+        color: #2B2A28;
+
+        display: grid;
+        grid-template-rows: 2.5625rem;
+        grid-template-columns: 3.875rem 9.875rem 9.125rem 9rem 13.0625rem;
+
+        &_all {
+            width: 1.3125rem;
+            height: 1.375rem;
+
+            padding:0.5rem 2.5625rem 0.6875rem 0rem;
+        }
+
+        &_tut {
+            width: 4.8125rem;
+            height: 1.375rem;
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.125rem;
+            line-height: 1.3125rem;
+
+            color: #38A7DE;
+
+            padding: 0.5rem 2.5625rem 0.6875rem 2.5625rem;
+            border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_books {
+            width: 3.125rem;
+            height: 1.375rem;
+
+            padding: 0.5rem 2.9375rem 0.6875rem 3.0625rem;
+            border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_notes {
+            width: 3rem;
+            height: 1.375rem;
+
+            padding: 0.5rem 2.9375rem 0.6875rem 2.5625rem;
+            border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+        }
+
+        &_exam {
+            width: 10.0625rem;
+            height: 1.375rem;
+
+            padding: 0.5rem 0rem 0.6875rem 3rem;
+            border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+        }
+    }
+
+    &material-sort {
+        position: absolute;
+        width: 96.5%;
+        height: 4.25rem;
+        left: 1%;
+        top: 16.25rem;
+
+        font-family: Sansation;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.125rem;
+
+        color: #000000;
+        border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
+
+        &_checkbox {
+            position: absolute;
+            width: 0.9375rem;
+            height: 0.9375rem;
+            left: 1.7%;
+            top: 1.625rem;
+
+            margin-right: 0.75rem;
+        }
+
+        &_name {
+            position: absolute;
+            width: 2.8125rem;
+            height: 1.125rem;
+            left: 3.135%;
+            top: 1.5625rem;
+
+            margin-left: 0.75rem;
+        }
+
+        &_size {
+            position: absolute;
+            width: 1.8125rem;
+            height: 1.1875rem;
+            left: 70%;
+            top: 1.5rem;
+        }
+
+        &_lastmod {
+            position: absolute;
+            width: 6.75rem;
+            height: 1.1875rem;
+            left: 90%;
+            top: 1.5rem;
+        }
+    }
+
+    &material {
+        position: absolute;
+        width: 98%;
+        left: 1%;
+        top: 20.5625rem;
+
+        &_year {
+            width: 99%;
+            height: 3.1875rem;
+
+            margin-left: 0.5%;
+            background: rgba(56, 167, 222, 0.275);
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.125rem;
+            line-height: 3.1875rem;
+            text-align: center;
+
+            color: #2B2A28;
+        }
+    }
+
+    &underline_ {
+        &all {
+            width: 1.0625rem;
+            border: 0.0625rem solid #FFFFFF;
+            margin-top: 0.625rem;
+            margin-left: 0rem;
+        }
+
+        &tut {
+            width: 4.0625rem;
+            border: 0.0625rem solid #38A7DE;
+            margin-top: 0.625rem;
+            margin-left: 0.125rem;
+        }
+
+        &books {
+            width: 2.8125rem;
+            border: 0.0625rem solid #FFFFFF;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
+
+        &notes {
+            width: 2.8125rem;
+            border: 0.0625rem solid #FFFFFF;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
+
+        &exam {
+            width: 10rem;
+            border: 0.0625rem solid #FFFFFF;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
+    }
+
+    &category:hover, &addcourse, &removecourse {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,13 @@
+.sub_list {
+    position: absolute;
+    top: 28.375rem;
+    left: calc(52% - 31.75rem);
+    width: 63.5rem;
+
+    display: grid;
+    grid-template-rows: 10rem 10rem 10rem 10rem 10rem 5rem;
+    grid-template-columns: 25% 25% 25% 25%;
+
+    justify-items: center;
+    align-items: center;
+}

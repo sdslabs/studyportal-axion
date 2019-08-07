@@ -1,0 +1,169 @@
+.landingheader {
+    background: url(../assets/landing_header.svg);
+    background-color: #38A7DE;
+    background-size: contain;
+    height: 24.4375rem;
+    width: 100%;
+    text-align: center;
+}
+
+.landingheader-- {
+
+    &logo_sds {
+        position: absolute;
+        left: 9.22%;
+        bottom: 90.49%;
+    }
+
+    &logo {
+        position: absolute;
+        left: 50.2%;
+        bottom: 85.62%;
+    }
+
+    &heading {
+        position: absolute;
+        width: 17.5%;
+        height: 2.25rem;
+        left: 43.5%;
+        top: 16.3%;
+
+        font-family: Sansation;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.25rem;
+
+        color: #2B2A28;
+    }
+
+    &search {
+        position: absolute;
+        width: 30.41%;
+        height: 3rem;
+        left: 36%;
+        top: 14.4375rem;
+
+        background: #FFFFFF;
+
+        &_bar {
+            position: absolute;
+            width: 97.6%;
+            height: 3rem;
+            left: 0%;
+            top: 0rem;
+
+            font-family: Droid Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1rem;
+            line-height: 1.1875rem;
+
+            background: #FFFFFF;
+            border-radius: 0.25rem;
+            padding-left: 1rem;
+            border: white;
+        }
+
+        &_icon {
+            position: absolute;
+            width: 3.09375rem;
+            height: 3.09375rem;
+            left: 97.7%;
+            top: 0rem;
+
+            border-radius: 0.25rem;
+            background: #FFFFFF;
+            border: white;
+        }
+    }
+
+    &request {
+        position: absolute;
+        width: 6.9375rem;
+        height: 2.5625rem;
+        left: calc(48.75% - 3.46875rem);
+        top: 19.625rem;
+
+        background: #24698b;
+        border-radius: 0.125rem;
+        border: #24698b;
+        color: #FFFFFF;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.9375rem;
+        line-height: 0.625rem;
+    }
+
+    &upload {
+        position: absolute;
+        width: 6.9375rem;
+        height: 2.5625rem;
+        left: calc(48.75% + 4.46875rem);
+        top: 19.625rem;
+
+        background: #24698b;
+        border-radius: 0.125rem;
+        border: #24698b;
+        color: #FFFFFF;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.9375rem;
+
+        line-height: 1.6875rem;
+    }
+
+    &request_image, &upload_image {
+        vertical-align: middle;
+    }
+
+    &login {
+        position: absolute;
+        width: 6.25rem;
+        height: 2.5625rem;
+        left: 79.17%;
+        top: 2.25rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+
+        color: #0d2938;
+        background: transparent;
+        border: none;
+    }
+
+    &signup {
+        position: absolute;
+        width: 7.5625rem;
+        height: 2.5625rem;
+        left: calc(79.17% + 6.25rem);
+        top: 2.25rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+
+        background: #0d2938;
+        border-radius: 0.25rem;
+        border: #0d2938;
+
+        color: #FFFFFF;
+    }
+
+    &search:hover, &request:hover, &upload:hover, &login:hover, &signup:hover {
+        cursor: pointer;
+    }
+
+    &search:focus, &login:focus, &signup:focus {
+        outline: none;
+    }
+}

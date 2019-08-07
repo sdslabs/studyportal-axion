@@ -1,0 +1,3 @@
+module.name_mapper='^scss\/\(.*\)$' -> '<PROJECT_ROOT>/src/styles/main.scss/\1'
+module.name_mapper='^scss$' -> '<PROJECT_ROOT>/src/styles/main.scss'
+module.system.node.resolve_dirname='<PROJECT_ROOT>/src/'

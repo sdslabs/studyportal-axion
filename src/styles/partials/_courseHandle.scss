@@ -1,0 +1,45 @@
+.coursehandle {
+    width: 99.5%;
+    height: 2.625rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    border: 0.0625rem solid rgba(56, 167, 222, 0.15);
+}
+
+.coursehandle-- {
+    &heading {
+        padding-left: 2.25rem;
+        width: 2.625rem;
+
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 3rem;
+
+        color: #FFFFFF;
+    }
+
+    &mycourse {
+        width: 3.125rem;
+
+        margin-left: 0.5rem;
+        font-family: PT Sans;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+
+        color: rgba(56, 167, 222, 0.6);
+    }
+
+    &activedot {
+        margin-left: 0.5rem;
+        width: 0.625rem;
+        height: 0.625rem;
+    }
+
+    &heading:hover {
+        cursor: pointer;
+    }
+}

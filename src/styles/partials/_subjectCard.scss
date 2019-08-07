@@ -1,0 +1,16 @@
+.subjectcard--image {
+  width: 13.3125rem;
+  height: 8.125rem;
+  transition: width 0.4s, height 0.4s;
+}
+
+.subjectcard--image:hover {
+    cursor: pointer;
+    width: 14.8125rem;
+    height: 9.625rem;
+
+    background: #1E85B8;
+    mix-blend-mode: multiply;
+    box-shadow: 0px 0.25rem 0.25rem rgba(13, 41, 56, 0.15);
+    border-radius: 0.125rem;
+}
