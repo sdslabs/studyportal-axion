@@ -15,7 +15,7 @@ class CoursePage extends Component {
         return(
             <div className='coursepage'>
                 <div className="coursepage--head">Structural Analysis CEN-207</div>
-                <div className='coursepage--underline'></div>
+                <div className='coursepage--underline' />
                 { !this.state.mycourse ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
                     <div className='coursepage--category_all'><div>All<div className='coursepage--underline_all'/></div></div>

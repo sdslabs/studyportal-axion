@@ -10,9 +10,15 @@ import CustomCheckbox from 'components/customcheckbox/customCheckbox'
 class MaterialCard extends Component {
     constructor(props) {
         super(props);
+<<<<<<< HEAD
       this.state = {
         queue: '2'
       };
+=======
+        this.state = {
+            queue:'2'
+        }
+>>>>>>> bdc926616ceb874b6492bbb006c66aa5a4fadc2e
 
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
