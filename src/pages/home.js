@@ -1,3 +1,4 @@
+/* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
 import Header from 'components/home/header'
 import SubjectCard from 'components/home/subjectCard'
