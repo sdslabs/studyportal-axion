@@ -26,7 +26,7 @@ class Home extends Component {
 
     componentWillMount() {
         departmentApi().then(res => {
-            this.setState({departments: res});
+            this.setState({ departments: res });
             console.log(res)
         })
     }
