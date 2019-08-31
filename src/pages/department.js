@@ -1,10 +1,12 @@
-import React, {Component} from 'react'
-import Header from '../components/header/header'
-import Sidebar from '../components/sidebar'
-import Request from '../components/request'
-import Upload from '../components/upload'
-import ActivityLog from '../components/activityLog'
-import CoursePage from '../components/coursePage'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-deprecated */
+import React, { Component } from 'react'
+import Header from 'components/header/header'
+import Sidebar from 'components/sidebar/sidebar'
+import Request from 'components/request/request'
+import Upload from 'components/upload/upload'
+import ActivityLog from 'components/activitylog/activityLog'
+import CoursePage from 'components/coursecard/coursePage'
 
 class Department extends Component {
     constructor(props) {
@@ -26,23 +28,23 @@ class Department extends Component {
     componentWillMount() {
         const department = this.props.match.params.department
         const course = this.props.match.params.course
-        this.setState({department: department, course: course})
+        this.setState({ department, course })
     }
 
     handleReqHeader () {
-        this.setState({request: true});
+        this.setState({ request: true });
     }
 
     handleReq () {
-        this.setState({request: false});
+        this.setState({ request: false });
     }
 
     handleUploHeader () {
-        this.setState({upload: true});
+        this.setState({ upload: true });
     }
 
     handleUplo () {
-        this.setState({upload: false});
+        this.setState({ upload: false });
     }
 
     render() {
