@@ -1,20 +1,38 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
 import MaterialCard from './materialCard'
 import CustomCheckbox from 'components/customcheckbox/customCheckbox'
+import filesApi from 'api/filesApi'
 import 'styles/main.scss'
 
 class CoursePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mycourse: true
+            mycourse: true,
+            name: '',
+            id: '',
+            files: []
         }
+    }
+
+    componentWillMount() {
+      this.setState({ id:localStorage.getItem('course'), name:localStorage.getItem('courseName') })
+      filesApi(this.state.id).then((res,err) => {
+        if(err) {
+          window.alert("Error occurred")
+        }
+        else {
+          this.setState({ files:res })
+        }
+      })
     }
 
     render() {
         return(
             <div className='coursepage'>
-                <div className="coursepage--head">Structural Analysis CEN-207</div>
+                <div className="coursepage--head">{ this.state.name }</div>
                 <div className='coursepage--underline' />
                 { !this.state.mycourse ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
@@ -31,8 +49,9 @@ class CoursePage extends Component {
                     <div className='coursepage--material-sort_lastmod'>Last Modified</div>
                 </div>
                 <div className='coursepage--material'>
-                    <MaterialCard />
-                    <MaterialCard />
+                  { this.state.files.map((file) => (
+                    <MaterialCard name={ file.name } downloads={ file.download }  />
+                  )) }
                     <div className='coursepage--material_year'>2017</div>
                 </div>
             </div>

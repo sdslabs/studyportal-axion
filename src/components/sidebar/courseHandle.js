@@ -22,6 +22,8 @@ class CourseHandle extends Component {
 
     activatecourse() {
         this.props.handleClick(this.props.name);
+        localStorage.setItem('courseItem',this.props.course)
+        localStorage.setItem('courseName',this.props.name)
     }
 
     componentWillReceiveProps(props) {
@@ -58,6 +60,8 @@ class CourseHandle extends Component {
 
             else {
                 this.setState({ active: false })
+                localStorage.setItem('course',this.props.course)
+                localStorage.setItem('courseName',this.props.active)
             }
         }
 
