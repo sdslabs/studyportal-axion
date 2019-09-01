@@ -1,19 +1,10 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
 import Header from 'components/home/header'
 import SubjectCard from 'components/home/subjectCard'
-import appli_sci from 'assets/appli_science.png'
-import bio from 'assets/biotech.png'
-import chem from 'assets/chem.png'
-import chem_engg from 'assets/chem_engg.png'
-import civil from 'assets/civil.png'
-import cse from 'assets/cse.png'
-import earthquake from 'assets/earthquake.png'
-import earth_sci from 'assets/earth_sci.png'
-import ece from 'assets/ece.png'
-import elec from 'assets/elec.png'
-import hss from 'assets/hss.png'
+import url from 'assets/elec.png'
 import 'styles/main.scss'
 import departmentApi from 'api/departmentApi'
 import { Link } from 'react-router-dom'
@@ -24,15 +15,9 @@ class Home extends Component {
         this.state = {
             departments: []
         }
-        this.department = this.department.bind(this)
-    }
-
-    department(index) {
-      localStorage.setItem('department',index)
     }
 
     componentWillMount() {
-        localStorage.clear()
         departmentApi().then((res,err) => {
           if(err) {
             window.alert('No results found')
@@ -48,28 +33,11 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className='sub_list'>
-                  <Link to='/Architecture'>
-                    <SubjectCard name='archi' url={bio} onClick={this.department(1)}/>
-                  </Link>
-                    <SubjectCard name='appli_sci' url={appli_sci} />
-                    <SubjectCard name='biotech' url={bio} />
-                    <SubjectCard name='chem' url={chem} />
-                    <SubjectCard name='chem_engg' url={chem_engg} />
-                    <SubjectCard name='civil' url={civil} />
-                    <SubjectCard name='cse' url={cse} />
-                    <SubjectCard name='earthquake' url={earthquake} />
-                    <SubjectCard name='earth_sci' url={earth_sci} />
-                    <SubjectCard name='ece' url={ece} />
-                    <SubjectCard name='elec' url={elec} />
-                    <SubjectCard name='hss' url={hss} />
-                    <SubjectCard name='a' url={appli_sci} />
-                    <SubjectCard name='b' url={appli_sci} />
-                    <SubjectCard name='c' url={bio} />
-                    <SubjectCard name='d' url={chem} />
-                    <SubjectCard name='e' url={appli_sci} />
-                    <SubjectCard name='f' url={appli_sci} />
-                    <SubjectCard name='g' url={bio} />
-                    <SubjectCard name='h' url={chem} />
+                  { this.state.departments.map((department) => (
+                  <Link to={ `/${department.title}` }>
+                    <SubjectCard name={ department.title } url={ url } id={ department.id } />
+                  </Link>)
+                  ) }
                 </div>
             </div>
         )

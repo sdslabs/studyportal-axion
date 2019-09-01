@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
@@ -73,10 +74,9 @@ class Sidebar extends Component {
                     </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
-                            <CourseHandle login={false} name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login={false} name='Open Channel Hydralyics CEN-207' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login={false} mycourse='true' name='Open Channel Hydralyics CEN-205' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login={false} name='Open Channel Hydralyics CEN-203' active={this.active} handleClick={this.handleClick}/>
+                          { this.props.courses.map((course) => (
+                            <CourseHandle login={false} name={ `${course.title} ${course.code}` } active={this.active} handleClick={this.handleClick}/>
+                          )) }
                         </div>
                     </div>
                 </div>
