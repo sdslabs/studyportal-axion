@@ -25,8 +25,13 @@ class Home extends Component {
     }
 
     componentWillMount() {
-        departmentApi().then(res => {
+        departmentApi().then((res,err) => {
+          if(err) {
+            window.alert('No results found')
+          }
+          else {
             this.setState({ departments: res });
+          }
         })
     }
 
