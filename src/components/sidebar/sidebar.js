@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import arrow from 'assets/left-arrow.png'
 import CourseHandle from './courseHandle'
 import 'styles/main.scss'
+import { Link } from 'react-router-dom'
 
 class Sidebar extends Component {
     constructor(props) {
@@ -13,7 +14,6 @@ class Sidebar extends Component {
       };
 
         this.active = 'Open Channel Hydralyics CEN-207';
-
         this.handleClick = this.handleClick.bind(this)
     }
 
@@ -33,7 +33,9 @@ class Sidebar extends Component {
             return(
                 <div className='sidebar'>
                     <div className='sidebar--course'>My Courses ({this.props.login})</div>
-                    <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
+                    <Link to='/'>
+                        <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
+                    </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
                             <CourseHandle login name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>
@@ -65,8 +67,10 @@ class Sidebar extends Component {
         else {
             return(
                 <div className='sidebar'>
-                    <div className='sidebar--course'>{this.props.course}Electrical Engineering</div>
-                    <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
+                    <div className='sidebar--course'>{this.props.department}</div>
+                    <Link to='/'>
+                        <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
+                    </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
                             <CourseHandle login={false} name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>

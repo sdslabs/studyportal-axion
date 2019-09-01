@@ -1,3 +1,4 @@
+/* eslint-disable react/sort-comp */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
 import Header from 'components/home/header'
@@ -15,6 +16,7 @@ import elec from 'assets/elec.png'
 import hss from 'assets/hss.png'
 import 'styles/main.scss'
 import departmentApi from 'api/departmentApi'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
     constructor(props) {
@@ -22,9 +24,15 @@ class Home extends Component {
         this.state = {
             departments: []
         }
+        this.department = this.department.bind(this)
+    }
+
+    department(index) {
+      localStorage.setItem('department',index)
     }
 
     componentWillMount() {
+        localStorage.clear()
         departmentApi().then((res,err) => {
           if(err) {
             window.alert('No results found')
@@ -40,7 +48,9 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className='sub_list'>
-                    <SubjectCard name='archi' url={bio} />
+                  <Link to='/Architecture'>
+                    <SubjectCard name='archi' url={bio} onClick={this.department(1)}/>
+                  </Link>
                     <SubjectCard name='appli_sci' url={appli_sci} />
                     <SubjectCard name='biotech' url={bio} />
                     <SubjectCard name='chem' url={chem} />
