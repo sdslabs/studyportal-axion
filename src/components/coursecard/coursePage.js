@@ -49,9 +49,9 @@ class CoursePage extends Component {
                     <div className='coursepage--material-sort_lastmod'>Last Modified</div>
                 </div>
                 <div className='coursepage--material'>
-                  { this.state.files.map((file) => (
-                    <MaterialCard name={ file.name } downloads={ file.download }  />
-                  )) }
+                    { this.state.files.map((file) => (
+                      <MaterialCard name={ file.name } downloads={ file.download }  />
+                    )) }
                     <div className='coursepage--material_year'>2017</div>
                 </div>
             </div>
