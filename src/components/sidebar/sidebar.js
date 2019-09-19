@@ -14,7 +14,7 @@ class Sidebar extends Component {
         login: ''
       };
 
-        this.active = 'Open Channel Hydralyics CEN-207';
+        this.active = '';
         this.handleClick = this.handleClick.bind(this)
     }
 

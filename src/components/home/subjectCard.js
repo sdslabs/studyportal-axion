@@ -1,10 +1,18 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import getDepartment from 'actions/departmentAction'
 import 'styles/main.scss'
 
-class SubjectCard extends Component {
+function mapDispatchToProps(dispatch) {
+  return {
+    getDepartment: department => dispatch(getDepartment(department))
+  }
+}
+
+class Subject extends Component {
     departmentSet() {
-      localStorage.setItem('department',this.props.id)
+      this.props.getDepartment(this.props.id)
     }
 
     render() {
@@ -15,5 +23,7 @@ class SubjectCard extends Component {
         )
     }
 }
+
+const SubjectCard = connect(null,mapDispatchToProps)(Subject)
 
 export default SubjectCard

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Header from 'components/header/header'
 import Sidebar from 'components/sidebar/sidebar'
 import Request from 'components/request/request'
@@ -9,7 +10,11 @@ import ActivityLog from 'components/activitylog/activityLog'
 import CoursePage from 'components/coursecard/coursePage'
 import courseApi from 'api/courseApi'
 
-class Department extends Component {
+function mapStateToProps(state) {
+    return { department: state.department }
+}
+
+class DepartmentPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +22,6 @@ class Department extends Component {
             request: false,
             upload: false,
             department: '',
-            course: '',
             courses: []
         }
 
@@ -31,9 +35,9 @@ class Department extends Component {
         const department = this.props.match.params.department
         const course = this.props.match.params.course
         this.setState({ department, course })
-        courseApi(localStorage.getItem('department')).then((res,err) => {
+        courseApi(this.props.department).then((res,err) => {
           if(err) {
-            window.alert("Error happened")
+            window.alert("Something went wrong")
           }
           else {
             this.setState({ courses:res })
@@ -61,7 +65,7 @@ class Department extends Component {
         return (
             <div>
                 <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                <Sidebar login={this.state.login} course={this.state.course} department={this.state.department} courses={this.state.courses} />
+                <Sidebar login={this.state.login} department={this.state.department} courses={this.state.courses} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
                 { this.state.login ? <ActivityLog /> : <CoursePage /> }
@@ -69,5 +73,7 @@ class Department extends Component {
         )
     }
 }
+
+const Department = connect(mapStateToProps)(DepartmentPage)
 
 export default Department

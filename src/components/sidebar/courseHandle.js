@@ -22,7 +22,7 @@ class CourseHandle extends Component {
 
     activatecourse() {
         this.props.handleClick(this.props.name);
-        localStorage.setItem('courseItem',this.props.course)
+        localStorage.setItem('course',this.props.course)
         localStorage.setItem('courseName',this.props.name)
     }
 
