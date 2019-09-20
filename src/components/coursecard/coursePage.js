@@ -1,10 +1,16 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import MaterialCard from './materialCard'
 import CustomCheckbox from 'components/customcheckbox/customCheckbox'
 import filesApi from 'api/filesApi'
 import 'styles/main.scss'
+
+function mapStateToProps(state) {
+  return { id: state.course.id, name: state.course.name }
+}
 
 class CoursePage extends Component {
     constructor(props) {
@@ -12,21 +18,36 @@ class CoursePage extends Component {
         this.state = {
             mycourse: true,
             name: '',
-            id: '',
+            id_course: 0,
             files: []
         }
     }
 
     componentWillMount() {
-      this.setState({ id:localStorage.getItem('course'), name:localStorage.getItem('courseName') })
-      filesApi(this.state.id).then((res,err) => {
-        if(err) {
-          window.alert("Error occurred")
+        this.setState({ name:this.props.course })
+        filesApi(this.props.id_course).then((res,err) => {
+            if(err) {
+              window.alert("Error occurred")
+            }
+            else {
+              this.setState({ files:res })
+            }
+        })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const id_course = nextProps.id_course
+        if(id_course !== this.state.id ) {
+            this.setState({ name:nextProps.course })
+            filesApi(id_course).then((res,err) => {
+                if(err) {
+                  window.alert("Error occurred")
+                }
+                else {
+                  this.setState({ files:res })
+                }
+            })
         }
-        else {
-          this.setState({ files:res })
-        }
-      })
     }
 
     render() {
@@ -59,4 +80,4 @@ class CoursePage extends Component {
     }
 }
 
-export default CoursePage
+export default connect(mapStateToProps)(CoursePage)

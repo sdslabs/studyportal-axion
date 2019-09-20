@@ -10,7 +10,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class Subject extends Component {
+class SubjectCard extends Component {
     departmentSet() {
       this.props.getDepartment(this.props.id)
     }
@@ -24,6 +24,4 @@ class Subject extends Component {
     }
 }
 
-const SubjectCard = connect(null,mapDispatchToProps)(Subject)
-
-export default SubjectCard
+export default connect(null,mapDispatchToProps)(SubjectCard)

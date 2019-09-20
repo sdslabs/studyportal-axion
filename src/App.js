@@ -11,8 +11,8 @@ class App extends Component {
       <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/test' render={(props) => <Test {...props} login={false} />} />
-          <Route exact path='/:department' render={(props) => <Department {...props} login={false} />} />
-          <Route exact path='/:department/:course' render={(props) => <Department {...props} login={false} />} />
+          <Route exact path='/:department/id=:id_department' render={(props) => <Department {...props} login={false} />} />
+          <Route exact path='/:department/id=:id_department/:course/id=:id_course' render={(props) => <Department {...props} login={false} />} />
       </Switch>
     )
   }

@@ -34,7 +34,7 @@ class Home extends Component {
                 <Header />
                 <div className='sub_list'>
                   { this.state.departments.map((department) => (
-                  <Link to={ `/${department.title}` }>
+                  <Link to={ `/${department.title}/id=${department.id}/` }>
                     <SubjectCard name={ department.title } url={ url } id={ department.id } />
                   </Link>)
                   ) }

@@ -14,7 +14,7 @@ function mapStateToProps(state) {
     return { department: state.department }
 }
 
-class DepartmentPage extends Component {
+class Department extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -22,8 +22,14 @@ class DepartmentPage extends Component {
             request: false,
             upload: false,
             department: '',
+            id: 0,
+            course: '',
             courses: []
         }
+        this.department = this.props.match.params.department
+        this.id_department = this.props.match.params.id_department
+        this.course = this.props.match.params.course
+        this.id_course = this.props.match.params.id_course
 
         this.handleReq = this.handleReq.bind(this);
         this.handleReqHeader = this.handleReqHeader.bind(this);
@@ -32,10 +38,9 @@ class DepartmentPage extends Component {
     }
 
     componentWillMount() {
-        const department = this.props.match.params.department
-        const course = this.props.match.params.course
-        this.setState({ department, course })
-        courseApi(this.props.department).then((res,err) => {
+        this.setState({ course:this.course })
+        this.setState({ department:this.department })
+        courseApi(this.id_department).then((res,err) => {
           if(err) {
             window.alert("Something went wrong")
           }
@@ -65,15 +70,13 @@ class DepartmentPage extends Component {
         return (
             <div>
                 <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                <Sidebar login={this.state.login} department={this.state.department} courses={this.state.courses} />
+                <Sidebar login={this.state.login} department={this.state.department} id_department={this.id_department} courses={this.state.courses} active={this.props.match.params.course}/>
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.login ? <ActivityLog /> : <CoursePage /> }
+                { this.state.login ? <ActivityLog /> : <CoursePage course={this.props.match.params.course} id_course={this.props.match.params.id_course} /> }
             </div>
         )
     }
 }
 
-const Department = connect(mapStateToProps)(DepartmentPage)
-
-export default Department
+export default connect(mapStateToProps)(Department)

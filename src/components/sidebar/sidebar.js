@@ -14,13 +14,17 @@ class Sidebar extends Component {
         login: ''
       };
 
-        this.active = '';
+        this.active = this.props.active;
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentWillMount() {
         const login = this.props.login;
         this.setState({ login });
+    }
+
+    componentWillReceiveProps(nextProps) {
+      this.active = nextProps.active
     }
 
     handleClick(active) {
@@ -75,7 +79,9 @@ class Sidebar extends Component {
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
                           { this.props.courses.map((course) => (
-                            <CourseHandle login={false} name={ `${course.title} ${course.code}` } course={course.id} active={this.active} handleClick={this.handleClick}/>
+                            <Link to={ `/${this.props.department}/id=${this.props.id_department}/${course.title} ${course.code}/id=${course.id}/` } style={{ textDecoration:'none' }}>
+                                <CourseHandle login={false} name={ `${course.title} ${course.code}` } course={course.id} active={this.active} handleClick={this.handleClick}/>
+                            </Link>
                           )) }
                         </div>
                     </div>
