@@ -3,11 +3,11 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border-radius: 50%;
-    width: 1.07296875rem;
-    height: 1.07296875rem;
+    width: 0.9375rem;
+    height: 0.9375rem;
 
     border: 0.0625rem solid #2B2A28;
+    border-radius: 0.125rem;
     transition: 0.2s all ease-in;
     outline: none;
 }
@@ -17,5 +17,7 @@
 }
 
 .radio:checked {
-    border: 0.3125rem solid #2B2A28;
+    background: #38A7DE;
+    border: 0.0625rem solid #414042;
+    border-radius: 0.125rem;
 }

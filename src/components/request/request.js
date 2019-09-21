@@ -60,7 +60,7 @@ class Request extends Component {
                         <div className='request--close' onClick={this.props.handleReq}><img src={close} alt='close'/></div>
                         <div className='request--heading'>Request</div>
                         <div className='request--underline'/>
-                        <div className='request--instructions'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat quam ipsum, sit amet luctus turpis efficitur eget. Quisque lacinia, libero vel venenatis dictum, dolor nulla finibus sem, nec vestibulum nunc felis non diam. Phasellus congue nisl odio, non semper nunc ultricies quis. Etiam aliquet convallis nulla, ac viverra leo placerat vel. Fusce dictum metus ac ex convallis, eget sollicitudin metus luctus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed turpis risus, pretium aliquet pellentesque at, fringilla at erat. Morbi feugiat metus eget leo dictum maximus. Nam sed dolor ut enim sodales facilisis non nec dui. In nec diam aliquam, consequat diam in, posuere leo. Nullam gravida aliquet ex, sed cursus leo gravida eu.</div>
+                        <div className='request--instructions'><br/>To request file make sure to specify the material type and any name associated with it in the name text field.<br/>For example, to request 3rd Sem Examination Papers of CEN-204 CE, select <span style={{ fontWeight:'bold' }}>Examination Papers</span> and fill <span style={{ fontWeight:'bold' }}>“3rd Sem Examination Papers of CEN-204 Civil Eng”</span></div>
                         <div className='request--type'>Request Type</div>
                         {this.state.type === 'file' ?
                             (<Fragment>

@@ -2,6 +2,8 @@
 /* eslint-disable react/no-deprecated */
 import React, { Component,Fragment } from 'react'
 import Search from './search'
+import UserMenu from './userMenu'
+import Notifications from './notifications'
 import logo from 'assets/head_logo.png'
 import search from 'assets/head_search.png'
 import notif from 'assets/notif.png'
@@ -14,11 +16,14 @@ class Header extends Component {
         this.state = {
             login: '',
             value: '',
+            userMenu: false,
+            notifications: false,
             search: false
         }
 
         this.search = React.createRef();
         this.result = this.result.bind(this);
+        this.close = this.close.bind(this)
     }
 
     componentWillMount() {
@@ -28,6 +33,8 @@ class Header extends Component {
 
     componentWillReceiveProps(props) {
         this.setState({ search: props.search })
+        this.setState({ userMenu: props.userMenu })
+        this.setState({ notifications: props.notifications })
     }
 
     result() {
@@ -37,9 +44,17 @@ class Header extends Component {
         }
     }
 
+    close() {
+      this.setState({ search:false })
+      if(this.state.userMenu)
+        this.setState({ userMenu:false })
+      if(this.state.notifications)
+        this.setState({ notifications:false })
+    }
+
     render() {
         return(
-            <div className='header' onClick={this.closeSearch}>
+            <div className='header' onClick={this.close} >
                 <img className='header--logo' src={logo} alt="studyportal_logo" />
                 <div className='header--heading'>Study Portal</div>
                 <div className='header--search'>
@@ -52,9 +67,12 @@ class Header extends Component {
                 <div className='header--mentors'>Mentors List</div>
                 {this.state.login ?
                     (<Fragment>
-                        <div className='header--notification'>
-                            <img className='header--notification_image' src={notif} alt="notification" /><span className='header--notification_number'>1</span></div>
-                        <img className='header--user' src={userimg} alt="image_user" />
+                        <div className='header--notification' onClick={ this.props.toggleNotifications }>
+                            <img className='header--notification_image' src={notif} alt="notification" /><span className='header--notification_number'>1</span>
+                        </div>
+                        { this.state.notifications ? <Notifications /> : <Fragment /> }
+                        <img className='header--user' src={userimg} alt="image_user" onClick={this.props.toggleUserMenu} />
+                        { this.state.userMenu ? <UserMenu /> : <Fragment /> }
                     </Fragment>) :
                     (<Fragment>
                         <button className='header--login'>Login</button>

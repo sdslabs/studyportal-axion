@@ -1,0 +1,32 @@
+.notifications {
+  position: absolute;
+  width: 354px;
+  height: 208px;
+  right: 0.5rem;
+  top: 3.4375rem;
+  z-index: 1;
+}
+
+.notifications-- {
+  &polygon {
+    position: absolute;
+    width: 14.19px;
+    height: 11.19px;
+    right: calc(10.29vw - 1.869375rem);
+    top: 0px;
+
+    border-radius: 2px;
+  }
+
+  &container {
+    position: absolute;
+    width: 354px;
+    height: 194px;
+    left: 0px;
+    top: 7px;
+
+    background: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+  }
+}

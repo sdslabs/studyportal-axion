@@ -1,0 +1,116 @@
+.usermenu {
+  position: absolute;
+  width: 7.125rem;
+  height: 11.91625rem;
+  left: calc(93.4% - 2.28125rem);
+  top: 3.6875rem;
+  z-index: 1;
+}
+
+.usermenu-- {
+  &polygon {
+    position: absolute;
+    width: 0.886875rem;
+    height: 0.699375rem;
+    left: calc(50% - 0.4434375rem);
+    top: 0rem;
+
+    border-radius: 0.125rem;
+  }
+
+  &cover {
+    position: absolute;
+    width: 7.125rem;
+    height: 11.5rem;
+    left: 0rem;
+    top: 0.699375rem;
+
+    background: #FFFFFF;
+    box-sizing: border-box;
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+  }
+
+  &request {
+    position: absolute;
+    width: 3.625rem;
+    height: 1.1875rem;
+    left: 1rem;
+    top: 0.61rem;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+
+    color: #2B2A28;
+  }
+
+  &upload {
+    position: absolute;
+    width: 3.625rem;
+    height: 1.1875rem;
+    left: 1rem;
+    top: 2.7975rem;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+
+    color: #2B2A28;
+  }
+
+  &activitylog {
+    position: absolute;
+    width: 5.125rem;
+    height: 1.1875rem;
+    left: 1rem;
+    top: 4.985rem;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+
+    color: #2B2A28;
+  }
+
+  &profile {
+    position: absolute;
+    width: 3.625rem;
+    height: 1.1875rem;
+    left: 1rem;
+    top: 7.1725rem;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+
+    color: #2B2A28;
+  }
+
+  &logout {
+    position: absolute;
+    width: 3.625rem;
+    height: 1.1875rem;
+    left: 1rem;
+    top: 9.36rem;
+
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+
+    color: #2B2A28;
+  }
+
+  &request, &upload, &activitylog, &profile, &logout {
+    cursor: pointer;
+  }
+}
