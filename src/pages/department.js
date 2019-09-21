@@ -22,14 +22,12 @@ class Department extends Component {
             request: false,
             upload: false,
             department: '',
-            id: 0,
             course: '',
             courses: []
         }
         this.department = this.props.match.params.department
         this.id_department = this.props.match.params.id_department
         this.course = this.props.match.params.course
-        this.id_course = this.props.match.params.id_course
 
         this.handleReq = this.handleReq.bind(this);
         this.handleReqHeader = this.handleReqHeader.bind(this);

@@ -18,7 +18,6 @@ class CoursePage extends Component {
         this.state = {
             mycourse: true,
             name: '',
-            id_course: 0,
             files: []
         }
     }
