@@ -71,7 +71,7 @@ class Department extends Component {
                 <Sidebar login={this.state.login} department={this.state.department} department_id={this.department_id} courses={this.state.courses} active={this.props.match.params.course}/>
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.login ? <ActivityLog /> : <CoursePage course={this.props.match.params.course} course_id={this.props.match.params.course_id} /> }
+                { this.state.login ? <ActivityLog /> : <CoursePage course={this.props.match.params.course} course_id={this.props.match.params.course_id} department={this.props.match.params.department} department_id={this.props.match.params.department_id} file_type={this.props.match.params.file_type} /> }
             </div>
         )
     }
