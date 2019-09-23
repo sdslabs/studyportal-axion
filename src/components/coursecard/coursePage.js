@@ -24,7 +24,7 @@ class CoursePage extends Component {
 
     componentWillMount() {
         this.setState({ name:this.props.course })
-        filesApi(this.props.id_course).then((res,err) => {
+        filesApi(this.props.course_id).then((res,err) => {
             if(err) {
               window.alert("Error occurred")
             }
@@ -35,10 +35,10 @@ class CoursePage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        const id_course = nextProps.id_course
-        if(id_course !== this.state.id ) {
+        const course_id = nextProps.course_id
+        if(course_id !== this.state.id ) {
             this.setState({ name:nextProps.course })
-            filesApi(id_course).then((res,err) => {
+            filesApi(course_id).then((res,err) => {
                 if(err) {
                   window.alert("Error occurred")
                 }

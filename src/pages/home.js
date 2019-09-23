@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 import Header from 'components/home/header'
 import SubjectCard from 'components/home/subjectCard'
-import url from 'assets/elec.png'
+import url from 'assets/electrical.svg'
 import 'styles/main.scss'
 import departmentApi from 'api/departmentApi'
 import { Link } from 'react-router-dom'

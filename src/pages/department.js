@@ -26,7 +26,7 @@ class Department extends Component {
             courses: []
         }
         this.department = this.props.match.params.department
-        this.id_department = this.props.match.params.id_department
+        this.department_id = this.props.match.params.department_id
         this.course = this.props.match.params.course
 
         this.handleReq = this.handleReq.bind(this);
@@ -38,7 +38,7 @@ class Department extends Component {
     componentWillMount() {
         this.setState({ course:this.course })
         this.setState({ department:this.department })
-        courseApi(this.id_department).then((res,err) => {
+        courseApi(this.department_id).then((res,err) => {
           if(err) {
             window.alert("Something went wrong")
           }
@@ -68,10 +68,10 @@ class Department extends Component {
         return (
             <div>
                 <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                <Sidebar login={this.state.login} department={this.state.department} id_department={this.id_department} courses={this.state.courses} active={this.props.match.params.course}/>
+                <Sidebar login={this.state.login} department={this.state.department} department_id={this.department_id} courses={this.state.courses} active={this.props.match.params.course}/>
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.login ? <ActivityLog /> : <CoursePage course={this.props.match.params.course} id_course={this.props.match.params.id_course} /> }
+                { this.state.login ? <ActivityLog /> : <CoursePage course={this.props.match.params.course} course_id={this.props.match.params.course_id} /> }
             </div>
         )
     }
