@@ -6,7 +6,7 @@ import Header from 'components/home/header'
 import SubjectCard from 'components/home/subjectCard'
 import url from 'assets/electrical.svg'
 import 'styles/main.scss'
-import departmentApi from 'api/departmentApi'
+import { departmentApi } from 'api/departmentApi'
 import { Link } from 'react-router-dom'
 
 class Home extends Component {
@@ -34,7 +34,7 @@ class Home extends Component {
                 <Header />
                 <div className='sub_list'>
                   { this.state.departments.map((department) => (
-                  <Link to={ `/${department.title}/id=${department.id}/` }>
+                  <Link to={ `/department/${department.abbreviation}` }>
                     <SubjectCard name={ department.title } url={ url } id={ department.id } />
                   </Link>)
                   ) }

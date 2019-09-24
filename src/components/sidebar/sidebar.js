@@ -79,7 +79,7 @@ class Sidebar extends Component {
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
                           { this.props.courses.map((course) => (
-                            <Link to={ `/${this.props.department}/id=${this.props.department_id}/${course.title} ${course.code}/id=${course.id}/` } style={{ textDecoration:'none' }}>
+                            <Link to={ `/department/${this.props.department_abbr}/course/${course.code}/` } style={{ textDecoration:'none' }}>
                                 <CourseHandle login={false} name={ `${course.title} ${course.code}` } course={course.id} active={this.active} handleClick={this.handleClick}/>
                             </Link>
                           )) }
