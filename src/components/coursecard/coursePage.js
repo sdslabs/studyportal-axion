@@ -58,29 +58,29 @@ class CoursePage extends Component {
                 { !this.state.mycourse ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
                   {this.props.file_type === 'all' || this.props.file_type === undefined ? (
-                    <div className='coursepage--category_all'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/all`} style={{ textDecoration:'none',color:'#38A7DE',fontWeight:'bold' }}><div>All<div className='coursepage--underline_all' style={{ border:'0.0625rem solid #38A7DE' }}/></div></Link></div>
+                    <div className='coursepage--category_all_'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/all`} className='linkactive'><div>All<div className='coursepage--underline_all_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_all'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/all`} style={{ textDecoration:'none',color:'#2B2A28' }}><div>All<div className='coursepage--underline_all' style={{ border:'0.0625rem solid #FFFFFF' }}/></div></Link></div>
+                    <div className='coursepage--category_all'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/all`} className='link'><div>All<div className='coursepage--underline_all'/></div></Link></div>
                   ) }
                   {this.props.file_type === 'tutorials' ? (
-                    <div className='coursepage--category_tut'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/tutorials`} style={{ textDecoration:'none',color:'#38A7DE',fontWeight:'bold' }}><div>Tutorials<div className='coursepage--underline_tut' style={{ border:'0.0625rem solid #38A7DE' }}/></div></Link></div>
+                    <div className='coursepage--category_tut_'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/tutorials`} className='linkactive'><div>Tutorials<div className='coursepage--underline_tut_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_tut'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/tutorials`} style={{ textDecoration:'none',color:'#2B2A28' }}><div>Tutorials<div className='coursepage--underline_tut' style={{ border:'0.0625rem solid #FFFFFF' }}/></div></Link></div>
+                    <div className='coursepage--category_tut'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/tutorials`} className='link'><div>Tutorials<div className='coursepage--underline_tut'/></div></Link></div>
                   ) }
                   {this.props.file_type === 'books' ? (
-                    <div className='coursepage--category_books'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/books`} style={{ textDecoration:'none',color:'#38A7DE',fontWeight:'bold' }}><div>Books<div className='coursepage--underline_books' style={{ border:'0.0625rem solid #38A7DE' }}/></div></Link></div>
+                    <div className='coursepage--category_books_'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/books`} className='linkactive'><div>Books<div className='coursepage--underline_books_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_books'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/books`} style={{ textDecoration:'none',color:'#2B2A28' }}><div>Books<div className='coursepage--underline_books' style={{ border:'0.0625rem solid #FFFFFF' }}/></div></Link></div>
+                    <div className='coursepage--category_books'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/books`} className='link'><div>Books<div className='coursepage--underline_books'/></div></Link></div>
                   ) }
                     {this.props.file_type === 'notes' ? (
-                    <div className='coursepage--category_notes'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/notes`} style={{ textDecoration:'none',color:'#38A7DE',fontWeight:'bold' }}><div>Notes<div className='coursepage--underline_notes' style={{ border:'0.0625rem solid #38A7DE' }}/></div></Link></div>
+                    <div className='coursepage--category_notes_'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/notes`} className='linkactive'><div>Notes<div className='coursepage--underline_notes_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_notes'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/notes`} style={{ textDecoration:'none',color:'#2B2A28' }}><div>Notes<div className='coursepage--underline_notes' style={{ border:'0.0625rem solid #FFFFFF' }}/></div></Link></div>
+                    <div className='coursepage--category_notes'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/notes`} className='link'><div>Notes<div className='coursepage--underline_notes'/></div></Link></div>
                   ) }
                     {this.props.file_type === 'exampapers' ? (
-                    <div className='coursepage--category_exam'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/exampapers`} style={{ textDecoration:'none',color:'#38A7DE',fontWeight:'bold' }}><div>Examination Papers<div className='coursepage--underline_exam' style={{ border:'0.0625rem solid #38A7DE' }}/></div></Link></div>
+                    <div className='coursepage--category_exam_'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/exampapers`} className='linkactive'><div>Examination Papers<div className='coursepage--underline_exam_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_exam'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/exampapers`} style={{ textDecoration:'none',color:'#2B2A28' }}><div>Examination Papers<div className='coursepage--underline_exam' style={{ border:'0.0625rem solid #FFFFFF' }}/></div></Link></div>
+                    <div className='coursepage--category_exam'><Link to={`/${this.props.department}/id=${this.props.department_id}/${this.props.course}/id=${this.props.course_id}/exampapers`} className='link'><div>Examination Papers<div className='coursepage--underline_exam'/></div></Link></div>
                   ) }
                 </div>
                 <div className='coursepage--material-sort'>

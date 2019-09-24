@@ -6,6 +6,10 @@
     height: 56.75rem;
 
     cursor: default;
+
+    .link{
+      text-decoration: none;
+    }
 }
 
 .coursepage-- {
@@ -90,6 +94,7 @@
         &_all {
             width: 1.3125rem;
             height: 1.375rem;
+            text-decoration: none;
 
             padding:0.5rem 2.5625rem 0.6875rem 0rem;
         }
@@ -97,6 +102,7 @@
         &_tut {
             width: 4.8125rem;
             height: 1.375rem;
+            text-decoration: none;
 
             padding: 0.5rem 2.5625rem 0.6875rem 2.5625rem;
             border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
@@ -105,6 +111,7 @@
         &_books {
             width: 3.125rem;
             height: 1.375rem;
+            text-decoration: none;
 
             padding: 0.5rem 2.9375rem 0.6875rem 3.0625rem;
             border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
@@ -113,6 +120,7 @@
         &_notes {
             width: 3rem;
             height: 1.375rem;
+            text-decoration: none;
 
             padding: 0.5rem 2.9375rem 0.6875rem 2.5625rem;
             border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
@@ -121,10 +129,61 @@
         &_exam {
             width: 10.0625rem;
             height: 1.375rem;
+            text-decoration: none;
 
             padding: 0.5rem 0rem 0.6875rem 3rem;
             border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
         }
+
+        &_all_ {
+          width: 1.3125rem;
+          height: 1.375rem;
+          font-weight: bold;
+          color: #38A7DE;
+
+          padding:0.5rem 2.5625rem 0.6875rem 0rem;
+      }
+
+      &_tut_ {
+          width: 4.8125rem;
+          height: 1.375rem;
+          font-weight: bold;
+          color: #38A7DE;
+
+          padding: 0.5rem 2.5625rem 0.6875rem 2.5625rem;
+          border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+      }
+
+      &_books_ {
+          width: 3.125rem;
+          height: 1.375rem;
+          font-weight: bold;
+          color: #38A7DE;
+
+          padding: 0.5rem 2.9375rem 0.6875rem 3.0625rem;
+          border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+      }
+
+      &_notes_ {
+          width: 3rem;
+          height: 1.375rem;
+          font-weight: bold;
+          color: #38A7DE;
+
+          padding: 0.5rem 2.9375rem 0.6875rem 2.5625rem;
+          border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+      }
+
+      &_exam_ {
+          width: 10.0625rem;
+          height: 1.375rem;
+
+          font-weight: bold;
+          color: #38A7DE;
+
+          padding: 0.5rem 0rem 0.6875rem 3rem;
+          border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
+      }
     }
 
     &material-sort {
@@ -239,9 +298,54 @@
             margin-top: 0.625rem;
             margin-left: 0.0625rem;
         }
+
+        &all_ {
+          width: 1.0625rem;
+          border: 0.0625rem solid #38A7DE;
+          margin-top: 0.625rem;
+          margin-left: 0rem;
+        }
+
+        &tut_ {
+            width: 4.0625rem;
+            border: 0.0625rem solid #38A7DE;
+            margin-top: 0.625rem;
+            margin-left: 0.125rem;
+        }
+
+        &books_ {
+            width: 2.8125rem;
+            border: 0.0625rem solid #38A7DE;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
+
+        &notes_ {
+            width: 2.8125rem;
+            border: 0.0625rem solid #38A7DE;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
+
+        &exam_ {
+            width: 10rem;
+            border: 0.0625rem solid #38A7DE;
+            margin-top: 0.625rem;
+            margin-left: 0.0625rem;
+        }
     }
 
     &category:hover, &addcourse, &removecourse {
         cursor: pointer;
     }
+}
+
+.link {
+  text-decoration: none;
+  color: #2B2A28;
+
+  &active {
+    text-decoration: none;
+    color: #38A7DE;
+  }
 }
