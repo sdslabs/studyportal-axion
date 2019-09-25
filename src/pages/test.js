@@ -14,14 +14,18 @@ class Test extends Component {
             login: props.login,
             request: false,
             upload: false,
-            search: false
+            search: false,
+            userMenu: false,
+            notifications: false
         }
 
         this.handleReq = this.handleReq.bind(this);
         this.handleReqHeader = this.handleReqHeader.bind(this);
         this.handleUplo = this.handleUplo.bind(this);
         this.handleUploHeader = this.handleUploHeader.bind(this);
-        this.closeSearch = this.closeSearch.bind(this);
+        this.toggleUserMenu = this.toggleUserMenu.bind(this)
+        this.toggleNotifications = this.toggleNotifications.bind(this)
+        this.close = this.close.bind(this);
     }
 
     handleReqHeader () {
@@ -40,15 +44,27 @@ class Test extends Component {
         this.setState({ upload: false });
     }
 
-    closeSearch() {
+    toggleUserMenu() {
+      this.setState({ userMenu:!this.state.userMenu })
+    }
+
+    toggleNotifications() {
+      this.setState({ notifications:!this.state.notifications })
+    }
+
+    close() {
         this.setState({ search: false })
+        if(this.state.userMenu)
+          this.setState({ userMenu: false })
+        if(this.state.notifications)
+          this.setState({ notifications: false })
     }
 
     render() {
         return (
             <div onClick={this.closeSearch}>
-                <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader}
-                handleUploClick={this.handleUploHeader} />
+                <Header login={this.state.login} search={this.state.search} userMenu={this.state.userMenu} notifications={this.state.notifications} handleReqClick={this.handleReqHeader} 
+                handleUploClick={this.handleUploHeader} toggleUserMenu={this.toggleUserMenu} toggleNotifications={this.toggleNotifications} />
                 <Sidebar login={this.state.login} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
