@@ -63,8 +63,8 @@ class Test extends Component {
     render() {
         return (
             <div onClick={this.closeSearch}>
-                <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader}
-                handleUploClick={this.handleUploHeader} />
+                <Header login={this.state.login} search={this.state.search} userMenu={this.state.userMenu} notifications={this.state.notifications} handleReqClick={this.handleReqHeader} 
+                handleUploClick={this.handleUploHeader} toggleUserMenu={this.toggleUserMenu} toggleNotifications={this.toggleNotifications} />
                 <Sidebar login={this.state.login} />
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
