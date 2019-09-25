@@ -3,8 +3,16 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import getCourse from 'actions/courseAction'
 import coursedot from 'assets/coursedot.png'
 import 'styles/main.scss'
+
+function mapDispatchToProps(dispatch) {
+    return {
+      getCourse: course => dispatch(getCourse(course))
+    }
+}
 
 class CourseHandle extends Component {
     constructor(props) {
@@ -22,6 +30,9 @@ class CourseHandle extends Component {
 
     activatecourse() {
         this.props.handleClick(this.props.name);
+        let id = this.props.course
+        let name = this.props.name
+        this.props.getCourse({ id,name })
     }
 
     componentWillReceiveProps(props) {
@@ -58,6 +69,8 @@ class CourseHandle extends Component {
 
             else {
                 this.setState({ active: false })
+                localStorage.setItem('course',this.props.course)
+                localStorage.setItem('courseName',this.props.active)
             }
         }
 
@@ -97,4 +110,4 @@ class CourseHandle extends Component {
     }
 }
 
-export default CourseHandle
+export default connect(null,mapDispatchToProps)(CourseHandle)
