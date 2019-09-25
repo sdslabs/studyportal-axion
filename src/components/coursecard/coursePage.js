@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MaterialCard from './materialCard'
 import CustomCheckbox from 'components/customcheckbox/customCheckbox'
-import filesApi from 'api/filesApi'
-import { singleCourseApi } from 'api/courseApi'
-import { singleDepartmentApi } from 'api/departmentApi'
+import getFilesByCourse from 'api/filesApi'
+import { getCourseInfoByCode } from 'api/courseApi'
+import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import 'styles/main.scss'
 
 function mapStateToProps(state) {
@@ -27,19 +27,19 @@ class CoursePage extends Component {
 
     componentWillMount() {
       this.setState({ name:this.props.course })
-      singleDepartmentApi(this.props.department_abbr).then((res,err) => {
+      getDepartmentInfoByAbbr(this.props.department_abbr).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
         }
         else {
           if (this.props.course_code !== undefined) {
-            singleCourseApi(res.id,this.props.course_code).then((response,err) => {
+            getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
               if(err) {
                 window.alert("Error occurred")
               }
               else {
                 this.setState({ name:response.title })
-                filesApi(response.id).then((resp,err) => {
+                getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
                     window.alert("Error occurred")
                   }
@@ -56,18 +56,18 @@ class CoursePage extends Component {
 
     componentWillReceiveProps(nextProps) {
       this.setState({ name:nextProps.course })
-      singleDepartmentApi(nextProps.department_abbr).then((res,err) => {
+      getDepartmentInfoByAbbr(nextProps.department_abbr).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
         }
         else {
-          singleCourseApi(res.id,nextProps.course_code).then((response,err) => {
+          getCourseInfoByCode(res.id,nextProps.course_code).then((response,err) => {
             if(err) {
               window.alert("Error occurred")
             }
             else {
               this.setState({ name:response.title })
-              filesApi(response.id).then((resp,err) => {
+              getFilesByCourse(response.id).then((resp,err) => {
                 if(err) {
                   window.alert("Error occurred")
                 }
@@ -89,29 +89,29 @@ class CoursePage extends Component {
                 { !this.state.mycourse ? <div className='coursepage--addcourse'>+ Add Course</div> : <div className='coursepage--removecourse'>- Remove Course</div> }
                 <div className='coursepage--category'>
                   {this.props.file_type === 'all' || this.props.file_type === undefined ? (
-                    <div className='coursepage--category_all_'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/all`} className='linkactive'><div>All<div className='coursepage--underline_all_'/></div></Link></div>
+                    <div className='coursepage--category_all_'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/all`} className='linkactive'><div>All<div className='coursepage--underline_all_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_all'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/all`} className='link'><div>All<div className='coursepage--underline_all'/></div></Link></div>
+                    <div className='coursepage--category_all'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/all`} className='link'><div>All<div className='coursepage--underline_all'/></div></Link></div>
                   ) }
                   {this.props.file_type === 'tutorials' ? (
-                    <div className='coursepage--category_tut_'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/tutorials`} className='linkactive'><div>Tutorials<div className='coursepage--underline_tut_'/></div></Link></div>
+                    <div className='coursepage--category_tut_'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/tutorials`} className='linkactive'><div>Tutorials<div className='coursepage--underline_tut_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_tut'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/tutorials`} className='link'><div>Tutorials<div className='coursepage--underline_tut'/></div></Link></div>
+                    <div className='coursepage--category_tut'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/tutorials`} className='link'><div>Tutorials<div className='coursepage--underline_tut'/></div></Link></div>
                   ) }
                   {this.props.file_type === 'books' ? (
-                    <div className='coursepage--category_books_'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/books`} className='linkactive'><div>Books<div className='coursepage--underline_books_'/></div></Link></div>
+                    <div className='coursepage--category_books_'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/books`} className='linkactive'><div>Books<div className='coursepage--underline_books_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_books'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/books`} className='link'><div>Books<div className='coursepage--underline_books'/></div></Link></div>
+                    <div className='coursepage--category_books'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/books`} className='link'><div>Books<div className='coursepage--underline_books'/></div></Link></div>
                   ) }
                     {this.props.file_type === 'notes' ? (
-                    <div className='coursepage--category_notes_'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/notes`} className='linkactive'><div>Notes<div className='coursepage--underline_notes_'/></div></Link></div>
+                    <div className='coursepage--category_notes_'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/notes`} className='linkactive'><div>Notes<div className='coursepage--underline_notes_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_notes'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/notes`} className='link'><div>Notes<div className='coursepage--underline_notes'/></div></Link></div>
+                    <div className='coursepage--category_notes'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/notes`} className='link'><div>Notes<div className='coursepage--underline_notes'/></div></Link></div>
                   ) }
                     {this.props.file_type === 'exampapers' ? (
-                    <div className='coursepage--category_exam_'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/exampapers`} className='linkactive'><div>Examination Papers<div className='coursepage--underline_exam_'/></div></Link></div>
+                    <div className='coursepage--category_exam_'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/exampapers`} className='linkactive'><div>Examination Papers<div className='coursepage--underline_exam_'/></div></Link></div>
                   ) : (
-                    <div className='coursepage--category_exam'><Link to={`/department/${this.props.department_abbr}/course/${this.props.course_code}/exampapers`} className='link'><div>Examination Papers<div className='coursepage--underline_exam'/></div></Link></div>
+                    <div className='coursepage--category_exam'><Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/exampapers`} className='link'><div>Examination Papers<div className='coursepage--underline_exam'/></div></Link></div>
                   ) }
                 </div>
                 <div className='coursepage--material-sort'>

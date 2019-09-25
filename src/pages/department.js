@@ -8,8 +8,8 @@ import Request from 'components/request/request'
 import Upload from 'components/upload/upload'
 import ActivityLog from 'components/activitylog/activityLog'
 import CoursePage from 'components/coursecard/coursePage'
-import { singleDepartmentApi } from 'api/departmentApi'
-import { courseApi,singleCourseApi } from 'api/courseApi'
+import { getDepartmentInfoByAbbr } from 'api/departmentApi'
+import { getCourseByDepartment,getCourseInfoByCode } from 'api/courseApi'
 
 function mapStateToProps(state) {
     return { department: state.department }
@@ -42,7 +42,7 @@ class Department extends Component {
     componentWillMount() {
       const department = this.props.match.params.department
       const course = this.props.match.params.course
-      singleDepartmentApi(department).then((res,err) => {
+      getDepartmentInfoByAbbr(department).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
         }
@@ -51,14 +51,14 @@ class Department extends Component {
           this.department_id = res.id
           this.department_abbr = res.abbreviation
           this.setState({ department:this.department })
-          courseApi(this.department_id).then((resp,err) => {
+          getCourseByDepartment(this.department_id).then((resp,err) => {
             if(err) {
               window.alert("Something went wrong")
             }
             else {
               this.setState({ courses:resp })
               if(course !== undefined) {
-                singleCourseApi(this.department_id,course).then((response,err) => {
+                getCourseInfoByCode(this.department_id,course).then((response,err) => {
                   if(err) {
                     window.alert("Something went wrong")
                   }
@@ -77,7 +77,7 @@ class Department extends Component {
 
       componentWillReceiveProps(nextProps) {
         const course = nextProps.match.params.course
-        singleCourseApi(this.department_id,course).then((response,err) => {
+        getCourseInfoByCode(this.department_id,course).then((response,err) => {
           if(err) {
             window.alert("Something went wrong")
           }
