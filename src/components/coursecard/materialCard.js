@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import icon from 'assets/material_icon.svg'
 import 'styles/main.scss'
 import download1 from 'assets/download.svg'
@@ -38,7 +39,9 @@ class MaterialCard extends Component {
                 </div>
                 <div className='material--info'>
                     <div className='material--icon'><img src={icon} alt='icon' /></div>
-                    <div className='material--name'>Tutorial 1</div>
+                    <Link to={this.props.location} style={{ textDecoration:'none' }}>
+                      <div className='material--name'>Tutorial 1</div>
+                    </Link>
                     <div className='material--download'>Downloads: 2048</div>
                 </div>
                 { this.state.queue === '1' ?

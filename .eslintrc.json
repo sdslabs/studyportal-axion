@@ -53,6 +53,7 @@
         "no-underscore-dangle": 0,
         "no-alert": 0,
         "no-lone-blocks": 0,
+        "max-len": ["error", { "code":150 }],
         "react/display-name": [1, {"ignoreTranspilerName": false }],
         "react/forbid-prop-types": [1, {"forbid": ["any"]}],
         "react/jsx-boolean-value": 1,
