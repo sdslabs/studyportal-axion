@@ -38,7 +38,7 @@ class CoursePage extends Component {
                 window.alert("Error occurred")
               }
               else {
-                this.setState({ name:response.title })
+                this.setState({ name:response.title,code:response.code })
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
                     window.alert("Error occurred")
