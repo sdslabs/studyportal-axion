@@ -41,9 +41,9 @@
 
     &heading {
         position: absolute;
-        width: 7.82%;
+        width: 7rem;
         height: 1.3125rem;
-        left: 6.2%;
+        left: calc(2.71% + 3.644375rem);
         top: 33.16%;
 
         font-family: Sansation;
@@ -59,7 +59,7 @@
         position: absolute;
         width: 24.46%;
         height: 2rem;
-        left: 16.5%;
+        left: calc(2.71% + 14.69375rem);
         top: 0.9375rem;
 
         &_bar {
@@ -87,7 +87,7 @@
         &_icon {
             position: absolute;
             width: 2.560625rem;
-            height: 2.5rem;
+            height: 2.560625rem;
             left: 98%;
             top: 0rem;
 
@@ -101,7 +101,7 @@
         position: absolute;
         width: 3.6225rem;
         height: 2.375rem;
-        left: calc(40.96% + 4.75rem);
+        left: calc(26.6808% + 19.54rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;
@@ -117,7 +117,7 @@
         position: absolute;
         width: 3.2475rem;
         height: 1.1875rem;
-        left: calc(40.96% + 9.3725rem);
+        left: calc(26.6808% + 24.66375rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;
@@ -133,7 +133,7 @@
         position: absolute;
         width: 7.5rem;
         height: 2.375rem;
-        left: calc(40.96% + 13.62rem);
+        left: calc(26.6808% + 29.4125rem);
         top: 1.5625rem;
 
         font-family: Droid Sans;

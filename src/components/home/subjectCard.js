@@ -6,7 +6,7 @@ class SubjectCard extends Component {
     render() {
         return(
             <div className={this.props.name}>
-                <img className='subjectcard--image' src={this.props.url} alt={this.props.name} />
+                <img className='subjectcard--image' src={`/images/${this.props.url}`} alt={this.props.name} />
             </div>
         )
     }
