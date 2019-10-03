@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import MaterialCard from './materialCard'
 import CustomCheckbox from 'components/customcheckbox/customCheckbox'
-import getFilesByCourse from 'api/filesApi'
+import { getFilesByCourse,getFilesByType } from 'api/filesApi'
 import { getCourseInfoByCode } from 'api/courseApi'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import 'styles/main.scss'
@@ -32,14 +32,24 @@ class CoursePage extends Component {
           window.alert("Something went wrong")
         }
         else {
-          if (this.props.course_code !== undefined) {
+          if (this.props.course_code !== undefined || this.props.file_type === 'all') {
             getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
               if(err) {
                 window.alert("Error occurred")
               }
               else {
                 this.setState({ name:response.title,code:response.code })
+                if (this.props.file_type === undefined)
                 getFilesByCourse(response.id).then((resp,err) => {
+                  if(err) {
+                    window.alert("Error occurred")
+                  }
+                  else {
+                    this.setState({ files:resp })
+                  }
+                })
+                else
+                getFilesByType(response.id,this.props.file_type).then((resp,err) => {
                   if(err) {
                     window.alert("Error occurred")
                   }
@@ -67,7 +77,17 @@ class CoursePage extends Component {
             }
             else {
               this.setState({ name:response.title })
+              if (this.props.file_type === undefined || this.props.file_type === 'all')
               getFilesByCourse(response.id).then((resp,err) => {
+                if(err) {
+                  window.alert("Error occurred")
+                }
+                else {
+                  this.setState({ files:resp })
+                }
+              })
+              else
+              getFilesByType(response.id,nextProps.file_type).then((resp,err) => {
                 if(err) {
                   window.alert("Error occurred")
                 }
