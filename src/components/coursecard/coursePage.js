@@ -21,7 +21,8 @@ class CoursePage extends Component {
         this.state = {
             mycourse: true,
             name: '',
-            files: []
+            login: false,
+            files: [],
         }
     }
 
@@ -92,6 +93,7 @@ class CoursePage extends Component {
                   window.alert("Error occurred")
                 }
                 else {
+                  console.log(resp)
                   this.setState({ files:resp })
                 }
               })
@@ -106,9 +108,9 @@ class CoursePage extends Component {
             <div className='coursepage'>
                 <div className="coursepage--head">{ this.state.name } { this.props.course_code }</div>
                 <div className='coursepage--underline' />
-                { !this.state.mycourse ?
+                { this.state.login ? <span>{ !this.state.mycourse ?
                 <div className='coursepage--addcourse'>+ Add Course</div> :
-                <div className='coursepage--removecourse'>- Remove Course</div> }
+                <div className='coursepage--removecourse'>- Remove Course</div> }</span> : null}
                 <div className='coursepage--category'>
                   {this.props.file_type === 'all' || this.props.file_type === undefined ? (
                     <div className='coursepage--category_all_'>
@@ -176,7 +178,7 @@ class CoursePage extends Component {
                 </div>
                 <div className='coursepage--material'>
                     { this.state.files.map((file) => (
-                      <MaterialCard name={ file.name } location={ file.path } downloads={ file.download }  />
+                      <MaterialCard name={ file.title } location={ file.path } downloads={ file.downloads } size={ file.size } date_modified={ file.date_modified } />
                     )) }
                     <div className='coursepage--material_year'>2017</div>
                 </div>
