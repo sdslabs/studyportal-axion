@@ -17,10 +17,10 @@ class Header extends Component {
                         <input className='landingheader--search_bar' type="text" placeholder="Search tutorials, books, notes, courses..." />
                         <button className='landingheader--search_icon'><img src={search} alt='search' /></button>
                     </div>
-                    <button className='landingheader--request'><img className='landingheader--request_image' src={request} alt='request' /> Request</button>
-                    <button className='landingheader--upload'><img className='landingheader--upload_image' src={upload} alt='upload' /> Upload</button>
-                    <button className='landingheader--login'>Login</button>
-                    <button className='landingheader--signup'>Sign Up</button>
+                    {/* <button className='landingheader--request'><img className='landingheader--request_image' src={request} alt='request' /> Request</button>
+                    <button className='landingheader--upload'><img className='landingheader--upload_image' src={upload} alt='upload' /> Upload</button> */}
+                    {/* <button className='landingheader--login'>Login</button>
+                    <button className='landingheader--signup'>Sign Up</button> */}
             </div>
         )
     }

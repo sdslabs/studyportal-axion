@@ -62,7 +62,7 @@ class Header extends Component {
                     <button className='header--search_icon'><img src={search} alt='search' /></button>
                 </div>
                 <Search value={this.state.value} search={this.state.search}/>
-                <div className='header--request' onClick={this.props.handleReqClick}>Request</div>
+                {/* <div className='header--request' onClick={this.props.handleReqClick}>Request</div>
                 <div className='header--upload' onClick={this.props.handleUploClick}>Upload</div>
                 <div className='header--mentors'>Mentors List</div>
                 {this.state.login ?
@@ -78,7 +78,7 @@ class Header extends Component {
                         <button className='header--login'>Login</button>
                         <button className='header--signup'>Sign Up</button>
                     </Fragment>)
-                }
+                } */}
             </div>
         )
     }

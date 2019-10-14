@@ -158,7 +158,7 @@ class CoursePage extends Component {
                     { this.state.files.map((file) => (
                       <MaterialCard name={ file.name } location={ file.path } downloads={ file.download }  />
                     )) }
-                    <div className='coursepage--material_year'>2017</div>
+                    {/* <div className='coursepage--material_year'>2017</div> */}
                 </div>
             </div>
         )
