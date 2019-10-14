@@ -93,7 +93,6 @@ class CoursePage extends Component {
                   window.alert("Error occurred")
                 }
                 else {
-                  console.log(resp)
                   this.setState({ files:resp })
                 }
               })
