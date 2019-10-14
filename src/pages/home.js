@@ -34,7 +34,7 @@ class Home extends Component {
                 <div className='sub_list'>
                   { this.state.departments.map((department) => (
                   <Link to={ `/departments/${department.abbreviation}` }>
-                    <SubjectCard name={ department.title } url={ department.url } id={ department.id } />
+                    <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
                   </Link>)
                   ) }
                 </div>
