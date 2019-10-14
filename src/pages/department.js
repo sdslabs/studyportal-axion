@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
 import React, { Component } from 'react'
@@ -8,6 +9,7 @@ import Request from 'components/request/request'
 import Upload from 'components/upload/upload'
 import ActivityLog from 'components/activitylog/activityLog'
 import CoursePage from 'components/coursecard/coursePage'
+import CourseCover from 'components/cover/courseCover'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import { getCourseByDepartment,getCourseInfoByCode } from 'api/courseApi'
 
@@ -42,6 +44,7 @@ class Department extends Component {
     componentWillMount() {
       const department = this.props.match.params.department
       const course = this.props.match.params.course
+      this.setState({ course })
       getDepartmentInfoByAbbr(department).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
@@ -112,7 +115,7 @@ class Department extends Component {
                 <Sidebar login={this.state.login} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} active={this.state.course}/>
                 <Request request={this.state.request} handleReq={this.handleReq} />
                 <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.login ? <ActivityLog /> : <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} /> }
+                { this.state.course !== undefined ? this.state.login ? <ActivityLog /> : <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} /> : <CourseCover/>}
             </div>
         )
     }
