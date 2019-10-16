@@ -1,3 +1,3 @@
 export const CONFIG = {
-  nexusRoot: "http://nexus.sdslabs.local",
+  apiRoot: "http://studyportal.sdslabs.local/",
 }
