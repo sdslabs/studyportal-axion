@@ -32,23 +32,33 @@ class CoursePage extends Component {
           window.alert("Something went wrong")
         }
         else {
-          if (this.props.course_code !== undefined) {
-            getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
-              if(err) {
-                window.alert("Error occurred")
-              }
-              else {
-                this.setState({ name:response.title,code:response.code })
-                getFilesByCourse(response.id).then((resp,err) => {
-                  if(err) {
-                    window.alert("Error occurred")
+          if (!res) {
+            this.props.error()
+          }
+          else {
+            if (this.props.course_code !== undefined) {
+              getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
+                if(err) {
+                  window.alert("Error occurred")
+                }
+                else {
+                  if (!response) {
+                    this.props.error()
                   }
                   else {
-                    this.setState({ files:resp })
+                    this.setState({ name:response.title,code:response.code })
+                    getFilesByCourse(response.id).then((resp,err) => {
+                      if(err) {
+                        window.alert("Error occurred")
+                      }
+                      else {
+                        this.setState({ files:resp })
+                      }
+                    })
                   }
-                })
-              }
-            })
+                }
+              })
+            }
           }
         }
       })
@@ -61,22 +71,34 @@ class CoursePage extends Component {
           window.alert("Something went wrong")
         }
         else {
-          getCourseInfoByCode(res.id,nextProps.course_code).then((response,err) => {
-            if(err) {
-              window.alert("Error occurred")
-            }
-            else {
-              this.setState({ name:response.title })
-              getFilesByCourse(response.id).then((resp,err) => {
+          if (!res) {
+            nextProps.error()
+          }
+          else {
+            if (this.props.course_code !== undefined) {
+              getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
                 if(err) {
                   window.alert("Error occurred")
                 }
                 else {
-                  this.setState({ files:resp })
+                  if (!response) {
+                    nextProps.error()
+                  }
+                  else {
+                    this.setState({ name:response.title,code:response.code })
+                    getFilesByCourse(response.id).then((resp,err) => {
+                      if(err) {
+                        window.alert("Error occurred")
+                      }
+                      else {
+                        this.setState({ files:resp })
+                      }
+                    })
+                  }
                 }
               })
             }
-          })
+          }
         }
       })
     }
