@@ -43,7 +43,7 @@ class Department extends Component {
     }
 
     componentWillMount() {
-      if (this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'tutorials' || this.props.match.params.file_type === 'books' || this.props.match.params.file_type === 'notes' || this.props.match.params.file_type === 'exampapers' || this.props.match.params.file_type === undefined) {
+      if (this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'tutorials' || this.props.match.params.file_type === 'books' || this.props.match.params.file_type === 'notes' || this.props.match.params.file_type === 'exampapers' || this.props.match.params.file_type === undefined) {
         const department = this.props.match.params.department
         const course = this.props.match.params.course
         getDepartmentInfoByAbbr(department).then((res,err) => {
@@ -93,7 +93,7 @@ class Department extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'tutorials' || this.props.match.params.file_type === 'books' || this.props.match.params.file_type === 'notes' || this.props.match.params.file_type === 'exampapers' || this.props.match.params.file_type === undefined) {
+      if (this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'tutorials' || this.props.match.params.file_type === 'books' || this.props.match.params.file_type === 'notes' || this.props.match.params.file_type === 'exampapers' || this.props.match.params.file_type === undefined) {
         const course = nextProps.match.params.course
         getCourseInfoByCode(this.department_id,course).then((response,err) => {
           if(err) {
