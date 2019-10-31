@@ -147,7 +147,7 @@ class CoursePage extends Component {
                 </div>
                 <div className='coursepage--material'>
                     { this.state.files.map((file) => (
-                      <MaterialCard name={ file.title } location={ file.path } downloads={ file.downloads } size={ file.size } date_modified={ file.date_modified } />
+                      <MaterialCard name={ file.title } url={ file.driveid } downloads={ file.downloads } size={ file.size } date_modified={ file.date_modified } />
                     )) }
                     <div className='coursepage--material_year'>2017</div>
                 </div>
