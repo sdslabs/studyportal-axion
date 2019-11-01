@@ -11,7 +11,7 @@ import ActivityLog from 'components/activitylog/activityLog'
 import CoursePage from 'components/coursecard/coursePage'
 import CourseCover from 'components/cover/courseCover'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
-import { getCourseByDepartment,getCourseInfoByCode } from 'api/courseApi'
+import { getCourseInfoByCode } from 'api/courseApi'
 
 function mapStateToProps(state) {
     return { department: state.department }
@@ -50,30 +50,22 @@ class Department extends Component {
           window.alert("Something went wrong")
         }
         else {
-          this.department = res.title
-          this.department_id = res.id
-          this.department_abbr = res.abbreviation
-          this.setState({ department:this.department })
-          getCourseByDepartment(this.department_id).then((resp,err) => {
-            if(err) {
-              window.alert("Something went wrong")
-            }
-            else {
-              this.setState({ courses:resp })
-              if(course !== undefined) {
-                getCourseInfoByCode(this.department_id,course).then((response,err) => {
-                  if(err) {
-                    window.alert("Something went wrong")
-                  }
-                  else {
-                    const course_title = `${response.title} ${response.code}`
-                    this.course = course_title
-                    this.setState({ course:course_title })
-                  }
-                })
+          this.setState({ department:res.department.title })
+          this.department_id = res.department.id
+          this.department_abbr = res.department.abbreviation
+          this.setState({ courses:res.courses })
+          if(course !== undefined) {
+            getCourseInfoByCode(this.department_id,course).then((response,err) => {
+              if(err) {
+                window.alert("Something went wrong")
               }
+              else {
+                const course_title = `${response.title} ${response.code}`
+                this.course = course_title
+                this.setState({ course:course_title })
               }
             })
+          }
           }
         })
       }
