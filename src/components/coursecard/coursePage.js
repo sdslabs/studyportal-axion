@@ -27,14 +27,13 @@ class CoursePage extends Component {
     }
 
     componentWillMount() {
-      this.setState({ name:this.props.course })
       getDepartmentInfoByAbbr(this.props.department_abbr).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
         }
         else {
           if (this.props.course_code !== undefined || this.props.file_type === 'all') {
-            getCourseInfoByCode(res.id,this.props.course_code).then((response,err) => {
+            getCourseInfoByCode(res.department.id,this.props.course_code).then((response,err) => {
               if(err) {
                 window.alert("Error occurred")
               }
@@ -66,13 +65,12 @@ class CoursePage extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      this.setState({ name:nextProps.course })
       getDepartmentInfoByAbbr(nextProps.department_abbr).then((res,err) => {
         if(err) {
           window.alert("Something went wrong")
         }
         else {
-          getCourseInfoByCode(res.id,nextProps.course_code).then((response,err) => {
+          getCourseInfoByCode(res.department.id,nextProps.course_code).then((response,err) => {
             if(err) {
               window.alert("Error occurred")
             }

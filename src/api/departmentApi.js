@@ -10,7 +10,7 @@ function getDepartmentsList() {
 function getDepartmentInfoByAbbr(department) {
     return axiosInstance.get(`/api/v1/departments/?department=${department}`).then((response) => {
       const res = JSON.parse(response.request.response)
-      return res[0]
+      return res
     })
 }
 

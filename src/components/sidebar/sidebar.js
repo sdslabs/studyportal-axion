@@ -33,7 +33,6 @@ class Sidebar extends Component {
     }
 
     render() {
-
         if (this.state.login) {
             return(
                 <div className='sidebar'>
