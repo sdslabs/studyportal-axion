@@ -6,7 +6,6 @@ import arrow from 'assets/left-arrow.png'
 import CourseHandle from './courseHandle'
 import 'styles/main.scss'
 import { Link } from 'react-router-dom'
-let shortName = require('short-name')
 
 class Sidebar extends Component {
     constructor(props) {
@@ -80,7 +79,7 @@ class Sidebar extends Component {
                         <div className='sidebar--course-table_logout'>
                           { this.props.courses.map((course) => (
                             <Link to={ `/departments/${this.props.department_abbr}/courses/${course.code}/` } style={{ textDecoration:'none' }}>
-                                <CourseHandle login={false} name={ `${ course.title.length >= 30 ? shortName(course.title) : course.title } ${course.code}` } course={course.id} active={this.active} handleClick={this.handleClick}/>
+                                <CourseHandle login={false} name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
                             </Link>
                           )) }
                         </div>

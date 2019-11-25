@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import getCourse from 'actions/courseAction'
 import coursedot from 'assets/coursedot.png'
 import 'styles/main.scss'
+let shortName = require('short-name')
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -93,7 +94,7 @@ class CourseHandle extends Component {
         if (this.props.login) {
             return(
                 <div className='coursehandle'>
-                    <span className='coursehandle--heading' onClick={this.activatecourse}>{this.props.name}</span>
+                    <span className='coursehandle--heading' onClick={this.activatecourse}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
                     <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span /> }</span>
                 </div>
             )
@@ -102,7 +103,7 @@ class CourseHandle extends Component {
         else {
             return(
                 <div className='coursehandle' ref={this.course}>
-                    <span className='coursehandle--heading' onClick={this.activatecourse} ref={this.header}>{this.props.name}</span>
+                    <span className='coursehandle--heading' onClick={this.activatecourse} ref={this.header}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
                     { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
                 </div>
             )
