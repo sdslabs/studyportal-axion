@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import getCourse from 'actions/courseAction'
 import coursedot from 'assets/coursedot.png'
 import 'styles/main.scss'
-let shortName = require('short-name')
+import shortName from 'utils/short-name'
 
 function mapDispatchToProps(dispatch) {
     return {
