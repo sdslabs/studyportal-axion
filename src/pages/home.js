@@ -19,7 +19,7 @@ class Home extends Component {
     componentWillMount() {
         getDepartmentsList().then((res,err) => {
           if(err) {
-            window.alert('No results found')
+            //TODO handle error
           }
           else {
             this.setState({ departments: res });

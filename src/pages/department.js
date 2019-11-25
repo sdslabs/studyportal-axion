@@ -47,7 +47,7 @@ class Department extends Component {
       this.setState({ course })
       getDepartmentInfoByAbbr(department).then((res,err) => {
         if(err) {
-          window.alert("Something went wrong")
+          //TODO handle error
         }
         else {
           this.setState({ department:res.department.title })
@@ -57,7 +57,7 @@ class Department extends Component {
           if(course !== undefined) {
             getCourseInfoByCode(this.department_id,course).then((response,err) => {
               if(err) {
-                window.alert("Something went wrong")
+                //TODO handle error
               }
               else {
                 const course_title = `${response.title} ${response.code}`
@@ -74,7 +74,7 @@ class Department extends Component {
         const course = nextProps.match.params.course
         getCourseInfoByCode(this.department_id,course).then((response,err) => {
           if(err) {
-            window.alert("Something went wrong")
+            //TODO handle error
           }
           else {
             const course_title = `${response.title} ${response.code}`
