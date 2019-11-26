@@ -1,0 +1,41 @@
+.error {
+  position: absolute;
+  top: 4.5625rem;
+  left: 0rem;
+  width: 100%;
+  height: calc(100% - 4.5625rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  align-items: center;
+}
+
+.error-- {
+  &image {
+      width: 404px;
+      height: 388px;
+  }
+
+  &page {
+    width: 15rem;
+    margin-top: 2rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.725rem;
+    line-height: 2.1875rem;
+    text-align: center;
+  }
+
+  &sorry {
+    width: 30rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.125rem;
+    line-height: 3.1875rem;
+    text-align: center;
+  }
+}

@@ -32,33 +32,43 @@ class CoursePage extends Component {
           //TODO handle error
         }
         else {
-          if (this.props.course_code !== undefined || this.props.file_type === 'all') {
-            getCourseInfoByCode(res.department.id,this.props.course_code).then((response,err) => {
-              if(err) {
-                //TODO handle error
-              }
-              else {
-                this.setState({ name:response.title,code:response.code })
-                if (this.props.file_type === undefined)
-                getFilesByCourse(response.id).then((resp,err) => {
-                  if(err) {
-                    //TODO handle error
+          if(!res) {
+            this.props.error()
+          }
+          else {
+            if (this.props.course_code !== undefined || this.props.file_type === 'all') {
+              getCourseInfoByCode(res.department.id,this.props.course_code).then((response,err) => {
+                if(err) {
+                  //TODO handle error
+                }
+                else {
+                  if(!response) {
+                    this.props.error()
                   }
                   else {
-                    this.setState({ files:resp })
+                    this.setState({ name:response.title,code:response.code })
+                    if (this.props.file_type === undefined)
+                    getFilesByCourse(response.id).then((resp,err) => {
+                      if(err) {
+                        //TODO handle error
+                      }
+                      else {
+                        this.setState({ files:resp })
+                      }
+                    })
+                    else
+                    getFilesByType(response.id,this.props.file_type).then((resp,err) => {
+                      if(err) {
+                        //TODO handle error
+                      }
+                      else {
+                        this.setState({ files:resp })
+                      }
+                    })
                   }
-                })
-                else
-                getFilesByType(response.id,this.props.file_type).then((resp,err) => {
-                  if(err) {
-                    //TODO handle error
-                  }
-                  else {
-                    this.setState({ files:resp })
-                  }
-                })
-              }
-            })
+                }
+              })
+            }
           }
         }
       })
@@ -70,30 +80,35 @@ class CoursePage extends Component {
           //TODO handle error
         }
         else {
+          if(!res) nextProps.error()
+          else
           getCourseInfoByCode(res.department.id,nextProps.course_code).then((response,err) => {
             if(err) {
               //TODO handle error
             }
             else {
-              this.setState({ name:response.title })
-              if (this.props.file_type === undefined || this.props.file_type === 'all')
-              getFilesByCourse(response.id).then((resp,err) => {
-                if(err) {
-                  //TODO handle error
-                }
-                else {
-                  this.setState({ files:resp })
-                }
-              })
-              else
-              getFilesByType(response.id,nextProps.file_type).then((resp,err) => {
-                if(err) {
-                  //TODO handle error
-                }
-                else {
-                  this.setState({ files:resp })
-                }
-              })
+              if(!response) nextProps.error()
+              else {
+                this.setState({ name:response.title })
+                if (this.props.file_type === undefined || this.props.file_type === 'all')
+                getFilesByCourse(response.id).then((resp,err) => {
+                  if(err) {
+                    //TODO handle error
+                  }
+                  else {
+                    this.setState({ files:resp })
+                  }
+                })
+                else
+                getFilesByType(response.id,nextProps.file_type).then((resp,err) => {
+                  if(err) {
+                    //TODO handle error
+                  }
+                  else {
+                    this.setState({ files:resp })
+                  }
+                })
+              }
             }
           })
         }
