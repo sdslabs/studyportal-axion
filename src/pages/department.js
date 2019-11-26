@@ -88,20 +88,40 @@ class Department extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      if (this.props.match.params.file_type === 'all' || this.props.match.params.file_type === 'tutorials' || this.props.match.params.file_type === 'books' || this.props.match.params.file_type === 'notes' || this.props.match.params.file_type === 'exampapers' || this.props.match.params.file_type === undefined) {
+      if (nextProps.match.params.file_type === 'all' || nextProps.match.params.file_type === 'tutorials' || nextProps.match.params.file_type === 'books' || nextProps.match.params.file_type === 'notes' || nextProps.match.params.file_type === 'exampapers' || nextProps.match.params.file_type === undefined) {
+        const department = nextProps.match.params.department
         const course = nextProps.match.params.course
-        getCourseInfoByCode(this.department_id,course).then((response,err) => {
+        this.setState({ course })
+        getDepartmentInfoByAbbr(department).then((res,err) => {
           if(err) {
             //TODO handle error
           }
           else {
-            if(!response) {
+            if(!res) {
               this.setState({ error:true })
             }
             else {
-              const course_title = `${response.title} ${response.code}`
-              this.course = course_title
-              this.setState({ course:course_title })
+              this.setState({ department:res.department.title })
+              this.department_id = res.department.id
+              this.department_abbr = res.department.abbreviation
+              this.setState({ courses:res.courses })
+              if(course !== undefined) {
+                getCourseInfoByCode(this.department_id,course).then((response,err) => {
+                  if(err) {
+                    //TODO handle error
+                  }
+                  else {
+                    if(!response) {
+                      this.setState({ error:true })
+                    }
+                    else {
+                      const course_title = `${response.title} ${response.code}`
+                      this.course = course_title
+                      this.setState({ course:course_title })
+                    }
+                  }
+                })
+              }
             }
           }
         })
