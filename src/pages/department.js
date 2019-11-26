@@ -69,7 +69,7 @@ class Department extends Component {
                   }
                   else {
                     if(!response) {
-                      this.setState({error:true})
+                      this.setState({ error:true })
                     }
                     else {
                       const course_title = `${response.title} ${response.code}`

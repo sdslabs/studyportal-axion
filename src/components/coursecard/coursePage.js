@@ -110,7 +110,7 @@ class CoursePage extends Component {
                 })
               }
             }
-          }
+          })
         }
       })
     }
