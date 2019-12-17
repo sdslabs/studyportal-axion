@@ -90,7 +90,7 @@ class CoursePage extends Component {
               if(!response) nextProps.error()
               else {
                 this.setState({ name:response.title })
-                if (this.props.file_type === undefined || this.props.file_type === 'all')
+                if (nextProps.file_type === undefined || nextProps.file_type === 'all')
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
                     //TODO handle error
