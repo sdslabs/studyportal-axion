@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
+import React, { Component, Suspense, lazy } from 'react'
 import arrow from 'assets/left-arrow.png'
-import CourseHandle from './courseHandle'
 import 'styles/main.scss'
 import { Link } from 'react-router-dom'
+
+const CourseHandle = lazy(() => import('./courseHandle'))
 
 class Sidebar extends Component {
     constructor(props) {
@@ -77,11 +78,13 @@ class Sidebar extends Component {
                     </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
+                          <Suspense fallback={<div>...Loading</div>}> {/*TODO*/}
                           { this.props.courses.map((course) => (
                             <Link to={ `/departments/${this.props.department_abbr}/courses/${course.code}/` } style={{ textDecoration:'none' }}>
                                 <CourseHandle login={false} name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
                             </Link>
                           )) }
+                          </Suspense>
                         </div>
                     </div>
                 </div>
