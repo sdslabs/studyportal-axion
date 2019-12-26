@@ -3,6 +3,8 @@ import React, { Component, Fragment } from 'react'
 import CustomFileUploader from './customFileUploader'
 import { uploadFiles } from 'api/uploadApi'
 import close from 'assets/closereq.png'
+import { getDepartmentsList } from 'api/departmentApi'
+import { getCourseByDepartment } from 'api/courseApi'
 import 'styles/main.scss'
 
 class Upload extends Component {
@@ -12,21 +14,42 @@ class Upload extends Component {
         this.state = {
             disable: 0,
             active: false,
-            files: []
+            files: [],
+            departments: [],
+            courses: []
         };
 
-        this.activ_uplo_sel_cour = this.activ_uplo_sel_cour.bind(this);
-        this.activ_uplo_mat = this.activ_uplo_mat.bind(this);
+        this.active_course = this.active_course.bind(this);
+        this.active_material = this.active_material.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
         this.getFiles = this.getFiles.bind(this);
         this.upload = this.upload.bind(this);
     }
 
-    activ_uplo_sel_cour() {
-        this.setState({ disable: 1 });
+    componentDidMount() {
+      getDepartmentsList().then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ departments:res })
+        }
+      })
     }
 
-    activ_uplo_mat() {
+    active_course(e) {
+        this.setState({ disable: 1 });
+        getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
+          if(err) {
+            //TODO handle error
+          }
+          else {
+            this.setState({ courses:res })
+          }
+        })
+    }
+
+    active_material(e) {
         this.setState({ disable: 2 });
     }
 
@@ -66,14 +89,14 @@ class Upload extends Component {
                             <div className='upload--form' id='uploadform'>
                                 <form onSubmit={this.upload}>
                                     <div className='form--department'>Department</div>
-                                    <select className='form--department-select' onChange={this.activ_uplo_sel_cour} form='uploadform'>
+                                    <select className='form--department-select' onChange={ this.active_course } form='uploadform'>
                                         <option>--Select Department--</option>
-                                        <option>Civil Engineering</option>
+                                        { this.state.departments.map((department) => (<option key={ department } id={ department.id }>{ department.title }</option>)) }
                                     </select>
                                     <div className='form--course' style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Course Name</div>
-                                    <select className='form--course-select' onChange={this.activ_uplo_mat} form='uploadform' disabled={ !(this.state.disable >= 1) }>
+                                    <select className='form--course-select' onChange={ this.active_material } form='uploadform' disabled={ !(this.state.disable >= 1) }>
                                         <option>--Select Course--</option>
-                                        <option>Structural Analysis</option>
+                                        { this.state.courses.map((course) => (<option key={ course } id={ course.id }>{ course.title }</option>)) }
                                     </select>
                                     <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
                                         <CustomFileUploader handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>
