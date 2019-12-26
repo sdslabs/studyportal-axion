@@ -18,15 +18,17 @@ class CustomFileUploader extends Component {
         const file = e.target.files;
 
         for (let i=0; i<file.length; i++) {
-            this.files.push(file[i].name)
+            this.files.push(file[i]);
         }
 
+        this.props.getFiles(this.files);
         this.props.handleUpload();
         this.forceUpdate();
     }
 
     handleRemove(index) {
         this.files.splice(index,1);
+        this.props.getFiles(this.files);
         this.forceUpdate();
     }
 
@@ -48,7 +50,7 @@ class CustomFileUploader extends Component {
             return(
                 <div className='customfileuploader'>
                 <div>
-                    {this.files.map((name, index) => (<FileUploadContainer name={name} index={index} handleRemove={this.handleRemove}/>))}
+                    {this.files.map((file, index) => (<FileUploadContainer name={file.name} index={index} handleRemove={this.handleRemove}/>))}
                 </div>
                     <div className='customfileuploader--input'>
                         <input className='customfileuploader--choosefile' type='file' multiple onChange={this.addFiles}/><label className='customfileuploader--label'>Choose File</label>

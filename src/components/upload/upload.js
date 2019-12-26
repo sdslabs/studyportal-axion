@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
 import CustomFileUploader from './customFileUploader'
+import { uploadFiles } from 'api/uploadApi'
 import close from 'assets/closereq.png'
 import 'styles/main.scss'
 
@@ -10,24 +11,36 @@ class Upload extends Component {
 
         this.state = {
             disable: 0,
-            active: false
+            active: false,
+            files: []
         };
 
         this.activ_uplo_sel_cour = this.activ_uplo_sel_cour.bind(this);
         this.activ_uplo_mat = this.activ_uplo_mat.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
+        this.getFiles = this.getFiles.bind(this);
+        this.upload = this.upload.bind(this);
     }
 
     activ_uplo_sel_cour() {
-        this.setState({ disable: 1 })
+        this.setState({ disable: 1 });
     }
 
     activ_uplo_mat() {
-        this.setState({ disable: 2 })
+        this.setState({ disable: 2 });
     }
 
     handleUpload() {
-        this.setState({ active: true })
+        this.setState({ active: true });
+    }
+
+    getFiles(files) {
+      this.setState({ files });
+    }
+
+    upload(e) {
+      e.preventDefault();
+      uploadFiles(this.state.files)
     }
 
     render() {
@@ -51,7 +64,7 @@ class Upload extends Component {
                                 </div>
                             </div>
                             <div className='upload--form' id='uploadform'>
-                                <form>
+                                <form onSubmit={this.upload}>
                                     <div className='form--department'>Department</div>
                                     <select className='form--department-select' onChange={this.activ_uplo_sel_cour} form='uploadform'>
                                         <option>--Select Department--</option>
@@ -63,7 +76,7 @@ class Upload extends Component {
                                         <option>Structural Analysis</option>
                                     </select>
                                     <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
-                                        <CustomFileUploader handleUpload={this.handleUpload} disabled={ !(this.state.disable >= 2) }/>
+                                        <CustomFileUploader handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>
                                     </div>
                                 </form>
                             </div>
