@@ -1,12 +1,13 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
+import React, { Component, Suspense, lazy } from 'react'
 import Header from 'components/home/header'
-import SubjectCard from 'components/home/subjectCard'
 import 'styles/main.scss'
 import { getDepartmentsList } from 'api/departmentApi'
 import { Link } from 'react-router-dom'
+
+const SubjectCard = lazy(() => import('components/home/subjectCard'))
 
 class Home extends Component {
     constructor(props) {
@@ -32,11 +33,13 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className='sub_list'>
+                <Suspense fallback={<div>...Loading</div>}>
                   { this.state.departments.map((department) => (
-                  <Link to={ `/departments/${department.abbreviation}` }>
-                    <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
-                  </Link>)
-                  ) }
+                    <Link to={ `/departments/${department.abbreviation}` }>
+                      <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
+                    </Link>
+                  ))}
+                  </Suspense>
                 </div>
             </div>
         )

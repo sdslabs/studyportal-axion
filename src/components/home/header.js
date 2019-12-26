@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import logo from 'assets/studyportal_logo.png'
 import sds_logo from 'assets/sds_logo.png'
-import upload from 'assets/upload.png'
-import request from 'assets/request.png'
+import upload from 'assets/upload.svg'
+import request from 'assets/request.svg'
 import search from 'assets/search.png'
 import 'styles/main.scss'
 

@@ -82,18 +82,20 @@
             line-height: 1.1875rem;
 
             color: #2B2A28;
+            outline: none;
         }
 
         &_icon {
             position: absolute;
             width: 2.560625rem;
-            height: 2.560625rem;
+            height: 2.5rem;
             left: 98%;
             top: 0rem;
 
             background: #0D2938;
             border: #0D2938;
             border-radius: 0.125rem;
+            line-height: 0.5rem;
         }
     }
 

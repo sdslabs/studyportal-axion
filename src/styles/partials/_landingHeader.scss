@@ -11,22 +11,22 @@
 
     &logo_sds {
         position: absolute;
-        left: 9.22%;
-        bottom: 90.49%;
+        left: 7.22%;
+        top: 2.25rem;
     }
 
     &logo {
         position: absolute;
-        left: 50.2%;
-        bottom: 85.62%;
+        left: calc(50% - 1.95rem);
+        top: 4rem;
     }
 
     &heading {
         position: absolute;
         width: 17.5%;
         height: 2.25rem;
-        left: 43.5%;
-        top: 16.3%;
+        left: 41.25%;
+        top: 10rem;
 
         font-family: Sansation;
         font-style: normal;
@@ -41,7 +41,7 @@
         position: absolute;
         width: 30.41%;
         height: 3rem;
-        left: 36%;
+        left: 34.795%;
         top: 14.4375rem;
 
         background: #FFFFFF;
@@ -63,6 +63,7 @@
             border-radius: 0.25rem;
             padding-left: 1rem;
             border: white;
+            outline: none;
         }
 
         &_icon {
@@ -75,6 +76,7 @@
             border-radius: 0.25rem;
             background: #FFFFFF;
             border: white;
+            line-height: 0.5rem;
         }
     }
 
@@ -82,7 +84,7 @@
         position: absolute;
         width: 6.9375rem;
         height: 2.5625rem;
-        left: calc(48.75% - 3.46875rem);
+        right: calc(50% + 0.5rem);
         top: 19.625rem;
 
         background: #24698b;
@@ -101,7 +103,7 @@
         position: absolute;
         width: 6.9375rem;
         height: 2.5625rem;
-        left: calc(48.75% + 4.46875rem);
+        left: calc(50% + 0.5rem);
         top: 19.625rem;
 
         background: #24698b;
