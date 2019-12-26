@@ -96,7 +96,7 @@ class Upload extends Component {
                                     <div className='form--course' style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Course Name</div>
                                     <select className='form--course-select' onChange={ this.active_material } form='uploadform' disabled={ !(this.state.disable >= 1) }>
                                         <option>--Select Course--</option>
-                                        { this.state.courses.map((course) => (<option key={ course } id={ course.id }>{ course.title }</option>)) }
+                                        { this.state.courses.map((course) => (<option key={ course } id={ course.id }>{ course.title } { course.code }</option>)) }
                                     </select>
                                     <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
                                         <CustomFileUploader handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>
