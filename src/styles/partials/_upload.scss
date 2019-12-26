@@ -1,7 +1,7 @@
 .uploadcover {
     position: absolute;
     width: 100%;
-    height: 61.3125rem;
+    height: 100%;
     left: 0rem;
     top: 0rem;
 
@@ -9,6 +9,9 @@
     z-index: 1;
 
     cursor: default;
+    ::-webkit-scrollbar {
+      display: none;
+    }
 }
 
 .upload {
@@ -21,6 +24,7 @@
     background: #FFFFFF;
     box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     border-radius: 0.125rem;
+    overflow-y: scroll;
 
     .form-- {
 
