@@ -31,10 +31,10 @@ class Search extends Component {
             <div className='search' ref={this.search}>
                 <div className='search--file'>Files</div>
                 <div className='search--file-holder'>
-                    <SearchResult />
-                    <SearchResult />
-                    <SearchResult />
-                    <SearchResult />
+                    <SearchResult title="Tutorial 1" course="Structural Analysis" code="CEN-201" date="14th Dec, 2018" type="tutorial"/>
+                    <SearchResult title="Tutorial 1" course="Structural Analysis" code="CEN-201" date="14th Dec, 2018" type="tutorial"/>
+                    <SearchResult title="Tutorial 1" course="Structural Analysis" code="CEN-201" date="14th Dec, 2018" type="tutorial"/>
+                    <SearchResult title="Tutorial 1" course="Structural Analysis" code="CEN-201" date="14th Dec, 2018" type="tutorial"/>
                 </div>
                 <div className='search--file-seeall'>See All</div>
                 <div className='search--courses'>Courses</div>
