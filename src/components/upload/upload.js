@@ -19,6 +19,7 @@ class Upload extends Component {
             courses: []
         };
 
+        this.toggleUploadModal = this.toggleUploadModal.bind(this)
         this.active_course = this.active_course.bind(this);
         this.active_material = this.active_material.bind(this);
         this.handleUpload = this.handleUpload.bind(this);
@@ -53,6 +54,11 @@ class Upload extends Component {
         this.setState({ disable: 2 });
     }
 
+    toggleUploadModal() {
+      this.setState({ active:false })
+      this.props.handleUplo();
+    }
+
     handleUpload() {
         this.setState({ active: true });
     }
@@ -61,18 +67,18 @@ class Upload extends Component {
       this.setState({ files });
     }
 
-    upload(e) {
+    async upload(e) {
       e.preventDefault();
       uploadFiles(this.state.files)
+      console.log(e.target)
     }
 
     render() {
-
         if (this.props.upload) {
             return(
                 <div className='uploadcover'>
                     <div className='upload'>
-                        <div className='upload--close' onClick={this.props.handleUplo}><img src={close} alt='close'/></div>
+                        <div className='upload--close' onClick={this.toggleUploadModal}><img src={close} alt='close'/></div>
                         <div className='upload--header' style={{ display: this.state.active ? 'none' : 'block' }}>
                             <div className='upload--heading'>Upload</div>
                             <div className='upload--underline' />
@@ -91,12 +97,12 @@ class Upload extends Component {
                                     <div className='form--department'>Department</div>
                                     <select className='form--department-select' onChange={ this.active_course } form='uploadform'>
                                         <option>--Select Department--</option>
-                                        { this.state.departments.map((department) => (<option key={ department } id={ department.id }>{ department.title }</option>)) }
+                                        { this.state.departments.map((department) => (<option key={ department.id } id={ department.id }>{ department.title }</option>)) }
                                     </select>
                                     <div className='form--course' style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Course Name</div>
                                     <select className='form--course-select' onChange={ this.active_material } form='uploadform' disabled={ !(this.state.disable >= 1) }>
                                         <option>--Select Course--</option>
-                                        { this.state.courses.map((course) => (<option key={ course } id={ course.id }>{ course.title } { course.code }</option>)) }
+                                        { this.state.courses.map((course) => (<option key={ course.id } id={ course.id }>{ course.title } { course.code }</option>)) }
                                     </select>
                                     <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
                                         <CustomFileUploader handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>

@@ -50,7 +50,7 @@ class CustomFileUploader extends Component {
             return(
                 <div className='customfileuploader'>
                 <div>
-                    {this.files.map((file, index) => (<FileUploadContainer name={file.name} index={index} handleRemove={this.handleRemove}/>))}
+                    {this.files.map((file, index) => (<FileUploadContainer name={file.name} key={file.name} index={index} handleRemove={this.handleRemove}/>))}
                 </div>
                     <div className='customfileuploader--input'>
                         <input className='customfileuploader--choosefile' type='file' multiple onChange={this.addFiles}/><label className='customfileuploader--label'>Choose File</label>
