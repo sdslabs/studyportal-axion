@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
 import close from 'assets/closereq.png'
+import { getDepartmentsList } from 'api/departmentApi'
+import { getCourseByDepartment } from 'api/courseApi'
+import { requestFiles } from 'api/requestApi'
 import 'styles/main.scss'
 
 class Request extends Component {
@@ -9,16 +12,29 @@ class Request extends Component {
         this.state = {
             type: 'file', //Represents whether course or file tab is active
             disable: 0, //Enabling elements in file form
-            disableCourse: 0 //Enabling elements in course form
+            disableCourse: 0, //Enabling elements in course form
+            departments: [],
+            courses: []
         };
 
         this.switchToCourse = this.switchToCourse.bind(this);
         this.switchToFile = this.switchToFile.bind(this);
-        this.activ_file_sel_cour = this.activ_file_sel_cour.bind(this);
-        this.activ_file_mat = this.activ_file_mat.bind(this);
-        this.activ_name = this.activ_name.bind(this);
-        this.activ_cour_sel_cour = this.activ_cour_sel_cour.bind(this);
-        this.activ_cour_courid = this.activ_cour_courid.bind(this);
+        this.file_active_course = this.file_active_course.bind(this);
+        this.file_active_material = this.file_active_material.bind(this);
+        this.active_name = this.active_name.bind(this);
+        this.course_active_course = this.course_active_course.bind(this);
+        this.course_active_courseid = this.course_active_courseid.bind(this);
+    }
+
+    componentDidMount() {
+      getDepartmentsList().then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ departments:res })
+        }
+      })
     }
 
     switchToCourse() {
@@ -31,24 +47,52 @@ class Request extends Component {
         this.setState({ disableCourse: 0 })
     }
 
-    activ_file_sel_cour() {
+    file_active_course(e) {
         this.setState({ disable: 1 })
+        getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
+          if(err) {
+            //TODO handle error
+          }
+          else {
+            this.setState({ courses:res })
+          }
+        })
     }
 
-    activ_file_mat() {
+    file_active_material(e) {
         this.setState({ disable: 2 })
     }
 
-    activ_name() {
+    active_name() {
         this.setState({ disable: 3 })
     }
 
-    activ_cour_sel_cour() {
+    course_active_course() {
         this.setState({ disableCourse: 1 })
     }
 
-    activ_cour_courid() {
+    course_active_courseid() {
         this.setState({ disableCourse: 2 })
+    }
+
+    requestFile(e) {
+      e.preventDefault();
+      const course = e.target.course[e.target.course.selectedIndex].id
+      const material = e.target.material.value
+      const name = e.target.name.value
+      requestFiles(1,material,name,course).then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          //TODO handle success
+        }
+      })
+
+    }
+
+    requestCourse(e) {
+      e.preventDefault();
     }
 
     render() {
@@ -67,36 +111,36 @@ class Request extends Component {
                                 <button className='request--filebutton-active' onClick={this.switchToFile}>File</button>
                                 <button className='request--coursebutton-inactive'onClick={this.switchToCourse}>Courses</button>
                                 <div className='request--form-file'>
-                                    <form action='' method='GET'>
+                                    <form onSubmit={ this.requestFile }>
                                         <div className='file--department'>Department</div>
-                                        <select className='file--department-select' onChange={this.activ_file_sel_cour}>
+                                        <select className='file--department-select' onChange={this.file_active_course} name='department'>
                                             <option>--Select Department--</option>
-                                            <option>Civil Engineering</option>
+                                            { this.state.departments.map(department => (<option key={ department.id } id={ department.id }>{ department.title }</option>)) }
                                         </select>
                                         <div className='file--course' style={{ color: this.state.disable >=1 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course Name</div>
-                                        <select className='file--course-select' onChange={this.activ_file_mat} disabled={ !(this.state.disable >= 1) } >
+                                        <select className='file--course-select' onChange={this.file_active_material} disabled={ !(this.state.disable >= 1) } name='course'>
                                             <option>--Select Course--</option>
-                                            <option>Structural Analysis</option>
+                                            { this.state.courses.map(course => (<option key={ course.id } id={ course.id }>{ course.title} { course.code }</option>)) }
                                         </select>
                                         <div className='file--material' style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Material Type</div>
                                             <div className='file--material_tut'>
-                                                <input type='radio' name='material' value='tutorial' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
+                                                <input type='radio' name='material' value='Tutorial' onChange={this.active_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
                                                 <span className="tut" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Tutorial</span>
                                             <div className='file--material_books'>
-                                                <input type='radio' name='material' value='books' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
+                                                <input type='radio' name='material' value='Book' onChange={this.active_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
                                             <span className="books" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Books</span>
                                             <div className='file--material_notes'>
-                                                <input type='radio' name='material' value='notes' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
+                                                <input type='radio' name='material' value='Notes' onChange={this.active_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
                                             <span className="notes" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Notes</span>
                                             <div className='file--material_exam'>
-                                                <input type='radio' name='material' value='exam' onChange={this.activ_name} className='radio' disabled={ !(this.state.disable >= 2) } />
+                                                <input type='radio' name='material' value='Examination Papers' onChange={this.active_name} className='radio' disabled={ !(this.state.disable >= 2) } />
                                             </div>
                                             <span className="exam" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Examination Papers</span>
                                         <div className='file--name' style={{ color: this.state.disable >=3 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Name</div>
-                                        <input className="file--name-input" type='text' disabled={ !(this.state.disable >= 3) } />
+                                        <input className="file--name-input" type='text' disabled={ !(this.state.disable >= 3) } name='name'/>
                                         <button type='submit' className='request--button-file'>Request</button>
                                     </form>
                                 </div>
@@ -105,13 +149,13 @@ class Request extends Component {
                                 <button className='request--filebutton-inactive' onClick={this.switchToFile}>File</button>
                                 <button className='request--coursebutton-active'onClick={this.switchToCourse}>Courses</button>
                                 <div className='request--form-course'>
-                                <form>
+                                <form onSubmit={ this.requestCourse }>
                                     <div className='course--department'>Department</div>
-                                    <input className='course--department-input' type='text' onChange={this.activ_cour_sel_cour} />
+                                    <input className='course--department-input' type='text' onChange={this.course_active_course} />
                                     <div className='course--course' style={{ color: this.state.disableCourse >=1 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course Name</div>
-                                    <input className='course--course-input' type='text' onChange={this.activ_cour_courid} disabled={ !(this.state.disableCourse >= 1) } />
+                                    <input className='course--course-input' type='text' onChange={this.course_active_courseid} disabled={ !(this.state.disableCourse >= 1) } />
                                     <div className='course--id' style={{ color: this.state.disableCourse >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course ID</div>
-                                    <input className='course--id-input' type='text' placeholder="CEN-" disabled={ !(this.state.disableCourse >= 2) } />
+                                    <input className='course--id-input' type='text' disabled={ !(this.state.disableCourse >= 2) } />
                                     <button type='submit' className='request--button-course'>Request</button>
                                 </form>
                             </div>
