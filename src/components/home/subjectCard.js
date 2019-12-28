@@ -10,15 +10,20 @@ class SubjectCard extends Component {
       }
 
       this.togglehover = this.togglehover.bind(this)
+      this.toggleleave = this.toggleleave.bind(this)
     }
 
     togglehover() {
-      this.setState({ hover:!this.state.hover })
+      this.setState({ hover:true })
+    }
+
+    toggleleave() {
+      this.setState({ hover:false })
     }
 
     render() {
         return(
-            <div className='subjectcard' onMouseEnter={this.togglehover} onMouseLeave={this.togglehover}>
+            <div className='subjectcard' onMouseEnter={this.togglehover} onMouseLeave={this.toggleleave}>
                 { !this.state.hover ? <img className='subjectcard--image' src={`/images/${this.props.url}`} alt={this.props.name} /> :
                  <img className='subjectcard--image-hover' src={`/images/${this.props.url}`} alt={this.props.name} /> }
                 { !this.state.hover ? <div className='subjectcard--cover' /> : <div className='subjectcard--cover-hover' /> }

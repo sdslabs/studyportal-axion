@@ -17,6 +17,8 @@
       cursor: pointer;
       transition: all 0.3s ease-in;
       transform: scale(1.11267606,1.18461538);
+      filter: blur(4px);
+      -webkit-filter: blur(4px);
 
       background: #1E85B8;
       mix-blend-mode: multiply;
