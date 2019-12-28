@@ -10,6 +10,7 @@ import { getFilesByCourse,getFilesByType } from 'api/filesApi'
 import { getCourseInfoByCode } from 'api/courseApi'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import 'styles/main.scss'
+import shortName from 'utils/short-name'
 
 function mapStateToProps(state) {
   return { id: state.course.id, name: state.course.name }
@@ -118,7 +119,7 @@ class CoursePage extends Component {
     render() {
         return(
             <div className='coursepage'>
-                <div className="coursepage--head">{ this.state.name } { this.props.course_code }</div>
+                <div className="coursepage--head">{ this.state.name.length >= 40 ? shortName(this.state.name) : this.state.name } { this.props.course_code }</div>
                 <div className='coursepage--underline' />
                 { this.state.login ? <span>{ !this.state.mycourse ?
                 <div className='coursepage--addcourse'>+ Add Course</div> :
