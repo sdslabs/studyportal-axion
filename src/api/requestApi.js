@@ -2,7 +2,7 @@ import { axiosInstance } from './axiosInstance';
 
 function requestFiles(user,filetype,title,course) {
   const status = 1;
-  return axiosInstance.post('/api/v1/requests', { user,filetype,status,title,course })
+  return axiosInstance.post('/requests', { user,filetype,status,title,course })
   .then((response) => {
     const res = JSON.parse(response.request.response);
     return res;
@@ -13,7 +13,7 @@ function requestFiles(user,filetype,title,course) {
 }
 
 function updateRequestStatus(request,status) {
-  return axiosInstance.put('/api/v1/requests', { request,status })
+  return axiosInstance.put('/requests', { request,status })
   .then((response) => {
     const res = JSON.parse(response.request.response);
     return res;
