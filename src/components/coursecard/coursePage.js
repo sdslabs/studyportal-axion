@@ -24,6 +24,12 @@ class CoursePage extends Component {
             login: false,
             files: [],
         }
+        this.filemap = {
+          "tutorials": "Tutorials",
+          "books": "Book",
+          "notes": "Notes",
+          "exampapers": "Examination Papers"
+        }
     }
 
     componentWillMount() {
@@ -57,7 +63,7 @@ class CoursePage extends Component {
                       }
                     })
                     else
-                    getFilesByType(response.id,this.props.file_type).then((resp,err) => {
+                    getFilesByType(response.id,this.filemap[this.props.file_type]).then((resp,err) => {
                       if(err) {
                         //TODO handle error
                       }
@@ -100,7 +106,7 @@ class CoursePage extends Component {
                   }
                 })
                 else
-                getFilesByType(response.id,nextProps.file_type).then((resp,err) => {
+                getFilesByType(response.id,this.filemap[nextProps.file_type]).then((resp,err) => {
                   if(err) {
                     //TODO handle error
                   }
