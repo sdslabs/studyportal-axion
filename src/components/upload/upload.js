@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
 import CustomFileUploader from './customFileUploader'
-import { uploadFiles } from 'api/uploadApi'
+import { uploadFile } from 'api/uploadApi'
 import close from 'assets/closereq.png'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
@@ -16,7 +16,9 @@ class Upload extends Component {
             active: false,
             files: [],
             departments: [],
-            courses: []
+            courses: [],
+            department: 0,
+            course: 0
         };
 
         this.toggleUploadModal = this.toggleUploadModal.bind(this)
@@ -39,7 +41,7 @@ class Upload extends Component {
     }
 
     active_course(e) {
-        this.setState({ disable: 1 });
+        this.setState({ disable: 1, department: e.target[e.target.selectedIndex].id });
         getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
           if(err) {
             //TODO handle error
@@ -51,7 +53,7 @@ class Upload extends Component {
     }
 
     active_material(e) {
-        this.setState({ disable: 2 });
+        this.setState({ disable: 2, course: e.target[e.target.selectedIndex].id });
     }
 
     toggleUploadModal() {
@@ -69,11 +71,13 @@ class Upload extends Component {
 
     async upload(e) {
       e.preventDefault();
-      const reader = new FileReader()
-      reader.onloadend = (e) => {
-        uploadFiles(reader.result)
-      }
       this.state.files.forEach((file) => {
+        const name = file.name.split(".")[0]
+        const reader = new FileReader()
+        reader.onloadend = (e) => {
+          uploadFile(this.state.course,name,reader.result).then((res) => {
+          })
+        }
         reader.readAsDataURL(file)
       })
     }

@@ -1,12 +1,12 @@
 import { axiosInstance } from './axiosInstance';
 
-function uploadFiles(files) {
-  return axiosInstance.post('/uploads', { files })
+function uploadFile(user, course, name, file) {
+  return axiosInstance.post('/uploads', { user, course, name, file })
   .then((response) => {
     return response;
   })
 }
 
 export {
-  uploadFiles
+  uploadFile
 }
