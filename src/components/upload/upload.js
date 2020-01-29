@@ -71,14 +71,13 @@ class Upload extends Component {
 
     async upload(e) {
       e.preventDefault();
-      this.state.files.forEach((file) => {
-        const name = file.name.split(".")[0]
+      this.state.files.forEach((fileObj) => {
         const reader = new FileReader()
         reader.onloadend = (e) => {
-          uploadFile(this.state.course,name,reader.result).then((res) => {
+          uploadFile(this.state.course,fileObj.file.name,fileObj.type,reader.result).then((res) => {
           })
         }
-        reader.readAsDataURL(file)
+        reader.readAsDataURL(fileObj.file)
       })
     }
 
