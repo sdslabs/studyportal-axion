@@ -8,4 +8,3 @@ export const axiosInstance = axios.create({
     },
     baseURL: CONFIG.nexusRoot,
   });
-

@@ -5,6 +5,7 @@ import { uploadFile } from 'api/uploadApi'
 import close from 'assets/closereq.png'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
+import { loginUser } from 'api/userApi'
 import 'styles/main.scss'
 
 class Upload extends Component {
@@ -30,6 +31,9 @@ class Upload extends Component {
     }
 
     componentDidMount() {
+      // const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZ…vbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
+      const token = "None"
+      loginUser(token);
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
