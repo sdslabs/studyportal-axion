@@ -26,7 +26,7 @@ class ActivityLog extends Component {
 
     render() {
         return(
-            <div className='activitylog'>
+            <div className='activitylog' onClick={this.props.close}>
                 <div className='activitylog--heading'>Activity Log</div>
                 <div className='activitylog--heading_underline'/>
                 <div className='activitylog--category'>

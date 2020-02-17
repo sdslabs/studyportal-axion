@@ -14,21 +14,16 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: '',
+            login: props.login,
             value: '',
-            userMenu: false,
-            notifications: false,
+            userMenu: props.userMenu,
+            notifications: props.notifications,
             search: false
         }
 
         this.search = React.createRef();
         this.result = this.result.bind(this);
         this.close = this.close.bind(this)
-    }
-
-    componentWillMount() {
-        const login = this.props.login
-        this.setState({ login });
     }
 
     componentWillReceiveProps(props) {
@@ -45,6 +40,7 @@ class Header extends Component {
     }
 
     close() {
+      this.props.close()
       this.setState({ search:false })
       if(this.state.userMenu)
         this.setState({ userMenu:false })

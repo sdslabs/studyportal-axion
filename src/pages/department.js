@@ -44,7 +44,9 @@ class Department extends Component {
             course: '',
             courses: [],
             userCourses: [],
-            user: {} //TODO remove after checking redux
+            user: {}, //TODO remove after checking redux
+            notifications: false,
+            userMenu: false
         }
         this.department = ''
         this.department_id = ''
@@ -57,6 +59,9 @@ class Department extends Component {
         this.handleReqHeader = this.handleReqHeader.bind(this);
         this.handleUplo = this.handleUplo.bind(this);
         this.handleUploHeader = this.handleUploHeader.bind(this);
+        this.toggleNotifications = this.toggleNotifications.bind(this);
+        this.toggleUserMenu = this.toggleUserMenu.bind(this);
+        this.close = this.close.bind(this);
         this.error = this.error.bind(this);
     }
 
@@ -180,6 +185,22 @@ class Department extends Component {
       this.setState({ error:true })
     }
 
+    toggleNotifications() {
+      this.setState({ notifications:!this.state.notifications })
+    }
+
+    toggleUserMenu() {
+      this.setState({ userMenu:!this.state.notifications })
+    }
+
+    close() {
+      this.setState({ search:false })
+      if(this.state.userMenu)
+        this.setState({ userMenu:false })
+      if(this.state.notifications)
+        this.setState({ notifications:false })
+    }
+
     checkActivityRoute(route) {
       return route.split('/')[1] === 'activity'
     }
@@ -189,29 +210,29 @@ class Department extends Component {
         if(this.checkActivityRoute(this.props.location.pathname))
           return (
             <div>
-              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-              <Sidebar login department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course}/>
+              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+              <Sidebar login department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
               <Request request={this.state.request} handleReq={this.handleReq} />
               <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-              <ActivityLog user={this.state.user} />
+              <ActivityLog user={this.state.user} close={this.close}/>
             </div>
           )
         else
           return (
               <div>
-                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                  <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course}/>
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+                  <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
                   <Request request={this.state.request} handleReq={this.handleReq} />
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                  { this.state.course !== undefined ? <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error}/> : <CourseCover/> }
+                  { this.state.course !== undefined ? <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
               </div>
           )
       }
         else
             return (
               <div>
-                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                  <Error />
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+                  <Error close={this.close}/>
               </div>
             )
     }

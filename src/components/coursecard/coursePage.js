@@ -123,7 +123,7 @@ class CoursePage extends Component {
 
     render() {
         return(
-            <div className='coursepage'>
+            <div className='coursepage' onClick={this.props.close}>
                 <div className="coursepage--head">{ this.state.name } { this.props.course_code }</div>
                 <div className='coursepage--underline' />
                 { this.state.login ? <span>{ !this.state.mycourse ?

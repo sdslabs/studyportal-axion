@@ -11,9 +11,10 @@ function getRequestsByUser(user) {
     })
 }
 
-function requestFiles(user,filetype,title,course) {
+function requestFiles(token,filetype,title,course) {
   const status = 1;
-  return axiosInstance.post('/requests', { user,filetype,status,title,course })
+  return axiosInstance.post('/requests', { filetype,status,title,course },
+  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
   .then((response) => {
     const res = JSON.parse(response.request.response);
     return res;

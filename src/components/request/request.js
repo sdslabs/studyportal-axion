@@ -80,7 +80,8 @@ class Request extends Component {
       const course = e.target.course[e.target.course.selectedIndex].id
       const material = e.target.material.value
       const name = e.target.name.value
-      requestFiles(6,material,name,course).then((res,err) => {
+      const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhcmtyaWRlciIsImVtYWlsIjoiZGFya3JpZGVyMjUxMDk5QGdtYWlsLmNvbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
+      requestFiles(token,material,name,course).then((res,err) => {
         if(err) {
           //TODO handle error
         }

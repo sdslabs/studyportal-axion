@@ -78,7 +78,7 @@ class Sidebar extends Component {
     render() {
         if (this.state.login) {
             return(
-                <div className='sidebar'>
+                <div className='sidebar' onClick={this.props.close}>
                     <div className='sidebar--course'>My Courses ({this.props.login})</div>
                     <Link to='/'>
                         <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
@@ -114,7 +114,7 @@ class Sidebar extends Component {
 
         else {
             return(
-                <div className='sidebar'>
+                <div className='sidebar' onClick={this.props.close}>
                     <div className='sidebar--course'>{this.props.department}</div>
                     <Link to='/'>
                         <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
