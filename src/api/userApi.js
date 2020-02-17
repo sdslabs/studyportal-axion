@@ -27,8 +27,21 @@ function loginUserWithCookie() {
   })
 }
 
+function addCourseForUser(token,course) {
+  return axiosInstance.put('/users', { course },
+  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+  .then((response) => {
+    const res = JSON.parse(response.request.response);
+    return res;
+  })
+  .catch((error) => {
+    return Promise.reject(error);
+  })
+}
+
 
 export {
   loginUserWithToken,
-  loginUserWithCookie
+  loginUserWithCookie,
+  addCourseForUser
 }

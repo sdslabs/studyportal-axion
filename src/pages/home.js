@@ -7,7 +7,7 @@ import SubjectCard from 'components/home/subjectCard'
 import 'styles/main.scss'
 import { getDepartmentsList } from 'api/departmentApi'
 import { Link } from 'react-router-dom'
-import { loginUserWithToken, loginUserWithCookie } from '../api/userApi'
+// import { loginUserWithToken, loginUserWithCookie } from '../api/userApi'
 
 class Home extends Component {
     constructor(props) {

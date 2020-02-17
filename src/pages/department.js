@@ -186,7 +186,7 @@ class Department extends Component {
 
     render() {
       if (!this.state.error) {
-        if(this.checkActivityRoute)
+        if(this.checkActivityRoute(this.props.location.pathname))
           return (
             <div>
               <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />

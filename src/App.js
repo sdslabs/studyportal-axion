@@ -12,9 +12,9 @@ class App extends Component {
       login: true
     }
 
-    function checkLogin() {
-      //TODO check login and update accordingly
-    }
+    // function checkLogin() {
+    //   //TODO check login and update accordingly
+    // }
   }
 
   render() {
