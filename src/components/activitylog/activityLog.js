@@ -20,7 +20,6 @@ class ActivityLog extends Component {
         }
         else {
           this.setState({ requests: res })
-          console.log(res)
         }
       })
     }
@@ -36,7 +35,7 @@ class ActivityLog extends Component {
                     <div className='activitylog--category_upload'><div>Uploads<div className='activitylog--underline_upload'/></div></div>
                 </div>
                 <div className='activitylog--requestcards'>
-                  { this.state.requests.map((request,index) => (<ActivityReqCard key={index} status={request.status} title={request.title} course={request.course.title} code={request.course.code} />)) }
+                  { this.state.requests.map((request,index) => (<ActivityReqCard key={index} status={request.status} title={request.title} course={request.course.title} code={request.course.code} date={request.date} />)) }
                 </div>
             </div>
         )

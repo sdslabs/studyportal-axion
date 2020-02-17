@@ -30,11 +30,46 @@ class ActivityReqCard extends Component {
         }
     }
 
+    getMonth(month) {
+      if(month === '01')
+        return 'Jan'
+      else if(month === '02')
+        return 'Feb'
+      else if(month === '03')
+        return 'Mar'
+      else if(month === '04')
+        return 'Apr'
+      else if(month === '05')
+        return 'May'
+      else if(month === '06')
+        return 'Jun'
+      else if(month === '07')
+        return 'Jul'
+      else if(month === '08')
+        return 'Aug'
+      else if(month === '09')
+        return 'Sep'
+      else if(month === '10')
+        return 'Oct'
+      else if(month === '11')
+        return 'Nov'
+      else if(month === '12')
+        return 'Dec'
+
+    }
+
+    parseDate(date) {
+        let datePart = date.match(/\d+/g)
+        let month = this.getMonth(`${datePart[1]}`)
+        let dateString = `${datePart[2]}th ${month}, ${datePart[0]}`;
+        return dateString
+    }
+
     render() {
         return(
             <div className='activityreqcard'>
                 <div className='activityreqcard--info'>
-                    <div className='activityreqcard--info_date'>14th Dec, 2019</div>
+                    <div className='activityreqcard--info_date'>{this.parseDate(this.props.date)}</div>
                     <div className='activityreqcard--info_name'>
                         <span className='activityreqcard--info_head'>Name:</span>
                         <span className='activityreqcard--info_heading'>{this.props.title}</span>
