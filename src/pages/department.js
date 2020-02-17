@@ -13,22 +13,38 @@ import CourseCover from 'components/cover/courseCover'
 import Error from 'components/error/error'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import { getCourseInfoByCode } from 'api/courseApi'
+import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions'
+import { loginUserWithToken, loginUserWithCookie } from 'api/userApi'
 
 function mapStateToProps(state) {
-    return { department: state.department }
+    return { user: state }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getCourse: course => dispatch(getCourse(course)),
+    getEmail: email => dispatch(getEmail(email)),
+    getId: id => dispatch(getId(id)),
+    getProfileImage: profileImage => dispatch(getProfileImage(profileImage)),
+    getUser: user => dispatch(getUser(user)),
+    getUsername: username => dispatch(getUsername(username))
+  }
 }
 
 class Department extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: this.props.login,
+            login: props.login,
+            path: props.location.pathname,
             request: false,
             upload: false,
             error: props.error,
             department: '',
             course: '',
-            courses: []
+            courses: [],
+            userCourses: [],
+            user: {} //TODO remove after checking redux
         }
         this.department = ''
         this.department_id = ''
@@ -82,6 +98,20 @@ class Department extends Component {
             }
           }
         })
+        if(true) {  //TODO check whether with token or cookie
+          const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhcmtyaWRlciIsImVtYWlsIjoiZGFya3JpZGVyMjUxMDk5QGdtYWlsLmNvbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
+          loginUserWithToken(token).then((res,err) => {
+            if(err) {
+              //TODO handle error
+            }
+            else {
+              this.setState({ userCourses: res.courses, user: res })
+            }
+          })
+        }
+        else {
+          loginUserWithCookie()
+        }
       }
       else
         this.error()
@@ -150,25 +180,41 @@ class Department extends Component {
       this.setState({ error:true })
     }
 
+    checkActivityRoute(route) {
+      return route.split('/')[1] === 'activity'
+    }
+
     render() {
-      if (!this.state.error)
-        return (
-            <div>
-                <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                <Sidebar login={this.state.login} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} active={this.state.course}/>
-                <Request request={this.state.request} handleReq={this.handleReq} />
-                <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                { this.state.course !== undefined ? this.state.login ? <ActivityLog /> : <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error}/> : <CourseCover/>}
-            </div>
-        )
-      else
+      if (!this.state.error) {
+        if(this.checkActivityRoute)
           return (
             <div>
-                <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
-                <Error />
+              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
+              <Sidebar login department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course}/>
+              <Request request={this.state.request} handleReq={this.handleReq} />
+              <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+              <ActivityLog user={this.state.user} />
             </div>
           )
+        else
+          return (
+              <div>
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
+                  <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course}/>
+                  <Request request={this.state.request} handleReq={this.handleReq} />
+                  <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+                  { this.state.course !== undefined ? <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error}/> : <CourseCover/> }
+              </div>
+          )
+      }
+        else
+            return (
+              <div>
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} />
+                  <Error />
+              </div>
+            )
     }
 }
 
-export default connect(mapStateToProps)(Department)
+export default connect(mapStateToProps,mapDispatchToProps)(Department)

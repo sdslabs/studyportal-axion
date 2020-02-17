@@ -10,22 +10,22 @@ const initialState = {
 
 export default function rootReducer(state = initialState, action) {
     if (action.type === GET_ID) {
-      state.id = action.payload
+      Object.assign({},state,{ id : action.payload });
     }
     if (action.type === GET_USER) {
-      state = action.payload
+      Object.assign({},state,action.payload);
     }
     if (action.type === GET_USERNAME) {
-        state.username = action.payload
+        Object.assign({},state,{ username : action.payload });
     }
     else if (action.type === GET_EMAIL) {
-      state.email = action.payload
+      Object.assign({},state,{ email : action.payload });
     }
     else if (action.type === GET_PROFILE_IMAGE) {
-      state.profile_image = action.payload
+      Object.assign({},state,{ profile_image : action.payload });
     }
     else if (action.type === GET_COURSES) {
-        state.courses = action.payload
+        Object.assign({},state,{ courses : action.payload });
     }
     else if (action.type === RESET_APP) {
         state.id = 0;

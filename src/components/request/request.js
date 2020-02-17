@@ -80,7 +80,7 @@ class Request extends Component {
       const course = e.target.course[e.target.course.selectedIndex].id
       const material = e.target.material.value
       const name = e.target.name.value
-      requestFiles(1,material,name,course).then((res,err) => {
+      requestFiles(6,material,name,course).then((res,err) => {
         if(err) {
           //TODO handle error
         }

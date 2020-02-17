@@ -12,7 +12,7 @@ import { getDepartmentInfoByAbbr } from 'api/departmentApi'
 import 'styles/main.scss'
 
 function mapStateToProps(state) {
-  return { id: state.course.id, name: state.course.name }
+  // return { id: state.course.id, name: state.course.name }
 }
 
 class CoursePage extends Component {

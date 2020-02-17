@@ -4,7 +4,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import getCourse from 'actions/courseAction'
+import { getCourse } from 'actions/actions'
 import coursedot from 'assets/coursedot.png'
 import 'styles/main.scss'
 import shortName from 'utils/short-name'

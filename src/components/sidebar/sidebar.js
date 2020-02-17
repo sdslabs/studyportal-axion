@@ -42,12 +42,11 @@ class Sidebar extends Component {
                     </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
-                            <CourseHandle login name='Sturctural Analysis CEN-201' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login name='Open Channel Hydralyics CEN-205' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login name='Open Channel Hydralyics CEN-203' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login name='Open Channel Hydralyics CEN-202' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login name='Open Channel Hydralyics CEN-208' active={this.active} handleClick={this.handleClick}/>
-                            <CourseHandle login name='Open Channel Hydralyics CEN-209' active={this.active} handleClick={this.handleClick}/>
+                          { this.props.userCourses.map((course) => (
+                            <Link to={ `/departments/${this.props.department_abbr}/courses/${course.code}/` } key={ course.id } style={{ textDecoration:'none' }}>
+                                <CourseHandle login name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
+                            </Link>
+                          )) }
                         </div>
                     </div>
                     <div className='sidebar--form-cover'>

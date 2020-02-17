@@ -1,10 +1,10 @@
 import { axiosInstance } from './axiosInstance';
 
-function loginUser(token) {
-  return axiosInstance.get('/users', { headers: { 'Authorization' : `Bearer ${token}` } })
+function loginUserWithToken(token) {
+  return axiosInstance.get('/users',
+  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
   .then((response) => {
     const res = JSON.parse(response.request.response);
-    console.log(res)
     return res;
   })
   .catch((error) => {
@@ -12,6 +12,23 @@ function loginUser(token) {
   })
 }
 
+function loginUserWithCookie() {
+  return axiosInstance.get('/users',
+  { headers: {
+    'Authorization' : 'Bearer None',
+    'Content-Type': 'application/json',
+    'Accept': 'application/json' } })
+  .then((response) => {
+    const res = JSON.parse(response.request.response);
+    return res;
+  })
+  .catch((error) => {
+    return Promise.reject(error);
+  })
+}
+
+
 export {
-  loginUser
+  loginUserWithToken,
+  loginUserWithCookie
 }

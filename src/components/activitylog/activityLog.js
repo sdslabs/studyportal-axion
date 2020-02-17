@@ -1,8 +1,30 @@
 import React, { Component } from 'react'
 import ActivityReqCard from './activityReqCard'
 import 'styles/main.scss'
+import { getRequestsByUser } from 'api/requestApi';
 
 class ActivityLog extends Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        user: props.user,
+        requests: [],
+        Uploads: []
+      }
+    }
+
+    componentDidMount() {
+      getRequestsByUser(6).then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ requests: res })
+          console.log(res)
+        }
+      })
+    }
+
     render() {
         return(
             <div className='activitylog'>
@@ -14,9 +36,7 @@ class ActivityLog extends Component {
                     <div className='activitylog--category_upload'><div>Uploads<div className='activitylog--underline_upload'/></div></div>
                 </div>
                 <div className='activitylog--requestcards'>
-                    <ActivityReqCard status='2' />
-                    <ActivityReqCard status='3' />
-                    <ActivityReqCard status='2' />
+                  { this.state.requests.map((request,index) => (<ActivityReqCard key={index} status={request.status} title={request.title} course={request.course.title} code={request.course.code} />)) }
                 </div>
             </div>
         )

@@ -5,11 +5,14 @@ import { Provider } from 'react-redux';
 import store from 'store/store';
 import './index.css';
 import App from './App';
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render((
     <Provider store={ store }>
         <BrowserRouter>
+          <CookiesProvider>
             <App />
+          </CookiesProvider>
         </BrowserRouter>
     </Provider>
 ), document.getElementById('root'));
