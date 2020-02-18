@@ -19,7 +19,12 @@ class Upload extends Component {
             departments: [],
             courses: [],
             department: 0,
-            course: 0
+            course: 0,
+            uploadings: [],
+            uploadeds: [],
+            results: [],
+            uploading: false,
+            uploaded: false
         };
 
         this.toggleUploadModal = this.toggleUploadModal.bind(this)
@@ -73,14 +78,28 @@ class Upload extends Component {
     async upload(e) {
       e.preventDefault();
       const token = getToken();
-      this.state.files.forEach((fileObj) => {
-        const reader = new FileReader()
-        reader.onloadend = (e) => {
-          uploadFile(token,this.state.course,fileObj.file.name,fileObj.type,reader.result).then((res) => {
-          })
-        }
-        reader.readAsDataURL(fileObj.file)
-      })
+      if (token) {
+        this.setState({ disable:-1,uploading:true })
+        this.state.files.forEach((fileObj,index, array) => {
+          let uploading = this.state.uploadings;
+          let uploaded = this.state.uploadeds;
+          uploading.push(true);
+          uploaded.push(false);
+          this.setState({ uploadings:uploading,uploadeds:uploaded });
+          const reader = new FileReader()
+          reader.onloadend = (e) => {
+            uploadFile(token,this.state.course,fileObj.file.name,fileObj.type,reader.result).then((res) => {
+              let uploaded = this.state.uploadeds;
+              uploaded[index] = true;
+              this.setState({ uploadeds:uploaded });
+              if(index === array.length-1) {
+                this.setState({ uploaded:true })
+              }
+            })
+          }
+          reader.readAsDataURL(fileObj.file)
+        })
+      }
     }
 
     render() {
@@ -104,8 +123,8 @@ class Upload extends Component {
                             </div>
                             <div className='upload--form' id='uploadform'>
                                 <form onSubmit={this.upload}>
-                                    <div className='form--department'>Department</div>
-                                    <select className='form--department-select' onChange={ this.active_course } form='uploadform'>
+                                    <div className='form--department' style={{ color: this.state.disable >= 0 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Department</div>
+                                    <select className='form--department-select' onChange={ this.active_course } disabled={ !(this.state.disable >= 0) } form='uploadform'>
                                         <option>--Select Department--</option>
                                         { this.state.departments.map((department) => (<option key={ department.id } id={ department.id }>{ department.title }</option>)) }
                                     </select>
@@ -115,7 +134,7 @@ class Upload extends Component {
                                         { this.state.courses.map((course) => (<option key={ course.id } id={ course.id }>{ course.title } { course.code }</option>)) }
                                     </select>
                                     <div className='upload--file' style={{ top: this.state.active ? '52.33%' : '52.766%' }}>
-                                        <CustomFileUploader handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>
+                                        <CustomFileUploader uploading={this.state.uploading} uploadings={this.state.uploadings} uploaded={this.state.uploaded} uploadeds={this.state.uploadeds} handleUpload={this.handleUpload} getFiles={this.getFiles} disabled={ !(this.state.disable >= 2) }/>
                                     </div>
                                 </form>
                             </div>

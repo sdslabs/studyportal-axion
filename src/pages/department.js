@@ -198,7 +198,7 @@ class Department extends Component {
             <div>
               <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
               <Sidebar activity={this.state.activity} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close} getUserDetails={this.getUserDetails}/>
-              <Request request={this.state.request} handleReq={this.handleReq} />
+              <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
               <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
               <ActivityLog user={this.state.user} close={this.close} route={this.props.match.params.type}/>
             </div>
@@ -208,7 +208,7 @@ class Department extends Component {
               <div>
                   <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
                   <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
-                  <Request request={this.state.request} handleReq={this.handleReq} />
+                  <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
                   { this.state.course !== undefined ? <CoursePage login={this.state.login} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
               </div>

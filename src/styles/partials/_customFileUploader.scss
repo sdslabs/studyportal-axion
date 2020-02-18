@@ -1,3 +1,12 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .customfileuploader {
     width: 100%;
 }
@@ -14,6 +23,12 @@
     &input {
         position: relative;
         margin-top: 0.5rem;
+    }
+
+    &input-disabled {
+      position: relative;
+      margin-top: 0.5rem;
+      opacity: 0.3;
     }
 
     &label {
@@ -55,24 +70,81 @@
     }
 
     &button {
-            width: 5.875rem;
-            height: 2.5625rem;
-            margin-top: 1.5rem;
+      width: 5.875rem;
+      height: 2.5625rem;
+      margin-top: 1.5rem;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #FFFFFF;
 
-            background: #38A7DE;
-            border-radius: 0.125rem;
-            border: #38A7DE;
+      &-loader{
+        margin-left: 0.5rem;
+        animation: rotation 1s infinite linear;
+      }
+    }
 
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
+    &button_uploading {
+      width: 7.375rem;
+      height: 2.5625rem;
+      margin-top: 1.5rem;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #FFFFFF;
+    }
 
-            color: #FFFFFF;
+    &button_uploaded {
+      width: 7.375rem;
+      height: 2.5625rem;
+      margin-top: 1.5rem;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #FFFFFF;
     }
 
     &choosefile:hover {
         cursor: pointer;
+    }
+
+    &confirmation {
+      margin-top: 1.5rem;
+
+      &-text{
+        margin-left: 0.5rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #2F7F2E;
+        opacity: 0.8;
+      }
+
+      &-activity {
+        margin-left: 0.75rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #2B2A28;
+      }
     }
 }

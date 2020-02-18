@@ -32,6 +32,7 @@ class Request extends Component {
         this.course_active_course = this.course_active_course.bind(this);
         this.course_active_courseid = this.course_active_courseid.bind(this);
         this.requestFile = this.requestFile.bind(this);
+        this.refreshRequest = this.refreshRequest.bind(this);
     }
 
     componentDidMount() {
@@ -110,6 +111,10 @@ class Request extends Component {
       })
     }
 
+    refreshRequest() {
+      this.setState({ disable:0, requesting:false, requested:false })
+    }
+
     render() {
 
         if (this.props.request) {
@@ -156,8 +161,8 @@ class Request extends Component {
                                             <span className="exam" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Examination Papers</span>
                                         <div className='file--name' style={{ color: this.state.disable >=3 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Name</div>
                                         <input className="file--name-input" type='text' disabled={ !(this.state.disable >= 3) } name='name'/>
-                                        {this.state.requested ? <div className='request--confirmation'><img className='request--confirmation-check' src={check} alt='check' /><span className='request--confirmation-text'>Request Placed Successfully</span><span className='request--confirmation-activity'>Check request status in <Link to='/activity/requests' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
-                                        {this.state.requested ? <button type='submit' className='request--button-file_requested'>Request More</button> : this.state.requesting ? <button type='submit' className='request--button-file_requesting'>Requesting <img className='request--loader' alt='loader' src={small_loader}/></button> : <button type='submit' className='request--button-file'>Request</button>}
+                                        {this.state.requested ? <div className='request--confirmation'><img className='request--confirmation-check' src={check} alt='check' /><span className='request--confirmation-text'>Request placed successfully</span><span className='request--confirmation-activity'>Check request status in <Link to='/activity/requests' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
+                                        {this.state.requested ? <button type='button' onClick={this.refreshRequest} className='request--button-file_requested'>Request More</button> : this.state.requesting ? <button type='button' className='request--button-file_requesting'>Requesting <img className='request--loader' alt='loader' src={small_loader}/></button> : <button type='submit' className='request--button-file'>Request</button>}
                                     </form>
                                 </div>
                             </Fragment>) :

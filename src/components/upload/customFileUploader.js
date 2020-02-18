@@ -1,7 +1,11 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import FileUploadContainer from './fileUploadContainer'
+import { Link } from 'react-router-dom'
+import small_loader from 'assets/loader_small.svg'
+import check from 'assets/check.svg'
 import 'styles/main.scss'
 
 class CustomFileUploader extends Component {
@@ -41,7 +45,7 @@ class CustomFileUploader extends Component {
                         <span className='customfileuploader--filechoose'>No Files Added</span>
                         <span className='customfileuploader--instruc'>(Max total File Size allowed is 100MB)</span>
                     </div>
-                    <button type='submit' className='customfileuploader--button'>Upload</button>
+                    {this.props.uploaded ? <button type='submit' className='customfileuploader--button_uploaded'>Upload More</button> : this.props.uploading ? <button type='submit' className='customfileuploader--button_uploading'>Uploading<img src={small_loader} className='customfileuploader--button-loader' alt='loader' /></button> : <button type='submit' className='customfileuploader--button'>Upload</button>}
                 </div>
             )
         }
@@ -50,14 +54,15 @@ class CustomFileUploader extends Component {
             return(
                 <div className='customfileuploader'>
                 <div>
-                    {this.files.map((fileObj, index) => (<FileUploadContainer name={fileObj.file.name} files={this.files} key={fileObj.file.name} index={index} handleRemove={this.handleRemove}/>))}
+                    {this.files.map((fileObj, index) => (<FileUploadContainer uploading={this.props.uploadings[index]} uploaded={this.props.uploadeds[index]} name={fileObj.file.name} files={this.files} key={fileObj.file.name} disabled={this.props.disabled} index={index} handleRemove={this.handleRemove}/>))}
                 </div>
-                    <div className='customfileuploader--input'>
+                    <div className={this.props.disabled ? 'customfileuploader--input-disabled' : 'customfileuploader--input'}>
                         <input className='customfileuploader--choosefile' type='file' multiple onChange={this.addFiles}/><label className='customfileuploader--label'>Choose File</label>
                         <span className='customfileuploader--filechoose'>Add More Files</span>
                         <span className='customfileuploader--instruc'>(Max total File Size allowed is 100MB)</span>
                     </div>
-                    <button type='submit' className='customfileuploader--button'>Upload</button>
+                    {this.props.uploaded ? <div className='customfileuploader--confirmation'><img className='customfileuploader--confirmation-check' src={check} alt='check' /><span className='customfileuploader--confirmation-text'>All files uploaded successfully</span><span className='customfileuploader--confirmation-activity'>Check upload status in <Link to='/activity/requests' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
+                    {this.props.uploaded ? <button type='submit' className='customfileuploader--button_uploaded'>Upload More</button> : this.props.uploading ? <button type='submit' className='customfileuploader--button_uploading'>Uploading<img src={small_loader} className='customfileuploader--button-loader' alt='loader' /></button> : <button type='submit' className='customfileuploader--button'>Upload</button>}
                 </div>
             )
         }
