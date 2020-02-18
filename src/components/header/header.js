@@ -9,6 +9,7 @@ import search from 'assets/head_search.png'
 import notif from 'assets/notif.png'
 import userimg from 'assets/img_user.png'
 import 'styles/main.scss'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
     constructor(props) {
@@ -51,8 +52,10 @@ class Header extends Component {
     render() {
         return(
             <div className='header' onClick={this.close} >
+              <Link to='/'>
                 <img className='header--logo' src={logo} alt="studyportal_logo" />
                 <div className='header--heading'>Study Portal</div>
+              </Link>
                 <div className='header--search'>
                     <input className='header--search_bar' type="text" placeholder="Search file, courses, departments" ref={this.search} onChange={this.result}/>
                     <button className='header--search_icon'><img src={search} alt='search' /></button>
@@ -68,7 +71,7 @@ class Header extends Component {
                         </div>
                         { this.state.notifications ? <Notifications /> : <Fragment /> }
                         <img className='header--user' src={userimg} alt="image_user" onClick={this.props.toggleUserMenu} />
-                        { this.state.userMenu ? <UserMenu /> : <Fragment /> }
+                        { this.state.userMenu ? <UserMenu handleReqClick={this.props.handleReqClick} handleUploClick={this.props.handleUploClick}/> : <Fragment /> }
                     </Fragment>) :
                     (<Fragment>
                         <button className='header--login'>Login</button>
