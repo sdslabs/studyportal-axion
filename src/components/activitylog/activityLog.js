@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import ActivityReqCard from './activityReqCard'
 import 'styles/main.scss'
-import { getRequestsByUser } from 'api/requestApi';
+import { getFileRequestsByUser } from 'api/requestApi';
 import { getUploadsByUser } from 'api/uploadApi';
 import { Link } from 'react-router-dom';
 import getToken from 'utils/getToken';
@@ -41,7 +41,8 @@ class ActivityLog extends Component {
     }
 
     getRequests(token) {
-      getRequestsByUser(token).then((res,err) => {
+      this.setState({ activity:[] });
+      getFileRequestsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
         }
@@ -52,6 +53,7 @@ class ActivityLog extends Component {
     }
 
     getUploads(token) {
+      this.setState({ activity:[] });
       getUploadsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
@@ -85,7 +87,7 @@ class ActivityLog extends Component {
                     </Link>
                 </div>
                 <div className='activitylog--activitycards'>
-                  { this.state.activity.map((request,index) => (<ActivityReqCard key={index} status={request.status} title={request.title} course={request.course.title} code={request.course.code} date={request.date} />)) }
+                  { this.state.activity.map((material,index) => (<ActivityReqCard key={index} status={material.status} title={material.title} course={material.course.title} code={material.course.code} date={material.date}/>)) }
                 </div>
             </div>
         )

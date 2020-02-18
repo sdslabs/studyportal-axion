@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import close from 'assets/closereq.png'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
-import { requestFiles } from 'api/requestApi'
+import { requestFiles, requestCourse } from 'api/requestApi'
 import getToken from 'utils/getToken'
 import 'styles/main.scss'
 
@@ -83,14 +83,8 @@ class Request extends Component {
       const name = e.target.name.value
       const token = getToken();
       requestFiles(token,material,name,course).then((res,err) => {
-        if(err) {
-          //TODO handle error
-        }
-        else {
-          //TODO handle success
-        }
+        console.log(res)
       })
-
     }
 
     requestCourse(e) {
@@ -98,6 +92,10 @@ class Request extends Component {
       const department = e.target.department.value
       const course = e.target.course.value
       const code = e.target.code.value
+      const token = getToken();
+      requestCourse(token,department,course,code).then((res,err) => {
+        console.log(res)
+      })
     }
 
     render() {

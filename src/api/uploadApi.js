@@ -1,4 +1,5 @@
 import { axiosInstance } from './axiosInstance';
+import $ from 'jquery';
 
 function getUploadsByUser(token) {
   return axiosInstance.get(`/uploads`,
@@ -13,11 +14,17 @@ function getUploadsByUser(token) {
 }
 
 function uploadFile(token, course, name, filetype, file) {
-  return axiosInstance.post('/uploads', { course, name, filetype, file },
-  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
-  .then((response) => {
-    return response;
-  })
+  return $.ajax({
+    method: "POST",
+    url: "http://nexus.sdslabs.local/api/v1/uploads",
+    data: { course, name, filetype, file },
+    dataType: "json",
+    beforeSend (xhr) {
+      xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+    }
+  }).done((res) => {
+    return res
+  });
 }
 
 export {

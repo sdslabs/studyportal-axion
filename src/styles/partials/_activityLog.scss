@@ -157,8 +157,10 @@
 
     &activitycards {
         position: absolute;
+        height: calc(100% - 16.25rem);
         width: 98%;
         left: 1%;
         top: 16.25rem;
+        overflow-y: auto;
     }
 }
