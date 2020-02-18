@@ -14,20 +14,6 @@ class ActivityReqCard extends Component {
         this.state = {
             status: props.status
         };
-
-        this.reqStatus = React.createRef();
-    }
-
-    componentDidMount() {
-        if(this.state.status === 1) {
-          this.reqStatus.current.style.color = '#38A7DE';
-        }
-        else if(this.state.status === 2) {
-            this.reqStatus.current.style.color = '#F2C94C';
-        }
-        else if(this.state.status === 3) {
-            this.reqStatus.current.style.color = '#2F7F2E';
-        }
     }
 
     getMonth(month) {
@@ -78,16 +64,16 @@ class ActivityReqCard extends Component {
                 </div>
                 {this.state.status === 1 ?
                 (<Fragment>
-                    <div className='activityreqcard--status' ref={this.reqStatus}><img className='activityreqcard--status_color' src={blue} alt='blue'/> Request Filed ({this.state.status}/3)</div>
+                    <div className='activityreqcard--status_blue'><img className='activityreqcard--status_color' src={blue} alt='blue'/> Request Filed ({this.state.status}/3)</div>
                     <div className='activityreqcard--file'/>
                 </Fragment>) :
                 this.state.status === 2 ?
                 (<Fragment>
-                    <div className='activityreqcard--status' ref={this.reqStatus}><img className='activityreqcard--status_color' src={yellow} alt='yellow'/> Request Approved ({this.state.status}/3)</div>
+                    <div className='activityreqcard--status_yellow'><img className='activityreqcard--status_color' src={yellow} alt='yellow'/> Request Approved ({this.state.status}/3)</div>
                     <div className='activityreqcard--file'/>
                 </Fragment>) :
                 (<Fragment>
-                    <div className='activityreqcard--status' ref={this.reqStatus}><img className='req_color' src={green} alt='green'/> Files Uploaded ({this.state.status}/3)</div>
+                    <div className='activityreqcard--status_green'><img className='req_color' src={green} alt='green'/> Files Uploaded ({this.state.status}/3)</div>
                     <div className='activityreqcard--file'><img className='activityreqcard--file_download' src={download} alt='download'/>  Tutorial 1 Structural Analysis CEN-207</div>
                 </Fragment>)}
             </div>

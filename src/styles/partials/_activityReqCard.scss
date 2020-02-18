@@ -64,20 +64,44 @@
     }
 
     &status {
-        grid-column: 2 / span 1;
-        justify-self: center;
-        align-self: center;
-
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.5625rem;
-
-        color: #2F7F2E;
-
         &_color {
             margin-bottom: 0.125rem;
+        }
+
+        &_blue {
+          grid-column: 2 / span 1;
+          justify-self: center;
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #38A7DE;
+        }
+
+        &_green {
+          grid-column: 2 / span 1;
+          justify-self: center;
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #2F7F2E;
+        }
+
+        &_yellow {
+          grid-column: 2 / span 1;
+          justify-self: center;
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #F2C94C;
         }
     }
 

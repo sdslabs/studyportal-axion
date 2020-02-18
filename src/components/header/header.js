@@ -22,7 +22,6 @@ class Header extends Component {
             search: false
         }
 
-        this.search = React.createRef();
         this.result = this.result.bind(this);
         this.close = this.close.bind(this)
     }
@@ -33,10 +32,13 @@ class Header extends Component {
         this.setState({ notifications: props.notifications })
     }
 
-    result() {
-        this.setState({ value: this.search.current.value })
-        if (this.search.current.value !== '') {
+    result(e) {
+        this.setState({ value: e.target.value })
+        if (e.target.value !== '') {
             this.setState({ search: true })
+        }
+        else {
+          this.setState({ search:false })
         }
     }
 
@@ -57,7 +59,7 @@ class Header extends Component {
                 <div className='header--heading'>Study Portal</div>
               </Link>
                 <div className='header--search'>
-                    <input className='header--search_bar' type="text" placeholder="Search file, courses, departments" ref={this.search} onChange={this.result}/>
+                    <input className='header--search_bar' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
                     <button className='header--search_icon'><img src={search} alt='search' /></button>
                 </div>
                 <Search value={this.state.value} search={this.state.search}/>
