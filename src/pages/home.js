@@ -33,7 +33,7 @@ class Home extends Component {
             <div>
                 <Header />
                 <div className='sub_list'>
-                  <Suspense fallback={<div>...Loading</div>}> {/*TODO*/}
+                  <Suspense fallback={<div>...Loading</div>}> {/*TODO fallback component loader*/}
                   { this.state.departments.map((department) => (
                     <Link to={ `/departments/${department.abbreviation}` }>
                       <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />

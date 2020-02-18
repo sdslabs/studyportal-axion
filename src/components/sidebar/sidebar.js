@@ -78,7 +78,7 @@ class Sidebar extends Component {
                     </Link>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table_logout'>
-                          <Suspense fallback={<div>...Loading</div>}> {/*TODO*/}
+                          <Suspense fallback={<div>...Loading</div>}> {/*TODO fallback component loading*/}
                           { this.props.courses.map((course) => (
                             <Link to={ `/departments/${this.props.department_abbr}/courses/${course.code}/` } style={{ textDecoration:'none' }}>
                                 <CourseHandle login={false} name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
