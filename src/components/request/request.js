@@ -4,6 +4,7 @@ import close from 'assets/closereq.png'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
 import { requestFiles } from 'api/requestApi'
+import getToken from 'utils/getToken'
 import 'styles/main.scss'
 
 class Request extends Component {
@@ -80,7 +81,7 @@ class Request extends Component {
       const course = e.target.course[e.target.course.selectedIndex].id
       const material = e.target.material.value
       const name = e.target.name.value
-      const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhcmtyaWRlciIsImVtYWlsIjoiZGFya3JpZGVyMjUxMDk5QGdtYWlsLmNvbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
+      const token = getToken();
       requestFiles(token,material,name,course).then((res,err) => {
         if(err) {
           //TODO handle error

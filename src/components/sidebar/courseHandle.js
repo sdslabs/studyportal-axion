@@ -20,7 +20,8 @@ class CourseHandle extends Component {
         super(props);
 
         this.state = {
-            active: ''
+            active: '',
+            login: props.login
         }
 
         this.course = React.createRef();
@@ -38,6 +39,7 @@ class CourseHandle extends Component {
 
     componentWillReceiveProps(props) {
         if (props.login) {
+          this.setState({ login:props.login })
             if (props.name === props.active) {
                 this.setState({ active: true })
             }
@@ -63,7 +65,7 @@ class CourseHandle extends Component {
     }
 
     componentDidMount() {
-        if (this.props.login) {
+        if (this.state.login) {
             if (this.props.name === this.props.active) {
                 this.setState({ active: true })
             }

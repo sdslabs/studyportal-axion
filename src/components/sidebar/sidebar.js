@@ -9,12 +9,13 @@ import { Link } from 'react-router-dom'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
 import { addCourseForUser } from 'api/userApi'
+import getToken from 'utils/getToken'
 
 class Sidebar extends Component {
     constructor(props) {
         super(props);
       this.state = {
-        login: props.login,
+        login: props.activity,
         departments: [],
         courses: [],
         course: 0
@@ -40,6 +41,7 @@ class Sidebar extends Component {
 
     componentWillReceiveProps(nextProps) {
       this.active = nextProps.active
+      this.setState({ login:nextProps.activity })
     }
 
     handleClick(active) {
@@ -64,15 +66,17 @@ class Sidebar extends Component {
 
     addCourse(e) {
       e.preventDefault();
-      const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhcmtyaWRlciIsImVtYWlsIjoiZGFya3JpZGVyMjUxMDk5QGdtYWlsLmNvbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
+      const token = getToken();
       addCourseForUser(token,this.state.course).then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
           //TODO handle success
+          this.props.getUserDetails();
         }
       })
+      e.target.reset();
     }
 
     render() {
@@ -86,7 +90,7 @@ class Sidebar extends Component {
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
                           { this.props.userCourses.map((course) => (
-                            <Link to={ `/departments/${this.props.department_abbr}/courses/${course.code}/` } key={ course.id } style={{ textDecoration:'none' }}>
+                            <Link to={ `/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id } style={{ textDecoration:'none' }}>
                                 <CourseHandle login name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
                             </Link>
                           )) }
