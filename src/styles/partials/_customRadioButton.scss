@@ -21,3 +21,9 @@
     border: 0.0625rem solid #414042;
     border-radius: 0.125rem;
 }
+
+.radio:checked:disabled {
+    background: rgba(56,167,222,0.2);
+    border: 0.0625rem solid rgba(65, 64, 66, 0.2);;
+    border-radius: 0.125rem;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react'
 import close from 'assets/closereq.png'
@@ -5,7 +6,10 @@ import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
 import { requestFiles, requestCourse } from 'api/requestApi'
 import getToken from 'utils/getToken'
+import small_loader from 'assets/loader_small.svg'
+import check from 'assets/check.svg'
 import 'styles/main.scss'
+import { Link } from 'react-router-dom'
 
 class Request extends Component {
     constructor(props) {
@@ -15,7 +19,9 @@ class Request extends Component {
             disable: 0, //Enabling elements in file form
             disableCourse: 0, //Enabling elements in course form
             departments: [],
-            courses: []
+            courses: [],
+            requesting: false,
+            requested: false
         };
 
         this.switchToCourse = this.switchToCourse.bind(this);
@@ -25,6 +31,7 @@ class Request extends Component {
         this.active_name = this.active_name.bind(this);
         this.course_active_course = this.course_active_course.bind(this);
         this.course_active_courseid = this.course_active_courseid.bind(this);
+        this.requestFile = this.requestFile.bind(this);
     }
 
     componentDidMount() {
@@ -82,9 +89,13 @@ class Request extends Component {
       const material = e.target.material.value
       const name = e.target.name.value
       const token = getToken();
-      requestFiles(token,material,name,course).then((res,err) => {
-        console.log(res)
-      })
+      if(course && material && name && token) {
+        this.setState({ disable:-1,requesting:true });
+        requestFiles(token,material,name,course).then((res,err) => {
+          //TODO handle error
+          this.setState({ requesting:false,requested:true })
+        })
+      }
     }
 
     requestCourse(e) {
@@ -94,7 +105,8 @@ class Request extends Component {
       const code = e.target.code.value
       const token = getToken();
       requestCourse(token,department,course,code).then((res,err) => {
-        console.log(res)
+        //TODO handle error
+        this.setState({ requesting:false,requested:true })
       })
     }
 
@@ -115,8 +127,8 @@ class Request extends Component {
                                 <button className='request--coursebutton-inactive'onClick={this.switchToCourse}>Courses</button>
                                 <div className='request--form-file'>
                                     <form onSubmit={ this.requestFile }>
-                                        <div className='file--department'>Department</div>
-                                        <select className='file--department-select' onChange={this.file_active_course} name='department'>
+                                        <div className='file--department' style={{ color: this.state.disable >=0 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Department</div>
+                                        <select className='file--department-select' onChange={this.file_active_course} disabled={ !(this.state.disable >= 0) } name='department'>
                                             <option>--Select Department--</option>
                                             { this.state.departments.map(department => (<option key={ department.id } id={ department.id }>{ department.title }</option>)) }
                                         </select>
@@ -144,7 +156,8 @@ class Request extends Component {
                                             <span className="exam" style={{ color: this.state.disable >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Examination Papers</span>
                                         <div className='file--name' style={{ color: this.state.disable >=3 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Name</div>
                                         <input className="file--name-input" type='text' disabled={ !(this.state.disable >= 3) } name='name'/>
-                                        <button type='submit' className='request--button-file'>Request</button>
+                                        {this.state.requested ? <div className='request--confirmation'><img className='request--confirmation-check' src={check} alt='check' /><span className='request--confirmation-text'>Request Placed Successfully</span><span className='request--confirmation-activity'>Check request status in <Link to='/activity/requests' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
+                                        {this.state.requested ? <button type='submit' className='request--button-file_requested'>Request More</button> : this.state.requesting ? <button type='submit' className='request--button-file_requesting'>Requesting <img className='request--loader' alt='loader' src={small_loader}/></button> : <button type='submit' className='request--button-file'>Request</button>}
                                     </form>
                                 </div>
                             </Fragment>) :

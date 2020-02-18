@@ -1,13 +1,20 @@
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
 .requestcover {
     position: absolute;
     width: 100%;
     height: 61.3125rem;
     left: 0rem;
     top: 0rem;
-
     background: rgba(13, 41, 56, 0.8);
     z-index: 1;
-
     cursor: default;
 }
 
@@ -17,7 +24,6 @@
     height: 95.12%;
     left: 6.56%;
     top: 2.44%;
-
     background: #FFFFFF;
     box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
     border-radius: 0.125rem;
@@ -28,16 +34,19 @@
 }
 
 .request-- {
-
     &close {
         position: absolute;
         width: 1.264375rem;
         height: 1.264375rem;
         right: 0%;
         top: 0%;
-
         margin-right: 1.625rem;
         margin-top: 1.375rem;
+    }
+
+    &loader {
+      margin-left: 0.25rem;
+      animation: rotation 1s infinite linear;
     }
 
     &heading {
@@ -46,13 +55,11 @@
         height: 2.375rem;
         left: 48%;
         top: 3.75%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 2rem;
         line-height: 2.3125rem;
-
         color: #2B2A28;
     }
 
@@ -62,7 +69,6 @@
         height: 0.05%;
         left: 48.90%;
         top: 9.32%;
-
         border: 0.0625rem solid #38A7DE;
     }
 
@@ -72,19 +78,15 @@
         height: 8.25rem;
         left: 17.32%;
         top: 14.78%;
-
         background: rgba(56, 167, 222, 0.275);
         border-radius: 0.125rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.5rem;
         text-align: justify;
-
         color: #2B2A28;
-
         padding: 1rem 1.5rem 1rem 1.5rem;
     }
 
@@ -94,13 +96,11 @@
         height: 1.1875rem;
         left: 18.75%;
         top: 36.86%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #2B2A28;
     }
 
@@ -112,17 +112,14 @@
             height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
-
             background: #FFFFFF;
             border: none;
             border-bottom: 0.25rem solid rgba(56, 167, 222, 0.2);
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-
             color: #2B2A28;
         }
 
@@ -132,17 +129,14 @@
             height: 2.25rem;
             left: 18.75%;
             top: 40.61%;
-
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-
             color: #2B2A28;
         }
 
@@ -156,17 +150,14 @@
             height: 2.25rem;
             left: calc(18.75% + 7.5625rem);
             top: 40.61%;
-
             background: #FFFFFF;
             border: none;
             border-bottom: 0.2rem solid rgba(56, 167, 222, 0.2);
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-
             color: #2B2A28;
         }
 
@@ -176,17 +167,14 @@
             height: 2.25rem;
             left: calc(18.75% + 7.5625rem);
             top: 40.61%;
-
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 0.625rem;
-
             color: #2B2A28;
         }
     }
@@ -213,38 +201,92 @@
         height: 2.5625rem;
         left: 0%;
         top: 87.056%;
-
         background: #38A7DE;
         border-radius: 0.125rem;
         border: #38A7DE;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #FFFFFF;
     }
 
+    &button-file_requesting {
+      position: absolute;
+      width: 8.25rem;
+      height: 2.5625rem;
+      left: 0%;
+      top: 87.056%;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #FFFFFF;
+  }
+
+  &button-file_requested {
+    position: absolute;
+    width: 8.25rem;
+    height: 2.5625rem;
+    left: 0%;
+    top: calc(72% + 6.25rem);
+    background: #38A7DE;
+    border-radius: 0.125rem;
+    border: #38A7DE;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: #FFFFFF;
+}
+
     &button-course {
-        position: absolute;
-        width: 5.875rem;
-        height: 2.5625rem;
-        left: 0%;
-        top: 85.518%;
+      position: absolute;
+      width: 5.875rem;
+      height: 2.5625rem;
+      left: 0%;
+      top: 85.518%;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #FFFFFF;
+    }
 
-        background: #38A7DE;
-        border-radius: 0.125rem;
-        border: #38A7DE;
+    &confirmation {
+      position: absolute;
+      top: calc(72% + 3.75rem);
 
+      &-text {
+        margin-left: 0.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
+        font-size: 16px;
+        line-height: 19px;
+        color: #2F7F2E;
+        opacity: 0.8;
+      }
 
-        color: #FFFFFF;
+      &-activity {
+        margin-left: 0.75rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #2B2A28;
+      }
     }
 }
 
@@ -256,14 +298,12 @@
         height: 1.3125rem;
         left: 0%;
         top: 0%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
         text-align: justify;
-
         color: #2B2A28;
 
         &-select {
@@ -272,22 +312,38 @@
             height: 2.25rem;
             left: 0%;
             top: 7.673%;
-
             border: 1px solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-
             text-align: justify;
             padding-left: 0.5rem;
-
             background: #FFFFFF;
         }
+
+        &-select:disabled {
+          position: absolute;
+          width: 15.75rem;
+          height: 2.25rem;
+          left: 0%;
+          top: 7.673%;
+          border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+          box-sizing: border-box;
+          border-radius: 0.125rem;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.3125rem;
+          text-align: justify;
+          padding-left: 0.5rem;
+          background: #FFFFFF;
+          color: rgba(43, 42, 40, 0.2);
+      }
     }
 
     &course {
@@ -296,15 +352,12 @@
         height: 1.3125rem;
         left: 0%;
         top: 20.90%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
-
         text-align: justify;
-
         color: rgba(43, 42, 40, 0.2);
 
         &-select {
@@ -313,20 +366,16 @@
             height: 2.25rem;
             left: 0%;
             top: 28.57%;
-
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-
             text-align: justify;
             padding-left: 0.5rem;
-
             background: #FFFFFF;
         }
 
@@ -334,17 +383,14 @@
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-
             text-align: justify;
             padding-left: 0.5rem;
             color: rgba(43, 42, 40, 0.2);
-
             background: #FFFFFF;
           }
     }
@@ -355,13 +401,11 @@
         height: 1.1875rem;
         left: 0%;
         top: 44.45%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: rgba(43, 42, 40, 0.2);
 
         &_tut {
@@ -403,13 +447,11 @@
         height: 1.3125rem;
         left: 0%;
         top: 63.50%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
-
         text-align: justify;
 
         color: rgba(43, 42, 40, 0.2);
@@ -420,18 +462,15 @@
             height: 2.25rem;
             left: 0%;
             top: 71.179%;
-
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
             padding: 0.5625rem 0.75rem 0.5rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.3125rem;
-
             text-align: justify;
           }
 
@@ -441,6 +480,7 @@
             border-radius: 0.125rem;
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
+            color: rgba(43, 42, 40, 0.2);
           }
     }
 }
@@ -453,14 +493,12 @@
         height: 1.3125rem;
         left: 0%;
         top: 0%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
         text-align: justify;
-
         color: #2B2A28;
 
         &-input {
@@ -469,11 +507,9 @@
             height: 2.25rem;
             left: 0%;
             top: 10.248%;
-
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -485,15 +521,12 @@
         height: 1.3125rem;
         left: 0%;
         top: 27.91%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
-
         text-align: justify;
-
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
@@ -502,11 +535,9 @@
             height: 2.25rem;
             left: 0%;
             top: 38.165%;
-
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -515,7 +546,6 @@
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             padding: 0.5625rem 0.75rem 0.5rem;
             background: #FFFFFF;
         }
@@ -527,13 +557,11 @@
         height: 1.1875rem;
         left: 0%;
         top: 55.1275%;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
@@ -542,18 +570,15 @@
             height: 2.25rem;
             left: 0%;
             top: 64.315%;
-
             background: #FFFFFF;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             padding: 0.5625rem 0.75rem 0.5rem;
             color: #2B2A28;
         }
@@ -563,7 +588,6 @@
             border: 0.0625rem solid rgba(43, 42, 40, 0.2);
             box-sizing: border-box;
             border-radius: 0.125rem;
-
             padding: 0.5625rem 0.75rem 0.5rem;
             color: rgba(43, 42, 40, 0.2);
         }
@@ -576,13 +600,11 @@
     height: 1.1875rem;
     left: 3%;
     top: 51.86%;
-
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.375rem;
-
     color: rgba(43, 42, 40, 0.2);
 }
 
@@ -592,13 +614,11 @@
     height: 1.1875rem;
     left: 21.96%;
     top: 51.86%;
-
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.375rem;
-
     color: rgba(43, 42, 40, 0.2);
 }
 
@@ -608,13 +628,11 @@
     height: 1.1875rem;
     left: 41.65%;
     top: 51.86%;
-
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.375rem;
-
     color: rgba(43, 42, 40, 0.2);
 }
 
@@ -624,13 +642,11 @@
     height: 1.1875rem;
     left: 60.89%;
     top: 51.86%;
-
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.375rem;
-
     color: rgba(43, 42, 40, 0.2);
 }
 

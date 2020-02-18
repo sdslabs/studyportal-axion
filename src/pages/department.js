@@ -72,7 +72,7 @@ class Department extends Component {
     componentWillMount() {
       if(this.checkActivityRoute(this.props.location.pathname)) {
         if(this.checkActivityParam(this.props.match.params.type))
-          this.setState({ activity:true });
+          this.setState({ activity:true,upload:false,request:false });
         else
           this.error();
       }
@@ -85,7 +85,7 @@ class Department extends Component {
     componentWillReceiveProps(nextProps) {
       if(this.checkActivityRoute(nextProps.location.pathname)) {
         if(this.checkActivityParam(nextProps.match.params.type))
-          this.setState({ activity:true });
+          this.setState({ activity:true,upload:false,request:false });
         else
           this.error();
       }
