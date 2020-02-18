@@ -210,7 +210,7 @@ class Department extends Component {
                   <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
                   <Request request={this.state.request} handleReq={this.handleReq} />
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                  { this.state.course !== undefined ? <CoursePage course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
+                  { this.state.course !== undefined ? <CoursePage login={this.state.login} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
               </div>
           )
       }

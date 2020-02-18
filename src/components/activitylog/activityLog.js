@@ -4,7 +4,9 @@ import React, { Component } from 'react'
 import ActivityReqCard from './activityReqCard'
 import 'styles/main.scss'
 import { getRequestsByUser } from 'api/requestApi';
+import { getUploadsByUser } from 'api/uploadApi';
 import { Link } from 'react-router-dom';
+import getToken from 'utils/getToken';
 
 class ActivityLog extends Component {
     constructor(props) {
@@ -26,24 +28,36 @@ class ActivityLog extends Component {
     }
 
     getActivity(route) {
+      const token = getToken();
       if(route === 'all' || route === undefined) {
         //TODO get both uploads and requests
       }
       else if(route === 'requests') {
-        this.getRequests(6);
+        this.getRequests(token);
       }
       else {
-        //TODO get uploads
+        this.getUploads(token);
       }
     }
 
-    getRequests(user) {
-      getRequestsByUser(user).then((res,err) => {
+    getRequests(token) {
+      getRequestsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
           this.setState({ activity: res })
+        }
+      })
+    }
+
+    getUploads(token) {
+      getUploadsByUser(token).then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ activity:res })
         }
       })
     }

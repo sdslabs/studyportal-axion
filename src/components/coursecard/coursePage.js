@@ -21,7 +21,7 @@ class CoursePage extends Component {
         this.state = {
             mycourse: true,
             name: '',
-            login: false,
+            login: props.login,
             files: [],
         }
         this.filemap = {

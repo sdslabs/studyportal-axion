@@ -45,10 +45,12 @@ class ActivityReqCard extends Component {
     }
 
     parseDate(date) {
-        let datePart = date.match(/\d+/g)
-        let month = this.getMonth(`${datePart[1]}`)
-        let dateString = `${datePart[2]}th ${month}, ${datePart[0]}`;
-        return dateString
+        if(date) {
+          let datePart = date.match(/\d+/g)
+          let month = this.getMonth(`${datePart[1]}`)
+          let dateString = `${datePart[2]}th ${month}, ${datePart[0]}`;
+          return dateString
+        }
     }
 
     render() {

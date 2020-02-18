@@ -95,6 +95,9 @@ class Request extends Component {
 
     requestCourse(e) {
       e.preventDefault();
+      const department = e.target.department.value
+      const course = e.target.course.value
+      const code = e.target.code.value
     }
 
     render() {
@@ -153,11 +156,11 @@ class Request extends Component {
                                 <div className='request--form-course'>
                                 <form onSubmit={ this.requestCourse }>
                                     <div className='course--department'>Department</div>
-                                    <input className='course--department-input' type='text' onChange={this.course_active_course} />
+                                    <input className='course--department-input' type='text' name='department' onChange={this.course_active_course} />
                                     <div className='course--course' style={{ color: this.state.disableCourse >=1 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course Name</div>
-                                    <input className='course--course-input' type='text' onChange={this.course_active_courseid} disabled={ !(this.state.disableCourse >= 1) } />
+                                    <input className='course--course-input' type='text' name='course' onChange={this.course_active_courseid} disabled={ !(this.state.disableCourse >= 1) } />
                                     <div className='course--id' style={{ color: this.state.disableCourse >=2 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course ID</div>
-                                    <input className='course--id-input' type='text' disabled={ !(this.state.disableCourse >= 2) } />
+                                    <input className='course--id-input' type='text' name='code' disabled={ !(this.state.disableCourse >= 2) } />
                                     <button type='submit' className='request--button-course'>Request</button>
                                 </form>
                             </div>

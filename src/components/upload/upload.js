@@ -5,6 +5,7 @@ import { uploadFile } from 'api/uploadApi'
 import close from 'assets/closereq.png'
 import { getDepartmentsList } from 'api/departmentApi'
 import { getCourseByDepartment } from 'api/courseApi'
+import getToken from 'utils/getToken'
 import 'styles/main.scss'
 
 class Upload extends Component {
@@ -71,10 +72,11 @@ class Upload extends Component {
 
     async upload(e) {
       e.preventDefault();
+      const token = getToken();
       this.state.files.forEach((fileObj) => {
         const reader = new FileReader()
         reader.onloadend = (e) => {
-          uploadFile(this.state.course,fileObj.file.name,fileObj.type,reader.result).then((res) => {
+          uploadFile(token,this.state.course,fileObj.file.name,fileObj.type,reader.result).then((res) => {
           })
         }
         reader.readAsDataURL(fileObj.file)

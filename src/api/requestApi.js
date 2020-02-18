@@ -1,7 +1,8 @@
 import { axiosInstance } from './axiosInstance';
 
-function getRequestsByUser(user) {
-  return axiosInstance.get(`/requests/?user=${user}`)
+function getRequestsByUser(token) {
+  return axiosInstance.get(`/requests`,
+  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
     .then((response) => {
       const res = JSON.parse(response.request.response)
       return res
