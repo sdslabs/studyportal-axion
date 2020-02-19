@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' render={(props) => <Home {...props} login={this.state.login}/>} />
           <Route exact path='/test' render={(props) => <Test {...props} login={this.state.login} />} />
           <Route exact path='/mycourse' render={(props) => <Department {...props} login={this.state.login} error={false}/>} />
           <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?' render={(props) => <Department {...props} login={this.state.login} error={false}/>} />

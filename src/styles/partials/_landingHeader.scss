@@ -8,7 +8,6 @@
 }
 
 .landingheader-- {
-
     &logo_sds {
         position: absolute;
         left: 9.22%;
@@ -27,13 +26,11 @@
         height: 2.25rem;
         left: 43.5%;
         top: 16.3%;
-
         font-family: Sansation;
         font-style: normal;
         font-weight: bold;
         font-size: 2rem;
         line-height: 2.25rem;
-
         color: #2B2A28;
     }
 
@@ -43,7 +40,6 @@
         height: 3rem;
         left: 36%;
         top: 14.4375rem;
-
         background: #FFFFFF;
 
         &_bar {
@@ -52,13 +48,11 @@
             height: 3rem;
             left: 0%;
             top: 0rem;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             background: #FFFFFF;
             border-radius: 0.25rem;
             padding-left: 1rem;
@@ -71,7 +65,6 @@
             height: 3.09375rem;
             left: 97.7%;
             top: 0rem;
-
             border-radius: 0.25rem;
             background: #FFFFFF;
             border: white;
@@ -84,12 +77,10 @@
         height: 2.5625rem;
         left: calc(48.75% - 3.46875rem);
         top: 19.625rem;
-
         background: #24698b;
         border-radius: 0.125rem;
         border: #24698b;
         color: #FFFFFF;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -103,17 +94,14 @@
         height: 2.5625rem;
         left: calc(48.75% + 4.46875rem);
         top: 19.625rem;
-
         background: #24698b;
         border-radius: 0.125rem;
         border: #24698b;
         color: #FFFFFF;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 0.9375rem;
-
         line-height: 1.6875rem;
     }
 
@@ -127,13 +115,11 @@
         height: 2.5625rem;
         left: 79.17%;
         top: 2.25rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0d2938;
         background: transparent;
         border: none;
@@ -145,21 +131,28 @@
         height: 2.5625rem;
         left: calc(79.17% + 6.25rem);
         top: 2.25rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         background: #0d2938;
         border-radius: 0.25rem;
         border: #0d2938;
-
         color: #FFFFFF;
     }
 
-    &search:hover, &request:hover, &upload:hover, &login:hover, &signup:hover {
+    &image {
+        position: absolute;
+        width: 3.5rem;
+        height: 3.5rem;
+        left: calc(79.17% + 6.25rem);
+        top: 2.25rem;
+        color: #0d2938;
+        border: none;
+    }
+
+    &search:hover, &request:hover, &upload:hover, &login:hover, &signup:hover &image:hover {
         cursor: pointer;
     }
 

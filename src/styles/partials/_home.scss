@@ -1,14 +1,12 @@
 .sub_list {
     position: absolute;
     top: 28.375rem;
-    left: calc(50% - 31.75rem);
-    width: 63.5rem;
-
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-
     justify-items: center;
     align-items: center;
-    padding: 0rem 2rem 0rem 2rem;
+    padding: 0rem 20% 0rem 25%;
     margin-bottom: 3.375rem;
+    box-sizing: border-box;
 }

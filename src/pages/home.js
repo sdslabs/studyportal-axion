@@ -7,47 +7,67 @@ import SubjectCard from 'components/home/subjectCard'
 import 'styles/main.scss'
 import { getDepartmentsList } from 'api/departmentApi'
 import { Link } from 'react-router-dom'
-// import { loginUserWithToken, loginUserWithCookie } from '../api/userApi'
+import { loginUserWithToken, loginUserWithCookie } from 'api/userApi'
+import getToken from 'utils/getToken'
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            departments: []
+            departments: [],
+            user: {},
+            userMenu: false
         }
+        this.getUser = this.getUser.bind(this);
+        this.toggleUserMenu = this.toggleUserMenu.bind(this);
+        this.close = this.close.bind(this);
     }
 
     componentWillMount() {
-        getDepartmentsList().then((res,err) => {
-          if(err) {
-            //TODO handle error
-          }
-          else {
-            this.setState({ departments: res });
-          }
-        })
-        // if(true) {
-        //   const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhcmtyaWRlciIsImVtYWlsIjoiZGFya3JpZGVyMjUxMDk5QGdtYWlsLmNvbSJ9.xBwh-abNBZTlxWDRjEs33DN2AjXlf21JkSwlez6dvGM"
-        //   loginUserWithToken(token).then((res,err) => {
-        //     if(err) {
-        //       //TODO handle error
-        //     }
-        //     else {
-        //       console.log(res)
-        //       this.props.getCourse(res.courses)
-        //     }
-        //   })
-        // }
-        // else {
-        //   loginUserWithCookie()
-        // }
+      if(this.props.login) {
+        this.getUser()
+      }
+      getDepartmentsList().then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ departments: res });
+        }
+      })
+    }
+
+    getUser() {
+      const token = getToken();
+        if(true) {  //Check for cookie
+          loginUserWithToken(token).then((res,err) => {
+            if(err) {
+              //TODO handle error
+            }
+            else {
+              this.setState({ user:res.user })
+            }
+          });
+        }
+        else {
+          loginUserWithCookie();
+        }
+    }
+
+    toggleUserMenu() {
+      this.setState({ userMenu:true });
+    }
+
+    close() {
+      if(this.state.userMenu)
+        this.setState({ userMenu:false });
     }
 
     render() {
         return(
-            <div>
-                <Header />
-                <div className='sub_list'>
+            <div onClick={this.close}>
+                <Header login={this.props.login} user={this.state.user} userMenu={this.state.userMenu} toggleUserMenu={this.toggleUserMenu} />
+                <div className='sub_list' onClick={this.close}>
                   { this.state.departments.map((department) => (
                   <Link to={ `/departments/${department.abbreviation}` }>
                     <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
