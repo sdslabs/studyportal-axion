@@ -61,7 +61,7 @@ class CustomFileUploader extends Component {
                         <span className='customfileuploader--filechoose'>Add More Files</span>
                         <span className='customfileuploader--instruc'>(Max total File Size allowed is 100MB)</span>
                     </div>
-                    {this.props.uploaded ? <div className='customfileuploader--confirmation'><img className='customfileuploader--confirmation-check' src={check} alt='check' /><span className='customfileuploader--confirmation-text'>All files uploaded successfully</span><span className='customfileuploader--confirmation-activity'>Check upload status in <Link to='/activity/requests' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
+                    {this.props.uploaded ? <div className='customfileuploader--confirmation'><img className='customfileuploader--confirmation-check' src={check} alt='check' /><span className='customfileuploader--confirmation-text'>All files uploaded successfully</span><span className='customfileuploader--confirmation-activity'>Check upload status in <Link to='/activity/uploads' className='linkactive'>Activity Log</Link></span></div> : <Fragment/>}
                     {this.props.uploaded ? <button type='submit' className='customfileuploader--button_uploaded'>Upload More</button> : this.props.uploading ? <button type='submit' className='customfileuploader--button_uploading'>Uploading<img src={small_loader} className='customfileuploader--button-loader' alt='loader' /></button> : <button type='submit' className='customfileuploader--button'>Upload</button>}
                 </div>
             )

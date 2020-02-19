@@ -31,6 +31,7 @@ class ActivityLog extends Component {
       const token = getToken();
       if(route === 'all' || route === undefined) {
         //TODO get both uploads and requests
+        this.getAll(token);
       }
       else if(route === 'requests') {
         this.getRequests(token);
@@ -61,6 +62,38 @@ class ActivityLog extends Component {
         else {
           this.setState({ activity:res })
         }
+      })
+    }
+
+    getAll(token) {
+      let activity = [];
+      getUploadsByUser(token).then((response,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          response.forEach(upload => {
+            activity.push(upload);
+          });
+          getFileRequestsByUser(token).then((res,err) => {
+            if(err) {
+              //TODO handle error
+            }
+            else {
+              res.forEach(request => {
+                activity.push(request);
+              })
+              // activity = this.arrangeActivity(activity);
+              this.setState({ activity })
+            }
+          })
+        }
+      })
+    }
+
+    arrangeActivity(activity) {
+      activity.sort((a,b) => {
+        return a.date - b.date
       })
     }
 

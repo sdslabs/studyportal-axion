@@ -103,7 +103,7 @@ class Department extends Component {
         this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
 
       }
-      if(this.checkActivityRoute(nextProps.location.pathname)) {
+      else if(this.checkActivityRoute(nextProps.location.pathname)) {
         if(this.checkActivityParam(nextProps.match.params.type))
           this.setState({ activity:true,upload:false,request:false });
         else
@@ -263,7 +263,7 @@ class Department extends Component {
 
     render() {
       if (!this.state.error) {
-        if(this.state.mycourse)
+        if(this.state.mycourse && !this.state.activity)
           return (
             <div>
               <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
@@ -273,7 +273,7 @@ class Department extends Component {
               { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.getCourse(this.props.location.pathname)} department_abbr={this.getDepartment(this.props.location.pathname)} userCourses={this.state.userCourses} file_type={this.getFileType(this.props.location.pathname)} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
             </div>
           )
-        else if(this.state.activity)
+        else if(this.state.activity && !this.state.mycourse)
           return (
             <div>
               <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>

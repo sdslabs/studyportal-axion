@@ -14,10 +14,11 @@ function getUploadsByUser(token) {
 }
 
 function uploadFile(token, course, name, filetype, file) {
+  const status = 1;
   return $.ajax({
     method: "POST",
     url: "http://nexus.sdslabs.local/api/v1/uploads",
-    data: { course, name, filetype, file },
+    data: { course, name, status, filetype, file },
     dataType: "json",
     beforeSend (xhr) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
