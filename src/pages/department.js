@@ -78,6 +78,7 @@ class Department extends Component {
         const department = this.getDepartment(this.props.location.pathname);
         const course = this.getCourse(this.props.location.pathname);
         const file_type = this.getFileType(this.props.location.pathname);
+        this.setState({ department,course })
         this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
       }
       else if(this.checkActivityRoute(this.props.location.pathname)) {
@@ -95,9 +96,10 @@ class Department extends Component {
     componentWillReceiveProps(nextProps) {
       if (this.checkMyCourseRoute(nextProps.location.pathname)) {
         this.setState({ activity:false,upload:false,request:false,mycourse:true });
-        const department = this.getDepartment(this.props.location.pathname);
-        const course = this.getCourse(this.props.location.pathname);
-        const file_type = this.getFileType(this.props.location.pathname);
+        const department = this.getDepartment(nextProps.location.pathname);
+        const course = this.getCourse(nextProps.location.pathname);
+        const file_type = this.getFileType(nextProps.location.pathname);
+        this.setState({ department,course })
         this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
 
       }
