@@ -10,12 +10,12 @@
   &image {
     width: 13.3125rem;
     height: 8.125rem;
-    transition: all 0.3s ease-in;
+    transition: all 0.1s ease-in;
     padding: 0.9375rem 0rem 0.9375rem 0rem;
 
     &-hover {
       cursor: pointer;
-      transition: all 0.3s ease-in;
+      transition: all 0.1s ease-in;
       transform: scale(1.11267606,1.18461538);
 
       background: #1E85B8;
@@ -33,7 +33,7 @@
     height: 8.125rem;
     left: 0rem;
     top: 0.9375rem;
-    transition: all 0.3s ease-in;
+    transition: all 0.1s ease-in;
 
     background: #196F99;
     mix-blend-mode: multiply;
@@ -45,7 +45,7 @@
       height: 9.9rem;
       left: -0.75rem;
       top: 0rem;
-      transition: all 0.3s ease-in;
+      transition: all 0.1s ease-in;
 
       background: #1E85B8;
       mix-blend-mode: multiply;

@@ -22,7 +22,7 @@ class Header extends Component {
                     <button className='landingheader--upload'><img className='landingheader--upload_image' src={upload} alt='upload' /> Upload</button>
                     { this.props.login ?
                     <Fragment>
-                      <img className='landingheader--image' src={this.props.user.profile_image} onClick={this.props.toggleUserMenu}/>
+                      <img className='landingheader--image' src={this.props.user.profile_image} alt='user' onClick={this.props.toggleUserMenu}/>
                       {this.props.userMenu ? <UserMenuHome/> : <Fragment/>}
                     </Fragment> :
                     <Fragment>
