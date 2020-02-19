@@ -44,8 +44,8 @@
         position: absolute;
         width: 6.25rem;
         height: 1.1875rem;
-        right: 5.28%;
-        top: 3.78125rem;
+        right: calc(10.28% - 3.125rem);
+        top: 5.78125rem;
 
         font-family: Droid Sans;
         font-style: normal;
@@ -60,8 +60,8 @@
         position: absolute;
         width: 10rem;
         height: 1.1875rem;
-        right: 5.28%;
-        top: 3.78125rem;
+        right: calc(10.28% - 5rem);
+        top: 5.78125rem;
 
         font-family: Droid Sans;
         font-style: normal;

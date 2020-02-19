@@ -9,6 +9,8 @@ import CustomCheckbox from 'components/customcheckbox/customCheckbox'
 import { getFilesByCourse,getFilesByType } from 'api/filesApi'
 import { getCourseInfoByCode } from 'api/courseApi'
 import { getDepartmentInfoByAbbr } from 'api/departmentApi'
+import { addCourseForUser, deleteCourseForUser } from 'api/userApi'
+import getToken from 'utils/getToken'
 import 'styles/main.scss'
 
 function mapStateToProps(state) {
@@ -19,7 +21,8 @@ class CoursePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mycourse: true,
+            mycourse: false,
+            id: '',
             name: '',
             login: props.login,
             files: [],
@@ -31,14 +34,19 @@ class CoursePage extends Component {
           "exampapers": "Examination Papers"
         }
         this.getFiles = this.getFiles.bind(this);
+        this.checkCourse = this.checkCourse.bind(this);
+        this.addCourse = this.addCourse.bind(this);
+        this.deleteCourse = this.deleteCourse.bind(this);
     }
 
     componentWillMount() {
       this.getFiles(this.props);
+      this.checkCourse(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
       this.getFiles(nextProps);
+      this.checkCourse(nextProps);
     }
 
     getFiles(nextProps) {
@@ -56,7 +64,7 @@ class CoursePage extends Component {
             else {
               if(!response) nextProps.error()
               else {
-                this.setState({ name:response.title })
+                this.setState({ name:response.title,id:response.id })
                 if (nextProps.file_type === undefined || nextProps.file_type === 'all')
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
@@ -77,14 +85,49 @@ class CoursePage extends Component {
               })}}})}})
     }
 
+    checkCourse(props) {
+      if(this.state.login) {
+        props.userCourses.forEach(course => {
+          if(course.code === props.course_code)
+            this.setState({ mycourse:true })
+        });
+      }
+    }
+
+    addCourse() {
+      const token = getToken();
+      addCourseForUser(token,this.state.id).then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.props.getUserDetails();
+          this.setState({ mycourse:true })
+        }
+      })
+    }
+
+    deleteCourse() {
+      const token = getToken();
+      deleteCourseForUser(token,this.state.id).then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.props.getUserDetails();
+          this.setState({ mycourse:false })
+        }
+      })
+    }
+
     render() {
         return(
             <div className='coursepage' onClick={this.props.close}>
                 <div className="coursepage--head">{ this.state.name } { this.props.course_code }</div>
                 <div className='coursepage--underline' />
                 { this.state.login ? <span>{ !this.state.mycourse ?
-                <div className='coursepage--addcourse'>+ Add Course</div> :
-                <div className='coursepage--removecourse'>- Remove Course</div> }</span> : null}
+                <div className='coursepage--addcourse' onClick={this.addCourse}>+ Add Course</div> :
+                <div className='coursepage--removecourse' onClick={this.deleteCourse}>- Remove Course</div> }</span> : null}
                 <div className='coursepage--category'>
                     <div className={this.props.file_type === 'all' || this.props.file_type === undefined ? 'coursepage--category_all_' : 'coursepage--category_all'}>
                       <Link to={`/departments/${this.props.department_abbr}/courses/${this.props.course_code}/all`} className={this.props.file_type === 'all' || this.props.file_type === undefined ? 'linkactive' : 'link'}>

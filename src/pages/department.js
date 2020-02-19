@@ -268,7 +268,7 @@ class Department extends Component {
               <Sidebar activity={this.state.mycourse} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close} getUserDetails={this.getUserDetails}/>
               <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
               <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-              { this.state.course !== undefined ? <CoursePage login={this.state.login} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
+              { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.getCourse(this.props.location.pathname)} department_abbr={this.getDepartment(this.props.location.pathname)} userCourses={this.state.userCourses} file_type={this.getFileType(this.props.location.pathname)} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
             </div>
           )
         else if(this.state.activity)
@@ -288,7 +288,7 @@ class Department extends Component {
                   <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
                   <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
-                  { this.state.course !== undefined ? <CoursePage login={this.state.login} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
+                  { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} userCourses={this.state.userCourses} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
               </div>
           )
       }
