@@ -102,6 +102,10 @@ class Upload extends Component {
       }
     }
 
+    refreshUpload() {
+      //TODO refresh upload
+    }
+
     render() {
         if (this.props.upload) {
             return(

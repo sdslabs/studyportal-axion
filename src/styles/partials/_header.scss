@@ -4,7 +4,6 @@
     height: 4.5625rem;
     left: 0%;
     top: 0%;
-
     background: #38A7DE;
     border: 0.0625rem solid #38A7DE;
     box-sizing: border-box;
@@ -45,13 +44,11 @@
         height: 1.3125rem;
         left: calc(2.71% + 3.644375rem);
         top: 33.16%;
-
         font-family: Sansation;
         font-style: normal;
         font-weight: bold;
         font-size: 1.25rem;
         line-height: 1.375rem;
-
         color: #0D2938;
     }
 
@@ -68,19 +65,16 @@
             height: 2rem;
             left: 0%;
             top: 0rem;
-
             padding: 0.25rem;
             padding-left: 1rem;
             background: #FFFFFF;
             border-radius: 0.125rem;
             border: #FFFFFF;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             color: #2B2A28;
         }
 
@@ -90,61 +84,82 @@
             height: 2.560625rem;
             left: 98%;
             top: 0rem;
-
             background: #0D2938;
             border: #0D2938;
             border-radius: 0.125rem;
         }
     }
 
-    &request {
+    &home {
         position: absolute;
         width: 3.6225rem;
         height: 2.375rem;
         left: calc(26.6808% + 19.54rem);
         top: 1.5625rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
+        color: #0D2938;
+    }
 
+    &request {
+        position: absolute;
+        width: 6.2475rem;
+        height: 1.1875rem;
+        left: calc(26.6808% + 23.66375rem);
+        top: 1.5625rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
         color: #0D2938;
     }
 
     &upload {
         position: absolute;
-        width: 3.2475rem;
-        height: 1.1875rem;
-        left: calc(26.6808% + 24.66375rem);
-        top: 1.5625rem;
-
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-
-        color: #0D2938;
-    }
-
-    &mentors {
-        position: absolute;
         width: 7.5rem;
         height: 2.375rem;
-        left: calc(26.6808% + 29.4125rem);
+        left: calc(26.6808% + 31.1125rem);
         top: 1.5625rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
 
     }
+
+    &mycourse {
+      position: absolute;
+      width: 6.6225rem;
+      height: 2.375rem;
+      left: calc(26.6808% + 19.54rem);
+      top: 1.5625rem;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #0D2938;
+  }
+
+  &mentors {
+      position: absolute;
+      width: 6.2475rem;
+      height: 1.1875rem;
+      left: calc(26.6808% + 26.16375rem);
+      top: 1.5625rem;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #0D2938;
+  }
 
     &login {
         position: absolute;
@@ -152,13 +167,11 @@
         height: 2.375rem;
         left: 85.94%;
         top: 1.0625rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
         background: transparent;
         border: none;
@@ -170,16 +183,12 @@
         height: 2.5625rem;
         left: 90.10%;
         top: 0.9375rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
-
-
         border: 0.0625rem solid #0D2938;
         box-sizing: border-box;
         border-radius: 0.125rem;
@@ -192,7 +201,6 @@
         height: 1.875rem;
         left: 89.71%;
         top: 1.4375rem;
-
         background: #0D2938;
         border-radius: 0.125rem;
 
@@ -210,13 +218,11 @@
             height: 13px;
             left: 58.75%;
             top: 8.5%;
-
             font-family: Droid Sans;
             font-style: normal;
             font-weight: bold;
             font-size: 0.6875rem;
             line-height: 0.8125rem;
-
             color: #FFFFFF;
         }
     }
@@ -227,7 +233,6 @@
         height: 2.5625rem;
         left: 93.4%;
         top: 1rem;
-
         border-radius: 0.125rem;
     }
 

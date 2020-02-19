@@ -1,3 +1,4 @@
+/* eslint-disable react/no-did-mount-set-state */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
@@ -41,6 +42,7 @@ class Department extends Component {
             request: false,
             upload: false,
             activity: false,
+            mycourse: false,
             error: props.error,
             department: '',
             course: '',
@@ -65,24 +67,40 @@ class Department extends Component {
         this.toggleUserMenu = this.toggleUserMenu.bind(this);
         this.getUserDetails = this.getUserDetails.bind(this)
         this.getDepartmentsAndCourses = this.getDepartmentsAndCourses.bind(this)
+        this.getDepartmentsAndCoursesForMyCourse = this.getDepartmentsAndCoursesForMyCourse.bind(this)
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
     }
 
     componentWillMount() {
-      if(this.checkActivityRoute(this.props.location.pathname)) {
+      if (this.checkMyCourseRoute(this.props.location.pathname)) {
+        this.setState({ activity:false,upload:false,request:false,mycourse:true });
+        const department = this.getDepartment(this.props.location.pathname);
+        const course = this.getCourse(this.props.location.pathname);
+        const file_type = this.getFileType(this.props.location.pathname);
+        this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
+      }
+      else if(this.checkActivityRoute(this.props.location.pathname)) {
         if(this.checkActivityParam(this.props.match.params.type))
-          this.setState({ activity:true,upload:false,request:false });
+          this.setState({ activity:true,upload:false,request:false,mycourse:false });
         else
           this.error();
       }
       else
-        this.setState({ activity:false })
+        this.setState({ activity:false,mycourse:false })
         this.getDepartmentsAndCourses(this.props)
       this.getUserDetails();
     }
 
     componentWillReceiveProps(nextProps) {
+      if (this.checkMyCourseRoute(nextProps.location.pathname)) {
+        this.setState({ activity:false,upload:false,request:false,mycourse:true });
+        const department = this.getDepartment(this.props.location.pathname);
+        const course = this.getCourse(this.props.location.pathname);
+        const file_type = this.getFileType(this.props.location.pathname);
+        this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
+
+      }
       if(this.checkActivityRoute(nextProps.location.pathname)) {
         if(this.checkActivityParam(nextProps.match.params.type))
           this.setState({ activity:true,upload:false,request:false });
@@ -92,6 +110,40 @@ class Department extends Component {
       else
         this.setState({ activity:false })
         this.getDepartmentsAndCourses(nextProps)
+    }
+
+    getDepartmentsAndCoursesForMyCourse(department,course,file_type) {
+      if (file_type === 'all' || file_type === 'tutorials' || file_type === 'books' || file_type === 'notes' || file_type === 'exampapers' || file_type === undefined) {
+        this.setState({ course })
+        getDepartmentInfoByAbbr(department).then((res,err) => {
+          if(err) {
+            //TODO handle error
+          }
+          else {
+            if(!res) {
+              this.setState({ error:true })
+            }
+            else {
+              this.setState({ department:res.department.title })
+              this.department_id = res.department.id
+              this.department_abbr = res.department.abbreviation
+              this.setState({ courses:res.courses })
+              if(course !== undefined) {
+                getCourseInfoByCode(this.department_id,course).then((response,err) => {
+                  if(err) {
+                    //TODO handle error
+                  }
+                  else {
+                    if(!response) {
+                      this.setState({ error:true })
+                    }
+                    else {
+                      const course_title = `${response.title} ${response.code}`
+                      this.course = course_title
+                      this.setState({ course:course_title })
+        }}})}}}})}
+      else
+        this.error()
     }
 
     getDepartmentsAndCourses(props) {
@@ -187,13 +239,39 @@ class Department extends Component {
       return route.split('/')[1] === 'activity'
     }
 
+    checkMyCourseRoute(route) {
+      return route.split('/')[1] === 'mycourse'
+    }
+
+    getDepartment(route) {
+      return route.split('/')[3]
+    }
+
+    getCourse(route) {
+      return route.split('/')[5]
+    }
+
+    getFileType(route) {
+      return route.split('/')[7]
+    }
+
     checkActivityParam(route) {
       return route === undefined || route === 'all' || route === 'requests' || route === 'uploads'
     }
 
     render() {
       if (!this.state.error) {
-        if(this.state.activity)
+        if(this.state.mycourse)
+          return (
+            <div>
+              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+              <Sidebar activity={this.state.mycourse} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close} getUserDetails={this.getUserDetails}/>
+              <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
+              <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+              { this.state.course !== undefined ? <CoursePage login={this.state.login} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
+            </div>
+          )
+        else if(this.state.activity)
           return (
             <div>
               <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>

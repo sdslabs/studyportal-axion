@@ -14,12 +14,12 @@ import getToken from 'utils/getToken'
 class Sidebar extends Component {
     constructor(props) {
         super(props);
-      this.state = {
-        login: props.activity,
-        departments: [],
-        courses: [],
-        course: 0
-      };
+        this.state = {
+          login: props.activity,
+          departments: [],
+          courses: [],
+          course: 0
+        };
 
         this.active = this.props.active;
         this.handleClick = this.handleClick.bind(this)
@@ -90,7 +90,7 @@ class Sidebar extends Component {
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
                           { this.props.userCourses.map((course) => (
-                            <Link to={ `/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id } style={{ textDecoration:'none' }}>
+                            <Link to={ `/mycourse/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id } style={{ textDecoration:'none' }}>
                                 <CourseHandle login name={ `${course.title} ${course.code}` } title={course.title} code={course.code} course={course.id} active={this.active} handleClick={this.handleClick}/>
                             </Link>
                           )) }

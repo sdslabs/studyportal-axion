@@ -63,11 +63,10 @@ class Header extends Component {
                     <button className='header--search_icon'><img src={search} alt='search' /></button>
                 </div>
                 <Search value={this.state.value} search={this.state.search}/>
-                <div className='header--request' onClick={this.props.handleReqClick}>Request</div>
-                <div className='header--upload' onClick={this.props.handleUploClick}>Upload</div>
-                <div className='header--mentors'>Mentors List</div>
                 {this.state.login ?
                     (<Fragment>
+                        <Link to='/mycourse'><div className='header--mycourse'>My Course</div></Link>
+                        <div className='header--mentors'>Mentors List</div>
                         <div className='header--notification' onClick={ this.props.toggleNotifications }>
                             <img className='header--notification_image' src={notif} alt="notification" /><span className='header--notification_number'>1</span>
                         </div>
@@ -76,6 +75,9 @@ class Header extends Component {
                         { this.state.userMenu ? <UserMenu handleReqClick={this.props.handleReqClick} handleUploClick={this.props.handleUploClick}/> : <Fragment /> }
                     </Fragment>) :
                     (<Fragment>
+                        <Link to='/'><div className='header--home'>Home</div></Link>
+                        <div className='header--request' onClick={this.props.handleReqClick}>Request Files</div>
+                        <div className='header--upload' onClick={this.props.handleUploClick}>Upload Files</div>
                         <button className='header--login'>Login</button>
                         <button className='header--signup'>Sign Up</button>
                     </Fragment>)

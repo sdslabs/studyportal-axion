@@ -112,7 +112,7 @@ class Request extends Component {
     }
 
     refreshRequest() {
-      this.setState({ disable:0, requesting:false, requested:false })
+      //TODO refresh upload
     }
 
     render() {

@@ -28,7 +28,7 @@ function loginUserWithCookie() {
 }
 
 function addCourseForUser(token,course) {
-  return axiosInstance.put('/users', { course },
+  return axiosInstance.put('/users', { course, action:'add' },
   { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
   .then((response) => {
     const res = JSON.parse(response.request.response);
@@ -39,9 +39,21 @@ function addCourseForUser(token,course) {
   })
 }
 
+function deleteCourseForUser(token,course) {
+  return axiosInstance.put('/users', { course, action:'delete' },
+  { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+  .then((response) => {
+    const res = JSON.parse(response.request.response);
+    return res;
+  })
+  .catch((error) => {
+    return Promise.reject(error);
+  })
+}
 
 export {
   loginUserWithToken,
   loginUserWithCookie,
-  addCourseForUser
+  addCourseForUser,
+  deleteCourseForUser
 }
