@@ -33,7 +33,7 @@ class Home extends Component {
           //TODO handle error
         }
         else {
-          this.setState({ departments: res });
+          this.setState({ departments:res.department });
         }
       })
     }
