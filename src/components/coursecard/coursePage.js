@@ -1,17 +1,17 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import MaterialCard from './materialCard'
-import CustomCheckbox from 'components/customcheckbox/customCheckbox'
-import { getFilesByCourse,getFilesByType } from 'api/filesApi'
-import { getCourseInfoByCode } from 'api/courseApi'
-import { getDepartmentInfoByAbbr } from 'api/departmentApi'
-import { addCourseForUser, deleteCourseForUser } from 'api/userApi'
-import getToken from 'utils/getToken'
-import 'styles/main.scss'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import MaterialCard from './materialCard';
+import CustomCheckbox from 'components/customcheckbox/customCheckbox';
+import { getFilesByCourse,getFilesByType } from 'api/filesApi';
+import { getCourseInfoByCode } from 'api/courseApi';
+import { getDepartmentInfoByAbbr } from 'api/departmentApi';
+import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
+import 'styles/main.scss';
 
 function mapStateToProps(state) {
   // return { id: state.course.id, name: state.course.name }
@@ -95,7 +95,7 @@ class CoursePage extends Component {
     }
 
     addCourse() {
-      const token = getToken();
+      const token = getCookie('token');
       addCourseForUser(token,this.state.id).then((res,err) => {
         if(err) {
           //TODO handle error
@@ -108,7 +108,7 @@ class CoursePage extends Component {
     }
 
     deleteCourse() {
-      const token = getToken();
+      const token = getCookie('token');
       deleteCourseForUser(token,this.state.id).then((res,err) => {
         if(err) {
           //TODO handle error

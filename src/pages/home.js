@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
-import Header from 'components/home/header'
-import SubjectCard from 'components/home/subjectCard'
-import 'styles/main.scss'
-import { getDepartmentsList } from 'api/departmentApi'
-import { Link } from 'react-router-dom'
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi'
-import getToken from 'utils/getToken'
+import React, { Component } from 'react';
+import Header from 'components/home/header';
+import SubjectCard from 'components/home/subjectCard';
+import 'styles/main.scss';
+import { getDepartmentsList } from 'api/departmentApi';
+import { Link } from 'react-router-dom';
+import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
 
 class Home extends Component {
     constructor(props) {
@@ -38,8 +39,8 @@ class Home extends Component {
     }
 
     getUser() {
-      const token = getToken();
-        if(true) {  //Check for cookie
+      const token = getCookie('token');
+        if(token) {
           loginUserWithToken(token).then((res,err) => {
             if(err) {
               //TODO handle error

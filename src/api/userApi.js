@@ -1,4 +1,5 @@
 import { axiosInstance } from './axiosInstance';
+import { setCookie } from 'utils/handleCookies';
 
 function loginUserWithToken(token) {
   return axiosInstance.get('/users',
@@ -20,6 +21,7 @@ function loginUserWithCookie() {
     'Accept': 'application/json' } })
   .then((response) => {
     const res = JSON.parse(response.request.response);
+    setCookie('token',res.token);
     return res;
   })
   .catch((error) => {

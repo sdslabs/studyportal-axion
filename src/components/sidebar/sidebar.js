@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
-import arrow from 'assets/left-arrow.png'
-import CourseHandle from './courseHandle'
-import 'styles/main.scss'
-import { Link } from 'react-router-dom'
-import { getDepartmentsList } from 'api/departmentApi'
-import { getCourseByDepartment } from 'api/courseApi'
-import { addCourseForUser } from 'api/userApi'
-import getToken from 'utils/getToken'
+import React, { Component } from 'react';
+import arrow from 'assets/left-arrow.png';
+import CourseHandle from './courseHandle';
+import 'styles/main.scss';
+import { Link } from 'react-router-dom';
+import { getDepartmentsList } from 'api/departmentApi';
+import { getCourseByDepartment } from 'api/courseApi';
+import { addCourseForUser } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
 
 class Sidebar extends Component {
     constructor(props) {
@@ -66,7 +66,7 @@ class Sidebar extends Component {
 
     addCourse(e) {
       e.preventDefault();
-      const token = getToken();
+      const token = getCookie('token');
       addCourseForUser(token,this.state.course).then((res,err) => {
         if(err) {
           //TODO handle error

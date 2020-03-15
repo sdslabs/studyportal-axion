@@ -1,12 +1,12 @@
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react'
-import ActivityReqCard from './activityReqCard'
-import 'styles/main.scss'
+import React, { Component } from 'react';
+import ActivityReqCard from './activityReqCard';
+import 'styles/main.scss';
 import { getFileRequestsByUser } from 'api/requestApi';
 import { getUploadsByUser } from 'api/uploadApi';
 import { Link } from 'react-router-dom';
-import getToken from 'utils/getToken';
+import { getCookie } from 'utils/handleCookies';
 
 class ActivityLog extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class ActivityLog extends Component {
     }
 
     getActivity(route) {
-      const token = getToken();
+      const token = getCookie('token');
       if(route === 'all' || route === undefined) {
         //TODO get both uploads and requests
         this.getAll(token);

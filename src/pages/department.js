@@ -2,21 +2,21 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import Header from 'components/header/header'
-import Sidebar from 'components/sidebar/sidebar'
-import Request from 'components/request/request'
-import Upload from 'components/upload/upload'
-import ActivityLog from 'components/activitylog/activityLog'
-import CoursePage from 'components/coursecard/coursePage'
-import CourseCover from 'components/cover/courseCover'
-import Error from 'components/error/error'
-import { getDepartmentInfoByAbbr } from 'api/departmentApi'
-import { getCourseInfoByCode } from 'api/courseApi'
-import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions'
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi'
-import getToken from 'utils/getToken'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Header from 'components/header/header';
+import Sidebar from 'components/sidebar/sidebar';
+import Request from 'components/request/request';
+import Upload from 'components/upload/upload';
+import ActivityLog from 'components/activitylog/activityLog';
+import CoursePage from 'components/coursecard/coursePage';
+import CourseCover from 'components/cover/courseCover';
+import Error from 'components/error/error';
+import { getDepartmentInfoByAbbr } from 'api/departmentApi';
+import { getCourseInfoByCode } from 'api/courseApi';
+import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions';
+import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
 
 function mapStateToProps(state) {
     return { user: state }
@@ -185,8 +185,8 @@ class Department extends Component {
     }
 
     getUserDetails() {
-      if(true) {  //TODO check whether with token or cookie
-        const token = getToken();
+      const token = getCookie('token');
+      if(token) {
         loginUserWithToken(token).then((res,err) => {
           if(err) {
             //TODO handle error

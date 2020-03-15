@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React, { Component, Fragment } from 'react'
-import CustomFileUploader from './customFileUploader'
-import { uploadFile } from 'api/uploadApi'
-import close from 'assets/closereq.png'
-import { getDepartmentsList } from 'api/departmentApi'
-import { getCourseByDepartment } from 'api/courseApi'
-import getToken from 'utils/getToken'
-import 'styles/main.scss'
+import React, { Component, Fragment } from 'react';
+import CustomFileUploader from './customFileUploader';
+import { uploadFile } from 'api/uploadApi';
+import close from 'assets/closereq.png';
+import { getDepartmentsList } from 'api/departmentApi';
+import { getCourseByDepartment } from 'api/courseApi';
+import { getCookie } from 'utils/handleCookies';
+import 'styles/main.scss';
 
 class Upload extends Component {
     constructor(props) {
@@ -77,7 +77,7 @@ class Upload extends Component {
 
     async upload(e) {
       e.preventDefault();
-      const token = getToken();
+      const token = getCookie('token');
       if (token) {
         this.setState({ disable:-1,uploading:true })
         this.state.files.forEach((fileObj,index, array) => {

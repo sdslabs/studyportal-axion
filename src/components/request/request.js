@@ -1,15 +1,15 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
-import React, { Component, Fragment } from 'react'
-import close from 'assets/closereq.png'
-import { getDepartmentsList } from 'api/departmentApi'
-import { getCourseByDepartment } from 'api/courseApi'
-import { requestFiles, requestCourse } from 'api/requestApi'
-import getToken from 'utils/getToken'
-import small_loader from 'assets/loader_small.svg'
-import check from 'assets/check.svg'
-import 'styles/main.scss'
-import { Link } from 'react-router-dom'
+import React, { Component, Fragment } from 'react';
+import close from 'assets/closereq.png';
+import { getDepartmentsList } from 'api/departmentApi';
+import { getCourseByDepartment } from 'api/courseApi';
+import { requestFiles, requestCourse } from 'api/requestApi';
+import { getCookie } from 'utils/handleCookies';
+import small_loader from 'assets/loader_small.svg';
+import check from 'assets/check.svg';
+import 'styles/main.scss';
+import { Link } from 'react-router-dom';
 
 class Request extends Component {
     constructor(props) {
@@ -89,7 +89,7 @@ class Request extends Component {
       const course = e.target.course[e.target.course.selectedIndex].id
       const material = e.target.material.value
       const name = e.target.name.value
-      const token = getToken();
+      const token = getCookie('token');
       if(course && material && name && token) {
         this.setState({ disable:-1,requesting:true });
         requestFiles(token,material,name,course).then((res,err) => {
@@ -104,7 +104,7 @@ class Request extends Component {
       const department = e.target.department.value
       const course = e.target.course.value
       const code = e.target.code.value
-      const token = getToken();
+      const token = getCookie('token');
       requestCourse(token,department,course,code).then((res,err) => {
         //TODO handle error
         this.setState({ requesting:false,requested:true })
