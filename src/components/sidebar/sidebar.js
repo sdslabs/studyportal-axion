@@ -82,6 +82,7 @@ class Sidebar extends Component {
     }
 
     render() {
+      console.log(this.state, this.props)
         if (this.state.login) {
             return(
                 <div className='sidebar' onClick={this.props.close}>

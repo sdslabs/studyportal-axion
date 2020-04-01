@@ -39,13 +39,13 @@ class CoursePage extends Component {
         this.deleteCourse = this.deleteCourse.bind(this);
     }
 
-    async componentWillMount() {
-      await this.getFiles(this.props);
+    componentWillMount() {
+      this.getFiles(this.props);
       this.checkCourse(this.props);
     }
 
-    async componentWillReceiveProps(nextProps) {
-      await this.getFiles(nextProps);
+    componentWillReceiveProps(nextProps) {
+      this.getFiles(nextProps);
       this.checkCourse(nextProps);
     }
 
@@ -64,7 +64,7 @@ class CoursePage extends Component {
             else {
               if(!response) nextProps.error()
               else {
-                this.setState({ name:response.title,id:response.id })
+                this.setState({ name:response.department.title,id:response.id })
                 if (nextProps.file_type === undefined || nextProps.file_type === 'all')
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
