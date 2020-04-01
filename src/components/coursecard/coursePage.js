@@ -39,13 +39,13 @@ class CoursePage extends Component {
         this.deleteCourse = this.deleteCourse.bind(this);
     }
 
-    componentWillMount() {
-      this.getFiles(this.props);
+    async componentWillMount() {
+      await this.getFiles(this.props);
       this.checkCourse(this.props);
     }
 
-    componentWillReceiveProps(nextProps) {
-      this.getFiles(nextProps);
+    async componentWillReceiveProps(nextProps) {
+      await this.getFiles(nextProps);
       this.checkCourse(nextProps);
     }
 
@@ -85,9 +85,10 @@ class CoursePage extends Component {
               })}}})}})
     }
 
-    checkCourse(props) {
+    async checkCourse(props) {
       if(this.state.login) {
-        props.userCourses.forEach(course => {
+        this.setState({ mycourse:false })
+        await props.userCourses.forEach(course => {
           if(course.code === props.course_code)
             this.setState({ mycourse:true })
         });

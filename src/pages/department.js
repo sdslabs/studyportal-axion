@@ -93,14 +93,14 @@ class Department extends Component {
       this.getUserDetails();
     }
 
-    componentWillReceiveProps(nextProps) {
+    async componentWillReceiveProps(nextProps) {
       if (this.checkMyCourseRoute(nextProps.location.pathname)) {
-        this.setState({ activity:false,upload:false,request:false,mycourse:true });
+        this.setState({ activity: false, upload: false, request: false, mycourse: true });
         const department = this.getDepartment(nextProps.location.pathname);
         const course = this.getCourse(nextProps.location.pathname);
         const file_type = this.getFileType(nextProps.location.pathname);
-        this.setState({ department,course })
-        this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
+        this.setState({ department, course })
+        this.getDepartmentsAndCoursesForMyCourse(department, course, file_type);
 
       }
       else if(this.checkActivityRoute(nextProps.location.pathname)) {
@@ -287,7 +287,7 @@ class Department extends Component {
           return (
               <div>
                   <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
-                  <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
+                  <Sidebar activity={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
                   <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
                   { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} userCourses={this.state.userCourses} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
