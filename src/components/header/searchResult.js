@@ -29,7 +29,7 @@ class SearchResult extends Component {
                     <span className='file--card-detail_type'>{this.file_type}</span>
                   </div>
             </div>
-            </a>
+          </a>
         )
     }
 }

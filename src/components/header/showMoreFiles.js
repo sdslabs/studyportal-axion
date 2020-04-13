@@ -17,22 +17,22 @@ class ShowMoreFiles extends Component{
         if(this.props.showmore){
             return(
                 <div className='seeallcover'>
-                <div className='seeall'>
-                    <div className='seeall--close' onClick={this.props.handleSeeAll}><img src={close} alt='close'/></div>
-                    <div className='seeall--heading'>Search results for <span className='seeall--heading_query'>"{this.state.searchquery}"</span></div>
-                    <div className='seeall--fileholder'>
-                        {this.props.files.map((file) => (
-                            <SearchResult name={ file.title } url={ file.driveid } date_modified={ file.date_modified } 
-                            course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
-                        ))}
+                    <div className='seeall'>
+                        <div className='seeall--close' onClick={this.props.handleSeeAll}><img src={close} alt='close'/></div>
+                        <div className='seeall--heading'>Search results for <span className='seeall--heading_query'>"{this.state.searchquery}"</span></div>
+                        <div className='seeall--fileholder'>
+                            {this.props.files.map((file) => (
+                                <SearchResult name={ file.title } url={ file.driveid } date_modified={ file.date_modified } 
+                                course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
+                            ))}
+                        </div>
+                        <div className='seeall--underline'></div>
+                        <div className='seeall--footer'>
+                            <span className='seeall--footer-emoji'><img src={emoji} alt='emoji'/></span>
+                            <span className='seeall--footer-text'>Couldn't find what you looking for? </span>
+                            <span className='seeall--footer-request' onClick={this.props.handleReqClick}>Request here!</span>
+                        </div>
                     </div>
-                    <div className='seeall--underline'></div>
-                    <div className='seeall--footer'>
-                    <span className='seeall--footer-emoji'><img src={emoji} alt='emoji'/></span>
-                    <span className='seeall--footer-text'>Couldn't find what you looking for? </span>
-                    <span className='seeall--footer-request' onClick={this.props.handleReqClick}>Request here!</span>
-                    </div>
-                </div>
                 </div>
             )
         }

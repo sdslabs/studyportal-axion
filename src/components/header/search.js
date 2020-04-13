@@ -20,7 +20,7 @@ class Search extends Component {
           showmore: false,
         }
     }
-    
+
     componentWillReceiveProps(props) {
         this.setState({ search:props.search })
         this.setState({value: props.value})
@@ -62,15 +62,15 @@ class Search extends Component {
                           <span className='search--file-noresults_requestfile' onClick={this.props.handleReqClick}>Request Here!</span>
                         </span>
                       </div> :
-                      <div>
-                      <div className='search--file-holder'>
-                      {this.state.files.slice(0,this.state.showFiles).map((file) => (
-                        <SearchResult name={ file.title } url={ file.driveid } date_modified={ file.date_modified } 
-                        course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
-                      ))}
-                    </div>
-                    <div className='search--file-seeall' onClick={() => this.props.handleSeeAllClick(this.state.files,this.state.value)}>See All</div>
-                    </div>
+                        <div>
+                          <div className='search--file-holder'>
+                          {this.state.files.slice(0,this.state.showFiles).map((file) => (
+                            <SearchResult name={ file.title } url={ file.driveid } date_modified={ file.date_modified } 
+                            course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
+                          ))}
+                          </div>
+                          <div className='search--file-seeall' onClick={() => this.props.handleSeeAllClick(this.state.files,this.state.value)}>See All</div>
+                      </div>
                     }
                     <div className='search--courses'>Courses</div>
                     { !this.state.courses.length ? 
@@ -117,7 +117,7 @@ class Search extends Component {
               </div>
             )
       else
-          return(<Fragment/>)
+        return(<Fragment/>)
     }
 }
 
