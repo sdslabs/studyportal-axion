@@ -24,38 +24,38 @@ class Home extends Component {
         this.close = this.close.bind(this);
     }
 
-    async componentWillMount() {
-      if(this.props.login) {
-        await this.getUser()
-      }
-      await getDepartmentsList().then((res,err) => {
+    componentWillMount() {
+      getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
           this.setState({ departments:res.department });
+          if(this.props.login) {
+            this.getUser()
+          }
         }
       })
     }
 
-    async componentWillReceiveProps(nextProps) {
-      if(nextProps.login) {
-        await this.getUser()
-      }
-      await getDepartmentsList().then((res,err) => {
+    componentWillReceiveProps(nextProps) {
+      getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
           this.setState({ departments:res.department });
+          if(nextProps.login) {
+            this.getUser()
+          }
         }
       })
     }
 
-    async getUser() {
+    getUser() {
       const token = getCookie('token');
         if(token) {
-          await loginUserWithToken(token).then((res,err) => {
+          loginUserWithToken(token).then((res,err) => {
             if(err) {
               //TODO handle error
             }
@@ -65,7 +65,7 @@ class Home extends Component {
           });
         }
         else {
-          await loginUserWithCookie();
+          loginUserWithCookie();
         }
     }
 

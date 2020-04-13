@@ -40,13 +40,13 @@ class CoursePage extends Component {
     }
 
     componentWillMount() {
-      this.getFiles(this.props);
       this.checkCourse(this.props);
+      this.getFiles(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
-      this.getFiles(nextProps);
       this.checkCourse(nextProps);
+      this.getFiles(nextProps);
     }
 
     getFiles(nextProps) {
@@ -64,7 +64,7 @@ class CoursePage extends Component {
             else {
               if(!response) nextProps.error()
               else {
-                this.setState({ name:response.department.title,id:response.id })
+                this.setState({ name:response.title,id:response.id })
                 if (nextProps.file_type === undefined || nextProps.file_type === 'all')
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {

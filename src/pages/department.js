@@ -93,15 +93,16 @@ class Department extends Component {
 
       }
       else if(this.checkActivityRoute(nextProps.location.pathname)) {
-        if(this.checkActivityParam(nextProps.match.params.type))
+        if(this.checkActivityParam(nextProps.match.params.type)) {
           this.setState({ activity:true,upload:false,request:false });
+          this.getUserDetails();
+        }
         else
           this.error();
       }
       else {
         this.setState({ activity:false })
         this.getDepartmentsAndCourses(nextProps)
-        this.getUserDetails();
       }
     }
 
@@ -146,12 +147,12 @@ class Department extends Component {
         this.error()
     }
 
-    async getDepartmentsAndCourses(props) {
+    getDepartmentsAndCourses(props) {
       if (props.match.params.file_type === 'all' || props.match.params.file_type === 'tutorials' || props.match.params.file_type === 'books' || props.match.params.file_type === 'notes' || props.match.params.file_type === 'exampapers' || props.match.params.file_type === undefined) {
         const department = props.match.params.department
         const course = props.match.params.course
         this.setState({ course })
-        await getDepartmentInfoByAbbr(department).then((res,err) => {
+        getDepartmentInfoByAbbr(department).then((res,err) => {
           if(err) {
             //TODO handle error
           }
@@ -177,6 +178,7 @@ class Department extends Component {
                       const course_title = `${response.title} ${response.code}`
                       this.course = course_title
                       this.setState({ course_name:course_title })
+                      this.getUserDetails();
                     }
                   }
                 })
