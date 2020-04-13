@@ -17,6 +17,7 @@ import { getCourseInfoByCode } from 'api/courseApi';
 import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie } from 'utils/handleCookies';
+import ShowMoreFiles from 'components/header/showMoreFiles';
 
 function mapStateToProps(state) {
     return { user: state }
@@ -51,7 +52,10 @@ class Department extends Component {
             userCourses: [],
             user: {}, //TODO remove after checking redux
             notifications: false,
-            userMenu: false
+            userMenu: false,
+            showmore: false,
+            searchfiles: [],
+            searchquery: '',
         }
         this.department = ''
         this.department_id = ''
@@ -72,6 +76,8 @@ class Department extends Component {
         this.fetchAndUpdatePageInformation = this.fetchAndUpdatePageInformation.bind(this)
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
+        this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
+        this.handleSeeAll = this.handleSeeAll.bind(this);
     }
 
     componentWillMount() {
@@ -209,7 +215,9 @@ class Department extends Component {
     }
 
     handleReqHeader () {
-        this.setState({ request:true });
+        this.setState({ request: true  });
+        if(this.state.showmore)
+          this.setState({showmore: false})
     }
 
     handleReq () {
@@ -222,6 +230,14 @@ class Department extends Component {
 
     handleUplo () {
         this.setState({ upload:false });
+    }
+
+    handleSeeAllClick(files,query){
+      this.setState({showmore: true,searchquery: query,searchfiles: files})
+    }
+
+    handleSeeAll(){
+      this.setState({showmore: false})
     }
 
     error () {
@@ -242,6 +258,9 @@ class Department extends Component {
         this.setState({ userMenu:false })
       if(this.state.notifications)
         this.setState({ notifications:false })
+      if(this.state.showmore)
+        this.setState({showmore: false})
+      
     }
 
     checkActivityRoute(route) {
@@ -273,30 +292,36 @@ class Department extends Component {
         if(this.state.mycourse && !this.state.activity)
           return (
             <div>
-              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
-              <Sidebar activity={this.state.mycourse} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course_name} close={this.close} getUserDetails={this.getUserDetails}/>
+              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} handleSeeAllClick={this.handleSeeAllClick} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+              <Sidebar activity={this.state.mycourse} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close} getUserDetails={this.getUserDetails}/>
               <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
               <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+              {this.state.searchfiles.length ?
+                <ShowMoreFiles files={this.state.searchfiles} showmore={this.state.showmore} searchquery={this.state.searchquery} handleSeeAll={this.handleSeeAll} handleReqClick={this.handleReqHeader} /> : null}
               { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.getCourse(this.props.location.pathname)} department_abbr={this.getDepartment(this.props.location.pathname)} userCourses={this.state.userCourses} file_type={this.getFileType(this.props.location.pathname)} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
             </div>
           )
         else if(this.state.activity && !this.state.mycourse)
           return (
             <div>
-              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
-              <Sidebar activity={this.state.activity} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course_name} close={this.close} getUserDetails={this.getUserDetails}/>
+              <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} handleSeeAllClick={this.handleSeeAllClick} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+              <Sidebar activity={this.state.activity} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close} getUserDetails={this.getUserDetails}/>
               <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
               <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+              {this.state.searchfiles.length ?
+                <ShowMoreFiles files={this.state.searchfiles} showmore={this.state.showmore} searchquery={this.state.searchquery} handleSeeAll={this.handleSeeAll} handleReqClick={this.handleReqHeader} /> : null}
               <ActivityLog user={this.state.user} close={this.close} route={this.props.match.params.type}/>
             </div>
           )
         else
           return (
               <div>
-                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
-                  <Sidebar activity={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course_name} close={this.close}/>
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} handleSeeAllClick={this.handleSeeAllClick} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+                  <Sidebar login={false} department={this.state.department} department_id={this.department_id} department_abbr={this.department_abbr} courses={this.state.courses} userCourses={this.state.userCourses} active={this.state.course} close={this.close}/>
                   <Request request={this.state.request} handleReq={this.handleReq} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} handleUplo={this.handleUplo} />
+                  {this.state.searchfiles.length ?
+                    <ShowMoreFiles files={this.state.searchfiles} showmore={this.state.showmore} searchquery={this.state.searchquery} handleSeeAll={this.handleSeeAll} handleReqClick={this.handleReqHeader} /> : null}
                   { this.state.course !== undefined ? <CoursePage login={this.state.login} getUserDetails={this.getUserDetails} course_code={this.props.match.params.course} department_abbr={this.props.match.params.department} userCourses={this.state.userCourses} file_type={this.props.match.params.file_type} error={this.error} close={this.close}/> : <CourseCover close={this.close}/> }
               </div>
           )
@@ -304,7 +329,7 @@ class Department extends Component {
         else
             return (
               <div>
-                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
+                  <Header login={this.state.login} search={this.state.search} handleReqClick={this.handleReqHeader} handleUploClick={this.handleUploHeader} handleSeeAllClick={this.handleSeeAllClick} notifications={this.state.notifications} userMenu={this.state.userMenu} toggleNotifications={this.toggleNotifications} toggleUserMenu={this.toggleUserMenu} close={this.close}/>
                   <Error close={this.close}/>
               </div>
             )

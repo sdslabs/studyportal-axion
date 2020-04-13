@@ -62,7 +62,7 @@ class Header extends Component {
                     <input className='header--search_bar' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
                     <button className='header--search_icon'><img src={search} alt='search' /></button>
                 </div>
-                <Search value={this.state.value} search={this.state.search}/>
+                <Search value={this.state.value} search={this.state.search} handleReqClick={this.props.handleReqClick} handleSeeAllClick={this.props.handleSeeAllClick} handleSeeAll={this.props.handleSeeAll} />
                 {this.state.login ?
                     (<Fragment>
                         <Link to='/mycourse'><div className='header--mycourse'>My Course</div></Link>
