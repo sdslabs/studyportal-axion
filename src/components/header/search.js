@@ -23,7 +23,7 @@ class Search extends Component {
 
     componentWillReceiveProps(props) {
         this.setState({ search:props.search })
-        this.setState({value: props.value})
+        this.setState({ value: props.value })
         this.getResults(props.value)
     }
 
@@ -109,10 +109,10 @@ class Search extends Component {
             return(
               <div className='nosearchresults'>
                 <span className='nosearchresults_emoji'><img src={emoji} alt='emoji'/></span>
-                <span className='nosearchresults--textcontainer'>
-                  <div className='nosearchresults--textcontainer_text'>Sorry! We couldn't find any file for you.</div>
-                  <span className='nosearchresults--textcontainer_text'> However,you can request what you are looking for.</span>
-                  <span className='nosearchresults--textcontainer_request' onClick={this.props.handleReqClick}>Request Here!</span>
+                <span className='nosearchresults--message'>
+                  <div className='nosearchresults--message_plaintext'>Sorry! We couldn't find any file for you.</div>
+                  <span className='nosearchresults--message_plaintext'> However,you can request what you are looking for.</span>
+                  <span className='nosearchresults--message_request' onClick={this.props.handleReqClick}>Request Here!</span>
                 </span>
               </div>
             )
