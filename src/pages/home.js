@@ -24,11 +24,11 @@ class Home extends Component {
         this.close = this.close.bind(this);
     }
 
-    componentWillMount() {
+    async componentWillMount() {
       if(this.props.login) {
-        this.getUser()
+        await this.getUser()
       }
-      getDepartmentsList().then((res,err) => {
+      await getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
         }
@@ -38,10 +38,24 @@ class Home extends Component {
       })
     }
 
-    getUser() {
+    async componentWillReceiveProps(nextProps) {
+      if(nextProps.login) {
+        await this.getUser()
+      }
+      await getDepartmentsList().then((res,err) => {
+        if(err) {
+          //TODO handle error
+        }
+        else {
+          this.setState({ departments:res.department });
+        }
+      })
+    }
+
+    async getUser() {
       const token = getCookie('token');
         if(token) {
-          loginUserWithToken(token).then((res,err) => {
+          await loginUserWithToken(token).then((res,err) => {
             if(err) {
               //TODO handle error
             }
@@ -51,7 +65,7 @@ class Home extends Component {
           });
         }
         else {
-          loginUserWithCookie();
+          await loginUserWithCookie();
         }
     }
 
@@ -70,7 +84,7 @@ class Home extends Component {
                 <Header login={this.props.login} user={this.state.user} userMenu={this.state.userMenu} toggleUserMenu={this.toggleUserMenu} />
                 <div className='sub_list' onClick={this.close}>
                   { this.state.departments.map((department) => (
-                  <Link to={ `/departments/${department.abbreviation}` }>
+                  <Link to={ `/departments/${department.abbreviation}` } key={department.abbreviation}>
                     <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
                   </Link>)
                   ) }

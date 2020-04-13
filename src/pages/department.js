@@ -47,6 +47,7 @@ class Department extends Component {
             error: props.error,
             department: '',
             course: '',
+            course_name: '',
             courses: [],
             userCourses: [],
             user: {}, //TODO remove after checking redux
@@ -72,6 +73,7 @@ class Department extends Component {
         this.getUserDetails = this.getUserDetails.bind(this)
         this.getDepartmentsAndCourses = this.getDepartmentsAndCourses.bind(this)
         this.getDepartmentsAndCoursesForMyCourse = this.getDepartmentsAndCoursesForMyCourse.bind(this)
+        this.fetchAndUpdatePageInformation = this.fetchAndUpdatePageInformation.bind(this)
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
         this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
@@ -79,34 +81,21 @@ class Department extends Component {
     }
 
     componentWillMount() {
-      if (this.checkMyCourseRoute(this.props.location.pathname)) {
-        this.setState({ activity:false,upload:false,request:false,mycourse:true });
-        const department = this.getDepartment(this.props.location.pathname);
-        const course = this.getCourse(this.props.location.pathname);
-        const file_type = this.getFileType(this.props.location.pathname);
-        this.setState({ department,course })
-        this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
-      }
-      else if(this.checkActivityRoute(this.props.location.pathname)) {
-        if(this.checkActivityParam(this.props.match.params.type))
-          this.setState({ activity:true,upload:false,request:false,mycourse:false });
-        else
-          this.error();
-      }
-      else
-        this.setState({ activity:false,mycourse:false })
-        this.getDepartmentsAndCourses(this.props)
-      this.getUserDetails();
+      this.fetchAndUpdatePageInformation(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
+      this.fetchAndUpdatePageInformation(nextProps);
+    }
+
+    fetchAndUpdatePageInformation(nextProps) {
       if (this.checkMyCourseRoute(nextProps.location.pathname)) {
-        this.setState({ activity:false,upload:false,request:false,mycourse:true });
+        this.setState({ activity: false, upload: false, request: false, mycourse: true });
         const department = this.getDepartment(nextProps.location.pathname);
         const course = this.getCourse(nextProps.location.pathname);
         const file_type = this.getFileType(nextProps.location.pathname);
-        this.setState({ department,course })
-        this.getDepartmentsAndCoursesForMyCourse(department,course,file_type);
+        this.setState({ department, course })
+        this.getDepartmentsAndCoursesForMyCourse(department, course, file_type);
 
       }
       else if(this.checkActivityRoute(nextProps.location.pathname)) {
@@ -115,9 +104,11 @@ class Department extends Component {
         else
           this.error();
       }
-      else
+      else {
         this.setState({ activity:false })
         this.getDepartmentsAndCourses(nextProps)
+        this.getUserDetails();
+      }
     }
 
     getDepartmentsAndCoursesForMyCourse(department,course,file_type) {
@@ -148,18 +139,25 @@ class Department extends Component {
                     else {
                       const course_title = `${response.title} ${response.code}`
                       this.course = course_title
-                      this.setState({ course:course_title })
-        }}})}}}})}
+                      this.setState({ course_name:course_title })
+                    }
+                  }
+                })
+              }
+            }
+          }
+        })
+      }
       else
         this.error()
     }
 
-    getDepartmentsAndCourses(props) {
+    async getDepartmentsAndCourses(props) {
       if (props.match.params.file_type === 'all' || props.match.params.file_type === 'tutorials' || props.match.params.file_type === 'books' || props.match.params.file_type === 'notes' || props.match.params.file_type === 'exampapers' || props.match.params.file_type === undefined) {
         const department = props.match.params.department
         const course = props.match.params.course
         this.setState({ course })
-        getDepartmentInfoByAbbr(department).then((res,err) => {
+        await getDepartmentInfoByAbbr(department).then((res,err) => {
           if(err) {
             //TODO handle error
           }
@@ -184,8 +182,15 @@ class Department extends Component {
                     else {
                       const course_title = `${response.title} ${response.code}`
                       this.course = course_title
-                      this.setState({ course:course_title })
-        }}})}}}})}
+                      this.setState({ course_name:course_title })
+                    }
+                  }
+                })
+              }
+            }
+          }
+        })
+      }
       else
         this.error()
     }
@@ -198,7 +203,7 @@ class Department extends Component {
             //TODO handle error
           }
           else {
-            this.setState({ userCourses: res.courses, user: res })
+            this.setState({ userCourses:res.courses, user:res })
           }
         })
       }
@@ -214,15 +219,15 @@ class Department extends Component {
     }
 
     handleReq () {
-        this.setState({ request: false });
+        this.setState({ request:false });
     }
 
     handleUploHeader () {
-        this.setState({ upload: true });
+        this.setState({ upload:true });
     }
 
     handleUplo () {
-        this.setState({ upload: false });
+        this.setState({ upload:false });
     }
 
     handleSeeAllClick(files,query){

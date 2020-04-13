@@ -64,7 +64,7 @@ class CoursePage extends Component {
             else {
               if(!response) nextProps.error()
               else {
-                this.setState({ name:response.title,id:response.id })
+                this.setState({ name:response.department.title,id:response.id })
                 if (nextProps.file_type === undefined || nextProps.file_type === 'all')
                 getFilesByCourse(response.id).then((resp,err) => {
                   if(err) {
@@ -85,9 +85,10 @@ class CoursePage extends Component {
               })}}})}})
     }
 
-    checkCourse(props) {
+    async checkCourse(props) {
       if(this.state.login) {
-        props.userCourses.forEach(course => {
+        this.setState({ mycourse:false })
+        await props.userCourses.forEach(course => {
           if(course.code === props.course_code)
             this.setState({ mycourse:true })
         });

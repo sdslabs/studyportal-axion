@@ -18,7 +18,8 @@ class Sidebar extends Component {
           login: props.activity,
           departments: [],
           courses: [],
-          course: 0
+          course: 0,
+          department: props.department
         };
 
         this.active = this.props.active;
@@ -29,6 +30,7 @@ class Sidebar extends Component {
     }
 
     componentDidMount() {
+      this.setState({ department:this.props.department })
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
@@ -41,7 +43,7 @@ class Sidebar extends Component {
 
     componentWillReceiveProps(nextProps) {
       this.active = nextProps.active
-      this.setState({ login:nextProps.activity })
+      this.setState({ login:nextProps.activity, department: nextProps.department })
     }
 
     handleClick(active) {
@@ -80,6 +82,7 @@ class Sidebar extends Component {
     }
 
     render() {
+      console.log(this.state, this.props)
         if (this.state.login) {
             return(
                 <div className='sidebar' onClick={this.props.close}>
@@ -119,7 +122,7 @@ class Sidebar extends Component {
         else {
             return(
                 <div className='sidebar' onClick={this.props.close}>
-                    <div className='sidebar--course'>{this.props.department}</div>
+                    <div className='sidebar--course'>{this.state.department}</div>
                     <Link to='/'>
                         <div className='sidebar--back'><img src={arrow} alt='arrow' /> Departments</div>
                     </Link>
