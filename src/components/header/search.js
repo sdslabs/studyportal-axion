@@ -17,6 +17,7 @@ class Search extends Component {
           departments: [],
           courses: [],
           showFiles: 6,
+          showmore: false,
         }
     }
     
@@ -49,9 +50,10 @@ class Search extends Component {
       if(this.state.search)
           if(this.state.departments.length || this.state.courses.length || this.state.files.length)
             return(
+              <div>
                 <div className='search'>
                     <div className='search--file'>Files</div>
-                    {!this.state.files.length ?
+                    {!this.state.files.length ? 
                       <div className='search--file-noresults'>
                         <span className='search--file-noresults_icon'><img src={emoji} alt='emoji'/></span>
                         <span className='search--file-noresults-outer'>
@@ -67,7 +69,9 @@ class Search extends Component {
                         course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
                       ))}
                     </div>
-                    <div className='search--file-seeall'>See All</div> </div>}
+                    <div className='search--file-seeall' onClick={() => this.props.handleSeeAllClick(this.state.files,this.state.value)}>See All</div>
+                    </div>
+                    }
                     <div className='search--courses'>Courses</div>
                     { !this.state.courses.length ? 
                     <div className='search--courses-noresults'>
@@ -99,6 +103,7 @@ class Search extends Component {
                       ))}
                     </div>}
                 </div>
+              </div>
             )
           else
             return(
@@ -110,7 +115,7 @@ class Search extends Component {
                   <span className='nosearchresults--textcontainer_request' onClick={this.props.handleReqClick}>Request Here!</span>
                 </span>
               </div>
-              )
+            )
       else
           return(<Fragment/>)
     }
