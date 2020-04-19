@@ -14,7 +14,7 @@ import CourseCover from 'components/cover/courseCover';
 import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
-import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions';
+// import { getCourse, getEmail, getId, getProfileImage, getUser, getUsername } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie } from 'utils/handleCookies';
 import ShowMoreFiles from 'components/header/showMoreFiles';
@@ -25,12 +25,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCourse: course => dispatch(getCourse(course)),
-    getEmail: email => dispatch(getEmail(email)),
-    getId: id => dispatch(getId(id)),
-    getProfileImage: profileImage => dispatch(getProfileImage(profileImage)),
-    getUser: user => dispatch(getUser(user)),
-    getUsername: username => dispatch(getUsername(username))
+    // getCourse: course => dispatch(getCourse(course)),
+    // getEmail: email => dispatch(getEmail(email)),
+    // getId: id => dispatch(getId(id)),
+    // getProfileImage: profileImage => dispatch(getProfileImage(profileImage)),
+    // getUser: user => dispatch(getUser(user)),
+    // getUsername: username => dispatch(getUsername(username))
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
@@ -6,6 +7,10 @@ import logo from 'assets/studyportal_logo.png';
 import sds_logo from 'assets/sds_logo.svg';
 import search from 'assets/search.png';
 import 'styles/main.scss';
+
+const mapStateToProps = state => {
+  return { user: state };
+};
 
 class Header extends Component {
     render() {
@@ -21,7 +26,7 @@ class Header extends Component {
                           <button className='landingheader--search_icon'><img src={search} alt='search' /></button>
                       </div>
                     </div>
-                    { this.props.login ?
+                    { this.props.user.login ?
                     <div className='landingheader--user_loggedin'>
                       <div className='landingheader--notifications'><Notifications/></div>
                       <div className='landingheader--user'><UserMenu/></div>
@@ -35,9 +40,9 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
   close: PropTypes.func,
-  login: PropTypes.bool
+  user: PropTypes.object
 };

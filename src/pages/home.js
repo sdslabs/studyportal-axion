@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from 'components/home/header';
 import SubjectCard from 'components/home/subjectCard';
 import 'styles/main.scss';
 import { getDepartmentsList } from 'api/departmentApi';
 import { Link } from 'react-router-dom';
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie } from 'utils/handleCookies';
+
+const mapStateToProps = state => {
+  return { user: state };
+};
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            departments: [],
-            user: {},
-            userMenu: false
+            departments: []
         };
-        this.getUser = this.getUser.bind(this);
-        this.toggleUserMenu = this.toggleUserMenu.bind(this);
-        this.close = this.close.bind(this);
+        this.closeUserMenu = this.closeUserMenu.bind(this);
     }
 
     componentDidMount() {
@@ -28,62 +27,24 @@ class Home extends Component {
         }
         else {
           this.setState({ departments:res.department });
-          if(this.props.login) {
-            this.getUser();
-          }
         }
       });
     }
 
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps(nextProps) {
-      getDepartmentsList().then((res,err) => {
-        if(err) {
-          //TODO handle error
-        }
-        else {
-          this.setState({ departments:res.department });
-          if(nextProps.login) {
-            this.getUser();
-          }
-        }
-      });
-    }
-
-    getUser() {
-      const token = getCookie('token');
-        if(token) {
-          loginUserWithToken(token).then((res,err) => {
-            if(err) {
-              //TODO handle error
-            }
-            else {
-              this.setState({ user:res.user });
-            }
-          });
-        }
-        else {
-          loginUserWithCookie();
-        }
-    }
-
-    toggleUserMenu() {
-      this.setState({ userMenu:true });
-    }
-
-    close() {
-      if(this.state.userMenu)
-        this.setState({ userMenu:false });
+    closeUserMenu() {
+      if(this.props.user)
+        //TODO finalize user_menu close flow
+        return;
     }
 
     render() {
         return(
-            <div className='home' onClick={this.close}>
+            <div className='home'>
               <div className='home--header'>
-                <Header login={this.props.login} user={this.state.user} userMenu={this.state.userMenu} toggleUserMenu={this.toggleUserMenu} />
+                <Header/>
               </div>
               <div className='home--choosedept'>
-                <div>Click on department to continue</div>
+                <div onClick={this.closeUserMenu}>Click on department to continue</div>
                 <div className='home--choosedept_und'/>
               </div>
               <div className='home--sub_list' onClick={this.close}>
@@ -98,8 +59,8 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect(mapStateToProps)(Home);
 
 Home.propTypes = {
-  login: PropTypes.bool
+  user: PropTypes.object
 };

@@ -2,18 +2,18 @@
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/no-deprecated */
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getCourse } from 'actions/actions'
-import coursedot from 'assets/coursedot.png'
-import 'styles/main.scss'
-import shortName from 'utils/short-name'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+// import { getCourse } from 'actions/actions'
+import coursedot from 'assets/coursedot.png';
+import 'styles/main.scss';
+import shortName from 'utils/short-name';
 
-function mapDispatchToProps(dispatch) {
-    return {
-      getCourse: course => dispatch(getCourse(course))
-    }
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//       getCourse: course => dispatch(getCourse(course))
+//     }
+// }
 
 class CourseHandle extends Component {
     constructor(props) {
@@ -21,47 +21,47 @@ class CourseHandle extends Component {
         this.state = {
             active: props.active,
             login: props.login,
-            name: props.name,
-        }
+            name: props.name
+        };
         this.activatecourse = this.activatecourse.bind(this);
     }
 
     componentDidMount() {
         if (this.state.login) {
             if (this.props.name === this.props.active) {
-                this.setState({ active: true })
+                this.setState({ active: true });
             }
 
             else {
-                this.setState({ active: false })
+                this.setState({ active: false });
             }
         }
         else {
-          this.setState({ active: this.props })
+          this.setState({ active: this.props });
         }
     }
 
     componentWillReceiveProps(props) {
       if (props.login) {
-        this.setState({ login:props.login })
+        this.setState({ login:props.login });
           if (props.name === props.active) {
-              this.setState({ active: true })
+              this.setState({ active: true });
           }
 
           else {
-              this.setState({ active: false })
+              this.setState({ active: false });
           }
       }
       else {
-        this.setState({ active: props.active })
+        this.setState({ active: props.active });
       }
     }
 
     activatecourse() {
       this.props.handleClick(this.props.name);
-      let id = this.props.course
-      let name = this.props.name
-      this.props.getCourse({ id,name })
+      let id = this.props.course;
+      let name = this.props.name;
+      this.props.getCourse({ id,name });
     }
 
     render() {
@@ -71,7 +71,7 @@ class CourseHandle extends Component {
                     <span className='coursehandle--heading' onClick={this.activatecourse}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
                     <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span /> }</span>
                 </div>
-            )
+            );
         }
 
         else {
@@ -80,9 +80,9 @@ class CourseHandle extends Component {
                     <span className={ this.state.name === this.state.active ? 'coursehandle--heading_active' : 'coursehandle--heading'} onClick={this.activatecourse}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
                     { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
                 </div>
-            )
+            );
         }
     }
 }
 
-export default connect(null,mapDispatchToProps)(CourseHandle)
+export default connect(null)(CourseHandle);

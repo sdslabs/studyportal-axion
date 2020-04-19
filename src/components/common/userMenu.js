@@ -1,22 +1,26 @@
 /* eslint-disable react/prop-types */
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import polygon from 'assets/Polygon.svg';
-import user from 'assets/img_user.png';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
+
+const mapStateToProps = state => {
+  return { user: state };
+};
 
 class UserMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
+      active: false
     };
     this.toggleActive = this.toggleActive.bind(this);
   }
 
   toggleActive() {
-    this.setState((prevState) => ({
-      active: !prevState.active,
+    this.setState(prevState => ({
+      active: !prevState.active
     }));
   }
 
@@ -24,7 +28,7 @@ class UserMenu extends Component {
     return(
       <div className='usermenu'>
         <div className='usermenu--image'>
-          <img src={user}
+          <img src={this.props.user.profile_image}
           alt='user' onClick={this.toggleActive}/>
         </div>
         { this.state.active ?
@@ -46,4 +50,4 @@ class UserMenu extends Component {
   }
 }
 
-export default UserMenu;
+export default connect(mapStateToProps)(UserMenu);
