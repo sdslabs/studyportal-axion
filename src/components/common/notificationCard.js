@@ -13,4 +13,4 @@ class NotificationCard extends Component {
   }
 }
 
-export default NotificationCard
+export default NotificationCard;

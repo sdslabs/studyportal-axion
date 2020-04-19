@@ -24,9 +24,12 @@
         "prettier"
     ],
     "rules": {
+        "semi": ["error", "always"],
+        "no-trailing-spaces": "error",
         "object-curly-spacing": [1, "always"],
         "no-dupe-class-members": 1,
         "no-iterator": 1,
+        "comma-dangle": ["error", "never"],
         "one-var": [1, "never"],
         "no-nested-ternary": 1,
         "no-restricted-syntax": [1, "WithStatement"],
@@ -47,7 +50,6 @@
         "no-console": 1,
         "no-debugger": 1,
         "no-var": 1,
-        "no-trailing-spaces": 0,
         "eol-last": 0,
         "no-unused-vars": 0,
         "no-underscore-dangle": 0,

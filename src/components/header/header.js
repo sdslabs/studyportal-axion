@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-deprecated */
-import React, { Component,Fragment } from 'react'
-import Search from './search'
-import UserMenu from './userMenu'
-import Notifications from './notifications'
-import logo from 'assets/head_logo.png'
-import search from 'assets/head_search.png'
-import notif from 'assets/notif.png'
-import userimg from 'assets/img_user.png'
-import 'styles/main.scss'
-import { Link } from 'react-router-dom'
+import React, { Component,Fragment } from 'react';
+import Search from './search';
+import UserMenu from 'components/common/userMenu';
+import Notifications from 'components/common/notifications';
+import logo from 'assets/head_logo.png';
+import search from 'assets/head_search.png';
+import notif from 'assets/notif.svg';
+import userimg from 'assets/img_user.png';
+import 'styles/main.scss';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     constructor(props) {
@@ -20,35 +20,35 @@ class Header extends Component {
             userMenu: props.userMenu,
             notifications: props.notifications,
             search: false
-        }
+        };
 
         this.result = this.result.bind(this);
-        this.close = this.close.bind(this)
+        this.close = this.close.bind(this);
     }
 
     componentWillReceiveProps(props) {
-        this.setState({ search: props.search })
-        this.setState({ userMenu: props.userMenu })
-        this.setState({ notifications: props.notifications })
+        this.setState({ search: props.search });
+        this.setState({ userMenu: props.userMenu });
+        this.setState({ notifications: props.notifications });
     }
 
     result(e) {
-        this.setState({ value: e.target.value })
+        this.setState({ value: e.target.value });
         if (e.target.value !== '') {
-            this.setState({ search: true })
+            this.setState({ search: true });
         }
         else {
-          this.setState({ search:false })
+          this.setState({ search:false });
         }
     }
 
     close() {
-      this.props.close()
-      this.setState({ search:false })
+      this.props.close();
+      this.setState({ search:false });
       if(this.state.userMenu)
-        this.setState({ userMenu:false })
+        this.setState({ userMenu:false });
       if(this.state.notifications)
-        this.setState({ notifications:false })
+        this.setState({ notifications:false });
     }
 
     render() {
@@ -83,8 +83,8 @@ class Header extends Component {
                     </Fragment>)
                 }
             </div>
-        )
+        );
     }
 }
 
-export default Header
+export default Header;
