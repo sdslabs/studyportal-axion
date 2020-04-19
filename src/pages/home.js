@@ -1,8 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/no-deprecated */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Header from 'components/home/header';
 import SubjectCard from 'components/home/subjectCard';
 import 'styles/main.scss';
@@ -18,13 +15,13 @@ class Home extends Component {
             departments: [],
             user: {},
             userMenu: false
-        }
+        };
         this.getUser = this.getUser.bind(this);
         this.toggleUserMenu = this.toggleUserMenu.bind(this);
         this.close = this.close.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
@@ -32,12 +29,13 @@ class Home extends Component {
         else {
           this.setState({ departments:res.department });
           if(this.props.login) {
-            this.getUser()
+            this.getUser();
           }
         }
-      })
+      });
     }
 
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(nextProps) {
       getDepartmentsList().then((res,err) => {
         if(err) {
@@ -46,10 +44,10 @@ class Home extends Component {
         else {
           this.setState({ departments:res.department });
           if(nextProps.login) {
-            this.getUser()
+            this.getUser();
           }
         }
-      })
+      });
     }
 
     getUser() {
@@ -60,7 +58,7 @@ class Home extends Component {
               //TODO handle error
             }
             else {
-              this.setState({ user:res.user })
+              this.setState({ user:res.user });
             }
           });
         }
@@ -80,18 +78,28 @@ class Home extends Component {
 
     render() {
         return(
-            <div onClick={this.close}>
+            <div className='home' onClick={this.close}>
+              <div className='home--header'>
                 <Header login={this.props.login} user={this.state.user} userMenu={this.state.userMenu} toggleUserMenu={this.toggleUserMenu} />
-                <div className='sub_list' onClick={this.close}>
-                  { this.state.departments.map((department) => (
-                  <Link to={ `/departments/${department.abbreviation}` } key={department.abbreviation}>
-                    <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
-                  </Link>)
-                  ) }
-                </div>
+              </div>
+              <div className='home--choosedept'>
+                <div>Click on department to continue</div>
+                <div className='home--choosedept_und'/>
+              </div>
+              <div className='home--sub_list' onClick={this.close}>
+                { this.state.departments.map((department) => (
+                <Link to={ `/departments/${department.abbreviation}` } key={department.abbreviation}>
+                  <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
+                </Link>)
+                ) }
+              </div>
             </div>
-        )
+        );
     }
 }
 
-export default Home
+export default Home;
+
+Home.propTypes = {
+  login: PropTypes.bool
+};
