@@ -1,21 +1,21 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-deprecated */
 import React, { Component,Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Search from './search';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
 import logo from 'assets/head_logo.png';
-import search from 'assets/head_search.png';
-import notif from 'assets/notif.svg';
-import userimg from 'assets/img_user.png';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
+
+const mapStateToProps = state => {
+    return { user: state };
+};
 
 class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            login: props.login,
             value: '',
             userMenu: props.userMenu,
             notifications: props.notifications,
@@ -26,6 +26,7 @@ class Header extends Component {
         this.close = this.close.bind(this);
     }
 
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(props) {
         this.setState({ search: props.search });
         this.setState({ userMenu: props.userMenu });
@@ -53,38 +54,65 @@ class Header extends Component {
 
     render() {
         return(
-            <div className='header' onClick={this.close} >
-              <Link to='/'>
-                <img className='header--logo' src={logo} alt="studyportal_logo" />
-                <div className='header--heading'>Study Portal</div>
-              </Link>
-                <div className='header--search'>
-                    <input className='header--search_bar' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
-                    <button className='header--search_icon'><img src={search} alt='search' /></button>
+            <div className='header' onClick={this.close}>
+                <div className='header--content'>
+                    <div className='header--icon'>
+                        <Link to='/' style={{ textDecoration: 'none' }}>
+                            <div className='header--logo'>
+                                <div><img src={logo} alt="studyportal_logo" /></div>
+                                <div className='header--heading'>Study Portal</div>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className='header--search'>
+                        <Search search={this.state.search}
+                            handleReqClick={this.props.handleReqClick}
+                            handleSeeAllClick={this.props.handleSeeAllClick}
+                            handleSeeAll={this.props.handleSeeAll} />
+                    </div>
+                    {this.props.user.login ?
+                        (<Fragment>
+                            <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
+                            <div className='header--mycourse'><Link to='/mycourse'><span className='link'>My Course</span></Link></div>
+                        </Fragment>) :
+                        (<Fragment>
+                            <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
+                            <div className='header--request' onClick={this.props.handleReqClick}>Request</div>
+                            <div className='header--upload' onClick={this.props.handleUploClick}>Upload</div>
+                        </Fragment>)
+                    }
                 </div>
-                <Search value={this.state.value} search={this.state.search} handleReqClick={this.props.handleReqClick} handleSeeAllClick={this.props.handleSeeAllClick} handleSeeAll={this.props.handleSeeAll} />
-                {this.state.login ?
-                    (<Fragment>
-                        <Link to='/mycourse'><div className='header--mycourse'>My Course</div></Link>
-                        <div className='header--mentors'>Mentors List</div>
-                        <div className='header--notification' onClick={ this.props.toggleNotifications }>
-                            <img className='header--notification_image' src={notif} alt="notification" /><span className='header--notification_number'>1</span>
-                        </div>
-                        { this.state.notifications ? <Notifications /> : <Fragment /> }
-                        <img className='header--user' src={userimg} alt="image_user" onClick={this.props.toggleUserMenu} />
-                        { this.state.userMenu ? <UserMenu handleReqClick={this.props.handleReqClick} handleUploClick={this.props.handleUploClick}/> : <Fragment /> }
-                    </Fragment>) :
-                    (<Fragment>
-                        <Link to='/'><div className='header--home'>Home</div></Link>
-                        <div className='header--request' onClick={this.props.handleReqClick}>Request Files</div>
-                        <div className='header--upload' onClick={this.props.handleUploClick}>Upload Files</div>
-                        <button className='header--login'>Login</button>
-                        <button className='header--signup'>Sign Up</button>
-                    </Fragment>)
-                }
+                <div className='header--userinfo'>
+                    {this.props.user.login ?
+                        (<Fragment>
+                            <div className='header--notification'>
+                                <Notifications/>
+                            </div>
+                            <div className='header--user'>
+                                <UserMenu handleReqClick={this.props.handleReqClick} handleUploClick={this.props.handleUploClick}/>
+                            </div>
+                        </Fragment>) :
+                        (<Fragment>
+                            <button className='header--login'>Login</button>
+                            <button className='header--signup'>Sign Up</button>
+                        </Fragment>)
+                    }
+                </div>
             </div>
         );
     }
 }
 
-export default Header;
+export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+    userMenu: PropTypes.bool,
+    notifications: PropTypes.bool,
+    search: PropTypes.bool,
+    close: PropTypes.func,
+    handleReqClick: PropTypes.func,
+    handleUploClick: PropTypes.func,
+    handleSeeAll: PropTypes.func,
+    handleSeeAllClick: PropTypes.func,
+    user: PropTypes.object
+};

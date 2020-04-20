@@ -1,21 +1,65 @@
 .search {
-    position: absolute;
-    width: 39.625rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     height: 21.875rem;
-    left: calc(2.71% + 14.69375rem);
-    top: 3.375rem;
-    background: #FFFFFF;
-    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
-    z-index: 2;
-    overflow-y: scroll;
 }
 
 .search-- {
+    &bar {
+        display: flex;
+        flex-direction: row;
+        height: 2.560625rem;
+        width: auto;
+        box-sizing: border-box;
+
+        &-input {
+            height: 100%;
+            width: 75%;
+            padding-left: 1rem;
+            background: #FFFFFF;
+            border-radius: 0.125rem;
+            border: #FFFFFF;
+
+            &_holder {
+                height: auto;
+                width: 100%;
+                margin-top: 0.5rem;
+                font-family: Droid Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                color: #2B2A28;
+                border: #FFFFFF;
+                outline: none;
+            }
+        }
+
+        &-icon {
+            width: 2.560625rem;
+            height: 100%;
+            background: #0D2938;
+            border: #0D2938;
+            border-radius: 0.125rem;
+        }
+    }
+
+    &container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-width: 28.125rem;
+        height: 22.875rem;
+        background: #FFFFFF;
+        box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+        z-index: 2;
+        overflow-y: scroll;
+    }
+
     &file {
         width: 100%;
         height: 1.625rem;
         left: 0%;
-        top: 0rem;
         background: rgba(56, 167, 222, 0.275);
         font-family: Droid Sans;
         font-style: normal;
@@ -50,7 +94,7 @@
         &-noresults {
             display: flex;
             flex-direction: row;
-            margin: auto;
+            padding-right: 1rem;
             margin-bottom: 1rem;
             margin-top: 1rem;
             margin-left: 1rem;
@@ -64,7 +108,6 @@
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-                /* identical to box height */
                 color: rgba(43, 42, 40, 0.8);
             }
             &_requestfile {
@@ -73,7 +116,6 @@
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-                /* identical to box height */
                 color: #38A7DE;
             }
             &_requestfile:hover {
@@ -85,6 +127,7 @@
             }
         }
     }
+
     &courses {
         width: 100%;
         height: 1.625rem;
@@ -112,13 +155,14 @@
         &-noresults {
             display: flex;
             flex-direction: row;
-            margin: auto;
+            padding-right: 1rem;
             margin-bottom: 1rem;
             margin-top: 1rem;
             margin-left: 1rem;
             &_icon {
                 width: 1.5rem;
                 height: 1.5rem;
+                margin-right: 0.225rem;
             }
             &_text {
                 font-family: Droid Sans;
@@ -145,6 +189,7 @@
             }
         }
     }
+
     &department {
         width: 100%;
         height: 1.625rem;
@@ -172,7 +217,7 @@
         &-noresults {
             display: flex;
             flex-direction: row;
-            margin: auto;
+            padding-right: 1rem;
             margin-bottom: 1rem;
             margin-top: 1rem;
             margin-left: 1rem;

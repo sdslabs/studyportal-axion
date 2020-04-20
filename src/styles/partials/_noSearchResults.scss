@@ -1,19 +1,19 @@
 .nosearchresults {
-    position: absolute;
-    width: 39.625rem;
-    height: 22.875rem;
-    left: calc(2.71% + 14.69375rem);
-    top: 3.5625rem;
-    background: #FFFFFF;
-    box-shadow: .0625rem .0625rem .25rem rgba(0, 0, 0, 0.15);
-    z-index: 2;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    min-width: 28.125rem;
+    height: 22.875rem;
+    background: #FFFFFF;
+    box-shadow: .0625rem .0625rem .25rem rgba(0, 0, 0, 0.15);
+    z-index: 2;
     &_emoji {
         width: 1.5rem;
         height: 1.5rem;
+        margin-right: 0.5rem;
+        margin-left: 1rem;
     }
 }
 
