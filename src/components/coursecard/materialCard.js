@@ -1,30 +1,26 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-deprecated */
-import React, { Component } from 'react'
-import icon from 'assets/material_icon.svg'
-import 'styles/main.scss'
-import download1 from 'assets/download.svg'
-import download2 from 'assets/download1.svg'
-import CustomCheckbox from 'components/customcheckbox/customCheckbox'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import icon from 'assets/material_icon.svg';
+import 'styles/main.scss';
+import download1 from 'assets/download.svg';
+import download2 from 'assets/download1.svg';
+import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 
 class MaterialCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          queue: '2',
-          name: '',
-          size: '',
-          downloads: ''
+          queue: props.queue,
+          name: props.name,
+          size: props.size,
+          downloads: props.downloads
         };
 
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
     }
 
-    componentWillMount() {
-        this.setState({ queue: this.props.queue, name: this.props.name, size: this.props.size, downloads: this.props.downloads });
-    }
-
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(props) {
         this.setState({ name: props.name, size: props.size, downloads: props.downloads });
     }
@@ -46,7 +42,8 @@ class MaterialCard extends Component {
                     </div>
                     <div className='material--info'>
                         <div className='material--icon'><img src={icon} alt='icon' /></div>
-                        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`} target='blank' style={{ textDecoration:'none' }}>
+                        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
+                            target='blank' style={{ textDecoration:'none' }}>
                         <div className='material--name'>{this.state.name}</div>
                         </a>
                         <div className='material--download'>Downloads: {this.state.downloads}</div>
@@ -60,8 +57,16 @@ class MaterialCard extends Component {
                     <div className='material--datemodified'>Dec 14, 2018</div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default MaterialCard
+export default MaterialCard;
+
+MaterialCard.propTypes = {
+    queue: PropTypes.string,
+    name: PropTypes.string,
+    size: PropTypes.string,
+    downloads: PropTypes.number,
+    url: PropTypes.string
+};

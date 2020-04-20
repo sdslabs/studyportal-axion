@@ -31,7 +31,7 @@
         "no-iterator": 1,
         "comma-dangle": ["error", "never"],
         "one-var": [1, "never"],
-        "no-nested-ternary": 1,
+        "no-nested-ternary": 0,
         "no-restricted-syntax": [1, "WithStatement"],
         "no-duplicate-imports": 1,
         "no-unneeded-ternary": 1,

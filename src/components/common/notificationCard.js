@@ -1,5 +1,5 @@
-import React,{ Component } from 'react'
-import 'styles/main.scss'
+import React,{ Component } from 'react';
+import 'styles/main.scss';
 
 class NotificationCard extends Component {
   render() {
@@ -9,7 +9,7 @@ class NotificationCard extends Component {
             <div className='notifications--card-date'>07-18-19</div>
             <div className='notifications--card-page'>My Course</div>
         </div>
-    )
+    );
   }
 }
 

@@ -195,7 +195,7 @@ export default connect(mapStateToProps)(Sidebar);
 Sidebar.propTypes = {
   active: PropTypes.bool,
   activity: PropTypes.string,
-  department: PropTypes.array,
+  department: PropTypes.string,
   getUserDetails: PropTypes.func,
   login: PropTypes.bool,
   close: PropTypes.func,
