@@ -40,21 +40,25 @@ class MaterialCard extends Component {
     render() {
         return(
             <div className='material'>
-                <div className='material--checkbox'>
-                    <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' hover='rgba(56, 167, 222, 0.15)' borderhover='1px solid #38A7DE'/>
+                <div className='material--namecheck'>
+                    <div className='material--checkbox'>
+                        <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' hover='rgba(56, 167, 222, 0.15)' borderhover='1px solid #38A7DE'/>
+                    </div>
+                    <div className='material--info'>
+                        <div className='material--icon'><img src={icon} alt='icon' /></div>
+                        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`} target='blank' style={{ textDecoration:'none' }}>
+                        <div className='material--name'>{this.state.name}</div>
+                        </a>
+                        <div className='material--download'>Downloads: {this.state.downloads}</div>
+                    </div>
                 </div>
-                <div className='material--info'>
-                    <div className='material--icon'><img src={icon} alt='icon' /></div>
-                    <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`} target='blank' style={{ textDecoration:'none' }}>
-                      <div className='material--name'>{this.state.name}</div>
-                    </a>
-                    <div className='material--download'>Downloads: {this.state.downloads}</div>
+                <div className='material--sizemod'>
+                    { this.state.queue === '1' ?
+                        <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
+                        <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
+                    <div className='material--size'>{this.state.size}</div>
+                    <div className='material--datemodified'>Dec 14, 2018</div>
                 </div>
-                { this.state.queue === '1' ?
-                    <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
-                    <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
-                <div className='material--size'>{this.state.size}</div>
-                <div className='material--datemodified'>Dec 14, 2018</div>
             </div>
         )
     }

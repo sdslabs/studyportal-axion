@@ -4,6 +4,7 @@
     flex-direction: column;
     width: 26.5rem;
     height: calc(100% - 4.5625rem);
+    min-height: 22rem;
     left: 0rem;
     top: 4.5625rem;
     background: #0D2938;
@@ -121,7 +122,7 @@
 
     &course-table_logout {
         width: 100%;
-        height: calc(100vh - 12.25rem);
+        height: calc(100vh - 13.25rem);
         border-top: 0.125rem solid #1A4D68;
         overflow-y: auto;
         overflow-x: hidden;
