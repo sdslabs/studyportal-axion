@@ -54,7 +54,7 @@ class Header extends Component {
 
     render() {
         return(
-            <div className='header' onClick={this.close}>
+            <div className='header'>
                 <div className='header--content'>
                     <div className='header--icon'>
                         <Link to='/' style={{ textDecoration: 'none' }}>

@@ -59,9 +59,6 @@ class CourseHandle extends Component {
 
     activatecourse() {
       this.props.handleClick(this.props.name);
-      let id = this.props.course;
-      let name = this.props.name;
-      this.props.getCourse({ id,name });
     }
 
     render() {

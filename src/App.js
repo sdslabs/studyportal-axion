@@ -25,12 +25,33 @@ class App extends Component {
     this.getUser = this.getUser.bind(this);
 
     const user = {
-      login: false,
+      login: true,
       id: 1,
       username: 'darkrider',
       email: 'darkrider251099@gmail.com',
       profile_image: '/assets/img_user.png',
-      courses: [],
+      courses: [{
+        "id": 1250,
+        "title": "Advanced Characterization Techniques",
+        "department": {
+            "id": 118,
+            "title": "Applied Science and Engineering",
+            "abbreviation": "ASED",
+            "imageurl": "ased.png"
+        },
+        "code": "AS-901"
+      },
+      {
+          "id": 1251,
+          "title": "SEMINAR",
+          "department": {
+              "id": 118,
+              "title": "Applied Science and Engineering",
+              "abbreviation": "ASED",
+              "imageurl": "ased.png"
+          },
+          "code": "ASN-700"
+      }],
       notifications: false,
       upload: false,
       request: false
