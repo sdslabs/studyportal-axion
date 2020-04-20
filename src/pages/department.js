@@ -41,7 +41,7 @@ class Department extends Component {
             login: props.login,
             path: props.location.pathname,
             request: false,
-            upload: false,
+            upload: true,
             activity: false,
             mycourse: false,
             error: props.error,

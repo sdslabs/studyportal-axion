@@ -1,32 +1,48 @@
 .uploadcover {
     position: absolute;
     width: 100%;
-    height: 61.3125rem;
-    left: 0rem;
+    height: 100%;
+    min-height: 26.5625rem;
     top: 0rem;
     background: rgba(13, 41, 56, 0.8);
     z-index: 1;
     cursor: default;
+
+    ::-webkit-scrollbar {
+        width: 0.5625rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #1A4D68;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #236385;
+        border-radius: 1.125rem;
+    }
 }
 
 .upload {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 86.88%;
     height: 95.12%;
     left: 6.56%;
     top: 2.44%;
     background: #FFFFFF;
     box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    overflow-x: hidden;
     border-radius: 0.125rem;
+    scrollbar-width: 0rem;
 
     .form-- {
 
         &department {
-            position: absolute;
             width: 5.4375rem;
             height: 1.3125rem;
-            left: 0%;
-            top: 0%;
+            margin-top: 2.25rem;
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
@@ -37,11 +53,9 @@
         }
 
         &department-select {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 9.03%;
+            margin-top: 0.5rem;
             border: 1px solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -56,11 +70,6 @@
         }
 
         &department-select:disabled {
-          position: absolute;
-          width: 15.75rem;
-          height: 2.25rem;
-          left: 0%;
-          top: 9.03%;
           border: 0.0625rem solid rgba(43, 42, 40, 0.2);;
           box-sizing: border-box;
           border-radius: 0.125rem;
@@ -76,11 +85,9 @@
       }
 
         &course {
-            position: absolute;
             width: 12.5rem;
             height: 1.3125rem;
-            left: 0%;
-            top: 24.615%;
+            margin-top: 1.5rem;
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
@@ -92,11 +99,9 @@
         }
 
         &course-select {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 33.644%;
+            margin-top: 8px;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -124,20 +129,6 @@
           color: rgba(43, 42, 40, 0.2);
           background: #FFFFFF;
         }
-
-        &material-type {
-            position: absolute;
-            width: 6.125rem;
-            height: 1.1875rem;
-            left: 0%;
-            top: 52.33%;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-            color: rgba(43, 42, 40, 0.2);
-        }
     }
 
     br {
@@ -158,11 +149,8 @@
     }
 
     &heading {
-        position: absolute;
-        width: 7.25rem;
+        width: auto;
         height: 2.375rem;
-        left: calc(50% - 3.625rem);
-        top: 5.35%;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -172,20 +160,17 @@
     }
 
     &underline {
-        position: absolute;
         width: 5rem;
         height: 0.5px;
-        left: calc(45% - 2.5rem);
-        top: 100%;
-        border: 0.0625rem solid #38A7DE;
+        margin-top: 0.625rem;
+        margin-left: calc(50% - 2.5rem);
+        border: 0.0425rem solid #38A7DE;
     }
 
     &instruction {
-        position: absolute;
-        width: 100%;
-        height: 9.375rem;
-        left: 0%;
-        top: 0%;
+        width: 65.5%;
+        height: auto;
+        margin-left: 15%;
         background: rgba(56, 167, 222, 0.275);
         border-radius: 2px;
         font-family: Droid Sans;
@@ -213,35 +198,30 @@
     }
 
     &form {
-        position: absolute;
-        width: 100%;
+        width: auto;
         height: 20.0625rem;
-        left: 1.5%;
-        top: 42.654%;
+        margin-left: 16%;
     }
 
     &file {
-        position: absolute;
         width: 62.5rem;
         height: 2.25rem;
-        left: 0%;
-        top: 52.766%;
+        margin-top: 1.5rem;
     }
 
     &header {
-        position: absolute;
+        display: flex;
+        flex-direction: column;
         width: 7.25rem;
         height: 3rem;
-        left: 48%;
-        top: 5.35%;
+        margin-top: 4.1875rem;
+        align-self: center;
     }
 
     &main {
-        position: absolute;
-        width: 65.34%;
+        width: 100%;
         height: 32.625rem;
-        left: 17.32%;
-        top: 14.788%;
+        margin-top: 2.125rem;
     }
 
     &close:hover {
