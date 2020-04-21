@@ -101,7 +101,7 @@ class Department extends Component {
       else if(this.checkActivityRoute(nextProps.location.pathname)) {
         if(this.checkActivityParam(nextProps.match.params.type)) {
           this.setState({ activity:true,upload:false,request:false });
-          this.getUserDetails();
+          // this.getUserDetails();
         }
         else
           this.error();
@@ -233,7 +233,12 @@ class Department extends Component {
     }
 
     handleSeeAllClick(files,query){
-      this.setState({ showmore: true,searchquery: query,searchfiles: files });
+      this.setState({
+        showmore:true,
+        searchquery:query,
+        searchfiles: files,
+        search:false
+      });
     }
 
     handleSeeAll(){

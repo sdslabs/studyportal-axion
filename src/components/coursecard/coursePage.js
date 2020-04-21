@@ -77,7 +77,7 @@ class CoursePage extends Component {
                   }
                 });
                 else
-                getFilesByType(response.id,this.filemap[nextProps.file_type]).then((resp,err) => {
+                getFilesByType(response.id,nextProps.file_type).then((resp,err) => {
                   if(err) {
                     //TODO handle error
                   }

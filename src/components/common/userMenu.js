@@ -38,7 +38,7 @@ class UserMenu extends Component {
             <div className='usermenu--request' onClick={this.props.handleReqClick}>Request</div>
             <div className='usermenu--upload' onClick={this.props.handleUploClick}>Upload</div>
             <Link to='/activity' style={{ textDecoration: 'none' }}>
-              <div className='usermenu--activitylog'>Activity Log</div>
+              <div className='usermenu--activitylog link'>Activity Log</div>
             </Link>
             <div className='usermenu--profile'>Profile</div>
             <div className='usermenu--logout'>Logout</div>

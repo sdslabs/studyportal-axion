@@ -4,12 +4,25 @@
     flex-direction: column;
     margin-left: 26.5rem;
     width: calc(100% - 26.5rem);
-    height: auto;
+    height: calc(100% - 4.5625rem);
+    min-height: 26.5625rem;
     z-index: -1;
+    overflow-y: auto;
     cursor: default;
 
     .link{
       text-decoration: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0.375rem;
+    }
+     ::-webkit-scrollbar-track {
+        background: #88CAEB;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: #629EBD;
+        border-radius: 2.9375rem;
     }
 }
 
@@ -188,6 +201,7 @@
             height: 0.9375rem;
             margin-right: 0.75rem;
             margin-top: 1.625rem;
+            margin-bottom: 1.5625rem;
         }
 
         &_name {
@@ -195,12 +209,14 @@
             height: 1.125rem;
             margin-left: 0.75rem;
             margin-top: 1.5625rem;
+            margin-bottom: 1.4375rem;
         }
 
         &_sizemod {
             display: flex;
             flex-direction: row;
             margin-top: 1.5rem;
+            margin-bottom: 1.4375rem;
         }
 
         &_size {
@@ -223,6 +239,7 @@
             width: 98.5%;
             height: 3.1875rem;
             margin-left: 1%;
+            margin-bottom: 2rem;
             background: rgba(56, 167, 222, 0.275);
             font-family: Droid Sans;
             font-style: normal;
@@ -272,35 +289,35 @@
 
         &all_ {
           width: 1.0625rem;
-          border: 0.0625rem solid #38A7DE;
+          border: 0.0425rem solid #38A7DE;
           margin-top: 0.625rem;
           margin-left: 0rem;
         }
 
         &tut_ {
             width: 4.0625rem;
-            border: 0.0625rem solid #38A7DE;
+            border: 0.0425rem solid #38A7DE;
             margin-top: 0.625rem;
             margin-left: 0.125rem;
         }
 
         &books_ {
             width: 2.8125rem;
-            border: 0.0625rem solid #38A7DE;
+            border: 0.0425rem solid #38A7DE;
             margin-top: 0.625rem;
             margin-left: 0.0625rem;
         }
 
         &notes_ {
             width: 2.8125rem;
-            border: 0.0625rem solid #38A7DE;
+            border: 0.0425rem solid #38A7DE;
             margin-top: 0.625rem;
             margin-left: 0.0625rem;
         }
 
         &exam_ {
             width: 10rem;
-            border: 0.0625rem solid #38A7DE;
+            border: 0.0425rem solid #38A7DE;
             margin-top: 0.625rem;
             margin-left: 0.0625rem;
         }

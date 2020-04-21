@@ -66,6 +66,7 @@ class Header extends Component {
                     </div>
                     <div className='header--search'>
                         <Search search={this.state.search}
+                            close = {this.props.close}
                             handleReqClick={this.props.handleReqClick}
                             handleSeeAllClick={this.props.handleSeeAllClick}
                             handleSeeAll={this.props.handleSeeAll} />

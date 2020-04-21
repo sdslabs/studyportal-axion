@@ -25,7 +25,7 @@ class App extends Component {
     this.getUser = this.getUser.bind(this);
 
     const user = {
-      login: true,
+      login: false,
       id: 1,
       username: 'darkrider',
       email: 'darkrider251099@gmail.com',

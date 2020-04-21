@@ -193,7 +193,7 @@ class Sidebar extends Component {
 export default connect(mapStateToProps)(Sidebar);
 
 Sidebar.propTypes = {
-  active: PropTypes.bool,
+  active: PropTypes.string,
   activity: PropTypes.string,
   department: PropTypes.string,
   getUserDetails: PropTypes.func,

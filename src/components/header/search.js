@@ -68,7 +68,7 @@ class Search extends Component {
                   </div>
                   <div><button className='search--bar-icon'><img src={search} alt='search' /></button></div>
                 </div>
-                <div className='search--container'>
+                <div className='search--container' onClick={this.props.close}>
                   <div className='search--file'>Files</div>
                   {!this.state.files.length ?
                     <div className='search--file-noresults'>
@@ -82,8 +82,13 @@ class Search extends Component {
                       <div>
                         <div className='search--file-holder'>
                         {this.state.files.slice(0,this.state.showFiles).map((file) => (
-                          <SearchResult name={ file.title } url={ file.driveid } date_modified={ file.date_modified }
-                          course_name={ file.course.title } course_code={ file.course.code } file_type={ file.filetype } key={file.id}/>
+                          <SearchResult name={ file.title }
+                                        url={ file.driveid }
+                                        date_modified={ file.date_modified }
+                                        course_name={ file.course.title }
+                                        course_code={ file.course.code }
+                                        file_type={ file.filetype }
+                                        key={ file.id }/>
                         ))}
                         </div>
                         <div className='search--file-seeall'
@@ -160,6 +165,7 @@ export default Search;
 
 Search.propTypes = {
   search: PropTypes.bool,
+  close: PropTypes.func,
   handleReqClick: PropTypes.func,
   handleSeeAllClick: PropTypes.func
-}
+};
