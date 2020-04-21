@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import SearchResult from './searchResult';
 import search from 'assets/head_search.png';
+import search_home from 'assets/search.png';
 import 'styles/main.scss';
 import { getSearchResults } from 'api/searchApi';
 import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state={
-          search: props.search,
+          value: '',
           files: [],
           departments: [],
           courses: [],
@@ -49,25 +50,42 @@ class Search extends Component {
     result(e) {
       this.setState({ value: e.target.value });
       if (e.target.value !== '') {
-          this.setState({ search: true });
-          this.getResults(e.target.value);
+        if(!this.state.search)
+          this.props.handleClick('search');
+        this.getResults(e.target.value);
       }
       else {
-        this.setState({ search:false });
+        this.props.close();
       }
     }
 
     render() {
-      if(this.state.search)
-          if(this.state.departments.length || this.state.courses.length || this.state.files.length)
-            return(
-              <div className='search'>
-                <div className='search--bar'>
-                  <div className='search--bar-input'>
-                    <input className='search--bar-input_holder' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
-                  </div>
-                  <div><button className='search--bar-icon'><img src={search} alt='search' /></button></div>
+      return(
+        <div className='search'>
+           { !this.props.home ?
+              <div className='search--bar'>
+                <div className='search--bar-input'>
+                  <input className='search--bar-input_holder'
+                        type="text"
+                        value={this.state.value}
+                        placeholder="Search file, courses, departments"
+                        onChange={this.result}/>
                 </div>
+                <div><button className='search--bar-icon'><img src={search} alt='search' /></button></div>
+              </div> :
+              <div className='search--bar_home'>
+                <div className='search--bar-input_home'>
+                  <input className='search--bar-input_holder_home'
+                        type="text"
+                        placeholder="Search file, courses, departments"
+                        onChange={this.result}/>
+                </div>
+                <div><button className='search--bar-icon_home'><img src={search_home} alt='search' /></button></div>
+              </div>
+            }
+            {
+              this.props.search ?
+                this.state.departments.length || this.state.courses.length || this.state.files.length ?
                 <div className='search--container' onClick={this.props.close}>
                   <div className='search--file'>Files</div>
                   {!this.state.files.length ?
@@ -127,18 +145,7 @@ class Search extends Component {
                       </Link>
                     ))}
                   </div>}
-                </div>
-              </div>
-            );
-          else
-            return(
-              <div className='search'>
-                <div className='search--bar'>
-                  <div className='search--bar-input'>
-                    <input className='search--bar-input_holder' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
-                  </div>
-                  <div><button className='search--bar-icon'><img src={search} alt='search' /></button></div>
-                </div>
+                </div> :
                 <div className='nosearchresults'>
                   <span className='nosearchresults_emoji'><img src={emoji} alt='emoji'/></span>
                   <span className='nosearchresults--message'>
@@ -146,20 +153,11 @@ class Search extends Component {
                     <span className='nosearchresults--message_plaintext'> However,you can request what you are looking for.</span>
                     <span className='nosearchresults--message_request' onClick={() => this.props.handleClick('request')}>Request Here!</span>
                   </span>
-                </div>
-              </div>
-            );
-      else
-        return(
-          <div className='search'>
-            <div className='search--bar'>
-              <div className='search--bar-input'>
-                <input className='search--bar-input_holder' type="text" placeholder="Search file, courses, departments" onChange={this.result}/>
-              </div>
-              <div><button className='search--bar-icon'><img src={search} alt='search' /></button></div>
-            </div>
-          </div>
-        );
+                </div> :
+                <Fragment/>
+            }
+        </div>
+      );
     }
 }
 
@@ -167,6 +165,7 @@ export default Search;
 
 Search.propTypes = {
   search: PropTypes.bool,
+  home: PropTypes.bool,
   close: PropTypes.func,
   handleClick: PropTypes.func,
   handleReqClick: PropTypes.func,

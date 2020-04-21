@@ -49,18 +49,13 @@ class Department extends Component {
               active: ''
             },
             courses: [],
+            search: false,
             notifications: false,
             userMenu: false,
             showmore: false,
             searchfiles: [],
             searchquery: ''
         };
-        this.department = '';
-        this.department_id = '';
-        this.department_abbr = '';
-        this.course = '';
-        this.course_id = '';
-        this.course_code = '';
 
         this.handleClick = this.handleClick.bind(this);
         this.getUserDetails = this.getUserDetails.bind(this);
@@ -190,7 +185,12 @@ class Department extends Component {
     }
 
     handleClick(component) {
-      if(component === 'notifications') {
+      if(component === 'search') {
+        this.setState(prevState => ({
+          search: !prevState.search
+        }));
+      }
+      else if(component === 'notifications') {
         this.setState(prevState => ({
           notifications: !prevState.notifications
         }));
@@ -289,8 +289,8 @@ class Department extends Component {
                 <ShowMoreFiles files={this.state.searchfiles}
                               showmore={this.state.showmore}
                               searchquery={this.state.searchquery}
-                              handleSeeAll={this.handleSeeAll}
-                              handleReqClick={this.handleReqHeader} /> : null}
+                              close={this.close}
+                              handleClick={this.handleClick} /> : null}
               { this.state.course.code !== undefined ?
                 <CoursePage login={this.state.login}
                             getUserDetails={this.getUserDetails}
@@ -326,8 +326,8 @@ class Department extends Component {
                 <ShowMoreFiles files={this.state.searchfiles}
                               showmore={this.state.showmore}
                               searchquery={this.state.searchquery}
-                              handleSeeAll={this.handleSeeAll}
-                              handleReqClick={this.handleReqHeader} /> : null}
+                              close={this.close}
+                              handleClick={this.handleClick} /> : null}
               <ActivityLog close={this.close} route={this.props.match.params.type}/>
             </div>
           );

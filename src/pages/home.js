@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from 'components/home/header';
 import Request from 'components/request/request';
 import Upload from 'components/upload/upload';
+import ShowMoreFiles from 'components/header/showMoreFiles';
 import SubjectCard from 'components/home/subjectCard';
 import 'styles/main.scss';
 import { getDepartmentsList } from 'api/departmentApi';
@@ -22,9 +23,12 @@ class Home extends Component {
             notifications:false,
             userMenu:false,
             request:false,
-            upload:false
+            upload:false,
+            searchfiles: [],
+            searchquery: ''
         };
         this.handleClick=this.handleClick.bind(this);
+        this.handleSeeAllClick=this.handleSeeAllClick.bind(this);
         this.close=this.close.bind(this);
     }
 
@@ -40,7 +44,12 @@ class Home extends Component {
     }
 
     handleClick(component) {
-      if(component === 'notifications') {
+      if(component === 'search') {
+        this.setState(prevState => ({
+          search: !prevState.search
+        }));
+      }
+      else if(component === 'notifications') {
         this.setState(prevState => ({
           notifications: !prevState.notifications
         }));
@@ -68,6 +77,15 @@ class Home extends Component {
       }
     }
 
+    handleSeeAllClick(files,query){
+      this.setState({
+        showmore:true,
+        searchquery:query,
+        searchfiles: files,
+        search:false
+      });
+    }
+
     close() {
       this.setState({ search:false });
       if(this.state.userMenu)
@@ -86,9 +104,11 @@ class Home extends Component {
         return(
             <div className='home'>
               <div className='home--header'>
-                <Header notifications={this.state.notifications}
+                <Header search={this.state.search}
+                        notifications={this.state.notifications}
                         userMenu={this.state.userMenu}
                         handleClick={this.handleClick}
+                        handleSeeAllClick={this.handleSeeAllClick}
                         close={this.close}/>
               </div>
               <div className='home--choosedept' onClick={this.close}>
@@ -104,6 +124,12 @@ class Home extends Component {
               </div>
               <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
               <Upload upload={this.state.upload} close={this.close}/>
+              {this.state.searchfiles.length ?
+                <ShowMoreFiles files={this.state.searchfiles}
+                              showmore={this.state.showmore}
+                              searchquery={this.state.searchquery}
+                              close={this.close}
+                              handleClick={this.handleClick} /> : null}
             </div>
         );
     }

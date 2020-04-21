@@ -13,43 +13,6 @@ const mapStateToProps = state => {
 };
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            value: '',
-            search: false
-        };
-
-        this.result = this.result.bind(this);
-        this.close = this.close.bind(this);
-    }
-
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps(props) {
-        this.setState({ search: props.search });
-        this.setState({ userMenu: props.userMenu });
-        this.setState({ notifications: props.notifications });
-    }
-
-    result(e) {
-        this.setState({ value: e.target.value });
-        if (e.target.value !== '') {
-            this.setState({ search: true });
-        }
-        else {
-          this.setState({ search:false });
-        }
-    }
-
-    close() {
-      this.props.close();
-      this.setState({ search:false });
-      if(this.state.userMenu)
-        this.setState({ userMenu:false });
-      if(this.state.notifications)
-        this.setState({ notifications:false });
-    }
-
     render() {
         return(
             <div className='header'>
@@ -63,11 +26,11 @@ class Header extends Component {
                         </Link>
                     </div>
                     <div className='header--search'>
-                        <Search search={this.state.search}
+                        <Search home={false}
+                            search={this.props.search}
                             close = {this.props.close}
                             handleClick = {this.props.handleClick}
-                            handleSeeAllClick = {this.props.handleSeeAllClick}
-                            handleSeeAll = {this.props.handleSeeAll} />
+                            handleSeeAllClick = {this.props.handleSeeAllClick}/>
                     </div>
                     {this.props.user.login ?
                         (<Fragment>

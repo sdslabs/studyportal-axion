@@ -8,6 +8,21 @@
     height: 24.4375rem;
     width: 100%;
     text-align: center;
+
+    cursor: default;
+
+    ::-webkit-scrollbar {
+        width: 0.375rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #88CAEB;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #629EBD;
+        border-radius: 2.9375rem;
+    }
 }
 
 .landingheader-- {
@@ -55,33 +70,7 @@
         flex-direction: row;
         margin-top: 1.25rem;
         width: 70%;
-        height: 3rem;
-        background: #FFFFFF;
         border-radius: 0.25rem;
-
-        &_bar {
-            width: 97.6%;
-            height: 100%;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-            outline: none;
-            background: #FFFFFF;
-            padding-left: 1rem;
-            border: white;
-            border-radius: 0.5rem;
-            box-sizing: border-box;
-        }
-
-        &_icon {
-            width: 3.09375rem;
-            height: 100%;
-            background: #FFFFFF;
-            border: white;
-            border-radius: 0.25rem;
-        }
     }
 
     &user_loggedin {

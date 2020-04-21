@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Search from 'components/header/search';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
 import logo from 'assets/studyportal_logo.png';
 import sds_logo from 'assets/sds_logo.svg';
-import search from 'assets/search.png';
 import 'styles/main.scss';
 
 const mapStateToProps = state => {
@@ -22,8 +22,11 @@ class Header extends Component {
                       <div className='landingheader--heading'>Study Portal</div>
                       <div className='landingheader--caption'>The Solutions Portal of IITR</div>
                       <div className='landingheader--search'>
-                          <input className='landingheader--search_bar' type="text" placeholder="Search tutorials, books, notes, courses..." />
-                          <button className='landingheader--search_icon'><img src={search} alt='search' /></button>
+                        <Search home
+                            search={this.props.search}
+                            close = {this.props.close}
+                            handleClick = {this.props.handleClick}
+                            handleSeeAllClick = {this.props.handleSeeAllClick}/>
                       </div>
                     </div>
                     { this.props.user.login ?
@@ -51,9 +54,11 @@ class Header extends Component {
 export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
+  search: PropTypes.bool,
   close: PropTypes.func,
   notifications: PropTypes.bool,
   userMenu: PropTypes.bool,
   handleClick: PropTypes.func,
+  handleSeeAllClick: PropTypes.func,
   user: PropTypes.object
 };
