@@ -20,7 +20,7 @@ class UserMenu extends Component {
         { this.props.userMenu ?
         <div className='usermenu--container'>
           <div className='usermenu--polygon'><img src={polygon} alt='polygon' /></div>
-          <div className='usermenu--cover'>
+          <div className='usermenu--cover' onClick={this.props.close}>
             <div className='usermenu--request' onClick={() => this.props.handleClick('request')}>Request</div>
             <div className='usermenu--upload' onClick={() => this.props.handleClick('upload')}>Upload</div>
             <Link to='/activity' style={{ textDecoration: 'none' }}>
@@ -41,5 +41,6 @@ export default connect(mapStateToProps)(UserMenu);
 UserMenu.propTypes = {
   user: PropTypes.object,
   userMenu: PropTypes.bool,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  close: PropTypes.func
 };

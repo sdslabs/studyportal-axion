@@ -12,8 +12,7 @@ class ActivityLog extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        user: props.user,
-        activity: [],
+        activity: []
       };
       this.getActivity = this.getActivity.bind(this);
       this.getRequests = this.getRequests.bind(this);
@@ -24,7 +23,7 @@ class ActivityLog extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      this.getActivity(nextProps.route)
+      this.getActivity(nextProps.route);
     }
 
     getActivity(route) {
@@ -48,9 +47,9 @@ class ActivityLog extends Component {
           //TODO handle error
         }
         else {
-          this.setState({ activity: res })
+          this.setState({ activity: res });
         }
-      })
+      });
     }
 
     getUploads(token) {
@@ -60,9 +59,9 @@ class ActivityLog extends Component {
           //TODO handle error
         }
         else {
-          this.setState({ activity:res })
+          this.setState({ activity:res });
         }
-      })
+      });
     }
 
     getAll(token) {
@@ -82,19 +81,19 @@ class ActivityLog extends Component {
             else {
               res.forEach(request => {
                 activity.push(request);
-              })
+              });
               // activity = this.arrangeActivity(activity);
-              this.setState({ activity })
+              this.setState({ activity });
             }
-          })
+          });
         }
-      })
+      });
     }
 
     arrangeActivity(activity) {
       activity.sort((a,b) => {
-        return a.date - b.date
-      })
+        return a.date - b.date;
+      });
     }
 
     render() {
@@ -123,8 +122,8 @@ class ActivityLog extends Component {
                   { this.state.activity.map((material,index) => (<ActivityReqCard key={index} status={material.status} title={material.title} course={material.course.title} code={material.course.code} date={material.date}/>)) }
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default ActivityLog
+export default ActivityLog;

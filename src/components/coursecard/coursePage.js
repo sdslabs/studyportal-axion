@@ -64,7 +64,8 @@ class CoursePage extends Component {
               //TODO handle error
             }
             else {
-              if(!response) nextProps.error();
+              if(!response)
+                nextProps.error();
               else {
                 this.setState({ name:response.title,id:response.id });
                 if (nextProps.file_type === undefined || nextProps.file_type === 'all')

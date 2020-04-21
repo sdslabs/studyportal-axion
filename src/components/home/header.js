@@ -29,10 +29,14 @@ class Header extends Component {
                     { this.props.user.login ?
                     <div className='landingheader--user_loggedin'>
                       <div className='landingheader--notifications'>
-                        <Notifications notifications={this.props.notifications} handleClick={this.props.handleClick}/>
+                        <Notifications notifications={this.props.notifications}
+                          handleClick={this.props.handleClick}
+                          close={this.props.close}/>
                       </div>
                       <div className='landingheader--user'>
-                        <UserMenu userMenu={this.props.userMenu} handleClick={this.props.handleClick}/>
+                        <UserMenu userMenu={this.props.userMenu}
+                          handleClick={this.props.handleClick}
+                          close={this.props.close}/>
                       </div>
                     </div> :
                     <div className='landingheader--user_nologin'>

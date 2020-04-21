@@ -85,10 +85,14 @@ class Header extends Component {
                     {this.props.user.login ?
                         (<Fragment>
                             <div className='header--notification'>
-                                <Notifications notifications={this.props.notifications} handleClick={this.props.handleClick}/>
+                                <Notifications notifications={this.props.notifications}
+                                    handleClick={this.props.handleClick}
+                                    close={this.props.close}/>
                             </div>
                             <div className='header--user'>
-                                <UserMenu userMenu={this.props.userMenu} handleClick={this.props.handleClick}/>
+                                <UserMenu userMenu={this.props.userMenu}
+                                    handleClick={this.props.handleClick}
+                                    close={this.props.close}/>
                             </div>
                         </Fragment>) :
                         (<Fragment>

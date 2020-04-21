@@ -16,7 +16,7 @@ class Notifications extends Component {
         { this.props.notifications ?
           <Fragment>
             <div className='notifications--polygon'><img src={ polygon } alt='ploygon' /></div>
-            <div className='notifications--container'>
+            <div className='notifications--container' onClick={this.props.close}>
               <NotificationCard/>
               <NotificationCard/>
               <NotificationCard/>
@@ -32,5 +32,6 @@ export default Notifications;
 
 Notifications.propTypes = {
   notifications: PropTypes.bool,
-  handleClick: PropTypes.func
+  handleClick: PropTypes.func,
+  close: PropTypes.func
 };
