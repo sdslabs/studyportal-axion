@@ -47,7 +47,9 @@ class CoursePage extends Component {
     // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(nextProps) {
       this.checkCourse(nextProps);
-      this.getFiles(nextProps);
+      if(this.props.file_type !== nextProps.file_type) {
+        this.getFiles(nextProps);
+      }
     }
 
     getFiles(nextProps) {
@@ -134,7 +136,7 @@ class CoursePage extends Component {
               <div className='coursepage' onClick={this.props.close}>
                   <div className="coursepage--head">{ this.state.name } { this.props.course_code }</div>
                   <div className='coursepage--underline' />
-                  { this.state.login ? <span>{ !this.state.mycourse ?
+                  { this.props.user.login ? <span>{ !this.state.mycourse ?
                   <div className='coursepage--addcourse' onClick={this.addCourse}>+ Add Course</div> :
                   <div className='coursepage--removecourse' onClick={this.deleteCourse}>- Remove Course</div> }</span> : null}
                   <div className='coursepage--category'>

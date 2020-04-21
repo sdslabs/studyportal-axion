@@ -139,19 +139,25 @@ class Sidebar extends Component {
               <div className='sidebar--course'>Activity</div>
               <div className='sidebar--course-name'>
                   <div className='sidebar--course-table_logout'>
-                    <div className='coursehandle'>
+                    <div className={ this.props.active === 'all' || this.props.active === undefined ? 'coursehandle_active' : 'coursehandle'}>
                       <Link to={`/activity/all`} className='link'>
-                        <span className='coursehandle--heading'>All Activity log</span>
+                        <span className={ this.props.active === 'all' || this.props.active === undefined ? 'coursehandle--heading_active' : 'coursehandle--heading'}>
+                          All Activity Log
+                        </span>
                       </Link>
                     </div>
-                    <div className='coursehandle'>
+                    <div className={ this.props.active === 'requests' ? 'coursehandle_active' : 'coursehandle'}>
                       <Link to={`/activity/requests`} className='link'>
-                        <span className='coursehandle--heading'>Requests log</span>
+                        <span className={ this.props.active === 'requests' ? 'coursehandle--heading_active' : 'coursehandle--heading'}>
+                          Requests Log
+                        </span>
                       </Link>
                     </div>
-                    <div className='coursehandle'>
+                    <div className={ this.props.active === 'uploads' ? 'coursehandle_active' : 'coursehandle'}>
                       <Link to={`/activity/uploads`} className='link'>
-                        <span className='coursehandle--heading'>Uploads log</span>
+                        <span className={ this.props.active === 'uploads' ? 'coursehandle--heading_active' : 'coursehandle--heading'}>
+                          Uploads Log
+                        </span>
                       </Link>
                     </div>
                   </div>

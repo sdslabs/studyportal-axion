@@ -1,11 +1,9 @@
-/* eslint-disable react/no-deprecated */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import ActivityReqCard from './activityReqCard';
+import PropTypes from 'prop-types';
+import ActivityCard from './activityCard';
 import 'styles/main.scss';
 import { getFileRequestsByUser } from 'api/requestApi';
 import { getUploadsByUser } from 'api/uploadApi';
-import { Link } from 'react-router-dom';
 import { getCookie } from 'utils/handleCookies';
 
 class ActivityLog extends Component {
@@ -13,6 +11,11 @@ class ActivityLog extends Component {
       super(props);
       this.state = {
         activity: []
+      };
+      this.routeMap = {
+        'all': 'All Activity Log',
+        'requests': 'Requests Log',
+        'uploads': 'Uploads Log'
       };
       this.getActivity = this.getActivity.bind(this);
       this.getRequests = this.getRequests.bind(this);
@@ -22,6 +25,7 @@ class ActivityLog extends Component {
       this.getActivity(this.props.route);
     }
 
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(nextProps) {
       this.getActivity(nextProps.route);
     }
@@ -41,25 +45,33 @@ class ActivityLog extends Component {
     }
 
     getRequests(token) {
-      this.setState({ activity:[] });
+      let activity = [];
+      this.setState({ activity });
       getFileRequestsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
-          this.setState({ activity: res });
+          res.forEach(request => {
+            activity.push({ type:'request', activity:request });
+          });
+          this.setState({ activity });
         }
       });
     }
 
     getUploads(token) {
-      this.setState({ activity:[] });
+      let activity = [];
+      this.setState({ activity });
       getUploadsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
         }
         else {
-          this.setState({ activity:res });
+          res.forEach(upload => {
+            activity.push({ type:'upload', activity:upload });
+          });
+          this.setState({ activity });
         }
       });
     }
@@ -72,7 +84,7 @@ class ActivityLog extends Component {
         }
         else {
           response.forEach(upload => {
-            activity.push(upload);
+            activity.push({ type:'upload', activity:upload });
           });
           getFileRequestsByUser(token).then((res,err) => {
             if(err) {
@@ -80,7 +92,7 @@ class ActivityLog extends Component {
             }
             else {
               res.forEach(request => {
-                activity.push(request);
+                activity.push({ type:'request', activity:request });
               });
               // activity = this.arrangeActivity(activity);
               this.setState({ activity });
@@ -99,27 +111,20 @@ class ActivityLog extends Component {
     render() {
         return(
             <div className='activitylog' onClick={this.props.close}>
-                <div className='activitylog--heading'>Activity Log</div>
-                <div className='activitylog--heading_underline'/>
-                <div className='activitylog--category'>
-                    <Link to={`/activity/all`} className='link'>
-                      <div className={this.props.route === 'all' || this.props.route === undefined ? 'activitylog--category_allselected' : 'activitylog--category_all'}>
-                        <div>All<div className={this.props.route === 'all' || this.props.route === undefined ? 'activitylog--underline_selectedall' : 'activitylog--underline_noneall'}/></div>
-                      </div>
-                    </Link>
-                    <Link to={`/activity/requests`} className='link'>
-                      <div className={this.props.route === 'requests' ? 'activitylog--category_requestselected' : 'activitylog--category_request'}>
-                        <div>Requests<div className={this.props.route === 'requests' ? 'activitylog--underline_selectedrequest' : 'activitylog--underline_nonerequest'}/></div>
-                      </div>
-                    </Link>
-                    <Link to={`/activity/uploads`} className='link'>
-                      <div className={this.props.route === 'uploads' ? 'activitylog--category_uploadselected' : 'activitylog--category_upload'}>
-                        <div>Uploads<div className={this.props.route === 'uploads' ? 'activitylog--underline_selectedupload' : 'activitylog--underline_noneupload'}/></div>
-                      </div>
-                    </Link>
+                <div className='activitylog--heading'>
+                  {this.props.route !== undefined ? this.routeMap[this.props.route] : this.routeMap.all}
                 </div>
+                <div className='activitylog--heading_underline'/>
                 <div className='activitylog--activitycards'>
-                  { this.state.activity.map((material,index) => (<ActivityReqCard key={index} status={material.status} title={material.title} course={material.course.title} code={material.course.code} date={material.date}/>)) }
+                  { this.state.activity.map((material,index) => (
+                    <ActivityCard key={index}
+                      type={material.type}
+                      status={material.activity.status}
+                      title={material.activity.title}
+                      course={material.activity.course.title}
+                      code={material.activity.course.code}
+                      date={material.activity.date}/>
+                  )) }
                 </div>
             </div>
         );
@@ -127,3 +132,8 @@ class ActivityLog extends Component {
 }
 
 export default ActivityLog;
+
+ActivityLog.propTypes = {
+  route: PropTypes.string,
+  close: PropTypes.func
+};

@@ -1,9 +1,11 @@
 .activitylog {
     position: absolute;
-    left: 26.5rem;
-    top: 4.5625rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 26.5rem;
     width: calc(100% - 26.5rem);
-    height: 56.75rem;
+    height: calc(100% - 4.5625rem);
+    min-height: 26.5625rem;
     z-index: -1;
     cursor: default;
 }
@@ -11,11 +13,9 @@
 .activitylog-- {
 
     &heading {
-        position: absolute;
-        width: 10.1875rem;
         height: 2.375rem;
-        left: calc(50% - 5.09375rem);
-        top: 4.3125rem;
+        margin-top: 3.6875rem;
+        align-self: center;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -25,143 +25,18 @@
     }
 
     &heading_underline {
-        position: absolute;
         width: 5rem;
         height: 0rem;
-        left: calc(50% - 2.5rem);
-        top: 7.3125rem;
-        border:0.0625rem solid #38A7DE;
-    }
-
-    &category {
-        position: absolute;
-        width: 20.75rem;
-        height: 2.5625;
-        left: calc(51.65% - 10.375rem);
-        top: 10.5625rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1.125rem;
-        line-height: 1.3125rem;
-        color: #2B2A28;
-        display: grid;
-        grid-template-rows: 100%;
-        grid-template-columns: 18.67% 48.80% 32.53%;
-
-        &_all {
-            width: 1.3125rem;
-            height: 1.375rem;
-            padding:0.5rem 2.5625rem 0.6875rem 0rem;
-        }
-
-        &_allselected {
-          width: 1.3125rem;
-          height: 1.375rem;
-          padding:0.5rem 2.5625rem 0.6875rem 0rem;
-          font-family: Droid Sans;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.125rem;
-          line-height: 1.3125rem;
-          color: #38A7DE;
-        }
-
-        &_request {
-          width: 5rem;
-          height: 1.375rem;
-          border-right: 0.0625rem solid rgba(43, 42, 40, 0.4);
-          border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
-          padding: 0.5rem 2.5625rem 0.6875rem 2.5625rem;
-        }
-
-        &_requestselected {
-            width: 5rem;
-            height: 1.375rem;
-            border-right: 0.0625rem solid rgba(43, 42, 40, 0.4);
-            border-left: 0.0625rem solid rgba(43, 42, 40, 0.4);
-            padding: 0.5rem 2.5625rem 0.6875rem 2.5625rem;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 1.125rem;
-            line-height: 1.3125rem;
-            color: #38A7DE;
-        }
-
-        &_upload {
-            width: 4.1875rem;
-            height: 1.375rem;
-            padding:0.5rem 0rem 0.6875rem 2.5625rem;
-        }
-
-        &_uploadselected {
-          width: 4.1875rem;
-          height: 1.375rem;
-          padding:0.5rem 0rem 0.6875rem 2.5625rem;
-          font-family: Droid Sans;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 1.125rem;
-          line-height: 1.3125rem;
-          color: #38A7DE;
-      }
-
-        &_all:hover, &_request:hover, &_upload:hover {
-            cursor: pointer;
-        }
-    }
-
-    &underline_ {
-        &noneall {
-            width: 1.0625rem;
-            border: 0.0625rem solid #FFFFFF;
-            margin-top: 0.625rem;
-            margin-left: 0rem;
-        }
-
-        &nonerequest {
-          width: 4.375rem;
-          border: 0.0625rem solid #FFFFFF;
-          margin-top: 0.625rem;
-          margin-left: 0.125rem;
-        }
-
-        &noneupload {
-          width: 3.875rem;
-          border: 0.0625rem solid #FFFFFF;
-          margin-top: 0.625rem;
-          margin-left: 0.0625rem;
-        }
-
-        &selectedall {
-          width: 1.0625rem;
-          border: 0.0625rem solid #38A7DE;
-          margin-top: 0.625rem;
-          margin-left: 0rem;
-        }
-
-        &selectedrequest {
-            width: 4.375rem;
-            border: 0.0625rem solid #38A7DE;
-            margin-top: 0.625rem;
-            margin-left: 0.125rem;
-        }
-
-        &selectedupload {
-          width: 3.875rem;
-          border: 0.0625rem solid #38A7DE;
-          margin-top: 0.625rem;
-          margin-left: 0.0625rem;
-        }
+        margin-top: 0.625rem;
+        align-self: center;
+        border:0.0425rem solid #38A7DE;
     }
 
     &activitycards {
-        position: absolute;
-        height: calc(100% - 16.25rem);
+        height: auto;
         width: 98%;
-        left: 1%;
-        top: 16.25rem;
+        margin-top: 3.25rem;
+        margin-left: 1%;
         overflow-y: auto;
     }
 }

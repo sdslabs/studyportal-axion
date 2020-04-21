@@ -1,19 +1,10 @@
 /* eslint-disable react/no-did-mount-set-state */
-/* eslint-disable react/sort-comp */
-/* eslint-disable react/no-deprecated */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { getCourse } from 'actions/actions'
 import coursedot from 'assets/coursedot.png';
 import 'styles/main.scss';
 import shortName from 'utils/short-name';
-
-// function mapDispatchToProps(dispatch) {
-//     return {
-//       getCourse: course => dispatch(getCourse(course))
-//     }
-// }
 
 class CourseHandle extends Component {
     constructor(props) {
@@ -41,6 +32,7 @@ class CourseHandle extends Component {
         }
     }
 
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(props) {
       if (props.login) {
         this.setState({ login:props.login });
@@ -65,8 +57,14 @@ class CourseHandle extends Component {
         if (this.state.login) {
             return(
                 <div className='coursehandle'>
-                    <span className='coursehandle--heading' onClick={this.activatecourse}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
-                    <span>{ this.state.active ? <span className='coursehandle--activedot'><img src={coursedot} alt='coursedot'/></span> : <span /> }</span>
+                    <span className='coursehandle--heading' onClick={this.activatecourse}>
+                        {`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}
+                    </span>
+                    <span>{ this.state.active ?
+                        <span className='coursehandle--activedot'>
+                            <img src={coursedot} alt='coursedot'/>
+                        </span> : <span /> }
+                    </span>
                 </div>
             );
         }
@@ -74,7 +72,10 @@ class CourseHandle extends Component {
         else {
             return(
                 <div className={ this.state.name === this.state.active ? 'coursehandle_active' : 'coursehandle'}>
-                    <span className={ this.state.name === this.state.active ? 'coursehandle--heading_active' : 'coursehandle--heading'} onClick={this.activatecourse}>{`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}</span>
+                    <span className={ this.state.name === this.state.active ?
+                        'coursehandle--heading_active' : 'coursehandle--heading'} onClick={this.activatecourse}>
+                        {`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}
+                    </span>
                     { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
                 </div>
             );
@@ -83,3 +84,13 @@ class CourseHandle extends Component {
 }
 
 export default connect(null)(CourseHandle);
+
+CourseHandle.propTypes = {
+    active: PropTypes.string,
+    login: PropTypes.bool,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    code: PropTypes.string,
+    mycourse: PropTypes.string,
+    handleClick: PropTypes.func
+};

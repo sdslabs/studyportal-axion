@@ -6,10 +6,7 @@ const initialState = {
     username: '',
     email: '',
     profile_image: '',
-    courses: [],
-    notifications: false,
-    upload: false,
-    request: false
+    courses: []
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -27,9 +24,6 @@ export default function rootReducer(state = initialState, action) {
         state.email = '';
         state.profile_image = '';
         state.courses = [];
-        state.notifications = false;
-        state.upload = false;
-        state.request = false;
         return state;
       default:
         return state;

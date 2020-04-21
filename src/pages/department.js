@@ -98,7 +98,7 @@ class Department extends Component {
       else if(this.checkRoute(nextProps.location.pathname,'activity')) {
         if(this.checkParam(nextProps.match.params.type,'activity')) {
           this.setState({ activity:true,upload:false,request:false });
-          // this.getUserDetails();
+          this.getUserDetails();
         }
         else
           this.error();
@@ -161,6 +161,7 @@ class Department extends Component {
                           active: `${response.title} ${response.code}`
                         }
                       }));
+                      this.getUserDetails();
                     }
                   }});}}}});}
       else
@@ -175,7 +176,7 @@ class Department extends Component {
             //TODO handle error
           }
           else {
-            this.props.setUser(res);
+            // TODO updation
           }
         });
       }
@@ -313,11 +314,7 @@ class Department extends Component {
                           handleSeeAllClick={this.handleSeeAllClick}
                           close={this.close}/>
               <Sidebar activity='activity'
-                      department={this.state.department.title}
-                      department_id={this.state.department.id}
-                      department_abbr={this.state.department.abbr}
-                      courses={this.state.courses}
-                      active={this.state.course.active}
+                      active={this.props.match.params.type}
                       close={this.close}
                       getUserDetails={this.getUserDetails}/>
               <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>

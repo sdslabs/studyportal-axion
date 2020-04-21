@@ -221,7 +221,7 @@ class Request extends Component {
                                             this.state.requesting ?
                                                 <div className='request--button-file_requesting'>
                                                     Requesting <img className='request--loader' alt='loader' src={small_loader}/>
-                                                </div> : <div className='request--button-file'>Request</div>
+                                                </div> : <button type='submit' className='request--button-file'>Request</button>
                                         }
                                     </form>
                                 </div>

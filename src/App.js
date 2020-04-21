@@ -22,44 +22,8 @@ class App extends Component {
     this.state = {
       login: true
     };
+    this.getUser();
     this.getUser = this.getUser.bind(this);
-
-    const user = {
-      login: true,
-      id: 1,
-      username: 'darkrider',
-      email: 'darkrider251099@gmail.com',
-      profile_image: '/assets/img_user.png',
-      courses: [{
-        "id": 1250,
-        "title": "Advanced Characterization Techniques",
-        "department": {
-            "id": 118,
-            "title": "Applied Science and Engineering",
-            "abbreviation": "ASED",
-            "imageurl": "ased.png"
-        },
-        "code": "AS-901"
-      },
-      {
-          "id": 1251,
-          "title": "SEMINAR",
-          "department": {
-              "id": 118,
-              "title": "Applied Science and Engineering",
-              "abbreviation": "ASED",
-              "imageurl": "ased.png"
-          },
-          "code": "ASN-700"
-      }],
-      notifications: false,
-      upload: false,
-      request: false
-    };
-    this.props.setUser(user);
-    // function checkLogin() {
-    //   //TODO check login and update accordingly
-    // }
   }
 
   getUser() {
@@ -70,7 +34,15 @@ class App extends Component {
             //TODO handle error
           }
           else {
-            this.setState({ user:res.user });
+            const user = {
+              login: true,
+              id: res.user.falcon_id,
+              username: res.user.username,
+              email: res.user.email,
+              profile_image: res.user.profile_image,
+              courses: res.courses
+            };
+            this.props.setUser(user);
           }
         });
       }

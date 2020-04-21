@@ -5,12 +5,12 @@ function getFileRequestsByUser(token) {
   return axiosInstance.get(`/filerequests`,
   { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
     .then((response) => {
-      const res = JSON.parse(response.request.response)
-      return res
+      const res = JSON.parse(response.request.response);
+      return res;
     })
     .catch((error) => {
-      return Promise.reject(error)
-    })
+      return Promise.reject(error);
+    });
 }
 
 function requestFiles(token, filetype, title, course) {
@@ -24,7 +24,7 @@ function requestFiles(token, filetype, title, course) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     }
   }).done((res) => {
-    return res
+    return res;
   });
 }
 
@@ -39,7 +39,7 @@ function requestCourse(token, department, course, code) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     }
   }).done((res) => {
-    return res
+    return res;
   });
 }
 
@@ -51,7 +51,7 @@ function updateFileRequestStatus(request,status) {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 function updateCourseRequestStatus(request,status) {
@@ -62,7 +62,7 @@ function updateCourseRequestStatus(request,status) {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 export {
@@ -71,4 +71,4 @@ export {
   requestCourse,
   updateFileRequestStatus,
   updateCourseRequestStatus
-}
+};

@@ -4,7 +4,7 @@
   align-items: center;
   width: 22.125rem;
   height: auto;
-  z-index: 1;
+  z-index: -1;
 }
 
 .notifications-- {
@@ -53,6 +53,7 @@
   &container {
     width: 22.125rem;
     height: 12.125rem;
+    z-index: 1;
     background: #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
