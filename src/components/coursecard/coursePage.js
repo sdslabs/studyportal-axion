@@ -124,6 +124,7 @@ class CoursePage extends Component {
     }
 
     render() {
+      console.log(this.state.files)
       if(this.state.loading)
         return(
           <FileCover/>
@@ -192,6 +193,7 @@ class CoursePage extends Component {
                                       name={ file.title }
                                       url={ file.driveid }
                                       downloads={ file.downloads }
+                                      ext = { file.fileext }
                                       size={ file.size }
                                       date_modified={ file.date_modified } />
                       )) }

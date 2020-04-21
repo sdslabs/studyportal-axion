@@ -32,7 +32,8 @@ class ShowMoreFiles extends Component{
                                             date_modified={ file.date_modified }
                                             course_name={ file.course.title }
                                             course_code={ file.course.code }
-                                            file_type={ file.filetype }/>
+                                            file_type={ file.filetype }
+                                            ext={ file.fileext }/>
                                     </div>
                                 ))}
                             </div>

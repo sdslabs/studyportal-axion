@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import icon from 'assets/icon.png';
+import pdf from 'assets/material_pdf.svg';
+import docx from 'assets/material_docx.svg';
+import ppt from 'assets/material_ppt.svg';
+import img from 'assets/material_img.svg';
 import 'styles/main.scss';
 
 class SearchResult extends Component {
@@ -14,6 +17,14 @@ class SearchResult extends Component {
       course_code: props.course_code,
       file_type: props.file_type
     };
+    this.material_map = {
+      pdf,
+      docx,
+      ppt,
+      'jpeg': img,
+      'png': img,
+      'bmp': img
+  };
   }
     render() {
         return(
@@ -21,7 +32,7 @@ class SearchResult extends Component {
             target='blank'
             style={{ textDecoration: 'none' }}>
             <div className='file--card'>
-                <div className='file--card-icon'><img src={icon} alt='icon'/></div>
+                <div className='file--card-icon'><img src={this.material_map[this.props.ext]} alt='icon'/></div>
                   <div className='file--card-heading'>{this.state.file_name}</div>
                   <div className='file--card-info'>
                     <span className='file--card-info_name'>{this.state.course_name}</span>
@@ -45,5 +56,6 @@ SearchResult.propTypes = {
   date_modified: PropTypes.string,
   course_name: PropTypes.string,
   course_code: PropTypes.string,
-  file_type: PropTypes.string
+  file_type: PropTypes.string,
+  ext: PropTypes.string
 };

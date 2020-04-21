@@ -88,6 +88,7 @@ class Search extends Component {
                                         course_name={ file.course.title }
                                         course_code={ file.course.code }
                                         file_type={ file.filetype }
+                                        ext={ file.fileext }
                                         key={ file.id }/>
                         ))}
                         </div>
