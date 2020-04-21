@@ -1,33 +1,19 @@
 import React,{ Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import NotificationCard from 'components/common/notificationCard';
 import polygon from 'assets/Polygon.svg';
 import notif from 'assets/notif.svg';
 import 'styles/main.scss';
 
 class Notifications extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false,
-    };
-
-    this.toggleActive = this.toggleActive.bind(this);
-  }
-
-  toggleActive() {
-    this.setState((prevState) => ({
-      active: !prevState.active,
-    }));
-  }
-
   render() {
     return(
       <div className='notifications'>
-        <div className='notifications--button' onClick={ this.toggleActive }>
+        <div className='notifications--button' onClick={() => this.props.handleClick('notifications') }>
           <div className='notifications--button-image'><img src={notif} alt="notification" /></div>
           <div className='notifications--button-number'>1</div>
         </div>
-        { this.state.active ?
+        { this.props.notifications ?
           <Fragment>
             <div className='notifications--polygon'><img src={ polygon } alt='ploygon' /></div>
             <div className='notifications--container'>
@@ -43,3 +29,8 @@ class Notifications extends Component {
 }
 
 export default Notifications;
+
+Notifications.propTypes = {
+  notifications: PropTypes.bool,
+  handleClick: PropTypes.func
+};

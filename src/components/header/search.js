@@ -76,7 +76,7 @@ class Search extends Component {
                       <span className='search--file-noresults-outer'>
                         <div className='search--file-noresults_text'>Sorry! We couldn&apos;t find any file for you.</div>
                         <span className='search--file-noresults_text'>However,you can request what you are looking for.</span>
-                        <span className='search--file-noresults_requestfile' onClick={this.props.handleReqClick}>Request Here!</span>
+                        <span className='search--file-noresults_requestfile' onClick={() => this.props.handleClick('request')}>Request Here!</span>
                       </span>
                     </div> :
                       <div>
@@ -103,7 +103,8 @@ class Search extends Component {
                     <span className='search--courses-noresults_outer'>
                       <div className='search--courses-noresults_text'>Sorry! We couldn&apos;t find any course for you.</div>
                       <span className='search--courses-noresults_text'>However,you can request what you are looking for.</span>
-                      <span className='search--courses-noresults_requestcourse' onClick={this.props.handleReqClick}>&nbsp;Request Here!</span>
+                      <span className='search--courses-noresults_requestcourse'
+                        onClick={() => this.props.handleClick('request')}>&nbsp;Request Here!</span>
                     </span>
                   </div> :
                   <div>
@@ -143,7 +144,7 @@ class Search extends Component {
                   <span className='nosearchresults--message'>
                     <div className='nosearchresults--message_plaintext'>Sorry! We couldn&apos;t find any file for you.</div>
                     <span className='nosearchresults--message_plaintext'> However,you can request what you are looking for.</span>
-                    <span className='nosearchresults--message_request' onClick={this.props.handleReqClick}>Request Here!</span>
+                    <span className='nosearchresults--message_request' onClick={() => this.props.handleClick('request')}>Request Here!</span>
                   </span>
                 </div>
               </div>
@@ -167,6 +168,7 @@ export default Search;
 Search.propTypes = {
   search: PropTypes.bool,
   close: PropTypes.func,
+  handleClick: PropTypes.func,
   handleReqClick: PropTypes.func,
   handleSeeAllClick: PropTypes.func
 };

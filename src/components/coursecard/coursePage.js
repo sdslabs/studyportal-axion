@@ -124,7 +124,6 @@ class CoursePage extends Component {
     }
 
     render() {
-      console.log(this.state.files)
       if(this.state.loading)
         return(
           <FileCover/>

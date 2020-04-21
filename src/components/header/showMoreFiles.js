@@ -20,7 +20,7 @@ class ShowMoreFiles extends Component{
                 <div className='seeallcover'>
                     <div className='seeall'>
                         <div className='seeall--main'>
-                            <div className='seeall--close' onClick={this.props.handleSeeAll}><img src={close} alt='close'/></div>
+                            <div className='seeall--close' onClick={this.props.close}><img src={close} alt='close'/></div>
                             <div className='seeall--heading'>
                                 Search results for <span className='seeall--heading_query'>&quot;{this.state.searchquery}&quot;</span>
                             </div>
@@ -43,7 +43,7 @@ class ShowMoreFiles extends Component{
                             <div className='seeall--footer'>
                                 <span className='seeall--footer-emoji'><img src={emoji} alt='emoji'/></span>
                                 <span className='seeall--footer-text'>Couldn&apos;t find what you looking for? </span>
-                                <span className='seeall--footer-request' onClick={this.props.handleReqClick}>Request here!</span>
+                                <span className='seeall--footer-request' onClick={() => this.props.handleClick('request')}>Request here!</span>
                             </div>
                         </div>
                     </div>

@@ -28,8 +28,12 @@ class Header extends Component {
                     </div>
                     { this.props.user.login ?
                     <div className='landingheader--user_loggedin'>
-                      <div className='landingheader--notifications'><Notifications/></div>
-                      <div className='landingheader--user'><UserMenu/></div>
+                      <div className='landingheader--notifications'>
+                        <Notifications notifications={this.props.notifications} handleClick={this.props.handleClick}/>
+                      </div>
+                      <div className='landingheader--user'>
+                        <UserMenu userMenu={this.props.userMenu} handleClick={this.props.handleClick}/>
+                      </div>
                     </div> :
                     <div className='landingheader--user_nologin'>
                       <button className='landingheader--login'>Login</button>
@@ -44,5 +48,8 @@ export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
   close: PropTypes.func,
+  notifications: PropTypes.bool,
+  userMenu: PropTypes.bool,
+  handleClick: PropTypes.func,
   user: PropTypes.object
 };

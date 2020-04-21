@@ -123,7 +123,7 @@ class Sidebar extends Component {
                           <select className='sidebar--form-select_course' onChange={this.setCourse}>
                               <option>--Select Course--</option>
                               { this.state.courses.map(course => (
-                                <option key={ course.id } id={ course.id }>{ course.title} { course.code }</option>)) 
+                                <option key={ course.id } id={ course.id }>{ course.title} { course.code }</option>))
                               }
                           </select>
                           <div className='sidebar--form-button'><button type='submit'>Add Course</button></div>

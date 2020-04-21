@@ -64,7 +64,7 @@ class Upload extends Component {
 
     toggleUploadModal() {
       this.setState({ active:false });
-      this.props.handleUplo();
+      this.props.close();
     }
 
     handleUpload() {
@@ -176,5 +176,5 @@ export default Upload;
 
 Upload.propTypes = {
   upload: PropTypes.bool,
-  handleUplo: PropTypes.func
+  close: PropTypes.func
 };

@@ -121,7 +121,7 @@ class Request extends Component {
             return(
                 <div className='requestcover'>
                         <div className='request'>
-                        <div className='request--close' onClick={this.props.handleReq}><img src={close} alt='close'/></div>
+                        <div className='request--close' onClick={this.props.close}><img src={close} alt='close'/></div>
                         <div className='request--heading'>Request</div>
                         <div className='request--underline'/>
                         <div className='request--instructions'>
@@ -283,5 +283,5 @@ export default Request;
 
 Request.propTypes = {
     request: PropTypes.bool,
-    handleReq: PropTypes.func
+    close: PropTypes.func
 };

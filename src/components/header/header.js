@@ -17,8 +17,6 @@ class Header extends Component {
         super(props);
         this.state = {
             value: '',
-            userMenu: props.userMenu,
-            notifications: props.notifications,
             search: false
         };
 
@@ -67,9 +65,9 @@ class Header extends Component {
                     <div className='header--search'>
                         <Search search={this.state.search}
                             close = {this.props.close}
-                            handleReqClick={this.props.handleReqClick}
-                            handleSeeAllClick={this.props.handleSeeAllClick}
-                            handleSeeAll={this.props.handleSeeAll} />
+                            handleClick = {this.props.handleClick}
+                            handleSeeAllClick = {this.props.handleSeeAllClick}
+                            handleSeeAll = {this.props.handleSeeAll} />
                     </div>
                     {this.props.user.login ?
                         (<Fragment>
@@ -78,8 +76,8 @@ class Header extends Component {
                         </Fragment>) :
                         (<Fragment>
                             <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
-                            <div className='header--request' onClick={this.props.handleReqClick}>Request</div>
-                            <div className='header--upload' onClick={this.props.handleUploClick}>Upload</div>
+                            <div className='header--request' onClick={() => this.props.handleClick('request')}>Request</div>
+                            <div className='header--upload' onClick={() => this.props.handleClick('upload')}>Upload</div>
                         </Fragment>)
                     }
                 </div>
@@ -87,10 +85,10 @@ class Header extends Component {
                     {this.props.user.login ?
                         (<Fragment>
                             <div className='header--notification'>
-                                <Notifications/>
+                                <Notifications notifications={this.props.notifications} handleClick={this.props.handleClick}/>
                             </div>
                             <div className='header--user'>
-                                <UserMenu handleReqClick={this.props.handleReqClick} handleUploClick={this.props.handleUploClick}/>
+                                <UserMenu userMenu={this.props.userMenu} handleClick={this.props.handleClick}/>
                             </div>
                         </Fragment>) :
                         (<Fragment>
@@ -111,8 +109,7 @@ Header.propTypes = {
     notifications: PropTypes.bool,
     search: PropTypes.bool,
     close: PropTypes.func,
-    handleReqClick: PropTypes.func,
-    handleUploClick: PropTypes.func,
+    handleClick: PropTypes.func,
     handleSeeAll: PropTypes.func,
     handleSeeAllClick: PropTypes.func,
     user: PropTypes.object
