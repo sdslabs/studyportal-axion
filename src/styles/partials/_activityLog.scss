@@ -8,6 +8,17 @@
     min-height: 26.5625rem;
     z-index: -1;
     cursor: default;
+
+    ::-webkit-scrollbar {
+        width: 0.375rem;
+    }
+     ::-webkit-scrollbar-track {
+        background: #88CAEB;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: #629EBD;
+        border-radius: 2.9375rem;
+    }
 }
 
 .activitylog-- {
@@ -37,6 +48,7 @@
         width: 98%;
         margin-top: 3.25rem;
         margin-left: 1%;
+        padding-right: 1%;
         overflow-y: auto;
     }
 }

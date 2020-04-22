@@ -17,7 +17,7 @@ function requestFiles(token, filetype, title, course) {
   const status = 1;
   return $.ajax({
     method: "POST",
-    url: "http://nexus.sdslabs.local/api/v1/filerequests",
+    url: "http://localhost:8005/api/v1/filerequests",
     data: { filetype, status, title, course },
     dataType: "json",
     beforeSend (xhr) {
@@ -32,7 +32,7 @@ function requestCourse(token, department, course, code) {
   const status = 1;
   return $.ajax({
     method: "POST",
-    url: "http://nexus.sdslabs.local/api/v1/courserequests",
+    url: "http://localhost:8005/api/v1/courserequests",
     data: { status, department, course, code },
     dataType: "json",
     beforeSend (xhr) {

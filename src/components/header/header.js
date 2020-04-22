@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 class Header extends Component {
     render() {
         return(
-            <div className='header'>
+            <div className='header' onClick={this.props.close}>
                 <div className='header--content'>
                     <div className='header--icon'>
                         <Link to='/' style={{ textDecoration: 'none' }}>

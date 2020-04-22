@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     width: 100%;
     min-width: 28.125rem;
     height: 22.875rem;
@@ -19,8 +18,10 @@
 
 .nosearchresults-- {
     &message {
+        text-align: left;
         margin-left: 1%;
         &_plaintext {
+            width: auto;
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import parseDate from 'utils/parseDate';
 import pdf from 'assets/material_pdf.svg';
 import docx from 'assets/material_docx.svg';
 import ppt from 'assets/material_ppt.svg';
@@ -13,10 +14,7 @@ class MaterialCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          queue: props.queue,
-          name: props.name,
-          size: props.size,
-          downloads: props.downloads
+          queue: props.queue
         };
         this.material_map = {
             pdf,
@@ -29,11 +27,6 @@ class MaterialCard extends Component {
 
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
-    }
-
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps(props) {
-        this.setState({ name: props.name, size: props.size, downloads: props.downloads });
     }
 
     hover() {
@@ -55,9 +48,9 @@ class MaterialCard extends Component {
                         <div className='material--icon'><img src={this.material_map[this.props.ext]} alt='icon' /></div>
                         <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
                             target='blank' style={{ textDecoration:'none' }}>
-                        <div className='material--name'>{this.state.name}</div>
+                        <div className='material--name'>{this.props.name}</div>
                         </a>
-                        <div className='material--download'>Downloads: {this.state.downloads}</div>
+                        <div className='material--download'>Downloads: {this.props.downloads}</div>
                     </div>
                 </div>
                 <div className='material--sizemod'>
@@ -67,8 +60,8 @@ class MaterialCard extends Component {
                             <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
                             <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
                     </a>
-                    <div className='material--size'>{this.state.size}</div>
-                    <div className='material--datemodified'>Dec 14, 2018</div>
+                    <div className='material--size'>{this.props.size}</div>
+                    <div className='material--datemodified'>{parseDate(this.props.date_modified)}</div>
                 </div>
             </div>
         );
@@ -83,5 +76,6 @@ MaterialCard.propTypes = {
     size: PropTypes.string,
     downloads: PropTypes.number,
     url: PropTypes.string,
-    ext: PropTypes.string
+    ext: PropTypes.string,
+    date_modified: PropTypes.string
 };

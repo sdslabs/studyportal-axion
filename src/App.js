@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
 import Home from './pages/home';
-import Test from './pages/test';
 import Department from './pages/department';
 import { Switch, Route } from 'react-router-dom';
 import { setUser } from 'actions/actions';
@@ -19,9 +18,6 @@ function mapDispatchToProps(dispatch) {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      login: true
-    };
     this.getUser();
     this.getUser = this.getUser.bind(this);
   }
@@ -55,15 +51,14 @@ class App extends Component {
     return (
       <Switch>
           <Route exact path='/' render={(props) => <Home {...props} />} />
-          <Route exact path='/test' render={(props) => <Test {...props} login={this.state.login} />} />
-          <Route exact path='/mycourse' render={(props) => <Department {...props} login={this.state.login} error={false}/>} />
+          <Route exact path='/mycourse' render={(props) => <Department {...props} error={false}/>} />
           <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
             render={(props) => <Department {...props} login={this.state.login} error={false}/>} />
-          <Route exact path='/activity/:type?' render={(props) => <Department {...props} login={this.state.login} error={false}/>} />
-          <Route exact path='/departments/:department' render={(props) => <Department {...props} login={this.state.login} error={false} />} />
+          <Route exact path='/activity/:type?' render={(props) => <Department {...props} error={false}/>} />
+          <Route exact path='/departments/:department' render={(props) => <Department {...props} error={false} />} />
           <Route exact path='/departments/:department/courses/:course/:file_type?'
-            render={(props) => <Department {...props} login={this.state.login} error={false} />} />
-          <Route path='*' render={(props) => <Department {...props} login={this.state.login} error />} />
+            render={(props) => <Department {...props} error={false} />} />
+          <Route path='*' render={(props) => <Department {...props} error />} />
       </Switch>
     );
   }

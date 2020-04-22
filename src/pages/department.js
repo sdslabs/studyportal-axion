@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import Header from 'components/header/header';
 import Sidebar from 'components/sidebar/sidebar';
 import Request from 'components/request/request';
@@ -176,7 +177,17 @@ class Department extends Component {
             //TODO handle error
           }
           else {
-            // TODO updation
+            const user = {
+              login: true,
+              id: res.user.falcon_id,
+              username: res.user.username,
+              email: res.user.email,
+              profile_image: res.user.profile_image,
+              courses: res.courses
+            };
+            if(!_.isEqual(user, this.props.user)) {
+              this.props.setUser(user);
+            }
           }
         });
       }

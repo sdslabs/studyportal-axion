@@ -95,7 +95,7 @@ class ActivityCard extends Component {
 export default ActivityCard;
 
 ActivityCard.propTypes = {
-  status: PropTypes.string,
+  status: PropTypes.number,
   type: PropTypes.string,
   date: PropTypes.string,
   title: PropTypes.string,

@@ -26,7 +26,7 @@ class UserMenu extends Component {
             <Link to='/activity' style={{ textDecoration: 'none' }}>
               <div className='usermenu--activitylog link'>Activity Log</div>
             </Link>
-            <div className='usermenu--profile'>Profile</div>
+            <div className='usermenu--profile'><a href='http://accounts.sdslabs.co' className='link'>Profile</a></div>
             <div className='usermenu--logout'>Logout</div>
           </div>
         </div> :

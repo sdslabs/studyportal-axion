@@ -17,7 +17,7 @@ function uploadFile(token, course, name, filetype, file) {
   const status = 1;
   return $.ajax({
     method: "POST",
-    url: "http://nexus.sdslabs.local/api/v1/uploads",
+    url: "http://localhost:8005/api/v1/uploads",
     data: { course, name, status, filetype, file },
     dataType: "json",
     beforeSend (xhr) {

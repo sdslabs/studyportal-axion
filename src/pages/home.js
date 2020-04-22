@@ -24,6 +24,7 @@ class Home extends Component {
             userMenu:false,
             request:false,
             upload:false,
+            showmore: false,
             searchfiles: [],
             searchquery: ''
         };
@@ -115,7 +116,8 @@ class Home extends Component {
                 <div onClick={this.closeUserMenu}>Click on department to continue</div>
                 <div className='home--choosedept_und'/>
               </div>
-              <div className='home--sub_list' onClick={this.close}>
+              <div className={ this.state.request || this.state.upload || this.state.showmore ?
+                'home--sub_list_modal' : 'home--sub_list'} onClick={this.close}>
                 { this.state.departments.map((department) => (
                 <Link to={ `/departments/${department.abbreviation}` } key={department.abbreviation}>
                   <SubjectCard name={ department.title } url={ department.imageurl } id={ department.id } />
