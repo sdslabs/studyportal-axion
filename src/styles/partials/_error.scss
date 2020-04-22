@@ -1,41 +1,66 @@
 .error {
-  position: absolute;
-  top: 4.5625rem;
-  left: 0rem;
   width: 100%;
   height: calc(100% - 4.5625rem);
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-content: space-between;
   align-items: center;
 }
 
 .error-- {
   &image {
-      width: 404px;
-      height: 388px;
+    width: auto;
+    height: auto;
+    margin-top: 8%;
   }
 
   &page {
-    width: 15rem;
-    margin-top: 2rem;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.725rem;
-    line-height: 2.1875rem;
-    text-align: center;
+    font-size: 64px;
+    line-height: 75px;
+    color: #38A7DE;
   }
 
   &sorry {
-    width: 30rem;
+    margin-top: 1.8125rem;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.125rem;
-    line-height: 3.1875rem;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(43, 42, 40, 0.8);
+  }
+
+  &links {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.875rem;
+    margin-bottom: 3rem;
+  }
+
+  &home {
+    width: 7.0625rem;
+    height: 2.5625rem;
+    background: #38A7DE;
+    border-radius: 0.125rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 2.5625rem;
     text-align: center;
+    color: #FFFFFF;
+  }
+
+  &back {
+    margin-left: 2.25rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 2.5625rem;
+    color: #38A7DE;
+    cursor: pointer;
   }
 }

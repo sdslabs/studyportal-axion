@@ -1,37 +1,64 @@
-import React, { Component, Fragment } from 'react'
-import UserMenuHome from 'components/home/userMenuHome'
-import logo from 'assets/studyportal_logo.png'
-import sds_logo from 'assets/sds_logo.png'
-import upload from 'assets/upload.png'
-import request from 'assets/request.png'
-import search from 'assets/search.png'
-import 'styles/main.scss'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Search from 'components/header/search';
+import UserMenu from 'components/common/userMenu';
+import Notifications from 'components/common/notifications';
+import logo from 'assets/studyportal_logo.png';
+import sds_logo from 'assets/sds_logo.svg';
+import 'styles/main.scss';
+
+const mapStateToProps = state => {
+  return { user: state };
+};
 
 class Header extends Component {
     render() {
         return (
             <div className='landingheader' onClick={this.props.close}>
-                    <img className='landingheader--logo_sds' src={sds_logo} alt='sdslogo'/>
-                    <img className='landingheader--logo' src={logo} alt='studyportal_logo' />
-                    <div className='landingheader--heading'>Study Portal</div>
-                    <div className='landingheader--search'>
-                        <input className='landingheader--search_bar' type="text" placeholder="Search tutorials, books, notes, courses..." />
-                        <button className='landingheader--search_icon'><img src={search} alt='search' /></button>
+                    <div className='landingheader--logo_sds'><img src={sds_logo} alt='sdslogo'/></div>
+                    <div className='landingheader--main'>
+                      <div className='landingheader--logo'><img src={logo} alt='studyportal_logo'/></div>
+                      <div className='landingheader--heading'>Study Portal</div>
+                      <div className='landingheader--caption'>The Solutions Portal of IITR</div>
+                      <div className='landingheader--search'>
+                        <Search home
+                            search={this.props.search}
+                            close = {this.props.close}
+                            handleClick = {this.props.handleClick}
+                            handleSeeAllClick = {this.props.handleSeeAllClick}/>
+                      </div>
                     </div>
-                    <button className='landingheader--request'><img className='landingheader--request_image' src={request} alt='request' /> Request</button>
-                    <button className='landingheader--upload'><img className='landingheader--upload_image' src={upload} alt='upload' /> Upload</button>
-                    { this.props.login ?
-                    <Fragment>
-                      <img className='landingheader--image' src={this.props.user.profile_image} alt='user' onClick={this.props.toggleUserMenu}/>
-                      {this.props.userMenu ? <UserMenuHome/> : <Fragment/>}
-                    </Fragment> :
-                    <Fragment>
+                    { this.props.user.login ?
+                    <div className='landingheader--user_loggedin'>
+                      <div className='landingheader--notifications'>
+                        <Notifications notifications={this.props.notifications}
+                          handleClick={this.props.handleClick}
+                          close={this.props.close}/>
+                      </div>
+                      <div className='landingheader--user'>
+                        <UserMenu userMenu={this.props.userMenu}
+                          handleClick={this.props.handleClick}
+                          close={this.props.close}/>
+                      </div>
+                    </div> :
+                    <div className='landingheader--user_nologin'>
                       <button className='landingheader--login'>Login</button>
                       <button className='landingheader--signup'>Sign Up</button>
-                    </Fragment> }
+                    </div> }
             </div>
-        )
+        );
     }
 }
 
-export default Header
+export default connect(mapStateToProps)(Header);
+
+Header.propTypes = {
+  search: PropTypes.bool,
+  close: PropTypes.func,
+  notifications: PropTypes.bool,
+  userMenu: PropTypes.bool,
+  handleClick: PropTypes.func,
+  handleSeeAllClick: PropTypes.func,
+  user: PropTypes.object
+};

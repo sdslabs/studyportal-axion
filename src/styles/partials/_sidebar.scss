@@ -1,10 +1,50 @@
 .sidebar {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 26.5rem;
+    height: calc(100% - 4.5625rem);
+    min-height: 22rem;
+    left: 0rem;
+    top: 4.5625rem;
+    background: #0D2938;
+    overflow-x: none;
+
+    cursor: default;
+    z-index: 0;
+
+    ::-webkit-scrollbar {
+        width: 0.5625rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #1A4D68;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #236385;
+        border-radius: 1.125rem;
+    }
+
+    .back {
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1rem;
+        color: #38A7DE;
+    }
+}
+
+.sidebar_login {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 26.5rem;
     height: calc(100% - 4.5625rem);
     left: 0rem;
     top: 4.5625rem;
-
     background: #0D2938;
     overflow-x: none;
 
@@ -23,139 +63,120 @@
         background: #236385;
         border-radius: 1.125rem;
     }
-}
 
-.sidebar-- {
-
-    &course {
-        position: absolute;
-        width: 22.5rem;
-        height: 1.375rem;
-        left: 2.25rem;
-        top: 3.625rem;
-
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.125rem;
-        line-height: 1.3125rem;
-
-        color: #FFFFFF;
-    }
-
-    &back {
-        position: absolute;
-        width: 6.25rem;
-        height: 1.0625rem;
-        left: 2.25rem;
-        top: 5.5rem;
-
+    .back {
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 0.875rem;
         line-height: 1rem;
-
         color: #38A7DE;
+    }
+}
+
+.sidebar-- {
+    &course {
+        width: 22.5rem;
+        height: 1.375rem;
+        margin-top: 2.375rem;
+        margin-left: 2.25rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.125rem;
+        line-height: 1.3125rem;
+        color: #FFFFFF;
+    }
+
+    &coursecontent {
+        height: auto;
+        margin-bottom: 2.25rem;
+    }
+
+    &back {
+        width: 6.25rem;
+        height: 1.0625rem;
+        margin-top: 0.5rem;
+        margin-left: 2.25rem;
     }
 
     &course-name {
-        position: absolute;
         width: 100%;
         height: 1.1875rem;
-        left: 0rem;
-        top: 9.5rem;
-
+        margin-top: 2.1875rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
-
         color: #FFFFFF;
     }
 
     &course-table {
         width: 100%;
-        height: 26.9375rem;
+        height: calc(100vh - 31.4375rem);
         border-top: 0.125rem solid #1A4D68;
-
         overflow-y: auto;
         overflow-x: hidden;
     }
 
     &course-table_logout {
         width: 100%;
-        height: calc(100vh - 14.5625rem);
+        height: calc(100vh - 13.25rem);
         border-top: 0.125rem solid #1A4D68;
-
         overflow-y: auto;
         overflow-x: hidden;
     }
 
     &form-cover {
-        position: absolute;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-left: 2.25rem;
+        width: auto;
     }
 
     &form- {
-
         &header {
-            position: absolute;
-            width: 5.875rem;
+            width: auto;
             height: 1.375rem;
-            left: 2.25rem;
-            top: 39.3725rem;
-
+            margin-bottom: 1.0625rem;
             font-family: Droid Sans;
             font-style: normal;
             font-weight: normal;
             font-size: 1.125rem;
             line-height: 1.3125rem;
-
             color: #38A7DE;
 
             &_department {
-                position: absolute;
                 width: 5.4375rem;
                 height: 1.1875rem;
-                left: 2.375rem;
-                top: 41.7475rem;
-
+                margin-bottom: 0.5rem;
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-
                 color: #FFFFFF;
             }
 
             &_course {
-                position: absolute;
                 width: 6.125rem;
                 height: 1.1875rem;
-                left: 2.25rem;
-                top: 46.685rem;
-
+                margin-bottom: 0.5rem;
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
                 font-size: 1rem;
                 line-height: 1.1875rem;
-
                 color: #FFFFFF;
             }
         }
 
         &select {
             &_department {
-                position: absolute;
                 width: 16.625rem;
                 height: 2.25rem;
-                left: 2.375rem;
-                top: 43.435rem;
+                margin-bottom: 1.5rem;
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
@@ -167,11 +188,9 @@
             }
 
             &_course {
-                position: absolute;
                 width: 16.625rem;
                 height: 2.25rem;
-                left: 2.375rem;
-                top: 48.3725rem;
+                margin-bottom: 1.5rem;
                 font-family: Droid Sans;
                 font-style: normal;
                 font-weight: normal;
@@ -184,23 +203,21 @@
         }
 
         &button {
-            position: absolute;
-            width: 7.6875rem;
-            height: 2.25rem;
-            left: 2.25rem;
-            top: 52.1225rem;
+            margin-bottom: 1.75rem;
 
-            background: #38A7DE;
-            border-radius: 0.125rem;
-            border: #38A7DE;
-
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-
-            color: #FFFFFF;
+            button {
+                width: 7.6875rem;
+                height: 2.25rem;
+                background: #38A7DE;
+                border-radius: 0.125rem;
+                border: #38A7DE;
+                font-family: Droid Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                line-height: 1.1875rem;
+                color: #FFFFFF;
+            }
         }
     }
 

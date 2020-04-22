@@ -1,32 +1,32 @@
 .material {
-    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 98.5%;
     height: 4.25rem;
-
+    margin-left: 1%;
     border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .material-- {
+    &namecheck {
+        display: flex;
+        flex-direction: row;
+        margin-left: 1.875rem;
+    }
 
     &checkbox {
-        position: absolute;
         width: 0.9375rem;
         height: 0.9375rem;
-        left: 1.7%;
-        top: 1.5625rem;
-
         margin-right: 0.75rem;
+        margin-top: 1.625rem;
     }
 
     &info {
-        position: absolute;
         width: 8.8125rem;
         height: 3.3125rem;
-        left: 3.135%;
-        top: 0.8125rem;
-
+        margin-top: 0.8125rem;
         margin-left: 0.75rem;
-
         display: grid;
         grid-template-columns: 2.5rem 6.3125rem;
         grid-template-rows: 10% 40% 40% 10%;
@@ -34,94 +34,83 @@
 
     &icon {
         width: 1.75rem;
-
         grid-column: 1 / span 1;
-        grid-row: 1 / span 4;
-
         align-self: baseline;
     }
 
     &name {
         width: 15.75rem;
         height: 1.1875rem;
-
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #2B2A28;
-
         grid-column: 2 / span 1;
         grid-row: 2 / span 1;
-
         align-self: center;
     }
 
     &download {
         width: 6.8125rem;
         height: 1rem;
-
+        margin-top: -0.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 0.8125rem;
         line-height: 0.9375rem;
-
         color: rgba(43, 42, 40, 0.4);
-
         grid-column: 2 / span 1;
         grid-row: 3 / span 1;
     }
 
+    &sizemod {
+        display: flex;
+        flex-direction: row;
+    }
+
     &downloadicon- {
         &active {
-            position: absolute;
             width: 1.9375rem;
             height: 2rem;
-            left: 65%;
-            top: 1rem;
+            margin-right: 2.5625rem;
+            margin-top: 1rem;
+            cursor: pointer;
         }
 
         &other {
-            position: absolute;
             width: 1.9375rem;
             height: 2rem;
-            left: 65.65%;
-            top: 1.625rem;
+            margin-right: 2.0625rem;
+            margin-top: 1.5rem;
         }
     }
 
     &size {
-        position: absolute;
-        width: 3.6875rem;
+        width: 3.8rem;
         height: 1.1875rem;
-        left: 70%;
-        top: 1.625rem;
-
+        margin-right: 7.75rem;
+        margin-top: 1.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #2B2A28;
     }
 
     &datemodified {
-        position: absolute;
-        width: 5.8125rem;
+        width: 6.75rem;
         height: 1.1875rem;
-        left: 90%;
-        top: 1.625rem;
-
+        margin-top: 1.5rem;
+        margin-right: 1.375rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #2B2A28;
     }
 

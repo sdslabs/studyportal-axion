@@ -10,23 +10,40 @@
 .requestcover {
     position: absolute;
     width: 100%;
-    height: 61.3125rem;
-    left: 0rem;
+    height: 100%;
+    min-height: 26.5625rem;
     top: 0rem;
     background: rgba(13, 41, 56, 0.8);
     z-index: 1;
     cursor: default;
+
+    ::-webkit-scrollbar {
+        width: 0.5625rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #1A4D68;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #236385;
+        border-radius: 1.125rem;
+    }
 }
 
 .request {
     position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 86.88%;
     height: 95.12%;
     left: 6.56%;
     top: 2.44%;
     background: #FFFFFF;
     box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
     border-radius: 0.125rem;
+    scrollbar-width: 0rem;
 
     ::placeholder {
         color: rgba(43, 42, 40, 0.2);
@@ -50,11 +67,10 @@
     }
 
     &heading {
-        position: absolute;
         width: 7.25rem;
         height: 2.375rem;
-        left: 48%;
-        top: 3.75%;
+        align-self: center;
+        margin-top: 1.1875rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -64,20 +80,18 @@
     }
 
     &underline {
-        position: absolute;
         width: 5rem;
         height: 0.05%;
-        left: 48.90%;
-        top: 9.32%;
-        border: 0.0625rem solid #38A7DE;
+        align-self: center;
+        margin-top: 0.625rem;
+        border: 0.0425rem solid #38A7DE;
     }
 
     &instructions {
-        position: absolute;
         width: 63.34%;
-        height: 8.25rem;
-        left: 17.32%;
-        top: 14.78%;
+        height: auto;
+        margin-left: 17%;
+        margin-top: 2.125rem;
         background: rgba(56, 167, 222, 0.275);
         border-radius: 0.125rem;
         font-family: Droid Sans;
@@ -91,11 +105,10 @@
     }
 
     &type {
-        position: absolute;
         width: 6rem;
         height: 1.1875rem;
-        left: 18.75%;
-        top: 36.86%;
+        margin-top: 2.25rem;
+        margin-left: 18%;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -107,11 +120,10 @@
     &filebutton- {
 
         &inactive {
-            position: absolute;
             width: 7.5625rem;
             height: 2.25rem;
-            left: 18.75%;
-            top: 40.61%;
+            margin-left: 18%;
+            margin-top: 1rem;
             background: #FFFFFF;
             border: none;
             border-bottom: 0.25rem solid rgba(56, 167, 222, 0.2);
@@ -124,11 +136,10 @@
         }
 
         &active {
-            position: absolute;
             width: 7.5625rem;
             height: 2.25rem;
-            left: 18.75%;
-            top: 40.61%;
+            margin-left: 18%;
+            margin-top: 1rem;
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
@@ -145,11 +156,8 @@
     &coursebutton- {
 
         &inactive {
-            position: absolute;
             width: 7.5625rem;
             height: 2.25rem;
-            left: calc(18.75% + 7.5625rem);
-            top: 40.61%;
             background: #FFFFFF;
             border: none;
             border-bottom: 0.2rem solid rgba(56, 167, 222, 0.2);
@@ -162,11 +170,8 @@
         }
 
         &active {
-            position: absolute;
             width: 7.5625rem;
             height: 2.25rem;
-            left: calc(18.75% + 7.5625rem);
-            top: 40.61%;
             background: rgba(56, 167, 222, 0.25);
             border: none;
             border-bottom: 0.25rem solid #38A7DE;
@@ -180,27 +185,81 @@
     }
 
     &form-file {
-        position: absolute;
+        display: flex;
+        flex-direction: column;
         width: 67%;
         height: 40.5%;
-        left: 19.5%;
-        top: 46.18%;
+        margin-left: 19%;
     }
 
     &form-course {
-        position: absolute;
+        display: flex;
+        flex-direction: column;
         width: 66.5%;
         height: 30.328%;
-        left: 19.5%;
-        top: 46.18%;
+        margin-left: 19%;
     }
 
     &button-file {
-        position: absolute;
+        display: block;
         width: 5.875rem;
         height: 2.5625rem;
-        left: 0%;
-        top: 87.056%;
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        background: #38A7DE;
+        border-radius: 0.125rem;
+        border: #38A7DE;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 2.5625rem;
+        text-align: center;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
+
+    &button-file_requesting {
+      width: 8.25rem;
+      height: 2.5625rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+      background: #38A7DE;
+      border-radius: 0.125rem;
+      border: #38A7DE;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 2.5625rem;
+      text-align: center;
+      color: #FFFFFF;
+      cursor: pointer;
+  }
+
+  &button-file_requested {
+    width: 8.25rem;
+    height: 2.5625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background: #38A7DE;
+    border-radius: 0.125rem;
+    border: #38A7DE;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 2.5625rem;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+    &button-course {
+        display: block;
+        width: 5.875rem;
+        height: 2.5625rem;
+        margin-top: 1.5rem;
         background: #38A7DE;
         border-radius: 0.125rem;
         border: #38A7DE;
@@ -212,60 +271,8 @@
         color: #FFFFFF;
     }
 
-    &button-file_requesting {
-      position: absolute;
-      width: 8.25rem;
-      height: 2.5625rem;
-      left: 0%;
-      top: 87.056%;
-      background: #38A7DE;
-      border-radius: 0.125rem;
-      border: #38A7DE;
-      font-family: Droid Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: #FFFFFF;
-  }
-
-  &button-file_requested {
-    position: absolute;
-    width: 8.25rem;
-    height: 2.5625rem;
-    left: 0%;
-    top: calc(72% + 6.25rem);
-    background: #38A7DE;
-    border-radius: 0.125rem;
-    border: #38A7DE;
-    font-family: Droid Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: #FFFFFF;
-}
-
-    &button-course {
-      position: absolute;
-      width: 5.875rem;
-      height: 2.5625rem;
-      left: 0%;
-      top: 85.518%;
-      background: #38A7DE;
-      border-radius: 0.125rem;
-      border: #38A7DE;
-      font-family: Droid Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: #FFFFFF;
-    }
-
     &confirmation {
-      position: absolute;
-      top: calc(72% + 3.75rem);
+      margin-top: 1.5rem;
 
       &-text {
         margin-left: 0.5rem;
@@ -293,11 +300,9 @@
 .file-- {
 
     &department {
-        position: absolute;
         width: 5.4375rem;
         height: 1.3125rem;
-        left: 0%;
-        top: 0%;
+        margin-top: 1rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -307,11 +312,9 @@
         color: #2B2A28;
 
         &-select {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 7.673%;
+            margin-top: 0.5rem;
             border: 1px solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -326,11 +329,6 @@
         }
 
         &-select:disabled {
-          position: absolute;
-          width: 15.75rem;
-          height: 2.25rem;
-          left: 0%;
-          top: 7.673%;
           border: 0.0625rem solid rgba(43, 42, 40, 0.2);
           box-sizing: border-box;
           border-radius: 0.125rem;
@@ -347,11 +345,9 @@
     }
 
     &course {
-        position: absolute;
         width: 12.5rem;
         height: 1.3125rem;
-        left: 0%;
-        top: 20.90%;
+        margin-top: 1.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -361,11 +357,9 @@
         color: rgba(43, 42, 40, 0.2);
 
         &-select {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 28.57%;
+            margin-top: 0.5rem;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -396,11 +390,9 @@
     }
 
     &material {
-        position: absolute;
         width: 6.125rem;
         height: 1.1875rem;
-        left: 0%;
-        top: 44.45%;
+        margin-top: 1.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -408,60 +400,59 @@
         line-height: 1.1875rem;
         color: rgba(43, 42, 40, 0.2);
 
+        &material--container {
+            position: relative;
+        }
+ 
         &_tut {
-            position: absolute;
-            top: 52%;
-            left: 0%;
+            position: relative;
+            top: 0;
             height: 0.9375rem;
             width: 0.9375rem;
+            margin-top: 0.5625rem;
         }
 
         &_books {
-            position: absolute;
-            top: 52%;
-            left: 18.96%;
+            position: relative;
+            top: -2.125rem;
+            margin-left: 18%;
             height: 0.9375rem;
             width: 0.9375rem;
         }
 
         &_notes {
-            position: absolute;
-            top: 52%;
-            left: 38.65%;
+            position: relative;
+            top: -4.35rem;
+            margin-left: 36%;
             height: 0.9375rem;
             width: 0.9375rem;
         }
 
         &_exam {
-            position: absolute;
-            top: 52%;
-            left: 57.89%;
+            position: relative;
+            top: -6.575rem;
+            margin-left: 54%;
             height: 0.9375rem;
             width: 0.9375rem;
         }
     }
 
     &name {
-        position: absolute;
         width: 2.75rem;
         height: 1.3125rem;
-        left: 0%;
-        top: 63.50%;
+        margin-top: -7rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.3125rem;
         text-align: justify;
-
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
-            position: absolute;
             width: 29.9375rem;
             height: 2.25rem;
-            left: 0%;
-            top: 71.179%;
+            margin-top: 0.5rem;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -488,11 +479,9 @@
 .course-- {
 
     &department {
-        position: absolute;
         width: 5.4375rem;
         height: 1.3125rem;
-        left: 0%;
-        top: 0%;
+        margin-top: 1.6875rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -502,11 +491,9 @@
         color: #2B2A28;
 
         &-input {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 10.248%;
+            margin-top: 0.5rem;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -516,11 +503,9 @@
     }
 
     &course {
-        position: absolute;
         width: 12.5rem;
         height: 1.3125rem;
-        left: 0%;
-        top: 27.91%;
+        margin-top: 1rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -530,11 +515,9 @@
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
-            position: absolute;
             width: 15.75rem;
             height: 2.25rem;
-            left: 0%;
-            top: 38.165%;
+            margin-top: 0.5rem;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
             border-radius: 0.125rem;
@@ -552,11 +535,9 @@
     }
 
     &id {
-        position: absolute;
         width: 4.5rem;
         height: 1.1875rem;
-        left: 0%;
-        top: 55.1275%;
+        margin-top: 1.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
@@ -565,11 +546,9 @@
         color: rgba(43, 42, 40, 0.2);
 
         &-input {
-            position: absolute;
             width: 5.375rem;
             height: 2.25rem;
-            left: 0%;
-            top: 64.315%;
+            margin-top: 0.5rem;
             background: #FFFFFF;
             border: 0.0625rem solid #2B2A28;
             box-sizing: border-box;
@@ -595,11 +574,11 @@
 }
 
 .tut {
-    position: absolute;
+    position: relative;
+    top: -0.9375rem;
     width: 3.9375rem;
     height: 1.1875rem;
-    left: 3%;
-    top: 51.86%;
+    margin-left: 5%;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
@@ -609,11 +588,11 @@
 }
 
 .books {
-    position: absolute;
+    position: relative;
     width: 3.9375rem;
     height: 1.1875rem;
-    left: 21.96%;
-    top: 51.86%;
+    top: -3.0625rem;
+    margin-left: 23%;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
@@ -623,11 +602,11 @@
 }
 
 .notes {
-    position: absolute;
+    position: relative;
     width: 3.9375rem;
     height: 1.1875rem;
-    left: 41.65%;
-    top: 51.86%;
+    top: -5.2875rem;
+    margin-left: 41%;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;
@@ -637,11 +616,11 @@
 }
 
 .exam {
-    position: absolute;
+    position: relative;
     width: 15.625rem;
     height: 1.1875rem;
-    left: 60.89%;
-    top: 51.86%;
+    top: -7.6125rem;
+    margin-left: 59%;
     font-family: Droid Sans;
     font-style: normal;
     font-weight: normal;

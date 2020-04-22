@@ -1,38 +1,31 @@
-import { GET_ID,GET_USER,GET_USERNAME,GET_EMAIL,GET_PROFILE_IMAGE,GET_COURSES,RESET_APP } from "constants/action-types";
+import { SET_USER,SET_COURSES,RESET_APP } from "constants/action-types";
 
 const initialState = {
+    login: false,
     id: 0,
     username: '',
     email: '',
     profile_image: '',
-    courses: [],
+    courses: []
 };
 
 export default function rootReducer(state = initialState, action) {
-    if (action.type === GET_ID) {
-      Object.assign({},state,{ id : action.payload });
-    }
-    if (action.type === GET_USER) {
-      Object.assign({},state,action.payload);
-    }
-    if (action.type === GET_USERNAME) {
-        Object.assign({},state,{ username : action.payload });
-    }
-    else if (action.type === GET_EMAIL) {
-      Object.assign({},state,{ email : action.payload });
-    }
-    else if (action.type === GET_PROFILE_IMAGE) {
-      Object.assign({},state,{ profile_image : action.payload });
-    }
-    else if (action.type === GET_COURSES) {
-        Object.assign({},state,{ courses : action.payload });
-    }
-    else if (action.type === RESET_APP) {
+    switch(action.type) {
+      case SET_USER:
+        state = action.payload;
+        return state;
+      case SET_COURSES:
+        state.courses = action.payload;
+        return state;
+      case RESET_APP:
+        state.login = false;
         state.id = 0;
         state.username = '';
         state.email = '';
         state.profile_image = '';
         state.courses = [];
+        return state;
+      default:
+        return state;
     }
-    return state;
 }

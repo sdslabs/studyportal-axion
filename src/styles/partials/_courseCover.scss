@@ -1,10 +1,12 @@
 .coursecover {
   position: absolute;
-  top: 4.5625rem;
-  left: 26.5rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   width: calc(100% - 26.5rem);
   height: calc(100% - 4.5625rem);
-
+  margin-left: 26.5rem;
+  z-index: -1;
   font-family: Droid Sans;
   font-style: normal;
   font-weight: normal;
@@ -15,8 +17,15 @@
   align-items: center;
   color: #0D2938;
 
-  &-hold {
-    width: 307px;
-    height: 28px;
+  &--hold {
+    width: 19.1875rem;
+    height: 1.75rem;
+    margin-top: 0.7891rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: rgba(45, 156, 219, 0.9);
   }
 }

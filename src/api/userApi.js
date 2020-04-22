@@ -10,7 +10,7 @@ function loginUserWithToken(token) {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 function loginUserWithCookie() {
@@ -26,7 +26,7 @@ function loginUserWithCookie() {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 function addCourseForUser(token,course) {
@@ -38,7 +38,7 @@ function addCourseForUser(token,course) {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 function deleteCourseForUser(token,course) {
@@ -50,7 +50,7 @@ function deleteCourseForUser(token,course) {
   })
   .catch((error) => {
     return Promise.reject(error);
-  })
+  });
 }
 
 export {
@@ -58,4 +58,4 @@ export {
   loginUserWithCookie,
   addCourseForUser,
   deleteCourseForUser
-}
+};
