@@ -30,7 +30,6 @@ class Sidebar extends Component {
     }
 
     componentDidMount() {
-      this.setState({ department:this.props.department })
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
@@ -82,7 +81,6 @@ class Sidebar extends Component {
     }
 
     render() {
-      console.log(this.state, this.props)
         if (this.state.login) {
             return(
                 <div className='sidebar' onClick={this.props.close}>
