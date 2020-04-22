@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
@@ -25,7 +26,8 @@ class CoursePage extends Component {
             name: '',
             login: props.user.login,
             loading: false,
-            files: []
+            files: [],
+            year: ''
         };
         this.filemap = {
           "tutorials": "Tutorials",
@@ -37,6 +39,7 @@ class CoursePage extends Component {
         this.checkCourse = this.checkCourse.bind(this);
         this.addCourse = this.addCourse.bind(this);
         this.deleteCourse = this.deleteCourse.bind(this);
+        this.sortFilesByYear = this.sortFilesByYear.bind(this);
     }
 
     componentDidMount() {
@@ -76,7 +79,10 @@ class CoursePage extends Component {
                     //TODO handle error
                   }
                   else {
-                    this.setState({ files:resp, loading:false });
+                    this.setState({
+                      files:this.sortFilesByYear(resp),
+                      loading:false
+                    });
                   }
                 });
                 else
@@ -85,9 +91,33 @@ class CoursePage extends Component {
                     //TODO handle error
                   }
                   else {
-                    this.setState({ files:resp, loading:false });
+                    this.setState({
+                      files:this.sortFilesByYear(resp),
+                      loading:false
+                    });
                   }
               });}}});}});
+    }
+
+    sortFilesByYear(files) {
+      if(!_.isEmpty(files)) {
+        let years = [];
+        files.forEach(file => {
+          let year = file.date_modified.split('-');
+          if (years.find(o => o.year === year[0]) === undefined)
+            years.push({
+              'year':year[0],
+              files: []
+            });
+            years.find(o => o.year === year[0]).files.push(file);
+        });
+        years.sort((a,b) => {
+          return parseInt(b.year) - parseInt(a.year);
+        });
+        this.setState({ year:years[0].year });
+        return years;
+      }
+      else return files;
     }
 
     async checkCourse(props) {
@@ -190,16 +220,22 @@ class CoursePage extends Component {
                       </div>
                   </div>
                   <div className='coursepage--material'>
-                      { this.state.files.map((file) => (
-                        <MaterialCard key={ file.driveid }
-                                      name={ file.title }
-                                      url={ file.driveid }
-                                      downloads={ file.downloads }
-                                      ext = { file.fileext }
-                                      size={ file.size }
-                                      date_modified={ file.date_modified } />
+                      { this.state.files.map((obj) => (
+                        <div key={obj.year}>
+                          { obj.year === this.state.year? obj.files.map((file) => (
+                            <MaterialCard key={ file.driveid }
+                                          name={ file.title }
+                                          url={ file.driveid }
+                                          downloads={ file.downloads }
+                                          ext = { file.fileext }
+                                          size={ file.size }
+                                          date_modified={ file.date_modified } />
+                          )) : null }
+                          <div className='coursepage--material_year' onClick={() => this.setState({ year:obj.year })}>
+                            {obj.year}
+                          </div>
+                        </div>
                       )) }
-                      <div className='coursepage--material_year'>2017</div>
                   </div>
               </div>
           );
