@@ -101,8 +101,10 @@ class Sidebar extends Component {
                             <Link to={ `/mycourse/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id }>
                                 <CourseHandle login
                                               name={ `${course.title} ${course.code}` }
-                                              title={course.title} code={course.code}
-                                              course={course.id} active={this.active}
+                                              title={course.title}
+                                              code={course.code}
+                                              course={course.id}
+                                              active={this.active}
                                               handleClick={this.handleClick}/>
                             </Link>
                           )) }
@@ -141,7 +143,8 @@ class Sidebar extends Component {
                   <div className='sidebar--course-table_logout'>
                     <div className={ this.props.active === 'all' || this.props.active === undefined ? 'coursehandle_active' : 'coursehandle'}>
                       <Link to={`/activity/all`} className='link'>
-                        <span className={ this.props.active === 'all' || this.props.active === undefined ? 'coursehandle--heading_active' : 'coursehandle--heading'}>
+                        <span className={ this.props.active === 'all' || this.props.active === undefined ?
+                          'coursehandle--heading_active' : 'coursehandle--heading'}>
                           All Activity Log
                         </span>
                       </Link>

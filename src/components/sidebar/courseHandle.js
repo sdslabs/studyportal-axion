@@ -6,13 +6,18 @@ import coursedot from 'assets/coursedot.png';
 import 'styles/main.scss';
 import shortName from 'utils/short-name';
 
+function mapStateToProps(state) {
+    return { user: state };
+}
+
 class CourseHandle extends Component {
     constructor(props) {
         super(props);
         this.state = {
             active: props.active,
             login: props.login,
-            name: props.name
+            name: props.name,
+            mycourse: this.checkMyCourse(props)
         };
         this.activatecourse = this.activatecourse.bind(this);
     }
@@ -53,6 +58,12 @@ class CourseHandle extends Component {
       this.props.handleClick(this.props.name);
     }
 
+    checkMyCourse(props) {
+        if(props.user.courses.find(o => o.code === props.code) !== undefined)
+            return true;
+        else return false;
+    }
+
     render() {
         if (this.state.login) {
             return(
@@ -76,14 +87,14 @@ class CourseHandle extends Component {
                         'coursehandle--heading_active' : 'coursehandle--heading'} onClick={this.activatecourse}>
                         {`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}
                     </span>
-                    { this.props.mycourse === 'true' ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
+                    { this.state.mycourse ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
                 </div>
             );
         }
     }
 }
 
-export default connect(null)(CourseHandle);
+export default connect(mapStateToProps)(CourseHandle);
 
 CourseHandle.propTypes = {
     active: PropTypes.string,
@@ -91,6 +102,6 @@ CourseHandle.propTypes = {
     name: PropTypes.string,
     title: PropTypes.string,
     code: PropTypes.string,
-    mycourse: PropTypes.string,
+    user: PropTypes.object,
     handleClick: PropTypes.func
 };
