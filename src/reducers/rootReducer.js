@@ -1,22 +1,31 @@
-import { GET_DEPARTMENT,GET_COURSE,RESET_APP } from "constants/action-types";
+import { SET_USER,SET_COURSES,RESET_APP } from "constants/action-types";
 
 const initialState = {
-    department: 0,
-    course: {
-      id: 0,
-      name: ""
-    }
+    login: false,
+    id: 0,
+    username: '',
+    email: '',
+    profile_image: '',
+    courses: []
 };
 
 export default function rootReducer(state = initialState, action) {
-    if (action.type === GET_DEPARTMENT) {
-        state.department = action.payload
+    switch(action.type) {
+      case SET_USER:
+        state = action.payload;
+        return state;
+      case SET_COURSES:
+        state.courses = action.payload;
+        return state;
+      case RESET_APP:
+        state.login = false;
+        state.id = 0;
+        state.username = '';
+        state.email = '';
+        state.profile_image = '';
+        state.courses = [];
+        return state;
+      default:
+        return state;
     }
-    else if (action.type === GET_COURSE) {
-        state.course = action.payload
-    }
-    else if (action.type === RESET_APP) {
-        state.department = 0
-    }
-    return state;
 }

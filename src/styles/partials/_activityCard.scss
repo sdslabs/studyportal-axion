@@ -1,18 +1,15 @@
-.activityreqcard {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-row: auto;
-
+.activitycard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
     border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
-
     padding: 1.0625rem 0rem 1.125rem 0rem;
 }
 
-.activityreqcard-- {
+.activitycard-- {
 
     &info {
-        grid-column: 1 / span 1;
         justify-self: left;
         align-self: center;
         margin-left: 4rem;
@@ -23,7 +20,6 @@
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             color: #000000;
             margin-bottom: 0.5rem;
         }
@@ -38,7 +34,6 @@
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             color: rgba(43, 42, 40, 0.6);
         }
 
@@ -48,7 +43,6 @@
             font-weight: normal;
             font-size: 1rem;
             line-height: 1.1875rem;
-
             color: rgba(43, 42, 40, 1.0);
         }
     }
@@ -59,39 +53,54 @@
         font-weight: normal;
         font-size: 0.875rem;
         line-height: 1rem;
-
         color: rgba(43, 42, 40, 0.8);
     }
 
     &status {
-        grid-column: 2 / span 1;
-        justify-self: center;
-        align-self: center;
-
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.5625rem;
-
-        color: #2F7F2E;
-
         &_color {
             margin-bottom: 0.125rem;
+        }
+
+        &_blue {
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #38A7DE;
+        }
+
+        &_green {
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #2F7F2E;
+        }
+
+        &_yellow {
+          align-self: center;
+          font-family: Droid Sans;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 1rem;
+          line-height: 1.5625rem;
+          color: #F2C94C;
         }
     }
 
     &file {
-        grid-column: 3 / span 1;
-        justify-self: center;
+        width: 30%;
         align-self: center;
-
+        margin-right: 4rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 2.1875rem;
-
         color: #38A7DE;
 
         &_download {

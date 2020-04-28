@@ -1,9 +1,4 @@
-#request upload icon to be changed
-#smooth hover interaction
-#add a footer
-#hover state color darken
-#spacing issues on request button in header
-#search icon on home screen is not aligned with search bar
-#left align in activity req card
-#radio buttons design refer
-#make my course and activity log sidebar similar
+#integrate login/signup flow
+#make no activity page
+#add notifications
+#integrate logout flow

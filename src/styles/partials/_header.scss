@@ -1,10 +1,8 @@
 .header {
-    position: absolute;
+    display: flex;
+    flex-direction: row;
     width: 100%;
     height: 4.5625rem;
-    left: 0%;
-    top: 0%;
-
     background: #38A7DE;
     border: 0.0625rem solid #38A7DE;
     box-sizing: border-box;
@@ -30,156 +28,124 @@
 }
 
 .header-- {
+    &content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    &userinfo {
+        display: flex;
+        flex-direction: row;
+    }
 
     &logo {
-        position: absolute;
-        left: 2.71%;
-        right: 93.77%;
-        top: 16%;
-        bottom: 92.52%;
+        display: flex;
+        flex-direction: row;
+        margin-left: 2.25rem;
+        margin-top: 0.8125rem;
     }
 
     &heading {
-        position: absolute;
+        margin-top: 0.7631rem;
+        margin-left: 0.3125rem;
         width: 7rem;
         height: 1.3125rem;
-        left: calc(2.71% + 3.644375rem);
-        top: 33.16%;
-
         font-family: Sansation;
         font-style: normal;
         font-weight: bold;
         font-size: 1.25rem;
         line-height: 1.375rem;
-
         color: #0D2938;
     }
 
     &search {
-        position: absolute;
-        width: 24.46%;
-        height: 2rem;
-        left: calc(2.71% + 14.69375rem);
-        top: 0.9375rem;
-
-        &_bar {
-            position: absolute;
-            width: 98%;
-            height: 2rem;
-            left: 0%;
-            top: 0rem;
-
-            padding: 0.25rem;
-            padding-left: 1rem;
-            background: #FFFFFF;
-            border-radius: 0.125rem;
-            border: #FFFFFF;
-
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-
-            color: #2B2A28;
-        }
-
-        &_icon {
-            position: absolute;
-            width: 2.560625rem;
-            height: 2.560625rem;
-            left: 98%;
-            top: 0rem;
-
-            background: #0D2938;
-            border: #0D2938;
-            border-radius: 0.125rem;
-        }
+        width: 38%;
+        height: auto;
+        margin-left: 4%;
+        margin-top: 1rem;
     }
 
-    &request {
-        position: absolute;
+    &home {
         width: 3.6225rem;
         height: 2.375rem;
-        left: calc(26.6808% + 19.54rem);
-        top: 1.5625rem;
-
+        margin-top: 1.625rem;
+        margin-left: -2%;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
+        color: #0D2938;
+    }
 
+    &mycourse {
+        width: 6.6225rem;
+        height: 2.375rem;
+        margin-top: 1.625rem;
+        margin-left: 1.5%;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+        z-index: 1;
+        color: #0D2938;
+    }
+
+    &request {
+        width: 6.2475rem;
+        height: 1.1875rem;
+        margin-left: 1.5rem;
+        margin-top: 1.625rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
         color: #0D2938;
     }
 
     &upload {
-        position: absolute;
-        width: 3.2475rem;
-        height: 1.1875rem;
-        left: calc(26.6808% + 24.66375rem);
-        top: 1.5625rem;
-
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-
-        color: #0D2938;
-    }
-
-    &mentors {
-        position: absolute;
         width: 7.5rem;
         height: 2.375rem;
-        left: calc(26.6808% + 29.4125rem);
-        top: 1.5625rem;
-
+        margin-right: 1.5rem;
+        margin-top: 1.625rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
 
     }
 
     &login {
-        position: absolute;
         width: 2.435625rem;
         height: 2.375rem;
-        left: 85.94%;
-        top: 1.0625rem;
-
+        margin-right: 1.5rem;
+        margin-top: 1rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
         background: transparent;
         border: none;
     }
 
     &signup {
-        position: absolute;
         width: 4.99625rem;
         height: 2.5625rem;
-        left: 90.10%;
-        top: 0.9375rem;
-
+        margin-right: 3.125rem;
+        margin-top: 1rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-
         color: #0D2938;
-
-
         border: 0.0625rem solid #0D2938;
         box-sizing: border-box;
         border-radius: 0.125rem;
@@ -187,48 +153,14 @@
     }
 
     &notification {
-        position: absolute;
-        width: 1.875rem;
-        height: 1.875rem;
-        left: 89.71%;
-        top: 1.4375rem;
-
-        background: #0D2938;
-        border-radius: 0.125rem;
-
-        &_image {
-            position: absolute;
-            left:29%;
-            right: 9.96%;
-            top: 31%;
-            bottom: 30%;
-        }
-
-        &_number {
-            position: absolute;
-            width: 0.4375rem;
-            height: 13px;
-            left: 58.75%;
-            top: 8.5%;
-
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: bold;
-            font-size: 0.6875rem;
-            line-height: 0.8125rem;
-
-            color: #FFFFFF;
-        }
+        margin-top: 1.4375rem;
+        margin-left: -22.125rem;
+        z-index: auto;
     }
 
     &user {
-        position: absolute;
-        width: 2.5625rem;
-        height: 2.5625rem;
-        left: 93.4%;
-        top: 1rem;
-
-        border-radius: 0.125rem;
+        margin-top: 1rem;
+        margin-right: 4.125rem;
     }
 
     &search_icon:hover, &request:hover, &upload:hover, &mentors:hover, &login:hover, &signup:hover, &notification:hover, &user:hover {

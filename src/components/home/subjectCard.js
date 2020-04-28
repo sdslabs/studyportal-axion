@@ -1,19 +1,21 @@
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react'
-import 'styles/main.scss'
+import React, { Component } from 'react';
+import 'styles/main.scss';
 
 class SubjectCard extends Component {
     constructor(props) {
       super(props);
       this.state = {
         hover: false
-      }
+      };
 
-      this.togglehover = this.togglehover.bind(this)
+      this.togglehover = this.togglehover.bind(this);
     }
 
     togglehover() {
-      this.setState({ hover:!this.state.hover })
+      this.setState(prevState => ({
+        hover:!prevState.hover
+      }));
     }
 
     render() {
@@ -24,8 +26,8 @@ class SubjectCard extends Component {
                 { !this.state.hover ? <div className='subjectcard--cover' /> : <div className='subjectcard--cover-hover' /> }
                 <div className='subjectcard--text'><div className='subjectcard--text-hold'>{this.props.name}</div></div>
             </div>
-        )
+        );
     }
 }
 
-export default SubjectCard
+export default SubjectCard;
