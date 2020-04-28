@@ -53,7 +53,7 @@ class App extends Component {
           <Route exact path='/' render={(props) => <Home {...props} />} />
           <Route exact path='/mycourse' render={(props) => <Department {...props} error={false}/>} />
           <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
-            render={(props) => <Department {...props} login={this.state.login} error={false}/>} />
+            render={(props) => <Department {...props} error={false}/>} />
           <Route exact path='/activity/:type?' render={(props) => <Department {...props} error={false}/>} />
           <Route exact path='/departments/:department' render={(props) => <Department {...props} error={false} />} />
           <Route exact path='/departments/:department/courses/:course/:file_type?'
