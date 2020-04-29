@@ -18,7 +18,9 @@ function loginUserWithCookie() {
   { headers: {
     'Authorization' : 'Bearer None',
     'Content-Type': 'application/json',
-    'Accept': 'application/json' } })
+    'Accept': 'application/json',
+  },
+    withCredentials : true })
   .then((response) => {
     const res = JSON.parse(response.request.response);
     setCookie('token',res.token);
