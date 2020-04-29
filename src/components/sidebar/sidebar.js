@@ -14,6 +14,9 @@ const mapStateToProps = state => {
   return { user: state };
 };
 
+/**
+ * Sidebar component for Studyportal homepage.
+ */
 class Sidebar extends Component {
     constructor(props) {
         super(props);
@@ -49,11 +52,19 @@ class Sidebar extends Component {
       this.setState({ login:nextProps.activity, department: nextProps.department });
     }
 
+    /**
+    * Activates course.
+    */
     handleClick(active) {
         this.active = active;
         this.forceUpdate();
     }
 
+    /**
+    * Fetches course from API.
+    *
+    * @param {object} e
+    */
     getCourse(e) {
       getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
         if(err) {
@@ -65,10 +76,20 @@ class Sidebar extends Component {
       });
     }
 
+    /**
+    * Sets selected course into state.
+    *
+    * @param {object} e
+    */
     setCourse(e) {
       this.setState({ course:e.target[e.target.selectedIndex].id });
     }
 
+    /**
+    * Registers course for the user.
+    *
+    * @param {object} e
+    */
     addCourse(e) {
       e.preventDefault();
       const token = getCookie('token');
@@ -202,13 +223,22 @@ class Sidebar extends Component {
 export default connect(mapStateToProps)(Sidebar);
 
 Sidebar.propTypes = {
+  /** Holds currently active course. */
   active: PropTypes.string,
+  /** Holds status of activity route. */
   activity: PropTypes.string,
+  /** Holds current department title. */
   department: PropTypes.string,
+  /** Fetch user details from API. */
   getUserDetails: PropTypes.func,
+  /** Holds user login status. */
   login: PropTypes.bool,
+  /** Function to close modals. */
   close: PropTypes.func,
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
+  /** Holds course list displayed. */
   courses: PropTypes.array,
+  /** Holds department abbreviation for the current department. */
   department_abbr: PropTypes.string
 };

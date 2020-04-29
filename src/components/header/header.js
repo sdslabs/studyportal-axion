@@ -12,6 +12,9 @@ const mapStateToProps = state => {
     return { user: state };
 };
 
+/**
+ * Header component for Studyportal.
+ */
 class Header extends Component {
     render() {
         return(
@@ -72,12 +75,18 @@ class Header extends Component {
 export default connect(mapStateToProps)(Header);
 
 Header.propTypes = {
+    /** Holds status of user-menu popup. */
     userMenu: PropTypes.bool,
+    /** Holds status of notifications popup. */
     notifications: PropTypes.bool,
+    /** Holds status of search result popup. */
     search: PropTypes.bool,
+    /** Function to close modals. */
     close: PropTypes.func,
+    /** Function to toggle state of modals. */
     handleClick: PropTypes.func,
-    handleSeeAll: PropTypes.func,
+    /** Function to toggle see-all modal. */
     handleSeeAllClick: PropTypes.func,
+    /** Holds user data which is handled through Redux. */
     user: PropTypes.object
 };
