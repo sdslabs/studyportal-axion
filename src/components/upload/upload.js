@@ -8,6 +8,9 @@ import { getCourseByDepartment } from 'api/courseApi';
 import { getCookie } from 'utils/handleCookies';
 import 'styles/main.scss';
 
+/**
+ * Component to render upload modal.
+ */
 class Upload extends Component {
     constructor(props) {
         super(props);
@@ -46,6 +49,11 @@ class Upload extends Component {
       });
     }
 
+    /**
+     * Activates course select input.
+     *
+     * @param {object} e
+     */
     active_course(e) {
         this.setState({ disable: 1, department: e.target[e.target.selectedIndex].id });
         getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
@@ -58,23 +66,44 @@ class Upload extends Component {
         });
     }
 
+    /**
+     * Activates material select input.
+     *
+     * @param {object} e
+     */
     active_material(e) {
         this.setState({ disable: 2, course: e.target[e.target.selectedIndex].id });
     }
 
+    /**
+     * Closes upload modal.
+     */
     toggleUploadModal() {
       this.setState({ active:false });
       this.props.close();
     }
 
+    /**
+     * Switches to upload queue.
+     */
     handleUpload() {
         this.setState({ active: true });
     }
 
+    /**
+     * Fetches files list from upload queue.
+     *
+     * @param {array} files
+     */
     getFiles(files) {
       this.setState({ files });
     }
 
+    /**
+     * Uploads files through API.
+     *
+     * @param {object} e
+     */
     async upload(e) {
       e.preventDefault();
       const token = getCookie('token');
@@ -102,6 +131,9 @@ class Upload extends Component {
       }
     }
 
+    /**
+     * Refreshes upload modal.
+     */
     refreshUpload() {
       //TODO refresh upload
     }
@@ -175,6 +207,8 @@ class Upload extends Component {
 export default Upload;
 
 Upload.propTypes = {
+  /** Holds toggle status of upload modal. */
   upload: PropTypes.bool,
+  /** Function to close modals. */
   close: PropTypes.func
 };

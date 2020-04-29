@@ -7,6 +7,9 @@ import small_loader from 'assets/loader_small.svg';
 import check from 'assets/check.svg';
 import 'styles/main.scss';
 
+/**
+ * Component to render file uploader.
+ */
 class CustomFileUploader extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +20,11 @@ class CustomFileUploader extends Component {
         this.handleRemove = this.handleRemove.bind(this);
     }
 
+    /**
+    * Adds files to upload queue.
+    *
+    * @param {object} e
+    */
     addFiles(e) {
         const file = e.target.files;
 
@@ -29,6 +37,11 @@ class CustomFileUploader extends Component {
         this.forceUpdate();
     }
 
+    /**
+    * Removes files from upload queue.
+    *
+    * @param {number} index
+    */
     handleRemove(index) {
         this.files.splice(index,1);
         this.props.getFiles(this.files);
@@ -105,11 +118,18 @@ class CustomFileUploader extends Component {
 export default CustomFileUploader;
 
 CustomFileUploader.propTypes = {
+    /** Function to get files in upload queue. */
     getFiles: PropTypes.func,
+    /** Function to modify upload modal. */
     handleUpload: PropTypes.func,
+    /** Holds completed status of ongoing upload. */
     uploaded: PropTypes.bool,
+    /** Holds list of ongoing uploads. */
     uploadings: PropTypes.array,
+    /** Holds list of uploaded files. */
     uploadeds: PropTypes.array,
+    /** Holds disabled status of upload queue. */
     disabled: PropTypes.bool,
+    /** Holds running status of ongoing upload. */
     uploading: PropTypes.bool
 };

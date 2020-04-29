@@ -452,9 +452,9 @@ export default connect(mapStateToProps,mapDispatchToProps)(Department);
 Department.propTypes = {
   /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
-  /** URL of present location */
+  /** URL of present location. */
   location: PropTypes.object,
-  /** Sets 404 page */
+  /** Sets 404 page. */
   error: PropTypes.bool,
   /** Sets user data in Redux. */
   setUser: PropTypes.func,

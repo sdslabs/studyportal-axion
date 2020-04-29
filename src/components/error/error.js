@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import error from 'assets/error.svg';
 
+/**
+ * 404Page component for Studyportal.
+ */
 function Error(props) {
   return (
     <div className='error' onClick={props.close}>
@@ -22,5 +25,6 @@ function Error(props) {
 export default Error;
 
 Error.propTypes = {
+  /** Function to close modals. */
   close: PropTypes.func
 };

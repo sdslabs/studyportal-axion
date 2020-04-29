@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'styles/main.scss';
 
+/**
+ * Component to render custom checkboxes.
+ */
 class CustomCheckbox extends Component {
     constructor(props) {
         super(props);
@@ -14,10 +17,16 @@ class CustomCheckbox extends Component {
         this.leave = this.leave.bind(this);
     }
 
+    /**
+     * Highlight checkbox.
+     */
     hover() {
         this.setState({ hover: true });
     }
 
+    /**
+     * Remove highlight from checkbox.
+     */
     leave() {
         this.setState({ hover: false });
     }
@@ -39,9 +48,14 @@ class CustomCheckbox extends Component {
 export default CustomCheckbox;
 
 CustomCheckbox.propTypes = {
+    /** Identifies checked status of checkbox. */
     value: PropTypes.bool,
+    /** Identifies the checkbox toggle status. */
     handleChange: PropTypes.func,
+    /** Holds border color for checkbox. */
     border: PropTypes.string,
+    /** Holds border color for checkbox on hover. */
     borderhover: PropTypes.string,
+    /** Holds colour displayed on higlight. */
     hover: PropTypes.string
 };
