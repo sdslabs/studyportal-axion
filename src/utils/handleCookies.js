@@ -15,7 +15,7 @@ export function parseCookies() {
   separateCookies.forEach((cookie) => {
     let array = cookie.split('=');
     cookies[`${array[0]}`] = array[1];
-  })
+  });
   return cookies;
 }
 

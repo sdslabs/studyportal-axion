@@ -65,5 +65,6 @@ ShowMoreFiles.propTypes = {
     searchquery: PropTypes.string,
     showmore: PropTypes.bool,
     handleSeeAll: PropTypes.func,
-    handleReqClick: PropTypes.func
+    handleClick: PropTypes.func,
+    close: PropTypes.func
 };

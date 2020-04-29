@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { SET_USER,SET_COURSES,RESET_APP } from "constants/action-types";
 
 const initialState = {
