@@ -6,6 +6,9 @@ import green from 'assets/green_status.svg';
 import yellow from 'assets/yellow_status.svg';
 import 'styles/main.scss';
 
+/**
+ * Component to render activities.
+ */
 class ActivityCard extends Component {
     constructor(props) {
         super(props);
@@ -14,6 +17,11 @@ class ActivityCard extends Component {
         };
     }
 
+    /**
+     * Parse month for date.
+     *
+     * @param {string} month
+     */
     getMonth(month) {
       if(month === '01')
         return 'Jan';
@@ -42,6 +50,11 @@ class ActivityCard extends Component {
 
     }
 
+    /**
+     * Parse date for activity.
+     *
+     * @param {string} date
+     */
     parseDate(date) {
         if(date) {
           let datePart = date.match(/\d+/g);
@@ -95,10 +108,16 @@ class ActivityCard extends Component {
 export default ActivityCard;
 
 ActivityCard.propTypes = {
+  /** Identifies activity status */
   status: PropTypes.number,
+  /** Identifies activity type. */
   type: PropTypes.string,
+  /** Holds activity creation date. */
   date: PropTypes.string,
+  /** Holds activity related title/name. */
   title: PropTypes.string,
+  /** Holds course code related to activity. */
   code: PropTypes.string,
+  /** Holds course title related to activity. */
   course: PropTypes.string
 };

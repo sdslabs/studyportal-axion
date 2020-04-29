@@ -14,6 +14,9 @@ const mapStateToProps = state => {
   return { user: state };
 };
 
+/**
+ * Homepage component for Studyportal.
+ */
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +47,11 @@ class Home extends Component {
       });
     }
 
+    /**
+     * Toggle state of different modals.
+     *
+     * @param {string} component
+     */
     handleClick(component) {
       if(component === 'search') {
         this.setState(prevState => ({
@@ -78,6 +86,12 @@ class Home extends Component {
       }
     }
 
+    /**
+     * Handle render information of SeeAll modal.
+     *
+     * @param {array} files
+     * @param {string} query
+     */
     handleSeeAllClick(files,query){
       this.setState({
         showmore:true,
@@ -87,6 +101,9 @@ class Home extends Component {
       });
     }
 
+    /**
+     * Close modals.
+     */
     close() {
       this.setState({ search:false });
       if(this.state.userMenu)
@@ -140,5 +157,6 @@ class Home extends Component {
 export default connect(mapStateToProps)(Home);
 
 Home.propTypes = {
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object
 };
