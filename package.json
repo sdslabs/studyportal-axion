@@ -20,7 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src --ext .js"
+    "lint": "eslint src --ext .js",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -43,11 +45,12 @@
   "author": "AyanChoudhary <darkrider251099@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^5.16.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
-    "react-styleguidist": "^9.1.16"
+    "react-styleguidist": "^9.2.0"
   }
 }

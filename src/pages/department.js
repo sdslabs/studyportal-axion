@@ -27,6 +27,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+
+/**
+ * Component to render different pages in Studyportal.
+ */
 class Department extends Component {
     constructor(props) {
         super(props);
@@ -77,6 +81,11 @@ class Department extends Component {
       this.fetchAndUpdatePageInformation(nextProps);
     }
 
+    /**
+     * Fetch updated information for page and update state accordingly.
+     *
+     * @param {object} nextProps
+     */
     fetchAndUpdatePageInformation(nextProps) {
       if (this.checkRoute(nextProps.location.pathname,'mycourse')) {
         this.setState({ activity: false, upload: false, request: false, mycourse: true });
@@ -113,6 +122,13 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Fetch department info, course info and files according to url descriptors.
+     *
+     * @param {string} department
+     * @param {string} course
+     * @param {string} file_type
+     */
     getDepartmentsAndCourses(department,course,file_type) {
       if (file_type === 'all' ||
           file_type === 'tutorials' ||
@@ -169,6 +185,9 @@ class Department extends Component {
         this.error();
     }
 
+    /**
+     * Fetch user details.
+     */
     getUserDetails() {
       const token = getCookie('token');
       if(token) {
@@ -196,6 +215,11 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Toggle state of different modals.
+     *
+     * @param {string} component
+     */
     handleClick(component) {
       if(component === 'search') {
         this.setState(prevState => ({
@@ -224,6 +248,12 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Handle render information of SeeAll modal.
+     *
+     * @param {array} files
+     * @param {string} query
+     */
     handleSeeAllClick(files,query){
       this.setState({
         showmore:true,
@@ -233,10 +263,16 @@ class Department extends Component {
       });
     }
 
+    /**
+     * Switch to 404 page.
+     */
     error () {
       this.setState({ error:true });
     }
 
+    /**
+     * Close modals.
+     */
     close() {
       this.setState({ search:false });
       if(this.state.userMenu)
@@ -251,6 +287,12 @@ class Department extends Component {
         this.setState({ upload:false });
     }
 
+    /**
+     * Check route for activity or mycourse page.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     checkRoute(route, param) {
       if(param === 'activity')
         return route.split('/')[1] === 'activity';
@@ -258,6 +300,12 @@ class Department extends Component {
         return route.split('/')[1] === 'mycourse';
     }
 
+    /**
+     * Get route params for department route.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     getRouteParam(route, param) {
       if(param === 'department') {
         return route.split('/')[3];
@@ -270,6 +318,12 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Check different params for route.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     checkParam(route, param) {
       if(param === 'activity')
         return route === undefined || route === 'all' || route === 'requests' || route === 'uploads';
@@ -396,9 +450,14 @@ class Department extends Component {
 export default connect(mapStateToProps,mapDispatchToProps)(Department);
 
 Department.propTypes = {
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
+  /** URL of present location */
   location: PropTypes.object,
+  /** Sets 404 page */
   error: PropTypes.bool,
+  /** Sets user data in Redux. */
   setUser: PropTypes.func,
+  /** Holds URL decriptors. */
   match: PropTypes.object
 };
