@@ -1,10 +1,9 @@
-/* eslint-disable react/no-deprecated */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/prop-types */
-import React, { Component } from 'react'
-import small_loader from 'assets/small_loader.svg'
-import check from 'assets/check.svg'
-import 'styles/main.scss'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import small_loader from 'assets/small_loader.svg';
+import check from 'assets/check.svg';
+import 'styles/main.scss';
 
 class FileUploadContainer extends Component {
     constructor(props) {
@@ -12,15 +11,16 @@ class FileUploadContainer extends Component {
         this.state = {
           files: props.files,
           uploading: props.uploading,
-          uploaded: props.uploaded,
-        }
+          uploaded: props.uploaded
+        };
 
-        this.updateFileType = this.updateFileType.bind(this)
+        this.updateFileType = this.updateFileType.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
     }
 
+    // eslint-disable-next-line react/no-deprecated
     componentWillReceiveProps(nextProps) {
-      this.setState({ uploading:nextProps.uploading,uploaded:nextProps.uploaded })
+      this.setState({ uploading:nextProps.uploading,uploaded:nextProps.uploaded });
     }
 
     updateFileType(e) {
@@ -42,10 +42,29 @@ class FileUploadContainer extends Component {
                         <option value='Notes'>Notes</option>
                         <option value='Exam Papers'>Exam Papers</option>
                     </select>
-                    {this.state.uploaded ? <div><img className='customfileuploader--fileholder_status' src={check} alt='status'/></div> : this.state.uploading ? <div><img className='customfileuploader--fileholder_loader' src={small_loader} alt='loader'/></div> : <div className='customfileuploader--fileholder_remove' onClick={this.handleRemove}>Remove</div>}
+                    {this.state.uploaded ?
+                      <div>
+                        <img className='customfileuploader--fileholder_status' src={check} alt='status'/>
+                      </div> :
+                      this.state.uploading ?
+                        <div>
+                          <img className='customfileuploader--fileholder_loader' src={small_loader} alt='loader'/>
+                        </div> :
+                        <div className='customfileuploader--fileholder_remove' onClick={this.handleRemove}>Remove</div>
+                      }
             </div>
-        )
+        );
     }
 }
 
-export default FileUploadContainer
+export default FileUploadContainer;
+
+FileUploadContainer.propTypes = {
+  files: PropTypes.array,
+  uploading: PropTypes.bool,
+  uploaded: PropTypes.bool,
+  index: PropTypes.number,
+  name: PropTypes.string,
+  disabled: PropTypes.bool,
+  handleRemove: PropTypes.func
+};
