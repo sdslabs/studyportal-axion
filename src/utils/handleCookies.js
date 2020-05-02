@@ -4,10 +4,15 @@ export function setCookie(key, value) {
 }
 
 export function removeCookie(key) {
-  const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
-  document.cookie = cookieRemoveString;
+  if (key == 'sdslabs') {
+    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; Domain=.sdslabs.local;`;
+    document.cookie = cookieRemoveString;
+  }
+  else {
+    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
+    document.cookie = cookieRemoveString;
+  }
 }
-
 export function parseCookies() {
   const initialCookies = document.cookie;
   let cookies = {};
