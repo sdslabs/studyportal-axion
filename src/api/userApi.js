@@ -15,22 +15,23 @@ function loginUserWithToken(token) {
 
 function loginUserWithCookie() {
   return axiosInstance.get('/users',
-  { headers: {
-    'Authorization' : 'Bearer None',
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-  },
-    withCredentials : true })
-  .then((response) => {
-    const res = JSON.parse(response.request.response);
-    setCookie('token',res.token);
-    return res;
-  })
-  .catch((error) => {
-    return Promise.reject(error);
-  });
+    {
+      headers: {
+        'Authorization': 'Bearer None',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      withCredentials: true
+    })
+    .then((response) => {
+      const res = JSON.parse(response.request.response);
+      setCookie('token', res.token + '; max-age=' + 30 * 60 + ';');
+      return res;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
 }
-
 function addCourseForUser(token,course) {
   return axiosInstance.put('/users', { course, action:'add' },
   { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
