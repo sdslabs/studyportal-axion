@@ -7,7 +7,7 @@ import Department from './pages/department';
 import { Switch, Route } from 'react-router-dom';
 import { setUser } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie } from 'utils/handleCookies';
+import { getCookie, removeCookie } from 'utils/handleCookies';
 
 function mapDispatchToProps(dispatch) {
   return {
