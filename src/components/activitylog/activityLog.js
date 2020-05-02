@@ -6,6 +6,9 @@ import { getFileRequestsByUser } from 'api/requestApi';
 import { getUploadsByUser } from 'api/uploadApi';
 import { getCookie } from 'utils/handleCookies';
 
+/**
+ * Component to render activitylog in Studyportal.
+ */
 class ActivityLog extends Component {
     constructor(props) {
       super(props);
@@ -30,6 +33,11 @@ class ActivityLog extends Component {
       this.getActivity(nextProps.route);
     }
 
+    /**
+     * Fetch activities for the user.
+     *
+     * @param {string} route
+     */
     getActivity(route) {
       const token = getCookie('token');
       if(route === 'all' || route === undefined) {
@@ -44,6 +52,11 @@ class ActivityLog extends Component {
       }
     }
 
+    /**
+     * Fetch request related activity for the user.
+     *
+     * @param {string} token
+     */
     getRequests(token) {
       let activity = [];
       this.setState({ activity });
@@ -60,6 +73,11 @@ class ActivityLog extends Component {
       });
     }
 
+    /**
+     * Fetch upload related activity for the user.
+     *
+     * @param {string} token
+     */
     getUploads(token) {
       let activity = [];
       this.setState({ activity });
@@ -76,6 +94,11 @@ class ActivityLog extends Component {
       });
     }
 
+    /**
+     * Fetch all activities for the user.
+     *
+     * @param {string} token
+     */
     getAll(token) {
       let activity = [];
       getUploadsByUser(token).then((response,err) => {
@@ -102,6 +125,11 @@ class ActivityLog extends Component {
       });
     }
 
+    /**
+     * Sort activities by date.
+     *
+     * @param {array} activity
+     */
     arrangeActivity(activity) {
       activity.sort((a,b) => {
         return a.date - b.date;
@@ -134,6 +162,8 @@ class ActivityLog extends Component {
 export default ActivityLog;
 
 ActivityLog.propTypes = {
+  /** Holds activity type param. */
   route: PropTypes.string,
+  /** Function to close modals. */
   close: PropTypes.func
 };

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import courseselect from 'assets/course_select.svg';
 import 'styles/main.scss';
 
+/**
+ * Coursecover component for Studyportal.
+ */
 function CourseCover(props) {
   return (
   <div className='coursecover' onClick={props.close}>
@@ -15,5 +18,6 @@ function CourseCover(props) {
 export default CourseCover;
 
 CourseCover.propTypes = {
+  /** Function to close modals. */
   close: PropTypes.func
 };

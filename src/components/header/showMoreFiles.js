@@ -5,6 +5,9 @@ import SearchResult from './searchResult';
 import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
 import close from 'assets/closereq.png';
 
+/**
+ * Component to render see-all modal.
+ */
 class ShowMoreFiles extends Component{
     constructor(props){
         super(props);
@@ -61,10 +64,16 @@ class ShowMoreFiles extends Component{
 export default ShowMoreFiles;
 
 ShowMoreFiles.propTypes = {
+    /** Holds search result files. */
     files: PropTypes.array,
+    /** Holds search query string. */
     searchquery: PropTypes.string,
+    /** Holds toggle status of see-all. */
     showmore: PropTypes.bool,
+    /** Holds file name. */
     handleSeeAll: PropTypes.func,
+    /** Function to toggle state of modals. */
     handleClick: PropTypes.func,
+    /** Function to close modals. */
     close: PropTypes.func
 };

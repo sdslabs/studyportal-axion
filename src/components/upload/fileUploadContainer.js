@@ -5,6 +5,9 @@ import small_loader from 'assets/small_loader.svg';
 import check from 'assets/check.svg';
 import 'styles/main.scss';
 
+/**
+ * Component to render uploading file.
+ */
 class FileUploadContainer extends Component {
     constructor(props) {
         super(props);
@@ -23,10 +26,18 @@ class FileUploadContainer extends Component {
       this.setState({ uploading:nextProps.uploading,uploaded:nextProps.uploaded });
     }
 
+    /**
+    * Updates file type for queued file.
+    *
+    * @param {object} e
+    */
     updateFileType(e) {
       this.props.files[this.props.index].type = e.target.value;
     }
 
+    /**
+    * Removes file from upload queue.
+    */
     handleRemove() {
         this.props.handleRemove(this.props.index);
     }
@@ -60,11 +71,18 @@ class FileUploadContainer extends Component {
 export default FileUploadContainer;
 
 FileUploadContainer.propTypes = {
+  /** Holds files in upload queue. */
   files: PropTypes.array,
+  /** Holds running status of ongoing upload for current file. */
   uploading: PropTypes.bool,
+  /** Holds completed status of ongoing upload for current file. */
   uploaded: PropTypes.bool,
+  /** Holds index of current file in upload queue. */
   index: PropTypes.number,
+  /** Holds name of file. */
   name: PropTypes.string,
+  /** Holds status of select input. */
   disabled: PropTypes.bool,
+  /** Function to remove file from upload queue. */
   handleRemove: PropTypes.func
 };

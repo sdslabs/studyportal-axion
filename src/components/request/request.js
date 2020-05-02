@@ -10,6 +10,9 @@ import check from 'assets/check.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 
+/**
+ * Component to render request modal.
+ */
 class Request extends Component {
     constructor(props) {
         super(props);
@@ -45,16 +48,27 @@ class Request extends Component {
       });
     }
 
+    /**
+     * Switches to course request.
+     */
     switchToCourse() {
         this.setState({ type:'course' });
         this.setState({ disable: 0 });
     }
 
+    /**
+     * Switches to file request.
+     */
     switchToFile() {
         this.setState({ type:'file' });
         this.setState({ disableCourse: 0 });
     }
 
+    /**
+     * Activates course select input.
+     *
+     * @param {object} e
+     */
     file_active_course(e) {
         this.setState({ disable: 1 });
         getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res,err) => {
@@ -67,22 +81,41 @@ class Request extends Component {
         });
     }
 
+    /**
+     * Activates material select input.
+     *
+     * @param {object} e
+     */
     file_active_material(e) {
         this.setState({ disable: 2 });
     }
 
+    /**
+     * Activates file name input.
+     */
     active_name() {
         this.setState({ disable: 3 });
     }
 
+    /**
+     * Activates course name input.
+     */
     course_active_course() {
         this.setState({ disableCourse: 1 });
     }
 
+    /**
+     * Activates course code input.
+     */
     course_active_courseid() {
         this.setState({ disableCourse: 2 });
     }
 
+    /**
+     * Requests file through API.
+     *
+     * @param {object} e
+     */
     requestFile(e) {
       e.preventDefault();
       const course = e.target.course[e.target.course.selectedIndex].id;
@@ -98,6 +131,11 @@ class Request extends Component {
       }
     }
 
+    /**
+     * Requests course through API.
+     *
+     * @param {object} e
+     */
     requestCourse(e) {
       e.preventDefault();
       const department = e.target.department.value;
@@ -111,12 +149,14 @@ class Request extends Component {
       });
     }
 
+    /**
+     * Refreshes request modal.
+     */
     refreshRequest() {
       //TODO refresh upload
     }
 
     render() {
-
         if (this.props.request) {
             return(
                 <div className='requestcover'>
@@ -282,6 +322,8 @@ class Request extends Component {
 export default Request;
 
 Request.propTypes = {
+    /** Holds toggle status of request modal. */
     request: PropTypes.bool,
+    /** Function to close modals. */
     close: PropTypes.func
 };
