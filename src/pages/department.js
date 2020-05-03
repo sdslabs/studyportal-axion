@@ -203,11 +203,11 @@ class Department extends Component {
         };
         if(!_.isEqual(user, this.props.user)) {
           this.props.setUser(user);
-          // console.log('The user has logged in with token');
+          // Logged in with token
         }
       })
         .catch(() => {
-          // console.log('There is some error with the token');
+          // Token is corrupted
           if (cookie) {
             loginUserWithCookie().then((res) => {
               const user = {
@@ -220,7 +220,7 @@ class Department extends Component {
               };
               if(!_.isEqual(user, this.props.user)) {
                 this.props.setUser(user);
-                // console.log('The user has logged in with cookie and the invalid token has been replaced');
+                // Logged in with cookie and the invalid token replaced
               }
             })
               .catch(() => {
@@ -228,9 +228,9 @@ class Department extends Component {
                   login: false
                 };
                 this.props.setUser(user);
-                // console.log('The cookie is corrupted');
                 removeCookie('sdslabs');
                 removeCookie('token');
+                // The cookie is corrupted, both the token and the cookie have been removed
               });
           }
           else {
@@ -238,7 +238,7 @@ class Department extends Component {
               login: false
             };
             this.props.setUser(user);
-            // console.log('There is no cookie present and the token is corrupted');
+            // No cookie present and the token is corrupted
             removeCookie('token');
           }
         });
@@ -255,7 +255,7 @@ class Department extends Component {
         };
         if(!_.isEqual(user, this.props.user)) {
           this.props.setUser(user);
-          // console.log('The user did not have the token but is logged in by the cookie and now the token has been created');
+          // The user did not have the token but is logged in by the cookie and now the token has been created
         }
       })
         .catch(() => {
@@ -263,8 +263,8 @@ class Department extends Component {
             login: false
           };
           this.props.setUser(user);
-          // console.log('The cookie is corrupted (YIKES!)');
           removeCookie('sdslabs');
+          // The cookie is corrupted and removed
         });
     }
     else {
@@ -272,7 +272,7 @@ class Department extends Component {
         login: false
       };
       this.props.setUser(user);
-      // console.log('There is neither cookie nor token present');
+      // Neither cookie nor token present
     }
   }
 
