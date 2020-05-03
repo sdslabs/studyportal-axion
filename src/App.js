@@ -36,10 +36,10 @@ class App extends Component {
           courses: res.courses
         };
         this.props.setUser(user);
-        // console.log('The user has logged in with token');
+        // Logged in with token
       })
         .catch(() => {
-          // console.log('There is some error with the token');
+          // Token is corrupted
           if (cookie) {
             loginUserWithCookie().then((res) => {
               const user = {
@@ -51,16 +51,16 @@ class App extends Component {
                 courses: res.courses
               };
               this.props.setUser(user);
-              // console.log('The user has logged in with cookie and the invalid token has been replaced');
+              // Logged in with cookie and the invalid token has been replaced
             })
               .catch(() => {
                 const user = {
                   login: false
                 };
                 this.props.setUser(user);
-                // console.log('The cookie is corrupted');
                 removeCookie('sdslabs');
                 removeCookie('token');
+                // The cookie is corrupted, both the token and the cookie have been removed
               });
           }
           else {
@@ -68,8 +68,8 @@ class App extends Component {
               login: false
             };
             this.props.setUser(user);
-            // console.log('There is no cookie present and the token is corrupted');
             removeCookie('token');
+            // No cookie present and the token is corrupted
           }
         });
     }
@@ -84,15 +84,15 @@ class App extends Component {
           courses: res.courses
         };
         this.props.setUser(user);
-        // console.log('The user did not have the token but is logged in by the cookie and now the token has been created');
+        // The user did not have the token but is logged in by the cookie and the token has been created
       })
         .catch(() => {
           const user = {
             login: false
           };
           this.props.setUser(user);
-          // console.log('The cookie is corrupted (YIKES!)');
           removeCookie('sdslabs');
+          // The cookie is corrupted and removed
         });
     }
     else {
@@ -100,22 +100,22 @@ class App extends Component {
         login: false
       };
       this.props.setUser(user);
-      // console.log('There is neither cookie nor token present');
+      // Neither cookie nor token present
     }
   }
 
   render() {
     return (
       <Switch>
-          <Route exact path='/' render={(props) => <Home {...props} />} />
-          <Route exact path='/mycourse' render={(props) => <Department {...props} error={false}/>} />
-          <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
-            render={(props) => <Department {...props} error={false}/>} />
-          <Route exact path='/activity/:type?' render={(props) => <Department {...props} error={false}/>} />
-          <Route exact path='/departments/:department' render={(props) => <Department {...props} error={false} />} />
-          <Route exact path='/departments/:department/courses/:course/:file_type?'
-            render={(props) => <Department {...props} error={false} />} />
-          <Route path='*' render={(props) => <Department {...props} error />} />
+        <Route exact path='/' render={(props) => <Home {...props} />} />
+        <Route exact path='/mycourse' render={(props) => <Department {...props} error={false} />} />
+        <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
+          render={(props) => <Department {...props} error={false} />} />
+        <Route exact path='/activity/:type?' render={(props) => <Department {...props} error={false} />} />
+        <Route exact path='/departments/:department' render={(props) => <Department {...props} error={false} />} />
+        <Route exact path='/departments/:department/courses/:course/:file_type?'
+          render={(props) => <Department {...props} error={false} />} />
+        <Route path='*' render={(props) => <Department {...props} error />} />
       </Switch>
     );
   }
