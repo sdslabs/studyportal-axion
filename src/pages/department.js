@@ -12,7 +12,7 @@ import CourseCover from 'components/cover/courseCover';
 import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
-import { setUser } from 'actions/actions';
+import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 import ShowMoreFiles from 'components/header/showMoreFiles';
@@ -23,7 +23,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    resetApp: () => dispatch(resetApp())
   };
 }
 
@@ -189,6 +190,7 @@ class Department extends Component {
      * Fetch user details.
      */
     getUserDetails() {
+      console.log('You have successfully found department.js !!');
     const token = getCookie('token');
     const cookie = getCookie('sdslabs');
     if (token) {
@@ -224,20 +226,14 @@ class Department extends Component {
               }
             })
               .catch(() => {
-                const user = {
-                  login: false
-                };
-                this.props.setUser(user);
+                this.props.resetApp();
                 removeCookie('sdslabs');
                 removeCookie('token');
                 // The cookie is corrupted, both the token and the cookie have been removed
               });
           }
           else {
-            const user = {
-              login: false
-            };
-            this.props.setUser(user);
+            this.props.resetApp();
             // No cookie present and the token is corrupted
             removeCookie('token');
           }
@@ -259,19 +255,13 @@ class Department extends Component {
         }
       })
         .catch(() => {
-          const user = {
-            login: false
-          };
-          this.props.setUser(user);
+          this.props.resetApp();
           removeCookie('sdslabs');
           // The cookie is corrupted and removed
         });
     }
     else {
-      const user = {
-        login: false
-      };
-      this.props.setUser(user);
+      this.props.resetApp();
       // Neither cookie nor token present
     }
   }

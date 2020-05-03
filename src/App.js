@@ -5,13 +5,14 @@ import './App.css';
 import Home from './pages/home';
 import Department from './pages/department';
 import { Switch, Route } from 'react-router-dom';
-import { setUser } from 'actions/actions';
+import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    resetApp: () => dispatch(resetApp())
   };
 }
 
@@ -54,20 +55,14 @@ class App extends Component {
               // Logged in with cookie and the invalid token has been replaced
             })
               .catch(() => {
-                const user = {
-                  login: false
-                };
-                this.props.setUser(user);
+                this.props.resetApp();
                 removeCookie('sdslabs');
                 removeCookie('token');
                 // The cookie is corrupted, both the token and the cookie have been removed
               });
           }
           else {
-            const user = {
-              login: false
-            };
-            this.props.setUser(user);
+            this.props.resetApp();
             removeCookie('token');
             // No cookie present and the token is corrupted
           }
@@ -87,19 +82,13 @@ class App extends Component {
         // The user did not have the token but is logged in by the cookie and the token has been created
       })
         .catch(() => {
-          const user = {
-            login: false
-          };
-          this.props.setUser(user);
+          this.props.resetApp();
           removeCookie('sdslabs');
           // The cookie is corrupted and removed
         });
     }
     else {
-      const user = {
-        login: false
-      };
-      this.props.setUser(user);
+      this.props.resetApp();
       // Neither cookie nor token present
     }
   }
