@@ -25,7 +25,7 @@ function loginUserWithCookie() {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      setCookie('token', res.token + '; max-age=' + 30 * 60 + ';');
+      setCookie('token', `${res.token}; max-age=${30 * 60};`);
       return res;
     })
     .catch((error) => {
