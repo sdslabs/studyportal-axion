@@ -12,9 +12,9 @@ import CourseCover from 'components/cover/courseCover';
 import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
-import { setUser } from 'actions/actions';
+import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie } from 'utils/handleCookies';
+import { getCookie, removeCookie } from 'utils/handleCookies';
 import ShowMoreFiles from 'components/header/showMoreFiles';
 
 function mapStateToProps(state) {
@@ -23,7 +23,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    resetApp: () => dispatch(resetApp())
   };
 }
 
@@ -189,31 +190,80 @@ class Department extends Component {
      * Fetch user details.
      */
     getUserDetails() {
-      const token = getCookie('token');
-      if(token) {
-        loginUserWithToken(token).then((res,err) => {
-          if(err) {
-            //TODO handle error
+    const token = getCookie('token');
+    const cookie = getCookie('sdslabs');
+    if (token) {
+      loginUserWithToken(token).then((res) => {
+        const user = {
+          login: true,
+          id: res.user.falcon_id,
+          username: res.user.username,
+          email: res.user.email,
+          profile_image: res.user.profile_image,
+          courses: res.courses
+        };
+        if(!_.isEqual(user, this.props.user)) {
+          this.props.setUser(user);
+          // Logged in with token
+        }
+      })
+        .catch(() => {
+          // Token is corrupted
+          if (cookie) {
+            loginUserWithCookie().then((res) => {
+              const user = {
+                login: true,
+                id: res.user.falcon_id,
+                username: res.user.username,
+                email: res.user.email,
+                profile_image: res.user.profile_image,
+                courses: res.courses
+              };
+              if(!_.isEqual(user, this.props.user)) {
+                this.props.setUser(user);
+                // Logged in with cookie and the invalid token replaced
+              }
+            })
+              .catch(() => {
+                this.props.resetApp();
+                removeCookie('sdslabs');
+                removeCookie('token');
+                // The cookie is corrupted, both the token and the cookie have been removed
+              });
           }
           else {
-            const user = {
-              login: true,
-              id: res.user.falcon_id,
-              username: res.user.username,
-              email: res.user.email,
-              profile_image: res.user.profile_image,
-              courses: res.courses
-            };
-            if(!_.isEqual(user, this.props.user)) {
-              this.props.setUser(user);
-            }
+            this.props.resetApp();
+            // No cookie present and the token is corrupted
+            removeCookie('token');
           }
         });
-      }
-      else {
-        loginUserWithCookie();
-      }
     }
+    else if (cookie) {
+      loginUserWithCookie().then((res) => {
+        const user = {
+          login: true,
+          id: res.user.falcon_id,
+          username: res.user.username,
+          email: res.user.email,
+          profile_image: res.user.profile_image,
+          courses: res.courses
+        };
+        if(!_.isEqual(user, this.props.user)) {
+          this.props.setUser(user);
+          // The user did not have the token but is logged in by the cookie and now the token has been created
+        }
+      })
+        .catch(() => {
+          this.props.resetApp();
+          removeCookie('sdslabs');
+          // The cookie is corrupted and removed
+        });
+    }
+    else {
+      this.props.resetApp();
+      // Neither cookie nor token present
+    }
+  }
 
     /**
      * Toggle state of different modals.
@@ -459,5 +509,7 @@ Department.propTypes = {
   /** Sets user data in Redux. */
   setUser: PropTypes.func,
   /** Holds URL decriptors. */
-  match: PropTypes.object
+  match: PropTypes.object,
+  /** Resets the app to a new logged out session */
+  resetApp: PropTypes.func
 };
