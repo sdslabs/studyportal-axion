@@ -190,7 +190,6 @@ class Department extends Component {
      * Fetch user details.
      */
     getUserDetails() {
-      console.log('You have successfully found department.js !!');
     const token = getCookie('token');
     const cookie = getCookie('sdslabs');
     if (token) {
@@ -510,5 +509,7 @@ Department.propTypes = {
   /** Sets user data in Redux. */
   setUser: PropTypes.func,
   /** Holds URL decriptors. */
-  match: PropTypes.object
+  match: PropTypes.object,
+  /** Resets the app to a new logged out session */
+  resetApp: PropTypes.func
 };
