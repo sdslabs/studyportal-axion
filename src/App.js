@@ -113,5 +113,6 @@ class App extends Component {
 export default connect(null, mapDispatchToProps)(App);
 
 App.propTypes = {
-  setUser: PropTypes.func
+  setUser: PropTypes.func,
+  resetApp: PropTypes.func
 };
