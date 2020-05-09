@@ -5,11 +5,11 @@ export function setCookie(key, value) {
 
 export function removeCookie(key) {
   if (key === 'sdslabs') {
-    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; Domain=.sdslabs.local;`;
+    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; Domain=.sdslabs.local; path=/;`;
     document.cookie = cookieRemoveString;
   }
   else {
-    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT`;
+    const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
     document.cookie = cookieRemoveString;
   }
 }
