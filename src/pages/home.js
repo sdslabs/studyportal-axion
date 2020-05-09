@@ -129,8 +129,8 @@ class Home extends Component {
 
     /**
      * Login/Register/Logout user.
-     * 
-     * @param {string} value 
+     *
+     * @param {string} value
      */
     log(value) {
       if (value === 'login') {
