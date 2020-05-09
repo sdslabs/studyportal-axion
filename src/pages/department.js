@@ -16,6 +16,7 @@ import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 import ShowMoreFiles from 'components/header/showMoreFiles';
+import { CONFIG } from 'config/config';
 
 function mapStateToProps(state) {
     return { user: state };
@@ -70,6 +71,7 @@ class Department extends Component {
         this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
+        this.log = this.log.bind(this);
     }
 
     // eslint-disable-next-line react/no-deprecated
@@ -190,80 +192,100 @@ class Department extends Component {
      * Fetch user details.
      */
     getUserDetails() {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token).then((res) => {
-        const user = {
-          login: true,
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        if(!_.isEqual(user, this.props.user)) {
-          this.props.setUser(user);
-          // Logged in with token
-        }
-      })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie().then((res) => {
-              const user = {
-                login: true,
-                id: res.user.falcon_id,
-                username: res.user.username,
-                email: res.user.email,
-                profile_image: res.user.profile_image,
-                courses: res.courses
-              };
-              if(!_.isEqual(user, this.props.user)) {
-                this.props.setUser(user);
-                // Logged in with cookie and the invalid token replaced
-              }
-            })
-              .catch(() => {
-                this.props.resetApp();
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
+      const token = getCookie('token');
+      const cookie = getCookie('sdslabs');
+      if (token) {
+        loginUserWithToken(token).then((res) => {
+          const user = {
+            login: true,
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses
+          };
+          if(!_.isEqual(user, this.props.user)) {
+            this.props.setUser(user);
+            // Logged in with token
           }
-          else {
+        })
+          .catch(() => {
+            // Token is corrupted
+            if (cookie) {
+              loginUserWithCookie().then((res) => {
+                const user = {
+                  login: true,
+                  id: res.user.falcon_id,
+                  username: res.user.username,
+                  email: res.user.email,
+                  profile_image: res.user.profile_image,
+                  courses: res.courses
+                };
+                if(!_.isEqual(user, this.props.user)) {
+                  this.props.setUser(user);
+                  // Logged in with cookie and the invalid token replaced
+                }
+              })
+                .catch(() => {
+                  this.props.resetApp();
+                  removeCookie('sdslabs');
+                  removeCookie('token');
+                  // The cookie is corrupted, both the token and the cookie have been removed
+                });
+            }
+            else {
+              this.props.resetApp();
+              // No cookie present and the token is corrupted
+              removeCookie('token');
+            }
+          });
+      }
+      else if (cookie) {
+        loginUserWithCookie().then((res) => {
+          const user = {
+            login: true,
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses
+          };
+          if(!_.isEqual(user, this.props.user)) {
+            this.props.setUser(user);
+            // The user did not have the token but is logged in by the cookie and now the token has been created
+          }
+        })
+          .catch(() => {
             this.props.resetApp();
-            // No cookie present and the token is corrupted
-            removeCookie('token');
-          }
-        });
+            removeCookie('sdslabs');
+            // The cookie is corrupted and removed
+          });
+      }
+      else {
+        this.props.resetApp();
+        // Neither cookie nor token present
+      }
     }
-    else if (cookie) {
-      loginUserWithCookie().then((res) => {
-        const user = {
-          login: true,
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        if(!_.isEqual(user, this.props.user)) {
-          this.props.setUser(user);
-          // The user did not have the token but is logged in by the cookie and now the token has been created
-        }
-      })
-        .catch(() => {
-          this.props.resetApp();
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
+
+    /**
+     * Login/Register/Logout user.
+     * 
+     * @param {string} value 
+     */
+    log(value) {
+      if (value === 'login') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'register') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'logout') {
+        this.props.resetApp();
+        window.location.href = CONFIG.studyRoot;
+        removeCookie('token');
+        removeCookie('sdslabs');
+      }
     }
-    else {
-      this.props.resetApp();
-      // Neither cookie nor token present
-    }
-  }
 
     /**
      * Toggle state of different modals.
@@ -390,6 +412,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          log={this.log}
                           close={this.close}/>
               <Sidebar activity='mycourse'
                       department={this.state.department.title}
@@ -427,6 +450,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          log={this.log}
                           close={this.close}/>
               <Sidebar activity='activity'
                       active={this.props.match.params.type}
@@ -452,6 +476,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          log={this.log}
                           close={this.close}/>
                   <Sidebar login={false}
                           department={this.state.department.title}
@@ -488,6 +513,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          log={this.log}
                           close={this.close}/>
                   <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} close={this.close}/>
