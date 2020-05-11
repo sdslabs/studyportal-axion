@@ -57,14 +57,14 @@ class Header extends Component {
                             </div>
                             <div className='header--user'>
                                 <UserMenu userMenu={this.props.userMenu}
-                                    loggingHandler={this.props.loggingHandler}
+                                    log={this.props.log}
                                     handleClick={this.props.handleClick}
                                     close={this.props.close}/>
                             </div>
                         </Fragment>) :
                         (<Fragment>
-                            <button className='header--login' onClick={() => this.props.loggingHandler('login')}>Login</button>
-                            <button className='header--signup' onClick={() => this.props.loggingHandler('register')}>Sign Up</button>
+                            <button className='header--login' onClick={() => this.props.log('login')}>Login</button>
+                            <button className='header--signup' onClick={() => this.props.log('register')}>Sign Up</button>
                         </Fragment>)
                     }
                 </div>
@@ -91,5 +91,5 @@ Header.propTypes = {
     /** Holds user data which is handled through Redux. */
     user: PropTypes.object,
     /** Function to login/register/logout */
-    loggingHandler: PropTypes.func
+    log: PropTypes.func
 };

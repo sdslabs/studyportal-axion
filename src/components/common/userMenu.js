@@ -30,7 +30,7 @@ class UserMenu extends Component {
               <div className='usermenu--activitylog link'>Activity Log</div>
             </Link>
             <div className='usermenu--profile'><a href='http://accounts.sdslabs.co' className='link'>Profile</a></div>
-            <div className='usermenu--logout' onClick={() => this.props.loggingHandler('logout')}>Logout</div>
+            <div className='usermenu--logout' onClick={() => this.props.log('logout')}>Logout</div>
           </div>
         </div> :
         <Fragment/> }
@@ -51,5 +51,5 @@ UserMenu.propTypes = {
   /** Function to close modals. */
   close: PropTypes.func,
   /** Function to login/register/logout */
-  loggingHandler: PropTypes.func
+  log: PropTypes.func
 };
