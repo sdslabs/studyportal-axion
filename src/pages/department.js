@@ -71,7 +71,7 @@ class Department extends Component {
         this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
-        this.log = this.log.bind(this);
+        this.loggingHandler = this.loggingHandler.bind(this);
     }
 
     // eslint-disable-next-line react/no-deprecated
@@ -272,7 +272,7 @@ class Department extends Component {
      *
      * @param {string} value
      */
-    log(value) {
+    loggingHandler(value) {
       if (value === 'login') {
         window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
       }
@@ -412,7 +412,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
-                          log={this.log}
+                          loggingHandler={this.loggingHandler}
                           close={this.close}/>
               <Sidebar activity='mycourse'
                       department={this.state.department.title}
@@ -450,7 +450,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
-                          log={this.log}
+                          loggingHandler={this.loggingHandler}
                           close={this.close}/>
               <Sidebar activity='activity'
                       active={this.props.match.params.type}
@@ -476,7 +476,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
-                          log={this.log}
+                          loggingHandler={this.loggingHandler}
                           close={this.close}/>
                   <Sidebar login={false}
                           department={this.state.department.title}
@@ -513,7 +513,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
-                          log={this.log}
+                          loggingHandler={this.loggingHandler}
                           close={this.close}/>
                   <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} close={this.close}/>
