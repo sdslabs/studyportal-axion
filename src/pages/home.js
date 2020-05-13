@@ -42,7 +42,7 @@ class Home extends Component {
         this.handleClick=this.handleClick.bind(this);
         this.handleSeeAllClick=this.handleSeeAllClick.bind(this);
         this.close=this.close.bind(this);
-        this.log=this.log.bind(this);
+        this.loginHandler=this.loginHandler.bind(this);
     }
 
     componentDidMount() {
@@ -132,7 +132,7 @@ class Home extends Component {
      *
      * @param {string} value
      */
-    log(value) {
+    loginHandler(value) {
       if (value === 'login') {
         window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
       }
@@ -156,7 +156,7 @@ class Home extends Component {
                         userMenu={this.state.userMenu}
                         handleClick={this.handleClick}
                         handleSeeAllClick={this.handleSeeAllClick}
-                        log={this.log}
+                        loginHandler={this.loginHandler}
                         close={this.close}/>
               </div>
               <div className='home--choosedept' onClick={this.close}>
