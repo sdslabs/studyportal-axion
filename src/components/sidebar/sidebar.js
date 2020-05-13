@@ -118,7 +118,7 @@ class Sidebar extends Component {
                     </div>
                     <div className='sidebar--course-name'>
                         <div className='sidebar--course-table'>
-                          { this.props.user.courses.map((course) => (
+                          { this.props.user.courses ? this.props.user.courses.map((course) => (
                             <Link to={ `/mycourse/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id }>
                                 <CourseHandle login
                                               name={ `${course.title} ${course.code}` }
@@ -128,7 +128,7 @@ class Sidebar extends Component {
                                               active={this.active}
                                               handleClick={this.handleClick}/>
                             </Link>
-                          )) }
+                          )) : null}
                         </div>
                     </div>
                   </div>
