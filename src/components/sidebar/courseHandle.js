@@ -68,8 +68,11 @@ class CourseHandle extends Component {
      * Check if course is registered for user.
      */
     checkMyCourse(props) {
-        if(props.user.courses.find(o => o.code === props.code) !== undefined)
-            return true;
+        if(props.user.courses) {
+            if(props.user.courses.find(o => o.code === props.code) !== undefined)
+                return true;
+            else return false;
+        }
         else return false;
     }
 
