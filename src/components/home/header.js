@@ -41,13 +41,14 @@ class Header extends Component {
                       </div>
                       <div className='landingheader--user'>
                         <UserMenu userMenu={this.props.userMenu}
+                          loginHandler={this.props.loginHandler}
                           handleClick={this.props.handleClick}
                           close={this.props.close}/>
                       </div>
                     </div> :
                     <div className='landingheader--user_nologin'>
-                      <button className='landingheader--login'>Login</button>
-                      <button className='landingheader--signup'>Sign Up</button>
+                      <button className='landingheader--login' onClick={() => this.props.loginHandler('login')}>Login</button>
+                      <button className='landingheader--signup' onClick={() => this.props.loginHandler('register')}>Sign Up</button>
                     </div> }
             </div>
         );
@@ -70,5 +71,7 @@ Header.propTypes = {
   /** Function to toggle see-all modal. */
   handleSeeAllClick: PropTypes.func,
   /** Holds user data which is handled through Redux. */
-  user: PropTypes.object
+  user: PropTypes.object,
+  /** Function to login/register/logout */
+  loginHandler: PropTypes.func
 };

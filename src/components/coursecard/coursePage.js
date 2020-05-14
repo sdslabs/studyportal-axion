@@ -141,10 +141,12 @@ class CoursePage extends Component {
     async checkCourse(props) {
       if(props.user.login) {
         this.setState({ mycourse:false });
-        await props.user.courses.forEach(course => {
-          if(course.code === props.course_code)
-            this.setState({ mycourse:true });
-        });
+        if(props.user.courses) {
+          await props.user.courses.forEach(course => {
+            if(course.code === props.course_code)
+              this.setState({ mycourse:true });
+          });
+        }
       }
     }
 
