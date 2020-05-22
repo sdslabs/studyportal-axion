@@ -1,7 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import 'styles/main.scss';
 
+/**
+ * Component to render subject card.
+ */
 class SubjectCard extends Component {
     constructor(props) {
       super(props);
@@ -12,6 +15,9 @@ class SubjectCard extends Component {
       this.togglehover = this.togglehover.bind(this);
     }
 
+    /**
+     * Toggles hover status on subjectcard.
+     */
     togglehover() {
       this.setState(prevState => ({
         hover:!prevState.hover
@@ -31,3 +37,10 @@ class SubjectCard extends Component {
 }
 
 export default SubjectCard;
+
+SubjectCard.propTypes = {
+  /** Holds image url of department. */
+  url: PropTypes.string,
+  /** Holds department name. */
+  name: PropTypes.string
+};

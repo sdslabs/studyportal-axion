@@ -9,6 +9,9 @@ const mapStateToProps = state => {
   return { user: state };
 };
 
+/**
+ * User-Menu component for Studyportal.
+ */
 class UserMenu extends Component {
   render() {
     return(
@@ -27,7 +30,7 @@ class UserMenu extends Component {
               <div className='usermenu--activitylog link'>Activity Log</div>
             </Link>
             <div className='usermenu--profile'><a href='http://accounts.sdslabs.co' className='link'>Profile</a></div>
-            <div className='usermenu--logout'>Logout</div>
+            <div className='usermenu--logout' onClick={() => this.props.loginHandler('logout')}>Logout</div>
           </div>
         </div> :
         <Fragment/> }
@@ -39,8 +42,14 @@ class UserMenu extends Component {
 export default connect(mapStateToProps)(UserMenu);
 
 UserMenu.propTypes = {
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
+  /** Identifies user-menu popup toggle status */
   userMenu: PropTypes.bool,
+  /** Function to toggle state of modals */
   handleClick: PropTypes.func,
-  close: PropTypes.func
+  /** Function to close modals. */
+  close: PropTypes.func,
+  /** Function to login/register/logout */
+  loginHandler: PropTypes.func
 };

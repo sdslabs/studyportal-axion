@@ -8,6 +8,9 @@ import { getSearchResults } from 'api/searchApi';
 import { Link } from 'react-router-dom';
 import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
 
+/**
+ * Component to render search.
+ */
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -28,6 +31,11 @@ class Search extends Component {
         this.setState({ search:props.search });
     }
 
+    /**
+     * Fetches search result.
+     *
+     * @param {string} query
+     */
     getResults(query) {
       getSearchResults(query).then((res,err) => {
         if(err){
@@ -47,6 +55,11 @@ class Search extends Component {
       });
     }
 
+    /**
+     * Toggles search popup when text is typed in search bar.
+     *
+     * @param {object} e
+     */
     result(e) {
       this.setState({ value: e.target.value });
       if (e.target.value !== '') {
@@ -164,10 +177,14 @@ class Search extends Component {
 export default Search;
 
 Search.propTypes = {
+  /** Holds status of search popup. */
   search: PropTypes.bool,
+  /** Identifies whether search is in homepage. */
   home: PropTypes.bool,
+  /** Function to close modals. */
   close: PropTypes.func,
+  /** Function to toggle state of modals. */
   handleClick: PropTypes.func,
-  handleReqClick: PropTypes.func,
+  /** Function to toggle see-all modal. */
   handleSeeAllClick: PropTypes.func
 };

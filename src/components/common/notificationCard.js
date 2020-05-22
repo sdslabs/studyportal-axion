@@ -1,6 +1,9 @@
 import React,{ Component } from 'react';
 import 'styles/main.scss';
 
+/**
+ * Component to render notifications.
+ */
 class NotificationCard extends Component {
   render() {
     return(

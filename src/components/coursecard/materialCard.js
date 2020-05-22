@@ -10,6 +10,9 @@ import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 
+/**
+ * Component to render files.
+ */
 class MaterialCard extends Component {
     constructor(props) {
         super(props);
@@ -29,10 +32,16 @@ class MaterialCard extends Component {
         this.leave = this.leave.bind(this);
     }
 
+    /**
+     * Highlight download icon.
+     */
     hover() {
         this.setState({ queue: '1' });
     }
 
+    /**
+     * Remove highlight from download icon.
+     */
     leave() {
         this.setState({ queue: '2' });
     }
@@ -71,11 +80,18 @@ class MaterialCard extends Component {
 export default MaterialCard;
 
 MaterialCard.propTypes = {
+    /** Holds download icon highlight status. */
     queue: PropTypes.string,
+    /** Holds file name. */
     name: PropTypes.string,
+    /** Holds file size. */
     size: PropTypes.string,
+    /** Holds number of downloads. */
     downloads: PropTypes.number,
+    /** Holds driveid of the file. */
     url: PropTypes.string,
+    /** Holds file extension to display icon. */
     ext: PropTypes.string,
+    /** Holds creation date of file. */
     date_modified: PropTypes.string
 };

@@ -17,6 +17,9 @@ function mapStateToProps(state) {
   return { user: state };
 }
 
+/**
+ * Coursepage component for Studyportal.
+ */
 class CoursePage extends Component {
     constructor(props) {
         super(props);
@@ -55,6 +58,11 @@ class CoursePage extends Component {
       }
     }
 
+    /**
+     * Fetches files according to params.
+     *
+     * @param {object} nextProps
+     */
     getFiles(nextProps) {
       this.setState({ loading:true });
       getDepartmentInfoByAbbr(nextProps.department_abbr).then((res,err) => {
@@ -99,6 +107,11 @@ class CoursePage extends Component {
               });}}});}});
     }
 
+    /**
+     * Sorts files by creation date.
+     *
+     * @param {array} files
+     */
     sortFilesByYear(files) {
       if(!_.isEmpty(files)) {
         let years = [];
@@ -120,16 +133,26 @@ class CoursePage extends Component {
       else return files;
     }
 
+    /**
+     * Checks if this course is registered for the user.
+     *
+     * @param {object} props
+     */
     async checkCourse(props) {
       if(props.user.login) {
         this.setState({ mycourse:false });
-        await props.user.courses.forEach(course => {
-          if(course.code === props.course_code)
-            this.setState({ mycourse:true });
-        });
+        if(props.user.courses) {
+          await props.user.courses.forEach(course => {
+            if(course.code === props.course_code)
+              this.setState({ mycourse:true });
+          });
+        }
       }
     }
 
+    /**
+     * Registers course for user.
+     */
     addCourse() {
       const token = getCookie('token');
       addCourseForUser(token,this.state.id).then((res,err) => {
@@ -143,6 +166,9 @@ class CoursePage extends Component {
       });
     }
 
+    /**
+     * Removes registered course from user.
+     */
     deleteCourse() {
       const token = getCookie('token');
       deleteCourseForUser(token,this.state.id).then((res,err) => {
@@ -245,10 +271,16 @@ class CoursePage extends Component {
 export default connect(mapStateToProps)(CoursePage);
 
 CoursePage.propTypes = {
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
+  /** Fetch user details from API. */
   getUserDetails: PropTypes.func,
+  /** Function to close modals. */
   close: PropTypes.func,
+  /** Holds course code for the course. */
   course_code: PropTypes.string,
+  /** Holds file type displayed currently. */
   file_type: PropTypes.string,
+  /** Holds department abbreviation for the department. */
   department_abbr: PropTypes.string
 };

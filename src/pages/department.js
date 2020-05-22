@@ -12,10 +12,11 @@ import CourseCover from 'components/cover/courseCover';
 import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
-import { setUser } from 'actions/actions';
+import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie } from 'utils/handleCookies';
+import { getCookie, removeCookie } from 'utils/handleCookies';
 import ShowMoreFiles from 'components/header/showMoreFiles';
+import { CONFIG } from 'config/config';
 
 function mapStateToProps(state) {
     return { user: state };
@@ -23,10 +24,15 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: user => dispatch(setUser(user))
+    setUser: user => dispatch(setUser(user)),
+    resetApp: () => dispatch(resetApp())
   };
 }
 
+
+/**
+ * Component to render different pages in Studyportal.
+ */
 class Department extends Component {
     constructor(props) {
         super(props);
@@ -65,6 +71,7 @@ class Department extends Component {
         this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
         this.close = this.close.bind(this);
         this.error = this.error.bind(this);
+        this.loginHandler = this.loginHandler.bind(this);
     }
 
     // eslint-disable-next-line react/no-deprecated
@@ -77,6 +84,11 @@ class Department extends Component {
       this.fetchAndUpdatePageInformation(nextProps);
     }
 
+    /**
+     * Fetch updated information for page and update state accordingly.
+     *
+     * @param {object} nextProps
+     */
     fetchAndUpdatePageInformation(nextProps) {
       if (this.checkRoute(nextProps.location.pathname,'mycourse')) {
         this.setState({ activity: false, upload: false, request: false, mycourse: true });
@@ -113,6 +125,13 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Fetch department info, course info and files according to url descriptors.
+     *
+     * @param {string} department
+     * @param {string} course
+     * @param {string} file_type
+     */
     getDepartmentsAndCourses(department,course,file_type) {
       if (file_type === 'all' ||
           file_type === 'tutorials' ||
@@ -169,33 +188,110 @@ class Department extends Component {
         this.error();
     }
 
+    /**
+     * Fetch user details.
+     */
     getUserDetails() {
       const token = getCookie('token');
-      if(token) {
-        loginUserWithToken(token).then((res,err) => {
-          if(err) {
-            //TODO handle error
+      const cookie = getCookie('sdslabs');
+      if (token) {
+        loginUserWithToken(token).then((res) => {
+          const user = {
+            login: true,
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses
+          };
+          if(!_.isEqual(user, this.props.user)) {
+            this.props.setUser(user);
+            // Logged in with token
           }
-          else {
-            const user = {
-              login: true,
-              id: res.user.falcon_id,
-              username: res.user.username,
-              email: res.user.email,
-              profile_image: res.user.profile_image,
-              courses: res.courses
-            };
-            if(!_.isEqual(user, this.props.user)) {
-              this.props.setUser(user);
+        })
+          .catch(() => {
+            // Token is corrupted
+            if (cookie) {
+              loginUserWithCookie().then((res) => {
+                const user = {
+                  login: true,
+                  id: res.user.falcon_id,
+                  username: res.user.username,
+                  email: res.user.email,
+                  profile_image: res.user.profile_image,
+                  courses: res.courses
+                };
+                if(!_.isEqual(user, this.props.user)) {
+                  this.props.setUser(user);
+                  // Logged in with cookie and the invalid token replaced
+                }
+              })
+                .catch(() => {
+                  this.props.resetApp();
+                  removeCookie('sdslabs');
+                  removeCookie('token');
+                  // The cookie is corrupted, both the token and the cookie have been removed
+                });
             }
+            else {
+              this.props.resetApp();
+              // No cookie present and the token is corrupted
+              removeCookie('token');
+            }
+          });
+      }
+      else if (cookie) {
+        loginUserWithCookie().then((res) => {
+          const user = {
+            login: true,
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses
+          };
+          if(!_.isEqual(user, this.props.user)) {
+            this.props.setUser(user);
+            // The user did not have the token but is logged in by the cookie and now the token has been created
           }
-        });
+        })
+          .catch(() => {
+            this.props.resetApp();
+            removeCookie('sdslabs');
+            // The cookie is corrupted and removed
+          });
       }
       else {
-        loginUserWithCookie();
+        this.props.resetApp();
+        // Neither cookie nor token present
       }
     }
 
+    /**
+     * Login/Register/Logout user.
+     *
+     * @param {string} value
+     */
+    loginHandler(value) {
+      if (value === 'login') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'register') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'logout') {
+        this.props.resetApp();
+        window.location.href = CONFIG.studyRoot;
+        removeCookie('token');
+        removeCookie('sdslabs');
+      }
+    }
+
+    /**
+     * Toggle state of different modals.
+     *
+     * @param {string} component
+     */
     handleClick(component) {
       if(component === 'search') {
         this.setState(prevState => ({
@@ -224,6 +320,12 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Handle render information of SeeAll modal.
+     *
+     * @param {array} files
+     * @param {string} query
+     */
     handleSeeAllClick(files,query){
       this.setState({
         showmore:true,
@@ -233,10 +335,16 @@ class Department extends Component {
       });
     }
 
+    /**
+     * Switch to 404 page.
+     */
     error () {
       this.setState({ error:true });
     }
 
+    /**
+     * Close modals.
+     */
     close() {
       this.setState({ search:false });
       if(this.state.userMenu)
@@ -251,6 +359,12 @@ class Department extends Component {
         this.setState({ upload:false });
     }
 
+    /**
+     * Check route for activity or mycourse page.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     checkRoute(route, param) {
       if(param === 'activity')
         return route.split('/')[1] === 'activity';
@@ -258,6 +372,12 @@ class Department extends Component {
         return route.split('/')[1] === 'mycourse';
     }
 
+    /**
+     * Get route params for department route.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     getRouteParam(route, param) {
       if(param === 'department') {
         return route.split('/')[3];
@@ -270,6 +390,12 @@ class Department extends Component {
       }
     }
 
+    /**
+     * Check different params for route.
+     *
+     * @param {string} route
+     * @param {string} param
+     */
     checkParam(route, param) {
       if(param === 'activity')
         return route === undefined || route === 'all' || route === 'requests' || route === 'uploads';
@@ -286,6 +412,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          loginHandler={this.loginHandler}
                           close={this.close}/>
               <Sidebar activity='mycourse'
                       department={this.state.department.title}
@@ -323,6 +450,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          loginHandler={this.loginHandler}
                           close={this.close}/>
               <Sidebar activity='activity'
                       active={this.props.match.params.type}
@@ -348,6 +476,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          loginHandler={this.loginHandler}
                           close={this.close}/>
                   <Sidebar login={false}
                           department={this.state.department.title}
@@ -384,6 +513,7 @@ class Department extends Component {
                           userMenu={this.state.userMenu}
                           handleClick ={this.handleClick}
                           handleSeeAllClick={this.handleSeeAllClick}
+                          loginHandler={this.loginHandler}
                           close={this.close}/>
                   <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
                   <Upload upload={this.state.upload} close={this.close}/>
@@ -396,9 +526,16 @@ class Department extends Component {
 export default connect(mapStateToProps,mapDispatchToProps)(Department);
 
 Department.propTypes = {
+  /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
+  /** URL of present location. */
   location: PropTypes.object,
+  /** Sets 404 page. */
   error: PropTypes.bool,
+  /** Sets user data in Redux. */
   setUser: PropTypes.func,
-  match: PropTypes.object
+  /** Holds URL decriptors. */
+  match: PropTypes.object,
+  /** Resets the app to a new logged out session */
+  resetApp: PropTypes.func
 };

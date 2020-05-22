@@ -9,11 +9,22 @@ import SubjectCard from 'components/home/subjectCard';
 import 'styles/main.scss';
 import { getDepartmentsList } from 'api/departmentApi';
 import { Link } from 'react-router-dom';
+import { CONFIG } from 'config/config';
+import { resetApp } from 'actions/actions';
+import { removeCookie } from 'utils/handleCookies';
 
 const mapStateToProps = state => {
   return { user: state };
 };
 
+function mapDispatchToProps(dispatch) {
+  return {
+    resetApp: () => dispatch(resetApp())
+  };
+}
+/**
+ * Homepage component for Studyportal.
+ */
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -31,6 +42,7 @@ class Home extends Component {
         this.handleClick=this.handleClick.bind(this);
         this.handleSeeAllClick=this.handleSeeAllClick.bind(this);
         this.close=this.close.bind(this);
+        this.loginHandler=this.loginHandler.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +56,11 @@ class Home extends Component {
       });
     }
 
+    /**
+     * Toggle state of different modals.
+     *
+     * @param {string} component
+     */
     handleClick(component) {
       if(component === 'search') {
         this.setState(prevState => ({
@@ -78,6 +95,12 @@ class Home extends Component {
       }
     }
 
+    /**
+     * Handle render information of SeeAll modal.
+     *
+     * @param {array} files
+     * @param {string} query
+     */
     handleSeeAllClick(files,query){
       this.setState({
         showmore:true,
@@ -87,6 +110,9 @@ class Home extends Component {
       });
     }
 
+    /**
+     * Close modals.
+     */
     close() {
       this.setState({ search:false });
       if(this.state.userMenu)
@@ -101,6 +127,26 @@ class Home extends Component {
         this.setState({ upload:false });
     }
 
+    /**
+     * Login/Register/Logout user.
+     *
+     * @param {string} value
+     */
+    loginHandler(value) {
+      if (value === 'login') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'register') {
+        window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+      }
+      else if (value === 'logout') {
+        this.props.resetApp();
+        window.location.href = CONFIG.studyRoot;
+        removeCookie('token');
+        removeCookie('sdslabs');
+      }
+    }
+
     render() {
         return(
             <div className='home'>
@@ -110,6 +156,7 @@ class Home extends Component {
                         userMenu={this.state.userMenu}
                         handleClick={this.handleClick}
                         handleSeeAllClick={this.handleSeeAllClick}
+                        loginHandler={this.loginHandler}
                         close={this.close}/>
               </div>
               <div className='home--choosedept' onClick={this.close}>
@@ -137,8 +184,11 @@ class Home extends Component {
     }
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps,mapDispatchToProps)(Home);
 
 Home.propTypes = {
-  user: PropTypes.object
+  /** Holds user data which is handled through Redux. */
+  user: PropTypes.object,
+  /** Resets the app to a new logged out session */
+  resetApp: PropTypes.func
 };

@@ -7,6 +7,9 @@ import ppt from 'assets/material_ppt.svg';
 import img from 'assets/material_img.svg';
 import 'styles/main.scss';
 
+/**
+ * Component to render files.
+ */
 class SearchResult extends Component {
   constructor(props) {
     super(props);
@@ -53,11 +56,18 @@ class SearchResult extends Component {
 export default SearchResult;
 
 SearchResult.propTypes = {
+  /** Holds file name. */
   name: PropTypes.string,
+  /** Holds driveid of the file. */
   url: PropTypes.string,
+  /** Holds creation date of file. */
   date_modified: PropTypes.string,
+  /** Holds course title related to file. */
   course_name: PropTypes.string,
+  /** Holds course code related to file. */
   course_code: PropTypes.string,
+  /** Holds the type of file. */
   file_type: PropTypes.string,
+  /** Holds extension of file. */
   ext: PropTypes.string
 };

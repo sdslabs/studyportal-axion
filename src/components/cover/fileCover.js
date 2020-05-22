@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import loader from 'assets/fileloader.svg';
 import 'styles/main.scss';
 
+/**
+ * Filecover component for Studyportal.
+ */
 function FileCover(props) {
   return (
   <div className='filecover' onClick={props.close}>
@@ -15,5 +18,6 @@ function FileCover(props) {
 export default FileCover;
 
 FileCover.propTypes = {
+  /** Function to close modals. */
   close: PropTypes.func
 };

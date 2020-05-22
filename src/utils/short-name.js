@@ -12,4 +12,4 @@ let ShortName = function (name) {
 	return `${firstName  } ${  lastInitial}`;
 };
 
-module.exports = ShortName
+module.exports = ShortName;

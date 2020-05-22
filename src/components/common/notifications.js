@@ -5,6 +5,9 @@ import polygon from 'assets/Polygon.svg';
 import notif from 'assets/notif.svg';
 import 'styles/main.scss';
 
+/**
+ * Notification component for Studyportal.
+ */
 class Notifications extends Component {
   render() {
     return(
@@ -31,7 +34,10 @@ class Notifications extends Component {
 export default Notifications;
 
 Notifications.propTypes = {
+  /** Identifies notification popup toggle status. */
   notifications: PropTypes.bool,
+  /** Function to toggle state of modals. */
   handleClick: PropTypes.func,
+  /** Function to close modals. */
   close: PropTypes.func
 };
