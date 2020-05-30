@@ -46,6 +46,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+      this.connect();
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
@@ -55,6 +56,8 @@ class Home extends Component {
         }
       });
     }
+
+    timeout = 250;
 
     /**
      * Toggle state of different modals.
@@ -146,6 +149,46 @@ class Home extends Component {
         removeCookie('sdslabs');
       }
     }
+
+    connect(){
+      var ws = new WebSocket("ws://localhost:8005/notification/");
+      let that = this;
+      var connectInterval;
+
+      ws.onopen=()=>{
+        console.log("connected websocket");
+        that.timeout=250;
+        clearTimeout(connectInterval);
+      };
+
+      ws.onclose=e=>{
+        console.log(
+          `Socket is closed. Reconnect will be attempted in ${Math.min(
+              10000 / 1000,
+              (that.timeout + that.timeout) / 1000
+          )} second.`,
+          e.reason
+        );
+
+        that.timeout = that.timeout + that.timeout;
+        connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
+      };
+
+      ws.onerror = err => {
+        console.error(
+            "Socket encountered error: ",
+            err.message,
+            "Closing socket"
+        );
+
+        ws.close();
+      };
+    }
+
+    check = () => {
+      const { ws } = this.state;
+      if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
+    };
 
     render() {
         return(

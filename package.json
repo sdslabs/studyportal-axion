@@ -13,6 +13,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
+    "websocket": "^1.0.31",
     "whatwg-fetch": "^3.0.0"
   },
   "scripts": {

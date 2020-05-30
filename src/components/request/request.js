@@ -25,7 +25,7 @@ class Request extends Component {
             requesting: false,
             requested: false
         };
-
+        this.requestCourse = this.requestCourse.bind(this);
         this.switchToCourse = this.switchToCourse.bind(this);
         this.switchToFile = this.switchToFile.bind(this);
         this.file_active_course = this.file_active_course.bind(this);
