@@ -11,7 +11,7 @@ import { getDepartmentsList } from 'api/departmentApi';
 import { Link } from 'react-router-dom';
 import { CONFIG } from 'config/config';
 import { resetApp } from 'actions/actions';
-import { removeCookie } from 'utils/handleCookies';
+import { removeCookie, getCookie } from 'utils/handleCookies';
 
 const mapStateToProps = state => {
   return { user: state };
@@ -151,14 +151,22 @@ class Home extends Component {
     }
 
     connect(){
-      var ws = new WebSocket("ws://localhost:8005/notification/");
+      const token = getCookie('token');
+      const ws = new WebSocket(`ws://localhost:8005/notification/`);
       let that = this;
-      var connectInterval;
+      let connectInterval;
 
       ws.onopen=()=>{
         console.log("connected websocket");
-        that.timeout=250;
-        clearTimeout(connectInterval);
+        ws.send(JSON.stringify({
+          messagetype: 'token',
+          message: token }));
+        // that.timeout=250;
+        // clearTimeout(connectInterval);
+      };
+
+      ws.onmessage=(e)=>{
+        console.log(e.data);
       };
 
       ws.onclose=e=>{
@@ -170,8 +178,8 @@ class Home extends Component {
           e.reason
         );
 
-        that.timeout = that.timeout + that.timeout;
-        connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
+        // that.timeout = that.timeout + that.timeout;
+        // connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
       };
 
       ws.onerror = err => {
@@ -185,10 +193,10 @@ class Home extends Component {
       };
     }
 
-    check = () => {
-      const { ws } = this.state;
-      if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
-    };
+    // check = () => {
+    //   const { ws } = this.state;
+    //   if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
+    // };
 
     render() {
         return(
