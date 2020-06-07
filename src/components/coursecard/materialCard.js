@@ -55,14 +55,9 @@ class MaterialCard extends Component {
 
         const link = "https://drive.google.com/a/iitr.ac.in/uc?id=" + url + "&export=download";
 
-        window.open(link, "_blank");
-        /**
-        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
-        target='blank' style={{ textDecoration: 'none' }}>
-        */
+        //window.open(link, "_blank");
         downloadFiles(id).then((res, err) => {
-            console.log(res);
-            console.log(err);
+            this.props.updateFileDownloads0(id, res[0].downloads);
         });
     }
 
@@ -109,5 +104,7 @@ MaterialCard.propTypes = {
     /** Holds creation date of file. */
     date_modified: PropTypes.string,
     /** Holds the id of the file */
-    id: PropTypes.number
+    id: PropTypes.number,
+    /** updates the downloads field in the state of material card */
+    updateFileDownloads0: PropTypes.func
 };
