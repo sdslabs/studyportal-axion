@@ -36,5 +36,5 @@ function downloadFiles(id) {
 export {
   getFilesByCourse,
   getFilesByType,
-  downloadFiles,
+  downloadFiles
 };

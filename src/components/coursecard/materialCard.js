@@ -49,15 +49,17 @@ class MaterialCard extends Component {
     }
 
     /**
-     * Download the file
+     * Handle download button click
      */
     downloadFile(id, url) {
-
         const link = "https://drive.google.com/a/iitr.ac.in/uc?id=" + url + "&export=download";
-
-        //window.open(link, "_blank");
+        window.open(link, "_blank");
         downloadFiles(id).then((res, err) => {
-            this.props.updateFileDownloads0(id, res[0].downloads);
+            if (err) {
+                //TODO handle error
+            } else {
+                this.props.updateFileState(id, res[0].downloads);
+            }
         });
     }
 
@@ -76,8 +78,15 @@ class MaterialCard extends Component {
                 </div>
                 <div className='material--sizemod'>
                     {this.state.queue === '1' ?
-                        <div className='material--downloadicon-active' onMouseLeave={this.leave} onClick={() => this.downloadFile(this.props.id, this.props.url)}><img src={download1} alt='download' /></div> :
-                        <div className='material--downloadicon-other' onMouseOver={this.hover} onClick={() => this.downloadFile(this.props.id, this.props.url)}><img src={download2} alt='download' /></div>}
+                        <div className='material--downloadicon-active' onMouseLeave={this.leave} onClick={
+                            () => this.downloadFile(this.props.id, this.props.url)}>
+                            <img src={download1} alt='download' />
+                        </div> :
+                        <div className='material--downloadicon-other' onMouseOver={this.hover} onClick={
+                            () => this.downloadFile(this.props.id, this.props.url)}>
+                            <img src={download2} alt='download' />
+                        </div>
+                    }
                     <div className='material--size'>{this.props.size}</div>
                     <div className='material--datemodified'>{parseDate(this.props.date_modified)}</div>
                 </div>
@@ -106,5 +115,5 @@ MaterialCard.propTypes = {
     /** Holds the id of the file */
     id: PropTypes.number,
     /** updates the downloads field in the state of material card */
-    updateFileDownloads0: PropTypes.func
+    updateFileState: PropTypes.func
 };
