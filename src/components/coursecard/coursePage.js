@@ -43,6 +43,7 @@ class CoursePage extends Component {
     this.addCourse = this.addCourse.bind(this);
     this.deleteCourse = this.deleteCourse.bind(this);
     this.sortFilesByYear = this.sortFilesByYear.bind(this);
+    this.updateFileDownloads = this.updateFileDownloads.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +57,11 @@ class CoursePage extends Component {
     if (this.props.file_type !== nextProps.file_type) {
       this.getFiles(nextProps);
     }
+  }
+
+  updateFileDownloads = (id, downloads) => {
+    this.state.files.forEach(file => (file.files.filter(file => file.id === id)[0].downloads = downloads));
+    this.setState({ files: this.state.files });
   }
 
   /**
@@ -261,7 +267,8 @@ class CoursePage extends Component {
                     downloads={file.downloads}
                     ext={file.fileext}
                     size={file.size}
-                    date_modified={file.date_modified} />
+                    date_modified={file.date_modified}
+                    updateFileDownloads0={this.updateFileDownloads} />
                 )) : null}
                 <div className='coursepage--material_year' onClick={() => this.setState({ year: obj.year })}>
                   {obj.year}
