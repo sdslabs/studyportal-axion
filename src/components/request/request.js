@@ -289,10 +289,15 @@ class Request extends Component {
                                 <button className='request--coursebutton-active' onClick={this.switchToCourse}>Courses</button>
                                 <div className='request--form-course'>
                                     <form onSubmit={this.requestCourse}>
-                                        <div className='course--department'>Department</div>
-                                        <input className='course--department-input'
-                                            type='text' name='department'
-                                            onChange={this.course_active_course} />
+                                        <div className='file--department'
+                                            style={{ color: this.state.disable >= 0 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Department</div>
+                                        <select className='file--department-select'
+                                            onChange={this.course_active_course} disabled={!(this.state.disable >= 0)} name='department'>
+                                            <option>--Select Department--</option>
+                                            {this.state.departments.map(department => (
+                                                <option key={department.id} id={department.id}>{department.title}</option>
+                                            ))}
+                                        </select>
                                         <div className='course--course'
                                             style={{ color: this.state.disableCourse >= 1 ? "#2B2A28" : "rgba(43, 42, 40, 0.2)" }}>Course Name</div>
                                         <input className='course--course-input'
