@@ -207,7 +207,9 @@ class Upload extends Component {
                       uploadeds={this.state.uploadeds}
                       handleUpload={this.handleUpload}
                       getFiles={this.getFiles}
-                      disabled={!(this.state.disable >= 2)} />
+                      disabled={!(this.state.disable >= 2)}
+                      refreshUpload={this.refreshUpload}
+                    />
                   </div>
                 </form>
               </div>
