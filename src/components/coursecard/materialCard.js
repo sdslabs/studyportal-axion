@@ -52,7 +52,7 @@ class MaterialCard extends Component {
      * Handle download button click
      */
     downloadFile(id, url) {
-        const link = "https://drive.google.com/a/iitr.ac.in/uc?id=" + url + "&export=download";
+        const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
         window.open(link, "_blank");
         downloadFiles(id).then((res, err) => {
             if (err) {
