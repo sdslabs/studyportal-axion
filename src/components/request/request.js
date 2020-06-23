@@ -154,22 +154,15 @@ class Request extends Component {
      * Refreshes request modal.
      */
     refreshRequest() {
-        getDepartmentsList().then((res, err) => {
-            if (err) {
-                //TODO handle error
-            }
-            else {
-                this.setState({
-                    type: this.state.type,
-                    disable: 0,
-                    disableCourse: 0,
-                    departments: res.department,
-                    courses: [],
-                    requesting: false,
-                    requested: false
-                });
-            }
-        });
+        this.setState(prevState => ({
+            type: this.state.type,
+            disable: 0,
+            disableCourse: 0,
+            departments: prevState.departments,
+            courses: [],
+            requesting: false,
+            requested: false
+        }));
     }
 
     render() {

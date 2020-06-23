@@ -136,28 +136,22 @@ class Upload extends Component {
    * Refreshes upload modal.
    */
   refreshUpload() {
-    getDepartmentsList().then((res, err) => {
-      if (err) {
-        //TODO handle error
-      }
-      else {
-        this.setState({
-          disable: 0,
-          active: false,
-          files: [],
-          departments: res.department,
-          courses: [],
-          department: 0,
-          course: 0,
-          uploadings: [],
-          uploadeds: [],
-          results: [],
-          uploading: false,
-          uploaded: false
-        });
-      }
-    });
+    this.setState(prevState => ({
+      disable: 0,
+      active: false,
+      files: [],
+      departments: prevState.departments,
+      courses: [],
+      department: 0,
+      course: 0,
+      uploadings: [],
+      uploadeds: [],
+      results: [],
+      uploading: false,
+      uploaded: false
+    }));
   }
+
 
   render() {
     if (this.props.upload) {
