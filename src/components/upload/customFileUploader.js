@@ -59,8 +59,8 @@ class CustomFileUploader extends Component {
                         <span className='customfileuploader--instruc'>(Max total File Size allowed is 100MB)</span>
                     </div>
                     {this.props.uploaded ?
-                        <button type='submit' className='customfileuploader--button_uploaded'>
-                            Upload More</button> : this.props.uploading ?
+                        <div className='customfileuploader--button_uploaded' onClick={this.props.refreshUpload}>
+                            Upload More</div> : this.props.uploading ?
                         <button type='submit' className='customfileuploader--button_uploading'>
                             Uploading<img src={small_loader} className='customfileuploader--button-loader' alt='loader' />
                         </button> : <button type='submit' className='customfileuploader--button'>Upload</button>
@@ -100,9 +100,9 @@ class CustomFileUploader extends Component {
                         </div> : <Fragment/>
                     }
                     {this.props.uploaded ?
-                        <button type='submit' className='customfileuploader--button_uploaded'>
+                        <div className='customfileuploader--button_uploaded' onClick={this.props.refreshUpload}>
                             Upload More
-                        </button> :
+                        </div> :
                         this.props.uploading ?
                             <button type='submit' className='customfileuploader--button_uploading'>
                                 Uploading<img src={small_loader} className='customfileuploader--button-loader' alt='loader' />
@@ -131,5 +131,7 @@ CustomFileUploader.propTypes = {
     /** Holds disabled status of upload queue. */
     disabled: PropTypes.bool,
     /** Holds running status of ongoing upload. */
-    uploading: PropTypes.bool
+    uploading: PropTypes.bool,
+    /** Function to refresh the upload fields */
+    refreshUpload: PropTypes.func
 };
