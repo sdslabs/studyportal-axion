@@ -9,6 +9,7 @@ import 'styles/main.scss';
 import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
+import { downloadFiles } from 'api/filesApi';
 
 /**
  * Component to render files.
@@ -17,7 +18,7 @@ class MaterialCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          queue: props.queue
+            queue: props.queue
         };
         this.material_map = {
             pdf,
@@ -30,6 +31,7 @@ class MaterialCard extends Component {
 
         this.hover = this.hover.bind(this);
         this.leave = this.leave.bind(this);
+        this.downloadFile = this.downloadFile.bind(this);
     }
 
     /**
@@ -46,29 +48,45 @@ class MaterialCard extends Component {
         this.setState({ queue: '2' });
     }
 
+    /**
+     * Handle download button click
+     */
+    downloadFile(id, url) {
+        const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
+        window.open(link, "_blank");
+        downloadFiles(id).then((res, err) => {
+            if (err) {
+                //TODO handle error
+            } else {
+                this.props.updateFileState(id, res[0].downloads);
+            }
+        });
+    }
+
     render() {
-        return(
+        return (
             <div className='material'>
                 <div className='material--namecheck'>
                     <div className='material--checkbox'>
-                        <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' hover='rgba(56, 167, 222, 0.15)' borderhover='1px solid #38A7DE'/>
+                        <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' hover='rgba(56, 167, 222, 0.15)' borderhover='1px solid #38A7DE' />
                     </div>
                     <div className='material--info'>
                         <div className='material--icon'><img src={this.material_map[this.props.ext]} alt='icon' /></div>
-                        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
-                            target='blank' style={{ textDecoration:'none' }}>
-                        <div className='material--name'>{this.props.name}</div>
-                        </a>
+                        <div className='material--name' onClick={() => this.downloadFile(this.props.id, this.props.url)}>{this.props.name}</div>
                         <div className='material--download'>Downloads: {this.props.downloads}</div>
                     </div>
                 </div>
                 <div className='material--sizemod'>
-                    <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
-                            target='blank' style={{ textDecoration:'none' }}>
-                        { this.state.queue === '1' ?
-                            <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
-                            <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
-                    </a>
+                    {this.state.queue === '1' ?
+                        <div className='material--downloadicon-active' onMouseLeave={this.leave} onClick={
+                            () => this.downloadFile(this.props.id, this.props.url)}>
+                            <img src={download1} alt='download' />
+                        </div> :
+                        <div className='material--downloadicon-other' onMouseOver={this.hover} onClick={
+                            () => this.downloadFile(this.props.id, this.props.url)}>
+                            <img src={download2} alt='download' />
+                        </div>
+                    }
                     <div className='material--size'>{this.props.size}</div>
                     <div className='material--datemodified'>{parseDate(this.props.date_modified)}</div>
                 </div>
@@ -93,5 +111,9 @@ MaterialCard.propTypes = {
     /** Holds file extension to display icon. */
     ext: PropTypes.string,
     /** Holds creation date of file. */
-    date_modified: PropTypes.string
+    date_modified: PropTypes.string,
+    /** Holds the id of the file */
+    id: PropTypes.number,
+    /** updates the downloads field in the state of material card */
+    updateFileState: PropTypes.func
 };
