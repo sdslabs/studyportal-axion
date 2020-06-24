@@ -23,7 +23,7 @@ function getFilesByType(id, type) {
 }
 
 function downloadFiles(id) {
-  return axiosInstance.put(`/files`, {id, "downloads": "true" })
+  return axiosInstance.put(`/files`, { id, "downloads": "true" })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       return res;
