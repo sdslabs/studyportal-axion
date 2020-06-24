@@ -48,7 +48,7 @@ class FileUploadContainer extends Component {
                     <div className='customfileuploader--fileholder_name'>{this.props.name}</div>
                     <select className='customfileuploader--fileholder_category' onChange={this.updateFileType} disabled={this.props.disabled}>
                         <option value='default'>Select</option>
-                        <option value='Tutorial'>Tutorial</option>
+                        <option value='Tutorials'>Tutorials</option>
                         <option value='Book'>Books</option>
                         <option value='Notes'>Notes</option>
                         <option value='Exam Papers'>Exam Papers</option>
