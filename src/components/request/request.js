@@ -155,7 +155,7 @@ class Request extends Component {
      */
     refreshRequest() {
         this.setState(prevState => ({
-            type: this.state.type,
+            type: prevState.type,
             disable: 0,
             disableCourse: 0,
             departments: prevState.departments,
