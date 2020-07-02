@@ -11,7 +11,7 @@ import { getDepartmentsList } from 'api/departmentApi';
 import { Link } from 'react-router-dom';
 import { CONFIG } from 'config/config';
 import { resetApp } from 'actions/actions';
-import { removeCookie, getCookie } from 'utils/handleCookies';
+import { removeCookie } from 'utils/handleCookies';
 
 const mapStateToProps = state => {
   return { user: state };
@@ -46,7 +46,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-      this.connect();
       getDepartmentsList().then((res,err) => {
         if(err) {
           //TODO handle error
@@ -56,8 +55,6 @@ class Home extends Component {
         }
       });
     }
-
-    timeout = 250;
 
     /**
      * Toggle state of different modals.
@@ -149,54 +146,6 @@ class Home extends Component {
         removeCookie('sdslabs');
       }
     }
-
-    connect(){
-      const token = getCookie('token');
-      const ws = new WebSocket(`ws://localhost:8005/notification/`);
-      let that = this;
-      let connectInterval;
-
-      ws.onopen=()=>{
-        console.log("connected websocket");
-        ws.send(JSON.stringify({
-          messagetype: 'token',
-          message: token }));
-        // that.timeout=250;
-        // clearTimeout(connectInterval);
-      };
-
-      ws.onmessage=(e)=>{
-        console.log(e.data);
-      };
-
-      ws.onclose=e=>{
-        console.log(
-          `Socket is closed. Reconnect will be attempted in ${Math.min(
-              10000 / 1000,
-              (that.timeout + that.timeout) / 1000
-          )} second.`,
-          e.reason
-        );
-
-        // that.timeout = that.timeout + that.timeout;
-        // connectInterval = setTimeout(this.check, Math.min(10000, that.timeout));
-      };
-
-      ws.onerror = err => {
-        console.error(
-            "Socket encountered error: ",
-            err.message,
-            "Closing socket"
-        );
-
-        ws.close();
-      };
-    }
-
-    // check = () => {
-    //   const { ws } = this.state;
-    //   if (!ws || ws.readyState === WebSocket.CLOSED) this.connect(); //check if websocket instance is closed, if so call `connect` function.
-    // };
 
     render() {
         return(
