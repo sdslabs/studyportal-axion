@@ -43,7 +43,7 @@ class Notifications extends Component {
   }
 
   closeAndDelete() {
-    this.props.handleClick('notifications');
+    this.props.close();
     if(this.props.notifications && this.state.notifications.length){
       this.state.notifications.map((notification)=>(
         deleteNotification(notification.id)
@@ -69,14 +69,14 @@ class Notifications extends Component {
   render() {
     return(
       <div className='notifications'>
-        <div className='notifications--button' onClick={() => this.closeAndDelete() }>
+        <div className='notifications--button' onClick={() => {this.props.handleClick('notifications');} }>
           <div className='notifications--button-image'><img src={notif} alt="notification" /></div>
           <div className='notifications--button-number'>{this.state.notifications.length}</div>
         </div>
         { this.props.notifications ?
           <Fragment>
             <div className='notifications--polygon'><img src={ polygon } alt='ploygon' /></div>
-            <div className='notifications--container' onClick={this.props.close}>
+            <div className='notifications--container' onClick={this.closeAndDelete}>
             {(this.state.notifications.length)?this.state.notifications.map((notification)=>(
               <NotificationCard key={notification.id} notification_data={notification}/>
             )):
