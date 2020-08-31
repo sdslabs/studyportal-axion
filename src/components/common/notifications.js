@@ -36,9 +36,9 @@ class Notifications extends Component {
             icon: logo
         });
       }
-      let all_notifications = this.state.notifications;
-      all_notifications.push(data.notification_data);
-      this.setState({ notifications:all_notifications });
+      this.setState(prev => ({
+        notifications: [...prev.notifications, data.notification_data]
+      }));
     };
   }
 
