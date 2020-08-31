@@ -4,7 +4,7 @@ import NotificationCard from 'components/common/notificationCard';
 import polygon from 'assets/Polygon.svg';
 import notif from 'assets/notif.svg';
 import 'styles/main.scss';
-import { getAllNotifications, getNewNotification, deleteNotification } from 'api/notificationApi';
+import { getAllNotifications, getNewNotification } from 'api/notificationApi';
 import { getCookie } from 'utils/handleCookies';
 import logo from 'assets/studyportal_logo.png';
 
@@ -18,7 +18,7 @@ class Notifications extends Component {
     notifications:[]
   };
   this.getNotifications=this.getNotifications.bind(this);
-  this.closeAndDelete=this.closeAndDelete.bind(this);
+  this.update=this.update.bind(this);
   }
 
   // eslint-disable-next-line react/no-deprecated
@@ -42,7 +42,7 @@ class Notifications extends Component {
     };
   }
 
-  closeAndDelete(notification) {
+  update(notification) {
     console.log(notification);
     this.setState(prev => ({
       notifications: prev.notifications.filter(notif=>notif!==notification)
@@ -76,7 +76,7 @@ class Notifications extends Component {
             <div className='notifications--polygon'><img src={ polygon } alt='ploygon' /></div>
             <div className='notifications--container'>
             {(this.state.notifications.length)?this.state.notifications.map((notification)=>(
-              <NotificationCard key={notification.id} notification_data={notification} close={this.props.close} update={this.closeAndDelete}/>
+              <NotificationCard key={notification.id} notification_data={notification} close={this.props.close} update={this.update}/>
             )):
             <div className='nonewnotification'><p>No new notification.</p></div>}
             </div>

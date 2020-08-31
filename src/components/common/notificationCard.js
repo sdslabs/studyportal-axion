@@ -20,16 +20,18 @@ class NotificationCard extends Component {
           target: props.notification_data.target,
           link: props.notification_data.link
         };
+        this.closeAndDelete = this.closeAndDelete.bind(this);
     }
 
-    componentWillUnmount(){
+    closeAndDelete(){
+      this.props.close();
       deleteNotification(this.state.id);
       this.props.update(this.props.notification_data);
     }
   render() {
     return(
       <Link to={this.state.link}>
-        <div className='notifications--card' onClick={()=> {this.props.close();}}>
+        <div className='notifications--card' onClick={()=> {this.closeAndDelete()}}>
             <div className='notifications--card-description'>{this.state.actor} {this.state.verb} {this.state.action} in {this.state.target}.
                                                               Click to check it.</div>
             <div className='notifications--card-date'>{this.state.date}</div>
