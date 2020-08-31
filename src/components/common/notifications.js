@@ -42,14 +42,12 @@ class Notifications extends Component {
     };
   }
 
-  closeAndDelete() {
-    this.props.close();
-    if(this.props.notifications && this.state.notifications.length){
-      this.state.notifications.map((notification)=>(
-        deleteNotification(notification.id)
-      ));
-      this.setState({ notifications:"" });
-    }
+  closeAndDelete(notification) {
+    console.log(notification);
+    this.setState(prev => ({
+      notifications: prev.notifications.filter(notif=>notif!==notification)
+    }));
+    console.log(this.state.notifications);
   }
 
   getNotifications (){
@@ -76,9 +74,9 @@ class Notifications extends Component {
         { this.props.notifications ?
           <Fragment>
             <div className='notifications--polygon'><img src={ polygon } alt='ploygon' /></div>
-            <div className='notifications--container' onClick={this.closeAndDelete}>
+            <div className='notifications--container'>
             {(this.state.notifications.length)?this.state.notifications.map((notification)=>(
-              <NotificationCard key={notification.id} notification_data={notification}/>
+              <NotificationCard key={notification.id} notification_data={notification} close={this.props.close} update={this.closeAndDelete}/>
             )):
             <div className='nonewnotification'><p>No new notification.</p></div>}
             </div>

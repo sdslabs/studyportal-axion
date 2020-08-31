@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
+import { deleteNotification } from 'api/notificationApi';
 
 /**
  * Component to render notifications.
@@ -20,10 +21,15 @@ class NotificationCard extends Component {
           link: props.notification_data.link
         };
     }
+
+    componentWillUnmount(){
+      deleteNotification(this.state.id);
+      this.props.update(this.props.notification_data);
+    }
   render() {
     return(
       <Link to={this.state.link}>
-        <div className='notifications--card'>
+        <div className='notifications--card' onClick={()=> {this.props.close();}}>
             <div className='notifications--card-description'>{this.state.actor} {this.state.verb} {this.state.action} in {this.state.target}.
                                                               Click to check it.</div>
             <div className='notifications--card-date'>{this.state.date}</div>
