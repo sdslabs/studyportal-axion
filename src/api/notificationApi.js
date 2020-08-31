@@ -2,7 +2,7 @@ import { axiosInstance } from 'api/axiosInstance';
 
 function getAllNotifications(token){
     return axiosInstance.get(`/notifications/?format=json`,
-    { headers: { 'Authorization' : `Bearer ${token}`, 'Content-Type': 'application/json', 'Accept': 'application/json' } })
+    { headers: { 'Authorization' : `Bearer ${token}` } })
     .then((response) => {
         const res = JSON.parse(response.request.response);
         return res;
