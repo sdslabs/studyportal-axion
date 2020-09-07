@@ -43,11 +43,9 @@ class Notifications extends Component {
   }
 
   update(notification) {
-    console.log(notification);
     this.setState(prev => ({
       notifications: prev.notifications.filter(notif=>notif!==notification)
     }));
-    console.log(this.state.notifications);
   }
 
   getNotifications (){

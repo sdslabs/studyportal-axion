@@ -31,7 +31,7 @@ class NotificationCard extends Component {
   render() {
     return(
       <Link to={this.state.link}>
-        <div className='notifications--card' onClick={()=> {this.closeAndDelete()}}>
+        <div className='notifications--card' onClick={()=> {this.closeAndDelete();}}>
             <div className='notifications--card-description'>{this.state.actor} {this.state.verb} {this.state.action} in {this.state.target}.
                                                               Click to check it.</div>
             <div className='notifications--card-date'>{this.state.date}</div>
@@ -45,5 +45,9 @@ class NotificationCard extends Component {
 export default NotificationCard;
 
 NotificationCard.propTypes = {
-  notification_data: PropTypes.object
+  notification_data: PropTypes.object,
+  /** Function to close modals. */
+  close: PropTypes.func,
+  /** Function to delete specific notification. */
+  update: PropTypes.func
 };
