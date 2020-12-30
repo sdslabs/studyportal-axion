@@ -76,9 +76,7 @@ class Department extends Component {
   render() {
     return (
       <div>
-          <Header handleClick ={this.handleClick}
-                  handleSeeAllClick={this.handleSeeAllClick}
-                  close={this.close}/>
+          <Header />
           <Sidebar login={false}
                   department={this.state.department.title}
                   department_id={this.state.department.id}

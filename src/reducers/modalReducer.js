@@ -4,6 +4,7 @@ import {
   OPEN_SEARCH,
   TOGGLE_SEARCH,
   TOGGLE_SHOWMORE,
+  TOGGLE_NOTIFICATIONS,
   TOGGLE_USERMENU,
   CLOSE_MODAL
 } from 'constants/action-types';
@@ -12,9 +13,9 @@ const initialState = {
   request: false,
   upload: false,
   search: false,
+  showMore: false,
   notifications: false,
-  userMenu: false,
-  showMore: false
+  userMenu: false
 };
 
 export default function modalReducer(state = initialState, action) {
@@ -44,6 +45,11 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         showMore: !state.showMore
+      };
+    case TOGGLE_NOTIFICATIONS:
+      return {
+        ...state,
+        notifications: !state.notifications
       };
     case TOGGLE_USERMENU:
       return {

@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetApp, toggleUserMenu } from 'actions/actions';
+import { resetApp } from 'actions/actions';
 import { CONFIG } from 'config/config';
 import { removeCookie } from 'utils/handleCookies';
 import polygon from 'assets/Polygon.svg';
