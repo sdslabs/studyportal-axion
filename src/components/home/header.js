@@ -9,7 +9,7 @@ import sds_logo from 'assets/sds_logo.svg';
 import 'styles/main.scss';
 
 const mapStateToProps = state => {
-  return { user: state };
+  return { user: state.user };
 };
 
 /**

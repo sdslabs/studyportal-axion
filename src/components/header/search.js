@@ -1,12 +1,37 @@
 import React, { Component, Fragment } from 'react';
+import ShowMoreFiles from './showMoreFiles';
 import PropTypes from 'prop-types';
 import SearchResult from './searchResult';
 import search from 'assets/head_search.png';
 import search_home from 'assets/search.png';
 import 'styles/main.scss';
 import { getSearchResults } from 'api/searchApi';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {
+  TOGGLE_REQUEST,
+  OPEN_SEARCH,
+  TOGGLE_SEARCH,
+  TOGGLE_SHOWMORE,
+  SEARCH_RESULTS,
+  CLOSE_MODAL
+} from 'constants/action-types';
 import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
+
+function mapStateToProps(state) {
+  return { modal: state.modal };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    toggleRequest: () => dispatch({ type: TOGGLE_REQUEST }),
+    openSearch: () => dispatch({ type: OPEN_SEARCH }),
+    toggleSearch: () => dispatch({ type: TOGGLE_SEARCH }),
+    toggleShowMore: () => dispatch({ type: TOGGLE_SHOWMORE }),
+    searchResults: (payload) => dispatch({ type: SEARCH_RESULTS, payload }),
+    closeModal: () => dispatch({ type: CLOSE_MODAL })
+  };
+}
 
 /**
  * Component to render search.
@@ -22,13 +47,6 @@ class Search extends Component {
           showFiles: 6,
           showmore: false
         };
-
-        this.result = this.result.bind(this);
-    }
-
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps(props) {
-        this.setState({ search:props.search });
     }
 
     /**
@@ -36,7 +54,7 @@ class Search extends Component {
      *
      * @param {string} query
      */
-    getResults(query) {
+    getResults = (query) => {
       getSearchResults(query).then((res,err) => {
         if(err){
           //TODO handle error
@@ -60,16 +78,31 @@ class Search extends Component {
      *
      * @param {object} e
      */
-    result(e) {
+    result = (e) => {
       this.setState({ value: e.target.value });
       if (e.target.value !== '') {
         if(!this.state.search)
-          this.props.handleClick('search');
+          this.props.openSearch();
         this.getResults(e.target.value);
       }
       else {
-        this.props.close();
+        this.props.closeModal();
       }
+    }
+
+    /**
+     * Toggles show more files popup when "See All" is clicked in the result box.
+     *
+     * @param {array} files
+     * @param {string} query
+     */
+    handleShowMoreModal = (files, query) => {
+      this.props.toggleShowMore();
+      const searchPayload = {
+        files,
+        query
+      };
+      this.props.searchResults(searchPayload);
     }
 
     render() {
@@ -97,9 +130,9 @@ class Search extends Component {
               </div>
             }
             {
-              this.props.search ?
+              this.props.modal.search ?
                 this.state.departments.length || this.state.courses.length || this.state.files.length ?
-                <div className='search--container' onClick={this.props.close}>
+                <div className='search--container' onClick={() => {}}>
                   <div className='search--file'>Files</div>
                   {!this.state.files.length ?
                     <div className='search--file-noresults'>
@@ -107,7 +140,7 @@ class Search extends Component {
                       <span className='search--file-noresults-outer'>
                         <div className='search--file-noresults_text'>Sorry! We couldn&apos;t find any file for you.</div>
                         <span className='search--file-noresults_text'>However,you can request what you are looking for.</span>
-                        <span className='search--file-noresults_requestfile' onClick={() => this.props.handleClick('request')}>Request Here!</span>
+                        <span className='search--file-noresults_requestfile' onClick={() => this.props.toggleRequest()}>Request Here!</span>
                       </span>
                     </div> :
                       <div>
@@ -124,7 +157,7 @@ class Search extends Component {
                         ))}
                         </div>
                         <div className='search--file-seeall'
-                          onClick={() => this.props.handleSeeAllClick(this.state.files,this.state.value)}>See All</div>
+                          onClick={() => this.handleShowMoreModal(this.state.files,this.state.value)}>See All</div>
                     </div>
                   }
                   <div className='search--courses'>Courses</div>
@@ -135,7 +168,7 @@ class Search extends Component {
                       <div className='search--courses-noresults_text'>Sorry! We couldn&apos;t find any course for you.</div>
                       <span className='search--courses-noresults_text'>However,you can request what you are looking for.</span>
                       <span className='search--courses-noresults_requestcourse'
-                        onClick={() => this.props.handleClick('request')}>&nbsp;Request Here!</span>
+                        onClick={() => this.props.toggleRequest()}>&nbsp;Request Here!</span>
                     </span>
                   </div> :
                   <div>
@@ -164,17 +197,18 @@ class Search extends Component {
                   <span className='nosearchresults--message'>
                     <div className='nosearchresults--message_plaintext'>Sorry! We couldn&apos;t find any file for you.</div>
                     <span className='nosearchresults--message_plaintext'> However,you can request what you are looking for.</span>
-                    <span className='nosearchresults--message_request' onClick={() => this.props.handleClick('request')}>Request Here!</span>
+                    <span className='nosearchresults--message_request' onClick={() => this.props.toggleRequest()}>Request Here!</span>
                   </span>
                 </div> :
                 <Fragment/>
             }
+            <ShowMoreFiles />
         </div>
       );
     }
 }
 
-export default Search;
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 Search.propTypes = {
   /** Holds status of search popup. */
