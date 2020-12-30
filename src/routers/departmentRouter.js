@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import './App.css';
-import Home from './pages/home';
-import DepartmentRouter from 'routers/departmentRouter';
-import Activity from './pages/activity';
-import MyCourse from './pages/mycourse';
-import ErrorPage from './pages/error';
+import Department from 'pages/department';
+import ErrorPage from 'pages/error';
 import { Switch, Route } from 'react-router-dom';
 import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
@@ -19,7 +15,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-class App extends Component {
+class DepartmentRouter extends Component {
   constructor(props) {
     super(props);
     this.getUser();
@@ -31,6 +27,7 @@ class App extends Component {
     if (token) {
       loginUserWithToken(token).then((res) => {
         const user = {
+          login: true,
           id: res.user.falcon_id,
           username: res.user.username,
           email: res.user.email,
@@ -72,6 +69,7 @@ class App extends Component {
     else if (cookie) {
       loginUserWithCookie().then((res) => {
         const user = {
+          login: true,
           id: res.user.falcon_id,
           username: res.user.username,
           email: res.user.email,
@@ -96,21 +94,22 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route exact path='/mycourse' render={(props) => <MyCourse {...props} error={false} />} />
-        <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
-          render={(props) => <MyCourse {...props} error={false} />} />
-        <Route exact path='/activity/:type?' render={(props) => <Activity {...props} error={false} />} />
-        <Route exact path='/departments' render={DepartmentRouter} />
+        <Route exact path='/:department' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course/all' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course/tutorials' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course/books' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course/notes' render={(props) => <Department {...props} />} />
+        <Route exact path='/:department/courses/:course/exampapers' render={(props) => <Department {...props} />} />
         <Route path='*' render={(props) => <ErrorPage />} />
       </Switch>
     );
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(DepartmentRouter);
 
-App.propTypes = {
+DepartmentRouter.propTypes = {
   setUser: PropTypes.func,
   resetApp: PropTypes.func
 };

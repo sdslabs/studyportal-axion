@@ -1,79 +1,71 @@
 import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Search from './search';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
+import { TOGGLE_REQUEST, TOGGLE_UPLOAD, CLOSE_MODAL } from 'constants/action-types';
 import logo from 'assets/head_logo.png';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 
-const mapStateToProps = state => {
-    return { user: state };
-};
-
 /**
  * Header component for Studyportal.
  */
-class Header extends Component {
-    render() {
-        return(
-            <div className='header' onClick={this.props.close}>
-                <div className='header--content'>
-                    <div className='header--icon'>
-                        <Link to='/' style={{ textDecoration: 'none' }}>
-                            <div className='header--logo'>
-                                <div><img src={logo} alt="studyportal_logo" /></div>
-                                <div className='header--heading'>Study Portal</div>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className='header--search'>
-                        <Search home={false}
-                            search={this.props.search}
-                            close = {this.props.close}
-                            handleClick = {this.props.handleClick}
-                            handleSeeAllClick = {this.props.handleSeeAllClick}/>
-                    </div>
-                    {this.props.user.login ?
-                        (<Fragment>
-                            <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
-                            <div className='header--mycourse'><Link to='/mycourse'><span className='link'>My Course</span></Link></div>
-                        </Fragment>) :
-                        (<Fragment>
-                            <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
-                            <div className='header--request' onClick={() => this.props.handleClick('request')}>Request</div>
-                            <div className='header--upload' onClick={() => this.props.handleClick('upload')}>Upload</div>
-                        </Fragment>)
-                    }
-                </div>
-                <div className='header--userinfo'>
-                    {this.props.user.login ?
-                        (<Fragment>
-                            <div className='header--notification'>
-                                <Notifications notifications={this.props.notifications}
-                                    handleClick={this.props.handleClick}
-                                    close={this.props.close}/>
-                            </div>
-                            <div className='header--user'>
-                                <UserMenu userMenu={this.props.userMenu}
-                                    loginHandler={this.props.loginHandler}
-                                    handleClick={this.props.handleClick}
-                                    close={this.props.close}/>
-                            </div>
-                        </Fragment>) :
-                        (<Fragment>
-                            <button className='header--login' onClick={() => this.props.loginHandler('login')}>Login</button>
-                            <button className='header--signup' onClick={() => this.props.loginHandler('register')}>Sign Up</button>
-                        </Fragment>)
-                    }
-                </div>
-            </div>
-        );
-    }
-}
+const Header = (props) => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+    const modal = useSelector((state) => state.modal);
 
-export default connect(mapStateToProps)(Header);
+    return(
+        <div className='header' onClick={() => dispatch({ type: CLOSE_MODAL })}>
+            <div className='header--content'>
+                <div className='header--icon'>
+                    <Link to='/' style={{ textDecoration: 'none' }}>
+                        <div className='header--logo'>
+                            <div><img src={logo} alt="studyportal_logo" /></div>
+                            <div className='header--heading'>Study Portal</div>
+                        </div>
+                    </Link>
+                </div>
+                <div className='header--search'>
+                    <Search home={false} />
+                </div>
+                {user.login ?
+                    (<Fragment>
+                        <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
+                        <div className='header--mycourse'><Link to='/mycourse'><span className='link'>My Course</span></Link></div>
+                    </Fragment>) :
+                    (<Fragment>
+                        <div className='header--home'><Link to='/'><span className='link'>Home</span></Link></div>
+                        <div className='header--request' onClick={() => dispatch({ type: TOGGLE_REQUEST })}>Request</div>
+                        <div className='header--upload' onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>Upload</div>
+                    </Fragment>)
+                }
+            </div>
+            <div className='header--userinfo'>
+                {user.login ?
+                    (<Fragment>
+                        <div className='header--notification'>
+                            <Notifications notifications={modal.notifications}
+                                handleClick={props.handleClick}
+                                close={props.close}/>
+                        </div>
+                        <div className='header--user'>
+                            <UserMenu />
+                        </div>
+                    </Fragment>) :
+                    (<Fragment>
+                        <button className='header--login' onClick={() => props.loginHandler('login')}>Login</button>
+                        <button className='header--signup' onClick={() => props.loginHandler('register')}>Sign Up</button>
+                    </Fragment>)
+                }
+            </div>
+        </div>
+    );
+};
+
+export default Header;
 
 Header.propTypes = {
     /** Holds status of user-menu popup. */

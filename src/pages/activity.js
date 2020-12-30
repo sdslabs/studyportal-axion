@@ -33,7 +33,7 @@ function mapDispatchToProps(dispatch) {
 /**
  * Component to render different pages in Studyportal.
  */
-class Department extends Component {
+class Activity extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -402,129 +402,37 @@ class Department extends Component {
     }
 
     render() {
-      if (!this.state.error) {
-        if(this.state.mycourse && !this.state.activity)
-          return (
-            <div>
-              <Header login={this.state.login}
-                          search={this.state.search}
-                          notifications={this.state.notifications}
-                          userMenu={this.state.userMenu}
-                          handleClick ={this.handleClick}
-                          handleSeeAllClick={this.handleSeeAllClick}
-                          loginHandler={this.loginHandler}
-                          close={this.close}/>
-              <Sidebar activity='mycourse'
-                      department={this.state.department.title}
-                      department_id={this.state.department.id}
-                      department_abbr={this.state.department.abbr}
-                      courses={this.state.courses}
-                      active={this.state.course.active}
-                      close={this.close}
-                      getUserDetails={this.getUserDetails}/>
-              <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-              <Upload upload={this.state.upload} close={this.close}/>
-              {this.state.searchfiles.length ?
-                <ShowMoreFiles files={this.state.searchfiles}
-                              showmore={this.state.showmore}
-                              searchquery={this.state.searchquery}
-                              close={this.close}
-                              handleClick={this.handleClick} /> : null}
-              { this.state.course.code !== undefined ?
-                <CoursePage login={this.state.login}
-                            getUserDetails={this.getUserDetails}
-                            course_code={this.getRouteParam(this.props.location.pathname,'course')}
-                            department_abbr={this.getRouteParam(this.props.location.pathname,'department')}
-                            userCourses={this.state.userCourses}
-                            file_type={this.getRouteParam(this.props.location.pathname,'file')}
-                            error={this.error}
-                            close={this.close}/> : <CourseCover close={this.close}/> }
-            </div>
-          );
-        else if(this.state.activity && !this.state.mycourse)
-          return (
-            <div>
-              <Header login={this.state.login}
-                          search={this.state.search}
-                          notifications={this.state.notifications}
-                          userMenu={this.state.userMenu}
-                          handleClick ={this.handleClick}
-                          handleSeeAllClick={this.handleSeeAllClick}
-                          loginHandler={this.loginHandler}
-                          close={this.close}/>
-              <Sidebar activity='activity'
-                      active={this.props.match.params.type}
-                      close={this.close}
-                      getUserDetails={this.getUserDetails}/>
-              <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-              <Upload upload={this.state.upload} close={this.close}/>
-              {this.state.searchfiles.length ?
-                <ShowMoreFiles files={this.state.searchfiles}
-                              showmore={this.state.showmore}
-                              searchquery={this.state.searchquery}
-                              close={this.close}
-                              handleClick={this.handleClick} /> : null}
-              <ActivityLog close={this.close} route={this.props.match.params.type}/>
-            </div>
-          );
-        else
-          return (
-              <div>
-                  <Header login={this.state.login}
-                          search={this.state.search}
-                          notifications={this.state.notifications}
-                          userMenu={this.state.userMenu}
-                          handleClick ={this.handleClick}
-                          handleSeeAllClick={this.handleSeeAllClick}
-                          loginHandler={this.loginHandler}
-                          close={this.close}/>
-                  <Sidebar login={false}
-                          department={this.state.department.title}
-                          department_id={this.state.department.id}
-                          department_abbr={this.state.department.abbr}
-                          courses={this.state.courses}
-                          active={this.state.course.active}
-                          close={this.close}/>
-                  <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-                  <Upload upload={this.state.upload} close={this.close}/>
-                  {this.state.searchfiles.length ?
-                    <ShowMoreFiles files={this.state.searchfiles}
-                                  showmore={this.state.showmore}
-                                  searchquery={this.state.searchquery}
-                                  close={this.close}
-                                  handleClick={this.handleClick} /> : null}
-                  { this.state.course.code !== undefined ?
-                    <CoursePage login={this.state.login}
-                                getUserDetails={this.getUserDetails}
-                                course_code={this.props.match.params.course}
-                                department_abbr={this.props.match.params.department}
-                                file_type={this.props.match.params.file_type}
-                                error={this.error}
-                                close={this.close}/> : <CourseCover close={this.close}/> }
-              </div>
-          );
-      }
-        else
-            return (
-              <div>
-                  <Header login={this.state.login}
-                          search={this.state.search}
-                          notifications={this.state.notifications}
-                          userMenu={this.state.userMenu}
-                          handleClick ={this.handleClick}
-                          handleSeeAllClick={this.handleSeeAllClick}
-                          loginHandler={this.loginHandler}
-                          close={this.close}/>
-                  <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-                  <Upload upload={this.state.upload} close={this.close}/>
-              </div>
-            );
+      return (
+        <div>
+          <Header login={this.state.login}
+                      search={this.state.search}
+                      notifications={this.state.notifications}
+                      userMenu={this.state.userMenu}
+                      handleClick ={this.handleClick}
+                      handleSeeAllClick={this.handleSeeAllClick}
+                      loginHandler={this.loginHandler}
+                      close={this.close}/>
+          <Sidebar activity='activity'
+                  active={this.props.match.params.type}
+                  close={this.close}
+                  getUserDetails={this.getUserDetails}/>
+          <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
+          <Upload upload={this.state.upload} close={this.close}/>
+          {this.state.searchfiles.length ?
+            <ShowMoreFiles files={this.state.searchfiles}
+                          showmore={this.state.showmore}
+                          searchquery={this.state.searchquery}
+                          close={this.close}
+                          handleClick={this.handleClick} /> : null}
+          <ActivityLog close={this.close} route={this.props.match.params.type}/>
+        </div>
+      );
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Department);
+export default connect(mapStateToProps,mapDispatchToProps)(Activity);
 
-Department.propTypes = {
+Activity.propTypes = {
   /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
   /** URL of present location. */
