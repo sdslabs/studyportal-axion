@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { TOGGLE_REQUEST, CLOSE_MODAL } from 'constants/action-types';
 import 'styles/main.scss';
@@ -15,7 +14,7 @@ const ShowMoreFiles = () => {
     const modal = useSelector((state) => state.modal);
     const search = useSelector((state) => state.search);
 
-    if(modal.showMore){
+    if(modal.showMore) {
         return(
             <div className='seeallcover'>
                 <div className='seeall'>
@@ -60,18 +59,3 @@ const ShowMoreFiles = () => {
 };
 
 export default ShowMoreFiles;
-
-ShowMoreFiles.propTypes = {
-    /** Holds search result files. */
-    files: PropTypes.array,
-    /** Holds search query string. */
-    searchquery: PropTypes.string,
-    /** Holds toggle status of see-all. */
-    showmore: PropTypes.bool,
-    /** Holds file name. */
-    handleSeeAll: PropTypes.func,
-    /** Function to toggle state of modals. */
-    handleClick: PropTypes.func,
-    /** Function to close modals. */
-    close: PropTypes.func
-};

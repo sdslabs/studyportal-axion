@@ -44,8 +44,7 @@ class Search extends Component {
           files: [],
           departments: [],
           courses: [],
-          showFiles: 6,
-          showmore: false
+          showFiles: 6
         };
     }
 
@@ -132,7 +131,7 @@ class Search extends Component {
             {
               this.props.modal.search ?
                 this.state.departments.length || this.state.courses.length || this.state.files.length ?
-                <div className='search--container' onClick={() => {}}>
+                <div className='search--container'>
                   <div className='search--file'>Files</div>
                   {!this.state.files.length ?
                     <div className='search--file-noresults'>
@@ -157,7 +156,7 @@ class Search extends Component {
                         ))}
                         </div>
                         <div className='search--file-seeall'
-                          onClick={() => this.handleShowMoreModal(this.state.files,this.state.value)}>See All</div>
+                          onClick={() => this.handleShowMoreModal(this.state.files, this.state.value)}>See All</div>
                     </div>
                   }
                   <div className='search--courses'>Courses</div>
@@ -211,14 +210,20 @@ class Search extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 Search.propTypes = {
-  /** Holds status of search popup. */
-  search: PropTypes.bool,
+  /** Holds status of various modals and popups. */
+  modal: PropTypes.bool,
   /** Identifies whether search is in homepage. */
   home: PropTypes.bool,
   /** Function to close modals. */
-  close: PropTypes.func,
-  /** Function to toggle state of modals. */
-  handleClick: PropTypes.func,
-  /** Function to toggle see-all modal. */
-  handleSeeAllClick: PropTypes.func
+  closeModal: PropTypes.func,
+  /** Function to toggle state of request modal. */
+  toggleRequest: PropTypes.func,
+  /** Function to toggle state of upload modal. */
+  toggleUpload: PropTypes.func,
+  /** Function to toggle state of showMore modal. */
+  toggleShowMore: PropTypes.func,
+  /** Function to open search modal. */
+  openSearch: PropTypes.func,
+  /** Function to trigger search. */
+  searchResults: PropTypes.func
 };
