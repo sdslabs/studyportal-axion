@@ -15,11 +15,11 @@ const NotificationCard = (props) => {
     const closeAndDelete = (id, notification_data) => {
       dispatch({ type: CLOSE_MODAL });
       deleteNotification(id);
-      this.props.update(notification_data);
+      props.update(notification_data);
     };
 
     return(
-      <Link to={this.state.link}>
+      <Link to={props.link}>
         <div className='notifications--card' onClick={() => closeAndDelete(props.id, props.notification_data)}>
             <div className='notifications--card-description'>{props.actor} {props.verb} {props.action} in {props.target}.
                                                               Click to check it.</div>
@@ -47,6 +47,8 @@ NotificationCard.propTypes = {
   target: PropTypes.string,
   /** Holds the notification date. */
   date: PropTypes.string,
+  /** Holds the notification related link. */
+  link: PropTypes.string,
   /** Function to delete specific notification. */
   update: PropTypes.func
 };

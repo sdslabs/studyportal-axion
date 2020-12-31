@@ -35,7 +35,7 @@ const UserMenu = () => {
       { modal.userMenu ?
       <div className='usermenu--container'>
         <div className='usermenu--polygon'><img src={polygon} alt='polygon' /></div>
-        <div className='usermenu--cover' onClick={() => dispatch({ type: CLOSE_MODAL })}>
+        <div className='usermenu--cover'>
           <div className='usermenu--request' onClick={() => dispatch({ type: TOGGLE_REQUEST })}>Request</div>
           <div className='usermenu--upload' onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>Upload</div>
           <Link to='/activity' style={{ textDecoration: 'none' }}>

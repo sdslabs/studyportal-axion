@@ -211,7 +211,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Search);
 
 Search.propTypes = {
   /** Holds status of various modals and popups. */
-  modal: PropTypes.bool,
+  modal: PropTypes.object,
   /** Identifies whether search is in homepage. */
   home: PropTypes.bool,
   /** Function to close modals. */

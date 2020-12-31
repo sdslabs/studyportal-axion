@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Search from './search';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
+import Request from 'components/request/request';
+import Upload from 'components/upload/upload';
 import { CONFIG } from 'config/config';
 import { TOGGLE_REQUEST, TOGGLE_UPLOAD } from 'constants/action-types';
 import logo from 'assets/head_logo.png';
@@ -61,6 +63,8 @@ const Header = () => {
                     </Fragment>)
                 }
             </div>
+            <Request />
+            <Upload close={() => {}}/>
         </div>
     );
 };

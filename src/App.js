@@ -3,26 +3,44 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
 import Home from './pages/home';
-import DepartmentRouter from 'routers/departmentRouter';
+import Department from './pages/dept_temp';
 import Activity from './pages/activity';
 import MyCourse from './pages/mycourse';
 import ErrorPage from './pages/error';
-import { Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
+import { getDepartmentsList } from 'api/departmentApi';
+import { ADD_DEPARTMENTS } from './constants/action-types';
 
 function mapDispatchToProps(dispatch) {
   return {
+    addDepartments: departments => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
     setUser: user => dispatch(setUser(user)),
     resetApp: () => dispatch(resetApp())
   };
 }
 
+const history = createBrowserHistory();
+
 class App extends Component {
   constructor(props) {
     super(props);
+    this.getDepartments();
     this.getUser();
+  }
+
+  getDepartments = () => {
+    getDepartmentsList().then((res,err) => {
+      if(err) {
+        //TODO handle error
+      }
+      else {
+        this.props.addDepartments(res.department);
+      }
+    });
   }
 
   getUser = () => {
@@ -95,15 +113,18 @@ class App extends Component {
 
   render() {
     return (
-      <Switch>
-        <Route exact path='/' render={(props) => <Home {...props} />} />
-        <Route exact path='/mycourse' render={(props) => <MyCourse {...props} error={false} />} />
-        <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
-          render={(props) => <MyCourse {...props} error={false} />} />
-        <Route exact path='/activity/:type?' render={(props) => <Activity {...props} error={false} />} />
-        <Route exact path='/departments' render={DepartmentRouter} />
-        <Route path='*' render={(props) => <ErrorPage />} />
-      </Switch>
+      <Router history={history}>
+        <Switch>
+          <Route exact path='/' render={(props) => <Home {...props} />} />
+          <Route exact path='/mycourse' render={(props) => <MyCourse {...props} error={false} />} />
+          <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
+            render={(props) => <MyCourse {...props} error={false} />} />
+          <Route exact path='/activity/:type?' render={(props) => <Activity {...props} error={false} />} />
+          <Route exact path='/departments/:department/' render={(props) => <Department {...props} />} />
+          <Route exact path='/departments/:department/courses/:course/:filetype?' render={(props) => <Department {...props} />} />
+          <Route path='*' component={ErrorPage} />
+        </Switch>
+      </Router>
     );
   }
 }
