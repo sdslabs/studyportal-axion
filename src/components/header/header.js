@@ -64,7 +64,7 @@ const Header = () => {
                 }
             </div>
             <Request />
-            <Upload close={() => {}}/>
+            <Upload />
         </div>
     );
 };

@@ -14,7 +14,7 @@ import { getCookie } from 'utils/handleCookies';
 import 'styles/main.scss';
 
 function mapStateToProps(state) {
-  return { user: state };
+  return { user: state.user };
 }
 
 /**

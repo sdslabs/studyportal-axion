@@ -1,96 +1,78 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import Header from 'components/header/header';
 import Sidebar from 'components/sidebar/sidebar';
-import Request from 'components/request/request';
-import Upload from 'components/upload/upload';
-import ActivityLog from 'components/activitylog/activityLog';
 import CoursePage from 'components/coursecard/coursePage';
 import CourseCover from 'components/cover/courseCover';
-import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
-import { setUser, resetApp } from 'actions/actions';
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
-import ShowMoreFiles from 'components/header/showMoreFiles';
-import { CONFIG } from 'config/config';
-
-function mapStateToProps(state) {
-  return { user: state };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    setUser: user => dispatch(setUser(user)),
-    resetApp: () => dispatch(resetApp())
-  };
-}
+import {
+  SWITCH_ACTIVE_DEPARTMENT,
+  ADD_COURSES,
+  SWITCH_ACTIVE_COURSE
+} from 'constants/action-types';
 
 /**
  * Component to render different pages in Studyportal.
  */
-class Department extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          login: props.user.login,
-          path: props.location.pathname,
-          request: false,
-          upload: false,
-          activity: false,
-          mycourse: false,
-          error: props.error,
-          department: {
-            title:'',
-            id: '',
-            abbr: props.match.params.department
-          },
-          course: {
-            title: '',
-            id: '',
-            code: props.match.params.course,
-            active: ''
-          },
-          courses: [],
-          search: false,
-          notifications: false,
-          userMenu: false,
-          showmore: false,
-          searchfiles: [],
-          searchquery: ''
-      };
-  }
+const Department = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const [course] = useState(props.match.params.course);
 
-  render() {
-    return (
-      <div>
-          <Header />
-          <Sidebar login={false}
-                  department={this.state.department.title}
-                  department_id={this.state.department.id}
-                  department_abbr={this.state.department.abbr}
-                  courses={this.state.courses}
-                  active={this.state.course.active}
-                  close={this.close}/>
-          <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-          <Upload upload={this.state.upload} close={this.close}/>
-          { this.state.course.code !== undefined ?
-            <CoursePage login={this.state.login}
-                        getUserDetails={this.getUserDetails}
-                        course_code={this.props.match.params.course}
-                        department_abbr={this.props.match.params.department}
-                        file_type={this.props.match.params.file_type}
-                        error={this.error}
-                        close={this.close}/> : <CourseCover close={this.close}/> }
-      </div>
-    );
-  }
-}
+  const fetchPageDetails = (department, course) => {
+    getDepartmentInfoByAbbr(department).then((res,err) => {
+      if(err) {
+        //TODO handle error
+      }
+      else {
+          dispatch({ type: SWITCH_ACTIVE_DEPARTMENT, payload: {
+            id: res.department.id,
+            abbr: res.department.abbreviation,
+            title: res.department.title
+          } });
+          dispatch({ type: ADD_COURSES, payload: res.courses });
+          if(course !== undefined) {
+            getCourseInfoByCode(res.department.id,course).then((response,err) => {
+              if(err) {
+                //TODO handle error
+              }
+              else {
+                dispatch({ type: SWITCH_ACTIVE_COURSE, payload: {
+                  id: response.id,
+                  title: response.title,
+                  code: response.code
+                } });
+              }
+            });
+          }
+        }
+      });
+  };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Department);
+  useEffect(() => {
+    fetchPageDetails(props.match.params.department, props.match.params.course);
+  }, [window.location.href]);
+
+  return (
+    <div>
+        <Header />
+        <Sidebar />
+        { course !== undefined ?
+          <CoursePage login={user.login}
+                      getUserDetails={() => {}}
+                      course_code={this.props.match.params.course}
+                      department_abbr={this.props.match.params.department}
+                      file_type={this.props.match.params.file_type}
+                      error={this.error}
+                      close={() => {}}/> : <CourseCover close={() => {}}/> }
+    </div>
+  );
+};
+
+export default Department;
 
 Department.propTypes = {
   /** Holds user data which is handled through Redux. */
