@@ -17,7 +17,7 @@ import ShowMoreFiles from 'components/header/showMoreFiles';
 import { CONFIG } from 'config/config';
 
 function mapStateToProps(state) {
-    return { user: state };
+    return { user: state.user };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -402,14 +402,7 @@ class MyCourse extends Component {
     render() {
       return (
         <div>
-          <Header login={this.state.login}
-                      search={this.state.search}
-                      notifications={this.state.notifications}
-                      userMenu={this.state.userMenu}
-                      handleClick ={this.handleClick}
-                      handleSeeAllClick={this.handleSeeAllClick}
-                      loginHandler={this.loginHandler}
-                      close={this.close}/>
+          <Header />
           <Sidebar activity='mycourse'
                   department={this.state.department.title}
                   department_id={this.state.department.id}
@@ -420,12 +413,6 @@ class MyCourse extends Component {
                   getUserDetails={this.getUserDetails}/>
           <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
           <Upload upload={this.state.upload} close={this.close}/>
-          {this.state.searchfiles.length ?
-            <ShowMoreFiles files={this.state.searchfiles}
-                          showmore={this.state.showmore}
-                          searchquery={this.state.searchquery}
-                          close={this.close}
-                          handleClick={this.handleClick} /> : null}
           { this.state.course.code !== undefined ?
             <CoursePage login={this.state.login}
                         getUserDetails={this.getUserDetails}

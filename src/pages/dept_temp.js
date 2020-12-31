@@ -62,15 +62,6 @@ class Department extends Component {
           searchfiles: [],
           searchquery: ''
       };
-
-      this.handleClick = this.handleClick.bind(this);
-      this.getUserDetails = this.getUserDetails.bind(this);
-      this.getDepartmentsAndCourses = this.getDepartmentsAndCourses.bind(this);
-      this.fetchAndUpdatePageInformation = this.fetchAndUpdatePageInformation.bind(this);
-      this.handleSeeAllClick = this.handleSeeAllClick.bind(this);
-      this.close = this.close.bind(this);
-      this.error = this.error.bind(this);
-      this.loginHandler = this.loginHandler.bind(this);
   }
 
   render() {
@@ -86,12 +77,6 @@ class Department extends Component {
                   close={this.close}/>
           <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
           <Upload upload={this.state.upload} close={this.close}/>
-          {this.state.searchfiles.length ?
-            <ShowMoreFiles files={this.state.searchfiles}
-                          showmore={this.state.showmore}
-                          searchquery={this.state.searchquery}
-                          close={this.close}
-                          handleClick={this.handleClick} /> : null}
           { this.state.course.code !== undefined ?
             <CoursePage login={this.state.login}
                         getUserDetails={this.getUserDetails}

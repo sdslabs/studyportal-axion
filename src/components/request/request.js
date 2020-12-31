@@ -5,10 +5,25 @@ import { getDepartmentsList } from 'api/departmentApi';
 import { getCourseByDepartment } from 'api/courseApi';
 import { requestFiles, requestCourse } from 'api/requestApi';
 import { getCookie } from 'utils/handleCookies';
+import { connect } from 'react-redux';
 import small_loader from 'assets/loader_small.svg';
 import check from 'assets/check.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
+import { CLOSE_MODAL } from 'constants/action-types';
+
+function mapStateToProps(state) {
+  return {
+    modal: state.modal,
+    content: state.content
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    closeModal: () => dispatch({ type: CLOSE_MODAL })
+  };
+}
 
 /**
  * Component to render request modal.
@@ -20,49 +35,28 @@ class Request extends Component {
             type: 'file', //Represents whether course or file tab is active
             disable: 0, //Enabling elements in file form
             disableCourse: 0, //Enabling elements in course form
-            departments: [],
             courses: [],
             requesting: false,
             requested: false
         };
-        this.requestCourse = this.requestCourse.bind(this);
-        this.switchToCourse = this.switchToCourse.bind(this);
-        this.switchToFile = this.switchToFile.bind(this);
-        this.file_active_course = this.file_active_course.bind(this);
-        this.file_active_material = this.file_active_material.bind(this);
-        this.active_name = this.active_name.bind(this);
-        this.course_active_course = this.course_active_course.bind(this);
-        this.course_active_courseid = this.course_active_courseid.bind(this);
-        this.requestFile = this.requestFile.bind(this);
-        this.refreshRequest = this.refreshRequest.bind(this);
-        this.requestCourse = this.requestCourse.bind(this);
-    }
-
-    componentDidMount() {
-        getDepartmentsList().then((res, err) => {
-            if (err) {
-                //TODO handle error
-            }
-            else {
-                this.setState({ departments: res.department });
-            }
-        });
     }
 
     /**
      * Switches to course request.
      */
-    switchToCourse() {
+    switchToCourse = () => {
         this.setState({ type: 'course' });
         this.setState({ disable: 0 });
+        this.refreshRequest();
     }
 
     /**
      * Switches to file request.
      */
-    switchToFile() {
+    switchToFile = () => {
         this.setState({ type: 'file' });
         this.setState({ disableCourse: 0 });
+        this.refreshRequest();
     }
 
     /**
@@ -70,7 +64,7 @@ class Request extends Component {
      *
      * @param {object} e
      */
-    file_active_course(e) {
+    file_active_course = (e) => {
         this.setState({ disable: 1 });
         getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
             if (err) {
@@ -87,28 +81,28 @@ class Request extends Component {
      *
      * @param {object} e
      */
-    file_active_material(e) {
+    file_active_material = (e) => {
         this.setState({ disable: 2 });
     }
 
     /**
      * Activates file name input.
      */
-    active_name() {
+    active_name = () => {
         this.setState({ disable: 3 });
     }
 
     /**
      * Activates course name input.
      */
-    course_active_course() {
+    course_active_course = () => {
         this.setState({ disableCourse: 1 });
     }
 
     /**
      * Activates course code input.
      */
-    course_active_courseid() {
+    course_active_courseid = () => {
         this.setState({ disableCourse: 2 });
     }
 
@@ -117,7 +111,7 @@ class Request extends Component {
      *
      * @param {object} e
      */
-    requestFile(e) {
+    requestFile = (e) => {
         e.preventDefault();
         const course = e.target.course[e.target.course.selectedIndex].id;
         const material = e.target.material.value;
@@ -137,7 +131,7 @@ class Request extends Component {
      *
      * @param {object} e
      */
-    requestCourse(e) {
+    requestCourse = (e) => {
         e.preventDefault();
         const department = e.target.department.value;
         const course = e.target.course.value;
@@ -153,12 +147,11 @@ class Request extends Component {
     /**
      * Refreshes request modal.
      */
-    refreshRequest() {
+    refreshRequest = () => {
         this.setState(prevState => ({
             type: prevState.type,
             disable: 0,
             disableCourse: 0,
-            departments: prevState.departments,
             courses: [],
             requesting: false,
             requested: false
@@ -166,11 +159,11 @@ class Request extends Component {
     }
 
     render() {
-        if (this.props.request) {
+        if (this.props.modal.request) {
             return (
                 <div className='requestcover'>
                     <div className='request'>
-                        <div className='request--close' onClick={this.props.close}><img src={close} alt='close' /></div>
+                        <div className='request--close' onClick={() => this.props.closeModal()}><img src={close} alt='close' /></div>
                         <div className='request--heading'>Request</div>
                         <div className='request--underline' />
                         <div className='request--instructions'>
@@ -191,7 +184,7 @@ class Request extends Component {
                                         <select className='file--department-select'
                                             onChange={this.file_active_course} disabled={!(this.state.disable >= 0)} name='department'>
                                             <option>--Select Department--</option>
-                                            {this.state.departments.map(department => (
+                                            {this.props.content.departments.map(department => (
                                                 <option key={department.id} id={department.id}>{department.title}</option>
                                             ))}
                                         </select>
@@ -328,11 +321,13 @@ class Request extends Component {
     }
 }
 
-export default Request;
+export default connect(mapStateToProps, mapDispatchToProps)(Request);
 
 Request.propTypes = {
-    /** Holds toggle status of request modal. */
-    request: PropTypes.bool,
-    /** Function to close modals. */
-    close: PropTypes.func
+  /** Holds status of various modals and popups. */
+  modal: PropTypes.object,
+  /** Holds the various content paramateres used across different contexts. */
+  content: PropTypes.object,
+  /** Function to close modals. */
+  closeModal: PropTypes.func
 };

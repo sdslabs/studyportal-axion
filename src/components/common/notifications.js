@@ -99,7 +99,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
 
 Notifications.propTypes = {
   /** Holds status of various modals and popups. */
-  modal: PropTypes.bool,
+  modal: PropTypes.object,
   /** Function to toggle state of notification popup. */
   toggleNotifications: PropTypes.func,
   /** Identifies notification popup toggle status. */
