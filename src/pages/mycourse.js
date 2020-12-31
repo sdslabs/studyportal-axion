@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Header from 'components/header/header';
-import Sidebar from 'components/sidebar/sidebar';
-import Request from 'components/request/request';
-import Upload from 'components/upload/upload';
+import Sidebar from 'components/sidebar/mycourse';
 import CoursePage from 'components/coursecard/coursePage';
 import CourseCover from 'components/cover/courseCover';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
@@ -13,7 +11,6 @@ import { getCourseInfoByCode } from 'api/courseApi';
 import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
-import ShowMoreFiles from 'components/header/showMoreFiles';
 import { CONFIG } from 'config/config';
 
 function mapStateToProps(state) {
@@ -403,16 +400,7 @@ class MyCourse extends Component {
       return (
         <div>
           <Header />
-          <Sidebar activity='mycourse'
-                  department={this.state.department.title}
-                  department_id={this.state.department.id}
-                  department_abbr={this.state.department.abbr}
-                  courses={this.state.courses}
-                  active={this.state.course.active}
-                  close={this.close}
-                  getUserDetails={this.getUserDetails}/>
-          <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-          <Upload upload={this.state.upload} close={this.close}/>
+          <Sidebar />
           { this.state.course.code !== undefined ?
             <CoursePage login={this.state.login}
                         getUserDetails={this.getUserDetails}

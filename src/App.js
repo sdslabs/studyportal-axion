@@ -9,17 +9,16 @@ import MyCourse from './pages/mycourse';
 import ErrorPage from './pages/error';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { setUser, resetApp } from 'actions/actions';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 import { getDepartmentsList } from 'api/departmentApi';
-import { ADD_DEPARTMENTS } from './constants/action-types';
+import {  ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
 
 function mapDispatchToProps(dispatch) {
   return {
     addDepartments: departments => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
-    setUser: user => dispatch(setUser(user)),
-    resetApp: () => dispatch(resetApp())
+    setUser: user => dispatch({ type: SET_USER, payload: user }),
+    resetApp: () => dispatch({ type: RESET_APP }),
   };
 }
 
@@ -43,6 +42,9 @@ class App extends Component {
     });
   }
 
+  /**
+   * Fetch user details.
+   */
   getUser = () => {
     const token = getCookie('token');
     const cookie = getCookie('sdslabs');
@@ -132,6 +134,8 @@ class App extends Component {
 export default connect(null, mapDispatchToProps)(App);
 
 App.propTypes = {
+  /** Function to set user details. */
   setUser: PropTypes.func,
+  /** Resets all user related data in the redux store. */
   resetApp: PropTypes.func
 };

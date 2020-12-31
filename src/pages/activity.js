@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import Header from 'components/header/header';
-import Sidebar from 'components/sidebar/sidebar';
+import Sidebar from 'components/sidebar/activity';
 import Request from 'components/request/request';
 import Upload from 'components/upload/upload';
 import ActivityLog from 'components/activitylog/activityLog';
-import CoursePage from 'components/coursecard/coursePage';
-import CourseCover from 'components/cover/courseCover';
-import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
 import { setUser, resetApp } from 'actions/actions';
@@ -404,26 +401,8 @@ class Activity extends Component {
     render() {
       return (
         <div>
-          <Header login={this.state.login}
-                      search={this.state.search}
-                      notifications={this.state.notifications}
-                      userMenu={this.state.userMenu}
-                      handleClick ={this.handleClick}
-                      handleSeeAllClick={this.handleSeeAllClick}
-                      loginHandler={this.loginHandler}
-                      close={this.close}/>
-          <Sidebar activity='activity'
-                  active={this.props.match.params.type}
-                  close={this.close}
-                  getUserDetails={this.getUserDetails}/>
-          <Request request={this.state.request} close={this.close} refreshRequest={this.refreshRequest}/>
-          <Upload upload={this.state.upload} close={this.close}/>
-          {this.state.searchfiles.length ?
-            <ShowMoreFiles files={this.state.searchfiles}
-                          showmore={this.state.showmore}
-                          searchquery={this.state.searchquery}
-                          close={this.close}
-                          handleClick={this.handleClick} /> : null}
+          <Header />
+          <Sidebar />
           <ActivityLog close={this.close} route={this.props.match.params.type}/>
         </div>
       );
