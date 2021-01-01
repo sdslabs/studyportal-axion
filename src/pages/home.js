@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from 'components/home/header';
@@ -7,11 +7,20 @@ import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { RESET_ACTIVES, CLOSE_MODAL } from 'constants/action-types';
 
+const useDidMount = () => {
+  const didMountRef = useRef(true);
+  useEffect(() => {
+    didMountRef.current = false;
+  }, []);
+  return didMountRef.current;
+};
+
 /**
  * Homepage component for Studyportal.
  */
 const Home = () => {
   const dispatch = useDispatch();
+  const didMount = useDidMount();
   const content = useSelector((state) => state.content);
   const modal = useSelector((state) => state.modal);
 
@@ -20,8 +29,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch({ type: RESET_ACTIVES });
-  });
+    if (didMount) dispatch({ type: RESET_ACTIVES }); // eslint-disable-next-line
+  }, [didMount]);
 
   return (
     <div className="home">

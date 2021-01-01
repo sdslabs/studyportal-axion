@@ -14,13 +14,14 @@ import {
   deleteCourseForUser,
 } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
+import shortName from 'utils/short-name';
 import 'styles/main.scss';
 import { SET_USER, RESET_APP, CLOSE_MODAL } from 'constants/action-types';
 
 /**
  * Coursepage component for Studyportal.
  */
-const CoursePage = (props) => {
+const CoursePage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const content = useSelector((state) => state.content);
@@ -217,7 +218,10 @@ const CoursePage = (props) => {
     return (
       <div className="coursepage" onClick={() => closeModal()}>
         <div className="coursepage--head">
-          {content.activeCourse.title} {content.activeCourse.code}
+          {content.activeCourse.title.length >= 25
+            ? shortName(content.activeCourse.title)
+            : content.activeCourse.title}{' '}
+          {content.activeCourse.code}
         </div>
         <div className="coursepage--underline" />
         {user.login ? (
