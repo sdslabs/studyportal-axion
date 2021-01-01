@@ -45,4 +45,3 @@ jobs:
       - name: Run format test
         run: |
           npm run format:test
-
