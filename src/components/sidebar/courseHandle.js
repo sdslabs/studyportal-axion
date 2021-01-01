@@ -42,7 +42,7 @@ const CourseHandle = (props) => {
       return(
           <div className='coursehandle'>
               <span className='coursehandle--heading' onClick={() => activatecourse(props)}>
-                  {`${ props.title.length >= 30 ? shortName(props.title) : props.title } ${props.code}`}
+                  {`${ props.title.length >= 25 ? shortName(props.title) : props.title } ${props.code}`}
               </span>
               <span>{ props.code === content.activeCourse.code ?
                   <span className='coursehandle--activedot'>

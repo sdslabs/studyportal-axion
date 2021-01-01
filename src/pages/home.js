@@ -1,17 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import Header from 'components/home/header';
-import Request from 'components/request/request';
-import Upload from 'components/upload/upload';
-import ShowMoreFiles from 'components/header/showMoreFiles';
 import SubjectCard from 'components/home/subjectCard';
 import 'styles/main.scss';
-import { getDepartmentsList } from 'api/departmentApi';
 import { Link } from 'react-router-dom';
-import { CONFIG } from 'config/config';
-import { resetApp } from 'actions/actions';
-import { removeCookie } from 'utils/handleCookies';
 import { CLOSE_MODAL } from 'constants/action-types';
 
 /**
@@ -43,8 +36,6 @@ const Home = () => {
             </Link>)
             ) }
           </div>
-          <Request request={modal.request} close={() => {}} refreshRequest={() => {}}/>
-          <Upload upload={modal.upload} close={() => {}}/>
         </div>
     );
 };
