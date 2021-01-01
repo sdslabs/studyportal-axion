@@ -15,22 +15,22 @@
   left: 0.125rem;
   height: 0.9375rem;
   width: 0.9375rem;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border: 0.0625rem solid rgba(65, 64, 66, 0.2);
   box-sizing: border-box;
   border-radius: 0.125rem;
 }
 
 .customcheckbox:hover input ~ .customcheckbox--checkmark {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .customcheckbox input:checked ~ .customcheckbox--checkmark {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .customcheckbox--checkmark:after {
-  content: "";
+  content: '';
   position: absolute;
   display: none;
 }

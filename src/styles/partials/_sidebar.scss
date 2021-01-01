@@ -1,227 +1,228 @@
 .sidebar {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    width: 26.5rem;
-    height: calc(100% - 4.5625rem);
-    min-height: 22rem;
-    left: 0rem;
-    top: 4.5625rem;
-    background: #0D2938;
-    overflow-x: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 26.5rem;
+  height: calc(100% - 4.5625rem);
+  min-height: 22rem;
+  left: 0rem;
+  top: 4.5625rem;
+  background: #0d2938;
+  overflow-x: none;
 
-    cursor: default;
-    z-index: 0;
+  cursor: default;
+  z-index: 0;
 
-    ::-webkit-scrollbar {
-        width: 0.5625rem;
-    }
+  ::-webkit-scrollbar {
+    width: 0.5625rem;
+  }
 
-    ::-webkit-scrollbar-track {
-        background: #1A4D68;
-    }
+  ::-webkit-scrollbar-track {
+    background: #1a4d68;
+  }
 
-    ::-webkit-scrollbar-thumb {
-        background: #236385;
-        border-radius: 1.125rem;
-    }
+  ::-webkit-scrollbar-thumb {
+    background: #236385;
+    border-radius: 1.125rem;
+  }
 
-    .back {
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.875rem;
-        line-height: 1rem;
-        color: #38A7DE;
-    }
+  .back {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: #38a7de;
+  }
 }
 
 .sidebar_login {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26.5rem;
-    height: calc(100% - 4.5625rem);
-    left: 0rem;
-    top: 4.5625rem;
-    background: #0D2938;
-    overflow-x: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26.5rem;
+  height: calc(100% - 4.5625rem);
+  left: 0rem;
+  top: 4.5625rem;
+  background: #0d2938;
+  overflow-x: none;
 
-    cursor: default;
-    z-index: 1;
+  cursor: default;
+  z-index: 1;
 
-    ::-webkit-scrollbar {
-        width: 0.5625rem;
-    }
+  ::-webkit-scrollbar {
+    width: 0.5625rem;
+  }
 
-    ::-webkit-scrollbar-track {
-        background: #1A4D68;
-    }
+  ::-webkit-scrollbar-track {
+    background: #1a4d68;
+  }
 
-    ::-webkit-scrollbar-thumb {
-        background: #236385;
-        border-radius: 1.125rem;
-    }
+  ::-webkit-scrollbar-thumb {
+    background: #236385;
+    border-radius: 1.125rem;
+  }
 
-    .back {
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.875rem;
-        line-height: 1rem;
-        color: #38A7DE;
-    }
+  .back {
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    color: #38a7de;
+  }
 }
 
 .sidebar-- {
-    &course {
-        width: 22.5rem;
-        height: 1.375rem;
-        margin-top: 2.375rem;
-        margin-left: 2.25rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 1.125rem;
-        line-height: 1.3125rem;
-        color: #FFFFFF;
-    }
+  &course {
+    width: 22.5rem;
+    height: 1.375rem;
+    margin-top: 2.375rem;
+    margin-left: 2.25rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.125rem;
+    line-height: 1.3125rem;
+    color: #ffffff;
+  }
 
-    &coursecontent {
-        height: auto;
-        margin-bottom: 2.25rem;
-    }
+  &coursecontent {
+    height: auto;
+    margin-bottom: 2.25rem;
+  }
 
-    &back {
-        width: 6.25rem;
-        height: 1.0625rem;
-        margin-top: 0.5rem;
-        margin-left: 2.25rem;
-    }
+  &back {
+    width: 6.25rem;
+    height: 1.0625rem;
+    margin-top: 0.5rem;
+    margin-left: 2.25rem;
+  }
 
-    &course-name {
-        width: 100%;
+  &course-name {
+    width: 100%;
+    height: 1.1875rem;
+    margin-top: 2.1875rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: #ffffff;
+  }
+
+  &course-table {
+    width: 100%;
+    height: calc(100vh - 31.4375rem);
+    border-top: 0.125rem solid #1a4d68;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &course-table_logout {
+    width: 100%;
+    height: calc(100vh - 13.25rem);
+    border-top: 0.125rem solid #1a4d68;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &form-cover {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2.25rem;
+    width: auto;
+  }
+
+  &form- {
+    &header {
+      width: auto;
+      height: 1.375rem;
+      margin-bottom: 1.0625rem;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1.125rem;
+      line-height: 1.3125rem;
+      color: #38a7de;
+
+      &_department {
+        width: 5.4375rem;
         height: 1.1875rem;
-        margin-top: 2.1875rem;
+        margin-bottom: 0.5rem;
         font-family: Droid Sans;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #FFFFFF;
+        color: #ffffff;
+      }
+
+      &_course {
+        width: 6.125rem;
+        height: 1.1875rem;
+        margin-bottom: 0.5rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+        color: #ffffff;
+      }
     }
 
-    &course-table {
-        width: 100%;
-        height: calc(100vh - 31.4375rem);
-        border-top: 0.125rem solid #1A4D68;
-        overflow-y: auto;
-        overflow-x: hidden;
+    &select {
+      &_department {
+        width: 16.625rem;
+        height: 2.25rem;
+        margin-bottom: 1.5rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.1875rem;
+        text-indent: 0.5rem;
+        background: #ffffff;
+        border-radius: 0.125rem;
+      }
+
+      &_course {
+        width: 16.625rem;
+        height: 2.25rem;
+        margin-bottom: 1.5rem;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.875rem;
+        line-height: 1.1875rem;
+        text-indent: 0.5rem;
+        background: #ffffff;
+        border-radius: 0.125rem;
+      }
     }
 
-    &course-table_logout {
-        width: 100%;
-        height: calc(100vh - 13.25rem);
-        border-top: 0.125rem solid #1A4D68;
-        overflow-y: auto;
-        overflow-x: hidden;
+    &button {
+      margin-bottom: 1.75rem;
+
+      button {
+        width: 7.6875rem;
+        height: 2.25rem;
+        background: #38a7de;
+        border-radius: 0.125rem;
+        border: #38a7de;
+        font-family: Droid Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.1875rem;
+        color: #ffffff;
+      }
     }
+  }
 
-    &form-cover {
-        display: flex;
-        flex-direction: column;
-        padding-left: 2.25rem;
-        width: auto;
-    }
-
-    &form- {
-        &header {
-            width: auto;
-            height: 1.375rem;
-            margin-bottom: 1.0625rem;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1.125rem;
-            line-height: 1.3125rem;
-            color: #38A7DE;
-
-            &_department {
-                width: 5.4375rem;
-                height: 1.1875rem;
-                margin-bottom: 0.5rem;
-                font-family: Droid Sans;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 1rem;
-                line-height: 1.1875rem;
-                color: #FFFFFF;
-            }
-
-            &_course {
-                width: 6.125rem;
-                height: 1.1875rem;
-                margin-bottom: 0.5rem;
-                font-family: Droid Sans;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 1rem;
-                line-height: 1.1875rem;
-                color: #FFFFFF;
-            }
-        }
-
-        &select {
-            &_department {
-                width: 16.625rem;
-                height: 2.25rem;
-                margin-bottom: 1.5rem;
-                font-family: Droid Sans;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 0.875rem;
-                line-height: 1.1875rem;
-                text-indent: 0.5rem;
-                background: #FFFFFF;
-                border-radius: 0.125rem;
-            }
-
-            &_course {
-                width: 16.625rem;
-                height: 2.25rem;
-                margin-bottom: 1.5rem;
-                font-family: Droid Sans;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 0.875rem;
-                line-height: 1.1875rem;
-                text-indent: 0.5rem;
-                background: #FFFFFF;
-                border-radius: 0.125rem;
-            }
-        }
-
-        &button {
-            margin-bottom: 1.75rem;
-
-            button {
-                width: 7.6875rem;
-                height: 2.25rem;
-                background: #38A7DE;
-                border-radius: 0.125rem;
-                border: #38A7DE;
-                font-family: Droid Sans;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 1rem;
-                line-height: 1.1875rem;
-                color: #FFFFFF;
-            }
-        }
-    }
-
-    &back, &button {
-        cursor: pointer;
-    }
+  &back,
+  &button {
+    cursor: pointer;
+  }
 }

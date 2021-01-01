@@ -17,12 +17,10 @@ const CourseHandle = (props) => {
    * Check if course is registered for user.
    */
   const checkMyCourse = (props) => {
-    if(user.courses) {
-        if(user.courses.find(o => o.code === props.code) !== undefined)
-            return true;
-        else return false;
-    }
-    else return false;
+    if (user.courses) {
+      if (user.courses.find((o) => o.code === props.code) !== undefined) return true;
+      else return false;
+    } else return false;
   };
   const [mycourse] = useState(checkMyCourse(props));
 
@@ -33,36 +31,48 @@ const CourseHandle = (props) => {
     const activeCourse = {
       id: props.course,
       code: props.code,
-      title: props.title
+      title: props.title,
     };
     dispatch({ type: SWITCH_ACTIVE_COURSE, payload: activeCourse });
   };
 
   if (props.login) {
-      return(
-          <div className='coursehandle'>
-              <span className='coursehandle--heading' onClick={() => activatecourse(props)}>
-                  {`${ props.title.length >= 25 ? shortName(props.title) : props.title } ${props.code}`}
-              </span>
-              <span>{ props.code === content.activeCourse.code ?
-                  <span className='coursehandle--activedot'>
-                      <img src={coursedot} alt='coursedot'/>
-                  </span> : <span /> }
-              </span>
-          </div>
-      );
-  }
-
-  else {
-      return(
-          <div className={ props.code === content.activeCourse.code ? 'coursehandle_active' : 'coursehandle'}>
-              <span className={ props.code === content.activeCourse.code ?
-                  'coursehandle--heading_active' : 'coursehandle--heading'} onClick={() => activatecourse(props)}>
-                  {`${ props.title.length >= 30 ? shortName(props.title) : props.title } ${props.code}`}
-              </span>
-              { mycourse ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
-          </div>
-      );
+    return (
+      <div className="coursehandle">
+        <span className="coursehandle--heading" onClick={() => activatecourse(props)}>
+          {`${props.title.length >= 25 ? shortName(props.title) : props.title} ${props.code}`}
+        </span>
+        <span>
+          {props.code === content.activeCourse.code ? (
+            <span className="coursehandle--activedot">
+              <img src={coursedot} alt="coursedot" />
+            </span>
+          ) : (
+            <span />
+          )}
+        </span>
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={
+          props.code === content.activeCourse.code ? 'coursehandle_active' : 'coursehandle'
+        }
+      >
+        <span
+          className={
+            props.code === content.activeCourse.code
+              ? 'coursehandle--heading_active'
+              : 'coursehandle--heading'
+          }
+          onClick={() => activatecourse(props)}
+        >
+          {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
+        </span>
+        {mycourse ? <span className="coursehandle--mycourse">My Course</span> : <span />}
+      </div>
+    );
   }
 };
 

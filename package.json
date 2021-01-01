@@ -7,14 +7,12 @@
     "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
     "react": "^16.8.6",
-    "react-cookie": "^4.0.3",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "websocket": "^1.0.31",
-    "whatwg-fetch": "^3.0.0"
+    "websocket": "^1.0.31"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -22,11 +20,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src --ext .js",
+    "lintfix": "eslint --fix --ext .js",
+    "format": "prettier --write .",
+    "format:test": "prettier --check .",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -47,11 +45,13 @@
   "license": "MIT",
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.0.0",
-    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1",
     "react-styleguidist": "^9.2.0"
   }
 }

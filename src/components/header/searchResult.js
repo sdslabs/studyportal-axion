@@ -10,34 +10,38 @@ import 'styles/main.scss';
 /**
  * Component to render files.
  */
-const SearchResult = (props) =>  {
-    const material_map = {
-      pdf,
-      docx,
-      ppt,
-      'jpeg': img,
-      'png': img,
-      'bmp': img
-    };
+const SearchResult = (props) => {
+  const material_map = {
+    pdf,
+    docx,
+    ppt,
+    jpeg: img,
+    png: img,
+    bmp: img,
+  };
 
-    return(
-      <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${props.file_url}&export=download`}
-        target='blank'
-        style={{ textDecoration: 'none' }}>
-        <div className='file--card'>
-            <div className='file--card-icon'><img src={material_map[props.ext]} alt='icon'/></div>
-              <div className='file--card-heading'>{props.file_name}</div>
-              <div className='file--card-info'>
-                <span className='file--card-info_name'>{props.course_name}</span>
-                <span className='file--card-info_course'>{props.course_code}</span>
-              </div>
-              <div className='file--card-detail'>
-                <span className='file--card-detail_date'>{parseDate(props.date_modified)}</span>
-                <span className='file--card-detail_type'>{props.file_type}</span>
-              </div>
+  return (
+    <a
+      href={`https://drive.google.com/a/iitr.ac.in/uc?id=${props.file_url}&export=download`}
+      target="blank"
+      style={{ textDecoration: 'none' }}
+    >
+      <div className="file--card">
+        <div className="file--card-icon">
+          <img src={material_map[props.ext]} alt="icon" />
         </div>
-      </a>
-    );
+        <div className="file--card-heading">{props.file_name}</div>
+        <div className="file--card-info">
+          <span className="file--card-info_name">{props.course_name}</span>
+          <span className="file--card-info_course">{props.course_code}</span>
+        </div>
+        <div className="file--card-detail">
+          <span className="file--card-detail_date">{parseDate(props.date_modified)}</span>
+          <span className="file--card-detail_type">{props.file_type}</span>
+        </div>
+      </div>
+    </a>
+  );
 };
 
 export default SearchResult;
@@ -56,5 +60,5 @@ SearchResult.propTypes = {
   /** Holds the type of file. */
   file_type: PropTypes.string,
   /** Holds extension of file. */
-  ext: PropTypes.string
+  ext: PropTypes.string,
 };

@@ -1,52 +1,52 @@
 .nosearchresults {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    min-width: 28.125rem;
-    height: 22.875rem;
-    background: #FFFFFF;
-    box-shadow: .0625rem .0625rem .25rem rgba(0, 0, 0, 0.15);
-    z-index: 2;
-    &_emoji {
-        width: 1.5rem;
-        height: 1.5rem;
-        margin-right: 0.5rem;
-        margin-left: 1rem;
-    }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-width: 28.125rem;
+  height: 22.875rem;
+  background: #ffffff;
+  box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  &_emoji {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
 }
 
 .nosearchresults-- {
-    &message {
-        text-align: left;
-        margin-left: 1%;
-        margin-right: 0.75rem;
-        &_plaintext {
-            width: auto;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-            color: rgba(43, 42, 40, 0.8);
-        }
-        &_request {
-            width: 6.375rem;
-            height: 1.1875rem;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.1875rem;
-            color: #38A7DE;
-        }
-        &_request:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
+  &message {
+    text-align: left;
+    margin-left: 1%;
+    margin-right: 0.75rem;
+    &_plaintext {
+      width: auto;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: rgba(43, 42, 40, 0.8);
     }
+    &_request {
+      width: 6.375rem;
+      height: 1.1875rem;
+      font-family: Droid Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      color: #38a7de;
+    }
+    &_request:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }
 
 .outer {
-    margin-left: 1%;
+  margin-left: 1%;
 }

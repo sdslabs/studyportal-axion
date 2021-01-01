@@ -10,7 +10,7 @@ import {
   TOGGLE_REQUEST,
   TOGGLE_UPLOAD,
   TOGGLE_USERMENU,
-  CLOSE_USERMENU
+  CLOSE_USERMENU,
 } from 'constants/action-types';
 
 /**
@@ -31,26 +31,43 @@ const UserMenu = () => {
     removeCookie('sdslabs');
   };
 
-  return(
-    <div className='usermenu'>
-      <div className='usermenu--image'>
-        <img src={user.profile_image}
-        alt='user' onClick={() => dispatch({ type: TOGGLE_USERMENU })}/>
+  return (
+    <div className="usermenu">
+      <div className="usermenu--image">
+        <img
+          src={user.profile_image}
+          alt="user"
+          onClick={() => dispatch({ type: TOGGLE_USERMENU })}
+        />
       </div>
-      { modal.userMenu ?
-      <div className='usermenu--container' onClick={() => dispatch({ type: CLOSE_USERMENU })}>
-        <div className='usermenu--polygon'><img src={polygon} alt='polygon' /></div>
-        <div className='usermenu--cover'>
-          <div className='usermenu--request' onClick={() => dispatch({ type: TOGGLE_REQUEST })}>Request</div>
-          <div className='usermenu--upload' onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>Upload</div>
-          <Link to='/activity' style={{ textDecoration: 'none' }}>
-            <div className='usermenu--activitylog link'>Activity Log</div>
-          </Link>
-          <div className='usermenu--profile'><a href='http://accounts.sdslabs.co' className='link'>Profile</a></div>
-          <div className='usermenu--logout' onClick={logout}>Logout</div>
+      {modal.userMenu ? (
+        <div className="usermenu--container" onClick={() => dispatch({ type: CLOSE_USERMENU })}>
+          <div className="usermenu--polygon">
+            <img src={polygon} alt="polygon" />
+          </div>
+          <div className="usermenu--cover">
+            <div className="usermenu--request" onClick={() => dispatch({ type: TOGGLE_REQUEST })}>
+              Request
+            </div>
+            <div className="usermenu--upload" onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>
+              Upload
+            </div>
+            <Link to="/activity" style={{ textDecoration: 'none' }}>
+              <div className="usermenu--activitylog link">Activity Log</div>
+            </Link>
+            <div className="usermenu--profile">
+              <a href="http://accounts.sdslabs.co" className="link">
+                Profile
+              </a>
+            </div>
+            <div className="usermenu--logout" onClick={logout}>
+              Logout
+            </div>
+          </div>
         </div>
-      </div> :
-      <Fragment/> }
+      ) : (
+        <Fragment />
+      )}
     </div>
   );
 };

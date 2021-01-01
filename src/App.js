@@ -12,13 +12,13 @@ import { createBrowserHistory } from 'history';
 import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 import { getDepartmentsList } from 'api/departmentApi';
-import {  ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
+import { ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
 
 function mapDispatchToProps(dispatch) {
   return {
-    addDepartments: departments => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
-    setUser: user => dispatch({ type: SET_USER, payload: user }),
-    resetApp: () => dispatch({ type: RESET_APP })
+    addDepartments: (departments) => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
+    setUser: (user) => dispatch({ type: SET_USER, payload: user }),
+    resetApp: () => dispatch({ type: RESET_APP }),
   };
 }
 
@@ -32,15 +32,14 @@ class App extends Component {
   }
 
   getDepartments = () => {
-    getDepartmentsList().then((res,err) => {
-      if(err) {
+    getDepartmentsList().then((res, err) => {
+      if (err) {
         //TODO handle error
-      }
-      else {
+      } else {
         this.props.addDepartments(res.department);
       }
     });
-  }
+  };
 
   /**
    * Fetch user details.
@@ -49,82 +48,97 @@ class App extends Component {
     const token = getCookie('token');
     const cookie = getCookie('sdslabs');
     if (token) {
-      loginUserWithToken(token).then((res) => {
-        const user = {
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        this.props.setUser(user);
-        // Logged in with token
-      })
+      loginUserWithToken(token)
+        .then((res) => {
+          const user = {
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses,
+          };
+          this.props.setUser(user);
+          // Logged in with token
+        })
         .catch(() => {
           // Token is corrupted
           if (cookie) {
-            loginUserWithCookie().then((res) => {
-              const user = {
-                login: true,
-                id: res.user.falcon_id,
-                username: res.user.username,
-                email: res.user.email,
-                profile_image: res.user.profile_image,
-                courses: res.courses
-              };
-              this.props.setUser(user);
-              // Logged in with cookie and the invalid token has been replaced
-            })
+            loginUserWithCookie()
+              .then((res) => {
+                const user = {
+                  login: true,
+                  id: res.user.falcon_id,
+                  username: res.user.username,
+                  email: res.user.email,
+                  profile_image: res.user.profile_image,
+                  courses: res.courses,
+                };
+                this.props.setUser(user);
+                // Logged in with cookie and the invalid token has been replaced
+              })
               .catch(() => {
                 this.props.resetApp();
                 removeCookie('sdslabs');
                 removeCookie('token');
                 // The cookie is corrupted, both the token and the cookie have been removed
               });
-          }
-          else {
+          } else {
             this.props.resetApp();
             removeCookie('token');
             // No cookie present and the token is corrupted
           }
         });
-    }
-    else if (cookie) {
-      loginUserWithCookie().then((res) => {
-        const user = {
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        this.props.setUser(user);
-        // The user did not have the token but is logged in by the cookie and the token has been created
-      })
+    } else if (cookie) {
+      loginUserWithCookie()
+        .then((res) => {
+          const user = {
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses,
+          };
+          this.props.setUser(user);
+          // The user did not have the token but is logged in by the cookie and the token has been created
+        })
         .catch(() => {
           this.props.resetApp();
           removeCookie('sdslabs');
           // The cookie is corrupted and removed
         });
-    }
-    else {
+    } else {
       this.props.resetApp();
       // Neither cookie nor token present
     }
-  }
+  };
 
   render() {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path='/' render={(props) => <Home {...props} />} />
-          <Route exact path='/mycourse' render={(props) => <MyCourse {...props} />} />
-          <Route exact path='/mycourse/departments/:department/courses/:course/:file_type?'
-            render={(props) => <MyCourse {...props} error={false} />} />
-          <Route exact path='/activity/:activitytype?' render={(props) => <Activity {...props} />} />
-          <Route exact path='/departments/:department/' render={(props) => <Department {...props} />} />
-          <Route exact path='/departments/:department/courses/:course/:filetype?' render={(props) => <Department {...props} />} />
-          <Route path='*' component={ErrorPage} />
+          <Route exact path="/" render={(props) => <Home {...props} />} />
+          <Route exact path="/mycourse" render={(props) => <MyCourse {...props} />} />
+          <Route
+            exact
+            path="/mycourse/departments/:department/courses/:course/:file_type?"
+            render={(props) => <MyCourse {...props} error={false} />}
+          />
+          <Route
+            exact
+            path="/activity/:activitytype?"
+            render={(props) => <Activity {...props} />}
+          />
+          <Route
+            exact
+            path="/departments/:department/"
+            render={(props) => <Department {...props} />}
+          />
+          <Route
+            exact
+            path="/departments/:department/courses/:course/:filetype?"
+            render={(props) => <Department {...props} />}
+          />
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
     );
@@ -139,5 +153,5 @@ App.propTypes = {
   /** Function to set user details. */
   setUser: PropTypes.func,
   /** Resets all user related data in the redux store. */
-  resetApp: PropTypes.func
+  resetApp: PropTypes.func,
 };

@@ -15,10 +15,12 @@ function FileCover() {
   };
 
   return (
-  <div className='filecover' onClick={() => closeModal()}>
-    <div className='filecover--loader'><img className='loader' src={loader} alt='loader'/></div>
-    <div className='filecover--hold'>Loading course files</div>
-  </div>
+    <div className="filecover" onClick={() => closeModal()}>
+      <div className="filecover--loader">
+        <img className="loader" src={loader} alt="loader" />
+      </div>
+      <div className="filecover--hold">Loading course files</div>
+    </div>
   );
 }
 

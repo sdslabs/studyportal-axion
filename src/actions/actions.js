@@ -1,9 +1,4 @@
-import {
-  SET_COURSES,
-  SET_USER,
-  RESET_APP,
-  TOGGLE_USERMENU
-} from 'constants/action-types';
+import { SET_COURSES, SET_USER, RESET_APP, TOGGLE_USERMENU } from 'constants/action-types';
 
 export function setCourses(payload) {
   return { type: SET_COURSES, payload };

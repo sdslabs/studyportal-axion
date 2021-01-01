@@ -15,10 +15,12 @@ const CourseCover = () => {
   };
 
   return (
-  <div className='coursecover' onClick={() => closeModal()}>
-    <div className='coursecover--image'><img src={courseselect} alt='Choose course'/></div>
-    <div className='coursecover--hold'>Select course to view its files</div>
-  </div>
+    <div className="coursecover" onClick={() => closeModal()}>
+      <div className="coursecover--image">
+        <img src={courseselect} alt="Choose course" />
+      </div>
+      <div className="coursecover--hold">Select course to view its files</div>
+    </div>
   );
 };
 
