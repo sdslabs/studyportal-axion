@@ -134,6 +134,8 @@ class App extends Component {
 export default connect(null, mapDispatchToProps)(App);
 
 App.propTypes = {
+  /** Fetches and stores department list */
+  addDepartments: PropTypes.func,
   /** Function to set user details. */
   setUser: PropTypes.func,
   /** Resets all user related data in the redux store. */

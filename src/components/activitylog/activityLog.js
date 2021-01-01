@@ -51,7 +51,6 @@ const ActivityLog = (props) => {
      */
     const getRequests = (token) => {
       let activity = [];
-      setActivity(activity);
       getFileRequestsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
@@ -72,7 +71,6 @@ const ActivityLog = (props) => {
      */
     const getUploads = (token) => {
       let activity = [];
-      setActivity(activity);
       getUploadsByUser(token).then((res,err) => {
         if(err) {
           //TODO handle error
@@ -129,7 +127,7 @@ const ActivityLog = (props) => {
     // };
 
     useEffect(() => {
-      getActivity(props.route);
+      getActivity(props.route); // eslint-disable-next-line
     }, [props.route]);
 
     return(

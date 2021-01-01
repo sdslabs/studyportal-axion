@@ -19,12 +19,13 @@ const NotificationCard = (props) => {
     };
 
     return(
-      <Link to={props.link}>
-        <div className='notifications--card' onClick={() => closeAndDelete(props.id, props.notification_data)}>
-            <div className='notifications--card-description'>{props.actor} {props.verb} {props.action} in {props.target}.
-                                                              Click to check it.</div>
-            <div className='notifications--card-date'>{props.date}</div>
-            <div className='notifications--card-page'>{props.target}</div>
+      <Link to={props.notification_data.link}>
+        <div className='notifications--card' onClick={() => closeAndDelete(props.notification_data.id, props.notification_data)}>
+            <div className='notifications--card-description'>
+              {props.notification_data.actor} {props.notification_data.verb}
+              {props.notification_data.action} in {props.notification_data.target}. Click to check it.</div>
+            <div className='notifications--card-date'>{props.notification_data.date}</div>
+            <div className='notifications--card-page'>{props.notification_data.target}</div>
         </div>
       </Link>
     );

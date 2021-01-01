@@ -7,10 +7,15 @@ import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
-import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
-import { getCookie } from 'utils/handleCookies';
+import {
+  loginUserWithToken,
+  loginUserWithCookie,
+  addCourseForUser,
+  deleteCourseForUser
+} from 'api/userApi';
+import { getCookie, removeCookie } from 'utils/handleCookies';
 import 'styles/main.scss';
-import { CLOSE_MODAL } from 'constants/action-types';
+import { SET_USER, RESET_APP, CLOSE_MODAL } from 'constants/action-types';
 
 /**
  * Coursepage component for Studyportal.
@@ -27,6 +32,76 @@ const CoursePage = (props) => {
 
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
+  };
+
+  const getUser = () => {
+    const token = getCookie('token');
+    const cookie = getCookie('sdslabs');
+    if (token) {
+      loginUserWithToken(token).then((res) => {
+        const user = {
+          id: res.user.falcon_id,
+          username: res.user.username,
+          email: res.user.email,
+          profile_image: res.user.profile_image,
+          courses: res.courses
+        };
+        dispatch({ type: SET_USER, payload: user });
+        // Logged in with token
+      })
+        .catch(() => {
+          // Token is corrupted
+          if (cookie) {
+            loginUserWithCookie().then((res) => {
+              const user = {
+                login: true,
+                id: res.user.falcon_id,
+                username: res.user.username,
+                email: res.user.email,
+                profile_image: res.user.profile_image,
+                courses: res.courses
+              };
+              // TODO
+              dispatch({ type: SET_USER, payload: user });
+              // Logged in with cookie and the invalid token has been replaced
+            })
+              .catch(() => {
+                dispatch({ type: RESET_APP });
+                removeCookie('sdslabs');
+                removeCookie('token');
+                // The cookie is corrupted, both the token and the cookie have been removed
+              });
+          }
+          else {
+            dispatch({ type: RESET_APP });
+            removeCookie('token');
+            // No cookie present and the token is corrupted
+          }
+        });
+    }
+    else if (cookie) {
+      loginUserWithCookie().then((res) => {
+        const user = {
+          id: res.user.falcon_id,
+          username: res.user.username,
+          email: res.user.email,
+          profile_image: res.user.profile_image,
+          courses: res.courses
+        };
+        // TODO
+        dispatch({ type: SET_USER, payload: user });
+        // The user did not have the token but is logged in by the cookie and the token has been created
+      })
+        .catch(() => {
+          dispatch({ type: RESET_APP });
+          removeCookie('sdslabs');
+          // The cookie is corrupted and removed
+        });
+    }
+    else {
+      dispatch({ type: RESET_APP });
+      // Neither cookie nor token present
+    }
   };
 
   const updateFileState = (id, downloads) => {
@@ -111,13 +186,13 @@ const CoursePage = (props) => {
    */
   const addCourse = () => {
     const token = getCookie('token');
-    addCourseForUser(token, this.state.id).then((res, err) => {
+    addCourseForUser(token, content.activeCourse.id).then((_res, err) => {
       if (err) {
         //TODO handle error
       }
       else {
-        this.props.getUserDetails();
-        this.setState({ mycourse: true });
+        getUser();
+        setMycourse(true);
       }
     });
   };
@@ -127,12 +202,12 @@ const CoursePage = (props) => {
    */
   const deleteCourse = () => {
     const token = getCookie('token');
-    deleteCourseForUser(token, this.state.id).then((_res, err) => {
+    deleteCourseForUser(token, content.activeCourse.id).then((_res, err) => {
       if (err) {
         //TODO handle error
       }
       else {
-        this.props.getUserDetails();
+        getUser();
         setMycourse(false);
       }
     });
@@ -140,7 +215,7 @@ const CoursePage = (props) => {
 
   useEffect(() => {
     getFiles(content);
-    checkCourse(user, content);
+    checkCourse(user, content); // eslint-disable-next-line
   }, [content, user]);
 
   if (loading)

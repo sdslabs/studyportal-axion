@@ -7,7 +7,7 @@ import Notifications from 'components/common/notifications';
 import Request from 'components/request/request';
 import Upload from 'components/upload/upload';
 import logo from 'assets/studyportal_logo.png';
-import sds_logo from 'assets/sds_logo.svg';
+import sds_logo from 'assets/logo.svg';
 import 'styles/main.scss';
 
 /**

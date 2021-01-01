@@ -3,7 +3,8 @@ import {
   SWITCH_ACTIVE_DEPARTMENT,
   ADD_COURSES,
   SWITCH_ACTIVE_COURSE,
-  SET_FILETYPE
+  SET_FILETYPE,
+  RESET_ACTIVES
 } from "constants/action-types";
 
 const initialState = {
@@ -48,6 +49,22 @@ export default function contentReducer(state = initialState, action) {
       return {
         ...state,
         filetype: action.payload
+      };
+    case RESET_ACTIVES:
+      return {
+        ...state,
+        activeDepartment: {
+          id: 0,
+          abbr: '',
+          title: ''
+        },
+        courses: [],
+        activeCourse: {
+          id: 0,
+          code: '',
+          title: ''
+        },
+        filetype: undefined
       };
     default:
       return state;

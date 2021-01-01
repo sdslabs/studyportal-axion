@@ -6,6 +6,7 @@ import {
   TOGGLE_SHOWMORE,
   TOGGLE_NOTIFICATIONS,
   TOGGLE_USERMENU,
+  CLOSE_USERMENU,
   CLOSE_MODAL
 } from 'constants/action-types';
 
@@ -55,6 +56,11 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         userMenu: !state.userMenu
+      };
+    case CLOSE_USERMENU:
+      return {
+        ...state,
+        userMenu: false
       };
     case CLOSE_MODAL:
       return {
