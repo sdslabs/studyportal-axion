@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   content: contentReducer,
   modal: modalReducer,
-  search: searchReducer
+  search: searchReducer,
 });
 
 const store = createStore(rootReducer);

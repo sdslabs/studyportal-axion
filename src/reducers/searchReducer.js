@@ -1,17 +1,17 @@
-import { SEARCH_RESULTS } from "constants/action-types";
+import { SEARCH_RESULTS } from 'constants/action-types';
 
 const initialState = {
   files: [],
-  query: ''
+  query: '',
 };
 
 export default function searchReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case SEARCH_RESULTS:
       return {
         ...state,
         files: action.payload.files,
-        query: action.payload.query
+        query: action.payload.query,
       };
     default:
       return state;

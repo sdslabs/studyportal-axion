@@ -12,13 +12,13 @@ import { CLOSE_MODAL } from 'constants/action-types';
 function mapStateToProps(state) {
   return {
     modal: state.modal,
-    content: state.content
+    content: state.content,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    closeModal: () => dispatch({ type: CLOSE_MODAL })
+    closeModal: () => dispatch({ type: CLOSE_MODAL }),
   };
 }
 
@@ -39,7 +39,7 @@ class Upload extends Component {
       uploadeds: [],
       results: [],
       uploading: false,
-      uploaded: false
+      uploaded: false,
     };
   }
 
@@ -53,12 +53,11 @@ class Upload extends Component {
     getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
       if (err) {
         //TODO handle error
-      }
-      else {
+      } else {
         this.setState({ courses: res });
       }
     });
-  }
+  };
 
   /**
    * Activates material select input.
@@ -67,7 +66,7 @@ class Upload extends Component {
    */
   active_material = (e) => {
     this.setState({ disable: 2, course: e.target[e.target.selectedIndex].id });
-  }
+  };
 
   /**
    * Closes upload modal.
@@ -75,14 +74,14 @@ class Upload extends Component {
   toggleUploadModal = () => {
     this.setState({ active: false });
     this.props.closeModal();
-  }
+  };
 
   /**
    * Switches to upload queue.
    */
   handleUpload = () => {
     this.setState({ active: true });
-  }
+  };
 
   /**
    * Fetches files list from upload queue.
@@ -91,7 +90,7 @@ class Upload extends Component {
    */
   getFiles = (files) => {
     this.setState({ files });
-  }
+  };
 
   /**
    * Uploads files through API.
@@ -111,19 +110,21 @@ class Upload extends Component {
         this.setState({ uploadings: uploading, uploadeds: uploaded });
         const reader = new FileReader();
         reader.onloadend = (e) => {
-          uploadFile(token, this.state.course, fileObj.file.name, fileObj.type, reader.result).then((res) => {
-            let uploaded = this.state.uploadeds;
-            uploaded[index] = true;
-            this.setState({ uploadeds: uploaded });
-            if (index === array.length - 1) {
-              this.setState({ uploaded: true });
-            }
-          });
+          uploadFile(token, this.state.course, fileObj.file.name, fileObj.type, reader.result).then(
+            (res) => {
+              let uploaded = this.state.uploadeds;
+              uploaded[index] = true;
+              this.setState({ uploadeds: uploaded });
+              if (index === array.length - 1) {
+                this.setState({ uploaded: true });
+              }
+            },
+          );
         };
         reader.readAsDataURL(fileObj.file);
       });
     }
-  }
+  };
 
   /**
    * Refreshes upload modal.
@@ -140,52 +141,80 @@ class Upload extends Component {
       uploadeds: [],
       results: [],
       uploading: false,
-      uploaded: false
+      uploaded: false,
     });
-  }
-
+  };
 
   render() {
     if (this.props.modal.upload) {
       return (
-        <div className='uploadcover'>
-          <div className='upload'>
-            <div className='upload--close' onClick={() => this.toggleUploadModal()}><img src={close} alt='close' /></div>
-            <div className='upload--header' style={{ display: this.state.active ? 'none' : 'block' }}>
-              <div className='upload--heading'>Upload</div>
-              <div className='upload--underline' />
+        <div className="uploadcover">
+          <div className="upload">
+            <div className="upload--close" onClick={() => this.toggleUploadModal()}>
+              <img src={close} alt="close" />
             </div>
-            <div className='upload--main' style={{ top: this.state.active ? '10%' : '14.788%' }}>
-              <div className='upload--instruction'>
-                <div className='upload--instruction-head'>Instructions</div>
-                <div className='upload--instruction-body'>
-                  Total upload size allowed is 100MB at a time.
-                                    For eg: If you are uploading 4 files then their combined size should never be over 100MB.<br />
-                                    Please upload zipped folders in case you want to share file like photographs of notes.<br />
-                                    Please try to tag all files appropriately to ensure that others can find them easily.
-                                </div>
+            <div
+              className="upload--header"
+              style={{ display: this.state.active ? 'none' : 'block' }}
+            >
+              <div className="upload--heading">Upload</div>
+              <div className="upload--underline" />
+            </div>
+            <div className="upload--main" style={{ top: this.state.active ? '10%' : '14.788%' }}>
+              <div className="upload--instruction">
+                <div className="upload--instruction-head">Instructions</div>
+                <div className="upload--instruction-body">
+                  Total upload size allowed is 100MB at a time. For eg: If you are uploading 4 files
+                  then their combined size should never be over 100MB.
+                  <br />
+                  Please upload zipped folders in case you want to share file like photographs of
+                  notes.
+                  <br />
+                  Please try to tag all files appropriately to ensure that others can find them
+                  easily.
+                </div>
               </div>
-              <div className='upload--form' id='uploadform'>
+              <div className="upload--form" id="uploadform">
                 <form onSubmit={this.upload}>
-                  <div className='form--department'
-                    style={{ color: this.state.disable >= 0 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Department</div>
-                  <select className='form--department-select'
-                    onChange={this.active_course} disabled={!(this.state.disable >= 0)} form='uploadform'>
+                  <div
+                    className="form--department"
+                    style={{ color: this.state.disable >= 0 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}
+                  >
+                    Department
+                  </div>
+                  <select
+                    className="form--department-select"
+                    onChange={this.active_course}
+                    disabled={!(this.state.disable >= 0)}
+                    form="uploadform"
+                  >
                     <option>--Select Department--</option>
                     {this.props.content.departments.map((department) => (
-                      <option key={department.id} id={department.id}>{department.title}</option>
+                      <option key={department.id} id={department.id}>
+                        {department.title}
+                      </option>
                     ))}
                   </select>
-                  <div className='form--course'
-                    style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}>Course Name</div>
-                  <select className='form--course-select'
-                    onChange={this.active_material} form='uploadform' disabled={!(this.state.disable >= 1)}>
+                  <div
+                    className="form--course"
+                    style={{ color: this.state.disable >= 1 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)' }}
+                  >
+                    Course Name
+                  </div>
+                  <select
+                    className="form--course-select"
+                    onChange={this.active_material}
+                    form="uploadform"
+                    disabled={!(this.state.disable >= 1)}
+                  >
                     <option>--Select Course--</option>
                     {this.state.courses.map((course) => (
-                      <option key={course.id} id={course.id}>{course.title} {course.code}</option>
+                      <option key={course.id} id={course.id}>
+                        {course.title} {course.code}
+                      </option>
                     ))}
                   </select>
-                  <div className='upload--file'>
+                  <div className="upload--file">
                     <CustomFileUploader
                       uploading={this.state.uploading}
                       uploadings={this.state.uploadings}
@@ -203,12 +232,8 @@ class Upload extends Component {
           </div>
         </div>
       );
-    }
-
-    else {
-      return (
-        <Fragment />
-      );
+    } else {
+      return <Fragment />;
     }
   }
 }
@@ -221,5 +246,5 @@ Upload.propTypes = {
   /** Holds the various content paramateres used across different contexts. */
   content: PropTypes.object,
   /** Function to close modals. */
-  closeModal: PropTypes.func
+  closeModal: PropTypes.func,
 };

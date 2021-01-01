@@ -8,8 +8,8 @@ import Error from 'components/error/error';
 const ErrorPage = () => {
   return (
     <div>
-        <Header />
-        <Error />
+      <Header />
+      <Error />
     </div>
   );
 };

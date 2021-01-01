@@ -7,8 +7,7 @@ export function removeCookie(key) {
   if (key === 'sdslabs') {
     const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; Domain=.sdslabs.local; path=/;`;
     document.cookie = cookieRemoveString;
-  }
-  else {
+  } else {
     const cookieRemoveString = `${key}= ; expires = Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
     document.cookie = cookieRemoveString;
   }

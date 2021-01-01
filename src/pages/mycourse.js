@@ -11,7 +11,7 @@ import {
   SWITCH_ACTIVE_DEPARTMENT,
   ADD_COURSES,
   SWITCH_ACTIVE_COURSE,
-  SET_FILETYPE
+  SET_FILETYPE,
 } from 'constants/action-types';
 
 /**
@@ -22,33 +22,37 @@ const MyCourse = (props) => {
   const [course, setCourse] = useState(props.match.params.course);
 
   const fetchPageDetails = (department, course) => {
-    getDepartmentInfoByAbbr(department).then((res,err) => {
-      if(err) {
+    getDepartmentInfoByAbbr(department).then((res, err) => {
+      if (err) {
         //TODO handle error
-      }
-      else {
-          dispatch({ type: SWITCH_ACTIVE_DEPARTMENT, payload: {
+      } else {
+        dispatch({
+          type: SWITCH_ACTIVE_DEPARTMENT,
+          payload: {
             id: res.department.id,
             abbr: res.department.abbreviation,
-            title: res.department.title
-          } });
-          dispatch({ type: ADD_COURSES, payload: res.courses });
-          if(course !== undefined) {
-            getCourseInfoByCode(res.department.id,course).then((response,err) => {
-              if(err) {
-                //TODO handle error
-              }
-              else {
-                dispatch({ type: SWITCH_ACTIVE_COURSE, payload: {
+            title: res.department.title,
+          },
+        });
+        dispatch({ type: ADD_COURSES, payload: res.courses });
+        if (course !== undefined) {
+          getCourseInfoByCode(res.department.id, course).then((response, err) => {
+            if (err) {
+              //TODO handle error
+            } else {
+              dispatch({
+                type: SWITCH_ACTIVE_COURSE,
+                payload: {
                   id: response.id,
                   title: response.title,
-                  code: response.code
-                } });
-              }
-            });
-          }
+                  code: response.code,
+                },
+              });
+            }
+          });
         }
-      });
+      }
+    });
   };
 
   useEffect(() => {
@@ -57,14 +61,13 @@ const MyCourse = (props) => {
     dispatch({ type: SET_FILETYPE, payload: props.match.params.filetype }); // eslint-disable-next-line
   }, [props.match.params.department, props.match.params.course, props.match.params.filetype]);
 
-    return (
-      <div>
-        <Header />
-        <Sidebar />
-        { course !== undefined ?
-          <CoursePage /> : <CourseCover /> }
-      </div>
-    );
+  return (
+    <div>
+      <Header />
+      <Sidebar />
+      {course !== undefined ? <CoursePage /> : <CourseCover />}
+    </div>
+  );
 };
 
 export default MyCourse;
@@ -81,5 +84,5 @@ MyCourse.propTypes = {
   /** Holds URL decriptors. */
   match: PropTypes.object,
   /** Resets the app to a new logged out session */
-  resetApp: PropTypes.func
+  resetApp: PropTypes.func,
 };

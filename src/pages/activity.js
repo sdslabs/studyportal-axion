@@ -12,7 +12,7 @@ const Activity = (props) => {
     <div>
       <Header />
       <Sidebar />
-      <ActivityLog route={props.match.params.activitytype}/>
+      <ActivityLog route={props.match.params.activitytype} />
     </div>
   );
 };
@@ -21,5 +21,5 @@ export default Activity;
 
 Activity.propTypes = {
   /** Holds URL decriptors. */
-  match: PropTypes.object
+  match: PropTypes.object,
 };

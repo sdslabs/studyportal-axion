@@ -8,45 +8,52 @@ import 'styles/main.scss';
 /**
  * Component to render uploading file.
  */
-const FileUploadContainer =  (props) => {
-    /**
-    * Updates file type for queued file.
-    *
-    * @param {object} e
-    */
-    const updateFileType = (e) => {
-      props.files[props.index].type = e.target.value;
-    };
+const FileUploadContainer = (props) => {
+  /**
+   * Updates file type for queued file.
+   *
+   * @param {object} e
+   */
+  const updateFileType = (e) => {
+    props.files[props.index].type = e.target.value;
+  };
 
-    /**
-    * Removes file from upload queue.
-    */
-    const handleRemove = () => {
-        props.handleRemove(props.index);
-    };
+  /**
+   * Removes file from upload queue.
+   */
+  const handleRemove = () => {
+    props.handleRemove(props.index);
+  };
 
-    return(
-        <div className='customfileuploader--fileholder'>
-                <div className='customfileuploader--fileholder_name'>{props.name}</div>
-                <select className='customfileuploader--fileholder_category' onChange={updateFileType} disabled={props.disabled}>
-                    <option value='default'>Select</option>
-                    <option value='Tutorials'>Tutorials</option>
-                    <option value='Books'>Books</option>
-                    <option value='Notes'>Notes</option>
-                    <option value='Exam Papers'>Exam Papers</option>
-                </select>
-                {props.uploaded ?
-                  <div>
-                    <img className='customfileuploader--fileholder_status' src={check} alt='status'/>
-                  </div> :
-                  props.uploading ?
-                    <div>
-                      <img className='customfileuploader--fileholder_loader' src={small_loader} alt='loader'/>
-                    </div> :
-                    <div className='customfileuploader--fileholder_remove' onClick={handleRemove}>Remove</div>
-                  }
+  return (
+    <div className="customfileuploader--fileholder">
+      <div className="customfileuploader--fileholder_name">{props.name}</div>
+      <select
+        className="customfileuploader--fileholder_category"
+        onChange={updateFileType}
+        disabled={props.disabled}
+      >
+        <option value="default">Select</option>
+        <option value="Tutorials">Tutorials</option>
+        <option value="Books">Books</option>
+        <option value="Notes">Notes</option>
+        <option value="Exam Papers">Exam Papers</option>
+      </select>
+      {props.uploaded ? (
+        <div>
+          <img className="customfileuploader--fileholder_status" src={check} alt="status" />
         </div>
-    );
+      ) : props.uploading ? (
+        <div>
+          <img className="customfileuploader--fileholder_loader" src={small_loader} alt="loader" />
+        </div>
+      ) : (
+        <div className="customfileuploader--fileholder_remove" onClick={handleRemove}>
+          Remove
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default FileUploadContainer;
@@ -65,5 +72,5 @@ FileUploadContainer.propTypes = {
   /** Holds status of select input. */
   disabled: PropTypes.bool,
   /** Function to remove file from upload queue. */
-  handleRemove: PropTypes.func
+  handleRemove: PropTypes.func,
 };

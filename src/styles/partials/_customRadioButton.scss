@@ -1,29 +1,28 @@
-.radio
-{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 0.9375rem;
-    height: 0.9375rem;
+.radio {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 0.9375rem;
+  height: 0.9375rem;
 
-    border: 0.0625rem solid #2B2A28;
-    border-radius: 0.125rem;
-    transition: 0.2s all ease-in;
-    outline: none;
+  border: 0.0625rem solid #2b2a28;
+  border-radius: 0.125rem;
+  transition: 0.2s all ease-in;
+  outline: none;
 }
 
 .radio:disabled {
-    border: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  border: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .radio:checked {
-    background: #38A7DE;
-    border: 0.0625rem solid #414042;
-    border-radius: 0.125rem;
+  background: #38a7de;
+  border: 0.0625rem solid #414042;
+  border-radius: 0.125rem;
 }
 
 .radio:checked:disabled {
-    background: rgba(56,167,222,0.2);
-    border: 0.0625rem solid rgba(65, 64, 66, 0.2);;
-    border-radius: 0.125rem;
+  background: rgba(56, 167, 222, 0.2);
+  border: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  border-radius: 0.125rem;
 }

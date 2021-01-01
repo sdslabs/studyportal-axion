@@ -11,7 +11,7 @@ import {
   loginUserWithToken,
   loginUserWithCookie,
   addCourseForUser,
-  deleteCourseForUser
+  deleteCourseForUser,
 } from 'api/userApi';
 import { getCookie, removeCookie } from 'utils/handleCookies';
 import 'styles/main.scss';
@@ -38,67 +38,67 @@ const CoursePage = (props) => {
     const token = getCookie('token');
     const cookie = getCookie('sdslabs');
     if (token) {
-      loginUserWithToken(token).then((res) => {
-        const user = {
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        dispatch({ type: SET_USER, payload: user });
-        // Logged in with token
-      })
+      loginUserWithToken(token)
+        .then((res) => {
+          const user = {
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses,
+          };
+          dispatch({ type: SET_USER, payload: user });
+          // Logged in with token
+        })
         .catch(() => {
           // Token is corrupted
           if (cookie) {
-            loginUserWithCookie().then((res) => {
-              const user = {
-                login: true,
-                id: res.user.falcon_id,
-                username: res.user.username,
-                email: res.user.email,
-                profile_image: res.user.profile_image,
-                courses: res.courses
-              };
-              // TODO
-              dispatch({ type: SET_USER, payload: user });
-              // Logged in with cookie and the invalid token has been replaced
-            })
+            loginUserWithCookie()
+              .then((res) => {
+                const user = {
+                  login: true,
+                  id: res.user.falcon_id,
+                  username: res.user.username,
+                  email: res.user.email,
+                  profile_image: res.user.profile_image,
+                  courses: res.courses,
+                };
+                // TODO
+                dispatch({ type: SET_USER, payload: user });
+                // Logged in with cookie and the invalid token has been replaced
+              })
               .catch(() => {
                 dispatch({ type: RESET_APP });
                 removeCookie('sdslabs');
                 removeCookie('token');
                 // The cookie is corrupted, both the token and the cookie have been removed
               });
-          }
-          else {
+          } else {
             dispatch({ type: RESET_APP });
             removeCookie('token');
             // No cookie present and the token is corrupted
           }
         });
-    }
-    else if (cookie) {
-      loginUserWithCookie().then((res) => {
-        const user = {
-          id: res.user.falcon_id,
-          username: res.user.username,
-          email: res.user.email,
-          profile_image: res.user.profile_image,
-          courses: res.courses
-        };
-        // TODO
-        dispatch({ type: SET_USER, payload: user });
-        // The user did not have the token but is logged in by the cookie and the token has been created
-      })
+    } else if (cookie) {
+      loginUserWithCookie()
+        .then((res) => {
+          const user = {
+            id: res.user.falcon_id,
+            username: res.user.username,
+            email: res.user.email,
+            profile_image: res.user.profile_image,
+            courses: res.courses,
+          };
+          // TODO
+          dispatch({ type: SET_USER, payload: user });
+          // The user did not have the token but is logged in by the cookie and the token has been created
+        })
         .catch(() => {
           dispatch({ type: RESET_APP });
           removeCookie('sdslabs');
           // The cookie is corrupted and removed
         });
-    }
-    else {
+    } else {
       dispatch({ type: RESET_APP });
       // Neither cookie nor token present
     }
@@ -107,7 +107,7 @@ const CoursePage = (props) => {
   const updateFileState = (id, downloads) => {
     // TODO
     const files_temp = files;
-    files_temp.forEach(file => (console.log(file.files.filter(file => file.id === id)[0])));
+    files_temp.forEach((file) => console.log(file.files.filter((file) => file.id === id)[0]));
     setFiles(files_temp);
   };
 
@@ -118,12 +118,11 @@ const CoursePage = (props) => {
    */
   const getFiles = (content) => {
     setLoading(true);
-    if(content.filetype === undefined)
+    if (content.filetype === undefined)
       getFilesByCourse(content.activeCourse.id).then((resp, err) => {
         if (err) {
           //TODO handle error
-        }
-        else {
+        } else {
           setFiles(sortFilesByYear(resp));
           setLoading(false);
         }
@@ -132,8 +131,7 @@ const CoursePage = (props) => {
       getFilesByType(content.activeCourse.id, content.filetype).then((resp, err) => {
         if (err) {
           //TODO handle error
-        }
-        else {
+        } else {
           setFiles(sortFilesByYear(resp));
           setLoading(false);
         }
@@ -148,22 +146,21 @@ const CoursePage = (props) => {
   const sortFilesByYear = (files) => {
     if (!_.isEmpty(files)) {
       let years = [];
-      files.forEach(file => {
+      files.forEach((file) => {
         let year = file.date_modified.split('-');
-        if (years.find(o => o.year === year[0]) === undefined)
+        if (years.find((o) => o.year === year[0]) === undefined)
           years.push({
-            'year': year[0],
-            files: []
+            year: year[0],
+            files: [],
           });
-        years.find(o => o.year === year[0]).files.push(file);
+        years.find((o) => o.year === year[0]).files.push(file);
       });
       years.sort((a, b) => {
         return parseInt(b.year) - parseInt(a.year);
       });
       setYear(years[0].year);
       return years;
-    }
-    else return files;
+    } else return files;
   };
 
   /**
@@ -173,9 +170,8 @@ const CoursePage = (props) => {
     if (user.login) {
       setMycourse(false);
       if (user.courses) {
-        await user.courses.forEach(course => {
-          if (course.code === content.activeCourse.code)
-            setMycourse(true);
+        await user.courses.forEach((course) => {
+          if (course.code === content.activeCourse.code) setMycourse(true);
         });
       }
     }
@@ -189,8 +185,7 @@ const CoursePage = (props) => {
     addCourseForUser(token, content.activeCourse.id).then((_res, err) => {
       if (err) {
         //TODO handle error
-      }
-      else {
+      } else {
         getUser();
         setMycourse(true);
       }
@@ -205,8 +200,7 @@ const CoursePage = (props) => {
     deleteCourseForUser(token, content.activeCourse.id).then((_res, err) => {
       if (err) {
         //TODO handle error
-      }
-      else {
+      } else {
         getUser();
         setMycourse(false);
       }
@@ -218,85 +212,182 @@ const CoursePage = (props) => {
     checkCourse(user, content); // eslint-disable-next-line
   }, [content, user]);
 
-  if (loading)
-    return (
-      <FileCover />
-    );
+  if (loading) return <FileCover />;
   else
     return (
-      <div className='coursepage' onClick={() => closeModal()}>
-        <div className="coursepage--head">{content.activeCourse.title} {content.activeCourse.code}</div>
-        <div className='coursepage--underline' />
-        {user.login ? <span>{!mycourse ?
-          <div className='coursepage--addcourse' onClick={addCourse}>+ Add Course</div> :
-          <div className='coursepage--removecourse' onClick={deleteCourse}>- Remove Course</div>}</span> : null}
+      <div className="coursepage" onClick={() => closeModal()}>
+        <div className="coursepage--head">
+          {content.activeCourse.title} {content.activeCourse.code}
+        </div>
+        <div className="coursepage--underline" />
+        {user.login ? (
+          <span>
+            {!mycourse ? (
+              <div className="coursepage--addcourse" onClick={addCourse}>
+                + Add Course
+              </div>
+            ) : (
+              <div className="coursepage--removecourse" onClick={deleteCourse}>
+                - Remove Course
+              </div>
+            )}
+          </span>
+        ) : null}
         {/* TODO Refactor this entire block */}
-        <div className='coursepage--category'>
-          <div className={content.filetype === 'all' || content.filetype === undefined ?
-            'coursepage--category_all_' : 'coursepage--category_all'}>
-            <Link to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/all`}
-              className={content.filetype === 'all' || content.filetype === undefined ? 'linkactive' : 'link'}>
-              <div>All<div className={content.filetype === 'all' || content.filetype === undefined ?
-                'coursepage--underline_all_' : 'coursepage--underline_all'} /></div>
+        <div className="coursepage--category">
+          <div
+            className={
+              content.filetype === 'all' || content.filetype === undefined
+                ? 'coursepage--category_all_'
+                : 'coursepage--category_all'
+            }
+          >
+            <Link
+              to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/all`}
+              className={
+                content.filetype === 'all' || content.filetype === undefined ? 'linkactive' : 'link'
+              }
+            >
+              <div>
+                All
+                <div
+                  className={
+                    content.filetype === 'all' || content.filetype === undefined
+                      ? 'coursepage--underline_all_'
+                      : 'coursepage--underline_all'
+                  }
+                />
+              </div>
             </Link>
           </div>
-          <div className={content.filetype === 'tutorials' ? 'coursepage--category_tut_' : 'coursepage--category_tut'}>
-            <Link to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/tutorials`}
-              className={content.filetype === 'tutorials' ? 'linkactive' : 'link'}>
-              <div>Tutorials<div className={content.filetype === 'tutorials' ?
-                'coursepage--underline_tut_' : 'coursepage--underline_tut'} /></div>
+          <div
+            className={
+              content.filetype === 'tutorials'
+                ? 'coursepage--category_tut_'
+                : 'coursepage--category_tut'
+            }
+          >
+            <Link
+              to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/tutorials`}
+              className={content.filetype === 'tutorials' ? 'linkactive' : 'link'}
+            >
+              <div>
+                Tutorials
+                <div
+                  className={
+                    content.filetype === 'tutorials'
+                      ? 'coursepage--underline_tut_'
+                      : 'coursepage--underline_tut'
+                  }
+                />
+              </div>
             </Link>
           </div>
-          <div className={content.filetype === 'books' ? 'coursepage--category_books_' : 'coursepage--category_books'}>
-            <Link to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/books`}
-              className={content.filetype === 'books' ? 'linkactive' : 'link'}>
-              <div>Books<div className={content.filetype === 'books' ?
-                'coursepage--underline_books_' : 'coursepage--underline_books'} /></div>
+          <div
+            className={
+              content.filetype === 'books'
+                ? 'coursepage--category_books_'
+                : 'coursepage--category_books'
+            }
+          >
+            <Link
+              to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/books`}
+              className={content.filetype === 'books' ? 'linkactive' : 'link'}
+            >
+              <div>
+                Books
+                <div
+                  className={
+                    content.filetype === 'books'
+                      ? 'coursepage--underline_books_'
+                      : 'coursepage--underline_books'
+                  }
+                />
+              </div>
             </Link>
           </div>
-          <div className={content.filetype === 'notes' ? 'coursepage--category_notes_' : 'coursepage--category_notes'}>
-            <Link to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/notes`}
-              className={content.filetype === 'notes' ? 'linkactive' : 'link'}>
-              <div className='category'>Notes<div className={content.filetype === 'notes' ?
-                'coursepage--underline_notes_' : 'coursepage--underline_notes'} /></div>
+          <div
+            className={
+              content.filetype === 'notes'
+                ? 'coursepage--category_notes_'
+                : 'coursepage--category_notes'
+            }
+          >
+            <Link
+              to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/notes`}
+              className={content.filetype === 'notes' ? 'linkactive' : 'link'}
+            >
+              <div className="category">
+                Notes
+                <div
+                  className={
+                    content.filetype === 'notes'
+                      ? 'coursepage--underline_notes_'
+                      : 'coursepage--underline_notes'
+                  }
+                />
+              </div>
             </Link>
           </div>
-          <div className={content.filetype === 'exampapers' ? 'coursepage--category_exam_' : 'coursepage--category_exam'}>
-            <Link to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/exampapers`}
-              className={content.filetype === 'exampapers' ? 'linkactive' : 'link'}>
-              <div>Examination Papers<div className={content.filetype === 'exampapers' ?
-                'coursepage--underline_exam_' : 'coursepage--underline_exam'} /></div>
+          <div
+            className={
+              content.filetype === 'exampapers'
+                ? 'coursepage--category_exam_'
+                : 'coursepage--category_exam'
+            }
+          >
+            <Link
+              to={`/departments/${content.activeDepartment.abbr}/courses/${content.activeCourse.code}/exampapers`}
+              className={content.filetype === 'exampapers' ? 'linkactive' : 'link'}
+            >
+              <div>
+                Examination Papers
+                <div
+                  className={
+                    content.filetype === 'exampapers'
+                      ? 'coursepage--underline_exam_'
+                      : 'coursepage--underline_exam'
+                  }
+                />
+              </div>
             </Link>
           </div>
         </div>
         {/* Uptil here */}
-        <div className='coursepage--material-sort'>
-          <div className='coursepage--material-sort_namecheck'>
-            <div className='coursepage--material-sort_checkbox'>
-              <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' borderhover='1px solid #38A7DE' />
+        <div className="coursepage--material-sort">
+          <div className="coursepage--material-sort_namecheck">
+            <div className="coursepage--material-sort_checkbox">
+              <CustomCheckbox
+                border="1px solid rgba(43, 42, 40, 0.4)"
+                borderhover="1px solid #38A7DE"
+              />
             </div>
-            <div className='coursepage--material-sort_name'>Name</div>
+            <div className="coursepage--material-sort_name">Name</div>
           </div>
-          <div className='coursepage--material-sort_sizemod'>
-            <div className='coursepage--material-sort_size'>Size</div>
-            <div className='coursepage--material-sort_lastmod'>Last Modified</div>
+          <div className="coursepage--material-sort_sizemod">
+            <div className="coursepage--material-sort_size">Size</div>
+            <div className="coursepage--material-sort_lastmod">Last Modified</div>
           </div>
         </div>
-        <div className='coursepage--material'>
+        <div className="coursepage--material">
           {files.map((obj) => (
             <div key={obj.year}>
-              {obj.year === year ? obj.files.map((file) => (
-                <MaterialCard key={file.driveid}
-                  id={file.id}
-                  name={file.title}
-                  url={file.driveid}
-                  downloads={file.downloads}
-                  ext={file.fileext}
-                  size={file.size}
-                  date_modified={file.date_modified}
-                  updateFileState={updateFileState} />
-              )) : null}
-              <div className='coursepage--material_year' onClick={() => setYear(obj.year)}>
+              {obj.year === year
+                ? obj.files.map((file) => (
+                    <MaterialCard
+                      key={file.driveid}
+                      id={file.id}
+                      name={file.title}
+                      url={file.driveid}
+                      downloads={file.downloads}
+                      ext={file.fileext}
+                      size={file.size}
+                      date_modified={file.date_modified}
+                      updateFileState={updateFileState}
+                    />
+                  ))
+                : null}
+              <div className="coursepage--material_year" onClick={() => setYear(obj.year)}>
                 {obj.year}
               </div>
             </div>
@@ -320,5 +411,5 @@ CoursePage.propTypes = {
   /** Holds file type displayed currently. */
   file_type: PropTypes.string,
   /** Holds department abbreviation for the department. */
-  department_abbr: PropTypes.string
+  department_abbr: PropTypes.string,
 };

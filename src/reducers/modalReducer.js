@@ -7,7 +7,7 @@ import {
   TOGGLE_NOTIFICATIONS,
   TOGGLE_USERMENU,
   CLOSE_USERMENU,
-  CLOSE_MODAL
+  CLOSE_MODAL,
 } from 'constants/action-types';
 
 const initialState = {
@@ -16,51 +16,51 @@ const initialState = {
   search: false,
   showMore: false,
   notifications: false,
-  userMenu: false
+  userMenu: false,
 };
 
 export default function modalReducer(state = initialState, action) {
-  switch(action.type) {
+  switch (action.type) {
     case TOGGLE_REQUEST:
       return {
         ...state,
-        request: !state.request
+        request: !state.request,
       };
     case TOGGLE_UPLOAD:
       return {
         ...state,
-        upload: !state.upload
+        upload: !state.upload,
       };
     case OPEN_SEARCH: {
       return {
         ...state,
-        search: true
+        search: true,
       };
     }
     case TOGGLE_SEARCH:
       return {
         ...state,
-        search: !state.search
+        search: !state.search,
       };
     case TOGGLE_SHOWMORE:
       return {
         ...state,
-        showMore: !state.showMore
+        showMore: !state.showMore,
       };
     case TOGGLE_NOTIFICATIONS:
       return {
         ...state,
-        notifications: !state.notifications
+        notifications: !state.notifications,
       };
     case TOGGLE_USERMENU:
       return {
         ...state,
-        userMenu: !state.userMenu
+        userMenu: !state.userMenu,
       };
     case CLOSE_USERMENU:
       return {
         ...state,
-        userMenu: false
+        userMenu: false,
       };
     case CLOSE_MODAL:
       return {
@@ -70,7 +70,7 @@ export default function modalReducer(state = initialState, action) {
         search: state.search ? false : state.search,
         notifications: state.notifications ? false : state.notifications,
         userMenu: state.userMenu ? false : state.userMenu,
-        showMore: state.showMore ? false : state.showMore
+        showMore: state.showMore ? false : state.showMore,
       };
     default:
       return state;

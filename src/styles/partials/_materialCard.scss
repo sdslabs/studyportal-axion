@@ -1,121 +1,124 @@
 .material {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 98.5%;
-    height: 4.25rem;
-    margin-left: 1%;
-    border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 98.5%;
+  height: 4.25rem;
+  margin-left: 1%;
+  border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
 }
 
 .material-- {
-    &namecheck {
-        display: flex;
-        flex-direction: row;
-        margin-left: 1.875rem;
+  &namecheck {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1.875rem;
+  }
+
+  &checkbox {
+    width: 0.9375rem;
+    height: 0.9375rem;
+    margin-right: 0.75rem;
+    margin-top: 1.625rem;
+  }
+
+  &info {
+    width: 8.8125rem;
+    height: 3.3125rem;
+    margin-top: 0.8125rem;
+    margin-left: 0.75rem;
+    display: grid;
+    grid-template-columns: 2.5rem 6.3125rem;
+    grid-template-rows: 10% 40% 40% 10%;
+  }
+
+  &icon {
+    width: 1.75rem;
+    grid-column: 1 / span 1;
+    align-self: baseline;
+  }
+
+  &name {
+    width: 15.75rem;
+    height: 1.1875rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: #2b2a28;
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    align-self: center;
+  }
+
+  &download {
+    width: 6.8125rem;
+    height: 1rem;
+    margin-top: -0.5rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.8125rem;
+    line-height: 0.9375rem;
+    color: rgba(43, 42, 40, 0.4);
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+  }
+
+  &sizemod {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &downloadicon- {
+    &active {
+      width: 1.9375rem;
+      height: 2rem;
+      margin-right: 2.5625rem;
+      margin-top: 1rem;
+      cursor: pointer;
     }
 
-    &checkbox {
-        width: 0.9375rem;
-        height: 0.9375rem;
-        margin-right: 0.75rem;
-        margin-top: 1.625rem;
+    &other {
+      width: 1.9375rem;
+      height: 2rem;
+      margin-right: 2.0625rem;
+      margin-top: 1.5rem;
     }
+  }
 
-    &info {
-        width: 8.8125rem;
-        height: 3.3125rem;
-        margin-top: 0.8125rem;
-        margin-left: 0.75rem;
-        display: grid;
-        grid-template-columns: 2.5rem 6.3125rem;
-        grid-template-rows: 10% 40% 40% 10%;
-    }
+  &size {
+    width: 3.8rem;
+    height: 1.1875rem;
+    margin-right: 7.75rem;
+    margin-top: 1.5rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: #2b2a28;
+  }
 
-    &icon {
-        width: 1.75rem;
-        grid-column: 1 / span 1;
-        align-self: baseline;
-    }
+  &datemodified {
+    width: 6.75rem;
+    height: 1.1875rem;
+    margin-top: 1.5rem;
+    margin-right: 1.375rem;
+    font-family: Droid Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: #2b2a28;
+  }
 
-    &name {
-        width: 15.75rem;
-        height: 1.1875rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: #2B2A28;
-        grid-column: 2 / span 1;
-        grid-row: 2 / span 1;
-        align-self: center;
-    }
-
-    &download {
-        width: 6.8125rem;
-        height: 1rem;
-        margin-top: -0.5rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.8125rem;
-        line-height: 0.9375rem;
-        color: rgba(43, 42, 40, 0.4);
-        grid-column: 2 / span 1;
-        grid-row: 3 / span 1;
-    }
-
-    &sizemod {
-        display: flex;
-        flex-direction: row;
-    }
-
-    &downloadicon- {
-        &active {
-            width: 1.9375rem;
-            height: 2rem;
-            margin-right: 2.5625rem;
-            margin-top: 1rem;
-            cursor: pointer;
-        }
-
-        &other {
-            width: 1.9375rem;
-            height: 2rem;
-            margin-right: 2.0625rem;
-            margin-top: 1.5rem;
-        }
-    }
-
-    &size {
-        width: 3.8rem;
-        height: 1.1875rem;
-        margin-right: 7.75rem;
-        margin-top: 1.5rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: #2B2A28;
-    }
-
-    &datemodified {
-        width: 6.75rem;
-        height: 1.1875rem;
-        margin-top: 1.5rem;
-        margin-right: 1.375rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: #2B2A28;
-    }
-
-    &info:hover, &name:hover, &downloadicon-initial:hover, &downloadicon-other:hover {
-        cursor: pointer;
-        color: #38A7DE;
-    }
+  &info:hover,
+  &name:hover,
+  &downloadicon-initial:hover,
+  &downloadicon-other:hover {
+    cursor: pointer;
+    color: #38a7de;
+  }
 }
