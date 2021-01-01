@@ -23,7 +23,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    getRoute();
+    getRoute(); // eslint-disable-next-line
   }, [window.location.href]);
 
   return (

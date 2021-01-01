@@ -54,8 +54,8 @@ const Department = (props) => {
   useEffect(() => {
     setCourse(props.match.params.course);
     fetchPageDetails(props.match.params.department, props.match.params.course);
-    dispatch({ type: SET_FILETYPE, payload: props.match.params.filetype });
-  }, [window.location.href]);
+    dispatch({ type: SET_FILETYPE, payload: props.match.params.filetype }); // eslint-disable-next-line
+  }, [props.match.params.department, props.match.params.course, props.match.params.filetype]);
 
   return (
     <div>

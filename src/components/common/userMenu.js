@@ -6,7 +6,12 @@ import { removeCookie } from 'utils/handleCookies';
 import polygon from 'assets/Polygon.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
-import { TOGGLE_REQUEST, TOGGLE_UPLOAD, TOGGLE_USERMENU } from 'constants/action-types';
+import {
+  TOGGLE_REQUEST,
+  TOGGLE_UPLOAD,
+  TOGGLE_USERMENU,
+  CLOSE_USERMENU
+} from 'constants/action-types';
 
 /**
  * User-Menu component for Studyportal.
@@ -33,7 +38,7 @@ const UserMenu = () => {
         alt='user' onClick={() => dispatch({ type: TOGGLE_USERMENU })}/>
       </div>
       { modal.userMenu ?
-      <div className='usermenu--container'>
+      <div className='usermenu--container' onClick={() => dispatch({ type: CLOSE_USERMENU })}>
         <div className='usermenu--polygon'><img src={polygon} alt='polygon' /></div>
         <div className='usermenu--cover'>
           <div className='usermenu--request' onClick={() => dispatch({ type: TOGGLE_REQUEST })}>Request</div>
