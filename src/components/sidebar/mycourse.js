@@ -166,7 +166,7 @@ class Sidebar extends Component {
                   <div className='sidebar--course-table'>
                     { this.props.user.courses ? this.props.user.courses.map((course) => (
                       <Link to={ `/mycourse/departments/${course.department.abbreviation}/courses/${course.code}/` } key={ course.id }>
-                          <CourseHandle title={course.title} code={course.code} course={course.id} />
+                          <CourseHandle login title={course.title} code={course.code} course={course.id} />
                       </Link>
                     )) : null}
                   </div>

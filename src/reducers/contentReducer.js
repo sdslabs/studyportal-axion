@@ -2,7 +2,8 @@ import {
   ADD_DEPARTMENTS,
   SWITCH_ACTIVE_DEPARTMENT,
   ADD_COURSES,
-  SWITCH_ACTIVE_COURSE
+  SWITCH_ACTIVE_COURSE,
+  SET_FILETYPE
 } from "constants/action-types";
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
     id: 0,
     code: '',
     title: ''
-  }
+  },
+  filetype: undefined
 };
 
 export default function contentReducer(state = initialState, action) {
@@ -41,6 +43,11 @@ export default function contentReducer(state = initialState, action) {
       return {
         ...state,
         activeCourse: action.payload
+      };
+    case SET_FILETYPE:
+      return {
+        ...state,
+        filetype: action.payload
       };
     default:
       return state;

@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import close from 'assets/closereq.png';
-import { getDepartmentsList } from 'api/departmentApi';
 import { getCourseByDepartment } from 'api/courseApi';
 import { requestFiles, requestCourse } from 'api/requestApi';
 import { getCookie } from 'utils/handleCookies';

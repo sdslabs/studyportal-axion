@@ -6,7 +6,7 @@ import { removeCookie } from 'utils/handleCookies';
 import polygon from 'assets/Polygon.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
-import { TOGGLE_REQUEST, TOGGLE_UPLOAD, TOGGLE_USERMENU, CLOSE_MODAL } from 'constants/action-types';
+import { TOGGLE_REQUEST, TOGGLE_UPLOAD, TOGGLE_USERMENU } from 'constants/action-types';
 
 /**
  * User-Menu component for Studyportal.

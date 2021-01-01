@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import CustomFileUploader from './customFileUploader';
 import { uploadFile } from 'api/uploadApi';
 import close from 'assets/closereq.png';
-import { getDepartmentsList } from 'api/departmentApi';
 import { getCourseByDepartment } from 'api/courseApi';
 import { getCookie } from 'utils/handleCookies';
 import { connect } from 'react-redux';
