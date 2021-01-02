@@ -4,10 +4,10 @@
     display: grid;
     grid-template-columns: 20% 75%;
     grid-template-rows: 25% 25% 25% 25%;
-    color: #2b2a28;
+    color: $font-color;
   }
   &card:hover {
-    color: #38a7de;
+    color: $primary;
     cursor: pointer;
   }
   &card- {
@@ -22,7 +22,7 @@
       grid-column: 2 / span 1;
       grid-row: 2 / span 1;
       align-self: center;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 0.875rem;
@@ -33,14 +33,14 @@
       grid-column: 2 / span 1;
       align-self: center;
       &_name {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 0.75rem;
         line-height: 0.875rem;
       }
       &_course {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: bold;
         font-size: 0.75rem;
@@ -53,20 +53,20 @@
       grid-row: 4 / span 1;
       align-self: center;
       &_date {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 0.6875rem;
         line-height: 0.8125rem;
-        color: rgba(43, 42, 40, 0.4);
+        color: rgba($font-color, 0.4);
       }
       &_type {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 0.6875rem;
         line-height: 0.8125rem;
-        color: rgba(43, 42, 40, 0.4);
+        color: rgba($font-color, 0.4);
         margin-left: 0.25rem;
       }
     }

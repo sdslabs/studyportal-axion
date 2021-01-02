@@ -60,7 +60,7 @@
     width: 11.341875rem;
     height: 8.125rem;
 
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -70,7 +70,7 @@
     justify-items: center;
     align-items: center;
 
-    color: #ffffff;
+    color: $white;
 
     &-hold {
       text-align: center;

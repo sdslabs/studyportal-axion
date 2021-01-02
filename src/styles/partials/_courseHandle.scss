@@ -3,15 +3,15 @@
   height: 2.625rem;
   padding-top: 0.25rem;
   padding-bottom: 0.5rem;
-  border: 0.0625rem solid rgba(56, 167, 222, 0.15);
+  border: 0.0625rem solid rgba($primary, 0.15);
 
   &_active {
     width: 98%;
     height: 2.625rem;
     padding-top: 0.25rem;
     padding-bottom: 0.5rem;
-    border: 0.0625rem solid rgba(56, 167, 222, 0.15);
-    border-left: 0.375rem solid #38a7de;
+    border: 0.0625rem solid rgba($primary, 0.15);
+    border-left: 0.375rem solid $primary;
   }
 }
 
@@ -19,22 +19,22 @@
   &heading {
     padding-left: 2.25rem;
     width: 2.625rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 3rem;
-    color: #ffffff;
+    color: $white;
 
     &_active {
       padding-left: 2.25rem;
       width: 2.625rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 3rem;
-      color: #38a7de;
+      color: $primary;
     }
   }
 
@@ -46,7 +46,7 @@
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.125rem;
-    color: rgba(56, 167, 222, 0.6);
+    color: rgba($primary, 0.6);
   }
 
   &activedot {

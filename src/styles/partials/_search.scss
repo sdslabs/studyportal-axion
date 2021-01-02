@@ -17,20 +17,20 @@
       height: 100%;
       width: 75%;
       padding-left: 1rem;
-      background: #ffffff;
+      background: $white;
       border-radius: 0.125rem;
-      border: #ffffff;
+      border: $white;
 
       &_holder {
         height: auto;
         width: 100%;
         margin-top: 0.5rem;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
-        color: #2b2a28;
-        border: #ffffff;
+        color: $font-color;
+        border: $white;
         outline: none;
       }
     }
@@ -38,8 +38,8 @@
     &-icon {
       width: 2.560625rem;
       height: 100%;
-      background: #0d2938;
-      border: #0d2938;
+      background: $secondary;
+      border: $secondary;
       border-radius: 0.125rem;
     }
   }
@@ -53,7 +53,7 @@
     font-size: 1rem;
     line-height: 3rem;
     outline: none;
-    background: #ffffff;
+    background: $white;
     padding-left: 1rem;
     border: white;
     border-radius: 0.25rem;
@@ -65,28 +65,28 @@
       height: 100%;
       width: 75%;
       padding-left: 1rem;
-      background: #ffffff;
+      background: $white;
       border-radius: 0.125rem;
-      border: #ffffff;
+      border: $white;
     }
 
     &-input_holder_home {
       height: auto;
       width: 100%;
       margin-top: 0.5rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
-      color: #2b2a28;
-      border: #ffffff;
+      color: $font-color;
+      border: $white;
       outline: none;
     }
 
     &-icon_home {
       width: 3.09375rem;
       height: 100%;
-      background: #ffffff;
+      background: $white;
       border: white;
       border-radius: 0.25rem;
     }
@@ -98,8 +98,8 @@
     width: 100%;
     min-width: 600px;
     height: 22.875rem;
-    background: #ffffff;
-    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+    background: $white;
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
     z-index: 1;
     overflow-y: scroll;
     text-align: start;
@@ -109,13 +109,13 @@
     width: 100%;
     height: 1.625rem;
     left: 0%;
-    background: rgba(56, 167, 222, 0.275);
-    font-family: Droid Sans;
+    background: rgba($primary, 0.275);
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
-    color: #0d2938;
+    color: $secondary;
     text-align: center;
     &-holder {
       width: 96%;
@@ -131,12 +131,12 @@
       margin-left: 87.69%;
       margin-bottom: 1rem;
       margin-top: 1rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 0.875rem;
       line-height: 1rem;
-      color: #38a7de;
+      color: $primary;
     }
     &-seeall:hover {
       text-decoration: underline;
@@ -154,20 +154,20 @@
         height: 1.5rem;
       }
       &_text {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: rgba(43, 42, 40, 0.8);
+        color: $font-color;
       }
       &_requestfile {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #38a7de;
+        color: $primary;
       }
       &_requestfile:hover {
         text-decoration: underline;
@@ -182,23 +182,23 @@
   &courses {
     width: 100%;
     height: 1.625rem;
-    background: rgba(56, 167, 222, 0.275);
-    font-family: Droid Sans;
+    background: rgba($primary, 0.275);
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
-    color: #0d2938;
+    color: $secondary;
     text-align: center;
     &-name {
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 0.875rem;
       line-height: 1rem;
-      color: #2b2a28;
+      color: $font-color;
       padding: 0.75rem 1.5rem 0.75rem;
-      border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
+      border-bottom: 0.0625rem solid $border;
     }
     &-name:hover {
       cursor: pointer;
@@ -216,20 +216,20 @@
         margin-right: 0.225rem;
       }
       &_text {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: rgba(43, 42, 40, 0.8);
+        color: $font-color;
       }
       &_requestcourse {
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #38a7de;
+        color: $primary;
       }
       &_requestcourse:hover {
         text-decoration: underline;
@@ -244,23 +244,23 @@
   &department {
     width: 100%;
     height: 1.625rem;
-    background: rgba(56, 167, 222, 0.275);
-    font-family: Droid Sans;
+    background: rgba($primary, 0.275);
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
-    color: #0d2938;
+    color: $secondary;
     text-align: center;
     &-name {
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 0.875rem;
       line-height: 1rem;
-      color: #2b2a28;
+      color: $font-color;
       padding: 0.75rem 1.5rem 0.75rem;
-      border-bottom: 0.0625rem solid rgba(65, 64, 66, 0.2);
+      border-bottom: 0.0625rem solid $border;
     }
     &-name:hover {
       cursor: pointer;
@@ -278,12 +278,12 @@
       }
       &_text {
         margin-left: 1%;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: rgba(43, 42, 40, 0.8);
+        color: $font-color;
       }
     }
   }

@@ -15,7 +15,7 @@
     align-items: center;
     width: 1.75rem;
     height: 1.85rem;
-    background: #0d2938;
+    background: $secondary;
     border-radius: 2px;
     margin-right: -12.5rem;
   }
@@ -29,14 +29,14 @@
       margin-left: 0.4375rem;
     }
     &number {
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: bold;
       font-size: 0.6875rem;
       line-height: 0.8125rem;
       margin-right: 0.2375rem;
       margin-top: -0.75rem;
-      color: #ffffff;
+      color: $white;
     }
   }
   &polygon {
@@ -49,9 +49,9 @@
     width: 22.125rem;
     height: 12.125rem;
     z-index: 1;
-    background: #ffffff;
+    background: $white;
     box-sizing: border-box;
-    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba(0, 0, 0, 0.15);
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
     overflow-y: scroll;
   }
 }
@@ -59,7 +59,7 @@
 .nonewnotification {
   display: flex;
   margin-top: 5rem;
-  color: #2b2a28;
+  color: $font-color;
   justify-content: center;
   font-size: 1.25rem;
 }

@@ -39,14 +39,14 @@
   height: 95.12%;
   left: 6.56%;
   top: 2.44%;
-  background: #ffffff;
-  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  background: $white;
+  box-shadow: 0rem 0.25rem 0.25rem rgba($black, 0.25);
   overflow-y: auto;
   border-radius: 0.125rem;
   scrollbar-width: 0rem;
 
   ::placeholder {
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
   }
 }
 
@@ -71,12 +71,12 @@
     height: 2.375rem;
     align-self: center;
     margin-top: 1.1875rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 2rem;
     line-height: 2.3125rem;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &underline {
@@ -84,7 +84,7 @@
     height: 0.05%;
     align-self: center;
     margin-top: 0.625rem;
-    border: 0.0425rem solid #38a7de;
+    border: 0.0425rem solid $primary;
   }
 
   &instructions {
@@ -92,15 +92,15 @@
     height: auto;
     margin-left: 17%;
     margin-top: 2.125rem;
-    background: rgba(56, 167, 222, 0.275);
+    background: rgba($primary, 0.275);
     border-radius: 0.125rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.5rem;
     text-align: justify;
-    color: #2b2a28;
+    color: $font-color;
     padding: 1rem 1.5rem 1rem 1.5rem;
   }
 
@@ -109,12 +109,12 @@
     height: 1.1875rem;
     margin-top: 2.25rem;
     margin-left: 18%;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &filebutton- {
@@ -123,15 +123,15 @@
       height: 2.25rem;
       margin-left: 18%;
       margin-top: 1rem;
-      background: #ffffff;
+      background: $white;
       border: none;
-      border-bottom: 0.25rem solid rgba(56, 167, 222, 0.2);
-      font-family: Droid Sans;
+      border-bottom: 0.25rem solid rgba($primary, 0.2);
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 0.625rem;
-      color: #2b2a28;
+      color: $font-color;
     }
 
     &active {
@@ -139,15 +139,15 @@
       height: 2.25rem;
       margin-left: 18%;
       margin-top: 1rem;
-      background: rgba(56, 167, 222, 0.25);
+      background: rgba($primary, 0.25);
       border: none;
-      border-bottom: 0.25rem solid #38a7de;
-      font-family: Droid Sans;
+      border-bottom: 0.25rem solid $primary;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 0.625rem;
-      color: #2b2a28;
+      color: $font-color;
     }
   }
 
@@ -155,29 +155,29 @@
     &inactive {
       width: 7.5625rem;
       height: 2.25rem;
-      background: #ffffff;
+      background: $white;
       border: none;
-      border-bottom: 0.2rem solid rgba(56, 167, 222, 0.2);
-      font-family: Droid Sans;
+      border-bottom: 0.2rem solid rgba($primary, 0.2);
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 0.625rem;
-      color: #2b2a28;
+      color: $font-color;
     }
 
     &active {
       width: 7.5625rem;
       height: 2.25rem;
-      background: rgba(56, 167, 222, 0.25);
+      background: rgba($primary, 0.25);
       border: none;
-      border-bottom: 0.25rem solid #38a7de;
-      font-family: Droid Sans;
+      border-bottom: 0.25rem solid $primary;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 0.625rem;
-      color: #2b2a28;
+      color: $font-color;
     }
   }
 
@@ -203,16 +203,16 @@
     height: 2.5625rem;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
-    background: #38a7de;
+    background: $primary;
     border-radius: 0.125rem;
-    border: #38a7de;
-    font-family: Droid Sans;
+    border: $primary;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 2.5625rem;
     text-align: center;
-    color: #ffffff;
+    color: $white;
     cursor: pointer;
   }
 
@@ -221,16 +221,16 @@
     height: 2.5625rem;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
-    background: #38a7de;
+    background: $primary;
     border-radius: 0.125rem;
-    border: #38a7de;
-    font-family: Droid Sans;
+    border: $primary;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 2.5625rem;
     text-align: center;
-    color: #ffffff;
+    color: $white;
     cursor: pointer;
   }
 
@@ -239,16 +239,16 @@
     height: 2.5625rem;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
-    background: #38a7de;
+    background: $primary;
     border-radius: 0.125rem;
-    border: #38a7de;
-    font-family: Droid Sans;
+    border: $primary;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 2.5625rem;
     text-align: center;
-    color: #ffffff;
+    color: $white;
     cursor: pointer;
   }
 
@@ -257,15 +257,15 @@
     width: 5.875rem;
     height: 2.5625rem;
     margin-top: 1.5rem;
-    background: #38a7de;
+    background: $primary;
     border-radius: 0.125rem;
-    border: #38a7de;
-    font-family: Droid Sans;
+    border: $primary;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #ffffff;
+    color: $white;
   }
 
   &confirmation {
@@ -273,23 +273,23 @@
 
     &-text {
       margin-left: 0.5rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 19px;
-      color: #2f7f2e;
+      color: $success;
       opacity: 0.8;
     }
 
     &-activity {
       margin-left: 0.75rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 16px;
       line-height: 19px;
-      color: #2b2a28;
+      color: $font-color;
     }
   }
 }
@@ -299,44 +299,44 @@
     width: 5.4375rem;
     height: 1.3125rem;
     margin-top: 1rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.3125rem;
     text-align: justify;
-    color: #2b2a28;
+    color: $font-color;
 
     &-select {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 1px solid #2b2a28;
+      border: 1px solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
 
     &-select:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($font-color, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
-      color: rgba(43, 42, 40, 0.2);
+      background: $white;
+      color: rgba($font-color, 0.2);
     }
   }
 
@@ -344,44 +344,44 @@
     width: 12.5rem;
     height: 1.3125rem;
     margin-top: 1.5rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.3125rem;
     text-align: justify;
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
 
     &-select {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 0.0625rem solid #2b2a28;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
 
     &-select:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($font-color, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      color: rgba(43, 42, 40, 0.2);
-      background: #ffffff;
+      color: rgba($font-color, 0.2);
+      background: $white;
     }
   }
 
@@ -389,12 +389,12 @@
     width: 6.125rem;
     height: 1.1875rem;
     margin-top: 1.5rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
 
     &material--container {
       position: relative;
@@ -437,23 +437,23 @@
     width: 2.75rem;
     height: 1.3125rem;
     margin-top: -7rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.3125rem;
     text-align: justify;
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
 
     &-input {
       width: 29.9375rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 0.0625rem solid #2b2a28;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
@@ -462,12 +462,12 @@
     }
 
     &-input:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($font-color, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      background: #ffffff;
-      color: rgba(43, 42, 40, 0.2);
+      background: $white;
+      color: rgba($font-color, 0.2);
     }
   }
 }
@@ -477,23 +477,23 @@
     width: 5.4375rem;
     height: 1.3125rem;
     margin-top: 1.6875rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.3125rem;
     text-align: justify;
-    color: #2b2a28;
+    color: $font-color;
 
     &-input {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 0.0625rem solid #2b2a28;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
   }
 
@@ -501,31 +501,31 @@
     width: 12.5rem;
     height: 1.3125rem;
     margin-top: 1rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.3125rem;
     text-align: justify;
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
 
     &-input {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 0.0625rem solid #2b2a28;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
 
     &-input:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($font-color, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
   }
 
@@ -533,37 +533,37 @@
     width: 4.5rem;
     height: 1.1875rem;
     margin-top: 1.5rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
 
     &-input {
       width: 5.375rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      background: #ffffff;
-      border: 0.0625rem solid #2b2a28;
+      background: $white;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.1875rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      color: #2b2a28;
+      color: $font-color;
     }
 
     &-input:disabled {
-      background: #ffffff;
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      background: $white;
+      border: 0.0625rem solid rgba($font-color, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
       padding: 0.5625rem 0.75rem 0.5rem;
-      color: rgba(43, 42, 40, 0.2);
+      color: rgba($font-color, 0.2);
     }
   }
 }
@@ -574,12 +574,12 @@
   width: 3.9375rem;
   height: 1.1875rem;
   margin-left: 5%;
-  font-family: Droid Sans;
+  font-family: $font;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.375rem;
-  color: rgba(43, 42, 40, 0.2);
+  color: rgba($font-color, 0.2);
 }
 
 .books {
@@ -588,12 +588,12 @@
   height: 1.1875rem;
   top: -3.0625rem;
   margin-left: 23%;
-  font-family: Droid Sans;
+  font-family: $font;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.375rem;
-  color: rgba(43, 42, 40, 0.2);
+  color: rgba($font-color, 0.2);
 }
 
 .notes {
@@ -602,12 +602,12 @@
   height: 1.1875rem;
   top: -5.2875rem;
   margin-left: 41%;
-  font-family: Droid Sans;
+  font-family: $font;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.375rem;
-  color: rgba(43, 42, 40, 0.2);
+  color: rgba($font-color, 0.2);
 }
 
 .exam {
@@ -616,12 +616,12 @@
   height: 1.1875rem;
   top: -7.6125rem;
   margin-left: 59%;
-  font-family: Droid Sans;
+  font-family: $font;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.375rem;
-  color: rgba(43, 42, 40, 0.2);
+  color: rgba($font-color, 0.2);
 }
 
 button:focus {

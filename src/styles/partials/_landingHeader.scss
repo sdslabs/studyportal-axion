@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   background: url(../assets/landing_header.svg);
-  background-color: #38a7de;
+  background-color: $primary;
   background-size: contain;
   height: 24.4375rem;
   width: 100%;
@@ -16,11 +16,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #88caeb;
+    background: $scroll-primary;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #629ebd;
+    background: $scroll-secondary;
     border-radius: 2.9375rem;
   }
 }
@@ -52,12 +52,12 @@
     font-size: 2rem;
     line-height: 2.25rem;
     text-align: center;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &caption {
     margin-top: 0.9375rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -98,12 +98,12 @@
   &login {
     width: 6.25rem;
     height: 2.5625rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
+    color: $secondary;
     background: transparent;
     border: none;
   }
@@ -111,21 +111,21 @@
   &signup {
     width: 7.5625rem;
     height: 2.5625rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2b2a28;
+    color: $font-color;
     border-radius: 0.25rem;
-    border: 1px solid #2b2a28;
+    border: 1px solid $font-color;
     background: transparent;
   }
 
   &image {
     width: 3.5rem;
     height: 3.5rem;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &search:hover,

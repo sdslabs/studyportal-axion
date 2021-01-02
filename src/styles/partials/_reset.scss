@@ -125,12 +125,12 @@ table {
   border-spacing: 0;
 }
 .link {
-  font-family: Droid Sans;
+  font-family: $font;
   font-style: normal;
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.1875rem;
-  color: #0d2938;
+  color: $secondary;
 }
 a {
   text-decoration: none;
