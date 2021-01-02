@@ -122,7 +122,7 @@ class App extends Component {
           <Route exact path="/mycourse" render={(props) => <MyCourse {...props} />} />
           <Route
             exact
-            path="/mycourse/departments/:department/courses/:course/:file_type?"
+            path="/mycourse/departments/:department/courses/:course/:filetype?"
             render={(props) => <MyCourse {...props} error={false} />}
           />
           <Route

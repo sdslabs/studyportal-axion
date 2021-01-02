@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Header from 'components/header/header';
 import Sidebar from 'components/sidebar/mycourse';
-import CoursePage from 'components/coursecard/coursePage';
+import CoursePage from 'components/coursecard/myCoursePage';
 import CourseCover from 'components/cover/courseCover';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
 import {
   SWITCH_ACTIVE_DEPARTMENT,
   ADD_COURSES,
-  SWITCH_ACTIVE_COURSE,
-  SET_FILETYPE,
+  SWITCH_ACTIVE_MYCOURSE,
+  SET_MYCOURSE_FILETYPE,
 } from 'constants/action-types';
 
 /**
@@ -41,7 +41,7 @@ const MyCourse = (props) => {
               //TODO handle error
             } else {
               dispatch({
-                type: SWITCH_ACTIVE_COURSE,
+                type: SWITCH_ACTIVE_MYCOURSE,
                 payload: {
                   id: response.id,
                   title: response.title,
@@ -58,7 +58,7 @@ const MyCourse = (props) => {
   useEffect(() => {
     setCourse(props.match.params.course);
     fetchPageDetails(props.match.params.department, props.match.params.course);
-    dispatch({ type: SET_FILETYPE, payload: props.match.params.filetype }); // eslint-disable-next-line
+    dispatch({ type: SET_MYCOURSE_FILETYPE, payload: props.match.params.filetype }); // eslint-disable-next-line
   }, [props.match.params.department, props.match.params.course, props.match.params.filetype]);
 
   return (
