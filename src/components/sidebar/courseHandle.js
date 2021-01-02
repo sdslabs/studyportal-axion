@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import coursedot from 'assets/coursedot.png';
 import 'styles/main.scss';
 import shortName from 'utils/short-name';
-import { SWITCH_ACTIVE_COURSE } from 'constants/action-types';
+import { SWITCH_ACTIVE_COURSE, SWITCH_ACTIVE_MYCOURSE } from 'constants/action-types';
 
 /**
  * Component to render course in sidebar.
@@ -25,6 +25,18 @@ const CourseHandle = (props) => {
   const [mycourse] = useState(checkMyCourse(props));
 
   /**
+   * Activates associated mycourse.
+   */
+  const activatemycourse = (props) => {
+    const activeMyCourse = {
+      id: props.course,
+      code: props.code,
+      title: props.title,
+    };
+    dispatch({ type: SWITCH_ACTIVE_MYCOURSE, payload: activeMyCourse });
+  };
+
+  /**
    * Activates associated course.
    */
   const activatecourse = (props) => {
@@ -39,11 +51,11 @@ const CourseHandle = (props) => {
   if (props.login) {
     return (
       <div className="coursehandle">
-        <span className="coursehandle--heading" onClick={() => activatecourse(props)}>
+        <span className="coursehandle--heading" onClick={() => activatemycourse(props)}>
           {`${props.title.length >= 25 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
         <span>
-          {props.code === content.activeCourse.code ? (
+          {props.code === content.activeMyCourse.code ? (
             <span className="coursehandle--activedot">
               <img src={coursedot} alt="coursedot" />
             </span>
