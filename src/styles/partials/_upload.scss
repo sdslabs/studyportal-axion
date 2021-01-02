@@ -30,8 +30,8 @@
   height: 95.12%;
   left: 6.56%;
   top: 2.44%;
-  background: #ffffff;
-  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  background: $white;
+  box-shadow: 0rem 0.25rem 0.25rem rgba($black, 0.25);
   overflow-y: auto;
   overflow-x: hidden;
   border-radius: 0.125rem;
@@ -42,90 +42,90 @@
       width: 5.4375rem;
       height: 1.3125rem;
       margin-top: 2.25rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
-      color: #2b2a28;
+      color: $font-color;
     }
 
     &department-select {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 0.5rem;
-      border: 1px solid #2b2a28;
+      border: 1px solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
 
     &department-select:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($black, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
-      color: rgba(43, 42, 40, 0.2);
+      background: $white;
+      color: rgba($black, 0.2);
     }
 
     &course {
       width: 12.5rem;
       height: 1.3125rem;
       margin-top: 1.5rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
-      color: rgba(43, 42, 40, 0.2);
+      color: rgba($black, 0.2);
     }
 
     &course-select {
       width: 15.75rem;
       height: 2.25rem;
       margin-top: 8px;
-      border: 0.0625rem solid #2b2a28;
+      border: 0.0625rem solid $font-color;
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      background: #ffffff;
+      background: $white;
     }
 
     &course-select:disabled {
-      border: 0.0625rem solid rgba(43, 42, 40, 0.2);
+      border: 0.0625rem solid rgba($black, 0.2);
       box-sizing: border-box;
       border-radius: 0.125rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       padding-left: 0.5rem;
-      color: rgba(43, 42, 40, 0.2);
-      background: #ffffff;
+      color: rgba($black, 0.2);
+      background: $white;
     }
   }
 
@@ -148,12 +148,12 @@
   &heading {
     width: auto;
     height: 2.375rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 2rem;
     line-height: 2.3125rem;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &underline {
@@ -161,31 +161,31 @@
     height: 0.5px;
     margin-top: 0.625rem;
     margin-left: calc(50% - 2.5rem);
-    border: 0.0425rem solid #38a7de;
+    border: 0.0425rem solid $primary;
   }
 
   &instruction {
     width: 65.5%;
     height: auto;
     margin-left: 15%;
-    background: rgba(56, 167, 222, 0.275);
+    background: rgba($primary, 0.275);
     border-radius: 2px;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.5rem;
     text-align: justify;
-    color: #2b2a28;
+    color: $font-color;
     padding: 1rem 1.5rem 1rem 1rem;
 
     &-head {
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: bold;
       font-size: 1.125rem;
       line-height: 1.3125rem;
-      color: #2b2a28;
+      color: $font-color;
     }
 
     &-body {

@@ -3,8 +3,8 @@
   flex-direction: row;
   width: 100%;
   height: 4.5625rem;
-  background: #38a7de;
-  border: 0.0625rem solid #38a7de;
+  background: $primary;
+  border: 0.0625rem solid $primary;
   box-sizing: border-box;
 
   cursor: default;
@@ -14,11 +14,11 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #88caeb;
+    background: $scroll-primary;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #629ebd;
+    background: $scroll-secondary;
     border-radius: 2.9375rem;
   }
 
@@ -56,7 +56,7 @@
     font-weight: bold;
     font-size: 1.25rem;
     line-height: 1.375rem;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &search {
@@ -71,12 +71,12 @@
     height: 2.375rem;
     margin-top: 1.625rem;
     margin-left: -2%;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &mycourse {
@@ -84,13 +84,13 @@
     height: 2.375rem;
     margin-top: 1.625rem;
     margin-left: 1.5%;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
     z-index: 1;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &request {
@@ -98,12 +98,12 @@
     height: 1.1875rem;
     margin-left: 1.5rem;
     margin-top: 1.625rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &upload {
@@ -111,12 +111,12 @@
     height: 2.375rem;
     margin-right: 1.5rem;
     margin-top: 1.625rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
+    color: $secondary;
   }
 
   &login {
@@ -124,12 +124,12 @@
     height: 2.375rem;
     margin-right: 1.5rem;
     margin-top: 1rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
+    color: $secondary;
     background: transparent;
     border: none;
   }
@@ -139,13 +139,13 @@
     height: 2.5625rem;
     margin-right: 3.125rem;
     margin-top: 1rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #0d2938;
-    border: 0.0625rem solid #0d2938;
+    color: $secondary;
+    border: 0.0625rem solid $secondary;
     box-sizing: border-box;
     border-radius: 0.125rem;
     background: transparent;

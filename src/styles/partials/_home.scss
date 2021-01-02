@@ -7,7 +7,7 @@
 
 .home-- {
   &choosedept {
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #2b2a28;
+    color: $font-color;
     align-self: center;
     margin-top: 3.25rem;
 
@@ -24,7 +24,7 @@
       width: 11%;
       height: 0px;
       margin-top: 0.875rem;
-      border: 0.5px solid #0d2938;
+      border: 0.5px solid $secondary;
     }
   }
 

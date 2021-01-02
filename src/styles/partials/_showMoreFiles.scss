@@ -24,10 +24,10 @@
     width: 0.375rem;
   }
   ::-webkit-scrollbar-track {
-    background: #88caeb;
+    background: $scroll-primary;
   }
   ::-webkit-scrollbar-thumb {
-    background: #629ebd;
+    background: $scroll-secondary;
     border-radius: 2.9375rem;
   }
 }
@@ -39,11 +39,11 @@
   justify-content: space-between;
   width: 70%;
   height: 85%;
-  background: #ffffff;
-  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  background: $white;
+  box-shadow: 0rem 0.25rem 0.25rem rgba($black, 0.25);
   border-radius: 0.125rem;
   ::placeholder {
-    color: rgba(43, 42, 40, 0.2);
+    color: rgba($font-color, 0.2);
   }
 
   .file {
@@ -74,12 +74,12 @@
     height: 1.75rem;
     margin-top: 3rem;
     margin-left: 3rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5rem;
     line-height: 1.75rem;
-    color: #2b2a28;
+    color: $font-color;
     &_query {
       font-weight: bold;
     }
@@ -109,22 +109,22 @@
     &-text {
       margin-left: 0.6875rem;
       margin-top: 0.35rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1rem;
-      color: rgba(43, 42, 40, 0.8);
+      color: $font-color;
     }
     &-request {
       margin-left: 0.625rem;
       margin-top: 0.35rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1rem;
       line-height: 1.1875rem;
-      color: #38a7de;
+      color: $primary;
     }
     &-request:hover {
       cursor: pointer;

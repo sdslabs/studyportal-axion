@@ -7,7 +7,7 @@
   min-height: 22rem;
   left: 0rem;
   top: 4.5625rem;
-  background: #0d2938;
+  background: $secondary;
   overflow-x: none;
 
   cursor: default;
@@ -18,21 +18,21 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a4d68;
+    background: $sidebar-scroll-primary;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #236385;
+    background: $sidebar-scroll-secondary;
     border-radius: 1.125rem;
   }
 
   .back {
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: #38a7de;
+    color: $primary;
   }
 }
 
@@ -45,7 +45,7 @@
   height: calc(100% - 4.5625rem);
   left: 0rem;
   top: 4.5625rem;
-  background: #0d2938;
+  background: $secondary;
   overflow-x: none;
 
   cursor: default;
@@ -65,12 +65,12 @@
   }
 
   .back {
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: #38a7de;
+    color: $primary;
   }
 }
 
@@ -79,12 +79,12 @@
     width: 22.5rem;
     margin-top: 2.375rem;
     margin-left: 2.25rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: bold;
     font-size: 1.125rem;
     line-height: 1.3125rem;
-    color: #ffffff;
+    color: $white;
   }
 
   &coursecontent {
@@ -103,12 +103,12 @@
     width: 100%;
     height: 1.1875rem;
     margin-top: 2.1875rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #ffffff;
+    color: $white;
   }
 
   &course-table {
@@ -139,35 +139,35 @@
       width: auto;
       height: 1.375rem;
       margin-bottom: 1.0625rem;
-      font-family: Droid Sans;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
       font-size: 1.125rem;
       line-height: 1.3125rem;
-      color: #38a7de;
+      color: $primary;
 
       &_department {
         width: 5.4375rem;
         height: 1.1875rem;
         margin-bottom: 0.5rem;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #ffffff;
+        color: $white;
       }
 
       &_course {
         width: 6.125rem;
         height: 1.1875rem;
         margin-bottom: 0.5rem;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #ffffff;
+        color: $white;
       }
     }
 
@@ -176,13 +176,13 @@
         width: 16.625rem;
         height: 2.25rem;
         margin-bottom: 1.5rem;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 0.875rem;
         line-height: 1.1875rem;
         text-indent: 0.5rem;
-        background: #ffffff;
+        background: $white;
         border-radius: 0.125rem;
       }
 
@@ -190,13 +190,13 @@
         width: 16.625rem;
         height: 2.25rem;
         margin-bottom: 1.5rem;
-        font-family: Droid Sans;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 0.875rem;
         line-height: 1.1875rem;
         text-indent: 0.5rem;
-        background: #ffffff;
+        background: $white;
         border-radius: 0.125rem;
       }
     }
@@ -207,15 +207,15 @@
       button {
         width: 7.6875rem;
         height: 2.25rem;
-        background: #38a7de;
+        background: $primary;
         border-radius: 0.125rem;
-        border: #38a7de;
-        font-family: Droid Sans;
+        border: $primary;
+        font-family: $font;
         font-style: normal;
         font-weight: normal;
         font-size: 1rem;
         line-height: 1.1875rem;
-        color: #ffffff;
+        color: $white;
       }
     }
   }

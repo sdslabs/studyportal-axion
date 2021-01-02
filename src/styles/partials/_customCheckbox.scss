@@ -15,18 +15,18 @@
   left: 0.125rem;
   height: 0.9375rem;
   width: 0.9375rem;
-  background-color: #ffffff;
-  border: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  background-color: $white;
+  border: 0.0625rem solid $border;
   box-sizing: border-box;
   border-radius: 0.125rem;
 }
 
 .customcheckbox:hover input ~ .customcheckbox--checkmark {
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .customcheckbox input:checked ~ .customcheckbox--checkmark {
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .customcheckbox--checkmark:after {
@@ -44,7 +44,7 @@
   top: 0.065625rem;
   width: 0.1875rem;
   height: 0.4375rem;
-  border: solid #000000;
+  border: solid $black;
   border-width: 0 0.1875rem 0.1875rem 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

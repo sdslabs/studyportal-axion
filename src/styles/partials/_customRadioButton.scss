@@ -5,24 +5,24 @@
   width: 0.9375rem;
   height: 0.9375rem;
 
-  border: 0.0625rem solid #2b2a28;
+  border: 0.0625rem solid $font-color;
   border-radius: 0.125rem;
   transition: 0.2s all ease-in;
   outline: none;
 }
 
 .radio:disabled {
-  border: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  border: 0.0625rem solid $border;
 }
 
 .radio:checked {
-  background: #38a7de;
+  background: $primary;
   border: 0.0625rem solid #414042;
   border-radius: 0.125rem;
 }
 
 .radio:checked:disabled {
-  background: rgba(56, 167, 222, 0.2);
-  border: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  background: rgba($primary, 0.2);
+  border: 0.0625rem solid $border;
   border-radius: 0.125rem;
 }

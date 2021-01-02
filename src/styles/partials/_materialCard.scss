@@ -5,7 +5,7 @@
   width: 98.5%;
   height: 4.25rem;
   margin-left: 1%;
-  border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  border-top: 0.0625rem solid $border;
 }
 
 .material-- {
@@ -41,12 +41,12 @@
   &name {
     width: 15.75rem;
     height: 1.1875rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2b2a28;
+    color: $font-color;
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
     align-self: center;
@@ -56,12 +56,12 @@
     width: 6.8125rem;
     height: 1rem;
     margin-top: -0.5rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 0.8125rem;
     line-height: 0.9375rem;
-    color: rgba(43, 42, 40, 0.4);
+    color: rgba($font-color, 0.4);
     grid-column: 2 / span 1;
     grid-row: 3 / span 1;
   }
@@ -93,12 +93,12 @@
     height: 1.1875rem;
     margin-right: 7.75rem;
     margin-top: 1.5rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &datemodified {
@@ -106,12 +106,12 @@
     height: 1.1875rem;
     margin-top: 1.5rem;
     margin-right: 1.375rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2b2a28;
+    color: $font-color;
   }
 
   &info:hover,
@@ -119,6 +119,6 @@
   &downloadicon-initial:hover,
   &downloadicon-other:hover {
     cursor: pointer;
-    color: #38a7de;
+    color: $primary;
   }
 }
