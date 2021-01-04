@@ -51,6 +51,7 @@ class ActivityCard extends Component {
     }
   }
 
+  // TODO add api work for status-3
   render() {
     return (
       <div className="activitycard">
