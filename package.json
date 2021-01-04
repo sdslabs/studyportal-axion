@@ -1,5 +1,10 @@
 {
   "name": "studyportal-axion",
+  "description": "react frontend for studyportal website",
+  "main": "index.js",
+  "repository": "git@github.com:sdslabs/studyportal-axion.git",
+  "author": "AyanChoudhary <darkrider251099@gmail.com>",
+  "license": "MIT",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,23 +12,24 @@
     "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
     "react": "^16.8.6",
-    "react-cookie": "^4.0.3",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
-    "whatwg-fetch": "^3.0.0"
+    "websocket": "^1.0.31"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "lint": "eslint src --ext .js",
+    "lintfix": "eslint --fix --ext .js",
+    "format": "prettier --write .",
+    "format:test": "prettier --check .",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "browserslist": {
     "production": [
@@ -37,17 +43,26 @@
       "last 1 safari version"
     ]
   },
-  "description": "react frontend for studyportal website",
-  "main": "index.js",
-  "repository": "git@github.com:sdslabs/studyportal-axion.git",
-  "author": "AyanChoudhary <darkrider251099@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint-config-prettier": "^7.1.0",
     "eslint-import-resolver-webpack": "^0.11.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "react-styleguidist": "^9.1.16"
+    "eslint-plugin-prettier": "^3.3.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^4.3.6",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "react-styleguidist": "^9.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": "eslint --cache --fix",
+    "*.{js,scss}": "prettier --write"
   }
 }

@@ -8,141 +8,148 @@
 }
 
 .customfileuploader {
-    width: auto;
+  width: auto;
 }
 
 .customfileuploader-- {
-    &choosefile {
-        z-index: 1;
-        opacity: 0;
-        position: absolute;
-        left: -10%;
-    }
+  &choosefile {
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    left: -10%;
+  }
 
-    &input {
-        position: relative;
-        margin-top: 0.5rem;
-    }
+  &input {
+    position: relative;
+    margin-top: 0.5rem;
+  }
 
-    &input-disabled {
-      position: relative;
-      margin-top: 0.5rem;
-      opacity: 0.3;
-    }
+  &input-disabled {
+    position: relative;
+    margin-top: 0.5rem;
+    opacity: 0.3;
+  }
 
-    &label {
-        position: absolute;
-        left:0%;
-        top: 0%;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: #38A7DE;
-    }
+  &label {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: $primary;
+  }
 
-    &filechoose {
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.75rem;
-        line-height: 1.125rem;
-        color: rgba(43, 42, 40, 0.6);
-        margin-left: 5.625rem;
-        margin-top: 0.75rem;
-    }
+  &filechoose {
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    color: rgba($font-color, 0.6);
+    margin-left: 5.625rem;
+    margin-top: 0.75rem;
+  }
 
-    &instruc {
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 0.75rem;
-        line-height: 1.125rem;
-        color: rgba(43, 42, 40, 0.6);
-        margin-left: 0.375rem;
-        margin-top: 0.5rem;
-    }
+  &instruc {
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    color: rgba($font-color, 0.6);
+    margin-left: 0.375rem;
+    margin-top: 0.5rem;
+  }
 
-    &button {
-      width: 5.875rem;
-      height: 2.5625rem;
-      margin-top: 1.5rem;
-      margin-bottom: 2rem;
-      background: #38A7DE;
-      border-radius: 0.125rem;
-      border: #38A7DE;
-      font-family: Droid Sans;
+  &button {
+    width: 5.875rem;
+    height: 2.5625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background: $primary;
+    border-radius: 0.125rem;
+    border: $primary;
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: $white;
+
+    &-loader {
+      margin-left: 0.5rem;
+      animation: rotation 1s infinite linear;
+    }
+  }
+
+  &button_uploading {
+    width: 7.375rem;
+    height: 2.5625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background: $primary;
+    border-radius: 0.125rem;
+    border: $primary;
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: $white;
+  }
+
+  &button_uploaded {
+    width: 7.375rem;
+    height: 2.5625rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background: $primary;
+    border-radius: 0.125rem;
+    border: $primary;
+    font-family: $font;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.1875rem;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &button_uploaded:hover {
+    cursor: pointer;
+  }
+
+  &choosefile:hover {
+    cursor: pointer;
+  }
+
+  &confirmation {
+    margin-top: 1.5rem;
+
+    &-text {
+      margin-left: 0.5rem;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: #FFFFFF;
-
-      &-loader{
-        margin-left: 0.5rem;
-        animation: rotation 1s infinite linear;
-      }
+      font-size: 16px;
+      line-height: 19px;
+      color: $success;
+      opacity: 0.8;
     }
 
-    &button_uploading {
-      width: 7.375rem;
-      height: 2.5625rem;
-      margin-top: 1.5rem;
-      margin-bottom: 2rem;
-      background: #38A7DE;
-      border-radius: 0.125rem;
-      border: #38A7DE;
-      font-family: Droid Sans;
+    &-activity {
+      margin-left: 0.75rem;
+      font-family: $font;
       font-style: normal;
       font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: #FFFFFF;
+      font-size: 16px;
+      line-height: 19px;
+      color: $font-color;
     }
-
-    &button_uploaded {
-      width: 7.375rem;
-      height: 2.5625rem;
-      margin-top: 1.5rem;
-      margin-bottom: 2rem;
-      background: #38A7DE;
-      border-radius: 0.125rem;
-      border: #38A7DE;
-      font-family: Droid Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: #FFFFFF;
-    }
-
-    &choosefile:hover {
-        cursor: pointer;
-    }
-
-    &confirmation {
-      margin-top: 1.5rem;
-
-      &-text{
-        margin-left: 0.5rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
-        color: #2F7F2E;
-        opacity: 0.8;
-      }
-
-      &-activity {
-        margin-left: 0.75rem;
-        font-family: Droid Sans;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 19px;
-        color: #2B2A28;
-      }
-    }
+  }
 }

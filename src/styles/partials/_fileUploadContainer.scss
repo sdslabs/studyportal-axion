@@ -8,70 +8,70 @@
 }
 
 .customfileuploader-- {
-    &fileholder {
-        position: relative;
-        width: 33.375rem;
-        height: 3.0625rem;
+  &fileholder {
+    position: relative;
+    width: 33.375rem;
+    height: 3.0625rem;
 
-        background: rgba(56, 167, 222, 0.155);
-        border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
+    background: rgba($primary, 0.155);
+    border-top: 0.0625rem solid $border;
 
-        &_name {
-            position: absolute;
-            width: 18.75rem;
-            height: 1.0625rem;
-            left: 1rem;
+    &_name {
+      position: absolute;
+      width: 18.75rem;
+      height: 1.0625rem;
+      left: 1rem;
 
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 0.875rem;
-            line-height: 3.0625rem;
+      font-family: $font;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.875rem;
+      line-height: 3.0625rem;
 
-            color: #000000;
-        }
-
-        &_category {
-            position: absolute;
-            width: 6.5625rem;
-            height: 1.625rem;
-            left: 21.125rem;
-            top: 0.75rem;
-            background: #FFFFFF;
-            border: 0.0625rem solid rgba(43, 42, 40, 0.99);
-            box-sizing: border-box;
-            border-radius: 0.125rem;
-        }
-
-        &_remove {
-            position: absolute;
-            width: 3.1875rem;
-            height: 1.0625rem;
-            left: 29.1875rem;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 0.875rem;
-            line-height: 3.0625rem;
-            color: #38A7DE;
-        }
-
-        &_loader {
-          position: absolute;
-          left: 30.1875rem;
-          top: 1rem;
-          color: #38A7DE;
-          animation: rotation 1s infinite linear;
-        }
-
-        &_status {
-          position: absolute;
-          left: 30.1875rem;
-          top: 1rem;
-        }
-
-        &_remove:hover {
-            cursor: pointer;
-        }
+      color: $black;
     }
+
+    &_category {
+      position: absolute;
+      width: 6.5625rem;
+      height: 1.625rem;
+      left: 21.125rem;
+      top: 0.75rem;
+      background: $white;
+      border: 0.0625rem solid rgba($font-color, 0.99);
+      box-sizing: border-box;
+      border-radius: 0.125rem;
+    }
+
+    &_remove {
+      position: absolute;
+      width: 3.1875rem;
+      height: 1.0625rem;
+      left: 29.1875rem;
+      font-family: $font;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.875rem;
+      line-height: 3.0625rem;
+      color: $primary;
+    }
+
+    &_loader {
+      position: absolute;
+      left: 30.1875rem;
+      top: 1rem;
+      color: $primary;
+      animation: rotation 1s infinite linear;
+    }
+
+    &_status {
+      position: absolute;
+      left: 30.1875rem;
+      top: 1rem;
+    }
+
+    &_remove:hover {
+      cursor: pointer;
+    }
+  }
 }

@@ -26,16 +26,16 @@
     flex-direction: column;
     width: 6.125rem;
     height: 11.5rem;
-    background: #FFFFFF;
-    font-family: Droid Sans;
+    background: $white;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 1.1875rem;
-    color: #2B2A28;
+    color: $font-color;
     text-align: start;
     padding-left: 1rem;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 4px rgba($black, 0.15);
   }
 
   &request {
@@ -58,7 +58,12 @@
     margin-top: 1rem;
   }
 
-  &image, &request, &upload, &activitylog, &profile, &logout {
+  &image,
+  &request,
+  &upload,
+  &activitylog,
+  &profile,
+  &logout {
     cursor: pointer;
   }
 }

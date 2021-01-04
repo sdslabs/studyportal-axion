@@ -1,44 +1,44 @@
 @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .filecover {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    width: calc(100% - 26.5rem);
-    height: calc(100% - 4.5625rem);
-    margin-left: 26.5rem;
-    z-index: -1;
-    font-family: Droid Sans;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: calc(100% - 26.5rem);
+  height: calc(100% - 4.5625rem);
+  margin-left: 26.5rem;
+  z-index: -1;
+  font-family: $font;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $secondary;
+
+  .loader {
+    animation: rotation 1s infinite linear;
+  }
+
+  &--hold {
+    width: 13.4375rem;
+    height: 1.75rem;
+    margin-top: 0.7891rem;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #0D2938;
-
-    .loader {
-        animation: rotation 1s infinite linear;
-    }
-  
-    &--hold {
-      width: 13.4375rem;
-      height: 1.75rem;
-      margin-top: 0.7891rem;
-      font-family: Droid Sans;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 28px;
-      color: rgba(45, 156, 219, 0.9);
-    }
+    color: rgba(45, 156, 219, 0.9);
+  }
 }

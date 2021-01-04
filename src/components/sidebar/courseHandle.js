@@ -1,107 +1,91 @@
-/* eslint-disable react/no-did-mount-set-state */
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import coursedot from 'assets/coursedot.png';
 import 'styles/main.scss';
 import shortName from 'utils/short-name';
+import { SWITCH_ACTIVE_COURSE, SWITCH_ACTIVE_MYCOURSE } from 'constants/action-types';
 
-function mapStateToProps(state) {
-    return { user: state };
-}
+/**
+ * Component to render course in sidebar.
+ */
+const CourseHandle = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const content = useSelector((state) => state.content);
 
-class CourseHandle extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            active: props.active,
-            login: props.login,
-            name: props.name,
-            mycourse: this.checkMyCourse(props)
-        };
-        this.activatecourse = this.activatecourse.bind(this);
-    }
+  /**
+   * Check if course is registered for user.
+   */
+  const checkMyCourse = (props) => {
+    if (user.courses) {
+      if (user.courses.find((o) => o.code === props.code) !== undefined) return true;
+      else return false;
+    } else return false;
+  };
+  const [mycourse] = useState(checkMyCourse(props));
 
-    componentDidMount() {
-        if (this.state.login) {
-            if (this.props.name === this.props.active) {
-                this.setState({ active: true });
-            }
+  /**
+   * Activates associated mycourse.
+   */
+  const activatemycourse = (props) => {
+    const activeMyCourse = {
+      id: props.course,
+      code: props.code,
+      title: props.title,
+    };
+    dispatch({ type: SWITCH_ACTIVE_MYCOURSE, payload: activeMyCourse });
+  };
 
-            else {
-                this.setState({ active: false });
-            }
+  /**
+   * Activates associated course.
+   */
+  const activatecourse = (props) => {
+    const activeCourse = {
+      id: props.course,
+      code: props.code,
+      title: props.title,
+    };
+    dispatch({ type: SWITCH_ACTIVE_COURSE, payload: activeCourse });
+  };
+
+  if (props.login) {
+    return (
+      <div className="coursehandle">
+        <span className="coursehandle--heading" onClick={() => activatemycourse(props)}>
+          {`${props.title.length >= 25 ? shortName(props.title) : props.title} ${props.code}`}
+        </span>
+        <span>
+          {props.code === content.activeMyCourse.code ? (
+            <span className="coursehandle--activedot">
+              <img src={coursedot} alt="coursedot" />
+            </span>
+          ) : (
+            <span />
+          )}
+        </span>
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={
+          props.code === content.activeCourse.code ? 'coursehandle_active' : 'coursehandle'
         }
-        else {
-          this.setState({ active: this.props });
-        }
-    }
-
-    // eslint-disable-next-line react/no-deprecated
-    componentWillReceiveProps(props) {
-      if (props.login) {
-        this.setState({ login:props.login });
-          if (props.name === props.active) {
-              this.setState({ active: true });
+      >
+        <span
+          className={
+            props.code === content.activeCourse.code
+              ? 'coursehandle--heading_active'
+              : 'coursehandle--heading'
           }
-
-          else {
-              this.setState({ active: false });
-          }
-      }
-      else {
-        this.setState({ active: props.active });
-      }
-    }
-
-    activatecourse() {
-      this.props.handleClick(this.props.name);
-    }
-
-    checkMyCourse(props) {
-        if(props.user.courses.find(o => o.code === props.code) !== undefined)
-            return true;
-        else return false;
-    }
-
-    render() {
-        if (this.state.login) {
-            return(
-                <div className='coursehandle'>
-                    <span className='coursehandle--heading' onClick={this.activatecourse}>
-                        {`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}
-                    </span>
-                    <span>{ this.state.active ?
-                        <span className='coursehandle--activedot'>
-                            <img src={coursedot} alt='coursedot'/>
-                        </span> : <span /> }
-                    </span>
-                </div>
-            );
-        }
-
-        else {
-            return(
-                <div className={ this.state.name === this.state.active ? 'coursehandle_active' : 'coursehandle'}>
-                    <span className={ this.state.name === this.state.active ?
-                        'coursehandle--heading_active' : 'coursehandle--heading'} onClick={this.activatecourse}>
-                        {`${ this.props.title.length >= 30 ? shortName(this.props.title) : this.props.title } ${this.props.code}`}
-                    </span>
-                    { this.state.mycourse ? <span className='coursehandle--mycourse'>My Course</span> : <span />}
-                </div>
-            );
-        }
-    }
-}
-
-export default connect(mapStateToProps)(CourseHandle);
-
-CourseHandle.propTypes = {
-    active: PropTypes.string,
-    login: PropTypes.bool,
-    name: PropTypes.string,
-    title: PropTypes.string,
-    code: PropTypes.string,
-    user: PropTypes.object,
-    handleClick: PropTypes.func
+          onClick={() => activatecourse(props)}
+        >
+          {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
+        </span>
+        {mycourse ? <span className="coursehandle--mycourse">My Course</span> : <span />}
+      </div>
+    );
+  }
 };
+
+export default CourseHandle;

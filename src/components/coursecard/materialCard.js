@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import parseDate from 'utils/parseDate';
 import pdf from 'assets/material_pdf.svg';
@@ -9,73 +9,117 @@ import 'styles/main.scss';
 import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
+import { downloadFiles } from 'api/filesApi';
 
-class MaterialCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          queue: props.queue
-        };
-        this.material_map = {
-            pdf,
-            docx,
-            ppt,
-            'jpeg': img,
-            'png': img,
-            'bmp': img
-        };
+/**
+ * Component to render files.
+ */
+const MaterialCard = (props) => {
+  const [queue, setQueue] = useState(false);
 
-        this.hover = this.hover.bind(this);
-        this.leave = this.leave.bind(this);
-    }
+  const material_map = {
+    pdf,
+    docx,
+    ppt,
+    jpeg: img,
+    png: img,
+    bmp: img,
+  };
 
-    hover() {
-        this.setState({ queue: '1' });
-    }
+  /**
+   * Highlight download icon.
+   */
+  const hover = () => {
+    setQueue(true);
+  };
 
-    leave() {
-        this.setState({ queue: '2' });
-    }
+  /**
+   * Remove highlight from download icon.
+   */
+  const leave = () => {
+    setQueue(false);
+  };
 
-    render() {
-        return(
-            <div className='material'>
-                <div className='material--namecheck'>
-                    <div className='material--checkbox'>
-                        <CustomCheckbox border='1px solid rgba(43, 42, 40, 0.4)' hover='rgba(56, 167, 222, 0.15)' borderhover='1px solid #38A7DE'/>
-                    </div>
-                    <div className='material--info'>
-                        <div className='material--icon'><img src={this.material_map[this.props.ext]} alt='icon' /></div>
-                        <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
-                            target='blank' style={{ textDecoration:'none' }}>
-                        <div className='material--name'>{this.props.name}</div>
-                        </a>
-                        <div className='material--download'>Downloads: {this.props.downloads}</div>
-                    </div>
-                </div>
-                <div className='material--sizemod'>
-                    <a href={`https://drive.google.com/a/iitr.ac.in/uc?id=${this.props.url}&export=download`}
-                            target='blank' style={{ textDecoration:'none' }}>
-                        { this.state.queue === '1' ?
-                            <div className='material--downloadicon-active' onMouseLeave={this.leave}><img src={download1} alt='download' /></div> :
-                            <div className='material--downloadicon-other' onMouseOver={this.hover}><img src={download2} alt='download' /></div> }
-                    </a>
-                    <div className='material--size'>{this.props.size}</div>
-                    <div className='material--datemodified'>{parseDate(this.props.date_modified)}</div>
-                </div>
-            </div>
-        );
-    }
-}
+  /**
+   * Handle download button click
+   */
+  const downloadFile = (id, url) => {
+    // TODO
+    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
+    window.open(link, '_blank');
+    downloadFiles(id).then((res, err) => {
+      if (err) {
+        //TODO handle error
+      } else {
+        this.props.updateFileState(id, res[0].downloads);
+      }
+    });
+  };
+
+  return (
+    <div className="material">
+      <div className="material--namecheck">
+        <div className="material--checkbox">
+          <CustomCheckbox
+            border="1px solid rgba(43, 42, 40, 0.4)"
+            hover="rgba(56, 167, 222, 0.15)"
+            borderhover="1px solid #38A7DE"
+          />
+        </div>
+        <div className="material--info">
+          <div className="material--icon">
+            <img src={material_map[props.ext]} alt="icon" />
+          </div>
+          <div className="material--name" onClick={() => downloadFile(props.id, props.url)}>
+            {props.name}
+          </div>
+          <div className="material--download">Downloads: {props.downloads}</div>
+        </div>
+      </div>
+      <div className="material--sizemod">
+        {queue ? (
+          <div
+            className="material--downloadicon-active"
+            onMouseLeave={leave}
+            onClick={() => downloadFile(props.id, props.url)}
+          >
+            <img src={download1} alt="download" />
+          </div>
+        ) : (
+          <div
+            className="material--downloadicon-other"
+            onMouseOver={hover}
+            onClick={() => downloadFile(props.id, props.url)}
+          >
+            <img src={download2} alt="download" />
+          </div>
+        )}
+        <div className="material--size">{props.size}</div>
+        <div className="material--datemodified">{parseDate(props.date_modified)}</div>
+      </div>
+    </div>
+  );
+};
 
 export default MaterialCard;
 
 MaterialCard.propTypes = {
-    queue: PropTypes.string,
-    name: PropTypes.string,
-    size: PropTypes.string,
-    downloads: PropTypes.number,
-    url: PropTypes.string,
-    ext: PropTypes.string,
-    date_modified: PropTypes.string
+  /** Holds download icon highlight status. */
+  queue: PropTypes.string,
+  /** Holds file name. */
+  name: PropTypes.string,
+  /** Holds file size. */
+  size: PropTypes.string,
+  /** Holds number of downloads. */
+  downloads: PropTypes.number,
+  /** Holds driveid of the file. */
+  url: PropTypes.string,
+  /** Holds file extension to display icon. */
+  ext: PropTypes.string,
+  /** Holds creation date of file. */
+  date_modified: PropTypes.string,
+  /** Holds the id of the file */
+  id: PropTypes.number,
+  /** updates the downloads field in the state of material card */
+  updateFileState: PropTypes.func,
 };

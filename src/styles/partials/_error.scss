@@ -14,22 +14,22 @@
   }
 
   &page {
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 64px;
     line-height: 75px;
-    color: #38A7DE;
+    color: $primary;
   }
 
   &sorry {
     margin-top: 1.8125rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
-    color: rgba(43, 42, 40, 0.8);
+    color: $font-color;
   }
 
   &links {
@@ -42,25 +42,25 @@
   &home {
     width: 7.0625rem;
     height: 2.5625rem;
-    background: #38A7DE;
+    background: $primary;
     border-radius: 0.125rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 2.5625rem;
     text-align: center;
-    color: #FFFFFF;
+    color: $white;
   }
 
   &back {
     margin-left: 2.25rem;
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;
     line-height: 2.5625rem;
-    color: #38A7DE;
+    color: $primary;
     cursor: pointer;
   }
 }
