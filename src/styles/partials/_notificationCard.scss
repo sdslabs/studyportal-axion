@@ -1,56 +1,56 @@
 .notifications-- {
-    &card {
-        position: relative;
-        width: 100%;
-        height: 33.33333333%;
-        left: 0px;
-        top: 0px;
-        border-radius: 2px 2px 0px 0px;
-        border-bottom: 1px rgba(56, 167, 222, 0.3);
+  &card {
+    position: relative;
+    width: 100%;
+    height: 33.33333333%;
+    left: 0px;
+    top: 0px;
+    border-radius: 2px 2px 0px 0px;
+    border-bottom: 1px rgba($primary, 0.3);
+  }
+  &card:hover {
+    background: rgba($primary, 0.275);
+    cursor: pointer;
+  }
+  &card- {
+    &description {
+      position: absolute;
+      width: 257px;
+      height: 28px;
+      left: 16px;
+      top: 18px;
+      font-family: $font;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 14px;
+      color: $font-color;
     }
-    &card:hover {
-        background: rgba(56, 167, 222, 0.275);
-        cursor: pointer;
+    &date {
+      position: absolute;
+      width: 44px;
+      height: 13px;
+      right: 9px;
+      top: 12px;
+      font-family: $font;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 13px;
+      color: rgba($black, 0.5);
     }
-    &card- {
-        &description {
-            position: absolute;
-            width: 257px;
-            height: 28px;
-            left: 16px;
-            top: 18px;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 12px;
-            line-height: 14px;
-            color: #2B2A28;
-        }
-        &date {
-            position: absolute;
-            width: 44px;
-            height: 13px;
-            right: 9px;
-            top: 12px;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 11px;
-            line-height: 13px;
-            color: rgba(0, 0, 0, 0.5);
-        }
-        &page {
-            position: absolute;
-            width: 53px;
-            height: 13px;
-            right: 9px;
-            top: 38px;
-            font-family: Droid Sans;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 11px;
-            line-height: 13px;
-            color: rgba(43, 42, 40, 0.2);
-        }
+    &page {
+      position: absolute;
+      width: 53px;
+      height: 13px;
+      right: 9px;
+      top: 38px;
+      font-family: $font;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 13px;
+      color: rgba($font-color, 0.2);
     }
+  }
 }

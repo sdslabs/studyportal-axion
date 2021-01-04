@@ -16,9 +16,9 @@
     &-hover {
       cursor: pointer;
       transition: all 0.1s ease-in;
-      transform: scale(1.11267606,1.18461538);
+      transform: scale(1.11267606, 1.18461538);
 
-      background: #1E85B8;
+      background: #1e85b8;
       mix-blend-mode: multiply;
       box-shadow: 0px 0.25rem 0.25rem rgba(13, 41, 56, 0.15);
       border-radius: 0.125rem;
@@ -35,7 +35,7 @@
     top: 0.9375rem;
     transition: all 0.1s ease-in;
 
-    background: #196F99;
+    background: #196f99;
     mix-blend-mode: multiply;
     border-radius: 2px;
 
@@ -47,7 +47,7 @@
       top: 0rem;
       transition: all 0.1s ease-in;
 
-      background: #1E85B8;
+      background: #1e85b8;
       mix-blend-mode: multiply;
       border-radius: 2px;
     }
@@ -60,7 +60,7 @@
     width: 11.341875rem;
     height: 8.125rem;
 
-    font-family: Droid Sans;
+    font-family: $font;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -70,7 +70,7 @@
     justify-items: center;
     align-items: center;
 
-    color: #FFFFFF;
+    color: $white;
 
     &-hold {
       text-align: center;

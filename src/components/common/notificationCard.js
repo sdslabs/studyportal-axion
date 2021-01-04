@@ -1,53 +1,59 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { deleteNotification } from 'api/notificationApi';
+import { CLOSE_MODAL } from 'constants/action-types';
 
 /**
  * Component to render notifications.
  */
-class NotificationCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          id: props.notification_data.id,
-          actor: props.notification_data.actor,
-          verb: props.notification_data.verb,
-          action: props.notification_data.action,
-          date: props.notification_data.timestamp,
-          notification_type: props.notification_data.notification_type,
-          target: props.notification_data.target,
-          link: props.notification_data.link
-        };
-        this.closeAndDelete = this.closeAndDelete.bind(this);
-    }
+const NotificationCard = (props) => {
+  const dispatch = useDispatch();
 
-    closeAndDelete(){
-      this.props.close();
-      deleteNotification(this.state.id);
-      this.props.update(this.props.notification_data);
-    }
-  render() {
-    return(
-      <Link to={this.state.link}>
-        <div className='notifications--card' onClick={()=> {this.closeAndDelete();}}>
-            <div className='notifications--card-description'>{this.state.actor} {this.state.verb} {this.state.action} in {this.state.target}.
-                                                              Click to check it.</div>
-            <div className='notifications--card-date'>{this.state.date}</div>
-            <div className='notifications--card-page'>{this.state.target}</div>
+  const closeAndDelete = (id, notification_data) => {
+    dispatch({ type: CLOSE_MODAL });
+    deleteNotification(id);
+    props.update(notification_data);
+  };
+
+  return (
+    <Link to={props.notification_data.link}>
+      <div
+        className="notifications--card"
+        onClick={() => closeAndDelete(props.notification_data.id, props.notification_data)}
+      >
+        <div className="notifications--card-description">
+          {props.notification_data.actor} {props.notification_data.verb}
+          {props.notification_data.action} in {props.notification_data.target}. Click to check it.
         </div>
-      </Link>
-    );
-  }
-}
+        <div className="notifications--card-date">{props.notification_data.date}</div>
+        <div className="notifications--card-page">{props.notification_data.target}</div>
+      </div>
+    </Link>
+  );
+};
 
 export default NotificationCard;
 
 NotificationCard.propTypes = {
+  /** Holds the notification and related data. */
   notification_data: PropTypes.object,
-  /** Function to close modals. */
-  close: PropTypes.func,
+  /** Holds the notification id. */
+  id: PropTypes.number,
+  /** Holds the notification actor. */
+  actor: PropTypes.string,
+  /** Holds the notification associated verb. */
+  verb: PropTypes.string,
+  /** Holds the notification action. */
+  action: PropTypes.string,
+  /** Holds the notification target. */
+  target: PropTypes.string,
+  /** Holds the notification date. */
+  date: PropTypes.string,
+  /** Holds the notification related link. */
+  link: PropTypes.string,
   /** Function to delete specific notification. */
-  update: PropTypes.func
+  update: PropTypes.func,
 };
