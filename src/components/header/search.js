@@ -101,6 +101,7 @@ class Search extends Component {
     this.props.searchResults(searchPayload);
   };
 
+  // TODO break into smaller components
   render() {
     return (
       <div className="search">
