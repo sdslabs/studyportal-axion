@@ -52,7 +52,7 @@ const Home = () => {
         >
           {content.departments.map((department) => (
             <Link to={`/departments/${department.abbreviation}`} key={department.abbreviation}>
-              <SubjectCard name={department.title} url={department.imageurl} id={department.id} />
+              <SubjectCard name={department.title} url={department.image} id={department.id} />
             </Link>
           ))}
         </div>

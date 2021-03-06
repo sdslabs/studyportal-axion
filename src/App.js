@@ -14,6 +14,12 @@ import { getCookie, removeCookie } from 'utils/handleCookies';
 import { getDepartmentsList } from 'api/departmentApi';
 import { ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
 
+function mapStateToProps(state) {
+  return {
+    login: state.user.login,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return {
     addDepartments: (departments) => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
@@ -119,16 +125,22 @@ class App extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route exact path="/mycourse" render={(props) => <MyCourse {...props} />} />
+          <Route
+            exact
+            path="/mycourse"
+            render={(props) => (this.props.login ? <MyCourse {...props} /> : <ErrorPage />)}
+          />
           <Route
             exact
             path="/mycourse/departments/:department/courses/:course/:filetype?"
-            render={(props) => <MyCourse {...props} error={false} />}
+            render={(props) =>
+              this.props.login ? <MyCourse {...props} error={false} /> : <ErrorPage />
+            }
           />
           <Route
             exact
             path="/activity/:activitytype?"
-            render={(props) => <Activity {...props} />}
+            render={(props) => (this.props.login ? <Activity {...props} /> : <ErrorPage />)}
           />
           <Route
             exact
@@ -147,9 +159,10 @@ class App extends Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
+  login: PropTypes.bool,
   /** Fetches and stores department list */
   addDepartments: PropTypes.func,
   /** Function to set user details. */
