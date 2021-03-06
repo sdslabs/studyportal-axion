@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { CONFIG } from 'config/config';
 import 'styles/main.scss';
 
 /**
@@ -25,26 +26,15 @@ class SubjectCard extends Component {
   }
 
   render() {
+    console.log(this.props.url);
     return (
       <div className="subjectcard" onMouseEnter={this.togglehover} onMouseLeave={this.togglehover}>
-        {!this.state.hover ? (
-          <img
-            className="subjectcard--image"
-            src={`/images/${this.props.url}`}
-            alt={this.props.name}
-          />
-        ) : (
-          <img
-            className="subjectcard--image-hover"
-            src={`/images/${this.props.url}`}
-            alt={this.props.name}
-          />
-        )}
-        {!this.state.hover ? (
-          <div className="subjectcard--cover" />
-        ) : (
-          <div className="subjectcard--cover-hover" />
-        )}
+        <img
+          className={!this.state.hover ? 'subjectcard--image' : 'subjectcard--image-hover'}
+          src={CONFIG.mediaRoot + this.props.url}
+          alt={this.props.name}
+        />
+        <div className={!this.state.hover ? 'subjectcard--cover' : 'subjectcard--cover-hover'} />
         <div className="subjectcard--text">
           <div className="subjectcard--text-hold">{this.props.name}</div>
         </div>
