@@ -33,12 +33,9 @@ const UserMenu = () => {
 
   return (
     <div className="usermenu">
-      <div className="usermenu--image">
-        <img
-          src={user.profile_image}
-          alt="user"
-          onClick={() => dispatch({ type: TOGGLE_USERMENU })}
-        />
+      <div className="usermenu--image" onClick={() => dispatch({ type: TOGGLE_USERMENU })}>
+        <img className="usermenu--image-profile" src={user.profile_image} alt="user" />
+        <p>Account</p>
       </div>
       {modal.userMenu ? (
         <div className="usermenu--container" onClick={() => dispatch({ type: CLOSE_USERMENU })}>

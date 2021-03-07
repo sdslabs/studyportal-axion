@@ -8,7 +8,9 @@ import Request from 'components/request/request';
 import Upload from 'components/upload/upload';
 import logo from 'assets/studyportal_logo.png';
 import sds_logo from 'assets/logo.svg';
+import mycourses from 'assets/mycourses.svg';
 import 'styles/main.scss';
+import { Link } from 'react-router-dom';
 
 /**
  * Header component for Studyportal homepage.
@@ -38,6 +40,11 @@ const Header = () => {
       </div>
       {user.login ? (
         <div className="landingheader--user_loggedin">
+          <div className="landingheader--mycourses">
+            <Link to="/mycourse">
+              <img src={mycourses} alt="my_courses" />
+            </Link>
+          </div>
           <div className="landingheader--notifications">
             <Notifications />
           </div>

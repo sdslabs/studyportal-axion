@@ -15,6 +15,21 @@
     align-items: center;
   }
 
+  &image {
+    text-align: center;
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-style: normal;
+    font-size: 14px;
+
+    &-profile {
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
   &polygon {
     width: 0.886875rem;
     height: 0.699375rem;
