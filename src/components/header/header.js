@@ -8,6 +8,10 @@ import Upload from 'components/upload/upload';
 import { CONFIG } from 'config/config';
 import { TOGGLE_REQUEST, TOGGLE_UPLOAD } from 'constants/action-types';
 import logo from 'assets/head_logo.png';
+import home from 'assets/home.svg';
+import mycourses from 'assets/mycourses.svg';
+import request from 'assets/request.svg';
+import upload from 'assets/upload.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 
@@ -37,31 +41,26 @@ const Header = () => {
         <div className="header--search">
           <Search home={false} />
         </div>
+        <div className="header--home">
+          <Link to="/">
+            <img src={home} alt="home" />
+          </Link>
+        </div>
         {user.login ? (
           <Fragment>
-            <div className="header--home">
-              <Link to="/">
-                <span className="link">Home</span>
-              </Link>
-            </div>
             <div className="header--mycourse">
               <Link to="/mycourse">
-                <span className="link">My Course</span>
+                <img src={mycourses} alt="my_courses" />
               </Link>
             </div>
           </Fragment>
         ) : (
           <Fragment>
-            <div className="header--home">
-              <Link to="/">
-                <span className="link">Home</span>
-              </Link>
-            </div>
             <div className="header--request" onClick={() => dispatch({ type: TOGGLE_REQUEST })}>
-              Request
+              <img src={request} alt="request" />
             </div>
             <div className="header--upload" onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>
-              Upload
+              <img src={upload} alt="upload" />
             </div>
           </Fragment>
         )}
