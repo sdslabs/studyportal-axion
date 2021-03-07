@@ -15,7 +15,6 @@
     align-items: center;
     width: 1.75rem;
     height: 1.85rem;
-    background: $secondary;
     border-radius: 2px;
     margin-right: -12.5rem;
   }
@@ -44,6 +43,7 @@
     height: 0.6994rem;
     border-radius: 0.125rem;
     margin-right: -12.5rem;
+    margin-top: 0.5rem;
   }
   &container {
     width: 22.125rem;
@@ -52,7 +52,7 @@
     background: $white;
     box-sizing: border-box;
     box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 
