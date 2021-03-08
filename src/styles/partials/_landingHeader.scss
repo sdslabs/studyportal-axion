@@ -7,7 +7,6 @@
   background-size: contain;
   height: 24.4375rem;
   width: 100%;
-  text-align: center;
 
   cursor: default;
 
@@ -83,7 +82,7 @@
   &mycourses {
     margin-top: 2.25rem;
     margin-right: 7rem;
-    z-index: 10;
+    z-index: 2;
   }
 
   &notifications {
