@@ -25,9 +25,7 @@
 }
 
 .upload {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
   width: 86.88%;
   height: 95.12%;
   left: 6.56%;
@@ -41,93 +39,28 @@
 
   .form-- {
     &department {
-      width: 5.4375rem;
-      height: 1.3125rem;
+      @include font;
       margin-top: 2.25rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
-      color: $font-color;
     }
 
-    &department-select {
-      width: 15.75rem;
-      height: 2.25rem;
-      margin-top: 0.5rem;
-      border: 1px solid $font-color;
-      box-sizing: border-box;
-      border-radius: 0.125rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.3125rem;
-      text-align: justify;
-      padding-left: 0.5rem;
-      background: $white;
+    &department-select,
+    &course-select {
+      @include input;
     }
 
-    &department-select:disabled {
-      border: 0.0625rem solid rgba($black, 0.2);
-      box-sizing: border-box;
-      border-radius: 0.125rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.3125rem;
-      text-align: justify;
-      padding-left: 0.5rem;
-      background: $white;
-      color: rgba($black, 0.2);
+    &department-select:disabled,
+    &course-select:disabled {
+      @include disabled;
     }
 
     &course {
-      width: 12.5rem;
-      height: 1.3125rem;
+      @include font;
       margin-top: 1.5rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
       line-height: 1.3125rem;
       text-align: justify;
       color: rgba($black, 0.2);
-    }
-
-    &course-select {
-      width: 15.75rem;
-      height: 2.25rem;
-      margin-top: 8px;
-      border: 0.0625rem solid $font-color;
-      box-sizing: border-box;
-      border-radius: 0.125rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.3125rem;
-      text-align: justify;
-      padding-left: 0.5rem;
-      background: $white;
-    }
-
-    &course-select:disabled {
-      border: 0.0625rem solid rgba($black, 0.2);
-      box-sizing: border-box;
-      border-radius: 0.125rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.3125rem;
-      text-align: justify;
-      padding-left: 0.5rem;
-      color: rgba($black, 0.2);
-      background: $white;
     }
   }
 
@@ -148,14 +81,11 @@
   }
 
   &heading {
+    @include font;
     width: auto;
     height: 2.375rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 2rem;
     line-height: 2.3125rem;
-    color: $font-color;
   }
 
   &underline {
@@ -167,18 +97,14 @@
   }
 
   &instruction {
+    @include font;
     width: 65.5%;
     height: auto;
     margin-left: 15%;
     background: rgba($primary, 0.275);
     border-radius: 2px;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 1.5rem;
     text-align: justify;
-    color: $font-color;
     padding: 1rem 1.5rem 1rem 1rem;
 
     &-head {

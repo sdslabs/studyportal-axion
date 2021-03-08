@@ -45,7 +45,7 @@
     margin-top: 0.888125rem;
     width: 11.625rem;
     height: 2.25rem;
-    font-family: Sansation;
+    font-family: $font-header;
     font-style: normal;
     font-weight: bold;
     font-size: 2rem;
@@ -102,26 +102,18 @@
   }
 
   &login {
+    @include font;
     width: 6.25rem;
     height: 2.5625rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
     color: $secondary;
     background: transparent;
     border: none;
   }
 
   &signup {
+    @include font;
     width: 7.5625rem;
     height: 2.5625rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
     color: $font-color;
     border-radius: 0.25rem;
     border: 1px solid $font-color;

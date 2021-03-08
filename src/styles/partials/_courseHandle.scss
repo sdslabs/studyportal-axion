@@ -17,22 +17,16 @@
 
 .coursehandle-- {
   &heading {
+    @include font;
     padding-left: 2.25rem;
     width: 2.625rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 3rem;
     color: $white;
 
     &_active {
+      @include font;
       padding-left: 2.25rem;
       width: 2.625rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
       line-height: 3rem;
       color: $primary;
     }

@@ -1,7 +1,5 @@
 .coursepage {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
   margin-left: 26.5rem;
   width: calc(100% - 26.5rem);
   height: calc(100% - 4.5625rem);
@@ -182,7 +180,7 @@
     height: 4.25rem;
     margin-left: 1%;
     margin-top: 3.625rem;
-    font-family: Sansation;
+    font-family: $font-header;
     font-style: normal;
     font-weight: normal;
     font-size: 1rem;

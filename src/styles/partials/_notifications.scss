@@ -54,12 +54,10 @@
     box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
     overflow-y: auto;
   }
-}
-
-.nonewnotification {
-  display: flex;
-  margin-top: 5rem;
-  color: $font-color;
-  justify-content: center;
-  font-size: 1.25rem;
+  &none {
+    @include font;
+    display: flex;
+    margin-top: 5rem;
+    justify-content: center;
+  }
 }

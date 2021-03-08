@@ -1,7 +1,5 @@
 .sidebar {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
   width: 26.5rem;
   height: calc(100% - 4.5625rem);
   min-height: 22rem;
@@ -27,9 +25,7 @@
   }
 
   .back {
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
+    @include font;
     font-size: 0.875rem;
     line-height: 1rem;
     color: $primary;
@@ -37,9 +33,7 @@
 }
 
 .sidebar_login {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
   justify-content: space-between;
   width: 26.5rem;
   height: calc(100% - 4.5625rem);
@@ -65,9 +59,7 @@
   }
 
   .back {
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
+    @include font;
     font-size: 0.875rem;
     line-height: 1rem;
     color: $primary;
@@ -93,20 +85,16 @@
   }
 
   &back {
-    width: 6.25rem;
     height: 1.0625rem;
     margin-top: 0.5rem;
     margin-left: 2.25rem;
   }
 
   &course-name {
+    @include font;
     width: 100%;
     height: 1.1875rem;
     margin-top: 2.1875rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 1.1875rem;
     color: $white;
   }
@@ -136,65 +124,49 @@
 
   &form- {
     &header {
+      @include font;
       width: auto;
       height: 1.375rem;
       margin-bottom: 1.0625rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
       font-size: 1.125rem;
       line-height: 1.3125rem;
       color: $primary;
 
       &_department {
+        @include font;
         width: 5.4375rem;
         height: 1.1875rem;
         margin-bottom: 0.5rem;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
         color: $white;
       }
 
       &_course {
+        @include font;
         width: 6.125rem;
         height: 1.1875rem;
         margin-bottom: 0.5rem;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
         color: $white;
       }
     }
 
     &select {
       &_department {
+        @include font;
         width: 16.625rem;
         height: 2.25rem;
         margin-bottom: 1.5rem;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
         font-size: 0.875rem;
-        line-height: 1.1875rem;
         text-indent: 0.5rem;
         background: $white;
         border-radius: 0.125rem;
       }
 
       &_course {
+        @include font;
         width: 16.625rem;
         height: 2.25rem;
         margin-bottom: 1.5rem;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
         font-size: 0.875rem;
-        line-height: 1.1875rem;
         text-indent: 0.5rem;
         background: $white;
         border-radius: 0.125rem;
@@ -205,16 +177,12 @@
       margin-bottom: 1.75rem;
 
       button {
+        @include font;
         width: 7.6875rem;
         height: 2.25rem;
         background: $primary;
         border-radius: 0.125rem;
         border: $primary;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
         color: $white;
       }
     }

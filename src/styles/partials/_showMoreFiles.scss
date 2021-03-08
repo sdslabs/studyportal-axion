@@ -33,9 +33,7 @@
 }
 
 .seeall {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
   justify-content: space-between;
   width: 70%;
   height: 85%;
@@ -70,13 +68,11 @@
     cursor: pointer;
   }
   &heading {
+    @include font;
     width: 35.25rem;
     height: 1.75rem;
     margin-top: 3rem;
     margin-left: 3rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 1.5rem;
     line-height: 1.75rem;
     color: $font-color;
@@ -107,23 +103,15 @@
     margin-left: 3.3125rem;
 
     &-text {
+      @include font;
       margin-left: 0.6875rem;
       margin-top: 0.35rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
       line-height: 1rem;
-      color: $font-color;
     }
     &-request {
+      @include font;
       margin-left: 0.625rem;
       margin-top: 0.35rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
       color: $primary;
     }
     &-request:hover {

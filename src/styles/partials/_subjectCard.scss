@@ -56,17 +56,12 @@
   }
 
   &text {
+    @include font;
     position: absolute;
     top: 0.9375rem;
     left: 0.9853125rem;
     width: 11.341875rem;
     height: 8.125rem;
-
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 19px;
     display: flex;
     text-align: center;
     justify-items: center;
