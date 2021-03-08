@@ -6,6 +6,8 @@ import store from 'store/store';
 import './index.css';
 import App from './App';
 
+if (module.hot) module.hot.accept();
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
