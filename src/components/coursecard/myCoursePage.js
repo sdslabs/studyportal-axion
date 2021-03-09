@@ -31,11 +31,8 @@ const CoursePage = () => {
     dispatch({ type: CLOSE_MODAL });
   };
 
-  const updateFileState = (id, downloads) => {
-    // TODO
-    const files_temp = files;
-    files_temp.forEach((file) => console.log(file.files.filter((file) => file.id === id)[0]));
-    setFiles(files_temp);
+  const updateFileState = () => {
+    getFiles(content);
   };
 
   /**
