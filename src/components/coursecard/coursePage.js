@@ -7,16 +7,12 @@ import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
-import {
-  loginUserWithToken,
-  loginUserWithCookie,
-  addCourseForUser,
-  deleteCourseForUser,
-} from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
+import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
 import shortName from 'utils/short-name';
+import { getUser } from 'utils/getUser';
 import 'styles/main.scss';
-import { SET_USER, RESET_APP, CLOSE_MODAL } from 'constants/action-types';
+import { CLOSE_MODAL } from 'constants/action-types';
 
 /**
  * Coursepage component for Studyportal.
@@ -33,74 +29,6 @@ const CoursePage = () => {
 
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
-  };
-
-  const getUser = () => {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token)
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          dispatch({ type: SET_USER, payload: user });
-          // Logged in with token
-        })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie()
-              .then((res) => {
-                const user = {
-                  login: true,
-                  id: res.user.falcon_id,
-                  username: res.user.username,
-                  email: res.user.email,
-                  profile_image: res.user.profile_image,
-                  courses: res.courses,
-                };
-                dispatch({ type: SET_USER, payload: user });
-                // Logged in with cookie and the invalid token has been replaced
-              })
-              .catch(() => {
-                dispatch({ type: RESET_APP });
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
-          } else {
-            dispatch({ type: RESET_APP });
-            removeCookie('token');
-            // No cookie present and the token is corrupted
-          }
-        });
-    } else if (cookie) {
-      loginUserWithCookie()
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          dispatch({ type: SET_USER, payload: user });
-          // The user did not have the token but is logged in by the cookie and the token has been created
-        })
-        .catch(() => {
-          dispatch({ type: RESET_APP });
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
-    } else {
-      dispatch({ type: RESET_APP });
-      // Neither cookie nor token present
-    }
   };
 
   const updateFileState = (id, downloads) => {
@@ -174,7 +102,7 @@ const CoursePage = () => {
   const addCourse = () => {
     const token = getCookie('token');
     addCourseForUser(token, content.activeCourse.id).then(() => {
-      getUser();
+      getUser(dispatch);
       setMycourse(true);
     });
   };
@@ -185,7 +113,7 @@ const CoursePage = () => {
   const deleteCourse = () => {
     const token = getCookie('token');
     deleteCourseForUser(token, content.activeCourse.id).then(() => {
-      getUser();
+      getUser(dispatch);
       setMycourse(false);
     });
   };
@@ -388,8 +316,6 @@ export default CoursePage;
 CoursePage.propTypes = {
   /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
-  /** Fetch user details from API. */
-  getUserDetails: PropTypes.func,
   /** Function to close modals. */
   close: PropTypes.func,
   /** Holds course code for the course. */

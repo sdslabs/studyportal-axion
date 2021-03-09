@@ -9,10 +9,9 @@ import MyCourse from './pages/mycourse';
 import ErrorPage from './pages/error';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
 import { getDepartmentsList } from 'api/departmentApi';
-import { ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
+import { getUser } from 'utils/getUser';
+import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
 
 function mapStateToProps(state) {
   return {
@@ -22,8 +21,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    getUser: () => getUser(dispatch),
     addDepartments: (departments) => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
-    setUser: (user) => dispatch({ type: SET_USER, payload: user }),
     resetApp: () => dispatch({ type: RESET_APP }),
   };
 }
@@ -34,84 +33,13 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.getDepartments();
-    this.getUser();
+    this.props.getUser();
   }
 
   getDepartments = () => {
     getDepartmentsList().then((res) => {
       this.props.addDepartments(res.department);
     });
-  };
-
-  /**
-   * Fetch user details.
-   */
-  getUser = () => {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token)
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          this.props.setUser(user);
-          // Logged in with token
-        })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie()
-              .then((res) => {
-                const user = {
-                  login: true,
-                  id: res.user.falcon_id,
-                  username: res.user.username,
-                  email: res.user.email,
-                  profile_image: res.user.profile_image,
-                  courses: res.courses,
-                };
-                this.props.setUser(user);
-                // Logged in with cookie and the invalid token has been replaced
-              })
-              .catch(() => {
-                this.props.resetApp();
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
-          } else {
-            this.props.resetApp();
-            removeCookie('token');
-            // No cookie present and the token is corrupted
-          }
-        });
-    } else if (cookie) {
-      loginUserWithCookie()
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          this.props.setUser(user);
-          // The user did not have the token but is logged in by the cookie and the token has been created
-        })
-        .catch(() => {
-          this.props.resetApp();
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
-    } else {
-      this.props.resetApp();
-      // Neither cookie nor token present
-    }
   };
 
   render() {
@@ -156,11 +84,12 @@ class App extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
+  /** Function to fetch user details. */
+  getUser: PropTypes.func,
+  /** Holds the authenticated state of the app. */
   login: PropTypes.bool,
   /** Fetches and stores department list */
   addDepartments: PropTypes.func,
-  /** Function to set user details. */
-  setUser: PropTypes.func,
   /** Resets all user related data in the redux store. */
   resetApp: PropTypes.func,
 };

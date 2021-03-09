@@ -6,9 +6,10 @@ import CourseHandle from './courseHandle';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { getCourseByDepartment } from 'api/courseApi';
-import { loginUserWithToken, loginUserWithCookie, addCourseForUser } from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
-import { SET_USER, RESET_APP, CLOSE_MODAL } from 'constants/action-types';
+import { addCourseForUser } from 'api/userApi';
+import { getCookie } from 'utils/handleCookies';
+import { getUser } from 'utils/getUser';
+import { RESET_APP, CLOSE_MODAL } from 'constants/action-types';
 
 function mapStateToProps(state) {
   return {
@@ -19,7 +20,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    setUser: (user) => dispatch({ type: SET_USER, payload: user }),
+    getUser: () => getUser(dispatch),
     resetApp: () => dispatch({ type: RESET_APP }),
     closeModal: () => dispatch({ type: CLOSE_MODAL }),
   };
@@ -36,77 +37,6 @@ class Sidebar extends Component {
       course: 0,
     };
   }
-
-  /**
-   * Fetch user details.
-   */
-  getUser = () => {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token)
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          this.props.setUser(user);
-          // Logged in with token
-        })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie()
-              .then((res) => {
-                const user = {
-                  login: true,
-                  id: res.user.falcon_id,
-                  username: res.user.username,
-                  email: res.user.email,
-                  profile_image: res.user.profile_image,
-                  courses: res.courses,
-                };
-                this.props.setUser(user);
-                // Logged in with cookie and the invalid token has been replaced
-              })
-              .catch(() => {
-                this.props.resetApp();
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
-          } else {
-            this.props.resetApp();
-            removeCookie('token');
-            // No cookie present and the token is corrupted
-          }
-        });
-    } else if (cookie) {
-      loginUserWithCookie()
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          this.props.setUser(user);
-          // The user did not have the token but is logged in by the cookie and the token has been created
-        })
-        .catch(() => {
-          this.props.resetApp();
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
-    } else {
-      this.props.resetApp();
-      // Neither cookie nor token present
-    }
-  };
 
   /**
    * Fetches course from API.
@@ -137,7 +67,7 @@ class Sidebar extends Component {
     e.preventDefault();
     const token = getCookie('token');
     addCourseForUser(token, this.state.course).then(() => {
-      this.getUser();
+      this.props.getUser();
     });
     e.target.reset();
   };
@@ -210,16 +140,14 @@ class Sidebar extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
 
 Sidebar.propTypes = {
+  /** Function to fetch user details. */
+  getUser: PropTypes.func,
   /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
   /** Holds the various content paramateres used across different contexts. */
   content: PropTypes.object,
-  /** Fetch user details from API. */
-  getUserDetails: PropTypes.func,
   /** Function to close modals. */
   closeModal: PropTypes.func,
-  /** Function to set user details. */
-  setUser: PropTypes.func,
   /** Resets all user related data in the redux store. */
   resetApp: PropTypes.func,
 };
