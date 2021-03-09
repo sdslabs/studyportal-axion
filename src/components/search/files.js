@@ -5,7 +5,7 @@ import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
 import { useDispatch } from 'react-redux';
 import { TOGGLE_REQUEST } from 'constants/action-types';
 
-const SearchFiles = ({ files, showFiles, value }) => {
+const SearchFiles = ({ files, value, handleShowMoreModal }) => {
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +34,7 @@ const SearchFiles = ({ files, showFiles, value }) => {
       ) : (
         <div>
           <div className="search--file-holder">
-            {files.slice(0, showFiles).map((file) => (
+            {files.slice(0, 6).map((file) => (
               <SearchResult
                 name={file.title}
                 url={file.driveid}
@@ -47,10 +47,7 @@ const SearchFiles = ({ files, showFiles, value }) => {
               />
             ))}
           </div>
-          <div
-            className="search--file-seeall"
-            onClick={() => this.props.handleShowMoreModal(files, value)}
-          >
+          <div className="search--file-seeall" onClick={() => handleShowMoreModal(files, value)}>
             See All
           </div>
         </div>
@@ -64,8 +61,6 @@ export default SearchFiles;
 SearchFiles.propTypes = {
   /** Holds the search result for the file query. */
   files: PropTypes.array,
-  /** Holds the number of files to be displayed in the search result. */
-  showFiles: PropTypes.number,
   /** Holds the query string. */
   value: PropTypes.string,
   /** Function to open ShowMore modal. */

@@ -45,7 +45,6 @@ class Search extends Component {
       files: [],
       departments: [],
       courses: [],
-      showFiles: 6,
     };
   }
 
@@ -140,7 +139,6 @@ class Search extends Component {
             <div className="search--container">
               <SearchFiles
                 files={this.state.files}
-                showFiles={this.state.showFiles}
                 value={this.state.value}
                 handleShowMoreModal={this.handleShowMoreModal}
               />
