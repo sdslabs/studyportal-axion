@@ -132,18 +132,9 @@
       line-height: 1.3125rem;
       color: $primary;
 
-      &_department {
-        @include font;
-        width: 5.4375rem;
-        height: 1.1875rem;
-        margin-bottom: 0.5rem;
-        color: $white;
-      }
-
+      &_department,
       &_course {
         @include font;
-        width: 6.125rem;
-        height: 1.1875rem;
         margin-bottom: 0.5rem;
         color: $white;
       }

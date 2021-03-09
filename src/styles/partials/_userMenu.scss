@@ -17,6 +17,8 @@
 
   &image {
     @include font;
+    font-weight: 600;
+    line-height: 0.875rem;
     text-align: center;
     font-size: 0.875rem;
 
