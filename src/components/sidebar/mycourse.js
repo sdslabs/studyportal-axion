@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Select from 'react-select';
 import arrow from 'assets/left-arrow.svg';
 import CourseHandle from './courseHandle';
 import 'styles/main.scss';
@@ -43,8 +44,8 @@ class Sidebar extends Component {
    *
    * @param {object} e
    */
-  getCourse = (e) => {
-    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res) => {
+  getCourse = (selectedOption) => {
+    getCourseByDepartment(selectedOption.value).then((res) => {
       this.setState({ courses: res });
     });
   };
@@ -54,8 +55,8 @@ class Sidebar extends Component {
    *
    * @param {object} e
    */
-  setCourse = (e) => {
-    this.setState({ course: e.target[e.target.selectedIndex].id });
+  setCourse = (selectedOption) => {
+    this.setState({ course: selectedOption.value });
   };
 
   /**
@@ -106,27 +107,21 @@ class Sidebar extends Component {
           <form className="sidebar--form" onSubmit={this.addCourse}>
             <div className="sidebar--form-header">Add Another Course</div>
             <div className="sidebar--form-header_department">Department</div>
-            <select
+            <Select
               className="sidebar--form-select_department"
               onChange={this.getCourse}
-              name="department"
-            >
-              <option>--Select Department--</option>
-              {this.props.content.departments.map((department) => (
-                <option key={department.id} id={department.id}>
-                  {department.title}
-                </option>
-              ))}
-            </select>
+              options={this.props.content.departments.map(({ id, title }) => {
+                return { value: id, label: title };
+              })}
+            />
             <div className="sidebar--form-header_course">Course Name</div>
-            <select className="sidebar--form-select_course" onChange={this.setCourse}>
-              <option>--Select Course--</option>
-              {this.state.courses.map((course) => (
-                <option key={course.id} id={course.id}>
-                  {course.title} {course.code}
-                </option>
-              ))}
-            </select>
+            <Select
+              className="sidebar--form-select_course"
+              onChange={this.setCourse}
+              options={this.state.courses.map(({ id, title }) => {
+                return { value: id, label: title };
+              })}
+            />
             <div className="sidebar--form-button">
               <button type="submit">Add Course</button>
             </div>
