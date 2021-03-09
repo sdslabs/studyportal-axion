@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import Header from 'components/header/header';
@@ -13,13 +13,23 @@ import {
   ADD_COURSES,
   SWITCH_ACTIVE_COURSE,
   SET_FILETYPE,
+  CLOSE_MODAL,
 } from 'constants/action-types';
+
+const useDidMount = () => {
+  const didMountRef = useRef(true);
+  useEffect(() => {
+    didMountRef.current = false;
+  }, []);
+  return didMountRef.current;
+};
 
 /**
  * Component to render Department pages in Studyportal.
  */
 const Department = (props) => {
   const dispatch = useDispatch();
+  const didMount = useDidMount();
   const [course, setCourse] = useState(props.match.params.course);
   const [error, setError] = useState(false);
 
@@ -58,6 +68,7 @@ const Department = (props) => {
   };
 
   useEffect(() => {
+    if (didMount) dispatch({ type: CLOSE_MODAL });
     setCourse(props.match.params.course);
     fetchPageDetails(props.match.params.department, props.match.params.course);
     dispatch({ type: SET_FILETYPE, payload: props.match.params.filetype }); // eslint-disable-next-line
