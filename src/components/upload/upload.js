@@ -51,12 +51,8 @@ class Upload extends Component {
    */
   active_course = (e) => {
     this.setState({ disable: 1, department: e.target[e.target.selectedIndex].id });
-    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.setState({ courses: res });
-      }
+    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res) => {
+      this.setState({ courses: res });
     });
   };
 

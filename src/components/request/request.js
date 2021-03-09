@@ -65,12 +65,8 @@ class Request extends Component {
    */
   file_active_course = (e) => {
     this.setState({ disable: 1 });
-    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.setState({ courses: res });
-      }
+    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res) => {
+      this.setState({ courses: res });
     });
   };
 
@@ -117,8 +113,7 @@ class Request extends Component {
     const token = getCookie('token');
     if (course && material && name && token) {
       this.setState({ disable: -1, requesting: true });
-      requestFiles(token, material, name, course).then((res, err) => {
-        //TODO handle error
+      requestFiles(token, material, name, course).then(() => {
         this.setState({ requesting: false, requested: true });
       });
     }
@@ -136,8 +131,7 @@ class Request extends Component {
     const code = e.target.code.value;
     const token = getCookie('token');
     this.setState({ disable: -1, requesting: true });
-    requestCourse(token, department, course, code).then((res, err) => {
-      //TODO handle error
+    requestCourse(token, department, course, code).then(() => {
       this.setState({ requesting: false, requested: true });
     });
   };

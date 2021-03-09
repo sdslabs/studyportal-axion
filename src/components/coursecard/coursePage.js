@@ -64,7 +64,6 @@ const CoursePage = () => {
                   profile_image: res.user.profile_image,
                   courses: res.courses,
                 };
-                // TODO
                 dispatch({ type: SET_USER, payload: user });
                 // Logged in with cookie and the invalid token has been replaced
               })
@@ -90,7 +89,6 @@ const CoursePage = () => {
             profile_image: res.user.profile_image,
             courses: res.courses,
           };
-          // TODO
           dispatch({ type: SET_USER, payload: user });
           // The user did not have the token but is logged in by the cookie and the token has been created
         })
@@ -120,22 +118,14 @@ const CoursePage = () => {
   const getFiles = (content) => {
     setLoading(true);
     if (content.filetype === undefined)
-      getFilesByCourse(content.activeCourse.id).then((resp, err) => {
-        if (err) {
-          //TODO handle error
-        } else {
-          setFiles(sortFilesByYear(resp));
-          setLoading(false);
-        }
+      getFilesByCourse(content.activeCourse.id).then((resp) => {
+        setFiles(sortFilesByYear(resp));
+        setLoading(false);
       });
     else
-      getFilesByType(content.activeCourse.id, content.filetype).then((resp, err) => {
-        if (err) {
-          //TODO handle error
-        } else {
-          setFiles(sortFilesByYear(resp));
-          setLoading(false);
-        }
+      getFilesByType(content.activeCourse.id, content.filetype).then((resp) => {
+        setFiles(sortFilesByYear(resp));
+        setLoading(false);
       });
   };
 
@@ -183,13 +173,9 @@ const CoursePage = () => {
    */
   const addCourse = () => {
     const token = getCookie('token');
-    addCourseForUser(token, content.activeCourse.id).then((_res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        getUser();
-        setMycourse(true);
-      }
+    addCourseForUser(token, content.activeCourse.id).then(() => {
+      getUser();
+      setMycourse(true);
     });
   };
 
@@ -198,13 +184,9 @@ const CoursePage = () => {
    */
   const deleteCourse = () => {
     const token = getCookie('token');
-    deleteCourseForUser(token, content.activeCourse.id).then((_res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        getUser();
-        setMycourse(false);
-      }
+    deleteCourseForUser(token, content.activeCourse.id).then(() => {
+      getUser();
+      setMycourse(false);
     });
   };
 

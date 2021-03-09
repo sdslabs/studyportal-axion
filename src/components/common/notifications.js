@@ -61,13 +61,9 @@ class Notifications extends Component {
 
   getNotifications = () => {
     const token = getCookie('token');
-    getAllNotifications(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        if (res.length !== 0) {
-          this.setState({ notifications: res });
-        }
+    getAllNotifications(token).then((res) => {
+      if (res.length !== 0) {
+        this.setState({ notifications: res });
       }
     });
   };

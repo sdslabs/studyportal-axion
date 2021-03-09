@@ -5,6 +5,7 @@ import Header from 'components/header/header';
 import Sidebar from 'components/sidebar/sidebar';
 import CoursePage from 'components/coursecard/coursePage';
 import CourseCover from 'components/cover/courseCover';
+import Error from 'components/error/error';
 import { getDepartmentInfoByAbbr } from 'api/departmentApi';
 import { getCourseInfoByCode } from 'api/courseApi';
 import {
@@ -20,12 +21,11 @@ import {
 const Department = (props) => {
   const dispatch = useDispatch();
   const [course, setCourse] = useState(props.match.params.course);
+  const [error, setError] = useState(false);
 
   const fetchPageDetails = (department, course) => {
-    getDepartmentInfoByAbbr(department).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
+    getDepartmentInfoByAbbr(department)
+      .then((res) => {
         dispatch({
           type: SWITCH_ACTIVE_DEPARTMENT,
           payload: {
@@ -36,10 +36,8 @@ const Department = (props) => {
         });
         dispatch({ type: ADD_COURSES, payload: res.courses });
         if (course !== undefined) {
-          getCourseInfoByCode(res.department.id, course).then((response, err) => {
-            if (err) {
-              //TODO handle error
-            } else {
+          getCourseInfoByCode(res.department.id, course)
+            .then((response) => {
               dispatch({
                 type: SWITCH_ACTIVE_COURSE,
                 payload: {
@@ -48,11 +46,15 @@ const Department = (props) => {
                   code: response.code,
                 },
               });
-            }
-          });
+            })
+            .catch(() => {
+              setError(true);
+            });
         }
-      }
-    });
+      })
+      .catch(() => {
+        setError(true);
+      });
   };
 
   useEffect(() => {
@@ -64,8 +66,14 @@ const Department = (props) => {
   return (
     <div>
       <Header />
-      <Sidebar />
-      {course !== undefined ? <CoursePage /> : <CourseCover />}
+      {error ? (
+        <Error />
+      ) : (
+        <>
+          <Sidebar />
+          {course !== undefined ? <CoursePage /> : <CourseCover />}
+        </>
+      )}
     </div>
   );
 };

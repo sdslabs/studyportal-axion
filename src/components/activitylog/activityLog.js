@@ -13,7 +13,6 @@ import { CLOSE_MODAL } from 'constants/action-types';
  */
 const ActivityLog = (props) => {
   const dispatch = useDispatch();
-
   const [activity, setActivity] = useState([]);
   const routeMap = {
     all: 'All Activity Log',
@@ -33,11 +32,10 @@ const ActivityLog = (props) => {
   const getActivity = (route) => {
     const token = getCookie('token');
     if (route === 'all' || route === undefined) {
-      //TODO get both uploads and requests
       getAll(token);
     } else if (route === 'requests') {
       getRequests(token);
-    } else {
+    } else if (route === 'uploads') {
       getUploads(token);
     }
   };
@@ -49,15 +47,11 @@ const ActivityLog = (props) => {
    */
   const getRequests = (token) => {
     let activity = [];
-    getFileRequestsByUser(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        res.forEach((request) => {
-          activity.push({ type: 'request', activity: request });
-        });
-        setActivity(activity);
-      }
+    getFileRequestsByUser(token).then((res) => {
+      res.forEach((request) => {
+        activity.push({ type: 'request', activity: request });
+      });
+      setActivity(activity);
     });
   };
 
@@ -68,15 +62,11 @@ const ActivityLog = (props) => {
    */
   const getUploads = (token) => {
     let activity = [];
-    getUploadsByUser(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        res.forEach((upload) => {
-          activity.push({ type: 'upload', activity: upload });
-        });
-        setActivity(activity);
-      }
+    getUploadsByUser(token).then((res) => {
+      res.forEach((upload) => {
+        activity.push({ type: 'upload', activity: upload });
+      });
+      setActivity(activity);
     });
   };
 
@@ -87,25 +77,17 @@ const ActivityLog = (props) => {
    */
   const getAll = (token) => {
     let activity = [];
-    getUploadsByUser(token).then((response, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        response.forEach((upload) => {
-          activity.push({ type: 'upload', activity: upload });
+    getUploadsByUser(token).then((response) => {
+      response.forEach((upload) => {
+        activity.push({ type: 'upload', activity: upload });
+      });
+      getFileRequestsByUser(token).then((res) => {
+        res.forEach((request) => {
+          activity.push({ type: 'request', activity: request });
         });
-        getFileRequestsByUser(token).then((res, err) => {
-          if (err) {
-            //TODO handle error
-          } else {
-            res.forEach((request) => {
-              activity.push({ type: 'request', activity: request });
-            });
-            // activity = arrangeActivity(activity);
-            setActivity(activity);
-          }
-        });
-      }
+        // activity = arrangeActivity(activity);
+        setActivity(activity);
+      });
     });
   };
 

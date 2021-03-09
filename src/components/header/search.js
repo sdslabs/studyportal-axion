@@ -54,19 +54,15 @@ class Search extends Component {
    * @param {string} query
    */
   getResults = (query) => {
-    getSearchResults(query).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        if (res.departments) {
-          this.setState({ departments: res.departments });
-        }
-        if (res.courses) {
-          this.setState({ courses: res.courses });
-        }
-        if (res.files) {
-          this.setState({ files: res.files });
-        }
+    getSearchResults(query).then((res) => {
+      if (res.departments) {
+        this.setState({ departments: res.departments });
+      }
+      if (res.courses) {
+        this.setState({ courses: res.courses });
+      }
+      if (res.files) {
+        this.setState({ files: res.files });
       }
     });
   };

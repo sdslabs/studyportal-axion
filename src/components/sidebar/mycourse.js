@@ -69,7 +69,6 @@ class Sidebar extends Component {
                   profile_image: res.user.profile_image,
                   courses: res.courses,
                 };
-                // TODO
                 this.props.setUser(user);
                 // Logged in with cookie and the invalid token has been replaced
               })
@@ -95,7 +94,6 @@ class Sidebar extends Component {
             profile_image: res.user.profile_image,
             courses: res.courses,
           };
-          // TODO
           this.props.setUser(user);
           // The user did not have the token but is logged in by the cookie and the token has been created
         })
@@ -116,12 +114,8 @@ class Sidebar extends Component {
    * @param {object} e
    */
   getCourse = (e) => {
-    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.setState({ courses: res });
-      }
+    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res) => {
+      this.setState({ courses: res });
     });
   };
 
@@ -142,12 +136,8 @@ class Sidebar extends Component {
   addCourse = (e) => {
     e.preventDefault();
     const token = getCookie('token');
-    addCourseForUser(token, this.state.course).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.getUser();
-      }
+    addCourseForUser(token, this.state.course).then(() => {
+      this.getUser();
     });
     e.target.reset();
   };

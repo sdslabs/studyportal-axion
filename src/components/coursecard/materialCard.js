@@ -47,12 +47,8 @@ const MaterialCard = (props) => {
     // TODO
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
     window.open(link, '_blank');
-    downloadFiles(id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.props.updateFileState(id, res[0].downloads);
-      }
+    downloadFiles(id).then((res) => {
+      this.props.updateFileState(id, res[0].downloads);
     });
   };
 
