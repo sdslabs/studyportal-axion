@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import small_loader from 'assets/small_loader.svg';
 import check from 'assets/check.svg';
+import retry from 'assets/retry.svg';
 import 'styles/main.scss';
 
 /**
@@ -41,7 +42,11 @@ const FileUploadContainer = (props) => {
       </select>
       {props.uploaded ? (
         <div>
-          <img className="customfileuploader--fileholder_status" src={check} alt="status" />
+          {props.success ? (
+            <img className="customfileuploader--fileholder_status" src={check} alt="success" />
+          ) : (
+            <img className="customfileuploader--fileholder_status" src={retry} alt="failure" />
+          )}
         </div>
       ) : props.uploading ? (
         <div>
@@ -65,6 +70,8 @@ FileUploadContainer.propTypes = {
   uploading: PropTypes.bool,
   /** Holds completed status of ongoing upload for current file. */
   uploaded: PropTypes.bool,
+  /** Holds success status of completed upload for current file. */
+  success: PropTypes.bool,
   /** Holds index of current file in upload queue. */
   index: PropTypes.number,
   /** Holds name of file. */
