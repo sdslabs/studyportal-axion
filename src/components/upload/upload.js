@@ -70,6 +70,7 @@ class Upload extends Component {
    */
   toggleUploadModal = () => {
     this.setState({ active: false });
+    this.refreshUpload();
     this.props.closeModal();
   };
 

@@ -137,6 +137,14 @@ class Request extends Component {
   };
 
   /**
+   * Closes request modal using the x button.
+   */
+  closeRequest = () => {
+    this.refreshRequest();
+    this.props.closeModal();
+  };
+
+  /**
    * Refreshes request modal.
    */
   refreshRequest = () => {
@@ -155,7 +163,7 @@ class Request extends Component {
       return (
         <div className="requestcover">
           <div className="request">
-            <div className="request--close" onClick={() => this.props.closeModal()}>
+            <div className="request--close" onClick={() => this.closeRequest()}>
               <img src={close} alt="close" />
             </div>
             <div className="request--heading">Request</div>

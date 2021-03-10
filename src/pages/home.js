@@ -29,7 +29,10 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (didMount) dispatch({ type: RESET_ACTIVES }); // eslint-disable-next-line
+    if (didMount) {
+      dispatch({ type: CLOSE_MODAL });
+      dispatch({ type: RESET_ACTIVES });
+    } // eslint-disable-next-line
   }, [didMount]);
 
   return (

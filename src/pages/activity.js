@@ -5,7 +5,7 @@ import Sidebar from 'components/sidebar/activity';
 import ActivityLog from 'components/activitylog/activityLog';
 import Error from 'components/error/error';
 import { useDispatch } from 'react-redux';
-import { RESET_ACTIVES } from 'constants/action-types';
+import { RESET_ACTIVES, CLOSE_MODAL } from 'constants/action-types';
 
 const useDidMount = () => {
   const didMountRef = useRef(true);
@@ -27,7 +27,10 @@ const Activity = (props) => {
     const route = props.match.params.activitytype;
     const possibleRoutes = [undefined, 'all', 'requests', 'uploads'];
     if (!(possibleRoutes.indexOf(route) > -1)) setError(true);
-    if (didMount) dispatch({ type: RESET_ACTIVES }); // eslint-disable-next-line
+    if (didMount) {
+      dispatch({ type: CLOSE_MODAL });
+      dispatch({ type: RESET_ACTIVES });
+    } // eslint-disable-next-line
   }, [didMount]);
 
   return (
