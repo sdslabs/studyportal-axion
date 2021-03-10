@@ -24,6 +24,18 @@ function getFilesByType(id, type) {
     });
 }
 
+function getFileById(id) {
+  return axiosInstance
+    .get(`/files/?fileid=${id}&format=json`)
+    .then((response) => {
+      const res = JSON.parse(response.request.response);
+      return res;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+}
+
 function downloadFiles(id) {
   return axiosInstance
     .put(`/files`, { id, downloads: 'true' })
@@ -36,4 +48,4 @@ function downloadFiles(id) {
     });
 }
 
-export { getFilesByCourse, getFilesByType, downloadFiles };
+export { getFilesByCourse, getFilesByType, getFileById, downloadFiles };

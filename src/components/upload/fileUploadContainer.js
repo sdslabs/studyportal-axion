@@ -35,10 +35,10 @@ const FileUploadContainer = (props) => {
         disabled={props.disabled}
       >
         <option value="default">Select</option>
-        <option value="Tutorials">Tutorials</option>
-        <option value="Books">Books</option>
-        <option value="Notes">Notes</option>
-        <option value="Exam Papers">Exam Papers</option>
+        <option value="tutorials">Tutorials</option>
+        <option value="books">Books</option>
+        <option value="notes">Notes</option>
+        <option value="exampapers">Exam Papers</option>
       </select>
       {props.uploaded ? (
         <div>

@@ -122,6 +122,7 @@ const ActivityLog = (props) => {
             course={material.activity.course.title}
             code={material.activity.course.code}
             date={material.activity.date}
+            file={material.activity.file}
           />
         ))}
       </div>
