@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
-import Home from './pages/home';
-import ErrorPage from './pages/error';
-import MyCourseRouter from './routers/MyCourseRouter';
+import Home from 'pages/home';
+import ErrorPage from 'pages/error';
+import MyCourseRouter from 'routers/MyCourseRouter';
 import ActivityRouter from 'routers/ActivityRouter';
+import DepartmentRouter from 'routers/DepartmentRouter';
+import AdminRouter from 'routers/AdminRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
 import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
-import DepartmentRouter from './routers/DepartmentRouter';
 
 function mapStateToProps(state) {
   return {
-    login: state.user.login,
+    user: state.user,
   };
 }
 
@@ -36,6 +37,10 @@ class App extends Component {
     this.props.getUser();
   }
 
+  canAccessAdmin = (user) => {
+    return user.login && (user.role === 'admin' || user.role === 'moderator');
+  };
+
   getDepartments = () => {
     getDepartmentsList().then((res) => {
       this.props.addDepartments(res.department);
@@ -48,13 +53,16 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route path="/mycourse">
-            <MyCourseRouter />
+            {this.props.user.login ? <MyCourseRouter /> : <ErrorPage />}
           </Route>
           <Route path="/activity">
-            <ActivityRouter />
+            {this.props.user.login ? <ActivityRouter /> : <ErrorPage />}
           </Route>
           <Route path="/departments">
             <DepartmentRouter />
+          </Route>
+          <Route path="/admin">
+            {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
           </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>
@@ -68,8 +76,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 App.propTypes = {
   /** Function to fetch user details. */
   getUser: PropTypes.func,
-  /** Holds the authenticated state of the app. */
-  login: PropTypes.bool,
+  /** Holds the details of the authenticated user. */
+  user: PropTypes.object,
   /** Fetches and stores department list */
   addDepartments: PropTypes.func,
   /** Resets all user related data in the redux store. */
