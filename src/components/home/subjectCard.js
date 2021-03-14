@@ -26,7 +26,6 @@ class SubjectCard extends Component {
   }
 
   render() {
-    console.log(this.props.url);
     return (
       <div className="subjectcard" onMouseEnter={this.togglehover} onMouseLeave={this.togglehover}>
         <img

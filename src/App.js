@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
-import Home from './pages/home';
-import Department from './pages/department';
-import Activity from './pages/activity';
-import MyCourse from './pages/mycourse';
-import ErrorPage from './pages/error';
+import Home from 'pages/home';
+import ErrorPage from 'pages/error';
+import MyCourseRouter from 'routers/MyCourseRouter';
+import ActivityRouter from 'routers/ActivityRouter';
+import DepartmentRouter from 'routers/DepartmentRouter';
+import AdminRouter from 'routers/AdminRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
@@ -15,7 +16,7 @@ import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
 
 function mapStateToProps(state) {
   return {
-    login: state.user.login,
+    user: state.user,
   };
 }
 
@@ -36,6 +37,10 @@ class App extends Component {
     this.props.getUser();
   }
 
+  canAccessAdmin = (user) => {
+    return user.login && (user.role === 'admin' || user.role === 'moderator');
+  };
+
   getDepartments = () => {
     getDepartmentsList().then((res) => {
       this.props.addDepartments(res.department);
@@ -47,33 +52,18 @@ class App extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route
-            exact
-            path="/mycourse"
-            render={(props) => (this.props.login ? <MyCourse {...props} /> : <ErrorPage />)}
-          />
-          <Route
-            exact
-            path="/mycourse/departments/:department/courses/:course/:filetype?"
-            render={(props) =>
-              this.props.login ? <MyCourse {...props} error={false} /> : <ErrorPage />
-            }
-          />
-          <Route
-            exact
-            path="/activity/:activitytype?"
-            render={(props) => (this.props.login ? <Activity {...props} /> : <ErrorPage />)}
-          />
-          <Route
-            exact
-            path="/departments/:department/"
-            render={(props) => <Department {...props} />}
-          />
-          <Route
-            exact
-            path="/departments/:department/courses/:course/:filetype?"
-            render={(props) => <Department {...props} />}
-          />
+          <Route path="/mycourse">
+            {this.props.user.login ? <MyCourseRouter /> : <ErrorPage />}
+          </Route>
+          <Route path="/activity">
+            {this.props.user.login ? <ActivityRouter /> : <ErrorPage />}
+          </Route>
+          <Route path="/departments">
+            <DepartmentRouter />
+          </Route>
+          <Route path="/admin">
+            {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
+          </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
@@ -86,8 +76,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(App);
 App.propTypes = {
   /** Function to fetch user details. */
   getUser: PropTypes.func,
-  /** Holds the authenticated state of the app. */
-  login: PropTypes.bool,
+  /** Holds the details of the authenticated user. */
+  user: PropTypes.object,
   /** Fetches and stores department list */
   addDepartments: PropTypes.func,
   /** Resets all user related data in the redux store. */

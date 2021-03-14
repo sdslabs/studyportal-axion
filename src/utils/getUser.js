@@ -16,6 +16,7 @@ export const getUser = (dispatch) => {
           username: res.user.username,
           email: res.user.email,
           profile_image: res.user.profile_image,
+          role: res.user.role,
           courses: res.courses,
         };
         dispatch({ type: SET_USER, payload: user });

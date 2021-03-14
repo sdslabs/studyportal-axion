@@ -120,7 +120,6 @@ const CoursePage = () => {
     checkCourse(user, content); // eslint-disable-next-line
   }, [content, user]);
 
-  console.log(content);
   if (loading) return <FileCover />;
   else
     return (

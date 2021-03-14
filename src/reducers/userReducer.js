@@ -7,6 +7,7 @@ const initialState = {
   email: '',
   profile_image: '',
   courses: [],
+  role: '',
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -19,6 +20,7 @@ export default function rootReducer(state = initialState, action) {
         username: action.payload.username,
         email: action.payload.email,
         profile_image: action.payload.profile_image,
+        role: action.payload.role,
         courses: action.payload.courses,
       };
     case SET_COURSES:
