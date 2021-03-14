@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import './App.css';
 import Home from './pages/home';
 import Department from './pages/department';
-import Activity from './pages/activity';
 import MyCourse from './pages/mycourse';
 import ErrorPage from './pages/error';
+import ActivityRouter from 'routers/ActivityRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
@@ -59,11 +59,9 @@ class App extends Component {
               this.props.login ? <MyCourse {...props} error={false} /> : <ErrorPage />
             }
           />
-          <Route
-            exact
-            path="/activity/:activitytype?"
-            render={(props) => (this.props.login ? <Activity {...props} /> : <ErrorPage />)}
-          />
+          <Route path="/activity">
+            <ActivityRouter />
+          </Route>
           <Route
             exact
             path="/departments/:department/"

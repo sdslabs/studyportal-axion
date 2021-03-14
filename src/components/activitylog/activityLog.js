@@ -31,7 +31,7 @@ const ActivityLog = (props) => {
    */
   const getActivity = (route) => {
     const token = getCookie('token');
-    if (route === 'all' || route === undefined) {
+    if (route === 'all') {
       getAll(token);
     } else if (route === 'requests') {
       getRequests(token);
