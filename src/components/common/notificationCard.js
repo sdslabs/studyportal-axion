@@ -25,8 +25,9 @@ const NotificationCard = (props) => {
         onClick={() => closeAndDelete(props.notification_data.id, props.notification_data)}
       >
         <div className="notifications--card-description">
-          {props.notification_data.actor} {props.notification_data.verb}
-          {props.notification_data.action} in {props.notification_data.target}. Click to check it.
+          {props.notification_data.actor} {props.notification_data.verb}{' '}
+          <span className="bold">{props.notification_data.action}</span> in{' '}
+          <span className="bold">{props.notification_data.target}</span>. Click to check it.
         </div>
         <div className="notifications--card-date">{props.notification_data.date}</div>
         <div className="notifications--card-page">{props.notification_data.target}</div>
