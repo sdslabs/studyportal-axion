@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
 import Home from './pages/home';
-import Department from './pages/department';
 import ErrorPage from './pages/error';
 import MyCourseRouter from './routers/MyCourseRouter';
 import ActivityRouter from 'routers/ActivityRouter';
@@ -12,6 +11,7 @@ import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
 import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
+import DepartmentRouter from './routers/DepartmentRouter';
 
 function mapStateToProps(state) {
   return {
@@ -53,16 +53,9 @@ class App extends Component {
           <Route path="/activity">
             <ActivityRouter />
           </Route>
-          <Route
-            exact
-            path="/departments/:department/"
-            render={(props) => <Department {...props} />}
-          />
-          <Route
-            exact
-            path="/departments/:department/courses/:course/:filetype?"
-            render={(props) => <Department {...props} />}
-          />
+          <Route path="/departments">
+            <DepartmentRouter />
+          </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
