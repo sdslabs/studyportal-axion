@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import './App.css';
 import Home from './pages/home';
 import Department from './pages/department';
-import MyCourse from './pages/mycourse';
 import ErrorPage from './pages/error';
+import MyCourseRouter from './routers/MyCourseRouter';
 import ActivityRouter from 'routers/ActivityRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -47,18 +47,9 @@ class App extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route
-            exact
-            path="/mycourse"
-            render={(props) => (this.props.login ? <MyCourse {...props} /> : <ErrorPage />)}
-          />
-          <Route
-            exact
-            path="/mycourse/departments/:department/courses/:course/:filetype?"
-            render={(props) =>
-              this.props.login ? <MyCourse {...props} error={false} /> : <ErrorPage />
-            }
-          />
+          <Route path="/mycourse">
+            <MyCourseRouter />
+          </Route>
           <Route path="/activity">
             <ActivityRouter />
           </Route>
