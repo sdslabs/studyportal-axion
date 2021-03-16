@@ -56,7 +56,6 @@ const ActivityCard = (props) => {
     }
   }, [props]);
 
-  // TODO add api work for status-3
   return (
     <div className="activitycard">
       <div className="activitycard--info">
@@ -100,8 +99,15 @@ const ActivityCard = (props) => {
             <img className="req_color" src={green} alt="green" /> Files Uploaded ({props.status}/3)
           </div>
           <div className="activitycard--file">
-            <img className="activitycard--file_download" src={download} alt="download" />{' '}
-            {file.title}
+            <a
+              href={`https://drive.google.com/a/iitr.ac.in/uc?id=${props.url}&export=download`}
+              target="_blank"
+              rel="noreferrer"
+              className="linkactive"
+            >
+              <img className="activitycard--file_download" src={download} alt="download" />{' '}
+              {file.title}
+            </a>
           </div>
         </Fragment>
       )}
@@ -125,5 +131,7 @@ ActivityCard.propTypes = {
   /** Holds course title related to activity. */
   course: PropTypes.string,
   /** Holds the file id of the uploaded file. */
-  file: PropTypes.array,
+  file: PropTypes.number,
+  /** Holds the driveid of the uploaded file. */
+  url: PropTypes.string,
 };
