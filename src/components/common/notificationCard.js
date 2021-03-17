@@ -5,6 +5,7 @@ import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { deleteNotification } from 'api/notificationApi';
 import { CLOSE_MODAL } from 'constants/action-types';
+import shortName from 'utils/short-name';
 
 /**
  * Component to render notifications.
@@ -30,7 +31,11 @@ const NotificationCard = (props) => {
           <span className="bold">{props.notification_data.target}</span>. Click to check it.
         </div>
         <div className="notifications--card-date">{props.notification_data.date}</div>
-        <div className="notifications--card-page">{props.notification_data.target}</div>
+        <div className="notifications--card-page">
+          {props.notification_data.target.length > 20
+            ? shortName(props.notification_data.target)
+            : props.notification_data.target}
+        </div>
       </div>
     </Link>
   );
