@@ -21,9 +21,6 @@ const MaterialCard = (props) => {
     pdf,
     docx,
     ppt,
-    jpeg: img,
-    png: img,
-    bmp: img,
   };
 
   /**
@@ -63,7 +60,7 @@ const MaterialCard = (props) => {
         </div>
         <div className="material--info">
           <div className="material--icon">
-            <img src={material_map[props.ext]} alt="icon" />
+            <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
           <div className="material--name" onClick={() => downloadFile(props.id, props.url)}>
             {props.name}
