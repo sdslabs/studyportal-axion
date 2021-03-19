@@ -12,7 +12,25 @@ function getFileRequestsByUser(token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      return res;
+      return res.requests;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+}
+
+function getCourseRequestsByUser(token) {
+  return axiosInstance
+    .get(`/courserequests`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+    .then((response) => {
+      const res = JSON.parse(response.request.response);
+      return res.requests;
     })
     .catch((error) => {
       return Promise.reject(error);
@@ -75,6 +93,7 @@ function updateCourseRequestStatus(request, status) {
 
 export {
   getFileRequestsByUser,
+  getCourseRequestsByUser,
   requestFiles,
   requestCourse,
   updateFileRequestStatus,

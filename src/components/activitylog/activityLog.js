@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ActivityCard from './activityCard';
 import { useDispatch } from 'react-redux';
 import 'styles/main.scss';
-import { getFileRequestsByUser } from 'api/requestApi';
+import { getFileRequestsByUser, getCourseRequestsByUser } from 'api/requestApi';
 import { getUploadsByUser } from 'api/uploadApi';
 import { getCookie } from 'utils/handleCookies';
 import { CLOSE_MODAL } from 'constants/action-types';
@@ -51,7 +51,12 @@ const ActivityLog = (props) => {
       res.forEach((request) => {
         activity.push({ type: 'request', activity: request });
       });
-      setActivity(activity);
+      getCourseRequestsByUser(token).then((response) => {
+        response.forEach((request) => {
+          activity.push({ type: 'request', activity: request });
+        });
+        setActivity(activity);
+      });
     });
   };
 

@@ -12,7 +12,7 @@ function getUploadsByUser(token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      return res;
+      return res.uploads;
     })
     .catch((error) => {
       return Promise.reject(error);

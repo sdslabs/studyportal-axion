@@ -16,9 +16,6 @@ const SearchResult = (props) => {
     pdf,
     docx,
     ppt,
-    jpeg: img,
-    png: img,
-    bmp: img,
   };
 
   console.log(props);
@@ -31,7 +28,7 @@ const SearchResult = (props) => {
     >
       <div className="file--card">
         <div className="file--card-icon">
-          <img src={material_map[props.ext]} alt="icon" />
+          <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
         </div>
         <div className="file--card-heading">{props.name}</div>
         <div className="file--card-info">
