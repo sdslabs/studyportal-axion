@@ -1,4 +1,5 @@
 import { axiosInstance } from './axiosInstance';
+import { CONFIG } from 'config/config';
 import $ from 'jquery';
 
 function getUploadsByUser(token) {
@@ -23,7 +24,7 @@ function uploadFile(token, course, name, filetype, file) {
   const status = 1;
   return $.ajax({
     method: 'POST',
-    url: 'http://localhost:8005/api/v1/uploads',
+    url: `${CONFIG.nexusRoot}/api/v1/uploads`,
     data: { course, name, status, filetype, file },
     dataType: 'json',
     beforeSend(xhr) {
