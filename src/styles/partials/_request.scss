@@ -47,6 +47,10 @@
     background: #236385;
     border-radius: 1.125rem;
   }
+
+  input[type='text']:disabled {
+    background: $white;
+  }
 }
 
 .request {
@@ -330,6 +334,7 @@
     &-input:disabled {
       @include disabled;
       padding: 0.5625rem 0.75rem 0.5rem;
+      background-color: $white;
     }
   }
 

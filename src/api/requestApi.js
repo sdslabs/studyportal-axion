@@ -68,35 +68,4 @@ function requestCourse(token, department, course, code) {
   });
 }
 
-function updateFileRequestStatus(request, status) {
-  return axiosInstance
-    .put('/filerequests', { request, status })
-    .then((response) => {
-      const res = JSON.parse(response.request.response);
-      return res;
-    })
-    .catch((error) => {
-      return Promise.reject(error);
-    });
-}
-
-function updateCourseRequestStatus(request, status) {
-  return axiosInstance
-    .put('/courserequests', { request, status })
-    .then((response) => {
-      const res = JSON.parse(response.request.response);
-      return res;
-    })
-    .catch((error) => {
-      return Promise.reject(error);
-    });
-}
-
-export {
-  getFileRequestsByUser,
-  getCourseRequestsByUser,
-  requestFiles,
-  requestCourse,
-  updateFileRequestStatus,
-  updateCourseRequestStatus,
-};
+export { getFileRequestsByUser, getCourseRequestsByUser, requestFiles, requestCourse };

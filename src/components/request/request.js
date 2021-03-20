@@ -126,11 +126,11 @@ class Request extends Component {
    */
   requestCourse = (e) => {
     e.preventDefault();
-    const department = e.target.department.value;
+    const department = e.target.department[e.target.department.selectedIndex].id;
     const course = e.target.course.value;
     const code = e.target.code.value;
     const token = getCookie('token');
-    this.setState({ disable: -1, requesting: true });
+    this.setState({ disableCourse: -1, requesting: true });
     requestCourse(token, department, course, code).then(() => {
       this.setState({ requesting: false, requested: true });
     });
@@ -371,12 +371,19 @@ class Request extends Component {
                 <div className="request--form-course">
                   <form onSubmit={this.requestCourse}>
                     <div className="course--department">Department</div>
-                    <input
+                    <select
                       className="course--department-input"
-                      type="text"
-                      name="department"
                       onChange={this.course_active_course}
-                    />
+                      disabled={!(this.state.disableCourse >= 0)}
+                      name="department"
+                    >
+                      <option>--Select Department--</option>
+                      {this.props.content.departments.map((department) => (
+                        <option key={department.id} id={department.id}>
+                          {department.title}
+                        </option>
+                      ))}
+                    </select>
                     <div
                       className="course--course"
                       style={{

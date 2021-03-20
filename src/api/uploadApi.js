@@ -24,7 +24,7 @@ function uploadFile(token, course, name, filetype, file) {
   const status = 1;
   return $.ajax({
     method: 'POST',
-    url: `${CONFIG.nexusRoot}/api/v1/uploads`,
+    url: `${CONFIG.nexusRoot}/uploads`,
     data: { course, name, status, filetype, file },
     dataType: 'json',
     beforeSend(xhr) {
