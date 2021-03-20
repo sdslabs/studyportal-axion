@@ -129,7 +129,6 @@ const ActivityLog = (props) => {
             code={material.activity.course.code}
             date={material.activity.date}
             file={material.activity.file}
-            url={material.activity.driveid}
           />
         ))}
       </div>

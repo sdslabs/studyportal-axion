@@ -100,7 +100,7 @@ const ActivityCard = (props) => {
           </div>
           <div className="activitycard--file">
             <a
-              href={`https://drive.google.com/a/iitr.ac.in/uc?id=${props.url}&export=download`}
+              href={`https://drive.google.com/a/iitr.ac.in/uc?id=${file.driveid}&export=download`}
               target="_blank"
               rel="noreferrer"
               className="linkactive"
