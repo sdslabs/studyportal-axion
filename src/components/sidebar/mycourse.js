@@ -31,6 +31,33 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+const customStyles = {
+  control: (base) => ({
+    ...base,
+    width: 315,
+    background: '#fff',
+    borderRadius: 2,
+  }),
+  valueContainer: (base) => ({
+    ...base,
+    width: 315,
+  }),
+  menu: (base) => ({
+    ...base,
+    width: 315,
+  }),
+};
+
+const theme = (theme) => ({
+  ...theme,
+  borderRadius: 0,
+  colors: {
+    ...theme.colors,
+    text: 'orangered',
+    primary: 'black',
+  },
+});
+
 /**
  * Sidebar component for Studyportal homepage.
  */
@@ -154,40 +181,58 @@ class Sidebar extends Component {
           </div>
         ) : null}
         {this.state.search ? (
-          <div className="sidebar--search">
-            <input className="search" placeholder="Search Course" onChange={this.searchCourse} />
-            <button onClick={() => this.setState({ addCourse: true, search: false })}>
-              <img src={add} alt="add course" />
-            </button>
+          <div className="sidebar--search_login">
+            <div>
+              <input className="search" placeholder="Search Course" onChange={this.searchCourse} />
+            </div>
+            <div>
+              <button
+                className="button"
+                onClick={() => this.setState({ addCourse: true, search: false })}
+              >
+                <img src={add} alt="add course" />
+              </button>
+            </div>
           </div>
         ) : null}
         {this.state.addCourse ? (
           <div className="sidebar--form-cover">
             <form className="sidebar--form" onSubmit={this.addCourse}>
               <div className="sidebar--form-header">Add Another Course</div>
-              <div className="sidebar--form-header_department">Department</div>
               <Select
                 className="sidebar--form-select_department"
+                placeholder="Select Department"
+                styles={customStyles}
+                theme={theme}
                 onChange={this.getCourse}
                 options={this.props.content.departments.map(({ id, title }) => {
                   return { value: id, label: title };
                 })}
               />
-              <div className="sidebar--form-header_course">Course Name</div>
               <Select
                 className="sidebar--form-select_course"
+                placeholder="Select Course"
+                styles={customStyles}
+                theme={theme}
                 onChange={this.setCourse}
                 options={this.state.courses.map(({ id, title }) => {
                   return { value: id, label: title };
                 })}
               />
-              <div className="sidebar--form-button">
-                <button onClick={() => this.setState({ search: true, addCourse: false })}>
-                  <img src={search} alt="search" />
-                </button>
-              </div>
-              <div className="sidebar--form-button">
-                <button type="submit">Add Course</button>
+              <div className="sidebar--form-addons">
+                <div>
+                  <button
+                    className="sidebar--form-search"
+                    onClick={() => this.setState({ search: true, addCourse: false })}
+                  >
+                    <img src={search} alt="search" />
+                  </button>
+                </div>
+                <div className="sidebar--form-button">
+                  <button type="submit">
+                    Add Course <img src={add} alt="add course" />
+                  </button>
+                </div>
               </div>
             </form>
           </div>

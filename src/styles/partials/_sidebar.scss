@@ -136,7 +136,7 @@
 
   &course-table {
     width: 100%;
-    height: calc(100vh - 31.4375rem);
+    height: calc(100vh - 27.4375rem);
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -159,7 +159,9 @@
     display: flex;
     flex-direction: column;
     padding-left: 2.25rem;
+    padding-top: 1rem;
     width: auto;
+    background: rgba(255, 255, 255, 0.05);
   }
 
   &form- {
@@ -170,23 +172,7 @@
       margin-bottom: 1.0625rem;
       font-size: 1.125rem;
       line-height: 1.3125rem;
-      color: $primary;
-
-      &_department {
-        @include font;
-        width: 5.4375rem;
-        height: 1.1875rem;
-        margin-bottom: 0.5rem;
-        color: $white;
-      }
-
-      &_course {
-        @include font;
-        width: 6.125rem;
-        height: 1.1875rem;
-        margin-bottom: 0.5rem;
-        color: $white;
-      }
+      color: $white;
     }
 
     &select {
@@ -212,17 +198,32 @@
     }
 
     &button {
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.25rem;
+      margin-left: 0.5rem;
 
       button {
         @include font;
-        width: 7.6875rem;
+        width: 16.9375rem;
         height: 2.25rem;
         background: $primary;
         border-radius: 0.125rem;
         border: $primary;
         color: $white;
       }
+    }
+
+    &search {
+      align-items: center;
+      border: none;
+      padding: 6px;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.125rem;
+    }
+
+    &addons {
+      display: flex;
     }
   }
 
@@ -240,6 +241,36 @@
       border: none;
       padding: 0.5rem;
       background: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  &search_login {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 2.375rem;
+    display: flex;
+    flex-direction: row;
+
+    .search {
+      @include font;
+      color: $white;
+      text-indent: 0.25rem;
+      width: 16.9375rem;
+      outline: none;
+      border: none;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .button {
+      align-items: center;
+      border: none;
+      margin-left: 0.5rem;
+      padding: 6px;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.125rem;
     }
   }
 
