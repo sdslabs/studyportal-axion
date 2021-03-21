@@ -242,6 +242,12 @@
       padding: 0.5rem;
       background: rgba(255, 255, 255, 0.15);
     }
+
+    .search-button {
+      float: right;
+      margin-top: -1.75rem;
+      margin-right: 0.75rem;
+    }
   }
 
   &search_login {
@@ -260,6 +266,12 @@
       border: none;
       padding: 0.5rem;
       background: rgba(255, 255, 255, 0.15);
+    }
+
+    .search-button {
+      float: right;
+      margin-top: -1.75rem;
+      margin-right: 0.75rem;
     }
 
     .button {

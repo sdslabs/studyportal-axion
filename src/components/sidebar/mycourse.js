@@ -184,6 +184,7 @@ class Sidebar extends Component {
           <div className="sidebar--search_login">
             <div>
               <input className="search" placeholder="Search Course" onChange={this.searchCourse} />
+              <img className="search-button" src={search} alt="search" />
             </div>
             <div>
               <button

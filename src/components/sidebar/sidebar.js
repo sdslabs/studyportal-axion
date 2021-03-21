@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import arrow from 'assets/back.svg';
+import search from 'assets/search.svg';
 import CourseHandle from './courseHandle';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
@@ -70,6 +71,7 @@ const Sidebar = () => {
       </div>
       <div className="sidebar--search">
         <input className="search" placeholder="Search Course" onChange={searchCourse} />
+        <img className="search-button" src={search} alt="search" />
       </div>
     </div>
   );
