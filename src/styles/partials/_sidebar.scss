@@ -28,7 +28,7 @@
     @include font;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: $primary;
+    color: $white;
   }
 }
 
@@ -62,11 +62,22 @@
     @include font;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: $primary;
+    color: $white;
   }
 }
 
 .sidebar-- {
+  &head {
+    background: rgba(255, 255, 255, 0.05);
+
+    &_login {
+      background: rgba(255, 255, 255, 0.05);
+      margin-top: -2.25rem;
+      padding-top: 2.25rem;
+      padding-bottom: 0.05rem;
+    }
+  }
+
   &course {
     width: 22.5rem;
     margin-top: 2.375rem;
@@ -88,13 +99,13 @@
     height: 1.0625rem;
     margin-top: 0.5rem;
     margin-left: 2.25rem;
+    margin-bottom: 2.1875rem;
   }
 
   &course-name {
     @include font;
     width: 100%;
     height: 1.1875rem;
-    margin-top: 2.1875rem;
     line-height: 1.1875rem;
     color: $white;
   }
@@ -102,15 +113,13 @@
   &course-table {
     width: 100%;
     height: calc(100vh - 31.4375rem);
-    border-top: 0.125rem solid #1a4d68;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   &course-table_logout {
     width: 100%;
-    height: calc(100vh - 13.25rem);
-    border-top: 0.125rem solid #1a4d68;
+    height: calc(100vh - 16.25rem);
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -183,6 +192,23 @@
         border: $primary;
         color: $white;
       }
+    }
+  }
+
+  &search {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 2.375rem;
+
+    .search {
+      @include font;
+      color: $white;
+      text-indent: 0.25rem;
+      width: 19.6875rem;
+      outline: none;
+      border: none;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.15);
     }
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import arrow from 'assets/left-arrow.svg';
+import arrow from 'assets/back.svg';
 import CourseHandle from './courseHandle';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
@@ -13,17 +13,23 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const content = useSelector((state) => state.content);
 
+  const searchCourse = () => {
+    // TODO search course
+  };
+
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
   };
 
   return (
     <div className="sidebar" onClick={() => closeModal()}>
-      <div className="sidebar--course">{content.activeDepartment.title}</div>
-      <div className="sidebar--back">
-        <Link to="/">
-          <img src={arrow} alt="arrow" /> <span className="back">Departments</span>
-        </Link>
+      <div className="sidebar--head">
+        <div className="sidebar--course">{content.activeDepartment.title}</div>
+        <div className="sidebar--back">
+          <Link to="/">
+            <img src={arrow} alt="arrow" /> <span className="back">Departments</span>
+          </Link>
+        </div>
       </div>
       <div className="sidebar--course-name">
         <div className="sidebar--course-table_logout">
@@ -41,6 +47,9 @@ const Sidebar = () => {
             </Link>
           ))}
         </div>
+      </div>
+      <div className="sidebar--search">
+        <input className="search" placeholder="Search Course" onChange={searchCourse} />
       </div>
     </div>
   );

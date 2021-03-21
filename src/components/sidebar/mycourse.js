@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Select from 'react-select';
-import arrow from 'assets/left-arrow.svg';
+import arrow from 'assets/back.svg';
 import CourseHandle from './courseHandle';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
@@ -77,11 +77,13 @@ class Sidebar extends Component {
     return (
       <div className="sidebar_login" onClick={() => this.props.closeModal()}>
         <div className="sidebar--coursecontent">
-          <div className="sidebar--course">My Courses ({this.props.user.id})</div>
-          <div className="sidebar--back">
-            <Link to="/">
-              <img src={arrow} alt="arrow" /> <span className="back">Departments</span>
-            </Link>
+          <div className="sidebar--head_login">
+            <div className="sidebar--course">My Courses</div>
+            <div className="sidebar--back">
+              <Link to="/">
+                <img src={arrow} alt="arrow" /> <span className="back">Departments</span>
+              </Link>
+            </div>
           </div>
           <div className="sidebar--course-name">
             <div className="sidebar--course-table">
@@ -96,6 +98,7 @@ class Sidebar extends Component {
                         title={course.title}
                         code={course.code}
                         course={course.id}
+                        department={course.department}
                       />
                     </Link>
                   ))
