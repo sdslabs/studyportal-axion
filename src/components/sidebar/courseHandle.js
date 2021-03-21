@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import coursedot from 'assets/coursedot.png';
+import course from 'assets/course.svg';
 import 'styles/main.scss';
 import shortName from 'utils/short-name';
 import { SWITCH_ACTIVE_COURSE, SWITCH_ACTIVE_MYCOURSE } from 'constants/action-types';
@@ -50,19 +50,16 @@ const CourseHandle = (props) => {
 
   if (props.login) {
     return (
-      <div className="coursehandle">
-        <span className="coursehandle--heading" onClick={() => activatemycourse(props)}>
-          {`${props.title.length >= 25 ? shortName(props.title) : props.title} ${props.code}`}
+      <div
+        className={
+          props.code === content.activeMyCourse.code ? 'coursehandle_active' : 'coursehandle'
+        }
+        onClick={() => activatemycourse(props)}
+      >
+        <span className="coursehandle--heading">
+          {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
-        <span>
-          {props.code === content.activeMyCourse.code ? (
-            <span className="coursehandle--activedot">
-              <img src={coursedot} alt="coursedot" />
-            </span>
-          ) : (
-            <span />
-          )}
-        </span>
+        <div className="coursehandle--heading-dept">{props.department.abbreviation} Department</div>
       </div>
     );
   } else {
@@ -71,18 +68,12 @@ const CourseHandle = (props) => {
         className={
           props.code === content.activeCourse.code ? 'coursehandle_active' : 'coursehandle'
         }
+        onClick={() => activatecourse(props)}
       >
-        <span
-          className={
-            props.code === content.activeCourse.code
-              ? 'coursehandle--heading_active'
-              : 'coursehandle--heading'
-          }
-          onClick={() => activatecourse(props)}
-        >
+        <span className="coursehandle--heading">
           {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
-        {mycourse ? <span className="coursehandle--mycourse">My Course</span> : <span />}
+        {mycourse ? <img className="coursehandle--mycourse" src={course} alt="mycourse" /> : null}
       </div>
     );
   }
