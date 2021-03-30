@@ -22,23 +22,13 @@
     margin-left: 1%;
     margin-right: 0.75rem;
     &_plaintext {
+      @include font;
       width: auto;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: $font-color;
     }
     &_request {
+      @include font;
       width: 6.375rem;
       height: 1.1875rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: $primary;
     }
     &_request:hover {
       cursor: pointer;

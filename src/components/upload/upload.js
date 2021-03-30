@@ -37,6 +37,7 @@ class Upload extends Component {
       course: 0,
       uploadings: [],
       uploadeds: [],
+      success: [],
       results: [],
       uploading: false,
       uploaded: false,
@@ -50,12 +51,8 @@ class Upload extends Component {
    */
   active_course = (e) => {
     this.setState({ disable: 1, department: e.target[e.target.selectedIndex].id });
-    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.setState({ courses: res });
-      }
+    getCourseByDepartment(e.target[e.target.selectedIndex].id).then((res) => {
+      this.setState({ courses: res });
     });
   };
 
@@ -73,6 +70,7 @@ class Upload extends Component {
    */
   toggleUploadModal = () => {
     this.setState({ active: false });
+    this.refreshUpload();
     this.props.closeModal();
   };
 
@@ -110,16 +108,25 @@ class Upload extends Component {
         this.setState({ uploadings: uploading, uploadeds: uploaded });
         const reader = new FileReader();
         reader.onloadend = (e) => {
-          uploadFile(token, this.state.course, fileObj.file.name, fileObj.type, reader.result).then(
-            (res) => {
-              let uploaded = this.state.uploadeds;
-              uploaded[index] = true;
-              this.setState({ uploadeds: uploaded });
+          uploadFile(token, this.state.course, fileObj.file.name, fileObj.type, reader.result)
+            .then(() => {
+              let { uploadeds, success } = this.state;
+              uploadeds[index] = true;
+              success[index] = true;
+              this.setState({ uploadeds, success });
               if (index === array.length - 1) {
                 this.setState({ uploaded: true });
               }
-            },
-          );
+            })
+            .catch(() => {
+              let { uploadeds, success } = this.state;
+              uploadeds[index] = true;
+              success[index] = false;
+              this.setState({ uploadeds, success });
+              if (index === array.length - 1) {
+                this.setState({ uploaded: true });
+              }
+            });
         };
         reader.readAsDataURL(fileObj.file);
       });
@@ -139,6 +146,7 @@ class Upload extends Component {
       course: 0,
       uploadings: [],
       uploadeds: [],
+      success: [],
       results: [],
       uploading: false,
       uploaded: false,
@@ -220,6 +228,7 @@ class Upload extends Component {
                       uploadings={this.state.uploadings}
                       uploaded={this.state.uploaded}
                       uploadeds={this.state.uploadeds}
+                      success={this.state.success}
                       handleUpload={this.handleUpload}
                       getFiles={this.getFiles}
                       disabled={!(this.state.disable >= 2)}

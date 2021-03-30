@@ -1,8 +1,3 @@
-#integrate login/signup flow
-#make no activity page
-#add notifications
-#integrate logout flow
-#change number of downloads
-#link file with activity
-#refresh request
-#reset redux state when page changes
+[x] make no activity page
+[x] changes in sidebar
+[x] fonts and spacing changes

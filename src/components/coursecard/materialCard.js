@@ -21,9 +21,6 @@ const MaterialCard = (props) => {
     pdf,
     docx,
     ppt,
-    jpeg: img,
-    png: img,
-    bmp: img,
   };
 
   /**
@@ -44,15 +41,10 @@ const MaterialCard = (props) => {
    * Handle download button click
    */
   const downloadFile = (id, url) => {
-    // TODO
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
     window.open(link, '_blank');
-    downloadFiles(id).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.props.updateFileState(id, res[0].downloads);
-      }
+    downloadFiles(id).then(() => {
+      props.updateFileState();
     });
   };
 
@@ -68,7 +60,7 @@ const MaterialCard = (props) => {
         </div>
         <div className="material--info">
           <div className="material--icon">
-            <img src={material_map[props.ext]} alt="icon" />
+            <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
           <div className="material--name" onClick={() => downloadFile(props.id, props.url)}>
             {props.name}

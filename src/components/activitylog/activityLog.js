@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ActivityCard from './activityCard';
+import NoActivityCover from 'components/cover/noActivityCover';
 import { useDispatch } from 'react-redux';
 import 'styles/main.scss';
 import { getFileRequestsByUser } from 'api/requestApi';
@@ -13,7 +14,6 @@ import { CLOSE_MODAL } from 'constants/action-types';
  */
 const ActivityLog = (props) => {
   const dispatch = useDispatch();
-
   const [activity, setActivity] = useState([]);
   const routeMap = {
     all: 'All Activity Log',
@@ -32,12 +32,11 @@ const ActivityLog = (props) => {
    */
   const getActivity = (route) => {
     const token = getCookie('token');
-    if (route === 'all' || route === undefined) {
-      //TODO get both uploads and requests
+    if (route === 'all') {
       getAll(token);
     } else if (route === 'requests') {
       getRequests(token);
-    } else {
+    } else if (route === 'uploads') {
       getUploads(token);
     }
   };
@@ -49,15 +48,17 @@ const ActivityLog = (props) => {
    */
   const getRequests = (token) => {
     let activity = [];
-    getFileRequestsByUser(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        res.forEach((request) => {
-          activity.push({ type: 'request', activity: request });
-        });
-        setActivity(activity);
-      }
+    getFileRequestsByUser(token).then((res) => {
+      res.forEach((request) => {
+        activity.push({ type: 'request', activity: request });
+      });
+      setActivity(activity);
+      // TODO handle its response and display
+      // getCourseRequestsByUser(token).then((response) => {
+      //   response.forEach((request) => {
+      //     activity.push({ type: 'request', activity: request });
+      //   });
+      // });
     });
   };
 
@@ -68,15 +69,11 @@ const ActivityLog = (props) => {
    */
   const getUploads = (token) => {
     let activity = [];
-    getUploadsByUser(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        res.forEach((upload) => {
-          activity.push({ type: 'upload', activity: upload });
-        });
-        setActivity(activity);
-      }
+    getUploadsByUser(token).then((res) => {
+      res.forEach((upload) => {
+        activity.push({ type: 'upload', activity: upload });
+      });
+      setActivity(activity);
     });
   };
 
@@ -87,25 +84,17 @@ const ActivityLog = (props) => {
    */
   const getAll = (token) => {
     let activity = [];
-    getUploadsByUser(token).then((response, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        response.forEach((upload) => {
-          activity.push({ type: 'upload', activity: upload });
+    getUploadsByUser(token).then((response) => {
+      response.forEach((upload) => {
+        activity.push({ type: 'upload', activity: upload });
+      });
+      getFileRequestsByUser(token).then((res) => {
+        res.forEach((request) => {
+          activity.push({ type: 'request', activity: request });
         });
-        getFileRequestsByUser(token).then((res, err) => {
-          if (err) {
-            //TODO handle error
-          } else {
-            res.forEach((request) => {
-              activity.push({ type: 'request', activity: request });
-            });
-            // activity = arrangeActivity(activity);
-            setActivity(activity);
-          }
-        });
-      }
+        // activity = arrangeActivity(activity);
+        setActivity(activity);
+      });
     });
   };
 
@@ -131,17 +120,22 @@ const ActivityLog = (props) => {
       </div>
       <div className="activitylog--heading_underline" />
       <div className="activitylog--activitycards">
-        {activity.map((material, index) => (
-          <ActivityCard
-            key={index}
-            type={material.type}
-            status={material.activity.status}
-            title={material.activity.title}
-            course={material.activity.course.title}
-            code={material.activity.course.code}
-            date={material.activity.date}
-          />
-        ))}
+        {activity.length > 0 ? (
+          activity.map((material, index) => (
+            <ActivityCard
+              key={index}
+              type={material.type}
+              status={material.activity.status}
+              title={material.activity.title}
+              course={material.activity.course.title}
+              code={material.activity.course.code}
+              date={material.activity.date}
+              file={material.activity.file}
+            />
+          ))
+        ) : (
+          <NoActivityCover />
+        )}
       </div>
     </div>
   );

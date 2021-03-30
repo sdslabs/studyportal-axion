@@ -16,11 +16,9 @@
   }
 
   &image {
+    @include font;
     text-align: center;
-    font-family: 'Open Sans';
-    font-weight: 600;
-    font-style: normal;
-    font-size: 14px;
+    font-size: 0.875rem;
 
     &-profile {
       border-radius: 50%;
@@ -37,38 +35,24 @@
   }
 
   &cover {
+    @include font;
     display: flex;
     flex-direction: column;
     width: 6.125rem;
     height: 11.5rem;
     background: $white;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: $font-color;
     text-align: start;
     padding-left: 1rem;
-    box-shadow: 1px 1px 4px rgba($black, 0.15);
+    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
   }
 
   &request {
     margin-top: 0.61rem;
   }
 
-  &upload {
-    margin-top: 1rem;
-  }
-
-  &activitylog {
-    margin-top: 1rem;
-  }
-
-  &profile {
-    margin-top: 1rem;
-  }
-
+  &upload,
+  &activitylog,
+  &profile,
   &logout {
     margin-top: 1rem;
   }

@@ -22,14 +22,10 @@
       border: $white;
 
       &_holder {
+        @include font;
         height: auto;
         width: 100%;
         margin-top: 0.5rem;
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        color: $font-color;
         border: $white;
         outline: none;
       }
@@ -71,14 +67,10 @@
     }
 
     &-input_holder_home {
+      @include font;
       height: auto;
       width: 100%;
       margin-top: 0.5rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      color: $font-color;
       border: $white;
       outline: none;
     }
@@ -101,18 +93,16 @@
     background: $white;
     box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
     z-index: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     text-align: start;
   }
 
   &file {
+    @include font;
     width: 100%;
     height: 1.625rem;
     left: 0%;
     background: rgba($primary, 0.275);
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
     color: $secondary;
@@ -126,14 +116,12 @@
       grid-template-columns: 33% 33% 33%;
     }
     &-seeall {
+      @include font;
       width: 2.625rem;
       height: 1.0625rem;
       margin-left: 87.69%;
       margin-bottom: 1rem;
       margin-top: 1rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
       font-size: 0.875rem;
       line-height: 1rem;
       color: $primary;
@@ -153,20 +141,11 @@
         width: 1.5rem;
         height: 1.5rem;
       }
-      &_text {
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: $font-color;
+      &_text,
+      &_requestfile {
+        @include font;
       }
       &_requestfile {
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
         color: $primary;
       }
       &_requestfile:hover {
@@ -180,20 +159,16 @@
   }
 
   &courses {
+    @include font;
     width: 100%;
     height: 1.625rem;
     background: rgba($primary, 0.275);
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
     color: $secondary;
     text-align: center;
     &-name {
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
+      @include font;
       font-size: 0.875rem;
       line-height: 1rem;
       color: $font-color;
@@ -215,20 +190,11 @@
         height: 1.5rem;
         margin-right: 0.225rem;
       }
-      &_text {
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
-        color: $font-color;
+      &_text,
+      &_requestcourse {
+        @include font;
       }
       &_requestcourse {
-        font-family: $font;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.1875rem;
         color: $primary;
       }
       &_requestcourse:hover {
@@ -242,20 +208,16 @@
   }
 
   &department {
+    @include font;
     width: 100%;
     height: 1.625rem;
     background: rgba($primary, 0.275);
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.875rem;
     line-height: 1.5625rem;
     color: $secondary;
     text-align: center;
     &-name {
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
+      @include font;
       font-size: 0.875rem;
       line-height: 1rem;
       color: $font-color;

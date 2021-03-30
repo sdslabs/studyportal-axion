@@ -1,0 +1,46 @@
+@mixin font {
+  font-family: $font;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.1875rem;
+  color: $font-color;
+}
+
+@mixin position {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input {
+  @include font;
+  width: 15.75rem;
+  height: 2.25rem;
+  margin-top: 0.5rem;
+  border: 0.0625rem solid $font-color;
+  box-sizing: border-box;
+  border-radius: 0.125rem;
+  line-height: 1.3125rem;
+  text-align: justify;
+  padding-left: 0.5rem;
+  background: $white;
+}
+
+@mixin disabled {
+  @include font;
+  border: 0.0625rem solid rgba($font-color, 0.2);
+  box-sizing: border-box;
+  border-radius: 0.125rem;
+  line-height: 1.3125rem;
+  text-align: justify;
+  padding-left: 0.5rem;
+  background: $white;
+  color: rgba($font-color, 0.2);
+}

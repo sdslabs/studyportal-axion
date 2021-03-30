@@ -1,3 +1,9 @@
+@mixin status {
+  @include font;
+  align-self: center;
+  line-height: 1.5625rem;
+}
+
 .activitycard {
   display: flex;
   flex-direction: row;
@@ -14,11 +20,7 @@
     margin-left: 4rem;
 
     &_date {
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
+      @include font;
       color: $black;
       margin-bottom: 0.5rem;
     }
@@ -28,31 +30,19 @@
     }
 
     &_head {
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
+      @include font;
       color: rgba($font-color, 0.6);
     }
 
     &_heading {
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.1875rem;
-      color: rgba($font-color, 1);
+      @include font;
     }
   }
 
   &course {
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
+    @include font;
     font-size: 0.875rem;
     line-height: 1rem;
-    color: $font-color;
   }
 
   &status {
@@ -61,44 +51,26 @@
     }
 
     &_blue {
-      align-self: center;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.5625rem;
+      @include status;
       color: $primary;
     }
 
     &_green {
-      align-self: center;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.5625rem;
+      @include status;
       color: $success;
     }
 
     &_yellow {
-      align-self: center;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 1rem;
-      line-height: 1.5625rem;
+      @include status;
       color: $hold;
     }
   }
 
   &file {
+    @include font;
     width: 30%;
     align-self: center;
     margin-right: 4rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 2.1875rem;
     color: $primary;
 

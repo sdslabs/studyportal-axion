@@ -51,7 +51,7 @@
     margin-left: 0.3125rem;
     width: 7rem;
     height: 1.3125rem;
-    font-family: Sansation;
+    font-family: $font-header;
     font-style: normal;
     font-weight: bold;
     font-size: 1.25rem;
@@ -65,6 +65,10 @@
     margin-left: 4%;
   }
 
+  &mycourse {
+    z-index: 2;
+  }
+
   &home,
   &mycourse,
   &request,
@@ -74,12 +78,8 @@
 
   &login,
   &signup {
+    @include font;
     margin-top: 1rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
     color: $secondary;
     background: transparent;
   }

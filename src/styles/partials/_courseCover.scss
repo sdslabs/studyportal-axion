@@ -1,31 +1,23 @@
 .coursecover {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
+  @include position;
+  @include font;
+  @include center;
   align-content: center;
   width: calc(100% - 26.5rem);
   height: calc(100% - 4.5625rem);
   margin-left: 26.5rem;
   z-index: -1;
-  font-family: $font;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
   color: $secondary;
 
   &--hold {
+    @include font;
     width: 19.1875rem;
     height: 1.75rem;
     margin-top: 0.7891rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
     color: $primary;
   }
 }

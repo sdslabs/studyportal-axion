@@ -61,13 +61,9 @@ class Notifications extends Component {
 
   getNotifications = () => {
     const token = getCookie('token');
-    getAllNotifications(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        if (res.length !== 0) {
-          this.setState({ notifications: res });
-        }
+    getAllNotifications(token).then((res) => {
+      if (res.length !== 0) {
+        this.setState({ notifications: res });
       }
     });
   };
@@ -98,9 +94,7 @@ class Notifications extends Component {
                   />
                 ))
               ) : (
-                <div className="nonewnotification">
-                  <p>No new notification.</p>
-                </div>
+                <div className="notifications--none">No new notifications</div>
               )}
             </div>
           </Fragment>
