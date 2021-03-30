@@ -2,28 +2,28 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './App.css';
-import Home from './pages/home';
-import Department from './pages/department';
-import Activity from './pages/activity';
-import MyCourse from './pages/mycourse';
-import ErrorPage from './pages/error';
+import Home from 'pages/home';
+import ErrorPage from 'pages/error';
+import MyCourseRouter from 'routers/MyCourseRouter';
+import ActivityRouter from 'routers/ActivityRouter';
+import DepartmentRouter from 'routers/DepartmentRouter';
+import AdminRouter from 'routers/AdminRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import { loginUserWithToken, loginUserWithCookie } from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
 import { getDepartmentsList } from 'api/departmentApi';
-import { ADD_DEPARTMENTS, SET_USER, RESET_APP } from './constants/action-types';
+import { getUser } from 'utils/getUser';
+import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
 
 function mapStateToProps(state) {
   return {
-    login: state.user.login,
+    user: state.user,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    getUser: () => getUser(dispatch),
     addDepartments: (departments) => dispatch({ type: ADD_DEPARTMENTS, payload: departments }),
-    setUser: (user) => dispatch({ type: SET_USER, payload: user }),
     resetApp: () => dispatch({ type: RESET_APP }),
   };
 }
@@ -34,90 +34,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.getDepartments();
-    this.getUser();
+    this.props.getUser();
   }
 
-  getDepartments = () => {
-    getDepartmentsList().then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        this.props.addDepartments(res.department);
-      }
-    });
+  canAccessAdmin = (user) => {
+    return user.login && (user.role === 'admin' || user.role === 'moderator');
   };
 
-  /**
-   * Fetch user details.
-   */
-  getUser = () => {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token)
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          this.props.setUser(user);
-          // Logged in with token
-        })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie()
-              .then((res) => {
-                const user = {
-                  login: true,
-                  id: res.user.falcon_id,
-                  username: res.user.username,
-                  email: res.user.email,
-                  profile_image: res.user.profile_image,
-                  courses: res.courses,
-                };
-                // TODO
-                this.props.setUser(user);
-                // Logged in with cookie and the invalid token has been replaced
-              })
-              .catch(() => {
-                this.props.resetApp();
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
-          } else {
-            this.props.resetApp();
-            removeCookie('token');
-            // No cookie present and the token is corrupted
-          }
-        });
-    } else if (cookie) {
-      loginUserWithCookie()
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          // TODO
-          this.props.setUser(user);
-          // The user did not have the token but is logged in by the cookie and the token has been created
-        })
-        .catch(() => {
-          this.props.resetApp();
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
-    } else {
-      this.props.resetApp();
-      // Neither cookie nor token present
-    }
+  getDepartments = () => {
+    getDepartmentsList().then((res) => {
+      this.props.addDepartments(res.department);
+    });
   };
 
   render() {
@@ -125,33 +52,18 @@ class App extends Component {
       <Router history={history}>
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} />} />
-          <Route
-            exact
-            path="/mycourse"
-            render={(props) => (this.props.login ? <MyCourse {...props} /> : <ErrorPage />)}
-          />
-          <Route
-            exact
-            path="/mycourse/departments/:department/courses/:course/:filetype?"
-            render={(props) =>
-              this.props.login ? <MyCourse {...props} error={false} /> : <ErrorPage />
-            }
-          />
-          <Route
-            exact
-            path="/activity/:activitytype?"
-            render={(props) => (this.props.login ? <Activity {...props} /> : <ErrorPage />)}
-          />
-          <Route
-            exact
-            path="/departments/:department/"
-            render={(props) => <Department {...props} />}
-          />
-          <Route
-            exact
-            path="/departments/:department/courses/:course/:filetype?"
-            render={(props) => <Department {...props} />}
-          />
+          <Route path="/mycourse">
+            {this.props.user.login ? <MyCourseRouter /> : <ErrorPage />}
+          </Route>
+          <Route path="/activity">
+            {this.props.user.login ? <ActivityRouter /> : <ErrorPage />}
+          </Route>
+          <Route path="/departments">
+            <DepartmentRouter />
+          </Route>
+          <Route path="/admin">
+            {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
+          </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
@@ -162,11 +74,12 @@ class App extends Component {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  login: PropTypes.bool,
+  /** Function to fetch user details. */
+  getUser: PropTypes.func,
+  /** Holds the details of the authenticated user. */
+  user: PropTypes.object,
   /** Fetches and stores department list */
   addDepartments: PropTypes.func,
-  /** Function to set user details. */
-  setUser: PropTypes.func,
   /** Resets all user related data in the redux store. */
   resetApp: PropTypes.func,
 };

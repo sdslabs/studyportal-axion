@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import ShowMoreFiles from './showMoreFiles';
 import PropTypes from 'prop-types';
-import SearchResult from './searchResult';
+import SearchFiles from 'components/search/files';
+import SearchCourse from 'components/search/course';
+import SearchDepartment from 'components/search/department';
 import search from 'assets/head_search.png';
 import search_home from 'assets/search.png';
 import 'styles/main.scss';
 import { getSearchResults } from 'api/searchApi';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import {
   TOGGLE_REQUEST,
   OPEN_SEARCH,
@@ -44,7 +45,6 @@ class Search extends Component {
       files: [],
       departments: [],
       courses: [],
-      showFiles: 6,
     };
   }
 
@@ -54,19 +54,15 @@ class Search extends Component {
    * @param {string} query
    */
   getResults = (query) => {
-    getSearchResults(query).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        if (res.departments) {
-          this.setState({ departments: res.departments });
-        }
-        if (res.courses) {
-          this.setState({ courses: res.courses });
-        }
-        if (res.files) {
-          this.setState({ files: res.files });
-        }
+    getSearchResults(query).then((res) => {
+      if (res.departments) {
+        this.setState({ departments: res.departments });
+      }
+      if (res.courses) {
+        this.setState({ courses: res.courses });
+      }
+      if (res.files) {
+        this.setState({ files: res.files });
       }
     });
   };
@@ -101,7 +97,6 @@ class Search extends Component {
     this.props.searchResults(searchPayload);
   };
 
-  // TODO break into smaller components
   render() {
     return (
       <div className="search">
@@ -142,107 +137,13 @@ class Search extends Component {
         {this.props.modal.search ? (
           this.state.departments.length || this.state.courses.length || this.state.files.length ? (
             <div className="search--container">
-              <div className="search--file">Files</div>
-              {!this.state.files.length ? (
-                <div className="search--file-noresults">
-                  <span className="search--file-noresults_icon">
-                    <img src={emoji} alt="emoji" />
-                  </span>
-                  <span className="search--file-noresults-outer">
-                    <div className="search--file-noresults_text">
-                      Sorry! We couldn&apos;t find any file for you.
-                    </div>
-                    <span className="search--file-noresults_text">
-                      However,you can request what you are looking for.
-                    </span>
-                    <span
-                      className="search--file-noresults_requestfile"
-                      onClick={() => this.props.toggleRequest()}
-                    >
-                      Request Here!
-                    </span>
-                  </span>
-                </div>
-              ) : (
-                <div>
-                  <div className="search--file-holder">
-                    {this.state.files.slice(0, this.state.showFiles).map((file) => (
-                      <SearchResult
-                        name={file.title}
-                        url={file.driveid}
-                        date_modified={file.date_modified}
-                        course_name={file.course.title}
-                        course_code={file.course.code}
-                        file_type={file.filetype}
-                        ext={file.fileext}
-                        key={file.id}
-                      />
-                    ))}
-                  </div>
-                  <div
-                    className="search--file-seeall"
-                    onClick={() => this.handleShowMoreModal(this.state.files, this.state.value)}
-                  >
-                    See All
-                  </div>
-                </div>
-              )}
-              <div className="search--courses">Courses</div>
-              {!this.state.courses.length ? (
-                <div className="search--courses-noresults">
-                  <span className="search--courses-noresults_icon">
-                    <img src={emoji} alt="emoji" />
-                  </span>
-                  <span className="search--courses-noresults_outer">
-                    <div className="search--courses-noresults_text">
-                      Sorry! We couldn&apos;t find any course for you.
-                    </div>
-                    <span className="search--courses-noresults_text">
-                      However,you can request what you are looking for.
-                    </span>
-                    <span
-                      className="search--courses-noresults_requestcourse"
-                      onClick={() => this.props.toggleRequest()}
-                    >
-                      &nbsp;Request Here!
-                    </span>
-                  </span>
-                </div>
-              ) : (
-                <div>
-                  {this.state.courses.map((course) => (
-                    <Link
-                      to={`/departments/${course.department.abbreviation}/courses/${course.code}/`}
-                      key={course.id}
-                    >
-                      <div className="search--courses-name link" key={course.id}>
-                        {course.title} {course.code}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-              <div className="search--department">Department</div>
-              {!this.state.departments.length ? (
-                <div className="search--department-noresults">
-                  <span className="search--department-noresults_icon">
-                    <img src={emoji} alt="emoji" />
-                  </span>
-                  <span className="search--department-noresults_text">
-                    Sorry! We couldn&apos;t find any department for you.
-                  </span>
-                </div>
-              ) : (
-                <div>
-                  {this.state.departments.map((department) => (
-                    <Link to={`/departments/${department.abbreviation}`} key={department.id}>
-                      <div className="search--department-name link" key={department.id}>
-                        {department.title}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <SearchFiles
+                files={this.state.files}
+                value={this.state.value}
+                handleShowMoreModal={this.handleShowMoreModal}
+              />
+              <SearchCourse courses={this.state.courses} />
+              <SearchDepartment departments={this.state.departments} />
             </div>
           ) : (
             <div className="nosearchresults">

@@ -5,7 +5,7 @@ function getAllNotifications(token) {
     .get(`/notifications/?format=json`, { headers: { Authorization: `Bearer ${token}` } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      return res;
+      return res.notifications;
     })
     .catch((error) => {
       return Promise.reject(error);
@@ -30,7 +30,7 @@ function getNewNotification(token) {
 }
 function deleteNotification(notification) {
   return axiosInstance
-    .put('/notifications', { notification })
+    .delete('/notifications', { params: { notification } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       return res;

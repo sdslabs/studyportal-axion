@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import NotificationCard from 'components/common/notificationCard';
 import polygon from 'assets/Polygon.svg';
-import notif from 'assets/notif.svg';
+import notifs from 'assets/notifs.svg';
+import notifs_active from 'assets/notifs_active.svg';
 import { connect } from 'react-redux';
 import 'styles/main.scss';
 import { getAllNotifications, getNewNotification } from 'api/notificationApi';
@@ -60,13 +61,9 @@ class Notifications extends Component {
 
   getNotifications = () => {
     const token = getCookie('token');
-    getAllNotifications(token).then((res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        if (res.length !== 0) {
-          this.setState({ notifications: res });
-        }
+    getAllNotifications(token).then((res) => {
+      if (res.length !== 0) {
+        this.setState({ notifications: res });
       }
     });
   };
@@ -76,9 +73,11 @@ class Notifications extends Component {
       <div className="notifications">
         <div className="notifications--button" onClick={() => this.props.toggleNotifications()}>
           <div className="notifications--button-image">
-            <img src={notif} alt="notification" />
+            <img
+              src={this.state.notifications.length > 0 ? notifs_active : notifs}
+              alt="notification"
+            />
           </div>
-          <div className="notifications--button-number">{this.state.notifications.length}</div>
         </div>
         {this.props.modal.notifications ? (
           <Fragment>
@@ -95,9 +94,7 @@ class Notifications extends Component {
                   />
                 ))
               ) : (
-                <div className="nonewnotification">
-                  <p>No new notification.</p>
-                </div>
+                <div className="notifications--none">No new notifications</div>
               )}
             </div>
           </Fragment>

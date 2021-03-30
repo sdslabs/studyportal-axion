@@ -12,19 +12,15 @@
     position: relative;
     width: 33.375rem;
     height: 3.0625rem;
-
     background: rgba($primary, 0.155);
     border-top: 0.0625rem solid $border;
 
     &_name {
+      @include font;
       position: absolute;
       width: 18.75rem;
       height: 1.0625rem;
       left: 1rem;
-
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
       font-size: 0.875rem;
       line-height: 3.0625rem;
 
@@ -44,13 +40,11 @@
     }
 
     &_remove {
+      @include font;
       position: absolute;
       width: 3.1875rem;
       height: 1.0625rem;
       left: 29.1875rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
       font-size: 0.875rem;
       line-height: 3.0625rem;
       color: $primary;
@@ -66,7 +60,7 @@
 
     &_status {
       position: absolute;
-      left: 30.1875rem;
+      left: 29.1875rem;
       top: 1rem;
     }
 

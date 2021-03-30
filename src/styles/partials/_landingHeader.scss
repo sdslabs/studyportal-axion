@@ -7,7 +7,6 @@
   background-size: contain;
   height: 24.4375rem;
   width: 100%;
-  text-align: center;
 
   cursor: default;
 
@@ -46,7 +45,7 @@
     margin-top: 0.888125rem;
     width: 11.625rem;
     height: 2.25rem;
-    font-family: Sansation;
+    font-family: $font-header;
     font-style: normal;
     font-weight: bold;
     font-size: 2rem;
@@ -69,18 +68,25 @@
     display: flex;
     flex-direction: row;
     margin-top: 1.25rem;
+    padding-left: 3.25rem;
     width: 70%;
     border-radius: 0.25rem;
   }
 
   &user_loggedin {
     display: flex;
-    margin-left: 9.375rem;
-    margin-right: 4rem;
+    padding-left: 1.375rem;
+    padding-right: 4rem;
+  }
+
+  &mycourses {
+    margin-top: 2.25rem;
+    margin-right: 7rem;
+    z-index: 2;
   }
 
   &notifications {
-    margin-top: 2.75rem;
+    margin-top: 2.65rem;
     margin-left: -22.125rem;
   }
 
@@ -92,30 +98,22 @@
   }
 
   &user {
-    margin-top: 2.25rem;
+    margin-top: 2.15rem;
   }
 
   &login {
+    @include font;
     width: 6.25rem;
     height: 2.5625rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
     color: $secondary;
     background: transparent;
     border: none;
   }
 
   &signup {
+    @include font;
     width: 7.5625rem;
     height: 2.5625rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
     color: $font-color;
     border-radius: 0.25rem;
     border: 1px solid $font-color;

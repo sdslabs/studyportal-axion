@@ -2,10 +2,10 @@ import { axiosInstance } from 'api/axiosInstance';
 
 function getCourseByDepartment(id) {
   return axiosInstance
-    .get(`/courses/?department=${id}&course=null&format=json`)
+    .get(`/courses`, { params: { department: id, course: 'null', format: 'json' } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      return res;
+      return res.courses;
     })
     .catch((error) => {
       return Promise.reject(error);
@@ -14,10 +14,10 @@ function getCourseByDepartment(id) {
 
 function getCourseInfoByCode(id, code) {
   return axiosInstance
-    .get(`/courses/?department=${id}&course=${code}&format=json`)
+    .get(`/courses`, { params: { department: id, course: code, format: 'json' } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      return res[0];
+      return res.courses[0];
     })
     .catch((error) => {
       return Promise.reject(error);

@@ -14,21 +14,17 @@
   }
 
   &page {
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 64px;
-    line-height: 75px;
+    @include font;
+    font-size: 4rem;
+    line-height: 4.6875rem;
     color: $primary;
   }
 
   &sorry {
+    @include font;
     margin-top: 1.8125rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
     color: $font-color;
   }
 
@@ -40,25 +36,19 @@
   }
 
   &home {
+    @include font;
     width: 7.0625rem;
     height: 2.5625rem;
     background: $primary;
     border-radius: 0.125rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 2.5625rem;
     text-align: center;
     color: $white;
   }
 
   &back {
+    @include font;
     margin-left: 2.25rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
     line-height: 2.5625rem;
     color: $primary;
     cursor: pointer;

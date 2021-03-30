@@ -1,0 +1,20 @@
+.nocontentcover {
+  @include position;
+  @include font;
+  @include center;
+  top: 7.5625rem;
+  width: 100%;
+  height: calc(100% - 7.5625rem);
+  text-align: center;
+  z-index: -1;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  color: $secondary;
+
+  &--hold {
+    @include font;
+    margin-top: 0.7891rem;
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+}

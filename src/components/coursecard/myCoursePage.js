@@ -7,16 +7,12 @@ import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
-import {
-  loginUserWithToken,
-  loginUserWithCookie,
-  addCourseForUser,
-  deleteCourseForUser,
-} from 'api/userApi';
-import { getCookie, removeCookie } from 'utils/handleCookies';
+import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
+import { getUser } from 'utils/getUser';
+import { getCookie } from 'utils/handleCookies';
 import shortName from 'utils/short-name';
 import 'styles/main.scss';
-import { SET_USER, RESET_APP, CLOSE_MODAL } from 'constants/action-types';
+import { CLOSE_MODAL } from 'constants/action-types';
 
 /**
  * Coursepage component for Studyportal.
@@ -35,81 +31,8 @@ const CoursePage = () => {
     dispatch({ type: CLOSE_MODAL });
   };
 
-  const getUser = () => {
-    const token = getCookie('token');
-    const cookie = getCookie('sdslabs');
-    if (token) {
-      loginUserWithToken(token)
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          dispatch({ type: SET_USER, payload: user });
-          // Logged in with token
-        })
-        .catch(() => {
-          // Token is corrupted
-          if (cookie) {
-            loginUserWithCookie()
-              .then((res) => {
-                const user = {
-                  login: true,
-                  id: res.user.falcon_id,
-                  username: res.user.username,
-                  email: res.user.email,
-                  profile_image: res.user.profile_image,
-                  courses: res.courses,
-                };
-                // TODO
-                dispatch({ type: SET_USER, payload: user });
-                // Logged in with cookie and the invalid token has been replaced
-              })
-              .catch(() => {
-                dispatch({ type: RESET_APP });
-                removeCookie('sdslabs');
-                removeCookie('token');
-                // The cookie is corrupted, both the token and the cookie have been removed
-              });
-          } else {
-            dispatch({ type: RESET_APP });
-            removeCookie('token');
-            // No cookie present and the token is corrupted
-          }
-        });
-    } else if (cookie) {
-      loginUserWithCookie()
-        .then((res) => {
-          const user = {
-            id: res.user.falcon_id,
-            username: res.user.username,
-            email: res.user.email,
-            profile_image: res.user.profile_image,
-            courses: res.courses,
-          };
-          // TODO
-          dispatch({ type: SET_USER, payload: user });
-          // The user did not have the token but is logged in by the cookie and the token has been created
-        })
-        .catch(() => {
-          dispatch({ type: RESET_APP });
-          removeCookie('sdslabs');
-          // The cookie is corrupted and removed
-        });
-    } else {
-      dispatch({ type: RESET_APP });
-      // Neither cookie nor token present
-    }
-  };
-
-  const updateFileState = (id, downloads) => {
-    // TODO
-    const files_temp = files;
-    files_temp.forEach((file) => console.log(file.files.filter((file) => file.id === id)[0]));
-    setFiles(files_temp);
+  const updateFileState = () => {
+    getFiles(content);
   };
 
   /**
@@ -120,22 +43,14 @@ const CoursePage = () => {
   const getFiles = (content) => {
     setLoading(true);
     if (content.myCoursefiletype === undefined)
-      getFilesByCourse(content.activeMyCourse.id).then((resp, err) => {
-        if (err) {
-          //TODO handle error
-        } else {
-          setFiles(sortFilesByYear(resp));
-          setLoading(false);
-        }
+      getFilesByCourse(content.activeMyCourse.id).then((resp) => {
+        setFiles(sortFilesByYear(resp));
+        setLoading(false);
       });
     else
-      getFilesByType(content.activeMyCourse.id, content.myCoursefiletype).then((resp, err) => {
-        if (err) {
-          //TODO handle error
-        } else {
-          setFiles(sortFilesByYear(resp));
-          setLoading(false);
-        }
+      getFilesByType(content.activeMyCourse.id, content.myCoursefiletype).then((resp) => {
+        setFiles(sortFilesByYear(resp));
+        setLoading(false);
       });
   };
 
@@ -183,13 +98,9 @@ const CoursePage = () => {
    */
   const addCourse = () => {
     const token = getCookie('token');
-    addCourseForUser(token, content.activeMyCourse.id).then((_res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        getUser();
-        setMycourse(true);
-      }
+    addCourseForUser(token, content.activeMyCourse.id).then(() => {
+      getUser(dispatch);
+      setMycourse(true);
     });
   };
 
@@ -198,13 +109,9 @@ const CoursePage = () => {
    */
   const deleteCourse = () => {
     const token = getCookie('token');
-    deleteCourseForUser(token, content.activeMyCourse.id).then((_res, err) => {
-      if (err) {
-        //TODO handle error
-      } else {
-        getUser();
-        setMycourse(false);
-      }
+    deleteCourseForUser(token, content.activeMyCourse.id).then(() => {
+      getUser(dispatch);
+      setMycourse(false);
     });
   };
 
@@ -213,7 +120,6 @@ const CoursePage = () => {
     checkCourse(user, content); // eslint-disable-next-line
   }, [content, user]);
 
-  console.log(content);
   if (loading) return <FileCover />;
   else
     return (
@@ -409,8 +315,6 @@ export default CoursePage;
 CoursePage.propTypes = {
   /** Holds user data which is handled through Redux. */
   user: PropTypes.object,
-  /** Fetch user details from API. */
-  getUserDetails: PropTypes.func,
   /** Function to close modals. */
   close: PropTypes.func,
   /** Holds course code for the course. */

@@ -62,9 +62,7 @@ const CustomFileUploader = (props) => {
           />
           <label className="customfileuploader--label">Choose File</label>
           <span className="customfileuploader--filechoose">No Files Added</span>
-          <span className="customfileuploader--instruc">
-            (Max total File Size allowed is 100MB)
-          </span>
+          <span className="customfileuploader--instruc">(Max File Size allowed is 100MB)</span>
         </div>
         {props.uploaded ? (
           <div className="customfileuploader--button_uploaded" onClick={() => refreshUpload()}>
@@ -90,6 +88,7 @@ const CustomFileUploader = (props) => {
             <FileUploadContainer
               uploading={props.uploadings[index]}
               uploaded={props.uploadeds[index]}
+              success={props.success[index]}
               name={fileObj.file.name}
               files={files}
               key={fileObj.file.name}
@@ -110,17 +109,20 @@ const CustomFileUploader = (props) => {
             multiple
             onChange={addFiles}
           />
-          <label className="customfileuploader--label">Choose File</label>
-          <span className="customfileuploader--filechoose">Add More Files</span>
-          <span className="customfileuploader--instruc">
-            (Max total File Size allowed is 100MB)
-          </span>
+          <label className="customfileuploader--label">Add Files</label>
+          <span className="customfileuploader--filechoose"></span>
+          <span className="customfileuploader--instruc">(Max File Size allowed is 100MB)</span>
         </div>
         {props.uploaded ? (
           <div className="customfileuploader--confirmation">
             <img className="customfileuploader--confirmation-check" src={check} alt="check" />
             <span className="customfileuploader--confirmation-text">
-              All files uploaded successfully
+              {props.success.every((value) => value)
+                ? 'All files'
+                : props.success.filter((status) => {
+                    return status;
+                  }).length}{' '}
+              uploaded successfully
             </span>
             <span className="customfileuploader--confirmation-activity">
               Check upload status in{' '}
@@ -133,7 +135,7 @@ const CustomFileUploader = (props) => {
           <Fragment />
         )}
         {props.uploaded ? (
-          <div className="customfileuploader--button_uploaded" onClick={props.refreshUpload}>
+          <div className="customfileuploader--button_uploaded" onClick={() => refreshUpload()}>
             Upload More
           </div>
         ) : props.uploading ? (

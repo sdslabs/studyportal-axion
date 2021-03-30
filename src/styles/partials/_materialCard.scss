@@ -39,26 +39,19 @@
   }
 
   &name {
+    @include font;
     width: 15.75rem;
     height: 1.1875rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: $font-color;
     grid-column: 2 / span 1;
     grid-row: 2 / span 1;
     align-self: center;
   }
 
   &download {
+    @include font;
     width: 6.8125rem;
     height: 1rem;
     margin-top: -0.5rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
     font-size: 0.8125rem;
     line-height: 0.9375rem;
     color: rgba($font-color, 0.4);
@@ -89,29 +82,19 @@
   }
 
   &size {
+    @include font;
     width: 3.8rem;
     height: 1.1875rem;
     margin-right: 7.75rem;
     margin-top: 1.5rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: $font-color;
   }
 
   &datemodified {
+    @include font;
     width: 6.75rem;
     height: 1.1875rem;
     margin-top: 1.5rem;
     margin-right: 1.375rem;
-    font-family: $font;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1rem;
-    line-height: 1.1875rem;
-    color: $font-color;
   }
 
   &info:hover,
