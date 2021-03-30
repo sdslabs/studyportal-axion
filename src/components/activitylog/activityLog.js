@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ActivityCard from './activityCard';
+import NoActivityCover from 'components/cover/noActivityCover';
 import { useDispatch } from 'react-redux';
 import 'styles/main.scss';
 import { getFileRequestsByUser } from 'api/requestApi';
@@ -119,18 +120,22 @@ const ActivityLog = (props) => {
       </div>
       <div className="activitylog--heading_underline" />
       <div className="activitylog--activitycards">
-        {activity.map((material, index) => (
-          <ActivityCard
-            key={index}
-            type={material.type}
-            status={material.activity.status}
-            title={material.activity.title}
-            course={material.activity.course.title}
-            code={material.activity.course.code}
-            date={material.activity.date}
-            file={material.activity.file}
-          />
-        ))}
+        {activity.length > 0 ? (
+          activity.map((material, index) => (
+            <ActivityCard
+              key={index}
+              type={material.type}
+              status={material.activity.status}
+              title={material.activity.title}
+              course={material.activity.course.title}
+              code={material.activity.course.code}
+              date={material.activity.date}
+              file={material.activity.file}
+            />
+          ))
+        ) : (
+          <NoActivityCover />
+        )}
       </div>
     </div>
   );

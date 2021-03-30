@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import arrow from 'assets/back.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
@@ -26,40 +27,29 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar" onClick={() => dispatch({ type: CLOSE_MODAL })}>
-      <div className="sidebar--course">Activity</div>
+      <div className="sidebar--head">
+        <div className="sidebar--course">Activity</div>
+        <div className="sidebar--back">
+          <Link to="/">
+            <img src={arrow} alt="arrow" /> <span className="back">Departments</span>
+          </Link>
+        </div>
+      </div>
       <div className="sidebar--course-name">
         <div className="sidebar--course-table_logout">
           <div className={selector === 'all' ? 'coursehandle_active' : 'coursehandle'}>
             <Link to={`/activity/all`} className="link">
-              <span
-                className={
-                  selector === 'all' ? 'coursehandle--heading_active' : 'coursehandle--heading'
-                }
-              >
-                All Activity Log
-              </span>
+              <span className="coursehandle--heading">All Activity Log</span>
             </Link>
           </div>
           <div className={selector === 'requests' ? 'coursehandle_active' : 'coursehandle'}>
             <Link to={`/activity/requests`} className="link">
-              <span
-                className={
-                  selector === 'requests' ? 'coursehandle--heading_active' : 'coursehandle--heading'
-                }
-              >
-                Requests Log
-              </span>
+              <span className="coursehandle--heading">Requests Log</span>
             </Link>
           </div>
           <div className={selector === 'uploads' ? 'coursehandle_active' : 'coursehandle'}>
             <Link to={`/activity/uploads`} className="link">
-              <span
-                className={
-                  selector === 'uploads' ? 'coursehandle--heading_active' : 'coursehandle--heading'
-                }
-              >
-                Uploads Log
-              </span>
+              <span className="coursehandle--heading">Uploads Log</span>
             </Link>
           </div>
         </div>
