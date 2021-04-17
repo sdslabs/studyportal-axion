@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CONFIG } from 'config/config';
 import { removeCookie } from 'utils/handleCookies';
 import polygon from 'assets/Polygon.svg';
 import 'styles/main.scss';
@@ -26,9 +25,9 @@ const UserMenu = () => {
    */
   const logout = () => {
     dispatch({ type: RESET_APP });
-    window.location.href = CONFIG.studyRoot;
     removeCookie('token');
     removeCookie('sdslabs');
+    window.location.reload();
   };
 
   return (
