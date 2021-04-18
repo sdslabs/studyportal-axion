@@ -103,6 +103,9 @@ class Search extends Component {
         {!this.props.home ? (
           <div className="search--bar">
             <div className="search--bar-input">
+              <span>
+                <img className="search--bar-icon" src={search} alt="search" />
+              </span>
               <input
                 className="search--bar-input_holder"
                 type="text"
@@ -110,11 +113,6 @@ class Search extends Component {
                 placeholder="Search file, courses, departments"
                 onChange={this.result}
               />
-            </div>
-            <div>
-              <button className="search--bar-icon">
-                <img src={search} alt="search" />
-              </button>
             </div>
           </div>
         ) : (

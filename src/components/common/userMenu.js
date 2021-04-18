@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeCookie } from 'utils/handleCookies';
 import polygon from 'assets/Polygon.svg';
+import account from 'assets/account.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import {
@@ -17,7 +18,6 @@ import {
  */
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
   const modal = useSelector((state) => state.modal);
 
   /**
@@ -33,8 +33,7 @@ const UserMenu = () => {
   return (
     <div className="usermenu">
       <div className="usermenu--image" onClick={() => dispatch({ type: TOGGLE_USERMENU })}>
-        <img className="usermenu--image-profile" src={user.profile_image} alt="user" />
-        <p>Account</p>
+        <img className="usermenu--image-profile" src={account} alt="user" />
       </div>
       {modal.userMenu ? (
         <div className="usermenu--container" onClick={() => dispatch({ type: CLOSE_USERMENU })}>

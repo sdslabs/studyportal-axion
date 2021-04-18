@@ -38,6 +38,10 @@
   &userinfo {
     display: flex;
     flex-direction: row;
+    height: 2rem;
+    align-self: center;
+    padding-left: 8rem;
+    border-left: 0.5px solid #28607e;
   }
 
   &logo {
@@ -60,13 +64,20 @@
   }
 
   &search {
-    width: 38%;
+    width: 50%;
     height: auto;
-    margin-left: 4%;
+    margin-left: 5rem;
+    min-width: 22rem;
   }
 
   &mycourse {
     z-index: 2;
+  }
+
+  &redirects {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.875rem;
   }
 
   &home,
@@ -79,7 +90,7 @@
   &login,
   &signup {
     @include font;
-    margin-top: 1rem;
+    margin-top: -0.25rem;
     color: $secondary;
     background: transparent;
   }
@@ -88,6 +99,7 @@
     width: 2.435625rem;
     height: 2.375rem;
     margin-right: 1.5rem;
+    margin-left: -7rem;
     border: none;
   }
 
@@ -101,14 +113,13 @@
   }
 
   &notification {
-    margin-top: 1.4375rem;
     margin-left: -22.125rem;
     z-index: auto;
   }
 
   &user {
-    margin-top: 0.95rem;
     margin-right: 4.125rem;
+    margin-top: -0.5rem;
   }
 
   &search_icon:hover,
