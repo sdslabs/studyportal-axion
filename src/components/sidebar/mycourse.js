@@ -13,6 +13,7 @@ import { addCourseForUser } from 'api/userApi';
 import { getCookie } from 'utils/handleCookies';
 import { getUser } from 'utils/getUser';
 import { RESET_APP, CLOSE_MODAL } from 'constants/action-types';
+import { toast } from 'react-toastify';
 import MiniSearch from 'minisearch';
 import _ from 'lodash';
 
@@ -87,6 +88,11 @@ class Sidebar extends Component {
     this.miniSearch.addAll(this.props.user.courses);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.user.courses !== this.props.user.courses)
+      this.setState({ userCourses: this.props.user.courses });
+  }
+
   searchCourse = (e) => {
     const searchResult = this.miniSearch.search(e.target.value);
     if (_.isEmpty(searchResult)) this.setState({ userCourses: this.props.user.courses });
@@ -123,6 +129,7 @@ class Sidebar extends Component {
     const token = getCookie('token');
     addCourseForUser(token, this.state.course).then(() => {
       this.props.getUser();
+      toast('Course has been added to your course list');
     });
     e.target.reset();
   };
@@ -206,6 +213,7 @@ class Sidebar extends Component {
                 styles={customStyles}
                 theme={theme}
                 onChange={this.getCourse}
+                menuPlacement="top"
                 options={this.props.content.departments.map(({ id, title }) => {
                   return { value: id, label: title };
                 })}
@@ -216,6 +224,7 @@ class Sidebar extends Component {
                 styles={customStyles}
                 theme={theme}
                 onChange={this.setCourse}
+                menuPlacement="top"
                 options={this.state.courses.map(({ id, title }) => {
                   return { value: id, label: title };
                 })}
