@@ -13,6 +13,7 @@ const tabHeadings = ['Course Requests', 'User Requests', 'User Uploads'];
 const AdminSidebar = () => {
   const [currTab, setCurrTab] = useState(-1);
   const [menuitems, setmenuitems] = useState([]);
+  const [items, setitems] = useState({});
 
   const handleClick = (index) => {
     const token = getCookie('token');
@@ -21,15 +22,18 @@ const AdminSidebar = () => {
     //dispatch action here
     if (index === 0) {
       getCourseRequests(token).then((res) => {
-        setmenuitems(res.requests);
+        setmenuitems(res.departments);
+        setitems(res.requests);
       });
     } else if (index === 1) {
       getFileRequests(token).then((res) => {
-        setmenuitems(res.requests);
+        setmenuitems(res.courses);
+        setitems(res.requests);
       });
     } else if (index === 2) {
       getUploads(token).then((res) => {
-        setmenuitems(res.uploads);
+        setmenuitems(res.courses);
+        setitems(res.requests);
       });
     }
   };
@@ -73,9 +77,11 @@ const SubMenu = ({ menuitems, currTab }) => {
         menuitems.map((request, key) => (
           <div className={'coursehandle'} key={key}>
             {currTab === 0 ? (
-              <span className="coursehandle--heading">{request.course}</span>
-            ) : (
               <span className="coursehandle--heading">{request.title}</span>
+            ) : (
+              <span className="coursehandle--heading">
+                {request.title} | {request.code}
+              </span>
             )}
           </div>
         ))
