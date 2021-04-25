@@ -1,7 +1,8 @@
 import React from 'react';
-import AdminPanel from 'admin/App';
+// import AdminPanel from 'admin/App';
 import ErrorPage from 'pages/error';
 import { Route, Switch } from 'react-router';
+import AdminPanel from 'pages/admin';
 
 const AdminRouter = () => {
   return (
