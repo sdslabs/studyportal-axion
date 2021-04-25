@@ -5,12 +5,14 @@ import arrow from 'assets/left-arrow.svg';
 const tabHeadings = ['Course Requests', 'User Requests', 'User Uploads'];
 
 /*************** Sidebar for admin panel *****************/
-const AdminSidebar = () => {
+const AdminSidebar = ({ setActiveTab }) => {
   const [currTab, setCurrTab] = useState(-1);
 
   const handleClick = (index) => {
     setCurrTab(index);
     //dispatch action here
+
+    setActiveTab(index); //temprory switch tab logic
   };
 
   return (
