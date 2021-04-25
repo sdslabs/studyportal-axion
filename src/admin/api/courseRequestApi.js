@@ -1,8 +1,15 @@
-import { axiosInstance } from './axiosInstance';
+import { axiosInstance } from '../../api/axiosInstance';
+import $ from 'jquery';
 
-function getCourseRequests() {
+function getCourseRequests(token) {
   return axiosInstance
-    .get('courserequests/?format=json')
+    .get('courserequests/', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);

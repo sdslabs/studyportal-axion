@@ -1,18 +1,43 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import arrow from 'assets/left-arrow.svg';
+import { getCourseRequests } from '../../admin/api/courseRequestApi';
+import { getFileRequests } from '../../admin/api/fileRequestApi';
+import { getUploads } from '../../admin/api/uploadsApi';
+
+import { getCookie } from '../../utils/handleCookies';
 
 const tabHeadings = ['Course Requests', 'User Requests', 'User Uploads'];
 
 /*************** Sidebar for admin panel *****************/
 const AdminSidebar = () => {
   const [currTab, setCurrTab] = useState(-1);
+  const [menuitems, setmenuitems] = useState([]);
 
   const handleClick = (index) => {
+    const token = getCookie('token');
     setCurrTab(index);
     //dispatch action here
+    if (index === 0) {
+      getCourseRequests(token).then((res) => {
+        if (res.requests) {
+          setmenuitems(res.requests);
+        }
+      });
+    } else if (index === 1) {
+      getFileRequests(token).then((res) => {
+        if (res.requests) {
+          setmenuitems(res.requests);
+        }
+      });
+    } else if (index === 2) {
+      getUploads(token).then((res) => {
+        if (res.uploads) {
+          setmenuitems(res.uploads);
+        }
+      });
+    }
   };
-
   return (
     <div className="sidebar">
       <div className="sidebar--course">{currTab === -1 ? 'Admin Panel' : tabHeadings[currTab]}</div>
@@ -21,7 +46,11 @@ const AdminSidebar = () => {
           <img src={arrow} alt="arrow" /> <span className="back">Back</span>
         </div>
       )}
-      {currTab === -1 ? <MainMenu currTab={currTab} handleClick={handleClick} /> : <SubMenu />}
+      {currTab === -1 ? (
+        <MainMenu currTab={currTab} handleClick={handleClick} />
+      ) : (
+        <SubMenu menuitems={menuitems} currTab={currTab} />
+      )}
     </div>
   );
 };
@@ -42,27 +71,18 @@ const MainMenu = ({ currTab, handleClick }) => {
   );
 };
 
-const SubMenu = ({ menuitems }) => {
+const SubMenu = ({ menuitems, currTab }) => {
   return (
     <div className="sidebar--course-name">
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
-      <div className={'coursehandle'}>
-        <span className="coursehandle--heading">Sub Menu Title</span>
-      </div>
+      {menuitems.map((request, key) => (
+        <div className={'coursehandle'} key={key}>
+          {currTab === 0 ? (
+            <span className="coursehandle--heading">{request.course}</span>
+          ) : (
+            <span className="coursehandle--heading">{request.title}</span>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
