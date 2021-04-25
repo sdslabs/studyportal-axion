@@ -17,24 +17,19 @@ const AdminSidebar = () => {
   const handleClick = (index) => {
     const token = getCookie('token');
     setCurrTab(index);
+    setmenuitems([]);
     //dispatch action here
     if (index === 0) {
       getCourseRequests(token).then((res) => {
-        if (res.requests) {
-          setmenuitems(res.requests);
-        }
+        setmenuitems(res.requests);
       });
     } else if (index === 1) {
       getFileRequests(token).then((res) => {
-        if (res.requests) {
-          setmenuitems(res.requests);
-        }
+        setmenuitems(res.requests);
       });
     } else if (index === 2) {
       getUploads(token).then((res) => {
-        if (res.uploads) {
-          setmenuitems(res.uploads);
-        }
+        setmenuitems(res.uploads);
       });
     }
   };
@@ -74,15 +69,19 @@ const MainMenu = ({ currTab, handleClick }) => {
 const SubMenu = ({ menuitems, currTab }) => {
   return (
     <div className="sidebar--course-name">
-      {menuitems.map((request, key) => (
-        <div className={'coursehandle'} key={key}>
-          {currTab === 0 ? (
-            <span className="coursehandle--heading">{request.course}</span>
-          ) : (
-            <span className="coursehandle--heading">{request.title}</span>
-          )}
-        </div>
-      ))}
+      {menuitems.length !== 0 ? (
+        menuitems.map((request, key) => (
+          <div className={'coursehandle'} key={key}>
+            {currTab === 0 ? (
+              <span className="coursehandle--heading">{request.course}</span>
+            ) : (
+              <span className="coursehandle--heading">{request.title}</span>
+            )}
+          </div>
+        ))
+      ) : (
+        <div>Nothing to show</div>
+      )}
     </div>
   );
 };
