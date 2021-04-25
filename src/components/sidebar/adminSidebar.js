@@ -10,7 +10,7 @@ import { getCookie } from '../../utils/handleCookies';
 const tabHeadings = ['Course Requests', 'User Requests', 'User Uploads'];
 
 /*************** Sidebar for admin panel *****************/
-const AdminSidebar = () => {
+const AdminSidebar = ({ setActiveTab }) => {
   const [currTab, setCurrTab] = useState(-1);
   const [menuitems, setmenuitems] = useState([]);
   const [items, setitems] = useState({});
