@@ -1,4 +1,4 @@
-import { SWITCH_MAIN_MENU, SWITCH_SUB_MENU, SWITCH_TAB } from '~/constants/action-types';
+import { SWITCH_MAIN_MENU, SWITCH_SUB_MENU, SWITCH_TAB } from 'constants/action-types';
 
 const initialState = {
   activeMainMenu: '',

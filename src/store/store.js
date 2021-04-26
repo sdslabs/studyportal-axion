@@ -3,7 +3,7 @@ import userReducer from 'reducers/userReducer';
 import contentReducer from 'reducers/contentReducer';
 import modalReducer from 'reducers/modalReducer';
 import searchReducer from 'reducers/searchReducer';
-import adminPanelReducer from '~/reducers/adminPanelReducer';
+import adminPanelReducer from 'reducers/adminPanelReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
