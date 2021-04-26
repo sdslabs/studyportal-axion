@@ -54,3 +54,20 @@
     background: lighten(green, 40%);
   }
 }
+
+.active-tab-admin {
+  color: $primary;
+  font-weight: 600;
+}
+
+.tab-admin {
+  width: max-content;
+  height: auto;
+}
+
+.active-tab-underline {
+  border-bottom: 3px solid $primary;
+  width: 80%;
+  margin: auto;
+  padding-top: 0.5rem;
+}

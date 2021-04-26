@@ -1,4 +1,9 @@
-import { SWITCH_MAIN_MENU, SWITCH_SUB_MENU, SWITCH_TAB } from 'constants/action-types';
+import {
+  SWITCH_MAIN_MENU,
+  SWITCH_SUB_MENU,
+  SWITCH_TAB,
+  SET_TABLE_DATA,
+} from 'constants/action-types';
 
 const initialState = {
   activeMainMenu: '',
@@ -26,8 +31,13 @@ export default function adminPanelReducer(state = initialState, action) {
     case SWITCH_TAB:
       return {
         ...state,
-        activeTab: action.payload.type,
-        tableData: action.payload.data,
+        activeTab: action.payload,
+      };
+
+    case SET_TABLE_DATA:
+      return {
+        ...state,
+        tableData: action.payload,
       };
 
     default:
