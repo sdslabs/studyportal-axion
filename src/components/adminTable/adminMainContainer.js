@@ -1,37 +1,56 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import UserRequestsTable from './userRequestsTable';
+import * as constants from 'constants/adminPanelMenu';
+import { SwitchTab } from 'actions/adminPanelActions';
 
-const AdminMainContainer = ({ activeTab }) => {
-  //modify classes and add table
+const Tabs = [
+  constants.ALL_TAB,
+  constants.TUT_TAB,
+  constants.BOOKS_TAB,
+  constants.NOTES_TAB,
+  constants.EXAM_TAB,
+];
+
+const AdminMainContainer = () => {
+  const store = useSelector((state) => state.adminPanel);
+  const dispatch = useDispatch();
+
   const getTable = () => {
-    switch (activeTab) {
-      case 0:
+    switch (store.activeMainMenu) {
+      case constants.COURSE_REQUEST_MENU:
         return <h1>Course Requests</h1>;
 
-      case 1:
+      case constants.USER_REQUEST_MENU:
         return <UserRequestsTable />;
 
-      case 3:
+      case constants.USER_UPLOADS_MENU:
         return <h1>User Uploads</h1>;
 
       default:
-        return <p>No tab selected</p>;
+        return <p>No option selected</p>;
     }
   };
 
   return (
     <div className="coursepage">
-      <div className="coursepage--head">Admin Main Container Head</div>
+      {store.activeMainMenu !== constants.COURSE_REQUEST_MENU && (
+        <div className="coursepage--head">{store.subMenuData[store.activeSubMenu]?.title}</div>
+      )}
       <div className="coursepage--category">
-        <span className="coursepage--category_tut" style={{ borderLeft: 'none' }}>
-          All
-        </span>
-        <span className="coursepage--category_tut">Tutorials</span>
-        <span className="coursepage--category_tut">Books</span>
-        <span className="coursepage--category_tut">Notes</span>
-        <span className="coursepage--category_tut" style={{ width: '100%' }}>
-          Examination Papers
-        </span>
+        {Tabs.map((tab, index) => (
+          <span
+            className={`${
+              store.activeTab === tab ? 'active-tab-admin' : ''
+            } ${'coursepage--category_tut tab-admin'}`}
+            style={index === 0 ? { borderLeft: 'none' } : null}
+            key={index}
+            onClick={() => dispatch(SwitchTab(tab))}
+          >
+            {tab}
+            {store.activeTab === tab && <div className="active-tab-underline" />}
+          </span>
+        ))}
       </div>
       {getTable()}
     </div>

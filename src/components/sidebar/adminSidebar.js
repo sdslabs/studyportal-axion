@@ -7,7 +7,7 @@ import { getUploads } from '../../admin/api/uploadsApi';
 import { getCookie } from '../../utils/handleCookies';
 import * as constants from 'constants/adminPanelMenu';
 import { useDispatch, useSelector } from 'react-redux';
-import { SwitchMainMenu, SwitchSubMenu, SwitchTab } from 'actions/adminPanelActions';
+import { SetTableData, SwitchMainMenu, SwitchSubMenu, SwitchTab } from 'actions/adminPanelActions';
 
 /*************** Sidebar for admin panel *****************/
 const AdminSidebar = () => {
@@ -68,12 +68,8 @@ const MainMenu = ({ store, dispatch, token }) => {
         data: subMenu,
       }),
     );
-    dispatch(
-      SwitchTab({
-        type: constants.ALL_TAB,
-        data: tableData,
-      }),
-    );
+    dispatch(SetTableData(tableData));
+    dispatch(SwitchTab(constants.ALL_TAB));
     dispatch(SwitchSubMenu(0));
   };
 
