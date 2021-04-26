@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
-
-const dummydata = [
-  {
-    id: 1,
-    name: 'Alpha file',
-    rejected: true,
-    uploaded: false,
-  },
-  {
-    id: 2,
-    name: 'Beta file',
-    rejected: false,
-    uploaded: true,
-  },
-  {
-    id: 3,
-    name: 'Gamma file',
-    rejected: false,
-    uploaded: false,
-  },
-];
+import * as Tabs from 'constants/adminPanelMenu';
 
 const UserRequestsTable = () => {
+  const [rows, setRows] = useState([]);
+  const store = useSelector((state) => state.adminPanel);
+  // const dispatch = useDispatch();
+  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+
+  useEffect(() => {
+    switch (store.activeTab) {
+      case Tabs.ALL_TAB:
+        setRows(activeData);
+        break;
+
+      case Tabs.TUT_TAB:
+        setRows(getFilteredArray(activeData, 'Tutorial'));
+        break;
+
+      case Tabs.BOOKS_TAB:
+        setRows(getFilteredArray(activeData, 'Book'));
+        break;
+
+      case Tabs.NOTES_TAB:
+        setRows(getFilteredArray(activeData, 'Notes'));
+        break;
+
+      case Tabs.EXAM_TAB:
+        setRows(getFilteredArray(activeData, 'Examination Papers'));
+        break;
+
+      default:
+        setRows([]);
+    }
+  }, [store.activeTab, activeData]);
+
+  if (!rows || rows?.length === 0) return null;
+
   return (
     <>
       <div className="admin-table--row admin-table-title">
@@ -34,23 +49,34 @@ const UserRequestsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {dummydata.map((item, key) => (
+      {rows.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
-            <span>{item.name}</span>
+            <span>{item?.title}</span>
+            {store.activeTab === Tabs.ALL_TAB && (
+              <p style={{ opacity: 0.7, margin: '0.6rem 0' }}>{item?.filetype}</p>
+            )}
           </div>
           <div className="admin-table--secondary-row">
             <div className="row-item">
-              <TableIconButton type={item.uploaded ? 'reload' : 'upload'} />
+              <TableIconButton type="upload" />
             </div>
             <div className="row-item">
-              <TableIconButton type={item.rejected ? 'reject_confirmed' : 'reject'} />
+              <TableIconButton type="reject" />
             </div>
           </div>
         </div>
       ))}
     </>
   );
+};
+
+const getFilteredArray = (rawArray = [], filetype) => {
+  let filteredArray = [];
+  rawArray.forEach((item) => {
+    if (item?.filetype === filetype) filteredArray.push(item);
+  });
+  return filteredArray;
 };
 
 export default UserRequestsTable;
