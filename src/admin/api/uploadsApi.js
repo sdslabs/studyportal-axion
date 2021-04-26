@@ -1,8 +1,14 @@
-import { axiosInstance } from './axiosInstance';
+import { axiosInstance } from '../../api/axiosInstance';
 
-function getUploads() {
+function getUploads(token) {
   return axiosInstance
-    .get('uploads/?format=json')
+    .get('/admin/uploads/', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);
@@ -13,9 +19,19 @@ function getUploads() {
     });
 }
 
-function approveUpload(id) {
+function approveUpload(id, token) {
   return axiosInstance
-    .put('uploads', { file_id: id, status: 2 })
+    .put(
+      '/admin/uploads',
+      { file_id: id, status: 2 },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      },
+    )
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);
@@ -26,9 +42,19 @@ function approveUpload(id) {
     });
 }
 
-function addUpload(id) {
+function addUpload(id, token) {
   return axiosInstance
-    .put('uploads', { file_id: id, status: 3 })
+    .put(
+      '/admin/uploads',
+      { file_id: id, status: 3 },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      },
+    )
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);
@@ -39,9 +65,19 @@ function addUpload(id) {
     });
 }
 
-function deleteUpload(id) {
+function deleteUpload(id, token) {
   return axiosInstance
-    .delete('uploads', { request: id })
+    .delete(
+      '/admin/uploads',
+      { request: id },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+      },
+    )
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);
