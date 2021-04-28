@@ -61,17 +61,16 @@ function uploadFile(id, file, name, filetype, token) {
 
 function rejectFileRequest(id, token) {
   return axiosInstance
-    .delete(
-      '/admin/filerequests',
-      { request: id },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+    .delete('/admin/filerequests/', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-    )
+      data: {
+        request: id,
+      },
+    })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);
