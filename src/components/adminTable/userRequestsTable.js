@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
 import * as Tabs from 'constants/adminPanelMenu';
+import { rejectFileRequest } from '../../admin/api/fileRequestApi';
+import { getCookie } from '../../utils/handleCookies';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
   const store = useSelector((state) => state.adminPanel);
   // const dispatch = useDispatch();
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const token = getCookie('token');
 
   useEffect(() => {
     switch (store.activeTab) {
@@ -62,7 +65,12 @@ const UserRequestsTable = () => {
               <TableIconButton type="upload" />
             </div>
             <div className="row-item">
-              <TableIconButton type="reject" />
+              <TableIconButton
+                type="reject"
+                handleClick={() => {
+                  rejectFileRequest(item.id, token);
+                }}
+              />
             </div>
           </div>
         </div>
