@@ -15,8 +15,6 @@ const AdminSidebar = () => {
   const dispatch = useDispatch();
   const token = getCookie('token');
 
-  console.log(store);
-
   const handleBackClick = () => {
     const payload = {
       type: '',

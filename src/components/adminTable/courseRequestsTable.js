@@ -1,31 +1,17 @@
 import React from 'react';
 import TableIconButton from './tableIconButtons';
-
-const dummydata = [
-  {
-    id: 1,
-    name: 'Alpha file',
-    rejected: true,
-    accepted: false,
-  },
-  {
-    id: 2,
-    name: 'Beta file',
-    rejected: false,
-    accepted: true,
-  },
-  {
-    id: 3,
-    name: 'Gamma file',
-    rejected: false,
-    accepted: false,
-  },
-];
+import { useSelector } from 'react-redux';
 
 const CourseRequestsTable = () => {
+  const store = useSelector((state) => state.adminPanel);
+  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+
+  console.log(activeData);
+  if (activeData?.length === 0) return null;
+
   return (
     <>
-      <div className="admin-table--row admin-table-title">
+      <div className="admin-table--row admin-table-title" style={{ marginTop: '0' }}>
         <div className="admin-table--primary-row">
           <span>Request</span>
         </div>
@@ -34,17 +20,21 @@ const CourseRequestsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {dummydata.map((item, key) => (
+      {(activeData || []).map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
-            <span>{item.name}</span>
+            <span>
+              {item.course} | {item.code}
+            </span>
           </div>
           <div className="admin-table--secondary-row">
             <div className="row-item">
-              <TableIconButton type={item.accepted ? 'approve_confirmed' : 'approve'} />
+              {/* <TableIconButton type={item.accepted ? 'approve_confirmed' : 'approve'} /> */}
+              <TableIconButton type="approve_confirmed" />
             </div>
             <div className="row-item">
-              <TableIconButton type={item.rejected ? 'reject_confirmed' : 'reject'} />
+              {/* <TableIconButton type={item.rejected ? 'reject_confirmed' : 'reject'} /> */}
+              <TableIconButton type="reject" />
             </div>
           </div>
         </div>
