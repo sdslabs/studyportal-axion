@@ -4,6 +4,7 @@ import UserRequestsTable from './userRequestsTable';
 import * as constants from 'constants/adminPanelMenu';
 import { SwitchTab } from 'actions/adminPanelActions';
 import CourseRequestsTable from './courseRequestsTable';
+import UserUploadsTable from './userUploadsTable';
 
 const Tabs = [
   constants.ALL_TAB,
@@ -26,7 +27,7 @@ const AdminMainContainer = () => {
         return <UserRequestsTable />;
 
       case constants.USER_UPLOADS_MENU:
-        return <h1>User Uploads</h1>;
+        return <UserUploadsTable />;
 
       default:
         return <p>No option selected</p>;
@@ -35,25 +36,25 @@ const AdminMainContainer = () => {
 
   return (
     <div className="coursepage">
-      {store.activeMainMenu !== constants.COURSE_REQUEST_MENU && (
-        <div className="coursepage--head">{store.subMenuData[store.activeSubMenu]?.title}</div>
-      )}
       {store.activeMainMenu === constants.USER_REQUEST_MENU && (
-        <div className="coursepage--category">
-          {Tabs.map((tab, index) => (
-            <span
-              className={`${
-                store.activeTab === tab ? 'active-tab-admin' : ''
-              } ${'coursepage--category_tut tab-admin'}`}
-              style={index === 0 ? { borderLeft: 'none' } : null}
-              key={index}
-              onClick={() => dispatch(SwitchTab(tab))}
-            >
-              {tab}
-              {store.activeTab === tab && <div className="active-tab-underline" />}
-            </span>
-          ))}
-        </div>
+        <>
+          <div className="coursepage--head">{store.subMenuData[store.activeSubMenu]?.title}</div>
+          <div className="coursepage--category">
+            {Tabs.map((tab, index) => (
+              <span
+                className={`${
+                  store.activeTab === tab ? 'active-tab-admin' : ''
+                } ${'coursepage--category_tut tab-admin'}`}
+                style={index === 0 ? { borderLeft: 'none' } : null}
+                key={index}
+                onClick={() => dispatch(SwitchTab(tab))}
+              >
+                {tab}
+                {store.activeTab === tab && <div className="active-tab-underline" />}
+              </span>
+            ))}
+          </div>
+        </>
       )}
       {getTable()}
     </div>
