@@ -51,7 +51,7 @@
     background: lighten(red, 40%);
   }
   &success:hover {
-    background: lighten(green, 40%);
+    background: rgba(0, 255, 0, 0.2);
   }
 }
 

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import uploadIcon from 'assets/uploadIcon.svg';
 import approveIcon from 'assets/approveIcon.svg';
 import rejectIcon from 'assets/rejectIcon.svg';
 import reloadIcon from 'assets/reloadIcon.svg';
 import rejectConfirmed from 'assets/reject_confirmed.svg';
 import approveConfirmed from 'assets/approve_confirmed.svg';
-import downloadIcon from 'assets/download.svg';
+import downloadIcon from 'assets/downloadCloud.svg';
 import previewIcon from 'assets/previewIcon.svg';
 
 /**************** Component to handle all icon ctas in tables *******************/

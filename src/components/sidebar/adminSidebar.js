@@ -76,7 +76,7 @@ const MainMenu = ({ store, dispatch, token }) => {
 
       case menuItems[2]:
         getUploads(token).then((res) => {
-          handleDispatch(type, res.courses, res.requests);
+          handleDispatch(type, res.courses, res.uploads);
         });
         break;
 
