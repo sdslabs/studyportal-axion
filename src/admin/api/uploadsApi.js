@@ -46,7 +46,7 @@ function addUpload(id, token) {
   return axiosInstance
     .put(
       '/admin/uploads',
-      { file_id: id, status: 3 },
+      { upload: id, status: 3 },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -67,17 +67,16 @@ function addUpload(id, token) {
 
 function deleteUpload(id, token) {
   return axiosInstance
-    .delete(
-      '/admin/uploads',
-      { request: id },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+    .delete('/admin/uploads', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
-    )
+      data: {
+        upload: id,
+      },
+    })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       console.log(res);

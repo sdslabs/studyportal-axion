@@ -1,10 +1,13 @@
 import React from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
+import { addUpload, deleteUpload } from '../../admin/api/uploadsApi';
+import { getCookie } from '../../utils/handleCookies';
 
 const UserUploadsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const token = getCookie('token');
 
   if (activeData?.length === 0) return null;
 
@@ -34,10 +37,20 @@ const UserUploadsTable = () => {
               <TableIconButton type="preview" />
             </div>
             <div className="row-item">
-              <TableIconButton type="approve" />
+              <TableIconButton
+                type="approve"
+                handleClick={() => {
+                  addUpload(item.id, token);
+                }}
+              />
             </div>
             <div className="row-item">
-              <TableIconButton type="reject" />
+              <TableIconButton
+                type="reject"
+                handleClick={() => {
+                  deleteUpload(item.id, token);
+                }}
+              />
             </div>
           </div>
         </div>
