@@ -15,8 +15,6 @@ const AdminSidebar = () => {
   const dispatch = useDispatch();
   const token = getCookie('token');
 
-  console.log(store);
-
   const handleBackClick = () => {
     const payload = {
       type: '',
@@ -78,7 +76,7 @@ const MainMenu = ({ store, dispatch, token }) => {
 
       case menuItems[2]:
         getUploads(token).then((res) => {
-          handleDispatch(type, res.courses, res.requests);
+          handleDispatch(type, res.courses, res.uploads);
         });
         break;
 
