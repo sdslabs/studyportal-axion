@@ -1,10 +1,13 @@
 import React from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
+import { addCourse, rejectCourseRequest } from '../../admin/api/courseRequestApi';
+import { getCookie } from '../../utils/handleCookies';
 
 const CourseRequestsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const token = getCookie('token');
 
   if (activeData?.length === 0) return null;
 
@@ -29,11 +32,21 @@ const CourseRequestsTable = () => {
           <div className="admin-table--secondary-row">
             <div className="row-item">
               {/* <TableIconButton type={item.accepted ? 'approve_confirmed' : 'approve'} /> */}
-              <TableIconButton type="approve_confirmed" />
+              <TableIconButton
+                type="approve_confirmed"
+                handleClick={() => {
+                  addCourse(item.id, token);
+                }}
+              />
             </div>
             <div className="row-item">
               {/* <TableIconButton type={item.rejected ? 'reject_confirmed' : 'reject'} /> */}
-              <TableIconButton type="reject" />
+              <TableIconButton
+                type="reject"
+                handleClick={() => {
+                  rejectCourseRequest(item.id, token);
+                }}
+              />
             </div>
           </div>
         </div>
