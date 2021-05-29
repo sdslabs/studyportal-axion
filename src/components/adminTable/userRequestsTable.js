@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
 import * as Tabs from 'constants/adminPanelMenu';
-import { rejectFileRequest } from '../../admin/api/fileRequestApi';
+import { rejectFileRequest, uploadFile } from '../../admin/api/fileRequestApi';
 import { getCookie } from '../../utils/handleCookies';
 
 const UserRequestsTable = () => {
@@ -11,6 +11,12 @@ const UserRequestsTable = () => {
   // const dispatch = useDispatch();
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const token = getCookie('token');
+
+  const sendFile = (key, id, filetype, name, token) => {
+    let tagId = 'file-input' + key;
+    let file = document.getElementById(tagId).files[0];
+    uploadFile(id, file, name, filetype, token);
+  };
 
   useEffect(() => {
     switch (store.activeTab) {
@@ -61,8 +67,18 @@ const UserRequestsTable = () => {
             )}
           </div>
           <div className="admin-table--secondary-row">
-            <div className="row-item">
+            <label for={'file-input' + key}>
               <TableIconButton type="upload" />
+            </label>
+            <div className="row-item">
+              <input
+                id={'file-input' + key}
+                className="file-upload"
+                type="file"
+                onChange={() => {
+                  sendFile(key, item.id, item.filetype, item.name, token);
+                }}
+              ></input>
             </div>
             <div className="row-item">
               <TableIconButton

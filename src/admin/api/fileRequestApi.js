@@ -45,11 +45,18 @@ function approveFileRequest(id, token) {
 
 function uploadFile(id, file, name, filetype, token) {
   const status = 3;
+  var formData = new FormData();
+  formData.append('request', id);
+  formData.append('file', file, name);
+  formData.append('name', name);
+  formData.append('filetype', filetype);
+  formData.append('status', status);
   return $.ajax({
     method: 'PUT',
     url: 'http://localhost:8005/api/v1/admin/filerequests',
-    data: { request: id, status: status, file: file, name: name, filetype: filetype },
-    dataType: 'json',
+    data: formData,
+    processData: false,
+    contentType: false,
     beforeSend(xhr) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     },
