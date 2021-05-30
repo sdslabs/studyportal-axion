@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import uploadIcon from 'assets/uploadIcon.svg';
 import approveIcon from 'assets/approveIcon.svg';
 import rejectIcon from 'assets/rejectIcon.svg';
@@ -26,6 +27,11 @@ const TableIconButton = ({ type, handleClick }) => {
       <img src={IconDetails[type].src} alt="" />
     </div>
   );
+};
+
+TableIconButton.propTypes = {
+  handleClick: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default TableIconButton;
