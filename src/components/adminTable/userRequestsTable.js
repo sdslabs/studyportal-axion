@@ -67,10 +67,10 @@ const UserRequestsTable = () => {
             )}
           </div>
           <div className="admin-table--secondary-row">
-            <label for={'file-input' + key}>
-              <TableIconButton type="upload" />
-            </label>
             <div className="row-item">
+              <label htmlFor={'file-input' + key}>
+                <TableIconButton type="upload" />
+              </label>
               <input
                 id={'file-input' + key}
                 className="file-upload"
@@ -78,7 +78,7 @@ const UserRequestsTable = () => {
                 onChange={() => {
                   sendFile(key, item.id, item.filetype, item.name, token);
                 }}
-              ></input>
+              />
             </div>
             <div className="row-item">
               <TableIconButton

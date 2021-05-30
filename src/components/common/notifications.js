@@ -63,7 +63,7 @@ class Notifications extends Component {
     const token = getCookie('token');
     getAllNotifications(token).then((res) => {
       if (res.length !== 0) {
-        this.setState({ notifications: res });
+        this.setState({ notifications: res.notifications });
       }
     });
   };
