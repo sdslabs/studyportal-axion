@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
 import { addCourse, rejectCourseRequest } from '../../admin/api/courseRequestApi';
@@ -7,9 +7,21 @@ import { getCookie } from '../../utils/handleCookies';
 const CourseRequestsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const [approved, setApproved] = useState([]);
+  const [rejected, setRejected] = useState([]);
   const token = getCookie('token');
 
-  if (activeData?.length === 0) return null;
+  const handleApprove = (id) => {
+    if (approved.includes(id) || rejected.includes(id)) return null;
+    addCourse(id, token).then(() => setApproved((prev) => [...prev, id]));
+  };
+
+  const handleReject = (id) => {
+    if (approved.includes(id) || rejected.includes(id)) return null;
+    rejectCourseRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
+  };
+
+  if (!activeData || activeData?.length === 0) return null;
 
   return (
     <>
@@ -31,21 +43,15 @@ const CourseRequestsTable = () => {
           </div>
           <div className="admin-table--secondary-row">
             <div className="row-item">
-              {/* <TableIconButton type={item.accepted ? 'approve_confirmed' : 'approve'} /> */}
               <TableIconButton
-                type="approve_confirmed"
-                handleClick={() => {
-                  addCourse(item.id, token);
-                }}
+                type={approved.includes(item.id) ? 'approve_confirmed' : 'approve'}
+                handleClick={() => handleApprove(item.id)}
               />
             </div>
             <div className="row-item">
-              {/* <TableIconButton type={item.rejected ? 'reject_confirmed' : 'reject'} /> */}
               <TableIconButton
-                type="reject"
-                handleClick={() => {
-                  rejectCourseRequest(item.id, token);
-                }}
+                type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
+                handleClick={() => handleReject(item.id)}
               />
             </div>
           </div>

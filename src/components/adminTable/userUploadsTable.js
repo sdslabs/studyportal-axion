@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
 import { addUpload, deleteUpload } from '../../admin/api/uploadsApi';
@@ -7,6 +7,8 @@ import { getCookie } from '../../utils/handleCookies';
 const UserUploadsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const [approved, setApproved] = useState([]);
+  const [rejected, setRejected] = useState([]);
   const token = getCookie('token');
 
   const downloadFile = (url) => {
@@ -15,6 +17,17 @@ const UserUploadsTable = () => {
   };
 
   if (activeData?.length === 0) return null;
+  const handleApprove = (id) => {
+    if (approved.includes(id) || rejected.includes(id)) return null;
+    addUpload(id, token).then(() => setApproved((prev) => [...prev, id]));
+  };
+
+  const handleReject = (id) => {
+    if (approved.includes(id) || rejected.includes(id)) return null;
+    deleteUpload(id, token).then(() => setRejected((prev) => [...prev, id]));
+  };
+
+  if (!activeData || activeData?.length === 0) return null;
 
   return (
     <>
@@ -29,7 +42,7 @@ const UserUploadsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {(activeData || []).map((item, key) => (
+      {activeData.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
             <span>{item.title}</span>
@@ -48,18 +61,14 @@ const UserUploadsTable = () => {
             </div>
             <div className="row-item">
               <TableIconButton
-                type="approve"
-                handleClick={() => {
-                  addUpload(item.id, token);
-                }}
+                type={approved.includes(item.id) ? 'approve_confirmed' : 'approve'}
+                handleClick={() => handleApprove(item.id)}
               />
             </div>
             <div className="row-item">
               <TableIconButton
-                type="reject"
-                handleClick={() => {
-                  deleteUpload(item.id, token);
-                }}
+                type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
+                handleClick={() => handleReject(item.id)}
               />
             </div>
           </div>

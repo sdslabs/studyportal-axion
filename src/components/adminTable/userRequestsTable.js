@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
 import * as Tabs from 'constants/adminPanelMenu';
 import { rejectFileRequest, uploadFile } from '../../admin/api/fileRequestApi';
@@ -7,15 +7,22 @@ import { getCookie } from '../../utils/handleCookies';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
+  const [uploaded, setUploaded] = useState([]);
+  const [rejected, setRejected] = useState([]);
   const store = useSelector((state) => state.adminPanel);
-  // const dispatch = useDispatch();
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const token = getCookie('token');
 
-  const sendFile = (key, id, filetype, name, token) => {
+  const handleSendFile = (key, id, filetype, name) => {
+    if (uploaded.includes(id) || rejected.includes(id)) return null;
     let tagId = 'file-input' + key;
     let file = document.getElementById(tagId).files[0];
-    uploadFile(id, file, name, filetype, token);
+    uploadFile(id, file, name, filetype, token).then(() => setUploaded((prev) => [...prev, id]));
+  };
+
+  const handleReject = (id) => {
+    if (uploaded.includes(id) || rejected.includes(id)) return null;
+    rejectFileRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
 
   useEffect(() => {
@@ -67,25 +74,23 @@ const UserRequestsTable = () => {
             )}
           </div>
           <div className="admin-table--secondary-row">
-            <label for={'file-input' + key}>
-              <TableIconButton type="upload" />
-            </label>
             <div className="row-item">
+              <label htmlFor={'file-input' + key}>
+                <TableIconButton
+                  type={uploaded.includes(item.id) ? 'approve_confirmed' : 'upload'}
+                />
+              </label>
               <input
                 id={'file-input' + key}
                 className="file-upload"
                 type="file"
-                onChange={() => {
-                  sendFile(key, item.id, item.filetype, item.name, token);
-                }}
-              ></input>
+                onChange={() => handleSendFile(key, item.id, item.filetype, item.name)}
+              />
             </div>
             <div className="row-item">
               <TableIconButton
-                type="reject"
-                handleClick={() => {
-                  rejectFileRequest(item.id, token);
-                }}
+                type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
+                handleClick={() => handleReject(item.id)}
               />
             </div>
           </div>
