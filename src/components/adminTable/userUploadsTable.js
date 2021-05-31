@@ -22,6 +22,12 @@ const UserUploadsTable = () => {
   };
 
   if (!activeData || activeData?.length === 0) return null;
+  const downloadFile = (url) => {
+    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
+    window.open(link, '_blank');
+  };
+
+  if (activeData?.length === 0) return null;
 
   return (
     <>
@@ -43,7 +49,12 @@ const UserUploadsTable = () => {
           </div>
           <div className="admin-table--secondary-row">
             <div className="row-item">
-              <TableIconButton type="download" />
+              <TableIconButton
+                type="download"
+                handleClick={() => {
+                  downloadFile(item.driveid);
+                }}
+              />
             </div>
             <div className="row-item">
               <TableIconButton type="preview" />
