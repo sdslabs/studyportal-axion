@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import arrow from 'assets/left-arrow.svg';
-import { getCourseRequests } from '../../admin/api/courseRequestApi';
-import { getFileRequests } from '../../admin/api/fileRequestApi';
-import { getUploads } from '../../admin/api/uploadsApi';
+import { getCourseRequests } from '../../api/courseRequestApi';
+import { getFileRequests } from '../../api/fileRequestApi';
+import { getUploads } from '../../api/uploadsApi';
 import { getCookie } from '../../utils/handleCookies';
 import * as constants from 'constants/adminPanelMenu';
 import { useDispatch, useSelector } from 'react-redux';

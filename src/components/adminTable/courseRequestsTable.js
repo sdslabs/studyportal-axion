@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
-import { addCourse, rejectCourseRequest } from '../../admin/api/courseRequestApi';
+import { addCourse, rejectCourseRequest } from 'api/courseRequestApi';
 import { getCookie } from '../../utils/handleCookies';
 
 const CourseRequestsTable = () => {

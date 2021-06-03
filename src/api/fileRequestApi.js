@@ -1,4 +1,4 @@
-import { axiosInstance } from '../../api/axiosInstance';
+import { axiosInstance } from './axiosInstance';
 import $ from 'jquery';
 
 function getFileRequests(token) {

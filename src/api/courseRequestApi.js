@@ -1,8 +1,9 @@
-import { axiosInstance } from '../../api/axiosInstance';
+import { axiosInstance } from './axiosInstance';
+import $ from 'jquery';
 
-function getUploads(token) {
+function getCourseRequests(token) {
   return axiosInstance
-    .get('/admin/uploads/', {
+    .get('/admin/courserequests/', {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -11,7 +12,6 @@ function getUploads(token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -19,11 +19,11 @@ function getUploads(token) {
     });
 }
 
-function approveUpload(id, token) {
+function approveCourseRequest(id, token) {
   return axiosInstance
     .put(
-      '/admin/uploads',
-      { file_id: id, status: 2 },
+      '/admin/courserequests',
+      { request: id, status: 2 },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -42,39 +42,32 @@ function approveUpload(id, token) {
     });
 }
 
-function addUpload(id, token) {
-  return axiosInstance
-    .put(
-      '/admin/uploads',
-      { upload: id, status: 3 },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-      },
-    )
-    .then((response) => {
-      const res = JSON.parse(response.request.response);
-      console.log(res);
-      return res;
-    })
-    .catch((error) => {
-      return Promise.reject(error);
-    });
+function addCourse(id, token) {
+  const status = 3;
+  return $.ajax({
+    method: 'PUT',
+    url: 'http://localhost:8005/api/v1/admin/courserequests',
+    data: { request: id, status: status },
+    dataType: 'json',
+    beforeSend(xhr) {
+      xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+    },
+  }).done((res) => {
+    console.log(res);
+    return res;
+  });
 }
 
-function deleteUpload(id, token) {
+function rejectCourseRequest(id, token) {
   return axiosInstance
-    .delete('/admin/uploads', {
+    .delete('/admin/courserequests', {
       headers: {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
       data: {
-        upload: id,
+        request: id,
       },
     })
     .then((response) => {
@@ -87,4 +80,4 @@ function deleteUpload(id, token) {
     });
 }
 
-export { getUploads, approveUpload, addUpload, deleteUpload };
+export { getCourseRequests, approveCourseRequest, addCourse, rejectCourseRequest };
