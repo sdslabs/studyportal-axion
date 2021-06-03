@@ -3,18 +3,26 @@ import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
 import { addUpload, deleteUpload } from '../../admin/api/uploadsApi';
 import { getCookie } from '../../utils/handleCookies';
+import file_preview from 'assets/file_preview.svg';
+
 
 const UserUploadsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const [approved, setApproved] = useState([]);
   const [rejected, setRejected] = useState([]);
+  const [previewLink, setPreviewLink] = useState('');
   const token = getCookie('token');
 
   const downloadFile = (url) => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
     window.open(link, '_blank');
   };
+
+  const previewFile = (url) => {
+    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}/preview`;
+    setPreviewLink(link);
+  }
 
   if (activeData?.length === 0) return null;
   const handleApprove = (id) => {
@@ -57,7 +65,7 @@ const UserUploadsTable = () => {
               />
             </div>
             <div className="row-item">
-              <TableIconButton type="preview" />
+              <TableIconButton type="preview" handleClick={() => previewFile(item.driveid)} />
             </div>
             <div className="row-item">
               <TableIconButton
@@ -74,6 +82,14 @@ const UserUploadsTable = () => {
           </div>
         </div>
       ))}
+      {previewLink != '' ? (
+        <iframe src={previewLink} className="file-preview"></iframe>
+      ) : (
+        <div className="file-preview">
+          <img src={file_preview}/>
+          <p>Click on preview to preview a file.</p>
+        </div>
+      )}
     </>
   );
 };
