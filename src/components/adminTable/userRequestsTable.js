@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
 import * as Tabs from 'constants/adminPanelMenu';
-import { rejectFileRequest, uploadFile } from '../../admin/api/fileRequestApi';
+import { rejectFileRequest, uploadFile } from 'api/fileRequestApi';
 import { getCookie } from '../../utils/handleCookies';
 
 const UserRequestsTable = () => {

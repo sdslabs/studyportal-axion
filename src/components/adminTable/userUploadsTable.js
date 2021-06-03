@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
-import { addUpload, deleteUpload } from '../../admin/api/uploadsApi';
+import { addUpload, deleteUpload } from 'api/uploadsApi';
 import { getCookie } from '../../utils/handleCookies';
 import file_preview from 'assets/file_preview.svg';
 
@@ -88,7 +88,7 @@ const UserUploadsTable = () => {
           </div>
         </div>
       ))}
-      {previewLink != '' ? (
+      {previewLink !== '' ? (
         <iframe src={previewLink} className="file-preview"></iframe>
       ) : (
         <div className="file-preview">
