@@ -75,3 +75,18 @@
 .file-upload {
   display: none;
 }
+
+.file-preview {
+  height: 20.063rem;
+  width: 39.375rem;
+  margin: auto;
+  margin-bottom: 0%;
+  border-top-left-radius: 1.875rem;
+  border-top-right-radius: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #C4C4C4;
+  @include font;
+}
