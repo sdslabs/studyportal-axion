@@ -14,13 +14,9 @@ const UserUploadsTable = () => {
   const [previewLink, setPreviewLink] = useState('');
   const token = getCookie('token');
 
-  const downloadFile = (url) => {
-    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
-    window.open(link, '_blank');
-  };
-
   const previewFile = (url) => {
-    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}/preview`;
+    console.log(url);
+    const link = `https://drive.google.com/file/d/${url}/preview`;
     setPreviewLink(link);
   }
 

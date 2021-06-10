@@ -15,27 +15,14 @@ const AdminSidebar = () => {
   const dispatch = useDispatch();
   const token = getCookie('token');
 
-  const handleClick = (index) => {
-    const token = getCookie('token');
-    setCurrTab(index);
-    setmenuitems([]);
-    //dispatch action here
-    if (index === 0) {
-      getCourseRequests(token).then((res) => {
-        setmenuitems(res.departments);
-        setitems(res.requests);
-      });
-    } else if (index === 1) {
-      getFileRequests(token).then((res) => {
-        setmenuitems(res.courses);
-        setitems(res.requests);
-      });
-    } else if (index === 2) {
-      getUploads(token).then((res) => {
-        setmenuitems(res.courses);
-        setitems(res.requests);
-      });
-    }
+  const handleBackClick = () => {
+    const payload = {
+      type: '',
+      data: [],
+    };
+    dispatch(SwitchMainMenu(payload));
+    dispatch(SwitchSubMenu(-1));
+    dispatch(SwitchTab(payload));
   };
 
   return (

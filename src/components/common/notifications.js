@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import NotificationCard from 'components/common/notificationCard';
 import polygon from 'assets/Polygon.svg';
 import notifs from 'assets/notifs.svg';
@@ -10,6 +11,7 @@ import { getAllNotifications, getNewNotification } from 'api/notificationApi';
 import { getCookie } from 'utils/handleCookies';
 import logo from 'assets/studyportal_logo.png';
 import { TOGGLE_NOTIFICATIONS } from 'constants/action-types';
+import _ from 'lodash';
 
 function mapStateToProps(state) {
   return { modal: state.modal };
@@ -24,20 +26,30 @@ function mapDispatchToProps(dispatch) {
 /**
  * Notification component for Studyportal.
  */
-class Notifications extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      notifications: [],
-    };
-  }
+const Notifications = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const content = useSelector((state) => state.content);
+  const [notifications, setNotifications] = useState([]);
 
   // eslint-disable-next-line react/no-deprecated
-  componentWillMount() {
-    this.getNotifications();
-  }
 
-  componentDidMount() {
+  const update = (notification) => {
+    setNotifications(notifications.filter((notif) => notif !== notification));
+  };
+
+  const getNotifications = () => {
+    const token = getCookie('token');
+    getAllNotifications(token).then((res) => {
+      console.log(res);
+      if (!_.isEmpty(res)) {
+        console.log('here');
+        setNotifications(res);
+      }
+    });
+  };
+  useEffect(() => {
+    getNotifications();
     const ws = getNewNotification(getCookie('token'));
     ws.onmessage = (message) => {
       const data = JSON.parse(message.data);
@@ -47,63 +59,48 @@ class Notifications extends Component {
           icon: logo,
         });
       }
-      this.setState((prev) => ({
-        notifications: [...prev.notifications, data.notification_data],
-      }));
+      console.log("whi",notifications, data.notification_data);
+      if (_.isEmpty(notifications)) setNotifications([data.notification_data]);
+      else setNotifications(notification => [...notification, data.notification_data]);
     };
-  }
+  }, [content, user]);
 
-  update = (notification) => {
-    this.setState((prev) => ({
-      notifications: prev.notifications.filter((notif) => notif !== notification),
-    }));
-  };
+  console.log("outside",notifications);
 
-  getNotifications = () => {
-    const token = getCookie('token');
-    getAllNotifications(token).then((res) => {
-      if (res.length !== 0) {
-        this.setState({ notifications: res.notifications });
-      }
-    });
-  };
-
-  render() {
-    return (
-      <div className="notifications">
-        <div className="notifications--button" onClick={() => this.props.toggleNotifications()}>
-          <div className="notifications--button-image">
-            <img
-              src={this.state.notifications.length > 0 ? notifs_active : notifs}
-              alt="notification"
-            />
-          </div>
+  return (
+    <div className="notifications">
+      <div className="notifications--button" onClick={() => props.toggleNotifications()}>
+        <div className="notifications--button-image">
+          <img
+            src={!_.isEmpty(notifications) ? notifs_active : notifs}
+            alt="notification"
+          />
         </div>
-        {this.props.modal.notifications ? (
-          <Fragment>
-            <div className="notifications--polygon">
-              <img src={polygon} alt="polygon" />
-            </div>
-            <div className="notifications--container">
-              {this.state.notifications.length ? (
-                this.state.notifications.map((notification) => (
-                  <NotificationCard
-                    key={notification.id}
-                    notification_data={notification}
-                    update={this.update}
-                  />
-                ))
-              ) : (
-                <div className="notifications--none">No new notifications</div>
-              )}
-            </div>
-          </Fragment>
-        ) : (
-          <Fragment />
-        )}
       </div>
-    );
-  }
+      {props.modal.notifications ? (
+        <Fragment>
+          <div className="notifications--polygon">
+            <img src={polygon} alt="polygon" />
+          </div>
+          <div className="notifications--container">
+            {!_.isEmpty(notifications) ? (
+              notifications.map((notification) => (
+                <NotificationCard
+                  key={notification.id}
+                  notification_data={notification}
+                  update={update}
+                />
+              ))
+            ) : (
+              <div className="notifications--none">No new notifications</div>
+            )}
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment />
+      )}
+    </div>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
