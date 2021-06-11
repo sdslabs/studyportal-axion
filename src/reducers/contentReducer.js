@@ -7,6 +7,8 @@ import {
   SWITCH_ACTIVE_MYCOURSE,
   SET_MYCOURSE_FILETYPE,
   RESET_ACTIVES,
+  SET_NOTIFICATIONS,
+  ADD_NEW_NOTIFICATION,
 } from 'constants/action-types';
 
 const initialState = {
@@ -29,6 +31,7 @@ const initialState = {
     title: '',
   },
   myCoursefiletype: undefined,
+  notifications: [],
 };
 
 export default function contentReducer(state = initialState, action) {
@@ -84,6 +87,18 @@ export default function contentReducer(state = initialState, action) {
         },
         filetype: undefined,
       };
+    case SET_NOTIFICATIONS:
+      return {
+        ...state,
+        notifications: action.payload,
+      };
+
+    case ADD_NEW_NOTIFICATION:
+      return {
+        ...state,
+        notifications: [action.payload, ...state.notifications],
+      };
+
     default:
       return state;
   }

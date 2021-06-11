@@ -51,11 +51,13 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         notifications: !state.notifications,
+        userMenu: false,
       };
     case TOGGLE_USERMENU:
       return {
         ...state,
         userMenu: !state.userMenu,
+        notifications: false,
       };
     case CLOSE_USERMENU:
       return {
