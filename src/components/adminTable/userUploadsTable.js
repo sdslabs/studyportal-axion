@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
 import { addUpload, deleteUpload } from 'api/uploadsApi';
-import { getCookie } from '../../utils/handleCookies';
+import { getCookie } from 'utils/handleCookies';
 import file_preview from 'assets/file_preview.svg';
-
+import EmptyTable from 'components/error/adminEmptyTable';
 
 const UserUploadsTable = () => {
   const store = useSelector((state) => state.adminPanel);
@@ -18,9 +18,8 @@ const UserUploadsTable = () => {
     console.log(url);
     const link = `https://drive.google.com/file/d/${url}/preview`;
     setPreviewLink(link);
-  }
+  };
 
-  if (activeData?.length === 0) return null;
   const handleApprove = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
     addUpload(id, token).then(() => setApproved((prev) => [...prev, id]));
@@ -31,13 +30,12 @@ const UserUploadsTable = () => {
     deleteUpload(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
 
-  if (!activeData || activeData?.length === 0) return null;
   const downloadFile = (url) => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
     window.open(link, '_blank');
   };
 
-  if (activeData?.length === 0) return null;
+  if (!activeData || activeData?.length === 0) return <EmptyTable />;
 
   return (
     <>
@@ -52,7 +50,7 @@ const UserUploadsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {activeData.map((item, key) => (
+      {(activeData || []).map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
             <span>{item.title}</span>
@@ -88,7 +86,7 @@ const UserUploadsTable = () => {
         <iframe src={previewLink} className="file-preview"></iframe>
       ) : (
         <div className="file-preview">
-          <img src={file_preview}/>
+          <img src={file_preview} />
           <p>Click on preview to preview a file.</p>
         </div>
       )}

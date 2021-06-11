@@ -17,15 +17,15 @@ import polygon from 'assets/Polygon.svg';
 import notifs from 'assets/notifs.svg';
 import notifs_active from 'assets/notifs_active.svg';
 
-/**
- * Notification component for Studyportal.
- */
-
+/* Action for setting notifications */
 const SetNotificationContent = (data) => ({
   type: SET_NOTIFICATIONS,
   payload: data,
 });
 
+/**
+ * Notification component for Studyportal.
+ */
 const Notifications = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
@@ -55,12 +55,11 @@ const Notifications = () => {
           icon: logo,
         });
       }
+      /* Adds new notification at index: 0 */
       dispatch({ type: ADD_NEW_NOTIFICATION, payload: data.notification_data });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
-
-  console.log(notifications);
 
   return (
     <div className="notifications">

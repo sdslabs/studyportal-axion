@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import arrow from 'assets/left-arrow.svg';
+import arrow from 'assets/back.svg';
 import { getCourseRequests } from '../../api/courseRequestApi';
 import { getFileRequests } from '../../api/fileRequestApi';
 import { getUploads } from '../../api/uploadsApi';
@@ -27,14 +27,18 @@ const AdminSidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="sidebar--course">
-        {store.activeMainMenu === '' ? 'Admin Panel' : store.activeMainMenu}
-      </div>
-      {store.activeMainMenu !== '' && (
-        <div className="sidebar--back" onClick={handleBackClick}>
-          <img src={arrow} alt="arrow" /> <span className="back">Back</span>
+      <div className="sidebar--head">
+        <div className="sidebar--course">
+          {store.activeMainMenu === '' ? 'Admin Panel' : store.activeMainMenu}
         </div>
-      )}
+        {store.activeMainMenu !== '' ? (
+          <div className="sidebar--back" onClick={handleBackClick}>
+            <img src={arrow} alt="arrow" /> <span className="back">Back</span>
+          </div>
+        ) : (
+          <div style={{ padding: '1rem' }} />
+        )}
+      </div>
       <MainMenu store={store} dispatch={dispatch} token={token} />
       <SubMenu store={store} dispatch={dispatch} />
     </div>

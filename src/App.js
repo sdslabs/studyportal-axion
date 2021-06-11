@@ -7,12 +7,12 @@ import ErrorPage from 'pages/error';
 import MyCourseRouter from 'routers/MyCourseRouter';
 import ActivityRouter from 'routers/ActivityRouter';
 import DepartmentRouter from 'routers/DepartmentRouter';
-import AdminRouter from 'routers/AdminRouter';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
 import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
+import AdminPanel from 'pages/admin';
 
 function mapStateToProps(state) {
   return {
@@ -62,7 +62,7 @@ class App extends Component {
             <DepartmentRouter />
           </Route>
           <Route path="/admin">
-            {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
+            {this.canAccessAdmin(this.props.user) ? <AdminPanel /> : <ErrorPage />}
           </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>

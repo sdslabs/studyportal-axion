@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import TableIconButton from './tableIconButtons';
 import * as Tabs from 'constants/adminPanelMenu';
 import { rejectFileRequest, uploadFile } from 'api/fileRequestApi';
-import { getCookie } from '../../utils/handleCookies';
+import { getCookie } from 'utils/handleCookies';
+import EmptyTable from 'components/error/adminEmptyTable';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
@@ -52,7 +53,7 @@ const UserRequestsTable = () => {
     }
   }, [store.activeTab, activeData]);
 
-  if (!rows || rows?.length === 0) return null;
+  if (!rows || rows?.length === 0) return <EmptyTable />;
 
   return (
     <>

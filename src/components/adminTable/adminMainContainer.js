@@ -5,6 +5,7 @@ import * as constants from 'constants/adminPanelMenu';
 import { SwitchTab } from 'actions/adminPanelActions';
 import CourseRequestsTable from './courseRequestsTable';
 import UserUploadsTable from './userUploadsTable';
+import NoOptionsSelected from '../error/adminNoOptns';
 
 const Tabs = [
   constants.ALL_TAB,
@@ -30,7 +31,7 @@ const AdminMainContainer = () => {
         return <UserUploadsTable />;
 
       default:
-        return <p>No option selected</p>;
+        return <NoOptionsSelected />;
     }
   };
 

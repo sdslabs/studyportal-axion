@@ -87,6 +87,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
   @include font;
+}
+
+.error-page-text {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0.5rem;
+  font-weight: 500;
+  font-family: 'Droid Sans';
+  color: #0d2938;
 }

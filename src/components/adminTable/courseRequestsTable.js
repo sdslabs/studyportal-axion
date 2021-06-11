@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import TableIconButton from './tableIconButtons';
 import { useSelector } from 'react-redux';
 import { addCourse, rejectCourseRequest } from 'api/courseRequestApi';
-import { getCookie } from '../../utils/handleCookies';
+import { getCookie } from 'utils/handleCookies';
+import EmptyTable from 'components/error/adminEmptyTable';
 
 const CourseRequestsTable = () => {
   const store = useSelector((state) => state.adminPanel);
@@ -21,7 +22,7 @@ const CourseRequestsTable = () => {
     rejectCourseRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
 
-  if (!activeData || activeData?.length === 0) return null;
+  if (!activeData || activeData?.length === 0) return <EmptyTable />;
 
   return (
     <>
