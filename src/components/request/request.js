@@ -244,7 +244,7 @@ class Request extends Component {
                         <input
                           type="radio"
                           name="material"
-                          value="Tutorial"
+                          value="Tutorials"
                           onChange={this.active_name}
                           className="radio"
                           disabled={!(this.state.disable >= 2)}
@@ -256,13 +256,13 @@ class Request extends Component {
                           color: this.state.disable >= 2 ? '#2B2A28' : 'rgba(43, 42, 40, 0.2)',
                         }}
                       >
-                        Tutorial
+                        Tutorials
                       </span>
                       <div className="file--material_books">
                         <input
                           type="radio"
                           name="material"
-                          value="Book"
+                          value="Books"
                           onChange={this.active_name}
                           className="radio"
                           disabled={!(this.state.disable >= 2)}
