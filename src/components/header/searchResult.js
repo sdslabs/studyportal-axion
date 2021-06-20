@@ -18,8 +18,6 @@ const SearchResult = (props) => {
     ppt,
   };
 
-  console.log(props);
-
   return (
     <a
       href={`https://drive.google.com/a/iitr.ac.in/uc?id=${props.url}&export=download`}

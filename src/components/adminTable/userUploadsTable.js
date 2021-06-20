@@ -15,7 +15,6 @@ const UserUploadsTable = () => {
   const token = getCookie('token');
 
   const previewFile = (url) => {
-    console.log(url);
     const link = `https://drive.google.com/file/d/${url}/preview`;
     setPreviewLink(link);
   };

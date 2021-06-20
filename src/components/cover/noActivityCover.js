@@ -14,7 +14,6 @@ function NoActivityCover() {
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });
   };
-  console.log(state);
 
   return (
     <div className="noactivitycover" onClick={() => closeModal()}>

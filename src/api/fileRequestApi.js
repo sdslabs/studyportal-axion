@@ -12,7 +12,6 @@ function getFileRequests(token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -35,7 +34,6 @@ function approveFileRequest(id, token) {
     )
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -61,7 +59,6 @@ function uploadFile(id, file, name, filetype, token) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     },
   }).done((res) => {
-    console.log(res);
     return res;
   });
 }
@@ -80,7 +77,6 @@ function rejectFileRequest(id, token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {

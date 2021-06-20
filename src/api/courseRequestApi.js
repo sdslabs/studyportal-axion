@@ -34,7 +34,6 @@ function approveCourseRequest(id, token) {
     )
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -53,7 +52,6 @@ function addCourse(id, token) {
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     },
   }).done((res) => {
-    console.log(res);
     return res;
   });
 }
@@ -72,7 +70,6 @@ function rejectCourseRequest(id, token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {

@@ -11,7 +11,6 @@ function getUploads(token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -34,7 +33,6 @@ function approveUpload(id, token) {
     )
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -57,7 +55,6 @@ function addUpload(id, token) {
     )
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
@@ -79,7 +76,6 @@ function deleteUpload(id, token) {
     })
     .then((response) => {
       const res = JSON.parse(response.request.response);
-      console.log(res);
       return res;
     })
     .catch((error) => {
