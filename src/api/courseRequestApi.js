@@ -1,4 +1,5 @@
 import { axiosInstance } from './axiosInstance';
+import { CONFIG } from 'config/config';
 import $ from 'jquery';
 
 function getCourseRequests(token) {
@@ -45,7 +46,7 @@ function addCourse(id, token) {
   const status = 3;
   return $.ajax({
     method: 'PUT',
-    url: 'http://localhost:8005/api/v1/admin/courserequests',
+    url: `${CONFIG.nexusRoot}/admin/courserequests`,
     data: { request: id, status: status },
     dataType: 'json',
     beforeSend(xhr) {

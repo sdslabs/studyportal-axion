@@ -1,4 +1,5 @@
 import { axiosInstance } from './axiosInstance';
+import { CONFIG } from 'config/config';
 import $ from 'jquery';
 
 function getFileRequests(token) {
@@ -51,7 +52,7 @@ function uploadFile(id, file, name, filetype, token) {
   formData.append('status', status);
   return $.ajax({
     method: 'PUT',
-    url: 'http://localhost:8005/api/v1/admin/filerequests',
+    url: `${CONFIG.nexusRoot}/admin/filerequests`,
     data: formData,
     processData: false,
     contentType: false,
