@@ -5,6 +5,7 @@ import { addUpload, deleteUpload } from 'api/uploadsApi';
 import { getCookie } from 'utils/handleCookies';
 import file_preview from 'assets/file_preview.svg';
 import EmptyTable from 'components/error/adminEmptyTable';
+import _ from 'lodash';
 
 const UserUploadsTable = () => {
   const store = useSelector((state) => state.adminPanel);
@@ -34,7 +35,7 @@ const UserUploadsTable = () => {
     window.open(link, '_blank');
   };
 
-  if (!activeData || activeData?.length === 0) return <EmptyTable />;
+  if (_.isEmpty(activeData)) return <EmptyTable />;
 
   return (
     <>
@@ -49,7 +50,7 @@ const UserUploadsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {(activeData || []).map((item, key) => (
+      {activeData.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
             <span>{item.title}</span>

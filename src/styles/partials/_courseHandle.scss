@@ -46,6 +46,10 @@
   &heading:hover {
     cursor: pointer;
   }
+
+  &heading-light {
+    opacity: 0.5;
+  }
 }
 
 .ant-tooltip-inner {

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { addCourse, rejectCourseRequest } from 'api/courseRequestApi';
 import { getCookie } from 'utils/handleCookies';
 import EmptyTable from 'components/error/adminEmptyTable';
+import _ from 'lodash';
 
 const CourseRequestsTable = () => {
   const store = useSelector((state) => state.adminPanel);
@@ -22,7 +23,7 @@ const CourseRequestsTable = () => {
     rejectCourseRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
 
-  if (!activeData || activeData?.length === 0) return <EmptyTable />;
+  if (_.isEmpty(activeData)) return <EmptyTable />;
 
   return (
     <>
@@ -35,7 +36,7 @@ const CourseRequestsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {(activeData || []).map((item, key) => (
+      {activeData.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
             <span>

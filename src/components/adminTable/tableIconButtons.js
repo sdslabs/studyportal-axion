@@ -9,7 +9,9 @@ import approveConfirmed from 'assets/approve_confirmed.svg';
 import downloadIcon from 'assets/downloadCloud.svg';
 import previewIcon from 'assets/previewIcon.svg';
 
-/**************** Component to handle all icon ctas in tables *******************/
+/**
+ *  Component to handle all icon ctas in tables
+ */
 const IconDetails = {
   upload: { src: uploadIcon, class: 'admin-icon--primary' },
   download: { src: downloadIcon, class: 'admin-icon--primary' },
@@ -24,7 +26,7 @@ const IconDetails = {
 const TableIconButton = ({ type, handleClick }) => {
   return (
     <div onClick={handleClick} className={`admin-icon-btn ${IconDetails[type].class}`}>
-      <img src={IconDetails[type].src} alt="" />
+      <img src={IconDetails[type].src} alt={type} />
     </div>
   );
 };
