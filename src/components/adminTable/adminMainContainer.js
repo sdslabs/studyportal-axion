@@ -1,11 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import UserRequestsTable from './userRequestsTable';
 import * as constants from 'constants/adminPanelMenu';
 import { SwitchTab } from 'actions/adminPanelActions';
-import CourseRequestsTable from './courseRequestsTable';
-import UserUploadsTable from './userUploadsTable';
-import NoOptionsSelected from '../error/adminNoOptns';
 
 const Tabs = [
   constants.ALL_TAB,
@@ -15,25 +12,9 @@ const Tabs = [
   constants.EXAM_TAB,
 ];
 
-const AdminMainContainer = () => {
+const AdminMainContainer = (props) => {
   const store = useSelector((state) => state.adminPanel);
   const dispatch = useDispatch();
-
-  const getTable = () => {
-    switch (store.activeMainMenu) {
-      case constants.COURSE_REQUEST_MENU:
-        return <CourseRequestsTable />;
-
-      case constants.USER_REQUEST_MENU:
-        return <UserRequestsTable />;
-
-      case constants.USER_UPLOADS_MENU:
-        return <UserUploadsTable />;
-
-      default:
-        return <NoOptionsSelected />;
-    }
-  };
 
   return (
     <div className="coursepage">
@@ -57,9 +38,13 @@ const AdminMainContainer = () => {
           </div>
         </>
       )}
-      {getTable()}
+      {props.children}
     </div>
   );
+};
+
+AdminMainContainer.propTypes = {
+  children: PropTypes.any,
 };
 
 export default AdminMainContainer;

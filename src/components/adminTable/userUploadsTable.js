@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableIconButton from './tableIconButtons';
-import { useSelector } from 'react-redux';
-import { addUpload, deleteUpload } from 'api/uploadsApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUpload, deleteUpload, getUploads } from 'api/uploadsApi';
 import { getCookie } from 'utils/handleCookies';
 import file_preview from 'assets/file_preview.svg';
 import EmptyTable from 'components/error/adminEmptyTable';
 import _ from 'lodash';
+import { SetTableData, SwitchMainMenu, SwitchSubMenu } from 'actions/adminPanelActions';
+import { USER_UPLOADS_MENU } from 'constants/adminPanelMenu';
 
 const UserUploadsTable = () => {
-  const store = useSelector((state) => state.adminPanel);
-  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const [approved, setApproved] = useState([]);
   const [rejected, setRejected] = useState([]);
   const [previewLink, setPreviewLink] = useState('');
+
   const token = getCookie('token');
+  const store = useSelector((state) => state.adminPanel);
+  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
+  const dispatch = useDispatch();
 
   const previewFile = (url) => {
     const link = `https://drive.google.com/file/d/${url}/preview`;
@@ -34,6 +38,22 @@ const UserUploadsTable = () => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
     window.open(link, '_blank');
   };
+
+  const setRequestData = (res) => {
+    dispatch(
+      SwitchMainMenu({
+        type: USER_UPLOADS_MENU,
+        data: res.courses,
+      }),
+    );
+    dispatch(SetTableData(res.uploads));
+    dispatch(SwitchSubMenu(0));
+  };
+
+  useEffect(() => {
+    getUploads(token).then(setRequestData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (_.isEmpty(activeData)) return <EmptyTable />;
 

@@ -1,17 +1,28 @@
 import React from 'react';
-// import AdminPanel from 'admin/App';
-import ErrorPage from 'pages/error';
-import { Route, Switch } from 'react-router';
-import AdminPanel from 'pages/admin';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Header from 'components/header/header';
+import AdminSidebar from 'components/sidebar/adminSidebar';
+import AdminMainContainer from 'components/adminTable/adminMainContainer';
+import CourseRequestsTable from 'components/adminTable/courseRequestsTable';
+import UserUploadsTable from 'components/adminTable/userUploadsTable';
+import UserRequestsTable from 'components/adminTable/userRequestsTable';
+import NoOptionsSelected from 'components/error/adminNoOptns';
 
-//TODO: get rid-off this router as adminPanel operates on only one single route
-const AdminRouter = () => {
-  return (
-    <Switch>
-      <Route exact path="/admin" component={AdminPanel} />
-      <Route path="*" component={ErrorPage} />
-    </Switch>
-  );
-};
+const AdminRouter = () => (
+  <>
+    <Header />
+    <BrowserRouter basename="/admin">
+      <AdminSidebar />
+      <AdminMainContainer>
+        <Switch>
+          <Route exact path="/course-requests" component={CourseRequestsTable} />
+          <Route exact path="/user-requests" component={UserRequestsTable} />
+          <Route exact path="/user-uploads" component={UserUploadsTable} />
+          <Route path="*" component={NoOptionsSelected} />
+        </Switch>
+      </AdminMainContainer>
+    </BrowserRouter>
+  </>
+);
 
 export default AdminRouter;

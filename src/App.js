@@ -12,7 +12,7 @@ import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
 import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
-import AdminPanel from 'pages/admin';
+import AdminRouter from './routers/AdminRouter';
 
 function mapStateToProps(state) {
   return {
@@ -62,7 +62,7 @@ class App extends Component {
             <DepartmentRouter />
           </Route>
           <Route path="/admin">
-            {this.canAccessAdmin(this.props.user) ? <AdminPanel /> : <ErrorPage />}
+            {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
           </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>

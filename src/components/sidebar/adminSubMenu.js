@@ -8,7 +8,7 @@ const SubMenu = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className={`${store.activeSubMenu > -1 ? '' : 'hidden'} sidebar--course-name`}>
+    <div className={'sidebar--course-name'}>
       {!_.isEmpty(store.subMenuData) ? (
         store.subMenuData.map((item, key) => (
           <div

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import TableIconButton from './tableIconButtons';
-import * as Tabs from 'constants/adminPanelMenu';
-import { rejectFileRequest, uploadFile } from 'api/fileRequestApi';
+import { useDispatch, useSelector } from 'react-redux';
+import * as constants from 'constants/adminPanelMenu';
+import { getFileRequests, rejectFileRequest, uploadFile } from 'api/fileRequestApi';
 import { getCookie } from 'utils/handleCookies';
+import TableIconButton from 'components/adminTable/tableIconButtons';
 import EmptyTable from 'components/error/adminEmptyTable';
+import { SetTableData, SwitchMainMenu, SwitchSubMenu, SwitchTab } from 'actions/adminPanelActions';
+import _ from 'lodash';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
   const [uploaded, setUploaded] = useState([]);
   const [rejected, setRejected] = useState([]);
+
+  const dispatch = useDispatch();
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const token = getCookie('token');
@@ -26,25 +30,42 @@ const UserRequestsTable = () => {
     rejectFileRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
 
+  const setRequestData = (res) => {
+    dispatch(
+      SwitchMainMenu({
+        type: constants.USER_REQUEST_MENU,
+        data: res.courses,
+      }),
+    );
+    dispatch(SetTableData(res.requests));
+    dispatch(SwitchTab(constants.ALL_TAB));
+    dispatch(SwitchSubMenu(0));
+  };
+
+  useEffect(() => {
+    getFileRequests(token).then(setRequestData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     switch (store.activeTab) {
-      case Tabs.ALL_TAB:
+      case constants.ALL_TAB:
         setRows(activeData);
         break;
 
-      case Tabs.TUT_TAB:
-        setRows(getFilteredArray(activeData, 'Tutorial'));
+      case constants.TUT_TAB:
+        setRows(getFilteredArray(activeData, 'Tutorials'));
         break;
 
-      case Tabs.BOOKS_TAB:
-        setRows(getFilteredArray(activeData, 'Book'));
+      case constants.BOOKS_TAB:
+        setRows(getFilteredArray(activeData, 'Books'));
         break;
 
-      case Tabs.NOTES_TAB:
+      case constants.NOTES_TAB:
         setRows(getFilteredArray(activeData, 'Notes'));
         break;
 
-      case Tabs.EXAM_TAB:
+      case constants.EXAM_TAB:
         setRows(getFilteredArray(activeData, 'Examination Papers'));
         break;
 
@@ -53,7 +74,7 @@ const UserRequestsTable = () => {
     }
   }, [store.activeTab, activeData]);
 
-  if (!rows || rows?.length === 0) return <EmptyTable />;
+  if (_.isEmpty(rows)) return <EmptyTable />;
 
   return (
     <>
@@ -70,7 +91,7 @@ const UserRequestsTable = () => {
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
             <span>{item?.title}</span>
-            {store.activeTab === Tabs.ALL_TAB && (
+            {store.activeTab === constants.ALL_TAB && (
               <p style={{ opacity: 0.7, margin: '0.6rem 0' }}>{item?.filetype}</p>
             )}
           </div>

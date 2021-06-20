@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TableIconButton from './tableIconButtons';
-import { useSelector } from 'react-redux';
-import { addCourse, rejectCourseRequest } from 'api/courseRequestApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCourse, rejectCourseRequest, getCourseRequests } from 'api/courseRequestApi';
 import { getCookie } from 'utils/handleCookies';
 import EmptyTable from 'components/error/adminEmptyTable';
 import _ from 'lodash';
+import { SetTableData, SwitchMainMenu, SwitchSubMenu } from 'actions/adminPanelActions';
+import { COURSE_REQUEST_MENU } from 'constants/adminPanelMenu';
 
 const CourseRequestsTable = () => {
-  const store = useSelector((state) => state.adminPanel);
-  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const [approved, setApproved] = useState([]);
   const [rejected, setRejected] = useState([]);
+
   const token = getCookie('token');
+  const dispatch = useDispatch();
+  const store = useSelector((state) => state.adminPanel);
+  const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
 
   const handleApprove = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
@@ -22,6 +26,22 @@ const CourseRequestsTable = () => {
     if (approved.includes(id) || rejected.includes(id)) return null;
     rejectCourseRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
   };
+
+  const setRequestData = (res) => {
+    dispatch(
+      SwitchMainMenu({
+        type: COURSE_REQUEST_MENU,
+        data: res.departments,
+      }),
+    );
+    dispatch(SetTableData(res.requests));
+    dispatch(SwitchSubMenu(0));
+  };
+
+  useEffect(() => {
+    getCourseRequests(token).then(setRequestData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (_.isEmpty(activeData)) return <EmptyTable />;
 
