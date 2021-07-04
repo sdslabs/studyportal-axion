@@ -24,10 +24,9 @@ const AdminMainContainer = (props) => {
           <div className="coursepage--category">
             {Tabs.map((tab, index) => (
               <span
-                className={`${
-                  store.activeTab === tab ? 'active-tab-admin' : ''
-                } ${'coursepage--category_tut tab-admin'}`}
-                style={index === 0 ? { borderLeft: 'none' } : null}
+                className={`${store.activeTab === tab ? 'active-tab-admin' : ''} ${
+                  !index ? 'coursepage--category_all' : 'coursepage--category_tut'
+                } tab-admin`}
                 key={index}
                 onClick={() => dispatch(SwitchTab(tab))}
               >

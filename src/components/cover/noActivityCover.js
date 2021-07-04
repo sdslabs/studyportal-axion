@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import error from 'assets/error.svg';
 import 'styles/main.scss';
 import { CLOSE_MODAL } from 'constants/action-types';
@@ -9,7 +9,6 @@ import { CLOSE_MODAL } from 'constants/action-types';
  */
 function NoActivityCover() {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.modal);
 
   const closeModal = () => {
     dispatch({ type: CLOSE_MODAL });

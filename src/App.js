@@ -11,8 +11,8 @@ import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
-import { ADD_DEPARTMENTS, RESET_APP } from './constants/action-types';
-import AdminRouter from './routers/AdminRouter';
+import { ADD_DEPARTMENTS, RESET_APP } from 'constants/action-types';
+import AdminRouter from 'routers/AdminRouter';
 
 function mapStateToProps(state) {
   return {

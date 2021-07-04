@@ -36,7 +36,10 @@ const UserUploadsTable = () => {
 
   const downloadFile = (url) => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
-    window.open(link, '_blank');
+
+    let newTab = window.open(link, '_blank');
+    newTab.opener = null;
+    newTab.location = link;
   };
 
   const setRequestData = (res) => {
@@ -103,10 +106,10 @@ const UserUploadsTable = () => {
         </div>
       ))}
       {previewLink !== '' ? (
-        <iframe src={previewLink} className="file-preview"></iframe>
+        <iframe src={previewLink} className="file-preview" title="preview"></iframe>
       ) : (
         <div className="file-preview">
-          <img src={file_preview} />
+          <img src={file_preview} alt="preview" />
           <p>Click on preview to preview a file.</p>
         </div>
       )}
