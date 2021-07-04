@@ -17,9 +17,9 @@ const AdminRouter = () => (
       <AdminMainContainer>
         <Switch>
           <Route exact path="/" component={NoOptionsSelected} />
-          <Route exact path="/course-requests" component={CourseRequestsTable} />
-          <Route exact path="/user-requests" component={UserRequestsTable} />
-          <Route exact path="/user-uploads" component={UserUploadsTable} />
+          <Route exact path="/course/requests" component={CourseRequestsTable} />
+          <Route exact path="/user/requests" component={UserRequestsTable} />
+          <Route exact path="/user/uploads" component={UserUploadsTable} />
           <Route path="*" component={Error} />
         </Switch>
       </AdminMainContainer>

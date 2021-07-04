@@ -11,9 +11,9 @@ const MainMenu = () => {
   const store = useSelector((state) => state.adminPanel);
 
   const menuItems = [
-    { type: COURSE_REQUEST_MENU, route: '/course-requests' },
-    { type: USER_REQUEST_MENU, route: '/user-requests' },
-    { type: USER_UPLOADS_MENU, route: '/user-uploads' },
+    { type: COURSE_REQUEST_MENU, route: '/course/requests' },
+    { type: USER_REQUEST_MENU, route: '/user/requests' },
+    { type: USER_UPLOADS_MENU, route: '/user/uploads' },
   ];
 
   return (
