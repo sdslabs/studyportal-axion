@@ -7,6 +7,7 @@ import CourseRequestsTable from 'components/adminTable/courseRequestsTable';
 import UserUploadsTable from 'components/adminTable/userUploadsTable';
 import UserRequestsTable from 'components/adminTable/userRequestsTable';
 import NoOptionsSelected from 'components/error/adminNoOptns';
+import Error from 'components/error/error';
 
 const AdminRouter = () => (
   <>
@@ -15,10 +16,11 @@ const AdminRouter = () => (
       <AdminSidebar />
       <AdminMainContainer>
         <Switch>
+          <Route exact path="/" component={NoOptionsSelected} />
           <Route exact path="/course-requests" component={CourseRequestsTable} />
           <Route exact path="/user-requests" component={UserRequestsTable} />
           <Route exact path="/user-uploads" component={UserUploadsTable} />
-          <Route path="*" component={NoOptionsSelected} />
+          <Route path="*" component={Error} />
         </Switch>
       </AdminMainContainer>
     </BrowserRouter>
