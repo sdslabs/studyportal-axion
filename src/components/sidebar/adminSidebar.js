@@ -2,7 +2,7 @@
 import React from 'react';
 import arrow from 'assets/back.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { SwitchMainMenu, SwitchSubMenu, SwitchTab } from 'actions/adminPanelActions';
+import { ResetAdminMenu } from 'actions/adminPanelActions';
 import MainMenu from 'components/sidebar/adminMainMenu';
 import SubMenu from 'components/sidebar/adminSubMenu';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -17,13 +17,7 @@ const AdminSidebar = () => {
   const isAdminHome = useLocation().pathname === '/';
 
   const handleBackClick = () => {
-    const payload = {
-      type: '',
-      data: [],
-    };
-    dispatch(SwitchMainMenu(payload));
-    dispatch(SwitchSubMenu(-1));
-    dispatch(SwitchTab(payload));
+    dispatch(ResetAdminMenu());
     history.push('/');
   };
 

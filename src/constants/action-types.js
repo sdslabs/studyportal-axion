@@ -31,3 +31,4 @@ export const SWITCH_MAIN_MENU = 'SWITCH_MAIN_MENU';
 export const SWITCH_SUB_MENU = 'SWITCH_SUB_MENU';
 export const SWITCH_TAB = 'SWITCH_TAB';
 export const SET_TABLE_DATA = 'SET_TABLE_DATA';
+export const RESET_ADMIN_MENU = 'RESET_ADMIN_MENU';

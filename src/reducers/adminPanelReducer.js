@@ -3,6 +3,7 @@ import {
   SWITCH_SUB_MENU,
   SWITCH_TAB,
   SET_TABLE_DATA,
+  RESET_ADMIN_MENU,
 } from 'constants/action-types';
 
 const initialState = {
@@ -39,6 +40,9 @@ export default function adminPanelReducer(state = initialState, action) {
         ...state,
         tableData: action.payload,
       };
+
+    case RESET_ADMIN_MENU:
+      return initialState;
 
     default:
       return state;
