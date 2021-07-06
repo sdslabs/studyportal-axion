@@ -42,7 +42,11 @@ const MaterialCard = (props) => {
    */
   const downloadFile = (id, url) => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
-    window.open(link, '_blank');
+
+    let newTab = window.open(link, '_blank');
+    newTab.opener = null;
+    newTab.location = link;
+
     downloadFiles(id).then(() => {
       props.updateFileState();
     });
