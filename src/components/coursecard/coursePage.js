@@ -12,6 +12,7 @@ import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
 import { getCookie } from 'utils/handleCookies';
 import shortName from 'utils/short-name';
 import { getUser } from 'utils/getUser';
+import { toast } from 'react-toastify';
 import 'styles/main.scss';
 import { CLOSE_MODAL } from 'constants/action-types';
 
@@ -102,6 +103,7 @@ const CoursePage = () => {
     addCourseForUser(token, content.activeCourse.id).then(() => {
       getUser(dispatch);
       setMycourse(true);
+      toast('Course has been added to your course list');
     });
   };
 
@@ -113,6 +115,7 @@ const CoursePage = () => {
     deleteCourseForUser(token, content.activeCourse.id).then(() => {
       getUser(dispatch);
       setMycourse(false);
+      toast('Course has been removed from your course list');
     });
   };
 

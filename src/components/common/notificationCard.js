@@ -29,7 +29,6 @@ const NotificationCard = (props) => {
           <span className="bold">{props.notification_data.action}</span> in{' '}
           <span className="bold">{props.notification_data.target}</span>. Click to check it.
         </div>
-        <div className="notifications--card-date">{props.notification_data.date}</div>
         <div className="notifications--card-page">{props.notification_data.target}</div>
       </div>
     </Link>

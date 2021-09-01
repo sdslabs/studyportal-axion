@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import course from 'assets/course.svg';
 import 'styles/main.scss';
@@ -22,7 +22,7 @@ const CourseHandle = (props) => {
       else return false;
     } else return false;
   };
-  const [mycourse] = useState(checkMyCourse(props));
+  const [mycourse, setMyCourse] = useState(checkMyCourse(props));
 
   /**
    * Activates associated mycourse.
@@ -47,6 +47,11 @@ const CourseHandle = (props) => {
     };
     dispatch({ type: SWITCH_ACTIVE_COURSE, payload: activeCourse });
   };
+
+  useEffect(() => {
+    setMyCourse(checkMyCourse(props));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   if (props.login) {
     return (

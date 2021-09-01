@@ -46,6 +46,7 @@ export default function modalReducer(state = initialState, action) {
       return {
         ...state,
         showMore: !state.showMore,
+        search: false,
       };
     case TOGGLE_NOTIFICATIONS:
       return {

@@ -16,7 +16,7 @@
     &-input {
       height: 100%;
       width: 75%;
-      padding-left: 1rem;
+      padding-left: 0.75rem;
       background: $white;
       border-radius: 0.125rem;
       border: $white;
@@ -24,7 +24,7 @@
       &_holder {
         @include font;
         height: auto;
-        width: 100%;
+        width: calc(100% - 2.5rem);
         margin-top: 0.5rem;
         border: $white;
         outline: none;
@@ -32,11 +32,12 @@
     }
 
     &-icon {
-      width: 2.560625rem;
-      height: 100%;
-      background: $secondary;
+      position: relative;
+      top: 0.25rem;
       border: $secondary;
       border-radius: 0.125rem;
+      margin-top: 0.5rem;
+      margin-right: 0.75rem;
     }
   }
 
@@ -92,7 +93,7 @@
     height: 22.875rem;
     background: $white;
     box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
-    z-index: 1;
+    z-index: 2;
     overflow-y: auto;
     text-align: start;
   }
