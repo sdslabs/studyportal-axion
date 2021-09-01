@@ -53,6 +53,14 @@ const MaterialCard = (props) => {
     });
   };
 
+  const viewFile = (url) => {
+    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}`;
+
+    let newTab = window.open(link, '_blank');
+    newTab.opener = null;
+    newTab.location = link;
+  };
+
   return (
     <div className="material">
       <div className="material--namecheck">
@@ -67,11 +75,7 @@ const MaterialCard = (props) => {
           <div className="material--icon">
             <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
-          <div
-            className="material--name"
-            onClick={() => downloadFile(props.id, props.url)}
-            title={props.name}
-          >
+          <div className="material--name" onClick={() => viewFile(props.url)} title={props.name}>
             {props.name.length < 30 ? props.name : ShortName(props.name)}
           </div>
           <div className="material--download">Downloads: {props.downloads}</div>
