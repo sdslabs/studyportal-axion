@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import small_loader from 'assets/small_loader.svg';
 import check from 'assets/check.svg';
 import retry from 'assets/retry.svg';
+import ShortName from 'utils/short-name';
 import 'styles/main.scss';
 
 /**
@@ -28,7 +29,9 @@ const FileUploadContainer = (props) => {
 
   return (
     <div className="customfileuploader--fileholder">
-      <div className="customfileuploader--fileholder_name">{props.name}</div>
+      <div className="customfileuploader--fileholder_name">
+        {props.name.length <= 30 ? props.name : ShortName(props.name)}
+      </div>
       <select
         className="customfileuploader--fileholder_category"
         onChange={updateFileType}
