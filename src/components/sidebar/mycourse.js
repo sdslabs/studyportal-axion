@@ -206,6 +206,7 @@ class Sidebar extends Component {
                 styles={customStyles}
                 theme={theme}
                 onChange={this.getCourse}
+                menuPlacement="top"
                 options={this.props.content.departments.map(({ id, title }) => {
                   return { value: id, label: title };
                 })}
@@ -215,6 +216,7 @@ class Sidebar extends Component {
                 placeholder="Select Course"
                 styles={customStyles}
                 theme={theme}
+                menuPlacement="top"
                 onChange={this.setCourse}
                 options={this.state.courses.map(({ id, title }) => {
                   return { value: id, label: title };
