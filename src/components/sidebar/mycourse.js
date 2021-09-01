@@ -132,6 +132,7 @@ class Sidebar extends Component {
       toast('Course has been added to your course list');
     });
     e.target.reset();
+    this.setState({ addCourse: false });
   };
 
   render() {
@@ -210,6 +211,7 @@ class Sidebar extends Component {
               <Select
                 className="sidebar--form-select_department"
                 placeholder="Select Department"
+                id="sidebar_dept_select"
                 styles={customStyles}
                 theme={theme}
                 onChange={this.getCourse}

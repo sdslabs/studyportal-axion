@@ -8,6 +8,7 @@ import { getCookie } from 'utils/handleCookies';
 import { connect } from 'react-redux';
 import 'styles/main.scss';
 import { CLOSE_MODAL } from 'constants/action-types';
+import $ from 'jquery';
 
 function mapStateToProps(state) {
   return {
@@ -151,6 +152,7 @@ class Upload extends Component {
       uploading: false,
       uploaded: false,
     });
+    $('select').prop('selectedIndex', 0);
   };
 
   render() {

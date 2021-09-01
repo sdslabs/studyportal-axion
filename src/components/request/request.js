@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import close from 'assets/closereq.png';
@@ -10,6 +11,7 @@ import check from 'assets/check.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
+import { forEach } from 'lodash';
 
 function mapStateToProps(state) {
   return {
@@ -156,6 +158,9 @@ class Request extends Component {
       requesting: false,
       requested: false,
     }));
+    $('select').prop('selectedIndex', 0);
+    $('input:radio').prop('checked', false);
+    $('input:text').val('');
   };
 
   render() {
@@ -200,6 +205,7 @@ class Request extends Component {
                     <select
                       className="file--department-select"
                       onChange={this.file_active_course}
+                      id="file_department_select"
                       disabled={!(this.state.disable >= 0)}
                       name="department"
                     >
@@ -220,6 +226,7 @@ class Request extends Component {
                     </div>
                     <select
                       className="file--course-select"
+                      id="file_course_select"
                       onChange={this.file_active_material}
                       disabled={!(this.state.disable >= 1)}
                       name="course"
