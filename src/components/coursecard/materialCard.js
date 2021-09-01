@@ -10,6 +10,7 @@ import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
 import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { downloadFiles } from 'api/filesApi';
+import ShortName from 'utils/short-name';
 
 /**
  * Component to render files.
@@ -66,8 +67,12 @@ const MaterialCard = (props) => {
           <div className="material--icon">
             <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
-          <div className="material--name" onClick={() => downloadFile(props.id, props.url)}>
-            {props.name}
+          <div
+            className="material--name"
+            onClick={() => downloadFile(props.id, props.url)}
+            title={props.name}
+          >
+            {props.name.length < 30 ? props.name : ShortName(props.name)}
           </div>
           <div className="material--download">Downloads: {props.downloads}</div>
         </div>

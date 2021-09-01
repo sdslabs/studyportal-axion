@@ -4,7 +4,7 @@ let ShortName = function (name) {
   }
   let names = name.split(' ');
   if (names.length === 1) {
-    return name;
+    return name.length < 30 ? name : name.substr(0, 25) + '...';
   }
   let firstName = names[0];
   let lastName = names[names.length - 1];
