@@ -223,7 +223,6 @@ class Sidebar extends Component {
                 placeholder="Select Course"
                 styles={customStyles}
                 theme={theme}
-                menuPlacement="top"
                 onChange={this.setCourse}
                 menuPlacement="top"
                 options={this.state.courses.map(({ id, title }) => {

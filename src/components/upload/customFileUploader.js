@@ -172,4 +172,6 @@ CustomFileUploader.propTypes = {
   uploading: PropTypes.bool,
   /** Function to refresh the upload fields */
   refreshUpload: PropTypes.func,
+  /** Holds list of upload success */
+  success: PropTypes.array,
 };
