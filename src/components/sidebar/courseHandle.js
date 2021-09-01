@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import course from 'assets/course.svg';
 import 'styles/main.scss';
@@ -85,3 +86,16 @@ const CourseHandle = (props) => {
 };
 
 export default CourseHandle;
+
+CourseHandle.propTypes = {
+  /** Holds the value of course id. */
+  course: PropTypes.string,
+  /** Holds the value of course code. */
+  code: PropTypes.string,
+  /** Holds the value of course title. */
+  title: PropTypes.string,
+  /** Holds the bool value whether user is logged in or not */
+  login: PropTypes.bool,
+  /** Holds the value of department id */
+  department: PropTypes.string,
+};
