@@ -28,9 +28,9 @@ function getNewNotification(token) {
   };
   return ws;
 }
-function deleteNotification(notification) {
+function deleteNotification(notification, clearAll = false) {
   return axiosInstance
-    .delete('/notifications', { params: { notification } })
+    .delete('/notifications', { params: !clearAll ? { notification } : null })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       return res;
