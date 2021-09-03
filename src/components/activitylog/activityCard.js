@@ -44,11 +44,11 @@ const ActivityCard = (props) => {
       let datePart = date.match(/\d+/g);
       let month = getMonth(`${datePart[1]}`);
       let dateString = `${datePart[2]}th ${month}, ${datePart[0]}`;
-      if (datePart[2] === '01') {
+      if (datePart[2] === '01' || datePart[2] === '21' || datePart[2] === '31') {
         dateString = `${datePart[2]}st ${month}, ${datePart[0]}`;
-      } else if (datePart[2] === '02') {
+      } else if (datePart[2] === '02' || datePart[2] === '22') {
         dateString = `${datePart[2]}nd ${month}, ${datePart[0]}`;
-      } else if (datePart[2] === '03') {
+      } else if (datePart[2] === '03' || datePart[2] === '23') {
         dateString = `${datePart[2]}rd ${month}, ${datePart[0]}`;
       }
       return dateString;
