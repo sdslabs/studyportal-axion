@@ -39,6 +39,8 @@ class Request extends Component {
       courses: [],
       requesting: false,
       requested: false,
+      alreadyExist: false,
+      message: '',
     };
   }
 
@@ -115,7 +117,9 @@ class Request extends Component {
     const token = getCookie('token');
     if (course && material && name && token) {
       this.setState({ disable: -1, requesting: true });
-      requestFiles(token, material, name, course).then(() => {
+      requestFiles(token, material, name, course).then((res) => {
+        if (res.message === 'Request already exists')
+          this.setState({ alreadyExist: true, message: res.message });
         this.setState({ requesting: false, requested: true });
       });
     }
@@ -133,7 +137,9 @@ class Request extends Component {
     const code = e.target.code.value;
     const token = getCookie('token');
     this.setState({ disableCourse: -1, requesting: true });
-    requestCourse(token, department, course, code).then(() => {
+    requestCourse(token, department, course, code).then((res) => {
+      if (res.message === 'Request already exists' || res.message === 'Course already exists')
+        this.setState({ alreadyExist: true, message: res.message });
       this.setState({ requesting: false, requested: true });
     });
   };
@@ -157,6 +163,8 @@ class Request extends Component {
       courses: [],
       requesting: false,
       requested: false,
+      alreadyExist: false,
+      message: '',
     }));
     $('select').prop('selectedIndex', 0);
     $('input:radio').prop('checked', false);
@@ -337,15 +345,21 @@ class Request extends Component {
                     {this.state.requested ? (
                       <div className="request--confirmation">
                         <img className="request--confirmation-check" src={check} alt="check" />
-                        <span className="request--confirmation-text">
-                          Request placed successfully
-                        </span>
-                        <span className="request--confirmation-activity">
-                          Check request status in{' '}
-                          <Link to="/activity/requests" className="linkactive">
-                            Activity Log
-                          </Link>
-                        </span>
+                        {this.state.alreadyExist ? (
+                          <span className="request--confirmation-text">{this.state.message}</span>
+                        ) : (
+                          <div>
+                            <span className="request--confirmation-text">
+                              Request placed successfully
+                            </span>
+                            <span className="request--confirmation-activity">
+                              Check request status in{' '}
+                              <Link to="/activity/requests" className="linkactive">
+                                Activity Log
+                              </Link>
+                            </span>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <Fragment />
@@ -423,15 +437,21 @@ class Request extends Component {
                     {this.state.requested ? (
                       <div className="request--confirmation">
                         <img className="request--confirmation-check" src={check} alt="check" />
-                        <span className="request--confirmation-text">
-                          Request placed successfully
-                        </span>
-                        <span className="request--confirmation-activity">
-                          Check request status in{' '}
-                          <Link to="/activity/requests" className="linkactive">
-                            Activity Log
-                          </Link>
-                        </span>
+                        {this.state.alreadyExist ? (
+                          <span className="request--confirmation-text">{this.state.message}</span>
+                        ) : (
+                          <div>
+                            <span className="request--confirmation-text">
+                              Request placed successfully
+                            </span>
+                            <span className="request--confirmation-activity">
+                              Check request status in{' '}
+                              <Link to="/activity/requests" className="linkactive">
+                                Activity Log
+                              </Link>
+                            </span>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <Fragment />
