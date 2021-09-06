@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
 import NotificationCard from 'components/common/notificationCard';
-import { getAllNotifications, getNewNotification, deleteNotification } from 'api/notificationApi';
+import {
+  getAllNotifications,
+  getNewNotification,
+  deleteAllNotifications,
+} from 'api/notificationApi';
 import { getCookie } from 'utils/handleCookies';
 import {
   ADD_NEW_NOTIFICATION,
@@ -46,7 +50,7 @@ const Notifications = () => {
 
   const handleClearAll = () => {
     dropNotification(null, true);
-    deleteNotification(null, true);
+    deleteAllNotifications(user.id);
   };
 
   useEffect(() => {

@@ -65,9 +65,9 @@ const NotificationCard = (props) => {
   const dispatch = useDispatch();
 
   const closeAndDelete = (id, notification_data) => {
-    dispatch({ type: CLOSE_MODAL });
     deleteNotification(id);
     props.update(notification_data);
+    dispatch({ type: CLOSE_MODAL });
   };
 
   const { icon, title } = getTemplateData(props.notification_data);
