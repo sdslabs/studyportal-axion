@@ -12,7 +12,7 @@ export const getUser = (dispatch) => {
     loginUserWithToken(token)
       .then((res) => {
         const user = {
-          id: res.user.falcon_id,
+          id: res.user.auth_id,
           username: res.user.username,
           email: res.user.email,
           profile_image: res.user.profile_image,

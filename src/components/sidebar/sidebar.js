@@ -29,9 +29,8 @@ const Sidebar = () => {
 
   const searchCourse = (e) => {
     if (e.target.value != '') {
-      getSearchCourseResults(e.target.value, content.activeDepartment.id)
+      getSearchCourseResults(e.target.value, content.activeDepartment.id, 'null')
         .then((res) => {
-          console.log(res);
           setCourses(res.courses);
         })
         .catch((error) => {
