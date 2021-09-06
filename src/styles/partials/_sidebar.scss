@@ -111,13 +111,14 @@
   &button {
     @include font;
     padding: 0.375rem 0.75rem;
-    width: 9.8125rem;
+    width: 11rem;
     height: 2.25rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 0.125rem;
     border: none;
     color: $white;
     margin-left: 0.5rem;
+    line-height: 150%;
 
     img {
       height: 0.875rem;
