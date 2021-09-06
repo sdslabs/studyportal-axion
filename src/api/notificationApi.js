@@ -29,7 +29,6 @@ function getNewNotification(token) {
   return ws;
 }
 function deleteNotification(notification) {
-  console.log(notification);
   return axiosInstance
     .delete('/notifications', { params: { notification: notification, userid: 'null' } })
     .then((response) => {
@@ -41,7 +40,6 @@ function deleteNotification(notification) {
     });
 }
 function deleteAllNotifications(userid) {
-  console.log(userid);
   return axiosInstance
     .delete('/notifications', { params: { notification: 'null', userid: userid } })
     .then((response) => {
