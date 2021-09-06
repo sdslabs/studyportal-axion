@@ -5,7 +5,13 @@ import { getFileRequests, rejectFileRequest, uploadFile } from 'api/fileRequestA
 import { getCookie } from 'utils/handleCookies';
 import TableIconButton from 'components/adminTable/tableIconButtons';
 import EmptyTable from 'components/error/adminEmptyTable';
-import { SetTableData, SwitchMainMenu, SwitchSubMenu, SwitchTab } from 'actions/adminPanelActions';
+import {
+  SetTableData,
+  SwitchMainMenu,
+  SwitchSubMenu,
+  SwitchTab,
+  ToggleAdminLoader,
+} from 'actions/adminPanelActions';
 import _ from 'lodash';
 
 const UserRequestsTable = () => {
@@ -18,16 +24,30 @@ const UserRequestsTable = () => {
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const token = getCookie('token');
 
+  const setLoading = (loaderText = '') => dispatch(ToggleAdminLoader(loaderText));
+
   const handleSendFile = (key, id, filetype, name) => {
     if (uploaded.includes(id) || rejected.includes(id)) return null;
     let tagId = 'file-input' + key;
     let file = document.getElementById(tagId).files[0];
-    uploadFile(id, file, name, filetype, token).then(() => setUploaded((prev) => [...prev, id]));
+    setLoading('Uploading File');
+    uploadFile(id, file, name, filetype, token)
+      .then(() => {
+        setUploaded((prev) => [...prev, id]);
+        setLoading('');
+      })
+      .catch(() => setLoading(''));
   };
 
   const handleReject = (id) => {
     if (uploaded.includes(id) || rejected.includes(id)) return null;
-    rejectFileRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
+    setLoading('Rejecting User Request');
+    rejectFileRequest(id, token)
+      .then(() => {
+        setRejected((prev) => [...prev, id]);
+        dispatch(ToggleAdminLoader(''));
+      })
+      .catch(() => setLoading(''));
   };
 
   const setRequestData = (res) => {
@@ -40,9 +60,11 @@ const UserRequestsTable = () => {
     dispatch(SetTableData(res.requests));
     dispatch(SwitchTab(constants.ALL_TAB));
     dispatch(SwitchSubMenu(0));
+    dispatch(ToggleAdminLoader(''));
   };
 
   useEffect(() => {
+    dispatch(ToggleAdminLoader('Fetching User Requests'));
     getFileRequests(token).then(setRequestData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

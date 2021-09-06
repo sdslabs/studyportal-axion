@@ -4,6 +4,7 @@ import {
   SWITCH_TAB,
   SET_TABLE_DATA,
   RESET_ADMIN_MENU,
+  TOGGLE_ADMIN_LOADER,
 } from 'constants/action-types';
 
 export const SwitchMainMenu = (data) => ({
@@ -28,4 +29,9 @@ export const SetTableData = (data) => ({
 
 export const ResetAdminMenu = () => ({
   type: RESET_ADMIN_MENU,
+});
+
+export const ToggleAdminLoader = (data) => ({
+  type: TOGGLE_ADMIN_LOADER,
+  payload: data,
 });

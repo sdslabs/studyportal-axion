@@ -5,7 +5,12 @@ import { addCourse, rejectCourseRequest, getCourseRequests } from 'api/courseReq
 import { getCookie } from 'utils/handleCookies';
 import EmptyTable from 'components/error/adminEmptyTable';
 import _ from 'lodash';
-import { SetTableData, SwitchMainMenu, SwitchSubMenu } from 'actions/adminPanelActions';
+import {
+  SetTableData,
+  SwitchMainMenu,
+  SwitchSubMenu,
+  ToggleAdminLoader,
+} from 'actions/adminPanelActions';
 import { COURSE_REQUEST_MENU } from 'constants/adminPanelMenu';
 
 const CourseRequestsTable = () => {
@@ -17,14 +22,28 @@ const CourseRequestsTable = () => {
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
 
+  const setLoading = (loaderText = '') => dispatch(ToggleAdminLoader(loaderText));
+
   const handleApprove = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    addCourse(id, token).then(() => setApproved((prev) => [...prev, id]));
+    setLoading('Approving Course Request');
+    addCourse(id, token)
+      .then(() => {
+        setApproved((prev) => [...prev, id]);
+        setLoading('');
+      })
+      .catch(() => setLoading(''));
   };
 
   const handleReject = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    rejectCourseRequest(id, token).then(() => setRejected((prev) => [...prev, id]));
+    setLoading('Rejecting Course Request');
+    rejectCourseRequest(id, token)
+      .then(() => {
+        setRejected((prev) => [...prev, id]);
+        setLoading('');
+      })
+      .catch(() => setLoading(''));
   };
 
   const setRequestData = (res) => {
@@ -36,9 +55,11 @@ const CourseRequestsTable = () => {
     );
     dispatch(SetTableData(res.requests));
     dispatch(SwitchSubMenu(0));
+    setLoading('');
   };
 
   useEffect(() => {
+    setLoading('Fetching Course Requests');
     getCourseRequests(token).then(setRequestData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

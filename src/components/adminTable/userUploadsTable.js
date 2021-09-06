@@ -6,7 +6,12 @@ import { getCookie } from 'utils/handleCookies';
 import file_preview from 'assets/file_preview.svg';
 import EmptyTable from 'components/error/adminEmptyTable';
 import _ from 'lodash';
-import { SetTableData, SwitchMainMenu, SwitchSubMenu } from 'actions/adminPanelActions';
+import {
+  SetTableData,
+  SwitchMainMenu,
+  SwitchSubMenu,
+  ToggleAdminLoader,
+} from 'actions/adminPanelActions';
 import { USER_UPLOADS_MENU } from 'constants/adminPanelMenu';
 
 const UserUploadsTable = () => {
@@ -19,6 +24,8 @@ const UserUploadsTable = () => {
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const dispatch = useDispatch();
 
+  const setLoading = (loaderText = '') => dispatch(ToggleAdminLoader(loaderText));
+
   const previewFile = (url) => {
     const link = `https://drive.google.com/file/d/${url}/preview`;
     setPreviewLink(link);
@@ -26,12 +33,24 @@ const UserUploadsTable = () => {
 
   const handleApprove = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    addUpload(id, token).then(() => setApproved((prev) => [...prev, id]));
+    setLoading('Approving Upload Request');
+    addUpload(id, token)
+      .then(() => {
+        setApproved((prev) => [...prev, id]);
+        setLoading('');
+      })
+      .catch(() => setLoading(''));
   };
 
   const handleReject = (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    deleteUpload(id, token).then(() => setRejected((prev) => [...prev, id]));
+    setLoading('Rejecting Upload Request');
+    deleteUpload(id, token)
+      .then(() => {
+        setRejected((prev) => [...prev, id]);
+        setLoading('');
+      })
+      .catch(() => setLoading(''));
   };
 
   const downloadFile = (url) => {
@@ -51,9 +70,11 @@ const UserUploadsTable = () => {
     );
     dispatch(SetTableData(res.uploads));
     dispatch(SwitchSubMenu(0));
+    setLoading('');
   };
 
   useEffect(() => {
+    setLoading('Fetching User Uploads');
     getUploads(token).then(setRequestData);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
