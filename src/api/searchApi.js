@@ -12,4 +12,16 @@ function getSearchResults(query) {
     });
 }
 
-export { getSearchResults };
+function getSearchCourseResults(query, dept) {
+  return axiosInstance
+    .get(`/searchcourse`, { params: { q: query, format: 'json', dept: dept } })
+    .then((response) => {
+      const res = JSON.parse(response.request.response);
+      return res;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+}
+
+export { getSearchResults, getSearchCourseResults };
