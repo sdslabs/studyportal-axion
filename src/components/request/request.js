@@ -11,7 +11,6 @@ import check from 'assets/check.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
-import { forEach } from 'lodash';
 
 function mapStateToProps(state) {
   return {
