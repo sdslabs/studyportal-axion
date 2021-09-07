@@ -12,9 +12,9 @@ function getSearchResults(query) {
     });
 }
 
-function getSearchCourseResults(query, dept) {
+function getSearchCourseResults(query, dept, user) {
   return axiosInstance
-    .get(`/searchcourse`, { params: { q: query, format: 'json', dept: dept } })
+    .get(`/filtercourse`, { params: { q: query, format: 'json', dept: dept, user: user } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       return res;

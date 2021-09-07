@@ -13,6 +13,7 @@ import {
   ToggleAdminLoader,
 } from 'actions/adminPanelActions';
 import { USER_UPLOADS_MENU } from 'constants/adminPanelMenu';
+import ShortName from 'utils/short-name';
 
 const UserUploadsTable = () => {
   const [approved, setApproved] = useState([]);
@@ -79,6 +80,10 @@ const UserUploadsTable = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    setPreviewLink('');
+  }, [activeData]);
+
   if (_.isEmpty(activeData)) return <EmptyTable />;
 
   return (
@@ -94,38 +99,42 @@ const UserUploadsTable = () => {
           <div className="row-item">Reject</div>
         </div>
       </div>
-      {activeData.map((item, key) => (
-        <div className="admin-table--row" key={key}>
-          <div className="admin-table--primary-row">
-            <span>{item.title}</span>
+      <div className="admin-table--inner-container">
+        {activeData.map((item, key) => (
+          <div className="admin-table--row" key={key}>
+            <div className="admin-table--primary-row">
+              <span title={item?.title}>
+                {item?.title.length < 70 ? item?.title : ShortName(item?.title)}
+              </span>
+            </div>
+            <div className="admin-table--secondary-row">
+              <div className="row-item">
+                <TableIconButton
+                  type="download"
+                  handleClick={() => {
+                    downloadFile(item.driveid);
+                  }}
+                />
+              </div>
+              <div className="row-item">
+                <TableIconButton type="preview" handleClick={() => previewFile(item.driveid)} />
+              </div>
+              <div className="row-item">
+                <TableIconButton
+                  type={approved.includes(item.id) ? 'approve_confirmed' : 'approve'}
+                  handleClick={() => handleApprove(item.id)}
+                />
+              </div>
+              <div className="row-item">
+                <TableIconButton
+                  type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
+                  handleClick={() => handleReject(item.id)}
+                />
+              </div>
+            </div>
           </div>
-          <div className="admin-table--secondary-row">
-            <div className="row-item">
-              <TableIconButton
-                type="download"
-                handleClick={() => {
-                  downloadFile(item.driveid);
-                }}
-              />
-            </div>
-            <div className="row-item">
-              <TableIconButton type="preview" handleClick={() => previewFile(item.driveid)} />
-            </div>
-            <div className="row-item">
-              <TableIconButton
-                type={approved.includes(item.id) ? 'approve_confirmed' : 'approve'}
-                handleClick={() => handleApprove(item.id)}
-              />
-            </div>
-            <div className="row-item">
-              <TableIconButton
-                type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
-                handleClick={() => handleReject(item.id)}
-              />
-            </div>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
       {previewLink !== '' ? (
         <iframe src={previewLink} className="file-preview" title="preview"></iframe>
       ) : (

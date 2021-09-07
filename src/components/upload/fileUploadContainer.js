@@ -29,7 +29,7 @@ const FileUploadContainer = (props) => {
 
   return (
     <div className="customfileuploader--fileholder">
-      <div className="customfileuploader--fileholder_name">
+      <div className="customfileuploader--fileholder_name" title={props.name}>
         {props.name.length <= 30 ? props.name : ShortName(props.name)}
       </div>
       <select

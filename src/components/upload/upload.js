@@ -235,6 +235,7 @@ class Upload extends Component {
                       getFiles={this.getFiles}
                       disabled={!(this.state.disable >= 2)}
                       refreshUpload={this.refreshUpload}
+                      toggleUploadModal={this.toggleUploadModal}
                     />
                   </div>
                 </form>
