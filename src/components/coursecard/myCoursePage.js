@@ -124,7 +124,10 @@ const CoursePage = () => {
   else
     return (
       <div className="coursepage" onClick={() => closeModal()}>
-        <div className="coursepage--head">
+        <div
+          className="coursepage--head"
+          title={content.activeMyCourse.title + ' ' + content.activeMyCourse.code}
+        >
           {content.activeMyCourse.title.length >= 25
             ? shortName(content.activeMyCourse.title)
             : content.activeMyCourse.title}{' '}

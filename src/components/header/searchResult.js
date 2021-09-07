@@ -28,9 +28,11 @@ const SearchResult = (props) => {
         <div className="file--card-icon">
           <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
         </div>
-        <div className="file--card-heading">{props.name}</div>
+        <div className="file--card-heading" title={props.name}>
+          {props.name.length < 30 ? props.name : shortName(props.name)}
+        </div>
         <div className="file--card-info">
-          <span className="file--card-info_name">
+          <span className="file--card-info_name" title={props.course_name}>
             {props.course_name.length > 15 ? shortName(props.course_name) : props.course_name}
           </span>
           <span className="file--card-info_course">{props.course_code}</span>

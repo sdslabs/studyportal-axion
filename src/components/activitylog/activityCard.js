@@ -75,7 +75,7 @@ const ActivityCard = (props) => {
         </div>
         <div className="activitycard--info_name">
           <span className="activitycard--info_head">Name: </span>
-          <span className="activitycard--info_heading">
+          <span className="activitycard--info_heading" title={props.title}>
             {props.title.length > 20 ? shortName(props.title) : props.title}
           </span>
         </div>

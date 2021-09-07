@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SwitchSubMenu } from 'actions/adminPanelActions';
 import _ from 'lodash';
+import ShortName from 'utils/short-name';
 
 const SubMenu = () => {
   const store = useSelector((state) => state.adminPanel);
@@ -16,9 +17,9 @@ const SubMenu = () => {
             key={key}
             onClick={() => dispatch(SwitchSubMenu(key))}
           >
-            <span className="coursehandle--heading">
-              {item.title}
-              {item.abbreviation && ` | ${item.abbreviation}`}
+            <span className="coursehandle--heading" title={item.title}>
+              {item.title.length < 30 ? item.title : ShortName(item.title)}
+              {item.code && ` | ${item.code}`}
             </span>
           </div>
         ))

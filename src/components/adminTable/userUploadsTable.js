@@ -8,6 +8,7 @@ import EmptyTable from 'components/error/adminEmptyTable';
 import _ from 'lodash';
 import { SetTableData, SwitchMainMenu, SwitchSubMenu } from 'actions/adminPanelActions';
 import { USER_UPLOADS_MENU } from 'constants/adminPanelMenu';
+import ShortName from 'utils/short-name';
 
 const UserUploadsTable = () => {
   const [approved, setApproved] = useState([]);
@@ -76,7 +77,9 @@ const UserUploadsTable = () => {
       {activeData.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
-            <span>{item.title}</span>
+            <span title={item?.title}>
+              {item?.title.length < 70 ? item?.title : ShortName(item?.title)}
+            </span>
           </div>
           <div className="admin-table--secondary-row">
             <div className="row-item">
