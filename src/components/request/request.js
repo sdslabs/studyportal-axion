@@ -353,7 +353,11 @@ class Request extends Component {
                             </span>
                             <span className="request--confirmation-activity">
                               Check request status in{' '}
-                              <Link to="/activity/requests" className="linkactive">
+                              <Link
+                                to="/activity/requests"
+                                className="linkactive"
+                                onClick={() => this.closeRequest()}
+                              >
                                 Activity Log
                               </Link>
                             </span>
