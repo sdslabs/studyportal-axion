@@ -22,6 +22,11 @@
       text-align: center;
     }
   }
+
+  &inner-container {
+    height: 40%;
+    overflow-y: auto;
+  }
 }
 
 .admin- {
