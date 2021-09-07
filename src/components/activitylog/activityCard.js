@@ -7,6 +7,8 @@ import yellow from 'assets/yellow_status.svg';
 import { getFileById } from 'api/filesApi';
 import shortName from 'utils/short-name';
 import 'styles/main.scss';
+import _ from 'lodash';
+import ShortName from 'utils/short-name';
 
 /**
  * Component to render activities.
@@ -101,7 +103,7 @@ const ActivityCard = (props) => {
           </div>
           <div className="activitycard--file" />
         </Fragment>
-      ) : (
+      ) : !_.isEmpty(file) ? (
         <Fragment>
           <div className="activitycard--status_green">
             <img className="req_color" src={green} alt="green" /> Files Uploaded ({props.status}/3)
@@ -114,11 +116,11 @@ const ActivityCard = (props) => {
               className="linkactive"
             >
               <img className="activitycard--file_download" src={download} alt="download" />{' '}
-              {file.title}
+              {file.title.length < 30 ? file.title : ShortName(file.title)}
             </a>
           </div>
         </Fragment>
-      )}
+      ) : null}
     </div>
   );
 };
