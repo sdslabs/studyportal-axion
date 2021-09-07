@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 
 import NotificationCard from 'components/common/notificationCard';
-import { getAllNotifications, getNewNotification } from 'api/notificationApi';
+import {
+  getAllNotifications,
+  getNewNotification,
+  deleteAllNotifications,
+} from 'api/notificationApi';
 import { getCookie } from 'utils/handleCookies';
 import {
   ADD_NEW_NOTIFICATION,
@@ -39,9 +43,14 @@ const Notifications = () => {
     });
   };
 
-  const dropNotification = (notification) => {
-    let filteredNotifs = notifications.filter((notif) => notif !== notification);
+  const dropNotification = (notification, all = false) => {
+    let filteredNotifs = all ? [] : notifications.filter((notif) => notif !== notification);
     dispatch(SetNotificationContent(filteredNotifs));
+  };
+
+  const handleClearAll = () => {
+    dropNotification(null, true);
+    deleteAllNotifications(user.id);
   };
 
   useEffect(() => {
@@ -77,6 +86,10 @@ const Notifications = () => {
             <img src={polygon} alt="polygon" />
           </div>
           <div className="notifications--container">
+            <div className="notifications--header">
+              <h1>Notifications</h1>
+              {!_.isEmpty(notifications) && <span onClick={handleClearAll}>Clear all</span>}
+            </div>
             {!_.isEmpty(notifications) ? (
               notifications.map((notification) => (
                 <NotificationCard

@@ -5,31 +5,86 @@ import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { deleteNotification } from 'api/notificationApi';
 import { CLOSE_MODAL } from 'constants/action-types';
+import parseDate from 'utils/parseDate';
+
+import defaultIcon from 'assets/notif_default.svg';
+import approved from 'assets/notif_approved.svg';
+import file from 'assets/notif_file.svg';
+import course from 'assets/notif_course.svg';
+import request from 'assets/notif_request.svg';
 
 /**
  * Component to render notifications.
  */
+
+/**
+ * Get the icon and title for the notification.
+ * @param {Object} - notification_data
+ * @returns {Object} - icon and title
+ */
+const getTemplateData = (notification_data) => {
+  const { verb, notification_type } = notification_data;
+
+  let templateData = {};
+
+  switch (notification_type) {
+    case 'adddepaartment': //Typo from backend
+      templateData.icon = course;
+      templateData.title = 'New Department Added';
+      break;
+
+    case 'addcourse':
+      templateData.icon = course;
+      templateData.title = 'New Course Added';
+      break;
+
+    case 'addfile':
+      templateData.icon = file;
+      templateData.title = 'New File Added';
+      break;
+
+    case 'request':
+      if (verb.includes('you requested')) {
+        templateData.icon = approved;
+        templateData.title = 'Request Approved';
+      } else {
+        templateData.icon = request;
+        templateData.title = 'New Request Added';
+      }
+      break;
+
+    default:
+      templateData.icon = defaultIcon;
+      templateData.title = 'New Notification';
+  }
+
+  return templateData;
+};
+
 const NotificationCard = (props) => {
   const dispatch = useDispatch();
 
   const closeAndDelete = (id, notification_data) => {
-    dispatch({ type: CLOSE_MODAL });
     deleteNotification(id);
     props.update(notification_data);
+    dispatch({ type: CLOSE_MODAL });
   };
 
+  const { icon, title } = getTemplateData(props.notification_data);
+  const { id, verb, actor, action, timestamp, link } = props.notification_data;
+
   return (
-    <Link to={props.notification_data.link}>
+    <Link to={link}>
       <div
-        className="notifications--card"
-        onClick={() => closeAndDelete(props.notification_data.id, props.notification_data)}
+        className="notification-card--grid"
+        onClick={() => closeAndDelete(id, props.notification_data)}
       >
-        <div className="notifications--card-description">
-          {props.notification_data.actor} {props.notification_data.verb}{' '}
-          <span className="bold">{props.notification_data.action}</span> in{' '}
-          <span className="bold">{props.notification_data.target}</span>. Click to check it.
-        </div>
-        <div className="notifications--card-page">{props.notification_data.target}</div>
+        <img alt="icon" className="notification-card--icon" src={icon} />
+        <span className="notification-card--title">{title}</span>
+        <span className="notification-card--date">{parseDate(timestamp)}</span>
+        <p className="notification-card--description">
+          {actor} {verb} <span className="bold">{action}</span>
+        </p>
       </div>
     </Link>
   );
@@ -51,7 +106,7 @@ NotificationCard.propTypes = {
   /** Holds the notification target. */
   target: PropTypes.string,
   /** Holds the notification date. */
-  date: PropTypes.string,
+  timestamp: PropTypes.string,
   /** Holds the notification related link. */
   link: PropTypes.string,
   /** Function to delete specific notification. */
