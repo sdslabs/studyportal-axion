@@ -8,6 +8,7 @@ import rejectConfirmed from 'assets/reject_confirmed.svg';
 import approveConfirmed from 'assets/approve_confirmed.svg';
 import downloadIcon from 'assets/downloadCloud.svg';
 import previewIcon from 'assets/previewIcon.svg';
+import small_loader from 'assets/small_loader.svg';
 
 /**
  *  Component to handle all icon ctas in tables
@@ -23,7 +24,10 @@ const IconDetails = {
   reload: { src: reloadIcon, class: 'admin-icon--primary' },
 };
 
-const TableIconButton = ({ type, handleClick }) => {
+const TableIconButton = ({ type, handleClick, loading }) => {
+  if (loading)
+    return <img src={small_loader} alt="loader" className="customfileuploader--button-loader" />;
+
   return (
     <div onClick={handleClick} className={`admin-icon-btn ${IconDetails[type].class}`}>
       <img src={IconDetails[type].src} alt={type} />
@@ -34,6 +38,7 @@ const TableIconButton = ({ type, handleClick }) => {
 TableIconButton.propTypes = {
   handleClick: PropTypes.func,
   type: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default TableIconButton;

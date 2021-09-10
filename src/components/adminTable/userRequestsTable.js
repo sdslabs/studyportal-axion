@@ -13,41 +13,49 @@ import {
   ToggleAdminLoader,
 } from 'actions/adminPanelActions';
 import _ from 'lodash';
+import { toast } from 'react-toastify';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
   const [uploaded, setUploaded] = useState([]);
   const [rejected, setRejected] = useState([]);
+  const [loading, setLoading] = useState({ uploading: [], reject: [] });
 
   const dispatch = useDispatch();
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const token = getCookie('token');
 
-  const setLoading = (loaderText = '') => dispatch(ToggleAdminLoader(loaderText));
-
-  const handleSendFile = (key, id, filetype, name) => {
+  const handleSendFile = async (key, id, filetype, name) => {
     if (uploaded.includes(id) || rejected.includes(id)) return null;
-    let tagId = 'file-input' + key;
-    let file = document.getElementById(tagId).files[0];
-    setLoading('Uploading File');
-    uploadFile(id, file, name, filetype, token)
-      .then(() => {
-        setUploaded((prev) => [...prev, id]);
-        setLoading('');
-      })
-      .catch(() => setLoading(''));
+    setLoading((prev) => ({ ...prev, uploading: [...prev.uploading, id] }));
+
+    try {
+      let tagId = 'file-input' + key;
+      let file = document.getElementById(tagId).files[0];
+      await uploadFile(id, file, name, filetype, token);
+      setUploaded((prev) => [...prev, id]);
+      toast.success('File Uploaded Successfully');
+    } catch {
+      toast.error('Error in Uploading File');
+    } finally {
+      setLoading((prev) => ({ ...prev, uploading: _.without(prev.uploading, id) }));
+    }
   };
 
-  const handleReject = (id) => {
+  const handleReject = async (id) => {
     if (uploaded.includes(id) || rejected.includes(id)) return null;
-    setLoading('Rejecting User Request');
-    rejectFileRequest(id, token)
-      .then(() => {
-        setRejected((prev) => [...prev, id]);
-        dispatch(ToggleAdminLoader(''));
-      })
-      .catch(() => setLoading(''));
+    setLoading((prev) => ({ ...prev, reject: [...prev.reject, id] }));
+
+    try {
+      await rejectFileRequest(id, token);
+      setRejected((prev) => [...prev, id]);
+      toast.warn('Request Rejected Successfully');
+    } catch {
+      toast.error('Error in Rejecting Request');
+    } finally {
+      setLoading((prev) => ({ ...prev, reject: _.without(prev.reject, id) }));
+    }
   };
 
   const setRequestData = (res) => {
@@ -65,7 +73,12 @@ const UserRequestsTable = () => {
 
   useEffect(() => {
     dispatch(ToggleAdminLoader('Fetching User Requests'));
-    getFileRequests(token).then(setRequestData);
+    getFileRequests(token)
+      .then(setRequestData)
+      .catch(() => {
+        toast.error('Error in fetching requests');
+        dispatch(ToggleAdminLoader(''));
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -122,6 +135,7 @@ const UserRequestsTable = () => {
               <label htmlFor={'file-input' + key}>
                 <TableIconButton
                   type={uploaded.includes(item.id) ? 'approve_confirmed' : 'upload'}
+                  loading={loading.uploading.includes(item.id)}
                 />
               </label>
               <input
@@ -135,6 +149,7 @@ const UserRequestsTable = () => {
               <TableIconButton
                 type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
                 handleClick={() => handleReject(item.id)}
+                loading={loading.reject.includes(item.id)}
               />
             </div>
           </div>

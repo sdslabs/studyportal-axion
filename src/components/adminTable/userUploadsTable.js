@@ -13,44 +13,52 @@ import {
   ToggleAdminLoader,
 } from 'actions/adminPanelActions';
 import { USER_UPLOADS_MENU } from 'constants/adminPanelMenu';
+import { toast } from 'react-toastify';
 
 const UserUploadsTable = () => {
   const [approved, setApproved] = useState([]);
   const [rejected, setRejected] = useState([]);
   const [previewLink, setPreviewLink] = useState('');
+  const [loading, setLoading] = useState({ approve: [], reject: [] });
 
   const token = getCookie('token');
   const store = useSelector((state) => state.adminPanel);
   const activeData = store.tableData[Object.keys(store.tableData)[store.activeSubMenu]];
   const dispatch = useDispatch();
 
-  const setLoading = (loaderText = '') => dispatch(ToggleAdminLoader(loaderText));
-
   const previewFile = (url) => {
     const link = `https://drive.google.com/file/d/${url}/preview`;
     setPreviewLink(link);
   };
 
-  const handleApprove = (id) => {
+  const handleApprove = async (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    setLoading('Approving Upload Request');
-    addUpload(id, token)
-      .then(() => {
-        setApproved((prev) => [...prev, id]);
-        setLoading('');
-      })
-      .catch(() => setLoading(''));
+    setLoading((prev) => ({ ...prev, approve: [...prev.approve, id] }));
+
+    try {
+      await addUpload(id, token);
+      setApproved((prev) => [...prev, id]);
+      toast.success('Request Approved Successfully');
+    } catch {
+      toast.error('Error in Approving Request');
+    } finally {
+      setLoading((prev) => ({ ...prev, approve: _.without(prev.approve, id) }));
+    }
   };
 
-  const handleReject = (id) => {
+  const handleReject = async (id) => {
     if (approved.includes(id) || rejected.includes(id)) return null;
-    setLoading('Rejecting Upload Request');
-    deleteUpload(id, token)
-      .then(() => {
-        setRejected((prev) => [...prev, id]);
-        setLoading('');
-      })
-      .catch(() => setLoading(''));
+    setLoading((prev) => ({ ...prev, reject: [...prev.reject, id] }));
+
+    try {
+      await deleteUpload(id, token);
+      setRejected((prev) => [...prev, id]);
+      toast.warn('Request Rejected Successfully');
+    } catch {
+      toast.error('Error in Rejecting Request');
+    } finally {
+      setLoading((prev) => ({ ...prev, reject: _.without(prev.reject, id) }));
+    }
   };
 
   const downloadFile = (url) => {
@@ -70,12 +78,17 @@ const UserUploadsTable = () => {
     );
     dispatch(SetTableData(res.uploads));
     dispatch(SwitchSubMenu(0));
-    setLoading('');
+    dispatch(ToggleAdminLoader(''));
   };
 
   useEffect(() => {
-    setLoading('Fetching User Uploads');
-    getUploads(token).then(setRequestData);
+    dispatch(ToggleAdminLoader('Fetching Upload Requests'));
+    getUploads(token)
+      .then(setRequestData)
+      .catch(() => {
+        toast.error('Error in fetching requests');
+        dispatch(ToggleAdminLoader(''));
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -115,12 +128,14 @@ const UserUploadsTable = () => {
               <TableIconButton
                 type={approved.includes(item.id) ? 'approve_confirmed' : 'approve'}
                 handleClick={() => handleApprove(item.id)}
+                loading={loading.approve.includes(item.id)}
               />
             </div>
             <div className="row-item">
               <TableIconButton
                 type={rejected.includes(item.id) ? 'reject_confirmed' : 'reject'}
                 handleClick={() => handleReject(item.id)}
+                loading={loading.reject.includes(item.id)}
               />
             </div>
           </div>

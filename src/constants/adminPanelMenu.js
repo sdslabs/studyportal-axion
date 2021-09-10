@@ -1,6 +1,6 @@
 export const COURSE_REQUEST_MENU = 'Course Requests';
-export const USER_REQUEST_MENU = 'User Requests';
-export const USER_UPLOADS_MENU = 'User Uploads';
+export const USER_REQUEST_MENU = 'File Requests';
+export const USER_UPLOADS_MENU = 'Uploads Requests';
 
 export const ALL_TAB = 'All';
 export const TUT_TAB = 'Tutorials';
