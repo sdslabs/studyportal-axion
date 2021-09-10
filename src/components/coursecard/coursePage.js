@@ -119,9 +119,14 @@ const CoursePage = () => {
   };
 
   useEffect(() => {
-    getFiles(content);
-    checkCourse(user, content); // eslint-disable-next-line
-  }, [content, user]);
+    if (!_.isEmpty(content.activeCourse)) getFiles(content);
+    // eslint-disable-next-line
+  }, [content.activeCourse, content.filetype]);
+
+  useEffect(() => {
+    checkCourse(user, content);
+    // eslint-disable-next-line
+  }, [content.activeCourse, content.filetype, user.login, user.courses]);
 
   if (loading) return <FileCover />;
   else
