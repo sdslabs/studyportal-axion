@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
+import ShortName from 'utils/short-name';
 
 const SearchCourse = ({ courses }) => {
   return (
@@ -34,8 +35,8 @@ const SearchCourse = ({ courses }) => {
               to={`/departments/${course.department.abbreviation}/courses/${course.code}/`}
               key={course.id}
             >
-              <div className="search--courses-name link" key={course.id}>
-                {course.title} {course.code}
+              <div className="search--courses-name link" key={course.id} title={course.title}>
+                {course.title.length < 50 ? course.title : ShortName(course.title)} {course.code}
               </div>
             </Link>
           ))}

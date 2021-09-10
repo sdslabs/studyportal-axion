@@ -7,7 +7,6 @@ import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
 import MiniSearch from 'minisearch';
-import _ from 'lodash';
 import { getSearchCourseResults } from 'api/searchApi';
 
 /**
@@ -28,10 +27,9 @@ const Sidebar = () => {
   });
 
   const searchCourse = (e) => {
-    if (e.target.value != '') {
-      getSearchCourseResults(e.target.value, content.activeDepartment.id)
+    if (e.target.value !== '') {
+      getSearchCourseResults(e.target.value, content.activeDepartment.id, 'null')
         .then((res) => {
-          console.log(res);
           setCourses(res.courses);
         })
         .catch((error) => {

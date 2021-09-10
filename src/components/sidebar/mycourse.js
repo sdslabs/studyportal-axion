@@ -15,7 +15,7 @@ import { getUser } from 'utils/getUser';
 import { RESET_APP, CLOSE_MODAL } from 'constants/action-types';
 import { toast } from 'react-toastify';
 import MiniSearch from 'minisearch';
-import _ from 'lodash';
+import { getSearchCourseResults } from 'api/searchApi';
 
 function mapStateToProps(state) {
   return {
@@ -94,9 +94,17 @@ class Sidebar extends Component {
   }
 
   searchCourse = (e) => {
-    const searchResult = this.miniSearch.search(e.target.value);
-    if (_.isEmpty(searchResult)) this.setState({ userCourses: this.props.user.courses });
-    else this.setState({ userCourses: searchResult });
+    if (e.target.value !== '') {
+      getSearchCourseResults(e.target.value, 'null', this.props.user.id)
+        .then((res) => {
+          this.setState({ userCourses: res.courses });
+        })
+        .catch((error) => {
+          return Promise.reject(error);
+        });
+    } else {
+      this.setState({ userCourses: this.props.user.courses });
+    }
   };
 
   /**

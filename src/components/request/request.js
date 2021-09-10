@@ -11,7 +11,6 @@ import check from 'assets/check.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
-import { forEach } from 'lodash';
 
 function mapStateToProps(state) {
   return {
@@ -354,7 +353,11 @@ class Request extends Component {
                             </span>
                             <span className="request--confirmation-activity">
                               Check request status in{' '}
-                              <Link to="/activity/requests" className="linkactive">
+                              <Link
+                                to="/activity/requests"
+                                className="linkactive"
+                                onClick={() => this.closeRequest()}
+                              >
                                 Activity Log
                               </Link>
                             </span>

@@ -62,7 +62,7 @@ const CourseHandle = (props) => {
         }
         onClick={() => activatemycourse(props)}
       >
-        <span className="coursehandle--heading">
+        <span className="coursehandle--heading" title={props.title + ' ' + props.code}>
           {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
         <div className="coursehandle--heading-dept">{props.department.abbreviation} Department</div>
@@ -76,7 +76,7 @@ const CourseHandle = (props) => {
         }
         onClick={() => activatecourse(props)}
       >
-        <span className="coursehandle--heading">
+        <span className="coursehandle--heading" title={props.title + ' ' + props.code}>
           {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
         {mycourse ? <img className="coursehandle--mycourse" src={course} alt="mycourse" /> : null}

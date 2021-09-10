@@ -8,7 +8,6 @@ import img from 'assets/material_img.svg';
 import 'styles/main.scss';
 import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
-import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { downloadFiles } from 'api/filesApi';
 import ShortName from 'utils/short-name';
 
@@ -64,13 +63,6 @@ const MaterialCard = (props) => {
   return (
     <div className="material">
       <div className="material--namecheck">
-        <div className="material--checkbox">
-          <CustomCheckbox
-            border="1px solid rgba(43, 42, 40, 0.4)"
-            hover="rgba(56, 167, 222, 0.15)"
-            borderhover="1px solid #38A7DE"
-          />
-        </div>
         <div className="material--info">
           <div className="material--icon">
             <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />

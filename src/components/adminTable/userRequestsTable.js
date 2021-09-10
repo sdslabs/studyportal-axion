@@ -14,6 +14,7 @@ import {
 } from 'actions/adminPanelActions';
 import _ from 'lodash';
 import { toast } from 'react-toastify';
+import ShortName from 'utils/short-name';
 
 const UserRequestsTable = () => {
   const [rows, setRows] = useState([]);
@@ -125,7 +126,9 @@ const UserRequestsTable = () => {
       {rows.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
-            <span>{item?.title}</span>
+            <span title={item?.title}>
+              {item?.title.length < 70 ? item?.title : ShortName(item?.title)}
+            </span>
             {store.activeTab === constants.ALL_TAB && (
               <p style={{ opacity: 0.7, margin: '0.6rem 0' }}>{item?.filetype}</p>
             )}

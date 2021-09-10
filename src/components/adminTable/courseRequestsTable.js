@@ -13,6 +13,7 @@ import {
 } from 'actions/adminPanelActions';
 import { COURSE_REQUEST_MENU } from 'constants/adminPanelMenu';
 import { toast } from 'react-toastify';
+import ShortName from 'utils/short-name';
 
 const CourseRequestsTable = () => {
   const [approved, setApproved] = useState([]);
@@ -93,8 +94,8 @@ const CourseRequestsTable = () => {
       {activeData.map((item, key) => (
         <div className="admin-table--row" key={key}>
           <div className="admin-table--primary-row">
-            <span>
-              {item.course} | {item.code}
+            <span title={item.course}>
+              {item.course.length < 60 ? item.course : ShortName(item.course)} | {item.code}
             </span>
           </div>
           <div className="admin-table--secondary-row">

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import emoji from 'assets/mdi_sentiment_very_dissatisfied.svg';
+import ShortName from 'utils/short-name';
 
 const SearchDepartment = ({ departments }) => {
   return (
@@ -20,8 +21,12 @@ const SearchDepartment = ({ departments }) => {
         <div>
           {departments.map((department) => (
             <Link to={`/departments/${department.abbreviation}`} key={department.id}>
-              <div className="search--department-name link" key={department.id}>
-                {department.title}
+              <div
+                className="search--department-name link"
+                key={department.id}
+                title={department.title}
+              >
+                {department.title.length < 50 ? department.title : ShortName(department.title)}
               </div>
             </Link>
           ))}
