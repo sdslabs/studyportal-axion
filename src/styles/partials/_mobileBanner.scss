@@ -9,6 +9,7 @@
     top: 0;
     left: 0;
     background-color: lighten($primary, $amount: 35%);
+    z-index: 100;
   }
 
   &title {
@@ -24,11 +25,7 @@
   &decor {
     border-bottom: 3px solid $primary;
     height: 1px;
-    width: 20px;
+    width: 1.25rem;
     margin: 1rem auto;
   }
-}
-
-html {
-  overflow: hidden;
 }
