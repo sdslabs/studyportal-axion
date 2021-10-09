@@ -1,0 +1,104 @@
+.admin-table-- {
+  &row {
+    display: flex;
+    padding: 1.5rem 4rem;
+    border-top: 0.0625rem solid rgba(65, 64, 66, 0.2);
+  }
+
+  &primary-row {
+    @include font;
+    width: 60%;
+    height: fit-content;
+    margin: auto 0;
+  }
+
+  &secondary-row {
+    @include font;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    .row-item {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  &inner-container {
+    height: 40%;
+    overflow-y: auto;
+  }
+}
+
+.admin- {
+  &table-title {
+    margin-top: 4rem;
+  }
+  &icon-btn {
+    cursor: pointer;
+    transition: 0.2s ease;
+    border-radius: 4px;
+    height: 2rem;
+    width: 2rem;
+    margin: auto;
+    img {
+      height: 1.2rem;
+      width: 1.2rem;
+      margin-top: 0.4rem;
+    }
+  }
+}
+
+.admin-icon-- {
+  &primary:hover {
+    background: lighten($primary, 30%);
+  }
+  &error:hover {
+    background: lighten(red, 40%);
+  }
+  &success:hover {
+    background: rgba(0, 255, 0, 0.2);
+  }
+}
+
+.active-tab-admin {
+  color: $primary;
+  font-weight: 600;
+}
+
+.tab-admin {
+  width: max-content;
+  height: auto;
+}
+
+.active-tab-underline {
+  border-bottom: 3px solid $primary;
+  width: 80%;
+  margin: auto;
+  padding-top: 0.5rem;
+}
+
+.file-upload {
+  display: none;
+}
+
+.file-preview {
+  @include font;
+  @include center;
+  height: 20.063rem;
+  width: 39.375rem;
+  margin: auto;
+  margin-bottom: 0%;
+  border-top-left-radius: 1.875rem;
+  border-top-right-radius: 1.875rem;
+  flex-direction: column;
+  background-color: #c4c4c4;
+}
+
+.error-page-text {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0.5rem;
+  font-weight: 500;
+  font-family: 'Open Sans';
+  color: #0d2938;
+}

@@ -7,6 +7,7 @@
   background-size: contain;
   height: 24.4375rem;
   width: 100%;
+  overflow: hidden;
 
   cursor: default;
 
@@ -52,6 +53,7 @@
     line-height: 2.25rem;
     text-align: center;
     color: $font-color;
+    white-space: nowrap;
   }
 
   &caption {

@@ -8,8 +8,8 @@ import img from 'assets/material_img.svg';
 import 'styles/main.scss';
 import download1 from 'assets/download.svg';
 import download2 from 'assets/download1.svg';
-import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import { downloadFiles } from 'api/filesApi';
+import ShortName from 'utils/short-name';
 
 /**
  * Component to render files.
@@ -42,28 +42,33 @@ const MaterialCard = (props) => {
    */
   const downloadFile = (id, url) => {
     const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}&export=download`;
-    window.open(link, '_blank');
+
+    let newTab = window.open(link, '_blank');
+    newTab.opener = null;
+    newTab.location = link;
+
     downloadFiles(id).then(() => {
       props.updateFileState();
     });
   };
 
+  const viewFile = (url) => {
+    const link = `https://drive.google.com/a/iitr.ac.in/uc?id=${url}`;
+
+    let newTab = window.open(link, '_blank');
+    newTab.opener = null;
+    newTab.location = link;
+  };
+
   return (
     <div className="material">
       <div className="material--namecheck">
-        <div className="material--checkbox">
-          <CustomCheckbox
-            border="1px solid rgba(43, 42, 40, 0.4)"
-            hover="rgba(56, 167, 222, 0.15)"
-            borderhover="1px solid #38A7DE"
-          />
-        </div>
         <div className="material--info">
           <div className="material--icon">
             <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
-          <div className="material--name" onClick={() => downloadFile(props.id, props.url)}>
-            {props.name}
+          <div className="material--name" onClick={() => viewFile(props.url)} title={props.name}>
+            {props.name.length < 30 ? props.name : ShortName(props.name)}
           </div>
           <div className="material--download">Downloads: {props.downloads}</div>
         </div>

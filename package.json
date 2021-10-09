@@ -8,6 +8,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "antd": "^4.13.1",
     "axios": "^0.19.2",
     "jquery": "^3.4.1",
@@ -17,10 +19,12 @@
     "node-sass": "^4.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-lottie": "^1.2.3",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "react-select": "^4.2.1",
+    "react-swipeable-views": "^0.13.9",
     "react-toastify": "^7.0.3",
     "redux": "^4.0.4",
     "websocket": "^1.0.31"

@@ -7,6 +7,7 @@ import store from 'store/store';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import App from './App';
+import MobileBanner from 'components/cover/mobileBanner';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -21,6 +22,7 @@ ReactDOM.render(
         rtl={false}
         pauseOnHover
       />
+      <MobileBanner />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'),

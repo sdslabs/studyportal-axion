@@ -44,3 +44,9 @@
   background: $white;
   color: rgba($font-color, 0.2);
 }
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

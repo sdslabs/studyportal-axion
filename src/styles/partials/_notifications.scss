@@ -46,18 +46,41 @@
     margin-top: 0.5rem;
   }
   &container {
-    width: 22.125rem;
-    height: 12.125rem;
+    width: 23.875rem;
+    height: 85vh;
     z-index: 1;
     background: $white;
     box-sizing: border-box;
-    box-shadow: 0.0625rem 0.0625rem 0.25rem rgba($black, 0.15);
     overflow-y: auto;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1);
+    position: relative;
+    right: -2rem;
   }
   &none {
     @include font;
     display: flex;
     margin-top: 5rem;
     justify-content: center;
+  }
+  &header {
+    @include center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(56, 166, 221, 0.15);
+    padding: 0.75rem;
+
+    h1 {
+      font-family: $font;
+      font-size: 0.875rem;
+      color: $secondary;
+      opacity: 0.7;
+    }
+
+    span {
+      font-family: $font;
+      font-size: 0.75rem;
+      color: $primary;
+      font-weight: 600;
+      cursor: pointer;
+    }
   }
 }

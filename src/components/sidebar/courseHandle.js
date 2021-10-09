@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import course from 'assets/course.svg';
 import 'styles/main.scss';
@@ -61,7 +62,7 @@ const CourseHandle = (props) => {
         }
         onClick={() => activatemycourse(props)}
       >
-        <span className="coursehandle--heading">
+        <span className="coursehandle--heading" title={props.title + ' ' + props.code}>
           {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
         <div className="coursehandle--heading-dept">{props.department.abbreviation} Department</div>
@@ -75,7 +76,7 @@ const CourseHandle = (props) => {
         }
         onClick={() => activatecourse(props)}
       >
-        <span className="coursehandle--heading">
+        <span className="coursehandle--heading" title={props.title + ' ' + props.code}>
           {`${props.title.length >= 30 ? shortName(props.title) : props.title} ${props.code}`}
         </span>
         {mycourse ? <img className="coursehandle--mycourse" src={course} alt="mycourse" /> : null}
@@ -85,3 +86,16 @@ const CourseHandle = (props) => {
 };
 
 export default CourseHandle;
+
+CourseHandle.propTypes = {
+  /** Holds the value of course id. */
+  course: PropTypes.string,
+  /** Holds the value of course code. */
+  code: PropTypes.string,
+  /** Holds the value of course title. */
+  title: PropTypes.string,
+  /** Holds the bool value whether user is logged in or not */
+  login: PropTypes.bool,
+  /** Holds the value of department id */
+  department: PropTypes.string,
+};

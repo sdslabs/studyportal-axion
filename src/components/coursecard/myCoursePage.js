@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
-import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import NoContentCover from 'components/cover/noContentCover';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
 import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
@@ -125,7 +124,10 @@ const CoursePage = () => {
   else
     return (
       <div className="coursepage" onClick={() => closeModal()}>
-        <div className="coursepage--head">
+        <div
+          className="coursepage--head"
+          title={content.activeMyCourse.title + ' ' + content.activeMyCourse.code}
+        >
           {content.activeMyCourse.title.length >= 25
             ? shortName(content.activeMyCourse.title)
             : content.activeMyCourse.title}{' '}
@@ -272,12 +274,6 @@ const CoursePage = () => {
           <>
             <div className="coursepage--material-sort">
               <div className="coursepage--material-sort_namecheck">
-                <div className="coursepage--material-sort_checkbox">
-                  <CustomCheckbox
-                    border="1px solid rgba(43, 42, 40, 0.4)"
-                    borderhover="1px solid #38A7DE"
-                  />
-                </div>
                 <div className="coursepage--material-sort_name">Name</div>
               </div>
               <div className="coursepage--material-sort_sizemod">

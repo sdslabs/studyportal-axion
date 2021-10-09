@@ -30,7 +30,18 @@ function getNewNotification(token) {
 }
 function deleteNotification(notification) {
   return axiosInstance
-    .delete('/notifications', { params: { notification } })
+    .delete('/notifications', { params: { notification: notification, userid: 'null' } })
+    .then((response) => {
+      const res = JSON.parse(response.request.response);
+      return res;
+    })
+    .catch((error) => {
+      return Promise.reject(error);
+    });
+}
+function deleteAllNotifications(userid) {
+  return axiosInstance
+    .delete('/notifications', { params: { notification: 'null', userid: userid } })
     .then((response) => {
       const res = JSON.parse(response.request.response);
       return res;
@@ -40,4 +51,4 @@ function deleteNotification(notification) {
     });
 }
 
-export { getNewNotification, getAllNotifications, deleteNotification };
+export { getNewNotification, getAllNotifications, deleteNotification, deleteAllNotifications };
