@@ -5,9 +5,9 @@
 }
 
 .activitycard {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 43% 25% 32%;
+  grid-template-rows: 100%;
   border-top: 0.0625rem solid $border;
   border-bottom: 0.0625rem solid $border;
   padding: 1.0625rem 0rem 1.125rem 0rem;
@@ -18,6 +18,7 @@
     justify-self: left;
     align-self: center;
     margin-left: 4rem;
+    padding-right: 1.5rem;
 
     &_date {
       @include font;
@@ -68,7 +69,7 @@
 
   &file {
     @include font;
-    width: 30%;
+    width: 70%;
     align-self: center;
     margin-right: 4rem;
     line-height: 2.1875rem;

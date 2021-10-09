@@ -4,6 +4,7 @@ import {
   SWITCH_TAB,
   SET_TABLE_DATA,
   RESET_ADMIN_MENU,
+  TOGGLE_ADMIN_LOADER,
 } from 'constants/action-types';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   activeTab: '',
   subMenuData: [],
   tableData: [],
+  loading: '',
 };
 
 export default function adminPanelReducer(state = initialState, action) {
@@ -39,6 +41,12 @@ export default function adminPanelReducer(state = initialState, action) {
       return {
         ...state,
         tableData: action.payload,
+      };
+
+    case TOGGLE_ADMIN_LOADER:
+      return {
+        ...state,
+        loading: action.payload,
       };
 
     case RESET_ADMIN_MENU:

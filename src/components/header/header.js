@@ -1,17 +1,14 @@
 import React, { Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Search from './search';
 import UserMenu from 'components/common/userMenu';
 import Notifications from 'components/common/notifications';
 import Request from 'components/request/request';
 import Upload from 'components/upload/upload';
 import { CONFIG } from 'config/config';
-import { TOGGLE_REQUEST, TOGGLE_UPLOAD } from 'constants/action-types';
 import logo from 'assets/head_logo.png';
 import home from 'assets/home.svg';
 import mycourses from 'assets/mycourses.svg';
-import request from 'assets/request.svg';
-import upload from 'assets/upload.svg';
 import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +16,6 @@ import { Link } from 'react-router-dom';
  * Header component for Studyportal.
  */
 const Header = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const authenticate = (value) => {
     window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
@@ -41,6 +37,8 @@ const Header = () => {
         <div className="header--search">
           <Search home={false} />
         </div>
+      </div>
+      <div className="header--redirects">
         <div className="header--home">
           <Link to="/">
             <img src={home} alt="home" />
@@ -54,16 +52,7 @@ const Header = () => {
               </Link>
             </div>
           </Fragment>
-        ) : (
-          <Fragment>
-            <div className="header--request" onClick={() => dispatch({ type: TOGGLE_REQUEST })}>
-              <img src={request} alt="request" />
-            </div>
-            <div className="header--upload" onClick={() => dispatch({ type: TOGGLE_UPLOAD })}>
-              <img src={upload} alt="upload" />
-            </div>
-          </Fragment>
-        )}
+        ) : null}
       </div>
       <div className="header--userinfo">
         {user.login ? (

@@ -37,21 +37,21 @@ const Sidebar = () => {
       </div>
       <div className="sidebar--course-name">
         <div className="sidebar--course-table_logout">
-          <div className={selector === 'all' ? 'coursehandle_active' : 'coursehandle'}>
-            <Link to={`/activity/all`} className="link">
+          <Link to={`/activity/all`} className="link">
+            <div className={selector === 'all' ? 'coursehandle_active' : 'coursehandle'}>
               <span className="coursehandle--heading">All Activity Log</span>
-            </Link>
-          </div>
-          <div className={selector === 'requests' ? 'coursehandle_active' : 'coursehandle'}>
-            <Link to={`/activity/requests`} className="link">
+            </div>
+          </Link>
+          <Link to={`/activity/requests`} className="link">
+            <div className={selector === 'requests' ? 'coursehandle_active' : 'coursehandle'}>
               <span className="coursehandle--heading">Requests Log</span>
-            </Link>
-          </div>
-          <div className={selector === 'uploads' ? 'coursehandle_active' : 'coursehandle'}>
-            <Link to={`/activity/uploads`} className="link">
+            </div>
+          </Link>
+          <Link to={`/activity/uploads`} className="link">
+            <div className={selector === 'uploads' ? 'coursehandle_active' : 'coursehandle'}>
               <span className="coursehandle--heading">Uploads Log</span>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

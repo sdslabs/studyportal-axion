@@ -7,6 +7,8 @@ import yellow from 'assets/yellow_status.svg';
 import { getFileById } from 'api/filesApi';
 import shortName from 'utils/short-name';
 import 'styles/main.scss';
+import _ from 'lodash';
+import ShortName from 'utils/short-name';
 
 /**
  * Component to render activities.
@@ -43,7 +45,15 @@ const ActivityCard = (props) => {
     if (date) {
       let datePart = date.match(/\d+/g);
       let month = getMonth(`${datePart[1]}`);
-      let dateString = `${datePart[2]}th ${month}, ${datePart[0]}`;
+      let ordinal = 'th';
+      if (datePart[2] === '01' || datePart[2] === '21' || datePart[2] === '31') {
+        ordinal = 'st';
+      } else if (datePart[2] === '02' || datePart[2] === '22') {
+        ordinal = 'nd';
+      } else if (datePart[2] === '03' || datePart[2] === '23') {
+        ordinal = 'rd';
+      }
+      let dateString = `${datePart[2]}${ordinal} ${month}, ${datePart[0]}`;
       return dateString;
     }
   };
@@ -67,7 +77,7 @@ const ActivityCard = (props) => {
         </div>
         <div className="activitycard--info_name">
           <span className="activitycard--info_head">Name: </span>
-          <span className="activitycard--info_heading">
+          <span className="activitycard--info_heading" title={props.title}>
             {props.title.length > 20 ? shortName(props.title) : props.title}
           </span>
         </div>
@@ -93,7 +103,7 @@ const ActivityCard = (props) => {
           </div>
           <div className="activitycard--file" />
         </Fragment>
-      ) : (
+      ) : !_.isEmpty(file) ? (
         <Fragment>
           <div className="activitycard--status_green">
             <img className="req_color" src={green} alt="green" /> Files Uploaded ({props.status}/3)
@@ -106,11 +116,11 @@ const ActivityCard = (props) => {
               className="linkactive"
             >
               <img className="activitycard--file_download" src={download} alt="download" />{' '}
-              {file.title}
+              {file.title.length < 30 ? file.title : ShortName(file.title)}
             </a>
           </div>
         </Fragment>
-      )}
+      ) : null}
     </div>
   );
 };

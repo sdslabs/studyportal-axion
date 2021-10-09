@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
-import CustomCheckbox from 'components/customcheckbox/customCheckbox';
+import NoContentCover from 'components/cover/noContentCover';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
 import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
 import { getUser } from 'utils/getUser';
@@ -124,7 +124,10 @@ const CoursePage = () => {
   else
     return (
       <div className="coursepage" onClick={() => closeModal()}>
-        <div className="coursepage--head">
+        <div
+          className="coursepage--head"
+          title={content.activeMyCourse.title + ' ' + content.activeMyCourse.code}
+        >
           {content.activeMyCourse.title.length >= 25
             ? shortName(content.activeMyCourse.title)
             : content.activeMyCourse.title}{' '}
@@ -267,45 +270,45 @@ const CoursePage = () => {
           </div>
         </div>
         {/* Uptil here */}
-        <div className="coursepage--material-sort">
-          <div className="coursepage--material-sort_namecheck">
-            <div className="coursepage--material-sort_checkbox">
-              <CustomCheckbox
-                border="1px solid rgba(43, 42, 40, 0.4)"
-                borderhover="1px solid #38A7DE"
-              />
-            </div>
-            <div className="coursepage--material-sort_name">Name</div>
-          </div>
-          <div className="coursepage--material-sort_sizemod">
-            <div className="coursepage--material-sort_size">Size</div>
-            <div className="coursepage--material-sort_lastmod">Last Modified</div>
-          </div>
-        </div>
-        <div className="coursepage--material">
-          {files.map((obj) => (
-            <div key={obj.year}>
-              {obj.year === year
-                ? obj.files.map((file) => (
-                    <MaterialCard
-                      key={file.driveid}
-                      id={file.id}
-                      name={file.title}
-                      url={file.driveid}
-                      downloads={file.downloads}
-                      ext={file.fileext}
-                      size={file.size}
-                      date_modified={file.date_modified}
-                      updateFileState={updateFileState}
-                    />
-                  ))
-                : null}
-              <div className="coursepage--material_year" onClick={() => setYear(obj.year)}>
-                {obj.year}
+        {files.length > 0 ? (
+          <>
+            <div className="coursepage--material-sort">
+              <div className="coursepage--material-sort_namecheck">
+                <div className="coursepage--material-sort_name">Name</div>
+              </div>
+              <div className="coursepage--material-sort_sizemod">
+                <div className="coursepage--material-sort_size">Size</div>
+                <div className="coursepage--material-sort_lastmod">Last Modified</div>
               </div>
             </div>
-          ))}
-        </div>
+            <div className="coursepage--material">
+              {files.map((obj) => (
+                <div key={obj.year}>
+                  {obj.year === year
+                    ? obj.files.map((file) => (
+                        <MaterialCard
+                          key={file.driveid}
+                          id={file.id}
+                          name={file.title}
+                          url={file.driveid}
+                          downloads={file.downloads}
+                          ext={file.fileext}
+                          size={file.size}
+                          date_modified={file.date_modified}
+                          updateFileState={updateFileState}
+                        />
+                      ))
+                    : null}
+                  <div className="coursepage--material_year" onClick={() => setYear(obj.year)}>
+                    {obj.year}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <NoContentCover />
+        )}
       </div>
     );
 };

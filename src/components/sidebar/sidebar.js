@@ -7,7 +7,7 @@ import 'styles/main.scss';
 import { Link } from 'react-router-dom';
 import { CLOSE_MODAL } from 'constants/action-types';
 import MiniSearch from 'minisearch';
-import _ from 'lodash';
+import { getSearchCourseResults } from 'api/searchApi';
 
 /**
  * Sidebar component for Studyportal homepage.
@@ -27,9 +27,17 @@ const Sidebar = () => {
   });
 
   const searchCourse = (e) => {
-    const searchResult = miniSearch.search(e.target.value);
-    if (_.isEmpty(searchResult)) setCourses(content.courses);
-    else setCourses(searchResult);
+    if (e.target.value !== '') {
+      getSearchCourseResults(e.target.value, content.activeDepartment.id, 'null')
+        .then((res) => {
+          setCourses(res.courses);
+        })
+        .catch((error) => {
+          return Promise.reject(error);
+        });
+    } else {
+      setCourses(content.courses);
+    }
   };
 
   const closeModal = () => {

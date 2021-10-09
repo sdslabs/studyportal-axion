@@ -35,7 +35,7 @@ const Header = () => {
         <div className="landingheader--heading">Study Portal</div>
         <div className="landingheader--caption">The Solutions Portal of IITR</div>
         <div className="landingheader--search">
-          <Search />
+          <Search home />
         </div>
       </div>
       {user.login ? (

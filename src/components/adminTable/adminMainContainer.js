@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as constants from 'constants/adminPanelMenu';
 import { SwitchTab } from 'actions/adminPanelActions';
+import AdminCover from 'components/cover/adminCover';
 
 const Tabs = [
   constants.ALL_TAB,
@@ -18,6 +19,7 @@ const AdminMainContainer = (props) => {
 
   return (
     <div className="coursepage">
+      {store.loading && <AdminCover customText={store.loading} />}
       {store.activeMainMenu === constants.USER_REQUEST_MENU && (
         <>
           <div className="coursepage--head">{store.subMenuData[store.activeSubMenu]?.title}</div>

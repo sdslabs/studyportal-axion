@@ -22,6 +22,11 @@
       text-align: center;
     }
   }
+
+  &inner-container {
+    height: 40%;
+    overflow-y: auto;
+  }
 }
 
 .admin- {
@@ -94,6 +99,6 @@
   text-align: center;
   margin: 0.5rem;
   font-weight: 500;
-  font-family: 'Droid Sans';
+  font-family: 'Open Sans';
   color: #0d2938;
 }

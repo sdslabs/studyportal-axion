@@ -1,60 +1,54 @@
-.notifications-- {
-  &card {
-    position: relative;
-    width: 100%;
-    height: 33.33%;
-    left: 0;
-    top: 0;
-    border-radius: 0.125rem 0.125rem 0rem 0rem;
-    border-bottom: 0.0625rem rgba($primary, 0.3);
+.notification-card-- {
+  &grid {
+    display: grid;
+    grid-template-columns: 40px 1fr 100px;
+    grid-template-rows: 20px 1fr;
+    padding: 12px;
+    grid-column-gap: 10px;
   }
-  &card:hover {
-    background: rgba($primary, 0.275);
+  &grid:hover {
+    background: rgba($primary, 0.1);
     cursor: pointer;
   }
-  &card- {
-    &description {
-      position: absolute;
-      width: 16.0625rem;
-      height: 1.75rem;
-      left: 1rem;
-      top: 1.125rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 0.75rem;
-      line-height: 0.875rem;
-      color: $font-color;
-    }
-    &date {
-      position: absolute;
-      width: 2.75rem;
-      height: 0.8125rem;
-      right: 0.5625rem;
-      top: 0.75rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 0.6875rem;
-      line-height: 0.8125rem;
-      color: rgba($black, 0.5);
-    }
-    &page {
-      position: absolute;
-      width: 3.3125rem;
-      height: 0.8125rem;
-      right: 1.0625rem;
-      top: 0.375rem;
-      font-family: $font;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 0.6875rem;
-      line-height: 0.8125rem;
-      color: rgba($font-color, 0.2);
+  &title,
+  &description {
+    font-family: $font;
+    color: $secondary;
+    opacity: 0.75;
+  }
+
+  &title {
+    @include ellipsis;
+    font-size: 0.875rem;
+    font-weight: 600;
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  &description {
+    font-size: 0.75rem;
+    grid-column: 2/4;
+    grid-row: 2/3;
+    line-height: 150%;
+    .bold {
+      color: $primary;
+      font-weight: 600;
     }
   }
-}
 
-.bold {
-  font-weight: 600;
+  &date {
+    @extend .notification-card--description;
+    @include ellipsis;
+    opacity: 0.4;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    text-align: right;
+  }
+
+  &icon {
+    width: 40px;
+    height: 40px;
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
 }

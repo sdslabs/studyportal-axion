@@ -5,13 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import _ from 'lodash';
 import FileCover from 'components/cover/fileCover';
 import MaterialCard from './materialCard';
-import CustomCheckbox from 'components/customcheckbox/customCheckbox';
 import NoContentCover from 'components/cover/noContentCover';
 import { getFilesByCourse, getFilesByType } from 'api/filesApi';
 import { addCourseForUser, deleteCourseForUser } from 'api/userApi';
 import { getCookie } from 'utils/handleCookies';
 import shortName from 'utils/short-name';
 import { getUser } from 'utils/getUser';
+import { toast } from 'react-toastify';
 import 'styles/main.scss';
 import { CLOSE_MODAL } from 'constants/action-types';
 
@@ -102,6 +102,7 @@ const CoursePage = () => {
     addCourseForUser(token, content.activeCourse.id).then(() => {
       getUser(dispatch);
       setMycourse(true);
+      toast('Course has been added to your course list');
     });
   };
 
@@ -113,19 +114,28 @@ const CoursePage = () => {
     deleteCourseForUser(token, content.activeCourse.id).then(() => {
       getUser(dispatch);
       setMycourse(false);
+      toast('Course has been removed from your course list');
     });
   };
 
   useEffect(() => {
-    getFiles(content);
-    checkCourse(user, content); // eslint-disable-next-line
-  }, [content, user]);
+    if (!_.isEmpty(content.activeCourse)) getFiles(content);
+    // eslint-disable-next-line
+  }, [content.activeCourse, content.filetype]);
+
+  useEffect(() => {
+    checkCourse(user, content);
+    // eslint-disable-next-line
+  }, [content.activeCourse, content.filetype, user.login, user.courses]);
 
   if (loading) return <FileCover />;
   else
     return (
       <div className="coursepage" onClick={() => closeModal()}>
-        <div className="coursepage--head">
+        <div
+          className="coursepage--head"
+          title={content.activeCourse.title + ' ' + content.activeCourse.code}
+        >
           {content.activeCourse.title.length >= 25
             ? shortName(content.activeCourse.title)
             : content.activeCourse.title}{' '}
@@ -270,12 +280,6 @@ const CoursePage = () => {
           <>
             <div className="coursepage--material-sort">
               <div className="coursepage--material-sort_namecheck">
-                <div className="coursepage--material-sort_checkbox">
-                  <CustomCheckbox
-                    border="1px solid rgba(43, 42, 40, 0.4)"
-                    borderhover="1px solid #38A7DE"
-                  />
-                </div>
                 <div className="coursepage--material-sort_name">Name</div>
               </div>
               <div className="coursepage--material-sort_sizemod">

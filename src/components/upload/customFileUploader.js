@@ -126,7 +126,11 @@ const CustomFileUploader = (props) => {
             </span>
             <span className="customfileuploader--confirmation-activity">
               Check upload status in{' '}
-              <Link to="/activity/uploads" className="linkactive">
+              <Link
+                to="/activity/uploads"
+                className="linkactive"
+                onClick={() => props.toggleUploadModal()}
+              >
                 Activity Log
               </Link>
             </span>
@@ -172,4 +176,8 @@ CustomFileUploader.propTypes = {
   uploading: PropTypes.bool,
   /** Function to refresh the upload fields */
   refreshUpload: PropTypes.func,
+  /** Holds list of upload success */
+  success: PropTypes.array,
+  /** Function to close the upload modal */
+  toggleUploadModal: PropTypes.func,
 };
