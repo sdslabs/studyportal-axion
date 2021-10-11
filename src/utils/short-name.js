@@ -4,9 +4,9 @@ let ShortName = function (name) {
   }
   let names = name.split(' ');
   if (names.length === 1) {
-    return name.length < 30 ? name : name.substr(0, 25) + '...';
+    return name.length < 10 ? name : name.substr(0, 8) + '...';
   }
-  let firstName = names[0];
+  let firstName = names[0].length < 10 ? names[0] : names[0].substr(0, 8) + '.';
   let lastName = names[names.length - 1];
   let lastInitial = `${lastName.substr(0, 1)}.`;
   return `${firstName} ${lastInitial}`;

@@ -68,7 +68,7 @@ const MaterialCard = (props) => {
             <img src={material_map[props.ext] ? material_map[props.ext] : img} alt="icon" />
           </div>
           <div className="material--name" onClick={() => viewFile(props.url)} title={props.name}>
-            {props.name.length < 30 ? props.name : ShortName(props.name)}
+            {props.name.length < 10 ? props.name : ShortName(props.name)}
           </div>
           <div className="material--download">Downloads: {props.downloads}</div>
         </div>
