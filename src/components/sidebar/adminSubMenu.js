@@ -18,7 +18,7 @@ const SubMenu = () => {
             onClick={() => dispatch(SwitchSubMenu(key))}
           >
             <span className="coursehandle--heading" title={item.title}>
-              {item.title.length < 40 ? item.title : ShortName(item.title)}
+              {item.title.length < 30 ? item.title : ShortName(item.title)}
               {item.code && ` | ${item.code}`}
             </span>
           </div>
