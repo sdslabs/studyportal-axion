@@ -45,7 +45,7 @@ const getTemplateData = (notification_data) => {
     case 'request':
       templateData.icon = request;
       if (verb.includes('you requested')) {
-        templateData.title = 'Your Request Updated';
+        templateData.title = 'Request Updated';
       } else {
         templateData.title = 'New Request Added';
       }
