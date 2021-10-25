@@ -79,6 +79,8 @@ class Request extends Component {
    * @param {object} e
    */
   file_active_material = (e) => {
+    $('input:radio').prop('checked', false);
+    $('input:text').val('');
     this.setState({ disable: 2 });
   };
 
