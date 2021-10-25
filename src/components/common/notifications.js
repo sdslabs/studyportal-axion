@@ -88,7 +88,7 @@ const Notifications = () => {
           <div className="notifications--container">
             <div className="notifications--header">
               <h1>Notifications</h1>
-              {!_.isEmpty(notifications) && <span onClick={handleClearAll}>Clear all</span>}
+              {/* {!_.isEmpty(notifications) && <span onClick={handleClearAll}>Clear all</span>} */}
             </div>
             {!_.isEmpty(notifications) ? (
               notifications.map((notification) => (
