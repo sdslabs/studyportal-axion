@@ -68,6 +68,9 @@
     height: auto;
     margin-left: 5rem;
     min-width: 22rem;
+    .search {
+      align-items: stretch;
+    }
   }
 
   &mycourse {
