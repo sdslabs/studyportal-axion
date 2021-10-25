@@ -79,6 +79,8 @@ class Request extends Component {
    * @param {object} e
    */
   file_active_material = (e) => {
+    $('input:radio').prop('checked', false);
+    $('input:text').val('');
     this.setState({ disable: 2 });
   };
 
@@ -87,6 +89,13 @@ class Request extends Component {
    */
   active_name = () => {
     this.setState({ disable: 3 });
+  };
+
+  /**
+   * Activates request button in file.
+   */
+  active_request_file = () => {
+    this.setState({ disable: 4 });
   };
 
   /**
@@ -101,6 +110,13 @@ class Request extends Component {
    */
   course_active_courseid = () => {
     this.setState({ disableCourse: 2 });
+  };
+
+  /**
+   * Activates request button in course.
+   */
+  active_request_course = () => {
+    this.setState({ disableCourse: 4 });
   };
 
   /**
@@ -340,6 +356,7 @@ class Request extends Component {
                       type="text"
                       disabled={!(this.state.disable >= 3)}
                       name="name"
+                      onChange={this.active_request_file}
                     />
                     {this.state.requested ? (
                       <div className="request--confirmation">
@@ -377,7 +394,14 @@ class Request extends Component {
                         <img className="request--loader" alt="loader" src={small_loader} />
                       </div>
                     ) : (
-                      <button type="submit" className="request--button-file">
+                      <button
+                        type="submit"
+                        className="request--button-file"
+                        disabled={!(this.state.disable >= 4)}
+                        style={{
+                          background: this.state.disable >= 4 ? '#38a7de' : '#88CAEB',
+                        }}
+                      >
                         Request
                       </button>
                     )}
@@ -436,6 +460,7 @@ class Request extends Component {
                       type="text"
                       name="code"
                       disabled={!(this.state.disableCourse >= 2)}
+                      onChange={this.active_request_course}
                     />
                     {this.state.requested ? (
                       <div className="request--confirmation">
@@ -469,7 +494,14 @@ class Request extends Component {
                         <img className="request--loader" alt="loader" src={small_loader} />
                       </div>
                     ) : (
-                      <button type="submit" className="request--button-course">
+                      <button
+                        type="submit"
+                        className="request--button-course"
+                        disabled={!(this.state.disableCourse >= 4)}
+                        style={{
+                          background: this.state.disableCourse >= 4 ? '#38a7de' : '#88CAEB',
+                        }}
+                      >
                         Request
                       </button>
                     )}

@@ -7,7 +7,6 @@
   background-size: contain;
   height: 24.4375rem;
   width: 100%;
-  overflow: hidden;
 
   cursor: default;
 
@@ -69,6 +68,7 @@
   &search {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-top: 1.25rem;
     width: 70%;
     border-radius: 0.25rem;
@@ -104,7 +104,7 @@
 
   &login {
     @include font;
-    width: 6.25rem;
+    width: 5.25rem;
     height: 2.5625rem;
     color: $secondary;
     background: transparent;
@@ -113,11 +113,11 @@
 
   &signup {
     @include font;
-    width: 7.5625rem;
+    width: 4.99625rem;
     height: 2.5625rem;
     color: $font-color;
-    border-radius: 0.25rem;
-    border: 1px solid $font-color;
+    border-radius: 0.125rem;
+    border: 0.0625rem solid $font-color;
     background: transparent;
   }
 

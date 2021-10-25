@@ -8,7 +8,6 @@ import { CLOSE_MODAL } from 'constants/action-types';
 import parseDate from 'utils/parseDate';
 
 import defaultIcon from 'assets/notif_default.svg';
-import approved from 'assets/notif_approved.svg';
 import file from 'assets/notif_file.svg';
 import course from 'assets/notif_course.svg';
 import request from 'assets/notif_request.svg';
@@ -44,11 +43,10 @@ const getTemplateData = (notification_data) => {
       break;
 
     case 'request':
+      templateData.icon = request;
       if (verb.includes('you requested')) {
-        templateData.icon = approved;
-        templateData.title = 'Request Approved';
+        templateData.title = 'Request Updated';
       } else {
-        templateData.icon = request;
         templateData.title = 'New Request Added';
       }
       break;
