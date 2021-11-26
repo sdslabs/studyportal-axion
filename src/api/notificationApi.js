@@ -1,4 +1,5 @@
 import { axiosInstance } from 'api/axiosInstance';
+import { CONFIG } from 'config/config';
 
 function getAllNotifications(token) {
   return axiosInstance
@@ -12,7 +13,7 @@ function getAllNotifications(token) {
     });
 }
 function getNewNotification(token) {
-  const ws = new WebSocket(`ws://localhost:8005/notification/`);
+  const ws = new WebSocket(`${CONFIG.wsRoot}/notification/`);
   ws.onopen = () => {
     if (!window.Notification) {
       alert('This browser does not support desktop notification');

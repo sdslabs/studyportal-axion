@@ -6,7 +6,7 @@ import NotificationCard from 'components/common/notificationCard';
 import {
   getAllNotifications,
   getNewNotification,
-  deleteAllNotifications,
+  // deleteAllNotifications,
 } from 'api/notificationApi';
 import { getCookie } from 'utils/handleCookies';
 import {
@@ -48,10 +48,10 @@ const Notifications = () => {
     dispatch(SetNotificationContent(filteredNotifs));
   };
 
-  const handleClearAll = () => {
-    dropNotification(null, true);
-    deleteAllNotifications(user.id);
-  };
+  // const handleClearAll = () => {
+  //   dropNotification(null, true);
+  //   deleteAllNotifications(user.id);
+  // };
 
   useEffect(() => {
     getNotifications();
