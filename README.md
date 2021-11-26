@@ -1,6 +1,6 @@
 # StudyPortal Front-End
 
-Studyportal-axion is the frontend application for the Studyportal application.  This repositiory contains all the front-end code.
+Studyportal-axion is the frontend application for the Studyportal application. This repositiory contains all the front-end code.
 
 The application is avaliable at studysdslabs.co.
 
@@ -55,4 +55,3 @@ ngrok http 3005 -host-header="localhost:3005"
 The code in this repository is formatted using `prettier`. If you have prettier setup in your code editor it should work out of the box; otherwise you can use the `npm run lintfix` script to format and fix lint errors in your code. Checks are run to lint your code and validate the formatting on git precommit using [husky](https://github.com/typicode/husky).
 
 You will need to fix any linting issues before committing. We recommend formatting your JavaScript files on save in your text editor. You can learn how to do this in Visual Studio Code [here](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode#format-on-save).
-
