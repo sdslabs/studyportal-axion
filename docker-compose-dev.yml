@@ -1,0 +1,15 @@
+version: '3'
+services:
+  study-frontend:
+    container_name: study-frontend-dev
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.dev
+    environment:
+      - PORT=${STUDY_FE_PORT:-3005}
+    command: npm start
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - ${STUDY_FE_PORT:-3005}:3005

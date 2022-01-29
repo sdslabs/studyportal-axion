@@ -1,10 +1,9 @@
 version: '3'
 services:
-  web:
-    build: .
-    command: npm start
-    volumes:
-      - .:/usr/app/
-      - /usr/app/node_modules
+  study-frontend:
+    container_name: study-frontend
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     ports:
-      - '3005:3005'
+      - ${STUDY_PORT:-3005}:80
