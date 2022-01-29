@@ -26,7 +26,7 @@ npm start
 Alternatively, you can use Docker to build and run the application. You just have to run:
 
 ```bash
-docker-compose up
+docker-compose -f docker-compose-dev.yml up
 ```
 
 You should now have the application running and accessible at http://localhost:3005.
