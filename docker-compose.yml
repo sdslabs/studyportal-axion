@@ -1,9 +1,17 @@
 version: '3'
 services:
   study-frontend:
+    image: study-frontend
     container_name: study-frontend
     build:
       context: .
       dockerfile: ./docker/Dockerfile
+    environment:
+      - PORT=${STUDY_FE_PORT:-3005}
+      - REACT_APP_NEXUS_ROOT=${REACT_APP_NEXUS_ROOT:-https://nexus.sdslabs.co/api/v1}
+      - REACT_APP_ARCEUS_ROOT=${REACT_APP_ARCEUS_ROOT:-https://accounts.sdslabs.co}
+      - REACT_APP_STUDY_ROOT=${REACT_APP_STUDY_ROOT:-https://study.sdslabs.co}
+      - REACT_APP_MEDIA_ROOT=${REACT_APP_MEDIA_ROOT:-https://nexus.sdslabs.co}
+      - REACT_APP_WS_ROOT=${REACT_APP_WS_ROOT:-wss://nexus.sdslabs.co}
     ports:
-      - ${STUDY_PORT:-3005}:80
+      - ${STUDY_FE_PORT:-3005}:80

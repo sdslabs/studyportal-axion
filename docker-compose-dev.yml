@@ -1,15 +1,21 @@
 version: '3'
 services:
   study-frontend:
+    image: study-frontend-dev
     container_name: study-frontend-dev
     build:
       context: .
       dockerfile: ./docker/Dockerfile.dev
     environment:
       - PORT=${STUDY_FE_PORT:-3005}
+      - REACT_APP_NEXUS_ROOT=${REACT_APP_NEXUS_ROOT:-http://localhost:8005/api/v1}
+      - REACT_APP_ARCEUS_ROOT=${REACT_APP_ARCEUS_ROOT:-http://arceus.sdslabs.local}
+      - REACT_APP_STUDY_ROOT=${REACT_APP_STUDY_ROOT:-http://studyportal.sdslabs.local}
+      - REACT_APP_MEDIA_ROOT=${REACT_APP_MEDIA_ROOT:-http://localhost:8005}
+      - REACT_APP_WS_ROOT=${REACT_APP_WS_ROOT:-ws://localhost:8005}
     command: npm start
     volumes:
-      - .:/usr/app/
+      - .:/usr/app
       - /usr/app/node_modules
     ports:
       - ${STUDY_FE_PORT:-3005}:3005
