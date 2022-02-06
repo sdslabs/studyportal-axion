@@ -8,6 +8,7 @@ The application is avaliable at studysdslabs.co.
 
 1. Node.js + npm
 1. Docker(optional)
+1. Make a new file .env and copy .env.sample to .env
 
 ## Local Development
 

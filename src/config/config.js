@@ -1,15 +1,7 @@
-export const CONFIG = JSON.parse(process.env.REACT_APP_DEVELOPMENT)
-  ? {
-      nexusRoot: 'http://localhost:8005/api/v1',
-      arceusRoot: 'http://arceus.sdslabs.local',
-      studyRoot: 'http://studyportal.sdslabs.local',
-      mediaRoot: 'http://localhost:8005',
-      wsRoot: 'ws://localhost:8005',
-    }
-  : {
-      nexusRoot: 'https://nexus.sdslabs.co/api/v1',
-      arceusRoot: 'https://accounts.sdslabs.co',
-      studyRoot: 'https://study.sdslabs.co',
-      mediaRoot: 'https://nexus.sdslabs.co',
-      wsRoot: 'wss://nexus.sdslabs.co',
-    };
+export const CONFIG = {
+  nexusRoot: process.env.REACT_APP_NEXUS_ROOT,
+  arceusRoot: process.env.REACT_APP_ARCEUS_ROOT,
+  studyRoot: process.env.REACT_APP_STUDY_ROOT,
+  mediaRoot: process.env.REACT_APP_MEDIA_ROOT,
+  wsRoot: process.env.REACT_APP_WS_ROOT,
+};
