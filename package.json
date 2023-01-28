@@ -27,6 +27,7 @@
     "react-swipeable-views": "^0.13.9",
     "react-toastify": "^7.0.3",
     "redux": "^4.0.4",
+    "redux-persist": "^6.0.0",
     "websocket": "^1.0.31"
   },
   "scripts": {
@@ -64,6 +65,7 @@
     "husky": "^4.3.6",
     "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
+    "redux-persist": "^6.0.0",
     "react-styleguidist": "^9.2.0"
   },
   "husky": {
