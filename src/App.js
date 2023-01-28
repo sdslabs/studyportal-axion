@@ -13,6 +13,7 @@ import { getDepartmentsList } from 'api/departmentApi';
 import { getUser } from 'utils/getUser';
 import { ADD_DEPARTMENTS, RESET_APP } from 'constants/action-types';
 import AdminRouter from 'routers/AdminRouter';
+import Callback from './pages/callback';
 
 function mapStateToProps(state) {
   return {
@@ -38,6 +39,8 @@ class App extends Component {
   }
 
   canAccessAdmin = (user) => {
+    console.log("yeh le user")
+    console.log(user)
     return user.login && (user.role === 'admin' || user.role === 'moderator');
   };
 
@@ -63,6 +66,9 @@ class App extends Component {
           </Route>
           <Route path="/admin">
             {this.canAccessAdmin(this.props.user) ? <AdminRouter /> : <ErrorPage />}
+          </Route>
+          <Route path="/login/callback">
+            <Callback />
           </Route>
           <Route path="*" component={ErrorPage} />
         </Switch>

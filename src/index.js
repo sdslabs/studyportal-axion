@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 import store from 'store/store';
+import { persistor } from "store/store";
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import App from './App';
@@ -11,6 +13,7 @@ import MobileBanner from 'components/cover/mobileBanner';
 
 ReactDOM.render(
   <Provider store={store}>
+    <PersistGate persistor={persistor}>
     <BrowserRouter>
       <App />
       <ToastContainer
@@ -24,6 +27,7 @@ ReactDOM.render(
       />
       <MobileBanner />
     </BrowserRouter>
+    </PersistGate>
   </Provider>,
   document.getElementById('root'),
 );

@@ -1,4 +1,7 @@
 export const CONFIG = {
+  authRoot: process.env.REACT_APP_AUTH_ROOT,
+  authClientId: process.env.REACT_APP_AUTH_CLIENT_ID,
+  authRedirect: process.env.REACT_APP_AUTH_REDIRECT,
   nexusRoot: process.env.REACT_APP_NEXUS_ROOT,
   arceusRoot: process.env.REACT_APP_ARCEUS_ROOT,
   studyRoot: process.env.REACT_APP_STUDY_ROOT,

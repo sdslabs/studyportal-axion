@@ -18,7 +18,8 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const user = useSelector((state) => state.user);
   const authenticate = (value) => {
-    window.location.href = `${CONFIG.arceusRoot}/${value}?redirect=${window.location.href}`;
+    window.location.href = `${CONFIG.authRoot}/authorize?response_type=token&client_id=${CONFIG.authClientId}&scope=openid%20profile%20email&redirect_uri=${CONFIG.authRedirect}`;
+
   };
 
   return (

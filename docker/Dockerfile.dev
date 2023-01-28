@@ -13,3 +13,5 @@ COPY . /usr/app
 RUN rm -rf /usr/app/node_modules/
 
 RUN npm install
+
+RUN npm i redux-persist

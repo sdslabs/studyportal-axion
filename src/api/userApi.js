@@ -1,5 +1,5 @@
 import { axiosInstance } from './axiosInstance';
-import { setCookie } from 'utils/handleCookies';
+import { getCookie, setCookie } from 'utils/handleCookies';
 
 function loginUserWithToken(token) {
   return axiosInstance
@@ -20,10 +20,12 @@ function loginUserWithToken(token) {
 }
 
 function loginUserWithCookie() {
+  console.log(`Authorization ${document.cookie}`)
+  const sdslabs = getCookie('sdslabs')
   return axiosInstance
     .get('/users', {
       headers: {
-        Authorization: 'Bearer None',
+        Authorization: `StudyPortal ${sdslabs}`,
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
